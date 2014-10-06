@@ -1,0 +1,563 @@
+#!/usr/bin/python
+
+## assign_seqs_to_shmms
+## takes a FASTA file full of sequences
+## and scores them against a list of SHMMs
+
+from Bio import Fasta
+import getopt, glob, os, re, string, sys, tempfile, commands, time
+
+debug1 = 0
+debug2 = 0  # -b (big_align)
+
+nodes = re.compile(" ([0-9]+) nodes")
+
+def simpleSort(seqa, seqb):
+    return cmp(seqa['simple'],seqb['simple'])
+def reverseSort(seqa, seqb):
+    return cmp(seqa['reverse'],seqb['reverse'])
+def evalueSort(seqa, seqb):
+    return cmp(seqa['e_value'],seqb['e_value'])
+
+
+# ------------------------------------------------------------------------------
+def extract_id(title):
+    # if title is a bar-delimited nr-style gi, break on bars and use second 
+    # component
+    if title.find("|") != -1:
+        title = string.split(string.split(title)[0], "|")[1]
+
+    # Use only the ID line up to the first space as the key for the 
+    # sequence_id dictionary
+
+    elif title.find(" ") != -1:
+        title = string.split(title)[0]
+
+    # Limit to 15 chars.
+
+    title = title[0:15]
+    return title
+    
+
+# ------------------------------------------------------------------------------
+def heading_line():
+  print "%-15s %-26s %-12s %-12s%-8s%-12s%-12s%-12s" \
+     % ("#Sequence", \
+               "Best HMM", \
+                     "MLength", \
+                           "Simple", \
+                                "Reverse", \
+                                     "S_Amortized", \
+                                          "R_Amortized", 
+                                               "E-value")
+
+# ------------------------------------------------------------------------------
+def submit_job_on_queue(progstr, cmd, base, queue="library"):
+  f = open("%s_%s.sh" % (progstr, base), "w")
+  f.write("#!/bin/bash\n")
+  f.write("touch %s_%s_start\n" % (progstr, base))
+  f.write("%s\n" % cmd)
+  f.write("touch %s_%s_done\n" % (progstr, base))
+  f.close()
+  qsubcmd = 'ssh -v ohana.berkeley.edu "qsub -j oe ' + \
+            '-d %s -o %s_%s.out %s_%s.sh -q %s' \
+            % (os.getcwd(), progstr, base, progstr, base, queue) + \
+            '>& %s/qsub_%s_%s.out"' % (os.getcwd(), progstr, base)
+  for i in xrange(0,3):
+    status, output = commands.getstatusoutput(qsubcmd)
+    if status == 0:
+      f = open("%s/qsub_%s_%s.out" % (os.getcwd(), progstr, base))
+      job_id = f.readline().rstrip()
+      f.close()
+      break
+    else:
+      print "ssh failed"
+      print output
+  if status != 0:
+    raise "%s '%s' failed" % (progstr, qsubcmd)
+  return job_id
+
+# ------------------------------------------------------------------------------
+def main():
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], "abc:d::ef:m:o:qrs:tv", \
+                                    ["fafile=", "model=", "models", "subfam=", \
+                                     "sw=", "adpstyle=", "sortfun=", \
+                                     "cutoff=", "dbsize=", "output=", \
+                                     "reuse", "modeldir=", "verbose", \
+                                     "use_queue", "queue="] )
+    except getopt.GetoptError, what:
+        print "Error:", what
+        sys.exit(1)
+
+    usage = """
+Arguments:
+-f <filename> or --fafile=<filename>   Use sequence file named <filename>.
+-a                                     Produce alignments between best scoring 
+                                          sequence/model pairs.
+-b                                     Produce "big" alignments between best 
+                                          scoring sequence/model pairs in one 
+                                          file, ordered by sequence input.
+-c <cutoff>   or --cutoff=<cutoff>     Only produce alignments for scores 
+                                          better (smaller) than <cutoff>
+                                          (default: .001).
+-d <adpstyle> or --adpstyle=<adpstyle> Use align2model adpstyle option 
+                                          <adpstyle> (default: 1).
+--dbsize                               Set database size for hmmscore 
+                                          calibration (default: 1000; 0=number
+                                          of sequences in input file).
+-e                                     Print everything (all model/sequence 
+                                          score pairs).
+-m <filename> or --model=<filename>    Add model file <filename> to list of
+                                          models to score.
+-r            or --reuse               Reuse existing output directory
+                                          (default: output directory cannot 
+                                          exist).
+-o <dirname>  or --output=<dirname>    Output in directory <dirname> (default:
+                                          <input sequences filename>.ass).
+-s <sw>       or --sw=<sw>             Use align2model sw option <sw> 
+                                          (default: 2).
+--sortfun=<sortfun>                    Sort scores by reverse, evalue, or 
+                                          simple.
+--subfam <filename>                    Compare best subfamily results to actual
+                                          subfamily membership.
+--modeldir <dirname>                   Add all model files in given directory.
+--models <filename> ...                Add model files (must be last option on
+                                          command line).
+-v            or --verbose             Verbose output.
+--use_queue                            Submit hmmscore and align2model jobs to
+                                          the queue.
+--queue <queuename>                    Use queue <queuename> when submitting
+                                          jobs.
+"""
+    
+    if len(sys.argv) < 2:
+        print usage
+        sys.exit(0)
+
+    FAFILE = None
+    SHMMS = []
+    reuse_f = 0
+    SUBFAM = None
+    sw = 2
+    adpstyle = 1
+    do_align = 0
+    big_align = 0
+    everything = 0
+    sortfun = "evalue"
+    cutoff = 0.001
+    dbsize = 1000
+    TEMP_DIR = ""
+    modeldir = ""
+    queue = "library"
+    verbose = 0
+    use_queue = 0
+    for i in range(len(opts)):
+        o, a = opts[i]
+        if   o in ("-c", "--cutoff"):
+            cutoff = float(a)
+        elif o == "-e":
+            everything = 1
+        elif o == "-a":
+            do_align = 1
+        elif o == "-b":
+            big_align = 1
+        elif o in ("-s", "--sw"):
+            sw = int(a)
+        elif o in ("-d", "--adpstyle"):
+            adpstyle = int(a)
+
+        # -t option (for "temp") for back-compatibility.
+
+        elif o in ("-t", "-r", "--reuse" ) :
+            reuse_f = 1
+        elif o in ("-o", "--output" ) :
+            TEMP_DIR = a
+        elif o == "--dbsize":
+            dbsize = int(a)
+        elif o in ("-f", "--fafile"):
+            FAFILE = a
+        elif o in ("-m", "--model"):
+            SHMMS.append(a)
+        elif o == "--subfam":
+            SUBFAM = a
+        elif o == "--sortfun":
+            sortfun = a
+        elif o in ("-v", "--verbose"):
+            verbose = 1
+        elif o in ("-q", "--use_queue"):
+            use_queue = 1
+        elif o == "--modeldir" :
+            modeldir = a
+            pat = "%s/*.mod*" % modeldir
+            SHMMS += glob.glob( pat )
+        elif o == "--queue" :
+            queue = a
+            
+
+    # big_align requires do_align be set.
+
+    if big_align :
+       do_align = 1
+
+    for i in range(len(sys.argv[1:])):
+        arg = sys.argv[i]
+        if arg == "--models":
+            SHMMS += sys.argv[i+1:]
+            if modeldir :
+                print "Error: can't use --models and --modeldir at same time."
+                sys.exit( 1 )
+
+    if not FAFILE :
+        print "Error: did not get input sequences file on command line."
+        sys.exit(1)
+
+    if not SHMMS :
+        print "Error: did not get model file(s) on command line."
+        sys.exit(1)
+
+    # Use base name of sequences file for results directory.
+    # E.g., ../dir1/seqs.fa --> seqs.ass.
+
+    if not TEMP_DIR :
+        tail = os.path.split( FAFILE )[1]
+        base = os.path.splitext( tail )[0]
+        TEMP_DIR = base + ".ass"
+
+    if SUBFAM != None:
+        ## get the subfamily memberships for correct/incorrect lookup
+        ## also save list of models to score
+        f = open(SUBFAM)
+        lines = f.readlines()
+        curr_subfam = None
+        subfamily_memberships = {}
+        for line in lines:
+            if line[0] == '%':
+                curr_subfam = string.split(line)[1]
+            if line[0] == '>':
+                subfam = extract_id(line[1:])
+                subfamily_memberships[subfam] = curr_subfam
+        
+    ## retrieve all the sequences in the FASTA file
+    ## storing it in a dictionary keyed by the sequence ID
+    ## the value will be populated by a list of sequence/model score data
+    sequence_order = []
+    sequence_ids = {}
+    sequences = {}
+    parser = Fasta.RecordParser()
+    o = open(FAFILE)
+    iterator = Fasta.Iterator(o, parser)
+    num_seqs = 0
+    while 1:
+        cur_record = iterator.next()
+        if cur_record == None:
+            break
+        seq_id = extract_id(cur_record.title)
+        if debug1 :
+            print "seq_id", seq_id
+
+        sequence_ids[seq_id] = []
+        sequences[seq_id] = cur_record
+        sequence_order.append(seq_id)
+        num_seqs += 1
+    o.close()
+
+    if num_seqs == 0:
+      print "#No sequences, exiting"
+      sys.exit(0)
+
+    if dbsize == 0 :
+        dbsize = num_seqs
+
+    ## Do all the work in a temporary directory.
+
+    if not os.path.exists(TEMP_DIR):
+        os.mkdir(TEMP_DIR)
+    elif not reuse_f:
+        raise RuntimeError, "Remove output directory '%s' or add --reuse flag" \
+                                                                      % TEMP_DIR
+
+    os.chdir(TEMP_DIR)
+
+    ## If the fafile (the database) begins with a / (absolute path)
+    ## then don't pre-pend ../
+    ## use "if os.path.abspath(FAFILE)"
+
+    if FAFILE[0] == "/":
+        fafile = FAFILE
+    else:
+        fafile = "../" + FAFILE
+
+    print "#Scoring %d sequences against %d HMMs" \
+                                        % (len(sequence_ids.keys()), len(SHMMS))
+    ## For every SHMM.
+
+    shmms_to_score = set()
+    if use_queue and len(glob.glob('hmmscore_*_done')) > 0:
+      os.system("rm hmmscore_*_done")
+
+    shmm_base = {}
+    hmmscore_cmd_of_base = {}
+    job_id_of_hmmscore = {}
+
+    for shmm in SHMMS:
+
+        ## If shmm.mod file given with absolute path, get basename to use for
+        ## .dist file.
+
+        if shmm[0] == "/":
+            shmm_file = shmm
+            tail = os.path.split( shmm )[1]
+            base = os.path.splitext( tail )[0]
+        else:
+            shmm_file = "../" + shmm
+            base = shmm
+
+        shmm_base[shmm] = base
+
+        shmms_to_score.add(base)
+
+        ## score the sequences in FAFILE
+        outfile = "%s.hmmscore.out" % base
+        cmd = "hmmscore %s -simple_threshold 1000 -dbsize %d -db '%s' " \
+                                       % ( base, dbsize, fafile ) \
+              + "-sw %d -i '%s' > %s 2>&1" \
+                                       % ( sw, shmm_file, outfile )
+        if verbose :
+            print "hmmscore:", cmd
+
+        if use_queue and len(SHMMS) >= 3:
+            hmmscore_cmd_of_base[base] = cmd
+            job_id_of_hmmscore[base] = submit_job_on_queue('hmmscore', cmd, 
+                                                            base, queue=queue)
+        elif os.system(cmd) != 0:
+            errs = ""
+            if os.access( outfile, os.F_OK ) :
+                errs = "failed: " + open( outfile, "r" ).read()
+            else :
+                errs = "could not access %s" % outfile
+
+            raise RuntimeError, "Running hmmscore '%s' - %s" % ( cmd, errs )
+
+    if use_queue and len(SHMMS) >= 3:
+      time.sleep(5)
+      while len(shmms_to_score) > 0:
+        done_shmms = glob.glob("hmmscore_*_done")
+        for done_file in done_shmms:
+          shmms_to_score.remove(done_file.split('_')[1])
+          os.system("rm %s" % done_file)
+        for base in shmms_to_score:
+          status, output = commands.getstatusoutput("qstat %s" %
+                                      job_id_of_hmmscore[base])
+          if status != 0 and not os.path.exists("hmmscore_%s_done" % base):
+            job_id_of_hmmscore[base] = submit_job_on_queue('hmmscore',
+                                              hmmscore_cmd_of_base[base], base,
+                                              queue=queue)
+            
+
+    for shmm in SHMMS:
+        ## collect all the scores for a sequence (against all the SHMMs)
+
+        distfile = "%s.dist" % shmm_base[shmm]
+        f = open(distfile)
+        model_length = None
+        while 1:
+            line = f.readline()
+            if line == "":
+                break
+            if line[0] == '%':
+                n = nodes.search(line)
+                if n != None:
+                    model_length = string.atoi(n.groups(1)[0])
+            if line[0] != '%':
+
+                # for every entry in the dist file,
+                # get its sequence id (SAM only prints the id up to first space)
+
+                s = string.split(line)
+                seq_id = extract_id(s[0])
+                if debug1 :
+                   print "seq_id", seq_id
+
+                # get simple, reverse, and e-value scores
+
+                simple = string.atof(s[2])
+                reverse = string.atof(s[3])
+                e_value = string.atof(s[4])
+
+                simple_amortized = simple / model_length 
+                reverse_amortized = reverse / model_length
+                sequence_ids[seq_id].append( \
+                                     { "simple"           : simple, \
+                                       "reverse"          : reverse, \
+                                       "simple_amortized" : simple_amortized, \
+                                       "reverse_amortized": reverse_amortized, \
+                                       "e_value"          : e_value, \
+                                       "shmm"             : shmm, \
+                                       "model_length"     : model_length, 
+                                       "seq_id"           : seq_id } )
+        f.close()
+
+    best_matches = {}
+    sequences_for_shmm = {}
+
+    ## iterate over all matches, sorting on reverse score and taking first
+    ## element
+
+    for key in sequence_ids.keys():
+        s = sequence_ids[key]
+        if sortfun == "reverse":
+            s.sort(reverseSort)
+        elif sortfun == "evalue":
+            s.sort(evalueSort)
+        elif sortfun == "simple":
+            s.sort(simpleSort)
+            
+        best_matches[key] = s[0]
+        shmm = s[0]['shmm']
+        if shmm in sequences_for_shmm:
+          sequences_for_shmm[shmm].append(s[0])
+        else:
+          sequences_for_shmm[shmm] = [s[0]]
+        if debug1 :
+           print "key: ", key
+           print "s[0]: ", s[0]
+    for shmm in sequences_for_shmm.keys():
+      if sortfun == "reverse":
+        sequences_for_shmm[shmm].sort(reverseSort)
+      elif sortfun == "evalue":
+        sequences_for_shmm[shmm].sort(evalueSort)
+      elif sortfun == "simple":
+        sequences_for_shmm[shmm].sort(simpleSort)
+
+    if not everything:
+
+        # Sort these in order, too.
+
+        s = []
+        for key in best_matches.keys() :
+            match = best_matches[key]
+            s.append( match )
+
+        if sortfun == "reverse":
+            s.sort(reverseSort)
+        elif sortfun == "evalue":
+            s.sort(evalueSort)
+        elif sortfun == "simple":
+            s.sort(simpleSort)
+            
+        heading_line()
+        for match in s:
+            print "%-15s %-30s %-8d %-12.2f%-12.2f%-12.2f%-7.2f %e" \
+                     % (match['seq_id'], match['shmm'], match["model_length"], \
+                        match['simple'], match['reverse'], \
+                        match['simple_amortized'], match['reverse_amortized'], \
+                        match['e_value'])
+        print
+    else:
+
+        # Report all pairs of scores and models.
+
+        heading_line()
+        for key in sequence_ids.keys():
+            matches = sequence_ids[key]
+            for match in matches:
+                print "%-15s %-30s %-8d %-12.2f%-12.2f%-12.2f%-7.2f %e" \
+                     % (key, match['shmm'], match["model_length"], \
+                        match['simple'], match['reverse'], \
+                        match['simple_amortized'], match['reverse_amortized'], \
+                        match['e_value'])
+            print
+        print
+
+    if SUBFAM != None:
+        print "%-30s% -30s% -30s" % ("#Sequence", "Best HMM", "Actual SHMM")
+        for key in best_matches.keys():
+            match = best_matches[key]
+            subfam = subfamily_memberships[key]
+            print "%-30s% -30s% -30s" % (key, match['shmm'], subfam)
+    print
+
+    shmms_with_assigned_sequences = set([])
+    shmms_to_align = set()
+    if use_queue and len(glob.glob('align2model_*_done')) > 0:
+      os.system("rm align2model_*_done")
+
+    if do_align:
+      align2model_cmd_of_base = {}
+      job_id_of_align2model = {}
+      for shmm in sequences_for_shmm.keys():
+        if shmm[0] == "/":
+            shmm_file = shmm
+            tail = os.path.split( shmm )[1]
+            base = os.path.splitext( tail )[0]
+        else:
+            shmm_file = "../" + shmm
+            base = shmm
+        runname = "%s_assigned" % base
+        outfile = "%s_assigned.align2model.out" % base
+        tmp_fafile = "assigned_to_%s.fa" % base
+        f = open(tmp_fafile, "w")
+        num_sequences_passing_cutoff = 0
+        for match in sequences_for_shmm[shmm]:
+          if cutoff != None:
+              if sortfun == 'reverse':
+                  if match['reverse'] > cutoff:
+                      continue
+              if sortfun == 'simple':
+                  if match['simple'] > cutoff:
+                      continue
+              if sortfun == 'evalue':
+                  if match['e_value'] > cutoff:
+                      continue
+          num_sequences_passing_cutoff = num_sequences_passing_cutoff + 1
+          f.write(str(sequences[match['seq_id']]))
+          f.write('\n')
+          print "#Aligning sequence %s to model %s, storing in file %s.a2m" \
+                  % (match['seq_id'], shmm, runname)
+        f.close()
+        if num_sequences_passing_cutoff > 0:
+          shmms_with_assigned_sequences.add(shmm)
+          shmms_to_align.add(shmm)
+          # We don't want dots in the align2model output, because we're going to
+          # concatenate together the output from different SHMMs and so the dots
+          # won't make the output align prettily anyway.
+          cmd = "align2model %s -i %s -db %s -sw %d -a2mdots 0" \
+                       % (runname, shmm_file, tmp_fafile, sw) + \
+                " > %s 2>&1" % outfile
+          print "align2model:", cmd
+          if use_queue and len(SHMMS) >= 3:
+            align2model_cmd_of_base[base] = cmd
+            job_id_of_align2model[base] = submit_job_on_queue('align2model',
+                                                          cmd, base,
+                                                          queue=queue)
+          elif os.system(cmd) != 0:
+              raise "align2model '%s' failed: %s" % (cmd, open(outfile).read())
+      if use_queue and len(SHMMS) >= 3:
+        while len(shmms_to_align) > 0:
+          done_shmms = glob.glob("align2model_*_done")
+          for done_file in done_shmms:
+            shmms_to_align.remove(done_file.split('_')[1])
+            os.system("rm %s" % done_file)
+          for base in shmms_to_align:
+            status, output = commands.getstatusoutput("qstat %s" %
+                                        job_id_of_align2model[base])
+            if status != 0 and not os.path.exists("align2model_%s_done" % base):
+              job_id_of_align2model[base] = submit_job_on_queue('align2model',
+                                            align2model_cmd_of_base[base], base, queue=queue)
+
+    # If "big alignment" is requested, take all sequence/model pairs scoring 
+    # better than cutoff and concat them into big align in same order.
+
+    if big_align:
+      if len(shmms_with_assigned_sequences) > 0:
+        alns_str = " ".join([("%s_assigned.a2m" % shmm) 
+                              for shmm in shmms_with_assigned_sequences])
+        os.system("cat %s > big.a2m" % alns_str)
+        os.system("prettyalign big.a2m -f > big.fa 2> /dev/null")
+      else:
+        os.system("touch big.a2m")
+        os.system("touch big.fa")
+
+if __name__ == '__main__':
+  main()

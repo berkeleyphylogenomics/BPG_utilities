@@ -1,0 +1,110 @@
+Development environment is now set-up.
+Traceback (most recent call last):
+  File "/clusterfs/ohana/home/cyrus_afrasiabi/ohana_repository/bpg/fxn_site_prediction/fxn_site_prediction.py", line 12, in ?
+    print "Job ID: %d\n" % job_id
+TypeError: int argument required
+Development environment is now set-up.
+Traceback (most recent call last):
+  File "/clusterfs/ohana/home/cyrus_afrasiabi/ohana_repository/bpg/fxn_site_prediction/fxn_site_prediction.py", line 11, in ?
+    print "Job ID: %d\n" % job_id
+TypeError: int argument required
+Development environment is now set-up.
+Traceback (most recent call last):
+  File "/clusterfs/ohana/home/cyrus_afrasiabi/ohana_repository/bpg/fxn_site_prediction/fxn_site_prediction.py", line 11, in ?
+    print "Job ID: %d\n" % job_id
+TypeError: int argument required
+Development environment is now set-up.
+Job ID: 29
+
+Development environment is now set-up.
+Job ID: 30
+
+Development environment is now set-up.
+/clusterfs/ohana/software/webserver/temp/31
+afrasiabi@berkeley.edu
+UniProtKB/TrEMBL|A4UCC6|Release 2011_10/2011_10|09-OCT-2011
+MRAGAKRSHWIWYIFPQLTGVASSPTTTCVRYAVRSLAEAVEYLRHPVLGVRLREIVEVVAASATSTAASLMGNAVDALKLKSCMTLFRRAEEVLYAERGYVLTWREDRYLAVLKKYYGEECQRTVQMLG
+0.7
+2488518
+2
+1e-06
+/clusterfs/ohana/software/webserver/temp/31/jackhmmer.msa
+Development environment is now set-up.
+Traceback (most recent call last):
+  File "/clusterfs/ohana/home/cyrus_afrasiabi/ohana_repository/bpg/fxn_site_prediction/fxn_site_prediction.py", line 38, in ?
+    d = gather_homologs_with_jackhmmer(fasta, E=jackhmmer_evalue, N=jackhmmer_iterations, msa_out=msa_file)
+  File "/home/cyrus_afrasiabi/ohana_repository/pfacts003/utils/hmm.py", line 81, in gather_homologs_with_jackhmmer
+    dom_results = parse_domtblout(dom) 
+  File "/home/cyrus_afrasiabi/ohana_repository/pfacts003/utils/hmm.py", line 125, in parse_domtblout
+    output.append(DomHmmerRow(line))
+  File "/home/cyrus_afrasiabi/ohana_repository/pfacts003/utils/hmm.py", line 133, in __init__
+    (self.target_name,
+ValueError: need more than 7 values to unpack
+Development environment is now set-up.
+  File "/clusterfs/ohana/home/cyrus_afrasiabi/ohana_repository/bpg/fxn_site_prediction/fxn_site_prediction.py", line 144
+    email_body = 'PhyloFacts Functional Site Prediction Job %d has completed.\n\n' % (job_id) +
+                                                                                              ^
+SyntaxError: invalid syntax
+Development environment is now set-up.
+  File "/clusterfs/ohana/home/cyrus_afrasiabi/ohana_repository/bpg/fxn_site_prediction/fxn_site_prediction.py", line 144
+    email_body = 'PhyloFacts Functional Site Prediction Job %d has completed.\n\n' +
+                                                                                   ^
+SyntaxError: invalid syntax
+Development environment is now set-up.
+Traceback (most recent call last):
+  File "/clusterfs/ohana/home/cyrus_afrasiabi/ohana_repository/bpg/fxn_site_prediction/fxn_site_prediction.py", line 9, in ?
+    from Bio import MultipleSeqAlignment, AlignIO
+ImportError: cannot import name MultipleSeqAlignment
+Development environment is now set-up.
+Traceback (most recent call last):
+  File "/clusterfs/ohana/home/cyrus_afrasiabi/ohana_repository/bpg/fxn_site_prediction/fxn_site_prediction.py", line 90, in ?
+    jackhmmer_msa = gather_homologs_with_jackhmmer(fasta, E=jackhmmer_evalue, N=jackhmmer_iterations)[0]
+IndexError: list index out of range
+Development environment is now set-up.
+Traceback (most recent call last):
+  File "/clusterfs/ohana/home/cyrus_afrasiabi/ohana_repository/bpg/fxn_site_prediction/fxn_site_prediction.py", line 91, in ?
+    jackhmmer_msa = all_msa[0]
+IndexError: list index out of range
+Development environment is now set-up.
+Traceback (most recent call last):
+  File "/clusterfs/ohana/home/cyrus_afrasiabi/ohana_repository/bpg/fxn_site_prediction/fxn_site_prediction.py", line 91, in ?
+    jackhmmer_msa = all_msa[0]
+IndexError: list index out of range
+Development environment is now set-up.
+Traceback (most recent call last):
+  File "/clusterfs/ohana/home/cyrus_afrasiabi/ohana_repository/bpg/fxn_site_prediction/fxn_site_prediction.py", line 113, in ?
+    job = subprocess.Popen(args, shell=False, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+NameError: name 'subprocess' is not defined
+Development environment is now set-up.
+Traceback (most recent call last):
+  File "/clusterfs/ohana/home/cyrus_afrasiabi/ohana_repository/bpg/fxn_site_prediction/fxn_site_prediction.py", line 117, in ?
+    job.save()
+AttributeError: 'Popen' object has no attribute 'save'
+Development environment is now set-up.
+Traceback (most recent call last):
+  File "/clusterfs/ohana/home/cyrus_afrasiabi/ohana_repository/bpg/fxn_site_prediction/fxn_site_prediction.py", line 154, in ?
+    server = smtplib.SMTP('smtp.gmail.com:587')
+  File "/usr/lib64/python2.4/smtplib.py", line 244, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/lib64/python2.4/smtplib.py", line 306, in connect
+    raise socket.error, msg
+socket.error: (110, 'Connection timed out')
+Development environment is now set-up.
+Development environment is now set-up.
+Traceback (most recent call last):
+  File "/clusterfs/ohana/home/cyrus_afrasiabi/ohana_repository/bpg/fxn_site_prediction/fxn_site_prediction.py", line 12, in ?
+    from bpg.common.utils.sequenceutils import get_uniprot_accession_from_header
+ImportError: cannot import name get_uniprot_accession_from_header
+Development environment is now set-up.
+Traceback (most recent call last):
+  File "/clusterfs/ohana/home/cyrus_afrasiabi/ohana_repository/bpg/fxn_site_prediction/fxn_site_prediction.py", line 149, in ?
+    intrepit_out_file.close()
+NameError: name 'intrepit_out_file' is not defined
+Development environment is now set-up.
+Development environment is now set-up.
+Development environment is now set-up.
+Development environment is now set-up.
+Development environment is now set-up.
+=>> PBS: job killed: walltime 1027 exceeded limit 1000
+Development environment is now set-up.
+Development environment is now set-up.

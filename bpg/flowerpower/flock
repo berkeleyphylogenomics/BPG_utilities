@@ -1,0 +1,533 @@
+#!/usr/bin/python
+
+import cPickle
+from optparse import OptionParser
+import os
+import pgdb
+import re
+import sys
+import string
+
+from Bio import Seq, SeqIO
+
+from bpg.common import fasta
+from bpg.common.get_blastable_database_parameters import get_blastable_database_parameters
+from pfacts003.utils.credentials import get_credentials
+
+def sql_escape(str):
+  escaped_str = str.replace("\\", "")
+  escaped_str = escaped_str.replace("'", "\\'")
+  return escaped_str
+      
+def minimum_coverage(sequence_length):
+  if sequence_length < 100:     
+    return 0.60 + 0.0
+  elif sequence_length < 200:
+    return 0.60 + 0.05
+  elif sequence_length < 250:
+    return 0.60 + 0.10
+  elif sequence_length < 300:
+    return 0.60 + 0.13
+  elif sequence_length < 350:
+    return 0.60 + 0.15
+  elif sequence_length < 400:
+    return 0.60 + 0.18
+  elif sequence_length < 450:
+    return 0.60 + 0.20
+  elif sequence_length < 500:
+    return 0.60 + 0.23
+  else:           # >= 500
+    return 0.60 + 0.25 
+
+trivial_translation = string.maketrans('', '')
+contiguous_gap = re.compile('-+')
+contiguous_lowercase = re.compile('[a-z]+')
+dotdash = '.-'
+dotlowercase = '.' + string.lowercase
+dotdashlowercase = dotdash + string.lowercase
+def test_coverage(hit_seq, hit_length, seed_length):
+  upper_only = hit_seq.translate(trivial_translation, dotdashlowercase)
+  num_aligned = len(upper_only)
+  if num_aligned < minimum_coverage(hit_length) * hit_length:
+    return False
+  if num_aligned < minimum_coverage(seed_length) * seed_length:
+    return False
+  cols_only = hit_seq.translate(trivial_translation, dotlowercase)
+  gappy_regions = contiguous_gap.findall(cols_only)
+  if len(gappy_regions) > 0:
+    longest_gap = max(len(r) for r in gappy_regions)
+    if longest_gap >= 40:
+      return False
+  letters_only = hit_seq.translate(trivial_translation, dotdash)
+  lowercase_regions = contiguous_lowercase.findall(letters_only)
+  if len(lowercase_regions) > 0:
+    longest_lowercase = max(len(r) for r in lowercase_regions)
+    if longest_lowercase >= 40:
+      return False
+  return True
+
+def universe_blast_file_binned( bin_interval, max_length_to_bin, file_base, 
+                                seed_length ):
+  floor_num_bins, remainder = divmod(max_length_to_bin, bin_interval)
+  if remainder == 0:
+    num_narrow_bins = floor_num_bins
+  else:
+    num_narrow_bins = floor_num_bins + 1
+  first_length_in_wide_bin = num_narrow_bins * bin_interval + 1
+  if seed_length >= first_length_in_wide_bin:
+    return "%s_%04dandmore" % (file_base, first_length_in_wide_bin)
+  (i, rem) = divmod(seed_length, bin_interval)
+  if rem == 0:
+    first_seed_length = (i-1) * bin_interval + 1
+    last_seed_length = seed_length
+  else:
+    first_seed_length = i * bin_interval + 1
+    last_seed_length = (i+1) * bin_interval
+  return "%s_%04dthrough%04d" % (file_base, first_seed_length, last_seed_length)
+
+def main():
+  # parse command line options
+  usage = "%prog [options] fasta_file_to_cluster"
+  opt_parser = OptionParser(usage=usage)
+  opt_parser.add_option("-b", "--bin_fasta_file", dest="do_bin",
+                      action="store_true", default=False,
+                      help="whether to bin the fasta file")
+  opt_parser.add_option("-i", "--bin_interval", dest="bin_interval",
+              default="50",
+              help="width of the range of sequence lengths to put in one bin")
+  opt_parser.add_option("-m", "--max_length_to_bin", dest="max_length_to_bin",
+              default="1200",
+              help="length for which longer sequences all go in the last bin")
+  opt_parser.add_option("-v", "--verbose", dest="verbose",
+              action="store_true", default=True,
+              help="Whether to print verbose output")
+  opt_parser.add_option("-q", "--quiet", dest="verbose",
+              action="store_false", default=True,
+              help="Whether to suppress verbose output")
+  opt_parser.add_option("-a", "--additional_hmm_iteration",
+              dest="additional_hmm_iteration", action="store_true", 
+              default=False,
+              help="Use an HMM to gather additional homologs to a seed")
+  opt_parser.add_option("-n", "--num_hmm_iterations", dest="num_hmm_iterations",
+              default=1, help="Number of HMM iterations")
+  opt_parser.add_option("-u", "--use_uniprot_database_length",
+          dest="use_uniprot_database_length", action="store_true",
+          default=False,
+          help="whether to use length of UniProt as effective database length")
+  opt_parser.add_option("-d", "--id_index", dest="id_index", default=1,
+                        help="field in the fasta header to use as a unique id")
+  opt_parser.add_option("-t", "--candidate_seed_table_name",
+                        dest="table_name", default="",
+                        help="Name of table of candidate seeds in database")
+  (options, args) = opt_parser.parse_args()
+  if len(args) != 1:
+    opt_parser.error('Incorrect number of arguments')
+  if (not os.path.exists(args[0])):
+    opt_parser.error('fasta file %s not found' % args[0])
+  try:
+    bin_interval = int(options.bin_interval)
+  except ValueError:
+    opt_parser.error("--bin_interval must be a number")
+  try:
+    max_length_to_bin = int(options.max_length_to_bin)
+  except ValueError:
+    opt_parser.error("--max_length_to_bin must be a number")
+  try:
+    num_hmm_iterations = int(options.num_hmm_iterations)
+  except ValueError:
+    opt_parser.error("--num_hmm_iterations must be a number")
+  try:
+    id_index = int(options.id_index)
+  except ValueError:
+    opt_parser.error("--id_index must be an integer >= 0")
+  use_database = False
+  if len(options.table_name) > 0:
+    use_database = True
+    table_name = options.table_name
+  global verbose
+  verbose = options.verbose
+  if verbose:
+    print "Connecting to flock_seeds"
+  connection = None
+  if use_database:
+    flock_password = get_credentials('flock_user')
+    connection = pgdb.connect("db:flock_seeds:flock_user:%s" % flock_password)
+  if verbose:
+    print "Connection successful"
+  cursor =  None
+  if use_database:
+    cursor = connection.cursor()
+  file_base = os.path.join(os.path.split(args[0])[0],
+                          os.path.splitext(os.path.split(args[0])[1])[0])
+  if options.do_bin:
+    if not os.path.exists(universe_blast_file_binned(bin_interval,
+                                            max_length_to_bin, file_base, 1)):
+      cur_dir = os.getcwd()
+      os.chdir(os.path.split(file_base)[0])
+      exe = "bin_fasta_for_flowerpower.py"
+      cmd = "%s -i %s -m %s %s -f" \
+        % (exe, options.bin_interval, options.max_length_to_bin, args[0])
+      if verbose:
+        cmd = cmd + " -v"
+        print cmd
+      else:
+        cmd = cmd + " -q"
+      os.system(cmd)
+      os.chdir(cur_dir)
+    else:
+      if verbose:
+        print "Found binned universe file"
+  else:
+    if (not os.path.exists(file_base)):
+      os.system('cp %s %s' % (args[0], file_base))
+    if not os.path.exists('%s.pin' % file_base):
+      cmd = 'formatdb -o T -i %s -l %s.log >& %s.err' \
+        % (file_base, file_base, file_base)
+      if verbose:
+        print cmd
+      os.system(cmd)
+  def universe_blast_file(seed_length):
+    if options.do_bin:
+      return universe_blast_file_binned(bin_interval, max_length_to_bin,
+                                        file_base, seed_length)
+    else:
+      return file_base
+  if verbose:
+    print "Reading in the universe"
+  universe_basename = os.path.basename(args[0])
+  universe_pickle = os.path.join(os.path.split(args[0])[0],
+                                "%s_parsed.pkl" % universe_basename)
+  if os.path.exists(universe_pickle):
+    f = open(universe_pickle)
+    universe = cPickle.load(f)
+    f.close()
+  else:
+    universe_handle = open(args[0], "rU")
+    universe = SeqIO.to_dict(SeqIO.parse(universe_handle, "fasta"))
+    universe_handle.close()
+    f = open(universe_pickle, "w")
+    cPickle.dump(universe, f)
+    f.close()
+  key_of_id = {}
+  for key in universe.keys():
+    if id_index >= 0:
+      id = key.split('|')[id_index]
+      key_of_id[id] = key
+    else:
+      key_of_id[key] = key
+  if verbose:
+    print "Done reading the universe: %d sequences" % len(universe)
+  candidate_seeds = {}
+  if not use_database:
+    seeds_handle = open(args[0], "rU")
+    candidate_seeds = SeqIO.to_dict(SeqIO.parse(seeds_handle, "fasta"))
+    seeds_handle.close()
+  def get_num_candidate_seeds():
+    if use_database:
+      sql = """ LOCK TABLE %s IN SHARE MODE""" % table_name
+      cursor.execute(sql)
+      sql = """ SELECT COUNT(sequence_key) AS num_seeds FROM %s
+                WHERE NOT is_seed AND NOT has_been_clustered""" % table_name
+      cursor.execute(sql)
+      connection.commit()
+      if cursor.rowcount > 0:
+        row = cursor.fetchone()
+        return row[0]
+      else:
+        return 0
+    else:
+      return len(candidate_seeds)
+  def get_total_num_candidate_seeds():
+    if use_database:
+      sql = """ LOCK TABLE %s IN SHARE MODE""" % table_name
+      cursor.execute(sql)
+      sql = "SELECT COUNT(sequence_key) AS num_seeds FROM %s" % table_name
+      cursor.execute(sql)
+      connection.commit()
+      if cursor.rowcount > 0:
+        row = cursor.fetchone()
+        return row[0]
+      else:
+        return 0
+    else:
+      return len(candidate_seeds)
+  num_candidate_seeds = get_num_candidate_seeds()
+  initial_num_candidate_seeds = get_total_num_candidate_seeds()
+  print "Found %d candidate seeds in %s" % (num_candidate_seeds, args[0])
+  def get_next_seed_from_dict():
+    if len(candidate_seeds) > 0:
+      seed_key, seed_record = candidate_seeds.popitem()
+      return (seed_key, len(seed_record.seq))
+    else:
+      return ("", 0)
+  def get_next_seed_from_table():
+    cursor.execute("LOCK TABLE %s IN SHARE ROW EXCLUSIVE MODE" % table_name)
+    sql = """ SELECT sequence_key, length FROM %s
+              WHERE NOT is_seed AND NOT has_been_clustered
+              ORDER BY random_integer
+              LIMIT 1""" % table_name
+    cursor.execute(sql)
+    if cursor.rowcount > 0:
+      row = cursor.fetchone()
+      sql = """ UPDATE %s SET is_seed = TRUE WHERE sequence_key = '%s'""" \
+            % (table_name, row[0])
+      cursor.execute(sql)
+      sql = """ UPDATE %s SET has_been_clustered = TRUE 
+                WHERE sequence_key = '%s'""" % (table_name, row[0])
+      cursor.execute(sql)
+      connection.commit()
+      return(row[0], row[1])
+    else:
+      return ("", 0)
+  def remove_candidate_seed_from_dict(candidate_seed_key):
+    if candidate_seed_key in candidate_seeds:
+      del candidate_seeds[candidate_seed_key]
+  def remove_candidate_seed_from_table(candidate_seed_key):
+    cursor.execute("LOCK TABLE %s IN SHARE ROW EXCLUSIVE MODE" % table_name)
+    sql = """ UPDATE %s SET has_been_clustered = TRUE
+              WHERE sequence_key = '%s' """ % (table_name,
+                                              sql_escape(candidate_seed_key))
+    cursor.execute(sql)
+    connection.commit()
+  if use_database:
+    get_next_seed = get_next_seed_from_table
+    remove_from_candidate_seeds = remove_candidate_seed_from_table
+  else:
+    get_next_seed = get_next_seed_from_dict
+    remove_from_candidate_seeds = remove_candidate_seed_from_dict
+  blast_exe = "blastall -p blastp"
+  if options.use_uniprot_database_length:
+    num_seqs, uniprot_db_length, long_len = get_blastable_database_parameters()
+    blast_exe = blast_exe + " -z %d " % uniprot_db_length
+  cluster_num = 0
+  if use_database:
+    cluster_filename = "clusters%d" % os.getpid()
+  else:
+    cluster_filename = "clusters"
+  cluster_file = open(cluster_filename, "w")
+  dir = os.path.split(file_base)[0]
+  os.system('source /etc/profile')
+  os.system('export BLASTDB=%s:$BLASTDB' % dir)
+  seed_key, seed_length = get_next_seed()
+  while seed_length:
+    if seed_key.find('|') >= 0:
+      if id_index >= 0:
+        seed_id = seed_key.split('|')[id_index]
+      else:
+        seed_id = seed_key.replace('|','_')
+    else:
+      seed_id = seed_key
+    # Replace / in the header by %2f
+    seed_id = seed_id.replace('/','%2f')
+    # Replace ( in the header by %28
+    seed_id = seed_id.replace('(','%28')
+    # Replace ) in the header by %29
+    seed_id = seed_id.replace(')','%29')
+    # Replace - in the header by %2d
+    seed_id = seed_id.replace('-','%2d')
+    # Replace * in the header by %2a
+    seed_id = seed_id.replace('*','%2a')
+    print "seed_key: ", seed_key
+    print "seed_id: ", seed_id
+    quotient, remainder \
+      = divmod(initial_num_candidate_seeds - num_candidate_seeds, 1000)
+    lowest_seed = quotient * 1000
+    subdir = "seeds%03dthrough%03d" % (lowest_seed, lowest_seed + 999)
+    if (not (os.path.exists(subdir))):
+      os.mkdir(subdir)
+    os.chdir(subdir)
+    if (not (os.path.exists(seed_id))):
+      os.mkdir(seed_id)
+    os.chdir(seed_id)
+    seed_fa = "%s.fa" % seed_id
+    blast_result_filename = "%s.blast_results" % seed_id
+    evalue_cutoff = 1e-5
+    if (seed_length <= 100):
+      evalue_cutoff = 10 * evalue_cutoff
+    if (seed_length < 65):
+      evalue_cutoff = 10 * evalue_cutoff
+    if (seed_length < 15):
+      evalue_cutoff = 10 * evalue_cutoff
+    db = os.path.join(dir, universe_blast_file(seed_length))
+    os.system('fastacmd -s "%s" -d %s > %s' % (seed_key, db, seed_fa))
+    if options.additional_hmm_iteration:
+      max_blast_evalue = 10
+    else:
+      max_blast_evalue = evalue_cutoff
+    cmd = blast_exe \
+      + " -i \"%s\" -o \"%s\" -m 9 -I T -b 500 -v 500 -e %f -d \"%s\"" \
+      % (seed_fa, blast_result_filename, max_blast_evalue, db)
+    if verbose:
+      print cmd
+    os.system(cmd)
+    f = open(blast_result_filename, "rU")
+    lines = f.readlines()
+    f.close()
+    hits = {}
+    loose_hits = {}
+    for line in lines:
+      line = line.rstrip()
+      if line[0] == '#':
+        continue
+      fields = line.split()
+      hit_id = fields[1]
+      if hit_id in loose_hits.keys():
+        continue
+#      hit_key = hit_id.rstrip().split(' ')[0]
+      hit_key = key_of_id[hit_id]
+      hit_record = universe[hit_key]
+      hit_length = len(hit_record.seq)
+      # Escape commas - align2model converts them into spaces
+      hit_record.id = hit_record.id.replace(',','%2c')
+      if verbose:
+        print "hit_id:", hit_id, " hit_key:", hit_key, " e_value:", fields[10]
+      if hit_length >= minimum_coverage(seed_length) * seed_length \
+          and seed_length >= minimum_coverage(hit_length) * hit_length:
+        loose_hits[hit_id] = hit_record
+        try:
+          e_value = float(fields[10])
+          if e_value <= evalue_cutoff:
+              hits[hit_id] = hit_record
+        except ValueError:
+          pass
+    blast_homologs_filename = "%s_blast_homologs.fa" % seed_id
+    f = open(blast_homologs_filename, "w")
+    SeqIO.write(hits.values(), f, "fasta")
+    f.close()
+    loose_blast_homologs_filename = "%s_loose_blast_homologs.fa" % seed_id
+    if options.additional_hmm_iteration:
+      f = open(loose_blast_homologs_filename, "w")
+      SeqIO.write(loose_hits.values(), f, "fasta")
+      f.close()
+    cmd = "w0.5 \"%s.fa\" \"%s.mod\" >& w0.5.out" % (seed_id, seed_id)
+    while not os.path.exists("%s.mod" % seed_id):
+      os.system(cmd)
+    cmd = "align2model \"%s_iter0_homologs\" -i \"%s.mod\" -db \"%s\" " \
+          % (seed_id, seed_id, blast_homologs_filename) \
+          + " -sw 2 -adpstyle 5 >& align2model.out"
+    if verbose:
+      print cmd
+    os.system(cmd)
+    if options.additional_hmm_iteration and len(hits) > 0:
+      prev_iter = 0
+      cur_iter = 1
+      while cur_iter <= num_hmm_iterations:
+        hmm_file = "%s_iter%d_homologs.mod" % (seed_id, prev_iter)
+        cmd = "w0.5 \"%s_iter%d_homologs.a2m\" \"%s\" " \
+              % (seed_id, prev_iter, hmm_file) \
+              + " >& w0.5.iter%d.out" % prev_iter
+        if verbose:
+          print cmd
+        while not os.path.exists(hmm_file):
+          os.system(cmd)
+        cmd = "hmmscore %s_iter%d -db \"%s\" -i \"%s\" " \
+              % (seed_id, cur_iter, loose_blast_homologs_filename, hmm_file) 
+        cmd = cmd + "-dbsize 100000 -sw 2 > %s_iter%d.hmmscore.out 2>&1" \
+                    % (seed_id, cur_iter)
+        os.system(cmd)
+        distfile = "%s_iter%d.dist" % (seed_id, cur_iter)
+        f = open(distfile, "rU")
+        dist_lines = f.readlines()
+        f.close()
+        cur_iter_hits = []
+        for line in dist_lines:
+          if line == "":
+            break
+          if line[0] != '%':
+            # for every entry in the dist file,
+            # get its sequence id (SAM only prints the id up to first space)
+
+            s = string.split(line)
+            seq_id = s[0]
+            # Unescape commas
+            seq_id = seq_id.replace('%2c',',')
+            if verbose:
+               print "seq_id", seq_id
+
+            # get simple, reverse, and e-value scores
+
+            e_value = string.atof(s[4])
+            if e_value <= evalue_cutoff:
+              hit_record = universe[seq_id]
+              hit_length = len(hit_record.seq)
+              if hit_length >= minimum_coverage(seed_length) * seed_length \
+                  and seed_length >= minimum_coverage(hit_length) * hit_length:
+                cur_iter_hits.append(hit_record)
+        cur_iter_homologs_filename = "%s_iter%d_homologs.fa" \
+                                      % (seed_id, cur_iter)
+        f = open(cur_iter_homologs_filename, "w")
+        SeqIO.write(cur_iter_hits, f, "fasta")
+        f.close()
+        cmd = "align2model %s_iter%d_homologs -i \"%s\" -db \"%s\" " \
+              % (seed_id, cur_iter, hmm_file, cur_iter_homologs_filename) \
+              + "-sw 2 -adpstyle 5 > align2model_iter%d.out 2>&1" % cur_iter
+        os.system(cmd)
+        prev_iter = cur_iter
+        cur_iter = cur_iter + 1
+      cmd = "ln -s \"%s_iter%d_homologs.a2m\" \"%s_homologs.a2m\"" \
+              % (seed_id, num_hmm_iterations, seed_id)
+      if verbose:
+        print cmd
+      os.system(cmd)
+      cmd = "ln -s \"%s\" \"%s_last.mod\"" % (hmm_file, seed_id)
+      if verbose:
+        print cmd
+      os.system(cmd)
+    else:
+      cmd = "ln -s \"%s_iter0_homologs.a2m\" \"%s_homologs.a2m\"" \
+              % (seed_id, seed_id)
+      if verbose:
+        print cmd
+      os.system(cmd)
+      cmd = "ln -s \"%s.mod\" \"%s_last.mod\"" % (seed_id, seed_id)
+      if verbose:
+        print cmd
+      os.system(cmd)
+    possible_homologs = fasta.ReadSequencesList("%s_homologs.a2m" % seed_id)
+    seed_record = universe[seed_key]
+    final_hits = [seed_record]
+    cluster_file.write("Cluster #%d:\n" % cluster_num)
+    cluster_file.write("%s\n" % seed_key)
+    seed_seq = seed_record.seq.tostring()
+    if verbose:
+      print "Checking %d possible homologs" % len(possible_homologs)
+    for hit_id, hit_seq in possible_homologs:
+      # Unescape commas
+      hit_id = hit_id.replace('%2c',',')
+      hit_key = hit_id.rstrip().split(' ')[0]
+      hit_length = len(universe[hit_key].seq)
+      if test_coverage(hit_seq, hit_length, seed_length):
+        print "hit passed tests: ", hit_key
+        if hit_key != seed_key:
+          cluster_file.write("%s\n" % hit_id)
+          final_hits.append(universe[hit_key])
+          remove_from_candidate_seeds(hit_key)
+    cluster_file_name = "%s_cluster.fa" % seed_id
+    f = open(cluster_file_name, "w")
+    SeqIO.write(final_hits, f, "fasta")
+    f.close()
+    num_candidate_seeds = get_num_candidate_seeds()
+    if verbose:
+      print "Removed %d seeds from candidate seeds" % len(final_hits)
+      print "Now there are %d seeds in candidate seeds" % num_candidate_seeds
+    aligned_cluster_file_name = "%s_cluster_aligned.mus" % seed_id
+    cmd = "muscle -in \"%s\" -out \"%s\" >& muscle.out" \
+      % (cluster_file_name, aligned_cluster_file_name)
+    if verbose:
+      print cmd
+    os.system(cmd)
+    prettyaligned_file = "%s_cluster_prettyaligned.a2m" % seed_id
+    os.system("prettyalign %s -f > %s" 
+      % (aligned_cluster_file_name, prettyaligned_file))
+    cmd = "astats \"%s\" > \"%s_cluster.astats\"" \
+      % (prettyaligned_file, seed_id)
+    if verbose:
+      print cmd
+    os.system(cmd)
+    os.chdir("../..")
+    cluster_num = cluster_num + 1
+    seed_key, seed_length = get_next_seed()
+  cluster_file.close()
+
+if __name__ == '__main__':
+  main()

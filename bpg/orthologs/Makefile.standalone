@@ -1,0 +1,87 @@
+CXX = g++
+CXXLD = g++
+CXXFLAGS = -O2
+CXXCOMPILE = $(CXX) $(CXXFLAGS)
+CXXLINK = $(CXXLD) $(CXXFLAGS) -o $@
+LIBPROGOPTS = -lboost_program_options
+LIBPHYL = -lbpp-phyl
+LIBS = $(LIBPROGOPTS) $(LIBPHYL)
+
+compute_phog_orthologs_SOURCES = modified_preorder_tree_traversal.cpp \
+	fill_sequence_header_leaf_maps.cpp \
+	get_taxon_of_leaf_map_from_file.cpp \
+	get_breadth_first_visit_order.cpp \
+	find_inparalogs_in_tree.cpp \
+	find_orthologs_in_tree.cpp \
+	find_proximal_subtrees.cpp \
+  find_duplication_distances.cpp \
+  write_phogs_at_threshold.cpp \
+  write_phyloxml_file.cpp \
+	stand_alone_main.cpp
+
+compute_phog_orthologs_OBJECTS = modified_preorder_tree_traversal.o \
+	fill_sequence_header_leaf_maps.o \
+	get_taxon_of_leaf_map_from_file.o \
+	get_breadth_first_visit_order.o \
+	find_inparalogs_in_tree.o \
+	find_orthologs_in_tree.o \
+	find_proximal_subtrees.o \
+  find_duplication_distances.o \
+  write_phogs_at_threshold.o \
+  write_phyloxml_file.o \
+	stand_alone_main.o
+
+all: compute_phog_orthologs
+
+modified_preorder_tree_traversal.o: modified_preorder_tree_traversal.h\
+	modified_preorder_tree_traversal.cpp
+fill_sequence_header_leaf_maps.o: fill_sequence_header_leaf_maps.h\
+	orthologs_common.h\
+	fill_sequence_header_leaf_maps.cpp
+get_taxon_of_leaf_map_from_file.o: get_taxon_of_leaf_map_from_file.h\
+	orthologs_common.h\
+	get_taxon_of_leaf_map_from_file.cpp
+get_breadth_first_visit_order.o:\
+	get_breadth_first_visit_order.h get_breadth_first_visit_order.cpp
+get_longest_distance_in_tree.o:\
+	orthologs_common.h\
+	get_longest_distance_in_tree.h get_longest_distance_in_tree.cpp
+find_inparalogs_in_tree.o:\
+	orthologs_common.h find_inparalogs_in_tree.h find_inparalogs_in_tree.cpp
+find_orthologs_in_tree.o: orthologs_common.h find_orthologs_in_tree.h\
+	find_orthologs_in_tree.cpp
+find_proximal_subtrees.o:\
+	orthologs_common.h\
+	find_proximal_subtrees.h find_proximal_subtrees.cpp
+find_duplication_distances.o:\
+  orthologs_common.h\
+  find_duplication_distances.h find_duplication_distances.cpp
+write_phogs_at_threshold.o:\
+	orthologs_common.h\
+	write_phogs_at_threshold.h write_phogs_at_threshold.cpp
+write_phyloxml_file.o:\
+	orthologs_common.h\
+	write_phyloxml_file.h write_phyloxml_file.cpp
+
+stand_alone_main.o: modified_preorder_tree_traversal.h\
+	orthologs_common.h\
+	fill_sequence_header_leaf_maps.h\
+	get_taxon_of_leaf_map_from_file.h\
+	get_breadth_first_visit_order.h\
+	find_inparalogs_in_tree.h\
+	find_orthologs_in_tree.h\
+	find_proximal_subtrees.h\
+  find_duplication_distances.h\
+	write_phogs_at_threshold.h\
+	write_phyloxml_file.h\
+	stand_alone_main.cpp 
+
+compute_phog_orthologs: $(compute_phog_orthologs_OBJECTS)
+	@rm -f compute_phog_orthologs
+	$(CXXLINK) $(compute_phog_orthologs_OBJECTS) $(INCLUDE_PATH) $(DEFINES) $(LIBS)
+
+.cpp.o:
+	$(CXXCOMPILE) $(INCLUDE_PATH) $(DEFINES) -c -o $@ $<
+
+clean:
+	@rm -f compute_phog_orthologs $(compute_phog_orthologs_OBJECTS)

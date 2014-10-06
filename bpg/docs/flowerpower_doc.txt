@@ -1,0 +1,205 @@
+Documentation for flowerpower.pl
+(Subversion revision 28 @ flowerpower/flowerpower.pl)
+
+################################################################################
+This is a brief documentation of flowerpower that is intended to help developers
+better understand the most involved steps of a typical run.
+
+Initially the documentation will cover a global-global run without MSA and
+without a universe.
+################################################################################
+
+Main program:
+
+line 11:41{
+Default parameters.
+}
+
+
+line 44:65{
+Association of variables with command line arguments.
+}
+
+
+line 236:250{
+Sets the Evalue ($FPMAXEVALUE) used as cut-off for homolog acceptance as a
+function of seed-seq length (used in iterative part of the algorithm):
+
+if (length<65bps) 
+    eval=10^-2
+else if (length<=100bps) 
+    eval=10^-3
+else
+    eval=10^-4
+}
+
+
+line 370{
+Run PSIblast (blastpgp) to define initial set of homologs from ($DB) and store results
+in file "pb":
+
+'blastpgp -i $ifn -o pb -m 9 -j $PSIBLAST_ITERS -I T -b $nb -v $nv -e $PBEVALUE' 
+          '-d $DB'
+
+Usually external programs are tried to run $mult_cmd_tries times.
+
+Main side: effect creates file 'pb'.
+}
+
+line 374{
+Universe file is created from blastpgp output ("pb"):
+
+    - ids collected from blastpgp output (into 'psiblast-hits.id').
+    - psiblast-hits.id and commandd 'fastacmd' are used to create a fasta file 
+      with sequences for universe ('psiblast-hits.fa=blast.fa')
+      'fastacmd -i psiblast-hits.id -o psiblast-hits.fa -d $DB'
+    - All sequences(hits) in universe are QCed for length:
+      hitLength > frac * seedLength (glocal mode)
+      hitLength > frac * seedLength AND 
+      hitLength <= (1/frac) * seedLength (global mode)
+     
+      The value of frac is determined based on seed-seq length by covmin().
+
+Main side effect: 'universe.fa' gets created.
+}
+
+line 412{
+Creation of initial set of homologs from the universe (createHomologs()):
+
+At most 200 homolog sequences are collected that passed the criteria:
+-Blast Evalue < 10^-5
+
+Main side effect: File 'blast-homologs.fa' is created.
+}
+
+line 422:438{
+Creation of HMM from seed (in file initial.mod):
+    'w0.5 $seedfile initial.mod >& w0.5.out'
+
+All homologs are aligned to seed HMM (in file initial-homologs.a2m):
+    'align2model initial-homologs' 
+    '-i initial.mod -db blast-homologs.fa -sw $SW_SCORE -adpstyle 5' 
+    '>& align2model.out'
+Main side effect: File 'initial-homologs.a2m' created w/ alignment of 
+		  initial-homologs to seed HMM.
+
+}
+
+line 473:513{
+    Eliminate homologs that don't pass coverage/pwid criteria from initial set
+    in alignment file 'initial-homologs.a2m'.
+
+    -In global mode: prune out of the set in 'initial-homologs.a2m' those homologs
+     that do not pass the coverage (testCoverage()) and percentage identity (pwid())
+     criteria and write the FASTA formatted id\nseq of the resulting set into
+     file 'blast-sel.fa'.
+    -In glocal mode: Same as above but the sequence that goes to the blast-sel.fa
+     for each selected homolog is the sequence in the actual alignment without
+     INSERT chars(.) along the entire sequence and lowercase chars at the
+     beg/end of the sequence.
+
+Main side effect: 'blast-sel.fa' is created w/ final set of init. homologs.
+}
+
+line 537:543{
+    If after prunning there are homologs:
+    - align initial set of homologs using muscle:
+      'muscle -in blast-sel.fa  -out initial-mus -maxiters $MUSCLE_MAXITERS' 
+      '>/dev/null 2>&1'
+    - Trim alignment, this is, remove columns that have >90% deletions (-).
+      (If keeping master-slave alignment to seed only rm columns that have ALSO
+       a deletion in the seed seq).
+    - Write results of trimming to 'initial-sel.mus'.
+
+Main side effect: 'initial-sel.mus' is created.
+}
+
+line 566{
+    runIteration() creates a directory ('iter[iterNumber]') for the current
+    iteration:
+    runIteration(iterNumber, baseHomologsFile, seedFile)
+    and copies the files for baseHomologs, seed and universe to it.
+}
+
+line 570{
+    runShmms():
+    - Makes alignment non-redundant @ 98%.
+      'uniqueseq trimmed-uniq -alignfile [alignment file] -percent_id 0.98' 
+      '>& uniqueseq.out'
+      (above command generates trimmed-uniq.a2m= *BASE HOMOLOGS(BASE_H)* used by SCI-PHY).
+    - Generates subfamily HMMs (sHMMs) using SCI-PHY (trimmed-uniq.[subFamName].mod files):
+      'SCI-PHY trimmed-uniq  -i trimmed-uniq.a2m > SCI-PHY.out 2>&1'
+      (After 2nd iteration singleton subfamilies are not considered for
+       subsequent steps).
+    - Aligns Universe to sHMMs & selects new homologs that have an Evalue < $FPMAXEVALUE 
+      ( generates file big.fa with aligned new homologs *NEW HOMOLOGS(NEW_H)* ):
+      'assign_seqs_to_shmms -f universe.fa a --reuse --sw $SW_SCORE -d 5 -c $evalue' 
+                           '--dbsize 100000 -b --models *.mod > shmms.score'
+			   '2>assignseqs.log'
+Main side effect: File 'big.fa' is created with NEW_H for this iteration.
+}
+
+line 587:594{
+    runQA():
+    Checks NEW_H for (generates 'big-sel.a2m' with results):
+    - Coverage test (testCoverage())
+    - Evalue test (Evalue < $FPMAXEVALUE)
+    - Removes deletion (dotty) columns, those colums that are 100% dots.
+     
+    Further checks NEW_H ('big-sel.a2m') for pairwise identity (pwid):
+    - Removes new homologs that do not have a pwid > $pwid with any of the
+      homologs in BASE_H (file 'big-final.a2m').
+      Here pwid is given by:  #matches/#hmm_states(hmm_length)
+Main side effect: File 'big-final.a2m' is generated with set of NEW_H.
+}
+
+line 660:774{
+    Iterative process:
+    - Increment iteration[#]  $count.
+    - runIteration() (see line 564)
+    -[line 666] createNewUniverse(): Updates file 'universe.fa' by removing
+				     homologs accepted so far 
+				     NEW UNIVERSE = UNIVERSE - BASE_H.
+    -[line 678] Create blastable db of current universe (NEW UNIVERSE):
+		'formatdb -o T -i universe.fa'
+    -[line 690] Make current alignment (iter[#].a2m) non-redundant @ 100%
+	    'uniqueseq iter[#]-uniq -alignfile iter[#].a2m -percent_id 1.0' 
+		       '>&uniqueseq.out'
+      (above command generates iter[#]-uniq.a2m= *(BASE_H)* used by SCI-PHY).
+    -[line 711] If BASE_H equals to desired number of homologs ($FPHITS) then
+		terminate iterative process.
+    -[line 726] runShmms() (see line 568).
+    -[line 740] Checks iteratively whether there are new homologs that passed the
+           runQA() (see line 585:592) test at increasingly loose Evalues,
+	   starting at eval=testEvalue() and stopping at $FPMAXEVALUE. If in
+	   any of the iterations there are new homologs passing the criteria,
+	   those are added to current homologs and the process is repeated until:
+	   - universe is exhausted.
+	   - no new homologs are found to pass criteria.
+}
+
+line 789:7992{
+    Copy BASE_H of last iteration ('last.a2m') and universe file universe.fa to final/ directory.
+}
+
+line 797:808{
+    Build FASTA file of last iteration homologs ('final.fa').
+}
+
+line 823{
+    Run SCI-PHY on last iteration homologs:
+    'SCI-PHY last -i last.a2m >& SCI-PHY.out' 
+}
+
+linei 844{
+    Run assign_seqs_to_shmms in order to assign homologs to shmms not to discover new homologs,
+    notice that this time the db of seqs is the set of final homologs ('final.fa') and not the 
+    universe ('universe.fa'):
+    'assign_seqs_to_shmms -f final.fa --reuse --sw $SW_SCORE -d 5 --dbsize 100000 -b --models *.mod' 
+                          '> shmms.score'
+}
+
+Copy the following files to the current working dir:
+-'final.a2m' (final set of homologs).
+-'psiblast-hits.fa' (Initial set of psi blast hits. See line 374).
+- 'initial-universe.fa' (Initial universe produced by conditions given in command in line 370).

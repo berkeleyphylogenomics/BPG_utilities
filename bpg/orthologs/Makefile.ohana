@@ -1,0 +1,216 @@
+CXX = g++
+CXXLD = g++
+CXXFLAGS = -O2
+CXXCOMPILE = $(CXX) $(CXXFLAGS)
+CXXLINK = $(CXXLD) $(CXXFLAGS) -o $@
+LIBPROGOPTS = -lboost_program_options
+LIBREGEX = -lboost_regex
+LIBPHYL = -lbpp-phyl
+LIBMYSQL = -lmysqlpp
+LIBPOSTGRESQL = -lpqxx
+LIBS = $(LIBPROGOPTS) $(LIBREGEX) $(LIBPHYL) $(LIBPOSTGRESQL)
+DEFINES = -DUSING_POSTGRES
+INCLUDE_PATH = -I/usr/include/mysql -I/usr/include/pqxx
+
+test_main_SOURCES = modified_preorder_tree_traversal.cpp \
+	get_tree_node_and_sequence_header_ids.cpp \
+	get_sequence_header_of_leaf_map.cpp \
+	get_uniprot_accession_and_taxon_of_leaf_maps.cpp \
+	get_breadth_first_visit_order.cpp \
+	get_longest_distance_in_tree.cpp \
+	find_inparalogs_in_tree.cpp \
+	put_inparalogs_in_postgresql_db.cpp \
+	get_inparalogs_from_postgresql_db.cpp \
+	find_orthologs_in_tree.cpp \
+	find_proximal_subtrees.cpp \
+  find_duplication_distances.cpp \
+	put_orthologs_in_postgresql_db.cpp \
+	get_orthologs_from_postgresql_db.cpp \
+	put_superorthologous_nodes_in_postgresql_db.cpp\
+	get_superorthologous_nodes_from_postgresql_db.cpp\
+  put_duplication_distances_in_postgresql_db.cpp\
+	test_main.cpp
+
+test_main_OBJECTS = modified_preorder_tree_traversal.o \
+	get_tree_node_and_sequence_header_ids.o \
+	get_sequence_header_of_leaf_map.o \
+	get_uniprot_accession_and_taxon_of_leaf_maps.o \
+	get_breadth_first_visit_order.o \
+	get_longest_distance_in_tree.o \
+	find_inparalogs_in_tree.o \
+	put_inparalogs_in_postgresql_db.o \
+	get_inparalogs_from_postgresql_db.o \
+	find_orthologs_in_tree.o \
+	find_proximal_subtrees.o \
+  find_duplication_distances.o \
+	put_orthologs_in_postgresql_db.o \
+	get_orthologs_from_postgresql_db.o \
+	put_superorthologous_nodes_in_postgresql_db.o \
+	get_superorthologous_nodes_from_postgresql_db.o \
+  put_duplication_distances_in_postgresql_db.o \
+	test_main.o
+
+find_uniprot_orthologs_SOURCES = uniprot_main.cpp \
+  find_orthologs_in_uniprot_tree.cpp
+
+find_uniprot_orthologs_OBJECTS = uniprot_main.o\
+  find_orthologs_in_uniprot_tree.o
+
+find_uniprot_inparalogs_SOURCES = uniport_inparalogs_main.cpp\
+  find_inparalogs_in_uniprot_tree.cpp
+find_uniprot_inparalogs_OBJECTS = uniprot_inparalogs_main.o\
+  find_inparalogs_in_uniprot_tree.o
+
+find_orthologs_SOURCES = modified_preorder_tree_traversal.cpp \
+	get_tree_node_and_sequence_header_ids.cpp \
+	get_sequence_header_of_leaf_map.cpp \
+	get_taxon_of_leaf_map.cpp \
+	get_breadth_first_visit_order.cpp \
+	get_longest_distance_in_tree.cpp \
+	find_inparalogs_in_tree.cpp \
+	put_inparalogs_in_postgresql_db.cpp \
+	find_orthologs_in_tree.cpp \
+	find_proximal_subtrees.cpp \
+  find_duplication_distances.cpp \
+	put_orthologs_in_postgresql_db.cpp \
+	put_superorthologous_nodes_in_postgresql_db.cpp\
+  put_duplication_distances_in_postgresql_db.cpp\
+	main.cpp
+
+find_orthologs_OBJECTS = modified_preorder_tree_traversal.o \
+	get_tree_node_and_sequence_header_ids.o \
+	get_sequence_header_of_leaf_map.o \
+	get_taxon_of_leaf_map.o \
+	get_breadth_first_visit_order.o \
+	get_longest_distance_in_tree.o \
+	find_inparalogs_in_tree.o \
+	put_inparalogs_in_postgresql_db.o \
+	find_orthologs_in_tree.o \
+	find_proximal_subtrees.o \
+  find_duplication_distances.o \
+	put_orthologs_in_postgresql_db.o \
+	put_superorthologous_nodes_in_postgresql_db.o\
+  put_duplication_distances_in_postgresql_db.o\
+	main.o
+
+all: find_uniprot_orthologs find_orthologs find_uniprot_inparalogs tree_test
+
+test_main.o: modified_preorder_tree_traversal.h\
+	orthologs_common.h\
+	get_tree_node_and_sequence_header_ids.h\
+	get_sequence_header_of_leaf_map.h\
+	get_uniprot_accession_and_taxon_of_leaf_maps.h\
+	get_breadth_first_visit_order.h\
+	get_longest_distance_in_tree.h\
+	find_inparalogs_in_tree.h\
+	put_inparalogs_in_db.h\
+	get_inparalogs_from_db.h\
+	find_orthologs_in_tree.h\
+	find_proximal_subtrees.h\
+  find_duplication_distances.h \
+	put_orthologs_in_db.h\
+	get_orthologs_from_db.h\
+	put_superorthologous_nodes_in_db.h\
+	get_superorthologous_nodes_from_db.h\
+  put_duplication_distances_in_db.h\
+	test_main.cpp 
+modified_preorder_tree_traversal.o: modified_preorder_tree_traversal.h\
+	modified_preorder_tree_traversal.cpp
+get_tree_node_and_sequence_header_ids.o:\
+	orthologs_common.h\
+	get_tree_node_and_sequence_header_ids.h\
+	get_tree_node_and_sequence_header_ids.cpp
+get_sequence_header_of_leaf_map.o: get_sequence_header_of_leaf_map.h\
+	orthologs_common.h\
+	get_sequence_header_of_leaf_map.cpp
+get_uniprot_accession_and_taxon_of_leaf_maps.o:\
+	orthologs_common.h\
+	get_uniprot_accession_and_taxon_of_leaf_maps.h\
+	get_uniprot_accession_and_taxon_of_leaf_maps.cpp
+get_breadth_first_visit_order.o:\
+	get_breadth_first_visit_order.h get_breadth_first_visit_order.cpp
+get_longest_distance_in_tree.o:\
+	orthologs_common.h\
+	get_longest_distance_in_tree.h get_longest_distance_in_tree.cpp
+find_inparalogs_in_tree.o:\
+	orthologs_common.h find_inparalogs_in_tree.h find_inparalogs_in_tree.cpp
+put_inparalogs_in_postgresql_db.o:\
+	orthologs_common.h\
+	put_inparalogs_in_db.h put_inparalogs_in_postgresql_db.cpp
+get_inparalogs_from_postgresql_db.o:\
+	orthologs_common.h\
+	get_inparalogs_from_db.h get_inparalogs_from_postgresql_db.cpp
+find_proximal_subtrees.o:\
+	orthologs_common.h\
+	find_proximal_subtrees.h find_proximal_subtrees.cpp
+find_duplication_distances.o:\
+  orthologs_common.h\
+  find_duplication_distances.h find_duplication_distances.cpp
+put_orthologs_in_postgresql_db.o:\
+	orthologs_common.h\
+	put_orthologs_in_db.h put_orthologs_in_postgresql_db.cpp
+get_orthologs_from_postgresql_db.o:\
+	orthologs_common.h\
+	get_orthologs_from_db.h get_orthologs_from_postgresql_db.cpp
+put_superorthologous_nodes_in_postgresql_db.o:\
+	orthologs_common.h\
+	put_superorthologous_nodes_in_db.h put_superorthologous_nodes_in_postgresql_db.cpp
+put_duplication_distances_in_postgresql_db.o:\
+  orthologs_common.h\
+  put_duplication_distances_in_db.h\
+  put_duplication_distances_in_postgresql_db.cpp
+get_superorthologous_nodes_from_db.o:\
+	orthologs_common.h\
+	get_superorthologous_nodes_from_db.h\
+	get_superorthologous_nodes_from_postgresql_db.cpp
+
+main.o: modified_preorder_tree_traversal.h\
+	orthologs_common.h\
+	get_tree_node_and_sequence_header_ids.h\
+	get_sequence_header_of_leaf_map.h\
+	get_taxon_of_leaf_map.h\
+	get_breadth_first_visit_order.h\
+	get_longest_distance_in_tree.h\
+	find_inparalogs_in_tree.h\
+	put_inparalogs_in_db.h\
+	find_orthologs_in_tree.h\
+	find_proximal_subtrees.h\
+  find_duplication_distances.h\
+	put_orthologs_in_db.h\
+	put_superorthologous_nodes_in_db.h\
+  put_duplication_distances_in_db.h\
+	main.cpp 
+
+uniprot_main.o: find_orthologs_in_uniprot_tree.h uniprot_main.cpp
+uniprot_inparalogs_main.o: find_inparalogs_in_uniprot_tree.h\
+  uniprot_inparalogs_main.cpp
+find_orthologs_in_tree.o: orthologs_common.h find_orthologs_in_tree.h\
+	find_orthologs_in_tree.cpp
+find_orthologs_in_uniprot_tree.o: find_orthologs_in_uniprot_tree.h\
+  find_orthologs_in_uniprot_tree.cpp
+find_inparalogs_in_uniprot_tree.o: find_inparalogs_in_uniprot_tree.h\
+  find_inparalogs_in_uniprot_tree.cpp
+
+find_orthologs: $(find_orthologs_OBJECTS)
+	@rm -f find_orthologs
+	$(CXXLINK) $(find_orthologs_OBJECTS) $(INCLUDE_PATH) $(DEFINES) $(LIBS)
+
+find_uniprot_orthologs: $(find_uniprot_orthologs_OBJECTS)
+	@rm -f find_uniprot_orthologs
+	$(CXXLINK) $(find_uniprot_orthologs_OBJECTS) $(INCLUDE_PATH) $(DEFINES) $(LIBS)
+
+find_uniprot_inparalogs: $(find_uniprot_inparalogs_OBJECTS)
+	@rm -f find_uniprot_inparalogs
+	$(CXXLINK) $(find_uniprot_inparalogs_OBJECTS) $(INCLUDE_PATH) $(DEFINES) $(LIBS)
+
+tree_test: $(test_main_OBJECTS)
+	@rm -f tree_test
+	$(CXXLINK) $(test_main_OBJECTS) $(INCLUDE_PATH) $(DEFINES) $(LIBS)
+
+.cpp.o:
+	$(CXXCOMPILE) $(INCLUDE_PATH) $(DEFINES) -c -o $@ $<
+
+clean:
+	@rm -f find_orthologs find_uniprot_orthologs find_uniprot_inparalogs tree_test\
+	$(find_orthologs_OBJECTS) $(find_uniprot_orthologs_OBJECTS)\
+	$(find_uniprot_inparalogs_OBJECTS) $(test_main_OBJECTS)

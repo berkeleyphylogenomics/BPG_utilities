@@ -1,0 +1,16 @@
+MAILTO=bpg.shailen@gmail.com
+
+# Check disk space on volumes
+01 00   *  *  *  /clusterfs/ohana/software/prod/lib/python2.4/site-packages/bpg/tools/cron/check_space.sh
+
+# Send previously generated error log report at 1 a.m.
+00 01   *  *  *  /clusterfs/ohana/software/prod/lib/python2.4/site-packages/bpg/tools/cron/email_web_logs.sh
+
+# Download UniProt -- twice a month (doesn't appear to change weekly).
+00 01 2,17 *  *  /clusterfs/ohana/software/prod/lib/python2.4/site-packages/bpg/other_databases/download_uniprot.sh
+
+# Download UniProt Taxonomy once per week
+00 01  *   *  1 /clusterfs/ohana/software/prod/lib/python2.4/site-packages/bpg/other_databases/download_uniprot_taxonomy.sh
+
+# Rsync the pdb_structures daily (as it is very little load to do so)
+00 02  *   *  * /clusterfs/ohana/software/prod/lib/python2.4/site-packages/bpg/other_databases/download_pdb_structures.sh

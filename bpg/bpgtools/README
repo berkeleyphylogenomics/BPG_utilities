@@ -1,0 +1,69 @@
+test
+ bpgtools 1.0
+11 May 2005
+
+Berkeley Phylogenomics Group
+http://phylogenomics.berkeley.edu
+John H. Lee <johnhlee@berkeley.edu>
+
+This package contains all of the BPG C++ tools:
+
+  astats:     Alignment statistics
+  kerf:       Subfamily identification
+  newick2svg: Newick to SVG conversion
+
+astats
+------
+Computes alignment statistics.
+
+Usage: astats [-h] [-v] <msafile>
+
+Output Key:
+  FILE:            Input alignment filename
+  SEQS:            Number of sequences
+  COLS:            Number of columns (alignment length)
+  SHORTEST:        Shortest sequence ID
+  SHORTEST_LENGTH: Length of the shortest sequence
+  LONGEST:         Longest sequence ID
+  LONGEST_LENGTH:  Length of the longest sequence ID
+  MINPID:          Minimum percent identity
+  MAXPID:          Maximum percent identity
+  MEANPID:         Mean percent identity
+  PGAPS:           Percentage of gaps over entire alignment
+  PCNAB62:         Percent of cols with average BLOSUM62 scores < 0
+  NCNAB62:         Number of cols with average BLOSUM62 scores < 0
+  MAXLENDIFF:      Difference in length between LONGEST and SHORTEST
+  PLENDIFF:        Percent difference between LONGEST and SHORTEST
+
+kerf
+----
+Given a Newick tree with boostrap values and a corresponding alignment,
+cuts the tree into subfamilies with at least <minbs> bootstrap OR <minpid>
+percent identity.
+
+Usage: kerf <minbs> <minpid> <treefn> <msafn>
+
+  <minbs>:  The minimum bootstrap (integer)
+  <minpid>: The minimum percent identity (integer)
+  <treefn>: The Newick tree file name
+  <msafn>:  The alignment file name
+
+Output Files:
+  kerf.summary: A summary of all subfamilies
+  kerf.trees:   Subfamily Newick trees separated by "%"
+  kerf.seqs:    Subfamily alignments, separated by "%"
+  kerf.tre:     All subfamilies in a multifurcating Newick tree
+  kerf.svg:     The full tree as an SVG document
+
+newick2svg
+----------
+Convert a Newick file to SVG.
+
+Usage: newick2svg <treefn>
+
+  <treefn>: The Newick tree file name
+
+Output File:
+
+  <treefn>.svg: The SVG file
+

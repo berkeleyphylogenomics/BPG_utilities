@@ -1,0 +1,70 @@
+#!/usr/bin/python
+
+import os
+import sys
+
+from bpg.common import fasta
+# Produce consensus sequence.  Stand-along access to fasta.ConsensusOfSequences.
+
+gap_as_21st_char_f = 0
+consensus_criterion = "0.70"
+
+if len( sys.argv ) == 1 :
+
+   # Simple usage.
+
+   print "Most frequent character in each position."
+   print
+   print "Usage: alignment_consensus [options] <msafile>"
+   print
+   print "Options:"
+   print "  -g                        count gaps as a 21st character"
+   print "  -c <consensus_criterion>  (default: uppercase is 0.70 or more of", \
+                                       "sequences)"
+   sys.exit( 0 )
+elif len( sys.argv ) == 2  :
+   alignment_file = sys.argv[1]
+else :
+
+   # Pop script name.
+
+   sys.argv.pop( 0 )
+
+   while sys.argv :
+
+      # Get argument.
+
+      option = sys.argv.pop( 0 )
+      if option == "-g" :
+         gap_as_21st_char_f = 1
+      elif option == "-c" :
+         consensus_criterion = sys.argv.pop( 0 )
+         try :
+            consensus_criterion = float( consensus_criterion )
+         except :
+            print "-c option must be followed by a number."
+            sys.exit( 0 )
+
+         if consensus_criterion < 0 or consensus_criterion > 1.0 :
+            print "-c value must be between 0 and 1."
+            sys.exit( 0 )
+
+      else :
+         alignment_file = option
+
+
+# Read file.
+
+if not os.access( alignment_file, os.F_OK ) :
+   print "Could not access alignment file", alignment_file
+   sys.exit( 0 )
+
+# Creates dictionary hash (indexed by headers), which is what 
+# ConsensusOfSequences requires.
+
+aligned_seqs_dic = fasta.ReadSequences( alignment_file )
+consensus_sequence = fasta.ConsensusOfSequences( aligned_seqs_dic, \
+                                     consensus_criterion=consensus_criterion, \
+                                     gap_as_21st_char_f=gap_as_21st_char_f )
+
+print consensus_sequence

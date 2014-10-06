@@ -1,0 +1,7 @@
+MAILTO=bpg.shailen@gmail.com
+
+# Check disk space usage
+1  0 * * * /clusterfs/ohana/software/prod/lib/python2.4/site-packages/bpg/tools/cron/check_space.sh
+
+# Build report for today's web logs
+59 23 * * * /clusterfs/ohana/software/prod/lib/python2.4/site-packages/bpg/tools/cron/check_web_logs.sh

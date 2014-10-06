@@ -1,0 +1,62 @@
+The phylobuilder script implements the phylobuilder pipeline - originally
+generated on the fly by the web server - as a python application.
+
+The pipeline takes as input a single seed sequence. Alternatively, the
+pipeline can be jump-started from an existing multiple sequence alignment.
+In either case, the major execution steps are roughly equivalent.
+
+The pipeline has 6 major steps:
+
+1.  Gather homologs of the seed sequence from UniProt using FlowerPower,
+    which produces an initial alignment of the seed sequence(s) and all
+    homologs.
+1a. The initial alignment is refined using mafft. For local homology, the 
+    initial alignment is first cropped to the alignable region before
+    refining the alignment.
+2.  Infer a phylogenetic tree using NJ, ML (model selected by AIC), or 
+    both.
+3.  Construct an HMM from the alignment and generate a protein family
+    consensus sequence. This sequence is used to identify homologous PDB
+    structures, PFam domains, transmembrane helices, and signal peptides
+    that may be present across the members of the protein family.
+4.  Use SCI-PHY to identify statistically-supported subfamilies.
+5.  Put all the relevant information about this protein family in a
+    postgres relational database.
+6.  For each tree (NJ, ML, and SCI-PHY), calculate information required
+    to identify orthologous sequences, and store this information in the
+    relational database.
+
+The phylobuilder.py script handles combining the stages of the pipeline
+and makes some decisions about which analyses are to be run. For example,
+ML tree reconstruction is only performed if there are not too many
+sequences in the protein family (or if the user forces ML tree 
+construction).
+
+Steps 1-1a are implemented by flowerpower.pl and mafft, respectively. Steps
+2-4 are implemented by the buildFamily.py script, which can be run on its
+own given an existing sequence alignment and does not require the database.
+Step 5 is implemented by inputFamily.py and (aside from step 6) is the only
+place where database access is required. Step 6 is implemented by the C
+program find_orthologs.
+
+The accompanying diagram, phylobuilder.ai, shows more detail about the
+execution of the phylobuilder pipeline. As you can see from that diagram,
+phylobuilder depends on many other applications, inclding BLAST, the UCSC
+SAM package for constructing HMMs, the Phobius webserver, and programs for
+building phylogenetic trees, sequence alignments, etc. These applications
+must be available (and in the execution path) for phylobuilder to work.
+
+Phylobuilder also requires access to the pfacts003 postgres database, which
+must be present prior to executing the inputFamily.py and find_orthologs
+steps (although all other steps can be executed separately without the
+database).
+
+Please see the applications:
+
+phylobuilder.py --help
+buildFamily.py --help
+inputFamily.py --help
+find_orthologs --help
+
+for more information on available program options.
+

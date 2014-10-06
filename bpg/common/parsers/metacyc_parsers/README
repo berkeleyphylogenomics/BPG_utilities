@@ -1,0 +1,68 @@
+README for using the metacyc.py parser and inserting this data into a postgres database. The final section also talks about how to update the biocyc reaction webpage.
+
+author: Ajith Warrier
+
+Note: Please read this file carefully since there are steps involved for removing tables and inserting into the production database.
+####################
+Steps:##############
+####################
+Make sure that all the pathway files obtained by unzipping the biocyc-flatfiles-all.tar.gz from the biocyc site are in a single folder. Any extra files downloaded, e.g. ecoli.tar.gz also needs to find its place in that directory.
+For an example, look at /clusterfs/ohana/external/BioCyc/16.0/biocyc-flatfiles-all-w-ecoli
+
+Create a working directory. Scripts are then run from within the working directory
+e.g.
+mkdir /clusterfs/vasudha/bpg/metacyc_v16
+cd /clusterfs/vasudha/bpg/metacyc_v16
+
+
+Test metacyc.py using a command like this:
+<path to metacyc.py> <dat directory for a single biocyc pathway database>
+e.g.
+/home/awarrier/ohana_repository/bpg/common/parsers/metacyc_parsers/metacyc.py /clusterfs/ohana/external/BioCyc/16.0/ecoli/data
+	This dat directory should contain at the very least, the following files from BioCyc - proteins.dat, version.dat, genes.dat, enzrxns.dat, reactions.dat, pathways.dat.
+
+If this works as accepted and without encountering any errors, the script can be sharded onto all the pathway databases. To do this, create an input file similar to the example in this directory (metacyc dirs) and run the following command:
+	cluster_shards_library -i metacyc_dirs -c /home/awarrier/ohana_repository/bpg/common/parsers/metacyc_parsers/metacyc.py -s 300
+
+This will create a new directory called 'data' in the working directory and fill it will multiple directories, one for each pathway database, containing many tab delimited files.
+If there are no errors in the outputs directory, which collects logs from the shard jobs, then run metacyc_collect_all.py in the working directory. The only arguments that this takes is the biocyc version number, which will be the version stored in the database.
+
+/home/awarrier/ohana_repository/bpg/common/parsers/metacyc_parsers/metacyc_collect_all.py 16.0
+	This script will create a new directory called collection and a bunch of tab delimited files within along with an sql script.
+
+To insert this information into our database,
+log into the production database (or a test database if you first want to do some testing) as bpg_user and then do:
+\i  metacyc_creation.sql
+
+Finally, you'll have to make sure that the webuser can access this database. For this, change the permissions on the created tables to allow the webuser to read it.
+This is done by the following commands
+ssh db
+sudo -u postgres /bin/bash
+psql pfacts003_test
+
+and then in postgres run 
+\i /home/awarrier/ohana_repository/bpg/common/parsers/metacyc_parsers/metacyc_permissions.sql
+
+Make sure that the webpages are properly updated.
+You are done with updating the metacyc data to the latest version.
+
+########################################
+########## Metacyc reaction webpages ###
+########################################
+
+Once the metacyc data has been updated (following the process detailed above), it is time to update the reaction pages.
+For this, first get a list of all the metacyc reactions in the database and output it into a file.
+A command like this would suffice
+\o /clusterfs/vasudha/bpg/metacyc_v16/metacyc_reactions
+select id from metacyc.metacyc_reactions;
+\o
+Then clean out the file so that the headers and footers from sql query are removed.
+
+Run reaction_page_fam_list_collection.py on one of the reactions in this file like this.
+~/ohana_repository/bpg/common/parsers/metacyc_parsers/reaction_page_fam_list_collection.py RXN0-6734
+and make sure that this works fine.
+If this does, then run a shard process where this is run on all reactions.
+
+Following this, run reaction_page_config_file_creation.py on the reactions in that file using the same criteria as above.
+
+##################################################

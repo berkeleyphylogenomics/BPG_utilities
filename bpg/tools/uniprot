@@ -1,0 +1,74 @@
+#!/usr/bin/env python
+
+from pfacts003.phylofacts.models import UniProtDatIndex, UniProt
+from pfacts003.utils.id_patterns import uniprot_accession_re1, \
+    uniprot_accession_re2, uniprot_identifier_re1, uniprot_identifier_re2, \
+    uniprot_identifier_re3
+import sys, re
+
+def print_uniprot_dat(uniprot_dat_index_object):
+  f = open("/clusterfs/ohana/external/UniProt/current/uniprot.dat")
+  f.seek(uniprot_dat_index_object.file_char)
+  line = f.readline()
+  while len(line) >= 2 and line[0:2] != '//':
+    print line.rstrip()
+    line = f.readline()
+
+def main():
+  if len(sys.argv) < 2:
+    print "Usage: uniprot <uniprot_accession_or_identifier>"
+    sys.exit(0)
+
+  identifier = sys.argv[1]
+  uniprot_accession = ""
+  uniprot_identifier = ""
+
+  m = uniprot_accession_re1.match(identifier)
+  if m:
+    uniprot_accession = m.group(0)
+  else:
+    m = uniprot_accession_re2.match(identifier)
+    if m:
+      uniprot_accession = m.group(0)
+    else:
+      m = uniprot_identifier_re1.match(identifier)
+      if m:
+        uniprot_identifier = m.group(0)
+      else:
+        m = uniprot_identifier_re2.match(identifier)
+        if m:
+          uniprot_identifier = m.group(0)
+        else:
+          m = uniprot_identifier_re3.match(identifier)
+          if m:
+            uniprot_identifier = m.group(0)
+          else:
+            print "%s does not look like a UniProt accession or identifier" \
+                % identifier
+            sys.exit(1)
+
+  if len(uniprot_accession) > 0:
+    uniprot_dat_index_objects = UniProtDatIndex.objects.filter(
+                                  uniprot_accession__exact = uniprot_accession)
+    if uniprot_dat_index_objects:
+      print_uniprot_dat(uniprot_dat_index_objects[0])
+    else:
+      print "UniProt accession %s not found" % uniprot_accession
+
+  elif len(uniprot_identifier) > 0:
+    uniprot_objects = UniProt.objects.filter(
+                              uniprot_identifier__exact = uniprot_identifier)
+    if uniprot_objects:
+      uniprot = uniprot_objects[0]
+      uniprot_dat_index_objects = UniProtDatIndex.objects.filter(
+                                  uniprot__exact = uniprot, 
+                                  uniprot_accession__exact = uniprot.accession)
+      print_uniprot_dat(uniprot_dat_index_objects[0])
+    else:
+      print "UniProt record with identifier %s not found" % uniprot_identifier
+
+
+
+
+if __name__ == '__main__':
+  main()
