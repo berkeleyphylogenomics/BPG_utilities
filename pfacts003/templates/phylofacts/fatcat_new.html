@@ -1,0 +1,987 @@
+{% extends 'common/base_new.html' %}
+
+{% block title %}FAT-CAT{% endblock %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="/static/css/ui.spinner.css">
+<style type="text/css">
+.fatcat-title {
+    font-size:28px;padding-bottom:0;margin-bottom:0;
+}
+.main-content {
+    font-family:Verdana;
+    margin-left:25px;
+    margin-right:25px;
+    margin-bottom:25px;
+    float:left;
+}
+.main-content .alert {
+    float:left;
+}
+.require {
+    color:red;
+}
+.main-content hr {
+    float:left;
+    width:100%;
+    margin-top:0px;
+    margin-bottom:12px;
+}
+.parameters {
+    display:none;
+    float:left;
+    background:#dee7ec;
+    border-radius:6px;
+    -webkit-border-radius:6px;
+    -moz-border-radius:6px;
+    -webkit-box-shadow: 4px 4px 4px rgba(0,0,0,0.4);
+    -moz-box-shadow:4px 4px 4px rgba(0,0,0,0.4);
+    box-shadow:4px 4px 4px rgba(0,0,0,0.4);
+    padding-left:15px;
+    padding-right:15px;
+    padding-top:10px;
+    padding-bottom:10px;
+    margin-top:10px;
+    margin-bottom:15px;
+    margin-right:25px;
+}
+.submitting-indicator {
+    display:none;
+}
+.form-submission-buttonset {
+    margin-left:174px;
+    width:100%;
+    float:left;
+    margin-bottom:15px;
+    margin-top:5px;
+}
+.form-submission-buttonset a {
+    font-size:13px;
+}
+.control-label {
+    float:left;
+    font-size:12px;
+    margin-right:25px;
+}
+.stage hr {
+    margin-bottom:7px;
+}
+.params {
+    float:left;
+    width:100%;
+    margin-left:15px;
+}
+.params-auto {
+    float:left;
+}
+.params-text {
+    float:left;
+    margin-top:5px;
+    margin-right:7px;
+}
+.jqts {
+    text-decoration:none;
+}
+.jqts:hover {
+    text-decoration:none;
+}
+.main-content input {
+    font-size:13px;
+    height:14px;
+    float:left;
+    width:440px;
+    margin-bottom:0px;
+}
+.stage input {
+    width:100px;
+}
+.checkbox-line {
+    width:100%;
+    float:left;
+}
+#fasta-input {
+    font-family:monospace;
+    font-size:12px;
+    width:440px;
+}
+#fasta-group {
+    margin-left:21px;
+}
+.main-content textarea {
+    margin-bottom:0px;
+}
+#job-name-input {
+    font-size:13px;
+    width:440px;
+}
+.main-content .control-group {
+    float:left;
+    width:100%;
+}
+.main-content .controls {
+    float:left;
+}
+.main-content .stage {
+    float:left;
+    background:white;
+    padding-left:10px;
+    padding-right:0px;
+    margin-bottom:7px;
+    margin-top:7px;
+    border-radius:6px;
+    -webkit-border-radius:6px;
+    -moz-border-radius:6px;
+    -box-shadow:4px 4px 4px rgba(0,0,0,0.4);
+    -webkit-box-shadow:4px 4px 4px rgba(0,0,0,0.4);
+    -moz-box-shadow:4px 4px 4px rgba(0,0,0,0.4);
+    width:100%;
+}
+.stage-special {
+    float:left;
+    width:100%;
+}
+.left-logo {
+    width:750px;
+    float:left;
+}
+.right-logo {
+    float:left;
+    margin-top:14px;
+    margin-left:20px;
+}
+.stage h4, .stage h5 {
+    color:#41677A;
+}
+.stage h4 {
+    margin-bottom:7px;
+}
+.control-group {
+    margin-bottom:5px;
+}
+.stage h5 {
+    margin-bottom:5px;
+    margin-top:0px;
+}
+.stage2-controls {
+    float:left;
+    margin-left:72px;
+}
+.main-content .substage {
+    float:left;
+    margin-left:10px;
+    width:100%;
+}
+.params-line-1 {
+    width:100%;
+    float:left;
+    margin-bottom:7px;
+}
+#params-presets-explanation
+{
+    margin-bottom:14px;
+    float:left;
+}
+.params-line-2 {
+    margin-bottom:2px;
+}
+.main-content .help-inline {
+    margin-left:10px;
+    margin-top:3px;
+}
+.params-auto .btn-primary {
+    padding: 4px 14px;
+}
+#header-group {
+    margin-left:10px;
+}
+#email-group {
+    margin-left:153px;
+}
+#email-subject-group {
+    margin-left:33px;
+}
+#job-create-message {
+    max-width:875px;
+    margin-bottom:12px;
+}
+#job-name-group {
+    margin-left:48px;
+}
+#stage1-evalue-group {
+    margin-top:10px;
+    margin-left:0px;
+}
+#stage1-evalue-input {
+    text-align:right;
+}
+#stage2-evalue-input {
+    text-align:right;
+}
+#stage1-pfam-qcov-group {
+    margin-left:58px;
+}
+#stage1-mda-qcov-group {
+    margin-left:63px;
+}
+#stage1-pfam-hcov-group {
+    margin-left:58px;
+    margin-bottom:10px;
+}
+#stage1-mda-hcov-group {
+    margin-left:63px;
+}
+#stage2-evalue-group {
+    margin-left:0px;
+}
+#stage2-query-hmm-group {
+    margin-left:0px;
+}
+#stage2-subtree-pid-group {
+    margin-left:0px;
+}
+#stage3-query-ortholog-pid-group {
+    margin-left:0px;
+}
+#stage3-qcov-group {
+    margin-left:260px;
+}
+#stage3-ocov-group {
+    margin-left:174px;
+    margin-bottom:10px;
+}
+#stage3-cluster-similarity-group {
+    margin-left:118px;
+}
+#stage4-uniprot-high-group {
+    margin-left:78px;
+}
+#stage4-uniprot-medium-group {
+    margin-left:53px;
+}
+#stage2-query-hmm-group .controls {
+    margin-top:9px;
+}
+#stage2-pfam-hcov-group {
+    margin-left:58px;
+}
+#stage2-mda-hcov-group {
+    margin-left:63px;
+}
+#stage2-pfam-qcov-group {
+    margin-left:58px;
+}
+#stage2-mda-qcov-group {
+    margin-left:63px;
+}
+.enclosing-clade-group label {
+    font-size:12px;
+    font-weight:bold;
+}
+.enclosing-clade-group input {
+    width:20px;
+}
+.enclosing-clade-group select {
+    padding:0px;
+    width:40px;
+    font-size:12px;
+    margin-top:1px;
+    height:20px;
+    line-height:20px;      
+    margin-bottom:3px;
+}
+.enclosing-clade-group p {
+    font-weight:bold;
+    margin-left:2px;
+}
+.enclosing-clade-group {
+    margin-left:8px;
+    margin-bottom:10px;
+    margin-top:7px;
+}
+.ind {
+    margin-left:10px;
+    font-size:11px;
+}
+.ecg {
+    margin-bottom:3px;
+    width:100%;
+}
+.enclosing-clade-group p {
+    margin-bottom:0px;
+} 
+#stage2-ec-kerf-threshold-input {
+    float:left;
+    margin-bottom:1px;
+    width:40px;
+    margin-right:5px;
+    margin-left:5px;
+}
+.checkbox-line .checkbox {
+    float:left;
+    margin-right:15px;
+    margin-top:1px;
+    margin-right:0px;
+}
+.checkbox-line p {
+    float:left;
+    margin-top:2px;
+}
+.checkboxes {
+    margin-left:20px;
+    margin-top:4px;
+}
+.post-percent {
+    margin-left:5px;
+    float:left;
+    margin-top:1px;
+}
+#stage2-query-hmm-group .post-percent {
+    margin-top:10px;
+}
+</style>
+{% endblock %}
+
+{% block extrascripts %}
+<script type='text/javascript' src='/static/js/ui.spinner.min.js'></script>
+<script type="text/javascript">
+
+function setDefaultParameters() {
+	document.getElementById('params-presets-explanation').innerHTML = 
+		"Parameters set to default.";
+    $j('#stage1-evalue-input').val('1e-6');
+    $j('#stage1-mda-qcov-input').val('70');
+    $j('#stage1-mda-hcov-input').val('70');
+    $j('#stage1-pfam-hcov-input').val('70');
+    $j('#stage2-evalue-input').val('1e-10');
+    $j('#stage2-mda-qcov-input').val('70');
+    $j('#stage2-mda-hcov-input').val('70');
+    $j('#stage2-pfam-hcov-input').val('70');
+    $j('#stage2-query-hmm-input').val('60');
+    $j('#stage2-subtree-pid-input').val('60');
+    $j('#stage2-ec-kerf-threshold-input').val('70');
+    $j('.enclosing-clade-group select option').remove();
+    $j('.enclosing-clade-group input[type=checkbox]').attr('checked', 'checked');
+    $j('.enclosing-clade-group select').append('<option value="1">1</option><option value="2">2</option><option value="3">3</option>');
+    $j('.enclosing-clade-group select>option:eq(0)').attr('selected', true);
+    $j('#stage3-qcov-input').val('70');
+    $j('#stage3-ocov-input').val('70');
+    $j('#stage3-query-ortholog-pid-input').val('70');
+    return {}
+}
+
+
+function setParametersForPrecision() {
+    // This function auto sets the parameters for high precision
+	document.getElementById('params-presets-explanation').innerHTML = 
+		"Best option when the query contains a promiscuous domain or has close paralogs.";
+    $j('#stage1-evalue-input').val('1e-4');
+    $j('#stage1-mda-qcov-input').val('70');
+    $j('#stage1-mda-hcov-input').val('70');
+    $j('#stage1-pfam-hcov-input').val('70');
+    $j('#stage2-evalue-input').val('1e-6');
+    $j('#stage2-mda-qcov-input').val('70');
+    $j('#stage2-mda-hcov-input').val('70');
+    $j('#stage2-pfam-hcov-input').val('70');
+    $j('#stage2-query-hmm-input').val('60');
+    $j('#stage2-subtree-pid-input').val('60');
+    $j('#stage2-ec-kerf-threshold-input').val('60');
+    $j('.enclosing-clade-group select option').remove();
+    $j('.enclosing-clade-group input[type=checkbox]').attr('checked', 'checked');
+    $j('.enclosing-clade-group input[type=checkbox]')[3].checked = false;
+    $j('.enclosing-clade-group select').append('<option value="1">1</option><option value="2">2</option><option value="3">3</option>');
+    $j('.enclosing-clade-group select>option:eq(0)').attr('selected', true);
+    $j('#stage3-qcov-input').val('70');
+    $j('#stage3-ocov-input').val('70');
+    $j('#stage3-query-ortholog-pid-input').val('73');
+    return {}
+}
+
+function setParametersForRecall() {
+    // This function auto sets the parameters for recall
+	document.getElementById('params-presets-explanation').innerHTML = 
+		"Best option for most inputs: designed to retrieve most orthologs and very few non-orthologs.";
+    $j('#stage1-evalue-input').val('1e-3');
+    $j('#stage1-mda-qcov-input').val('60');
+    $j('#stage1-mda-hcov-input').val('60');
+    $j('#stage1-pfam-hcov-input').val('60');
+    $j('#stage2-evalue-input').val('1e-5');
+    $j('#stage2-mda-qcov-input').val('60');
+   $j('#stage2-mda-hcov-input').val('60');
+    $j('#stage2-pfam-hcov-input').val('60');
+    $j('#stage2-subtree-pid-input').val('50');
+    $j('#stage2-query-hmm-input').val('50');
+    $j('#stage2-ec-kerf-threshold-input').val('50');
+    $j('.enclosing-clade-group select option').remove();
+    $j('.enclosing-clade-group input[type=checkbox]').attr('checked', 'checked');
+    $j('.enclosing-clade-group input[type=checkbox]')[3].checked = false;
+    $j('.enclosing-clade-group select').append('<option value="1">1</option><option value="2">2</option><option value="3">3</option>');
+    $j('.enclosing-clade-group select>option:eq(0)').attr('selected', true);
+    $j('#stage3-qcov-input').val('70');
+    $j('#stage3-ocov-input').val('70');
+    $j('#stage3-query-ortholog-pid-input').val('50');
+    return {}
+}
+
+function setParametersForRemoteHomologs() {
+	document.getElementById('params-presets-explanation').innerHTML = 
+		"Best option when you find no matches with High Recall or when the sequence has no homologs detectable by BLAST.";
+
+    // This function auto sets the parameters for remote homologs
+    $j('#stage1-evalue-input').val('1e-1');
+    $j('#stage1-mda-qcov-input').val('50');
+    $j('#stage1-mda-hcov-input').val('50');
+    $j('#stage1-pfam-hcov-input').val('50');
+    $j('#stage2-evalue-input').val('1e-3');
+    $j('#stage2-mda-qcov-input').val('50');
+    $j('#stage2-mda-hcov-input').val('50');
+    $j('#stage2-pfam-hcov-input').val('50');
+    $j('#stage2-subtree-pid-input').val('20');
+    $j('#stage2-query-hmm-input').val('20');
+    $j('#stage2-ec-kerf-threshold-input').val('20');
+    $j('.enclosing-clade-group select option').remove();
+    $j('.enclosing-clade-group input[type=checkbox]').attr('checked', 'checked');
+    $j('.enclosing-clade-group input[type=checkbox]')[3].checked = false;
+    $j('.enclosing-clade-group select').append('<option value="1">1</option><option value="2">2</option><option value="3">3</option>');
+    $j('.enclosing-clade-group select>option:eq(0)').attr('selected', true);
+    $j('#stage3-qcov-input').val('30');
+    $j('#stage3-ocov-input').val('30');
+    $j('#stage3-query-ortholog-pid-input').val('17');
+    return {}
+}
+
+function setParametersForFragments() {
+	document.getElementById('params-presets-explanation').innerHTML = 
+		"Best option when the query is known to be incomplete, i.e., due to a gene model error, or in cases when the query is a splice variant missing one or more exons.";
+    $j('#stage1-evalue-input').val('0.01');
+    $j('#stage1-mda-qcov-input').val('0');
+    $j('#stage1-mda-hcov-input').val('0');
+    $j('#stage1-pfam-hcov-input').val('0');
+    $j('#stage2-evalue-input').val('1');
+    $j('#stage2-mda-hcov-input').val('0');
+    $j('#stage2-pfam-hcov-input').val('0');
+    $j('#stage2-mda-qcov-input').val('0');
+    $j('#stage2-query-hmm-input').val('30');
+    $j('#stage2-subtree-pid-input').val('40');
+    $j('#stage2-ec-kerf-threshold-input').val('40');
+    $j('.enclosing-clade-group select option').remove();
+    $j('.enclosing-clade-group input[type=checkbox]').attr('checked', 'checked');
+    $j('.enclosing-clade-group input[type=checkbox]')[3].checked = false;
+    $j('.enclosing-clade-group select').append('<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>');
+    $j('.enclosing-clade-group select>option:eq(0)').attr('selected', true);
+    $j('#stage3-qcov-input').val('70');
+    $j('#stage3-ocov-input').val('0');
+    $j('#stage3-query-ortholog-pid-input').val('50');
+    return {}
+}
+
+$j(document).ready(function() {
+    $j('#stage1-mda-qcov-input').spinner({min: 0, max: 99});
+    $j('#stage1-mda-hcov-input').spinner({min: 0, max: 99});
+    $j('#stage1-pfam-hcov-input').spinner({min: 0, max: 99});
+    $j('#stage2-mda-hcov-input').spinner({min: 0, max: 99});
+    $j('#stage2-mda-qcov-input').spinner({min: 0, max: 99});
+    $j('#stage2-pfam-hcov-input').spinner({min: 0, max: 99});
+    $j('#stage2-query-hmm-input').spinner({min: 0, max: 99});
+    $j('#stage2-subtree-pid-input').spinner({min: 0, max: 99});
+    $j('#stage2-ec-kerf-threshold-input').spinner({min: 0, max: 99});
+    $j('#stage3-query-ortholog-pid-input').spinner({min: 0, max: 99});
+    $j('#stage3-qcov-input').spinner({min: 0, max: 99});
+    $j('#stage3-ocov-input').spinner({min: 0, max: 99});
+    $j('#stage3-cluster-similarity-input').spinner({min: 1, max: 99});
+    {% if user.is_staff %}   
+        $j('#stage4-uniprot-base-input').spinner({min: 1, max: 99});
+        $j('#stage4-uniprot-high-input').spinner({min: 1, max: 99});
+        $j('#stage4-uniprot-medium-input').spinner({min: 1, max: 99});
+    {% endif %}
+    setParametersForRecall();
+    $j('.jqts').click(function() {
+        $j( $j(this).data().linkto ).toggle();
+        if ($j(this).html() == '<i class="icon-plus"></i> View parameters/modify parameters manually') {
+            $j(this).html('<i class="icon-minus"></i> Hide parameters');
+        }
+        else {
+            $j(this).html('<i class="icon-plus"></i> View parameters/modify parameters manually');
+        }
+    });
+    // add click handler for example button
+    $j(' #example-input ').click(function() {
+        $j(' #header-input ').val('tr|Q804C7|Q804C7_XENLA Dystroglycan OS=Xenopus laevis PE=2 SV=1');
+        $j(' #fasta-input ').val('MDIRCAGLSLPMLRTIMVLLMASCAWSAWPSDPTEVAQDWDNQLEASMHSLFPEIKETVA\nPMTGIPDSSALVGRPFKIHIPTEFLASSGETIKISEVGKETLPSWLHWEGNFLQGLPLDG\nDKGVYDISVASLHLAPNGSYVPHTTDVFSVEVHPEDHNEPQSVRVAGQETAEAIPFLCGT\nDEPVTLLTVILDADLTKMTPKQRVDLLNRMRDFSEVELFHMKLVPVVNNRLFDMSAFMAG\nPGNAKKVVENGALLSWKLGCGMDQNTVPNISSVEVPAKEGTMSAQLGYPVVGWHIANKKP\nQMPKRIRRQIYATPTPVTAIGPPTTAIHEPPERIVPTPTSPAIAPPTDTTAPPVREPIPL\nPGKPTVTIRTRGAIIHTPTLGPIHPTRIIETTSIVRPTMTRPIYVEPTAAVTPPSTTTKR\nPRVTTMKPATPPTTDSSTTTTKKPTRKPRTRPPKPLATTKAPATKFETTSSSRTRTSTSG\nVPNTDPELKNHIDKVVAWVGTYFEVKIPPDTFYDREDGTTDNLQLTLVPRIKASAGEKMW\nVMLNSTSQVMYGMPDYIHIGDHEYYLKAADKAGRTAVDALEIQVRNLFQKQPSPVKFHAK\nFHGDHNAVINDINKKILLVKKLAFAFGDRNSSSITLHNITKGSVVVDWTNNTFPTEPCPV\nEQVESVGKKIYDERGSPRQHFVNSVEPEYKLLNISLSFTGSCKHKNFRYIPMRPEEPIPT\nAVAPTVAADRNPEKSSEDDVYLHTVIPAVVVAAILLIAGIIAMIFYRKKRKGKLTIEDQA\nTFIKKGVPIIFADELDDSKPPPSSRMPLILKEEKAPLPPPEYPNQNVPETIPLNQDSLGE\nYTPLRDEDPNAPPYQPPPPFTTPMEGKGSRPKNMTPYRSPPPYVPP');
+        $j(' #job-name-input ').val('Example query for Q804C7_XENLA');   
+        $j(' #email-subject-input ').val('FAT-CAT results for Q804C7_XENLA');
+        $j(' #default-parameters ').click();
+    }); 
+    // click handler for job submission
+    $j(' #fatcat-submit ').click(function () {
+        // turn on loading text
+        $j(' .submitting-indicator ').show();
+        // turn off all previous alerts
+        $j(' .main-content .control-group ').removeClass('success').removeClass('error');
+        $j(' .main-content .control-group .help-inline ').hide();
+        $j(' .main-content .alert ').removeClass('alert-success').removeClass('alert-error').hide();
+        // get the state of the enclosing clade checkboxes
+        var ec = '';
+        $j('.enclosing-clade-group input[type=checkbox]:checked').each( function(index) {ec+=$j(this).val() + ' ';});
+        // if the new fatcat checkbox is clicked
+        if ($j('#fast-cat-checkbox').is(':checked')) {
+            $j.post('/api/fatcat2/', {
+                'fasta': $j(' #fasta-input ').val(),
+                'email': $j(' #email-input ').val(),
+                'email-subject': $j(' #email-subject-input ').val(),
+                'job-comments': $j(' #job-name-input ').val(),
+                'header': $j(' #header-input ').val(),
+                'stage-one-eval': $j(' #stage1-evalue-input ').val(),
+                'stage-one-mda-qcov': $j(' #stage1-mda-qcov-input ').val(),
+                'stage-one-mda-hcov': $j(' #stage1-mda-hcov-input ').val(),
+                'stage-one-pfam-hcov': $j(' #stage1-pfam-hcov-input ').val(),
+                'stage-two-eval': $j(' #stage2-evalue-input ').val(),
+                'stage-two-mda-qcov': $j(' #stage2-mda-qcov-input ').val(),
+                'stage-two-mda-hcov': $j(' #stage2-mda-hcov-input ').val(),
+                'stage-two-pfam-hcov': $j(' #stage2-pfam-hcov-input ').val(),
+                'query-hmm-pid': $j(' #stage2-query-hmm-input ').val(),
+                'ec-checkboxes': ec,
+                'ec-orthology-number': $j('.enclosing-clade-group select').val(),
+                'ec-kerf-threshold': $j('#stage2-ec-kerf-threshold-input').val(),
+                'cluster-similarity': '97',
+                'stage-two-maxseqs': '200',
+                'ortholog-coverage': $j(' #stage3-ocov-input ').val(),
+                'query-coverage': $j(' #stage3-qcov-input ').val(),
+                'minimum-pid-for-orthology': $j(' #stage3-query-ortholog-pid-input ').val(),
+                'stage3-koa': '100',
+                'consensus-uniprot-description-base-parameter': $j(' #stage4-uniprot-base-input ').val(),
+                'consensus-uniprot-description-lambda': '0.8',
+                'consensus-uniprot-description-amplitude': '1',
+                'consensus-uniprot-threshold-high': $j(' #stage4-uniprot-high-input ').val(),
+                'consensus-uniprot-threshold-medium': $j(' #stage4-uniprot-medium-input ').val(),
+                'run-ellis-island': 'true',
+                'ellis-island-qcov': '70',
+                'ellis-island-hcov': '70',
+                'ellis-island-maxseqs': '500',
+                'ellis-island-maxfams': '50',
+                'ellis-island-taxon-pid': '95'
+            }, function(data) {
+                // api create callback function
+                if (data.id) {
+                    window.location = '/fatcat/' + data.id + '/';
+                }
+                else {
+                    if (data.status == 'error') {
+                        if (data.type == 'parameter') {
+                            // show the error
+                            $j(' #job-create-message span').html('<strong>Error</strong> - ' + data.message);
+                            $j(' #job-create-message ').addClass('alert-error').removeClass('alert-success').show();
+                            $j(' .parameters ').show();
+                        }
+                        if (data.type == 'email') {
+                            $j(' #email-group ').addClass('error');
+                            $j(' #email-group .help-inline ').html(data.message).show();            
+                        }
+                        if (data.type == 'fasta') {
+                            $j(' #fasta-group ').addClass('error');
+                            $j(' #fasta-group .help-inline ').html(data.message).show();
+                        }
+                        if (data.type == 'job-name') {
+                            $j(' #job-name-group ').addClass('error');
+                            $j(' #job-name-group .help-inline ').html(data.message).show();
+                        }
+                        if (data.type == 'email-subject') {
+                            $j(' #email-subject-group ').addClass('error');
+                            $j(' #email-subject-group .help-inline ').html(data.message).show();
+                        }
+                        if (data.type == 'header') {
+                            $j(' #header-group ').addClass('error');
+                            $j(' #header-group .help-inline ').html(data.message).show();
+                        }
+                        if (data.type == 'throttle') {
+                            $j(' #job-create-message span').html('<strong>Error</strong> - ' + data.message);
+                            $j(' #job-create-message ').addClass('alert-error').removeClass('alert-success').show();
+                        }
+                    }
+                    else {
+                        // unspecified error
+                        $j(' #job-create-message span').html('<strong>Error</strong> - ' + data.message);
+                        $j(' #job-create-message ').addClass('alert-error').removeClass('alert-success').show();
+                    }
+                }
+            });
+            
+            }
+        else {
+            // post the data to the api to create the fatcat job
+            
+            $j.post('/api/fatcat/', {
+                'fasta': $j(' #fasta-input ').val(),
+                'email': $j(' #email-input ').val(),
+                'email-subject': $j(' #email-subject-input ').val(),
+                'job-name': $j(' #job-name-input ').val(),
+                'header': $j(' #header-input ').val(),
+                'stage-one-eval': $j(' #stage1-evalue-input ').val(),
+                'stage-one-mda-qcov': $j(' #stage1-mda-qcov-input ').val(),
+                'stage-one-pfam-qcov': '1',
+                'stage-one-mda-hcov': $j(' #stage1-mda-hcov-input ').val(),
+                'stage-one-pfam-hcov': $j(' #stage1-pfam-hcov-input ').val(),
+                'stage-two-eval': $j(' #stage2-evalue-input ').val(),
+                'stage-two-mda-qcov': $j(' #stage2-mda-qcov-input ').val(),
+                'stage-two-pfam-qcov': '1',
+                'stage-two-mda-hcov': $j(' #stage2-mda-hcov-input ').val(),
+                'stage-two-pfam-hcov': $j(' #stage2-pfam-hcov-input ').val(),
+                'query-hmm-pid': $j(' #stage2-query-hmm-input ').val(),
+                'subtree-min-pid': $j(' #stage2-subtree-pid-input ').val(),
+                'ec-checkboxes': ec,
+                'ec-orthology-number': $j('.enclosing-clade-group select').val(),
+                'ec-kerf-threshold': $j('#stage2-ec-kerf-threshold-input').val(),
+                'cluster-similarity': '97',
+                'ortholog-coverage': $j(' #stage3-ocov-input ').val(),
+                'query-coverage': $j(' #stage3-qcov-input ').val(),
+                'minimum-pid-for-orthology': $j(' #stage3-query-ortholog-pid-input ').val(),
+                'consensus-uniprot-description-base-parameter': $j(' #stage4-uniprot-base-input ').val(),
+                'consensus-uniprot-threshold-high': $j(' #stage4-uniprot-high-input ').val(),
+                'consensus-uniprot-threshold-medium': $j(' #stage4-uniprot-medium-input ').val()
+            }, function(data) {
+                // api create callback function
+                if (data.id) {
+                    window.location = '/phylofacts/fatcat/' + data.id + '/';
+                }
+                else {
+                    if (data.status == 'error') {
+                        if (data.type == 'parameter') {
+                            // show the error
+                            $j(' #job-create-message span').html('<strong>Error</strong> - ' + data.message);
+                            $j(' #job-create-message ').addClass('alert-error').removeClass('alert-success').show();
+                            $j(' .parameters ').show();
+                        }
+                        if (data.type == 'email') {
+                            $j(' #email-group ').addClass('error');
+                            $j(' #email-group .help-inline ').html(data.message).show();            
+                        }
+                        if (data.type == 'fasta') {
+                            $j(' #fasta-group ').addClass('error');
+                            $j(' #fasta-group .help-inline ').html(data.message).show();
+                        }
+                        if (data.type == 'job-name') {
+                            $j(' #job-name-group ').addClass('error');
+                            $j(' #job-name-group .help-inline ').html(data.message).show();
+                        }
+                        if (data.type == 'email-subject') {
+                            $j(' #email-subject-group ').addClass('error');
+                            $j(' #email-subject-group .help-inline ').html(data.message).show();
+                        }
+                        if (data.type == 'header') {
+                            $j(' #header-group ').addClass('error');
+                            $j(' #header-group .help-inline ').html(data.message).show();
+                        }
+                        if (data.type == 'throttle') {
+                            $j(' #job-create-message span').html('<strong>Error</strong> - ' + data.message);
+                            $j(' #job-create-message ').addClass('alert-error').removeClass('alert-success').show();
+                        }
+                    }
+                    else {
+                        // unspecified error
+                        $j(' #job-create-message span').html('<strong>Error</strong> - ' + data.message);
+                        $j(' #job-create-message ').addClass('alert-error').removeClass('alert-success').show();
+                    }
+                }
+            });
+        }
+        $j(' .submitting-indicator ').hide();
+    });
+    // click handler for automatic parameter generation
+    $j(' .params-auto button ').click(function() {
+        $j(this).siblings().removeClass('btn-info').removeClass('active');
+        $j(this).addClass('btn-info').addClass('active');
+        if ($j(this).val() == 'precision') {setParametersForPrecision();}
+        else if ($j(this).val() == 'recall') {setParametersForRecall();}
+        else if ($j(this).val() == 'fragments') {setParametersForFragments();}
+        else if ($j(this).val() == 'remote') {setParametersForRemoteHomologs();}
+        else {setParametersForRecall();}
+    });
+    // click handler for checkboxes
+    $j('.checkboxes input[type=checkbox]').click(function(e) {
+        var checked = $j('.enclosing-clade-group input[type=checkbox]:checked').length;
+        if (checked == 0) {e.preventDefault(); return {};}
+        var curVal = ($j('.enclosing-clade-group select').val() > checked) ? checked : parseInt($j('.enclosing-clade-group select').val());
+        $j('.enclosing-clade-group select option').remove();
+        for(var i=0;i<checked;i++) {
+            $j('.enclosing-clade-group select').append('<option value="' + (i + 1) + '">' + (i + 1) + '</option>');
+            if (i == curVal - 1) {$j('.enclosing-clade-group select>option:eq(' + i + ')').attr('selected', true);
+            }
+        }
+    });
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class='left-logo'>
+        <h2 class="fatcat-title">FAT-CAT: Fast Approximate Tree Classification</h2>
+        <!--<p><a href="/static/doc/FATCAT_Quickstart.pdf">Quickstart guide</a>&nbsp;&nbsp;&nbsp;<a href='/static/doc/FATCAT_Tutorial.pdf'>FAT-CAT Tutorial</a>&nbsp;&nbsp;&nbsp;<a href="/static/doc/benchmarking.pdf">Benchmarking</a></p>-->
+        <p style="font-size:8pt;text-align:center">A DOE Knowledgebase Webserver</p>
+        
+        <p>The FAT-CAT webserver uses subtree HMM scoring to place user sequences into pre-calculated phylogenetic trees in PhyloFacts, from which orthologs are identified and function is predicted. <!--FAT-CAT is supported by a grant from the Department of Energy Division of Biological and Environmental Research.--> Some results can take hours to complete; we recommend that you provide your email address or bookmark the results page.</p>
+        <p style="text-align:center""><a href="/phylofacts/fatcat/about/">About FAT-CAT</a> | <a href="/phylofacts/fatcat/precalc/">Pre-calculated results</a> | <a href="/phylofacts/fatcat/supplementary/">Supplementary Materials</a></p>
+        
+        <!--<p>FAT-CAT is a server for for functional annotation and ortholog identification of protein sequences. <a href="/phylofacts/fatcat/about/">About the FAT-CAT pipeline</a>. View <a href="/phylofacts/fatcat/precalc">precalculated results</a>.</p>
+        <p>We recommend that you provide your email address or bookmark the results page, as some results may take minutes to hours to complete.</p>-->
+    </div>
+    <div class='right-logo'>
+        <img src='/static/img/logos/fatcat_logo_with_tree.jpg' style='width:175px;'>
+    </div>
+    <hr>
+    <div class='control-group' id='header-group'>
+        <label class='control-label' for='header-input'>Sequence header (max 100 characters)</label>
+        <div class='controls'>
+            <input type='text' id='header-input'>
+            <span class='help-inline'></span>
+        </div>
+    </div>
+    <div class='control-group' id='fasta-group'>
+        <label class='control-label' for='fasta-input'>Protein sequence<br />(max 2000 amino acids, no header) <span class='require'>*</span></label>
+        <div class='controls'>
+            <textarea id='fasta-input' rows='5'></textarea>
+            <span class='help-inline'></span>
+        </div>
+    </div>
+    <div class='control-group' id='email-group'>
+        <label class='control-label' for='email-input'>Email (optional)</label>
+        <div class='controls'>
+            <input type='text' id='email-input'>
+            <span class='help-inline'></span>
+        </div>
+    </div>
+    <div class='control-group' id='email-subject-group'>
+        <label class='control-label' for='email-subject-input'>Email subject (max 100 characters)</label>
+        <div class='controls'>
+            <input type='text' id='email-subject-input'>
+            <span class='help-inline'></span>
+        </div>
+    </div>
+    <div class='control-group' id='job-name-group'>
+        <label class='control-label' for='job-name-input'>Comments (max 200 characters)</label>
+        <div class='controls'>
+            <textarea id='job-name-input' rows='2'></textarea>
+            <span class='help-inline'></span>
+        </div>
+    </div>
+    <div class='alert hide' id='job-create-message'>
+        <button type='button' class='close' data-dismiss='alert'>&times;</button>
+        <span></span>
+    </div>
+    <div class='form-submission-buttonset'>
+        <button type="button" class='btn' id='example-input'>Sample Input Data</button>
+        <button type="button" class='btn btn-primary' id='fatcat-submit'>Submit</button>
+        <span class='submitting-indicator'></span>
+    </div>
+    <label class='checkbox' style='float:left;'>
+        <input type='checkbox' id='fast-cat-checkbox' style='font-size:11px; float:left;width:30px;'>Beta test FAST-CAT: faster results and slightly different features
+    </label>
+    <hr>
+        <div class='params-line-1'>
+            <span class='params-text'>Parameter presets: </span> 
+            <div class='btn-group params-auto' data-toggle='buttons-radio'>
+                <button class='btn btn-info active' type='button' value='recall' title='May include some paralogs but unlikely to miss many orthologs'>High recall</button>
+                <button class='btn' type='button' value='precision' title='May miss true orthologs but minimize paralog inclusion'>High precision</button>
+                <button class='btn' type='button' value='remote'>Remote homologs</button>
+                <button class='btn' type='button' value='fragments'>Partial sequence</button>
+            </div>
+        </div>
+
+		<div id='params-presets-explanation'></div>
+
+		<div class='params'><a href='javascript:;' class='jqts' data-linkto='.parameters'><i class='icon-plus'></i> View parameters/modify parameters manually</a></div>
+
+		<div class='parameters'>
+		
+        <p class='params-line-2'>The stages of the FAT-CAT pipeline are described in detail <a href='about'>here</a>.</p>
+        
+        <div class='stage'>
+            <h4>Stage 1 Parameters: Family HMM Searches</h4>
+            <p class='stage-special'>These parameters control the precision and recall of Stage 1 family HMM searches.</p>
+            <div class='substage'>
+                <div class='control-group' id='stage1-evalue-group'>
+                    <label class='control-label' for='stage1-evalue-input'><strong>Family HMM E-Value</strong></label>
+                    <div class='controls'>
+                        <input type='text' id='stage1-evalue-input' value='1e-6'>
+                        <span class='help-inline'></span>
+                    </div>
+                </div>
+                <p><strong>Fraction of the query that matches an HMM</strong></p>
+                <div class='control-group' id='stage1-mda-qcov-group'>
+                    <label class='control-label' for='stage1-mda-qcov-input'><strong>MDA HMMs</strong></label>
+                    <div class='controls'>
+                        <input type='text' id='stage1-mda-qcov-input' value='70'>
+                    </div>
+                    <span class='post-percent'>%</span>
+                </div>
+                <p><strong>Fraction of the HMM that matches the query</strong></p>
+                <div class='control-group' id='stage1-mda-hcov-group'>
+                    <label class='control-label' for='stage1-mda-hcov-input'><strong>MDA HMMs</strong></label>
+                    <div class='controls'>
+                        <input type='text' id='stage1-mda-hcov-input' value='70'>
+                    </div>
+                    <span class='post-percent'>%</span>
+                </div>
+                <div class='control-group' id='stage1-pfam-hcov-group'>
+                    <label class='control-label' for='stage1-pfam-hcov-input'><strong>Pfam HMMs</strong></label>
+                    <div class='controls'>
+                        <input type='text' id='stage1-pfam-hcov-input' value='70'>
+                    </div>
+                    <span class='post-percent'>%</span>
+                </div>
+            </div>
+        </div>
+        <div class='stage'>
+            <h4>Stage 2 Parameters: Subtree HMM scoring and phylogenetic placement</h4>
+            <p>These parameters control the precision and recall of Stage 2 subtree HMM searches and the definition of the Enclosing Clade of presumed orthologs.</p>
+            <div class='control-group' id='stage2-evalue-group'>
+                <label class='control-label' for='stage2-evalue-input'><strong>Maximum E-Value</strong></label>
+                <div class='controls'>
+                    <input type='text' id='stage2-evalue-input' value='1e-4'>
+                    <span class='help-inline'></span>
+                </div>
+            </div>
+            <div class='substage'>
+                <h5>Stage 2.3: Subtree HMM alignment evaluation (between the query and the TSN HMM)</h5>
+                <div class='stage2-controls'>
+                    <p><strong>Fraction of the query that matches an HMM</strong></p>
+                    <div class='control-group' id='stage2-mda-qcov-group'>
+                        <label class='control-label' for='stage2-mda-qcov-input'><strong>MDA HMMs</strong></label>
+                        <div class='controls'>
+                            <input type='text' id='stage2-mda-qcov-input' value='70'>
+                        </div>
+                        <span class='post-percent'>%</span>
+                    </div>
+                    <p><strong>Fraction of the HMM that matches the query</strong></p>
+                    <div class='control-group' id='stage2-mda-hcov-group'>
+                        <label class='control-label' for='stage2-mda-hcov-input'><strong>MDA HMMs</strong></label>
+                        <div class='controls'>
+                            <input type='text' id='stage2-mda-hcov-input' value='70'>
+                        </div>
+                        <span class='post-percent'>%</span>
+                    </div>
+                    <div class='control-group' id='stage2-pfam-hcov-group'>
+                        <label class='control-label' for='stage2-pfam-hcov-input'><strong>Pfam HMMs</strong></label>
+                        <div class='controls'>
+                            <input type='text' id='stage2-pfam-hcov-input' value='70'>
+                        </div>
+                        <span class='post-percent'>%</span>
+                    </div>
+                </div>
+                <div class='control-group' id='stage2-query-hmm-group'>
+                    <label class='control-label' for='stage2-query-hmm-input'><strong>Minimum % ID between query</strong><br /><strong>&nbsp;&nbsp;&nbsp;&nbsp;and subtree HMM consensus</strong></label>
+                    <div class='controls'>
+                        <input type='text' id='stage2-query-hmm-input' value='60'>
+                    </div>
+                    <span class='post-percent'>%</span>
+                </div>
+            </div>
+            <div class='substage'>
+                <h5>Stage 2.4.1: Tolerated divergence among sequences in the TSN</h5>
+                <div class='control-group' id='stage2-subtree-pid-group'>
+                    <label class='control-label' for='stage2-subtree-pid-input'><strong>Minimum pairwise % ID between sequences in subtree</strong></label>
+                    <div class='controls'>
+                        <input type='text' id='stage2-subtree-pid-input' value='70'>
+                    </div>
+                    <span class='post-percent'>%</span>
+                </div>
+            </div>
+            <div class='substage ecg'>
+                <h5>Stage 2.4.2: Enclosing Clade Criteria</h5>
+                <p class='ecg'>Expand the TSN to the largest Enclosing Clade supported by orthology methods selected below.</p>
+                <p class='ecg ind'><em>For highest precision</em>, check all orthology methods, and require all to support an Enclosing Clade.</p>
+                <p class='ecg ind'><em>For highest recall</em>, check all orthology methods, and require 1 to support an Enclosing Clade.</p>
+                <div class='enclosing-clade-group'>
+                    <p>Require any <select><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option></select> of the following orthology method(s) to support an Enclosing Clade:</p>
+                    <div class='checkboxes'>
+                        <label class='checkbox'>
+                            <input type='checkbox' value='phog' checked>PHOG-T(0)
+                        </label>
+                        <div class='checkbox-line'> 
+                            <label class='checkbox'>
+                                <input type='checkbox' value='kerf'checked>Kerf
+                            </label>
+                            <p><strong>, threshold:</strong></p><input id='stage2-ec-kerf-threshold-input' type='text' value='70'><p style='font-weight:normal;'>% identity</p>
+                        </div>
+                        <label class='checkbox'>
+                            <input type='checkbox' value='oma' checked>Subtree Bracketing of OMA
+                        </label>
+                        <label class='checkbox'>
+                            <input type='checkbox' value='orthomcl'>Subtree Bracketing of OrthoMCL
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='stage'>
+            <h4>Stage 3 Parameters: Ortholog Selection</h4>
+            <p>Adjust these parameters to modify which sequences are considered orthologs to your query.</p>
+            <div class='substage'>
+                <h5>Stage 3.1: Alignment analysis</h5>
+                <div class='control-group' id='stage3-query-ortholog-pid-group'>
+                    <label class='control-label' for='stage3-query-ortholog-pid-input'><strong>Minimum % ID between query and candidate ortholog</strong></label>
+                    <div class='controls'>
+                        <input type='text' id='stage3-query-ortholog-pid-input' value='70'>
+                    </div>
+                    <span class='post-percent'>%</span>
+                </div>
+                <div class='control-group' id='stage3-qcov-group'>
+                    <label class='control-label' for='stage3-qcov-input'><strong>Query coverage</strong></label>
+                    <div class='controls'>
+                        <input type='text' id='stage3-qcov-input' value='75'>
+                    </div>
+                    <span class='post-percent'>%</span>
+                </div>
+                <div class='control-group' id='stage3-ocov-group'>
+                    <label class='control-label' for='stage3-ocov-input'><strong>Candidate ortholog coverage</strong></label>
+                    <div class='controls'>
+                        <input type='text' id='stage3-ocov-input' value='75'>
+                    </div>
+                    <span class='post-percent'>%</span>
+                </div>
+            </div>
+            {% comment %}
+            <hr>
+            <div class='substage'>
+                <h5>Stage 3.2: Sequence clustering</h5>
+                <div class='control-group' id='stage3-cluster-similarity-group'>
+                    <label class='control-label' for='stage3-cluster-similarity-input'><strong>Maximum % ID divergence per homolog cluster</strong></label>
+                    <div class='controls'>
+                        <input type='text' id='stage3-cluster-similarity-input' value='5'>
+                    </div>
+                </div>
+            </div>
+            {% endcomment %}
+        </div>
+        {% if user.is_staff %}
+        <div class='stage'>
+            <h4>Stage 4 Parameters: Derive predicted function</h4>
+            <p>Adjust these parameters to modify how annotations are transferred from the putative orthologs to your query.</p>
+            <div class='substage'>
+                <h5>Consensus UniProt Description</h5>
+                <div class='control-group' id='stage4-uniprot-base-group'>
+                    <label class='control-label' for='stage4-uniprot-base-input'><strong>Consensus UniProt description base parameter</strong></label>
+                    <div class='controls'>
+                        <input type='text' id='stage4-uniprot-base-input' value='66'>
+                    </div>
+                </div>
+                <div class='control-group' id='stage4-uniprot-high-group'>
+                    <label class='control-label' for='stage4-uniprot-high-input'><strong>Minimum score for high confidence</strong></label>
+                    <div class='controls'>
+                        <input type='text' id='stage4-uniprot-high-input' value='70'>
+                    </div>
+                </div>
+                <div class='control-group' id='stage4-uniprot-medium-group'>
+                    <label class='control-label' for='stage4-uniprot-medium-input'><strong>Minimum score for medium confidence</strong></label>
+                    <div class='controls'>
+                        <input type='text' id='stage4-uniprot-medium-input' value='40'>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <input type='hidden' id='stage4-uniprot-base-input' value='66'>
+        <input type='hidden' id='stage4-uniprot-high-input' value='70'>
+        <input type='hidden' id='stage4-uniprot-medium-input' value='40'>
+        {% endif %}
+    </div>
+{% endblock %}

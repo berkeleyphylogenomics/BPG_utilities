@@ -1,0 +1,124 @@
+{% extends "common/base.html" %}
+{% load get_range %}
+{% block extrastyle %}
+<style type='text/css'>
+.alignment {
+    font-size: 0.8em;
+    font-family: monospace;
+    border-collapse: collapse;
+}
+.alignment .name {
+    text-align: left;
+    padding: 0 1em;
+    border-right: 1px solid black;
+}
+.alignment .start {
+    text-align: right;
+    padding: 0 0.5em;
+    border-right: 1px solid black;
+}
+.alignment .stop {
+    text-align: left;
+    padding: 0 0.5em;
+    border-left: 1px solid black;
+}
+.alignment .stop {
+    text-align: right;
+    padding: 0 0.5em;
+    border-right: 1px solid black;
+}
+.alignment .spacer {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.alignment td {
+    padding: 0;
+    text-align: center;
+}
+
+/* belvu colors */
+.align_high {background-color: #0fffff;}
+.align_moderate {background-color: #56b2de;}
+.align_low {background-color: #c8c8c8;}
+</style>
+{% endblock %}
+{% block content %}
+<h2>Pairwise HMM alignment</h2>
+{% if error_message %}
+<br /><h3>{{ error_message }}</h3>
+{% else %}
+<div>
+<p>
+<table border="0" align="left" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="right" valign="top">Query:&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="alignment_title">{{ query_title }}{% if query_length %}, &nbsp;Length: {{ query_length }}aa{% endif %}</td>
+  </tr>
+  <tr>
+    <td colspan="3" height="5"></td>
+  </tr>
+  <tr>
+    <td align="right" valign="top">Subject:&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="alignment_title">{{ subject_title }},&nbsp;&nbsp; {{ subject_description }}{% if subject_length %}&nbsp;&nbsp; Length: {{ subject_length }}aa{% endif %}</td>
+  </tr>
+  <tr>
+    <td colspan="3" height="20"></td>
+  </tr>
+  <tr>
+    <td colspan="3">Alignment statistics:</td>
+  </tr>
+  <tr>
+    <td colspan="3">&nbsp;&nbsp;HMM&nbsp;E-value:&nbsp; <span class="alignment_title">{{ e_value }}</span></td>
+  </tr>
+  <tr>
+    <td colspan="3">&nbsp;&nbsp;HMM&nbsp;Bit&nbsp;Score:&nbsp; <span class="alignment_title">{{ score }}</span></td>
+  </tr>
+  <tr>
+    <td colspan="3">&nbsp;&nbsp;Identities:&nbsp; {{ identities }}</td>
+  </tr>
+  <tr>
+    <td colspan="3">&nbsp;&nbsp;Positives:&nbsp; {{ positives }}</td>
+  </tr>
+  <tr>
+    <td colspan="3">&nbsp;&nbsp;Aligned Region:&nbsp; Query [{{ query_region }}], Subject [{{ subject_region }}]</td>
+  </tr>
+  <tr>
+    <td colspan="3" height="20"></td>
+  </tr>
+</table>
+</p>
+</div>
+<div align='bottom'>
+<p>
+&nbsp;
+</p>
+<p>
+<table class='alignment'>
+<tr>
+  <td class='name'>Query: </td>
+  {% for spec in query_specs %}
+    <td {% if spec.class %}
+              class='{{ spec.class }}'
+        {% endif %}
+    >{{ spec.residue }}</td>
+  {% endfor %}
+</tr>
+<tr>
+  <td class='spacer' colspan='{{ alignment_length|add:'1' }}'>&nbsp;</td>
+</tr>
+<tr>
+  <td class='name'>Subject: </td>
+  {% for spec in subject_specs %}
+    <td {% if spec.class %}
+              class='{{ spec.class }}'
+        {% endif %}
+    >{{ spec.residue }}</td>
+  {% endfor %}
+</tr>
+</table>
+</p>
+</div>
+{% endif %}
+{% endblock %}

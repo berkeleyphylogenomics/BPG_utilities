@@ -1,0 +1,25 @@
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr><td>Cluster : Size</td><td>Identifier</td><td>Description</td><td>Species</td><td>Family</td><td>% ID</td><td>Kerf</td><td>PHOG</td><td>OMA</td><td>OrthoMCL</td><td>MSA</td></tr>
+    </thead>
+    <tbody>
+        {% for ortholog in job.orthologs %}
+            <tr>
+                <td><a href="javascript:;">{{ forloop.counter }} : {{ ortholog|length }}</a></td>
+                <td><a href="/phylofacts/sequence/UniProt/{{ ortholog.0.0.uniprot_identifier }}">{{ ortholog.0.0.uniprot_identifier }}</a></td>
+                <td>{{ ortholog.0.0.description }}</td>
+                <td><a {% if ortholog.0.0.taxon.common_name %}class="tip" title="{{ ortholog.0.0.taxon.common_name }}" {% endif %}href="http://www.uniprot.org/taxonomy/{{ortholog.0.0.taxon.id}}">{{ ortholog.0.0.taxon.scientific_name }}</a></td>
+                <td><a href="/phylofacts/family/{{ ortholog.0.0.family }}/">{{ ortholog.0.0.family }}</a></td>
+                <td>{{ ortholog.0.0.pwid_to_query|floatformat:1 }}</td>
+                <td>{% if ortholog.0.0.orthology_support.kerf70 %}<i class="icon-ok"></i>{% endif %}</td>
+                <td>{% if ortholog.0.0.orthology_support.phogt0 %}<i class="icon-ok"></i>{% endif %}</td>
+                <td>{% if ortholog.0.0.orthology_support.oma %}<i class="icon-ok"></i>{% endif %}</td>            
+                <td>{% if ortholog.0.0.orthology_support.orthomcl %}<i class="icon-ok"></i>{% endif %}</td>            
+                <td>
+                   <input type="button" name="Button{{forloop.counter}}" value="View"
+                    onClick="startJalview({{ortholog.0.0.alignment}}, 'Ortholog: {{ortholog.0.0.uniprot_identifier}} alignment to query','alwvar')" />                       
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,72 @@
+{% extends 'common/base.html' %}
+
+{% block extrastyle %}
+ <link rel="stylesheet" href="/static/css/jquery.qtip.css" type="text/css" media="screen">
+<style>
+#footer {
+    height: 250px;
+}
+.fasta_line { display: none; }
+</style>
+{% endblock %}
+
+{% block extrascripts %}
+<script type="text/javascript" src="/static/js/jquery.titlealert.js" ></script>
+{% endblock %}
+
+{% block title %}Phylofacts FAT-CAT{% endblock %}
+
+{% block content %}
+<script>
+// global variable for which job we are.
+id = {{ job.id }};
+
+
+function update() {
+    $.get('/api/fatcat/' + id, {}, function(data) {
+        $("#progressbar" ).progressbar("value", data.status_id * (100 / 9));
+        $("#status").text(data["status"]);
+        //TODO set this higher
+        if (data["status_id"] < 9) {
+            // Not Complete, update the page again for them
+            setTimeout(update, 10000);
+        } else {
+            location.reload(true);
+        }
+    });
+}
+
+$(function() {
+    $( "#progressbar" ).progressbar({
+        value: {{ job.status_id }} * (100 / 9)
+    });
+    update();
+    $("#fasta_header").click(function() { $(".fasta_line").toggle("slow"); });
+});
+</script>
+<div id="fatcat">
+    <div id="title">
+        <h1>FAT-CAT Fast Approximate Tree ClassificATion</h1>
+    </div>
+    <div id="progress">
+        <div id="progressbar"></div>
+        <p id="status">
+            {{job.status.status}}
+            {% if job.status_id == 9 %}
+                <span class="loading">Please wait while your results load. </span>
+            {% endif %}
+        </p>
+    </div>
+    <div id="fasta">
+        Input: <a id="fasta_header" href="javascript:;">{{ job.fasta_header }}</a>
+        {% for line in fasta_sequence %}
+            <p class="fasta_line">{{ line }}</p>
+        {% endfor %}
+    </div>
+
+
+    <div id="results"></div>
+</div>
+
+<div id="footer">&nbsp;</div>
+{% endblock %}

@@ -1,0 +1,161 @@
+{% extends "phog/phog_base.html" %}
+
+{% block title %}About PhyloFacts Orthologs{% endblock %}
+
+{% block content %}
+
+<TABLE>
+<TR>
+<TD WIDTH=40></TD>
+<TD>
+<!--Section Begins--><br>
+
+
+
+<p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<b></b>
+</p></div>
+
+
+
+<p><div name="Normal" align="center" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: center; line-height: 4.166667mm; color: Black; background-color: White; ">
+<b>About PHOG: PhyloFacts Orthology Groups</b>
+</p></div>
+
+
+
+<p><div name="Normal" align="center" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: center; line-height: 4.166667mm; color: Black; background-color: White; ">
+Ruchira Datta, Chris Meacham, and Kimmen Sj&ouml;lander
+</p></div>
+
+
+
+<p><div name="Normal" align="center" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: center; line-height: 4.166667mm; color: Black; background-color: White; ">
+QB3 Institute, Department of Bioengineering, and Department of Plant and Microbial Biology
+</p></div>
+
+
+
+<p><div name="Normal" align="center" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: center; line-height: 4.166667mm; color: Black; background-color: White; ">
+University of California, Berkeley
+</p></div>
+
+
+
+<p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+
+</p></div>
+
+
+
+<p><div name="Normal" align="left" style="margin: 0.00mm 0.00mm 1.39mm 0.00mm;  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+PHOG is a method for identifying orthologs that makes use of phylogenetic trees
+in the PhyloFacts resource (Krishnamurthy et al, <i>Genome Biology</i> 2006;
+Glanville et al, <i>NAR</i> 2007). 
+</p></div>
+
+
+<p class="text_section_body">
+If you use PHOG, please cite:
+</p>
+
+<ul class="list">
+
+<li>
+Ruchira S. Datta, Christopher Meacham, Bushra Samad, Christoph Neyer, Kimmen
+Sj&ouml;lander,<br>
+<a
+href="http://nar.oxfordjournals.org/cgi/content/full/gkp373?ijkey=KU8e1DWUbzb70Yz&keytype=ref"><i>Berkeley
+PHOG: PhyloFacts orthology group prediction web server</i></a>, <a
+href="http://nar.oxfordjournals.org/">Nucleic Acids Research</a> 2009; doi:
+10.1093/nar/gkp373
+</li>
+
+</ul>
+
+<p><div name="Normal" align="left" style="margin: 0.00mm 0.00mm 1.39mm 0.00mm;  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<b>Webserver usage</b>: The input form displays a text box for inputting a
+UniProt/SwissProt/GenBank accession or identifier. The result is a table of
+predicted orthologs with a variety of data for each ortholog; results can also
+be downloaded. The submitted sequence ID or accession is matched to
+pre-calculated orthology groups in PhyloFacts, identified as follows:  For each
+tree in PhyloFacts, we first compute the tree distances between all pairs of
+leaves. We then define a <i>Reciprocal Smallest Distance</i> (RSD) ortholog
+pair as two genes from different species that are each other's closest
+neighbors in the tree. A maximal subtree that contains only RSD orthologs,
+having at most one representative of each species (allowing inparalogs), is
+then labeled as a <i>PhyloFacts Orthology Group</i> (PHOG). 
+</p></div>
+
+
+
+<p><div name="Normal" align="left" style="margin: 0.00mm 0.00mm 1.39mm 0.00mm;  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<b>Comparisons on a small benchmark of 100 human proteins</b>: We compared PHOG to InParanoid and TreeFam-A (the manually curated section of TreeFam), using each in turn to define a benchmark set of orthologs to evaluate the others. We took 100 human genes at random from TreeFam-A for which InParanoid orthologs included at least one representative from either mouse, <i>Drosophila melanogaster</i>, or <i>C.elegans</i> (species included in TreeFam-A) to the human gene. For each human gene, we retrieved all corresponding PhyloFacts PHOGs, and identified orthologs from these three species. For each orthology identification method, predicted orthologs in these three species that were included in the benchmark were called <i>True Positives, </i>and<i> </i>predicted orthologs that were <i>not</i> labelled as orthologous in the benchmark were called <i>False Positives</i>. Using TreeFam-A as a benchmark, PHOG has 52% recall at 33% precision, while InParanoid has 77% recall at 25% precision. Using InParanoid as a benchmark, TreeFam-A has 25% recall at 77% precision, and PHOG has 48% recall at 95% precision. 
+</p></div>
+
+
+
+<p><div name="Normal" align="left" style="margin: 0.00mm 0.00mm 1.39mm 0.00mm;  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<b>Conclusions</b>: These experiments show that PHOG appears to strike a reasonable balance between recall and precision: most of the PHOG orthologs for these species are also found by InParanoid, with PHOG having lower recall but also fewer false positive predictions than InParanoid when evaluated against TreeFam-A, and higher recall and precision than TreeFam-A when InParanoid is used as a benchmark. It is important to recall, however, that these experiments only tested orthology predictions for species included by PHOG, TreeFam and InParanoid. PHOG includes many more species than either InParanoid or TreeFam, including primitive eukaryotes, plants, fungi, and prokaryotes. 
+</p></div>
+
+
+
+<p><div name="Normal" align="left" style="margin: 0.00mm 0.00mm 1.39mm 0.00mm;  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+
+</p></div>
+
+<!--Section Ends-->
+</TD>
+<TD WIDTH=40></TD>
+</TR>
+</TABLE>
+
+
+
+<!--
+<hr>
+<address>
+<a href="http://wvware.sourceforge.net/"><img
+src="wvSmall.gif" height=31 width=47
+align=left border=0 alt="wvWare"></a>
+<a href="http://validator.w3.org/check/referer"><img
+src="vh40.gif" height=31 width=88
+align=right border=0 alt="Valid HTML 4.0!"></a>
+Document created with <a href="http://wvware.sourceforge.net/">wvWare/wvWare version 1.2.4</a><br>
+</address>
+<a href="http://wvware.sourceforge.net/"><img
+src="wvSmall.gif" height=31 width=47
+align=left border=0 alt="wvWare"></a>
+<a href="http://validator.w3.org/check/referer"><img
+src="vh40.gif" height=31 width=88
+align=right border=0 alt="Valid HTML 4.0!"></a>
+Document created with <a href="http://wvware.sourceforge.net/">wvWare/wvWare version 1.2.4</a><br>
+</address>
+-->
+</body>
+</html>
+
+{% endblock content %}

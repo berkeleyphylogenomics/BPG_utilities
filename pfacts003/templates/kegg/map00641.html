@@ -1,0 +1,79 @@
+{% extends "kegg/map_base.html" %}
+
+{% block node_overlay %}
+  .node_4_1_1___instance_0
+    { position: absolute;
+      left: 223px; top: 412px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+  .node_3_8_1_5_instance_0
+    { position: absolute;
+      left: 155px; top: 153px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+  .node_3_8_1_5_instance_1
+    { position: absolute;
+      left: 290px; top: 153px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+  .node_1_2_1_3_instance_0
+    { position: absolute;
+      left: 290px; top: 285px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+  .node_1_2_1_3_instance_1
+    { position: absolute;
+      left: 155px; top: 285px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+  .node_1_1_1_1_instance_0
+    { position: absolute;
+      left: 155px; top: 214px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+  .node_1_1_1_1_instance_1
+    { position: absolute;
+      left: 290px; top: 214px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+{% endblock %}
+{% block mapdata %}
+<area shape=circle	coords=312,263,4	href="/dbget-bin/www_bget?C16348"	title="C16348 (cis-3-Chloroallyl aldehyde)" />
+<area shape=circle	coords=178,263,4	href="/dbget-bin/www_bget?C06613"	title="C06613 (trans-3-Chloroallyl aldehyde)" />
+<area shape=circle	coords=312,139,4	href="/dbget-bin/www_bget?C06610"	title="C06610 (cis-1,3-Dichloropropene)" />
+<area shape=circle	coords=178,195,4	href="/dbget-bin/www_bget?C06611"	title="C06611 (trans-3-Chloro-2-propene-1-ol)" />
+<area shape=circle	coords=178,331,4	href="/dbget-bin/www_bget?C06614"	title="C06614 (trans-3-Chloroacrylic acid)" />
+<area shape=circle	coords=245,459,4	href="/dbget-bin/www_bget?C00084"	title="C00084 (Acetaldehyde)" />
+<area shape=circle	coords=245,387,4	href="/dbget-bin/www_bget?C00222"	title="C00222 (3-Oxopropanoate)" />
+<area shape=circle	coords=312,195,4	href="/dbget-bin/www_bget?C06612"	title="C06612 (cis-3-Chloro-2-propene-1-ol)" />
+<area shape=circle	coords=178,139,4	href="/dbget-bin/www_bget?C06609"	title="C06609 (trans-1,3-Dichloropropene)" />
+<area shape=circle	coords=312,331,4	href="/dbget-bin/www_bget?C06615"	title="C06615 (cis-3-Chloroacrylic acid)" />
+<area shape=rect	coords=290,214,336,231	href="/dbget-bin/www_bget?K00001+K00121+K04072+1.1.1.1+R05234"	title="K00001 (E1.1.1.1), K00121 (frmA), K04072 (adhE), 1.1.1.1, R05234" />
+<area shape=rect	coords=155,214,201,231	href="/dbget-bin/www_bget?K00001+K00121+K04072+1.1.1.1+R05233"	title="K00001 (E1.1.1.1), K00121 (frmA), K04072 (adhE), 1.1.1.1, R05233" />
+<area shape=rect	coords=290,355,336,372	href="/dbget-bin/www_bget?up:Q6VPE5_9CORY+R05372"	title="Q6VPE5_9CORY, R05372" />
+<area shape=rect	coords=223,412,269,429	href="/dbget-bin/www_bget?4.1.1.-+R06973"	title="4.1.1.-, 4.1.1.-, R06973" />
+<area shape=rect	coords=290,285,336,302	href="/dbget-bin/www_bget?K00128+1.2.1.3+R05238"	title="K00128 (E1.2.1.3), 1.2.1.3, R05238" />
+<area shape=rect	coords=290,153,336,170	href="/dbget-bin/www_bget?K01563+3.8.1.5+R05368"	title="K01563 (E3.8.1.5), 3.8.1.5, R05368" />
+<area shape=rect	coords=155,285,201,302	href="/dbget-bin/www_bget?K00128+1.2.1.3+R05237"	title="K00128 (E1.2.1.3), 1.2.1.3, R05237" />
+<area shape=rect	coords=155,355,201,372	href="/dbget-bin/www_bget?up:Q9EV84_PSEPV+up:Q9EV85_PSEPV+R05371"	title="Q9EV84_PSEPV, Q9EV85_PSEPV, R05371" />
+<area shape=rect	coords=155,153,201,170	href="/dbget-bin/www_bget?K01563+3.8.1.5+R05367"	title="K01563 (E3.8.1.5), 3.8.1.5, R05367" />
+<area shape=rect	coords=186,518,305,544	href="/kegg-bin/show_pathway?map00620"	title="map00620: Pyruvate metabolism" />
+<area shape=rect	coords=40,45,335,70	href="/dbget-bin/www_bget?map00641"	title="map00641: 3-Chloroacrylic acid degradation" />
+{% endblock %}
+{% block color_nodes %}
+  {% if nodes_to_color.4_1_1__ %}
+    <div class="node_4_1_1___instance_0"></div>
+  {% endif %}
+  {% if nodes_to_color.3_8_1_5 %}
+    <div class="node_3_8_1_5_instance_0"></div>
+    <div class="node_3_8_1_5_instance_1"></div>
+  {% endif %}
+  {% if nodes_to_color.1_2_1_3 %}
+    <div class="node_1_2_1_3_instance_0"></div>
+    <div class="node_1_2_1_3_instance_1"></div>
+  {% endif %}
+  {% if nodes_to_color.1_1_1_1 %}
+    <div class="node_1_1_1_1_instance_0"></div>
+    <div class="node_1_1_1_1_instance_1"></div>
+  {% endif %}
+{% endblock %}

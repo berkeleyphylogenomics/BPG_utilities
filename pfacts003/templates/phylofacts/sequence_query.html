@@ -1,0 +1,58 @@
+{% extends 'common/base.html' %}
+{% load get_range %}
+
+{% block extrastyle %}{% endblock %}
+
+{% block extrascripts %}
+  <script type="text/javascript" src="/static/js/sequence_query.js"></script>
+{% endblock %}
+
+{% block title %}Phylofacts Sequence Query Page{% endblock %}
+
+{% block content %}
+
+<!-- Templates -->
+<script type="text/template" id="filter_clause_template">
+<p>
+    <span class="title"><%= this.title %></span> 
+    <span class="operator"><%= this.operator %> </span>
+    <span class="value"><%= this.value %></span>
+    <span class="controls">
+        <a href="javascript:;" id="remove_<%= this.cid %>" class="remove">remove</a>
+    </span>
+</p>
+</script>
+
+<script type="text/template" id="filter_set_template">
+<div class="filter-set">
+    <div id="children_<%= cid %>"></div>
+    <div class="new-filter-set-or-clause">
+        <div class="new-filter-set">
+            <h6>New Filter Set</h6>
+            <label>OR</label> <input type="radio" name="operator" value="OR">
+            <label>AND</label> <input type="radio" name="operator" value="AND">
+            <button id="add_filter_set_<%= cid %>">Add Filter Set</button>
+        </div>
+        <div class="new-filter-clause">
+            <h6>New Filter Clause</h6>
+            <%= filters %>
+            <button id="add_filter_clause_<%= cid %>">Add Filter Clause</button>
+        </div>
+    </div>
+    <a href="javascript:;" id="remove_<%= this.cid %>" class="remove">remove</a>
+</div>
+</script>
+<!-- End Templates -->
+
+
+<div id="query">
+  <div id="query_description"> </div>
+
+  <a href="javascript:;"id="add_orthologs">Add Orthologs</a>
+
+  <a href="javascript:;"id="refresh">Refresh Results Table</a>
+  <div id="results">
+       <table></table> <!-- datatable skeleton -->
+  <div>
+</div>
+{% endblock %}

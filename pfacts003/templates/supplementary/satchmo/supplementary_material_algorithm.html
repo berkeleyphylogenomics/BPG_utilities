@@ -1,0 +1,534 @@
+{% extends "common/legacy_base.html" %}
+
+{% block mid_menu %}{% include "satchmo/mid_menu.html" %}{% endblock %}
+
+{% block app_logo %}<a href='/q/satchmo/'><span>SATCHMO-JS</span></a>{% endblock %}
+{% block statcounter %}{% include "satchmo/statcounter.html" %}{% endblock %}
+
+{% block title %}{% include "satchmo/title.html" %}{% endblock %}
+
+{% block body_title %}SATCHMO-JS Supplementary Material{% endblock %}
+
+{% block extrascripts %}{% endblock %}
+
+{% block extrastyle %}
+<style type='text/css'>
+#content {
+    margin: 0 1em;
+}
+p, caption {
+    line-height: 105%;
+}
+</style>
+{% endblock %}
+
+{# block toplinks #}
+{# include "snippets/menu.html" #}
+{# endblock #}
+
+{% block content %}
+<div>
+    <h3 class="ktitle">Supplementary Material for</h3>
+    <h1 class="ktitle">SATCHMO-JS co-estimation of a multiple sequence alignment and
+            phylogenetic tree under extreme protein structural divergence</h1>
+    <h2 class='ktitle'>Raffi Hagopian, Bushra Samad, Ruchira S. Datta and <b>Kimmen Sj&ouml;lander</b><br />
+    
+    </h2>
+    <h3 class='ktitle'>Please visit the <a href='/q/satchmo/'>SATCHMO-JS webserver</a>.</h3>
+</div>
+
+<h2>Table of Contents</h2>
+<ol id='toc'>
+  <li><a href='#id_intro'>Introduction</a></li>
+  <li><a href='#id_eval'>Evaluation Scores</a>
+      <ol>
+          <li><a href='#id_qdev'><span title='TP / (TP+FN)'>Q_Developer</span></a></li>
+          <li><a href='#id_qmod'><span title='TP / (TP+FP)'>Q_Modeler</span></a></li>
+          <li><a href='#id_clineshift'>Cline Shift</a></li>
+          <li><a href='#id_qcom'>Q_Combined</a></li>
+      </ol>
+  </li>
+  <li><a href='#id_downloads'>Datasets Used in Validation Experiments And Other Downloads</a></li>
+</ol>
+
+<h2 id='id_intro'>Introduction</h2>
+<p>
+Results on a benchmark dataset of 391 structurally aligned pairs from the
+PREFAB benchmark dataset <a href="#ref1">[1]</a> show that SATCHMO-JS is
+competitive with ProbCons while only needing to run for a fraction of the time.
+</p>
+
+<p>
+Additional figures and data are provided below.
+</p>
+
+<h2 id='id_eval'>Evaluation Score Results</h2>
+<h3 id='id_qdev'><span title='TP / (TP+FN)'>Q_Developer</span></h3>
+
+<p>
+The <span title='TP / (TP+FN)'>Q_Developer</span> score measures recall. It is described in Wang and Dunbrack [<a href='#ref2'>2</a>].
+</p>
+
+<p>
+    <span title='TP / (TP+FN)'>Q_Developer</span> = TP / (TP+FN)
+    <br />
+    TP = # of correctly aligned residue pairs in the sequence
+    alignment (i.e., agree with the reference alignment).
+    <br />
+    FN = # of aligned residue pairs in the reference alignment which are
+    not in the sequence alignment (i.e., they are missed by the sequence
+    alignment)
+</p>
+
+<p>
+    In other words, the <span title='TP / (TP+FN)'>Q_Developer</span> score
+    measures the fraction of the reference alignment that is correctly
+    predicted by the sequence alignment, and is thus a measure of the
+    recall.
+    <br />
+</p>
+
+<img src="/static/apps/satchmo/img/algorithm_supplemental_materials/q_developer_plot.png"
+     alt='Q-Developer Plot' class='sup_imgx' />
+
+
+<br />
+<table class='datatable'>
+    <caption><b>Table 1: <span title='TP / (TP+FN)'>Q_Developer</span> Score.</b> {% include 'satchmo/otable_text.html' %}</caption>
+    <tbody>
+        <tr>
+            <th>%ID bin</th>
+            <th>CLUSTAL-W</th>
+            <th>MUSCLE</th>
+            <th>MAFFT</th>
+            <th>SMO-JS(MAFFT)</th>
+            <th>ProbCons</th>
+            <th>SMO-JS(PC)</th>
+            <th>SATCHMO</th>
+        </tr>
+        <tr>
+            <td>5-10</td>
+            <td>0.082336364</td>
+            <td>0.093468182</td>
+            <td>0.095397727</td>
+            <td>0.163727273</td>
+            <td>0.099581818</td>
+            <td>0.145411364</td>
+            <td>0.131997727</td>
+        </tr>
+        <tr>
+            <td>10-15</td>
+            <td>0.253289262</td>
+            <td>0.318067114</td>
+            <td>0.326021477</td>
+            <td>0.367298658</td>
+            <td>0.373591275</td>
+            <td>0.37776255</td>
+            <td>0.381480537</td>
+        </tr>
+        <tr>
+            <td>15-20</td>
+            <td>0.370990909</td>
+            <td>0.485871717</td>
+            <td>0.503025253</td>
+            <td>0.569982828</td>
+            <td>0.554818687</td>
+            <td>0.580776768</td>
+            <td>0.559026263</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<table class='datatable'>
+    <caption><b>Table 2: P-values For <span title='TP / (TP+FN)'>Q_Developer</span> Score.</b> p-values were computed using Wilcoxon paired signed rank test. SATCHMO-JS(MAFFT) is compared against all other methods.</caption>
+    <tbody>
+        <tr>
+            <th>% ID</th>
+            <th>ProbCons</th>
+            <th>SMO-JS(PC)</th>
+            <th>SATCHMO</th>
+            <th>MAFFT</th>
+            <th>MUSCLE</th>
+            <th>CLUSTAL-W</th>
+        </tr>
+        <tr>
+            <td>5-10</td>
+            <td>0.07691</td>
+            <td>0.374</td>
+            <td>0.07958</td>
+            <td>0.0776</td>
+            <td>0.05517</td>
+            <td>0.02067</td>
+        </tr>
+        <tr>
+            <td>10-15</td>
+            <td>0.1947</td>
+            <td>0.8997</td>
+            <td>0.8705</td>
+            <td>0.08391</td>
+            <td>0.04432</td>
+            <td>4.18E-07</td>
+        </tr>
+        <tr>
+            <td>15-20</td>
+            <td>0.03757</td>
+            <td>0.1807</td>
+            <td>0.2398</td>
+            <td>0.05645</td>
+            <td>0.04401</td>
+            <td>8.86E-15</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+
+<h3 id='id_qmod'><span title='TP / (TP+FP)'>Q_Modeler</span></h3>
+
+
+<p>
+The <span title='TP / (TP+FP)'>Q_Modeler</span> score measures precision. It is described in Wang and Dunbrack
+[<a href="#ref2">2</a>].
+</p>
+
+
+<p>
+  <span title='TP / (TP+FP)'>Q_Modeler</span> = TP / (TP + FP)
+  <br />
+  TP = # of correctly aligned residue pairs in the sequence alignment (i.e,
+  that agree with the reference) 
+  <br />
+  FP = # of incorrectly aligned residue pairs in the sequence alignment
+  (i.e., pairs in the sequence alignment that are not aligned in the
+  reference)
+</p>
+
+<img src="/static/apps/satchmo/img/algorithm_supplemental_materials/q_modeler_plot.png"
+     alt='Q-Modeler Plot' class='sup_imgx' />
+
+<br />
+<table class='datatable'>
+    <caption><b>Table 3: <span title='TP / (TP+FP)'>Q_Modeler</span> Score.</b> {% include 'satchmo/otable_text.html' %}</caption>
+    <tbody>
+        <tr>
+            <th>% ID Bin</th>
+            <th>CLUSTAL-W</th>
+            <th>MUSCLE</th>
+            <th>MAFFT</th>
+            <th>SATCHMO-JS(MAFFT)</th>
+            <th>ProbCons</th>
+            <th>SMO-JS(PC)</th>
+            <th>SATCHMO</th>
+        </tr>
+        <tr>
+            <td>5-10</td>
+            <td>0.053929091</td>
+            <td>0.065634091</td>
+            <td>0.080518182</td>
+            <td>0.124625</td>
+            <td>0.074818182</td>
+            <td>0.106059091</td>
+            <td>0.096045455</td>
+        </tr>
+        <tr>
+            <td>10-15</td>
+            <td>0.221567785</td>
+            <td>0.269781611</td>
+            <td>0.307943624</td>
+            <td>0.3143</td>
+            <td>0.339710604</td>
+            <td>0.332339933</td>
+            <td>0.338832886</td>
+        </tr>
+        <tr>
+            <td>15-20</td>
+            <td>0.345094949</td>
+            <td>0.446336364</td>
+            <td>0.50015202</td>
+            <td>0.53370101</td>
+            <td>0.535683333</td>
+            <td>0.543182323</td>
+            <td>0.536934848</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<table class='datatable'>
+    <caption><b>Table 4: P-values for <span title='TP / (TP+FP)'>Q_Modeler</span> Score.</b> p-values were computed using Wilcoxon paired signed rank test. SATCHMO-JS(MAFFT) is compared against all other methods.</caption>
+    <tbody>
+        <tr>
+            <th>% ID Bin</th>
+            <th>ProbCons</th>
+            <th>SMO-JS(PC)</th>
+            <th>SATCHMO</th>
+            <th>MAFFT</th>
+            <th>MUSCLE</th>
+            <th>CLUSTAL-W</th>
+        </tr>
+        <tr>
+            <td>5-10</td>
+            <td>0.08041</td>
+            <td>0.5401</td>
+            <td>0.06193</td>
+            <td>0.2694</td>
+            <td>0.03324</td>
+            <td>0.004759</td>
+        </tr>
+        <tr>
+            <td>10-15</td>
+            <td>0.01079</td>
+            <td>0.1093</td>
+            <td>0.1876</td>
+            <td>0.5168</td>
+            <td>0.01766</td>
+            <td>2.49E-07</td>
+        </tr>
+        <tr>
+            <td>15-20</td>
+            <td>0.001363</td>
+            <td>0.009124</td>
+            <td>0.6</td>
+            <td>0.4864</td>
+            <td>0.001227</td>
+            <td>9.82E-18</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<h3 id='id_clineshift'>Cline Shift</h3>
+
+<p>
+The Cline Shift score includes a small positive score for being close to
+the reference alignment, and a small penalty for overalignment. It is
+described in (Cline et al., 2002) [<a href="#ref3">3</a>].
+</p>
+
+<img src="/static/apps/satchmo/img/algorithm_supplemental_materials/cline_shift_score.png"
+     alt='Cline Shift Plot' class='sup_imgx' />
+
+<br />
+<table class='datatable'>
+    <caption><b>Table 5: Cline Shift Score.</b> {% include 'satchmo/otable_text.html' %}</caption>
+    <tbody>
+        <tr>
+            <th>% ID Bin</th>
+            <th>CLUSTAL-W</th>
+            <th>MUSCLE</th>
+            <th>MAFFT</th>
+            <th>SMO-JS(MAFFT)</th>
+            <th>ProbCons</th>
+            <th>SMO-JS(PC)</th>
+            <th>SATCHMO</th>
+        </tr>
+        <tr>
+            <td>5-10</td>
+            <td>0.027013409</td>
+            <td>0.032894091</td>
+            <td>0.055766136</td>
+            <td>0.108657045</td>
+            <td>0.06082975</td>
+            <td>0.087054545</td>
+            <td>0.071643182</td>
+        </tr>
+        <tr>
+            <td>10-15</td>
+            <td>0.230418926</td>
+            <td>0.279957248</td>
+            <td>0.309902685</td>
+            <td>0.329282752</td>
+            <td>0.346723369</td>
+            <td>0.345572752</td>
+            <td>0.355432215</td>
+        </tr>
+        <tr>
+            <td>15-20</td>
+            <td>0.368889394</td>
+            <td>0.467946212</td>
+            <td>0.505752374</td>
+            <td>0.554266162</td>
+            <td>0.539785227</td>
+            <td>0.562920202</td>
+            <td>0.549717677</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<table class='datatable'>
+    <caption><b>Table 6: P-values for Cline Shift Score.</b> P-values were computed using Wilcoxon paired signed rank test. SATCHMO-JS(MAFFT) is compared against all other methods.</caption>
+    <tbody>
+        <tr>
+            <th>% ID Bin</th>
+            <th>ProbCons</th>
+            <th>SMO-JS(PC)</th>
+            <th>SATCHMO</th>
+            <th>MAFFT</th>
+            <th>MUSCLE</th>
+            <th>CLUSTAL-W</th>
+        </tr>
+        <tr>
+            <td>5-10</td>
+            <td>0.4658</td>
+            <td>0.3241</td>
+            <td>0.07755</td>
+            <td>0.4361</td>
+            <td>0.03224</td>
+            <td>0.0091</td>
+        </tr>
+        <tr>
+            <td>10-15</td>
+            <td>0.01599</td>
+            <td>0.3337</td>
+            <td>0.3823</td>
+            <td>0.9496</td>
+            <td>0.1369</td>
+            <td>2.73E-05</td>
+        </tr>
+        <tr>
+            <td>15-20</td>
+            <td>0.01287</td>
+            <td>0.03454</td>
+            <td>.333</td>
+            <td>0.758</td>
+            <td>0.06549</td>
+            <td>8.95E-14</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+
+<h3 id='id_qcom'>Q_Combined</h3>
+<p>
+The Q_Combined score penalizes over- and under-alignment, and measures both
+the precision and recall. It is described in Wang and Dunbrack [<a
+href="#ref2">2</a>].
+</p>
+
+<img src="/static/apps/satchmo/img/algorithm_supplemental_materials/q_combined_score.png" 
+     alt='Q-Combined Score Plot' class='sup_imgx' />
+
+<br />
+<table class='datatable'>
+    <caption><b>Table 7: Q_Combined Score.</b> {% include 'satchmo/otable_text.html' %}</caption>
+    <tbody>
+        <tr>
+            <th>% ID Bin</th>
+            <th>CLUSTAL-W</th>
+            <th>MUSCLE</th>
+            <th>MAFFT</th>
+            <th>SMO-JS(MAFFT)</th>
+            <th>Probcons</th>
+            <th>SATCHMO-JS(PC)</th>
+            <th>SATCHMO</th>
+        </tr>
+        <tr>
+            <td>5-10</td>
+            <td>0.013518459</td>
+            <td>0.020968502</td>
+            <td>0.019606682</td>
+            <td>0.027722267</td>
+            <td>0.019272871</td>
+            <td>0.027249997</td>
+            <td>0.018347071</td>
+        </tr>
+        <tr>
+            <td>10-15</td>
+            <td>0.105844478</td>
+            <td>0.146672022</td>
+            <td>0.166193843</td>
+            <td>0.166619961</td>
+            <td>0.18443631</td>
+            <td>0.170071306</td>
+            <td>0.163593854</td>
+        </tr>
+        <tr>
+            <td>15-20</td>
+            <td>0.213863471</td>
+            <td>0.28543911</td>
+            <td>0.31789908</td>
+            <td>0.324506502</td>
+            <td>0.348676382</td>
+            <td>0.333799505</td>
+            <td>0.317912808</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<table class='datatable'>
+    <caption><b>Table 8: P-values for Q_Combined Score.</b>  P-values were computed using Wilcoxon paired signed rank test. SATCHMO-JS(MAFFT) is compared against all other methods.</caption>
+    <tbody>
+        <tr>
+            <th>% ID Bin</th>
+            <th>ProbCons</th>
+            <th>SMO-JS(PC)</th>
+            <th>SATCHMO</th>
+            <th>MAFFT</th>
+            <th>MUSCLE</th>
+            <th>CLUSTAL-W</th>
+        </tr>
+        <tr>
+            <td>5-10</td>
+            <td>0.5417</td>
+            <td>0.6355</td>
+            <td>0.5195</td>
+            <td>0.9032</td>
+            <td>0.6257</td>
+            <td>0.4548</td>
+        </tr>
+        <tr>
+            <td>10-15</td>
+            <td>0.003421</td>
+            <td>0.5059</td>
+            <td>0.5448</td>
+            <td>0.7259</td>
+            <td>0.4232</td>
+            <td>1.60E-06</td>
+        </tr>
+        <tr>
+            <td>15-20</td>
+            <td>8.57E-05</td>
+            <td>0.09662</td>
+            <td>0.3226</td>
+            <td>0.704</td>
+            <td>0.0628</td>
+            <td>1.42E-14</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+
+<!--<p>To Appear in NAR Web Server Issue 2010:</p>
+<ul class='refs'>
+    <li>Hagopian, R., Davidson, J., Datta, R., Samad, B., Jarvis, G., and <b>Sj&ouml;lander, K.</b>, "SATCHMO-JS: a webserver for simultaneous protein multiple sequence alignment and phylogenetic tree construction," <i>Nucleic Acids Res</i>. 2010.
+</ul>-->
+<p>References cited:</p>
+<ol class='refs'>
+
+    <li><a target='_blank' href='http://www.ncbi.nlm.nih.gov/pubmed/15034147?dopt=Abstract' class='ref' name='ref1'>Edgar, R., "MUSCLE: multiple sequence alignment with high accuracy and high throughput," <i>Nucleic Acids Res</i>. 2004 Mar 19;32(5):<b>1792-7</b>.</a>
+    </li>
+
+    <li><a target='_blank' href='http://www.ncbi.nlm.nih.gov/pubmed/15152092?dopt=Abstract' class='ref' name='ref2'>Wang, G. and Dunbrack, R.L. Jr., "Scoring profile-to-profile sequence alignments," <i>Protein Sci</i>. 2004 Jun;13(6):<b>1612-26</b>.</a>
+    </li>
+
+    <li><a target='_blank' href='http://www.ncbi.nlm.nih.gov/pubmed/11847078?dopt=Abstract' class='ref' name='ref3'>
+Cline, M., Hughey, R., Karplus, K. "Predicting reliable regions in protein sequence alignments," <i>Bioinformatics</i>. 2002 Feb;18(2):<b>306–314</b>.</a>
+    </li>
+</ol>
+<h2 id='id_downloads'>Datasets Used in Validation Experiments And Other Downloads</h2>
+<ul>
+    <li>
+        Download the datasets and the results of the experiments described
+        in the paper (caution: files are large)
+        <ul>
+            <li>
+                <a href="http://makana-static.berkeley.edu/app/satchmojss/supplementary_materials_for_JSS_paper2.tar.gz">
+                Packaged with tar and gzip (tar.gz format) [155 MB]
+                </a>
+            </li>
+        </ul>
+    </li> 
+    <li>
+        <a href="/static/apps/satchmo/download/satchmojs_scores2.xls">
+        Spreadsheet of SATCHMO-JS scores</a>
+    </li>
+</ul>
+<a href='..'>Back to SATCHMO-JS Supplementary Materials Index Page</a>
+{% endblock %}

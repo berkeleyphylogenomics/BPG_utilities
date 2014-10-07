@@ -1,0 +1,88 @@
+{% extends "common/base.html" %}
+
+{% block title %}PhyloFacts Orthology Group{% endblock %}
+
+{% block pagetitle %}{% endblock %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="/static/apps/phog/css/base_style.css"/>
+<link rel="stylesheet" type="text/css" href="/static/apps/phog/css/phog_datagrid.css"/>
+<style type="text/css">
+  div.loading-invisible{
+    display:none;
+  }
+  div.loading-visible{
+    display:block;
+	position:absolute;
+    top:50%;
+	left:50%;
+    width:125px;
+	margin-left:-63px;
+    background:#fff;
+    opacity:.75;
+  }
+  div.go_summary-visible{
+    display:block;
+  }
+  div.go_summary-invisible{
+    display:none;
+  }
+  input.fake_btn{
+    color:#00F;
+    background-color:#FFF;
+    border: 1px solid;
+    border-color:#FFF;
+  }
+</style>
+{% endblock %}
+{% block extrascripts %}
+<script type="text/javascript" src="/static/js/legacy/jquery-1.2.6.min.js"></script>
+<script type="text/javascript" src="/static/js/legacy/jquery-ui-1.6rc1.packed.js"></script>
+<script type="text/javascript" src="/static/js/legacy/jquery.gravy.js"></script>
+<script type="text/javascript" src="/static/apps/djblets/js/datagrid.js"></script>
+<script language="JavaScript">
+  function switchVisible(id1, id2) {
+    document.getElementById(id1).className = 'go_summary-invisible';
+    document.getElementById(id2).className = 'go_summary-visible';
+  };
+</script>
+{% endblock %}
+
+{% block rightlogo %}
+            <a href="/phog/orthologs/"><img src="/static/img/logos/phog.png" 
+              width="300" height="103" border="0" /></a>
+{% endblock %}
+
+{% block precontent %}
+{% block bodyscript %}
+<script type="text/javascript" src="/static/js/bpg_tooltip.js"></script>
+<script type="text/javascript" src="/static/apps/phog/js/phog_tooltip.js"></script>
+{% endblock %}
+{% endblock %}
+{% block content %}
+
+<div id="loading" class="loading-invisible">
+  <p><img src="/static/img/widgets/EMBLTreeOfLifeWhirlingLayers.gif" alt="Loading"></p>
+</div>
+<script type="text/javascript">
+  document.getElementById("loading").className = "loading-visible";
+  window.onload = function() {
+    document.getElementById("loading").className = "loading-invisible";
+  }
+</script>
+
+{% endblock %}    
+{% block postcontent %}
+{% block phog_navigation %}
+<div id="footer">
+  <div id="appnavbar" class="column" align="center">
+      <a class="navtoplink" 
+                          href="/phog/orthologs/faq/">FAQ</a>&nbsp;|&nbsp;
+	    <a class="navtoplink" 
+                  href="/phog/orthologs/quickstart/">Help</a>&nbsp;|&nbsp;
+	    <a class="navtoplink" 
+                            href="/phog/orthologs/downloads/">Downloads</a>
+  </div>
+</div>
+{% endblock %}
+{% endblock %}

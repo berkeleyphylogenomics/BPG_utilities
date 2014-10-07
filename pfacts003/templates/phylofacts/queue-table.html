@@ -1,0 +1,39 @@
+{% if queue.web|length or queue.research|length or queue.library|length %}
+<p><strong>Total Jobs:</strong> {{ total_jobs }}, <strong>Jobs Running:</strong> {{ running_jobs }}, <strong>Jobs Queued:</strong> {{ queued_jobs }}</p>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <td>Job Name</td>
+            <td>Job Owner</td>
+            <td>Job Status</td>
+            <td>Queue</td>
+            <td>Job Start Time</td>
+            <td>CPU Time</td>
+            <td>VMem Used</td>
+            <td>Mem Used</td>
+            <td>Walltime<br />Used</td>
+            <td>Walltime<br />Remaining</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for queue_dict in queue.values %}
+            {% for job_dict in queue_dict.values %}
+                <tr>
+                    <td>{% if job_dict.job_name %}{{ job_dict.job_name }}{% else %}N/A{% endif %}</td>
+                    <td>{% if job_dict.job_owner %}{{ job_dict.job_owner }}{% else %}N/A{% endif %}</td>
+                    <td>{% if job_dict.job_status %}{{ job_dict.job_status }}{% else %}N/A{% endif %}</td>
+                    <td>{% if job_dict.queue %}{{ job_dict.queue }}{% else %}N/A{% endif %}</td>
+                    <td>{% if job_dict.qtime %}{{ job_dict.qtime }}{% else %}N/A{% endif %}</td>
+                    <td>{% if job_dict.cpu_time %}{{ job_dict.cpu_time }}{% else %}N/A{% endif %}</td>
+                    <td>{% if job_dict.virtual_mem_used %}{{ job_dict.virtual_mem_used|filesizeformat }}{% else %}N/A{% endif %}</td>
+                    <td>{% if job_dict.mem_used %}{{ job_dict.mem_used|filesizeformat }}{% else %}N/A{% endif %}</td>
+                    <td>{% if job_dict.walltime_used %}{{ job_dict.walltime_used }}{% else %}N/A{% endif %}</td>
+                    <td>{% if job_dict.walltime_remaining %}{{ job_dict.walltime_remaining }} s{% else %}N/A{% endif %}</td>
+                </tr>
+            {% endfor %}
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No jobs in the ohana queue.</p>
+{% endif %}

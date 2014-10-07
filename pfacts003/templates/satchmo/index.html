@@ -1,0 +1,40 @@
+{% extends "queued/index.html" %}
+
+{% block mid_menu %}{% include "satchmo/mid_menu.html" %}{% endblock %}
+
+{% block app_logo %}<a href='/q/satchmo/'><span>SATCHMO-JS</span></a>{% endblock %}
+{% block statcounter %}{% include "satchmo/statcounter.html" %}{% endblock %}
+
+{% block title %}{% include "satchmo/title.html" %}{% endblock %}
+
+{% block extrascripts %}
+<script type='text/javascript' src='/static/apps/satchmo/js/form.js'></script>
+{% endblock %}
+
+{% block body_title %}{% include 'satchmo/body_title.html' %}{% endblock %}
+
+{% block message %}
+<p>
+    <a href='/supplementary/satchmo/'>Supplementary Materials</a>&nbsp;&nbsp;&nbsp;
+    <a href='/supplementary/satchmo/webserver/#id_downloads'>Validation Datasets</a>&nbsp;&nbsp;&nbsp;
+    <!--SATCHMO uses HMM-HMM scoring and alignment to simultaneously estimate a phylogenetic tree and a multiple sequence alignment (MSA).
+    <span class='expandable'>
+        <a href='#' class='expand'>(more)</a>
+        <span>HMMs are used to determine tree branching order, to align sequences and to predict structurally alignable regions. Each internal node of the phylogenetic tree includes a multiple sequence alignment of the sequences that descend from that node; lowercase letters indicate residues that do not appear to form part of that subtree's conserved core structure. Clicking on an internal node of the tree in the PhyloScope viewer will display the MSA for that subtree; MSAs near the root (which include more distant homologs) will have more lowercase characters than those near the leaves due to greater structural variability across sequences.</span>
+        <a href='#' class='collapse'>(less)</a>
+    </span>-->
+<a href="/static/apps/satchmo/pdf/satchmo_tutorial.pdf">View tutorial</a>
+</p>
+</div>
+{% endblock %}
+
+{% block form_explanation %}
+Input protein sequences in <a href='/phog/orthologs/faq/#fasta'>FASTA format</a> (up to 500 sequences, maximum length 2000).<br />
+Sample Datasets:
+<a id='example1' href='#'>beta adrenergic receptors</a>,
+<a id='example0' href='#'>globins</a>.
+{% endblock %}
+
+{% block references %}
+{% include 'satchmo/references.html' %}
+{% endblock %}

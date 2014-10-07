@@ -1,0 +1,56 @@
+{% extends "kegg/map_base.html" %}
+
+{% block node_overlay %}
+  .node_6_5_1_1_instance_0
+    { position: absolute;
+      left: 123px; top: 766px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+  .node_3_1_11_1_instance_0
+    { position: absolute;
+      left: 255px; top: 485px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+{% endblock %}
+{% block mapdata %}
+<area shape=rect	coords=255,766,301,783	href="/dbget-bin/www_bget?K06223"	title="K06223 (dam)" />
+<area shape=rect	coords=123,207,169,224	href="/dbget-bin/www_bget?K03555+K07456"	title="K03555 (mutS), K07456 (mutS2)" />
+<area shape=rect	coords=555,354,601,371	href="/dbget-bin/www_bget?K08735"	title="K08735 (MSH2)" />
+<area shape=rect	coords=601,337,647,354	href="/dbget-bin/www_bget?K08739"	title="K08739 (MLH3)" />
+<area shape=rect	coords=555,337,601,354	href="/dbget-bin/www_bget?K08734"	title="K08734 (MLH1)" />
+<area shape=rect	coords=123,348,169,365	href="/dbget-bin/www_bget?K03573"	title="K03573 (mutH)" />
+<area shape=rect	coords=123,224,169,241	href="/dbget-bin/www_bget?K03572"	title="K03572 (mutL)" />
+<area shape=rect	coords=123,766,169,783	href="/dbget-bin/www_bget?K01971+K01972"	title="K01971 (E6.5.1.1), K01972 (E6.5.1.2)" />
+<area shape=rect	coords=123,485,169,502	href="/dbget-bin/www_bget?K03657"	title="K03657 (uvrD)" />
+<area shape=rect	coords=601,224,647,241	href="/dbget-bin/www_bget?K08734"	title="K08734 (MLH1)" />
+<area shape=rect	coords=601,766,647,783	href="/dbget-bin/www_bget?K10747"	title="K10747 (LIG1)" />
+<area shape=rect	coords=732,252,778,269	href="/dbget-bin/www_bget?K04802"	title="K04802 (PCNA)" />
+<area shape=rect	coords=255,634,301,651	href="/dbget-bin/www_bget?K02337+K03763+K02342+K02345+K02343+K02341+K02340+K02339+K02344+K02338"	title="K02337 (DPO3A1), K03763 (DPO3A2), K02342 (DPO3E), K02345 (DPO3T), K02343 (DPO3G), K02341 (DPO3D2), K02340 (DPO3D1), K02339 (DPO3C), K02344 (DPO3P), K02338 (DPO3B)" />
+<area shape=rect	coords=255,485,301,502	href="/dbget-bin/www_bget?K01141"	title="K01141 (E3.1.11.1)" />
+<area shape=rect	coords=732,634,778,651	href="/dbget-bin/www_bget?K02327+K02328+K03504+K03505"	title="K02327 (POLD1), K02328 (POLD2), K03504 (POLD3), K03505 (POLD4)" />
+<area shape=rect	coords=601,634,647,651	href="/dbget-bin/www_bget?K07466+K10739+K10740+K10741"	title="K07466 (RFA1), K10739 (RFA2), K10740 (RPA3), K10741 (RPA4)" />
+<area shape=rect	coords=255,506,301,523	href="/dbget-bin/www_bget?K10857"	title="K10857 (exoX)" />
+<area shape=rect	coords=307,506,353,523	href="/dbget-bin/www_bget?K07462"	title="K07462 (recJ)" />
+<area shape=rect	coords=555,241,601,258	href="/dbget-bin/www_bget?K08737"	title="K08737 (MSH6)" />
+<area shape=rect	coords=732,490,778,507	href="/dbget-bin/www_bget?K10746"	title="K10746 (EXO1)" />
+<area shape=rect	coords=555,297,601,314	href="/dbget-bin/www_bget?K08735"	title="K08735 (MSH2)" />
+<area shape=rect	coords=601,297,647,314	href="/dbget-bin/www_bget?K08736"	title="K08736 (MSH3)" />
+<area shape=rect	coords=601,280,647,297	href="/dbget-bin/www_bget?K10858"	title="K10858 (PMS2)" />
+<area shape=rect	coords=555,224,601,241	href="/dbget-bin/www_bget?K10858"	title="K10858 (PMS2)" />
+<area shape=rect	coords=732,224,778,241	href="/dbget-bin/www_bget?K10754+K10755+K10756"	title="K10754 (RFC1), K10755 (RFC2_4), K10756 (RFC3_5)" />
+<area shape=rect	coords=307,485,353,502	href="/dbget-bin/www_bget?K03601+K03602"	title="K03601 (xseA), K03602 (xseB)" />
+<area shape=rect	coords=601,354,647,371	href="/dbget-bin/www_bget?K08736"	title="K08736 (MSH3)" />
+<area shape=rect	coords=601,241,647,258	href="/dbget-bin/www_bget?K08735"	title="K08735 (MSH2)" />
+<area shape=rect	coords=555,280,601,297	href="/dbget-bin/www_bget?K08734"	title="K08734 (MLH1)" />
+<area shape=rect	coords=123,634,169,651	href="/dbget-bin/www_bget?K03111"	title="K03111 (ssb)" />
+<area shape=rect	coords=721,341,820,366	href="/kegg-bin/show_pathway?map05210"	title="map05210: Colorectal cancer" />
+<area shape=rect	coords=40,44,192,70	href="/dbget-bin/www_bget?map03430"	title="map03430: Mismatch repair" />
+{% endblock %}
+{% block color_nodes %}
+  {% if nodes_to_color.6_5_1_1 %}
+    <div class="node_6_5_1_1_instance_0"></div>
+  {% endif %}
+  {% if nodes_to_color.3_1_11_1 %}
+    <div class="node_3_1_11_1_instance_0"></div>
+  {% endif %}
+{% endblock %}

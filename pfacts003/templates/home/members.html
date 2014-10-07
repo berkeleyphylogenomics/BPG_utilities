@@ -1,0 +1,379 @@
+{% extends "common/base_new.html" %}
+
+{% block extrastyle %}
+<style type='text/css'>
+.main-content {
+    font-family:Verdana;
+    padding-right:15px;
+    padding-left:15px;
+}
+.member_name {
+    font:18px bold sans-serif;
+}
+.kimmens-row {
+    background-color:rgb(220,220,210);
+}
+.main-content table {
+}
+.main-content tbody td {
+    vertical-align:middle;
+}
+.main-content tbody tr td:nth-child(1) {
+    width:250px;
+}
+.main-content tbody tr td:nth-child(3) {
+    width:250px;
+}
+.main-content thead th {
+    font-size:20px;
+    padding-bottom:15px;
+}
+.main-content table td, .main-content table tr {
+    border-top:none;
+}
+.alumni tbody td {
+    height:120px;
+}
+#why-raffi-why {
+    height:120px !important;
+}
+</style>
+{% endblock %}
+
+{% block extrascripts %}{% endblock %}
+
+{% comment %}
+{% block toplinks %}
+{% include "snippets/menu.html" %}
+{% endblock %}
+{% endcomment %}
+
+{% block content %}
+<div class='main-content'>
+    <table class='table' align='center'>
+        <thead>
+            <tr>
+                <th><strong>Principal Investigator</strong></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class='kimmens-row'>
+                <td><a href='kimmen/'><img src='/static/img/members/kimmen_campanile_200.jpg' alt='' width='250' border='3'></a></td>
+                <td><a class='member_name' href='kimmen/'>Kimmen Sj&ouml;lander, Ph.D.</a></td>
+                <td><a href='/research/'><img src='/static/img/members/japanese_tree_print_300.jpg' alt='' width='300' height'210' border='3'></a></td>
+            <tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <table class='table' align='center'>
+        <thead>
+            <tr>
+                <th><strong>PhD Students</strong></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src='/static/img/members/bushra_200.jpg' alt='' width='180' height='215' border='3'></td>
+                <td>
+                    <p class='member_name'>Bushra Samad</p>
+                    <p class='member_position'>PhD Student</p>
+                    <p class='member_interests'>Phylogenomic methods for microbial (meta)genome functional and taxonomic annotation</p>
+                    <p class='member_publications'></p>
+                </td>
+                <td>
+                    <p><img src="/static/img/members/bennett_tree_cropped_300.jpg" alt="" width="300" height="197" border="0"></p>
+                    <p>&ldquo;Tree of Life&rdquo; painting courtesy of <a target='_blank' href='http://patinapaintings.com/about.html'>Nathan Bennett</a></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td><img src="/static/img/members/curt2.jpg" alt="" width="180" border="3"></td>
+                <td> 
+                    <p class="member_name">Curt Hansen</p> 
+                    <p class="member_position">PhD Student</p> 
+                    <p class="member_interests">Simultaneous co-estimation and refinement of phylogenetic trees and multiple sequence alignments</p> 
+                    <p class='member_publications'></p>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+    
+    <table class='table' align='center'>
+        <thead>
+            <tr>
+                <th><strong>Associated Students</strong></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src='/static/img/members/mazimi1.jpg' alt='' width='200' height='215' border='3'></td>
+                <td>
+                    <p class='member_name'>Mohammad Azimi</p>
+                    <p class='member_position'>Graduate Researcher</p>
+                    <p class='member_interests'>Hybrid Protein Nucleotide Phylogenetic Trees</p>
+                    <p class='member_publications'></p>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td><img src="/static/img/members/nimaemami.jpeg" alt="" height="215" border="3"></td>
+                <td> 
+                    <p class="member_name">Nima Cyrus Emami</p> 
+                    <p class="member_position">Undergraduate Researcher</p> 
+                    <p class="member_interests">Hybrid Protein Nucleotide Phylogenetic Trees</p> 
+                    <p class='member_publications'></p>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <table class='table' align='center'>
+        <thead>
+            <tr>
+                <th><strong>Programmers</strong></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr> 
+                <td><img src="/static/img/members/cyrus2.jpg" height="220" alt="Cyrus Afrasiabi" width="180" border="3"></td> 
+                <td> 
+                    <p class="member_name">Cyrus Afrasiabi</p> 
+                    <p class="member_position">Programmer</p> 
+                    <p class="member_interests">Algorithms</p> 
+                    <p class="member_publications"></p>
+                </td>
+                <td>
+                    <p><img src="/static/img/members/thekingoflimbs.jpg" alt="" width="160" height="197" border="0"></p>
+                    <p>&ldquo;The King of Limbs&rdquo; from <a class="image_caption" href="http://www.thisisfakediy.co.uk/images/uploads/kingoflimbs_sign_600.jpg">DIY</a></p>
+                </td> 
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <table class='alumni table' align='center'>
+        <thead>
+            <tr>
+                <th><strong>Lab Alumni</strong></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src='/static/img/members/ajith.JPG' alt="Ajith Warrier" width="120" border="3"></td>
+                <td>
+                    <p class="alumni_name">Ajith Warrier</p>
+                    <p class="alumni_position">Associate Specialist</p> 
+                    <p class="alumni_interests">Algorithms, Web programming with Django, Python and Javascript programming</p> 
+                </td>
+            </tr>
+            <tr> 
+                <td><a href="yaoqing/"><img src="/static/img/members/yaoqing.jpg" alt="Yaoqing Shen" width="100" border="3"></a></td>	
+                <td> 
+                    <p class="alumni_name"> <a href="yaoqing/">Yaoqing Shen, Ph.D.</a></p> 
+                    <p class="alumni_position">Postdoctoral Scholar </p> 
+                    <p class="alumni_interests">Metagenome Analysis</p> 
+                </td> 
+            </tr>
+            <tr> 
+                <td><a href="ruchira/"><img src="/static/img/members/ruchira_small.jpg" alt="" width="100"  border="0"></a></td> 
+                <td> 
+                    <p class="alumni_name"> <a href="ruchira/">Ruchira Datta, Ph.D.</a></p> 
+                    <p class="alumni_position">Postdoctoral Scholar</p> 
+                    <p class="alumni_interests"><a class="interests" href="/phog/orthologs/">Ortholog identification,</a> Pathway inference, Hyperdimensional network</p> 
+                </td> 
+            </tr>  
+            <tr> 
+                <td><img src="/static/img/members/shailen.jpg" alt="Shailen Tuli" width="100" border="3"></td> 
+                <td> 
+                      <p class="alumni_name">Shailen Tuli</p> 
+                      <p class="alumni_position">Programmer</p> 
+                      <p class="alumni_interests">Algorithm design, Web programming, Python and Ruby programming, 
+                  Open source software</p> 
+                </td>
+            </tr> 
+            <tr> 
+                <td><img src="/static/img/members/grant.jpg" alt="" width="100" border="0"></td> 
+                <td> 
+                    <p class="almuni_name">Grant Shoffner</p> 
+                    <p class="alumni_position">Research Associate</p> 
+                    <p class="alumni_interests">Domain Architecture Rearrangement</p> 
+                </td> 
+            </tr> 
+            <tr> 
+                <td><img src="/static/img/members/glenjarvis.png" alt="" width="100" border="0"></td> 
+                <td> 
+                    <p class="almuni_name">Glen Jarvis</p> 
+                    <p class="alumni_position">Programming Associate</p> 
+                    <p class="alumni_interests">Bioinformatics programming, Linux/Web/Database Administration</p> 
+                </td> 
+            </tr>
+            <tr> 
+                <td><img src="/static/img/members/johnDavidson.jpg" alt="John Davidson" width="100" border="0"></td> 
+                <td> 
+                    <p class="almuni_name">John Davidson</p> 
+                    <p class="alumni_position">Programmer</p> 
+                    <p class="alumni_interests">Bioinformatics programming, Open source software development, Web programming and design</p> 
+                </td> 
+            </tr> 
+            <tr> 
+                <td><img src="/static/img/members/christoph_175.jpg" alt="" width="100" border="0"></td> 
+                <td> 
+                    <p class="almuni_name">Christoph Neyer</p> 
+                    <p class="alumni_position">Undergraduate Student</p> 
+                    <p class="alumni_interests">Assessing methods for orthology detection</p> 
+                </td> 
+            </tr> 
+            <tr> 
+                <td><img src="/static/img/members/sriram_175.png" alt="" width="100" border="0"></td> 
+                <td> 
+                    <p class="alumni_name">Sriram Sankararaman</p> 
+                    <p class="alumni_position">Graduate Student, EECS</p> 
+                    <p class="alumni_interests">Probabilistic models for enzyme active sites and specificity determinates</p> 
+                </td> 
+            </tr> 
+            <tr> 
+                <td><img src="/static/img/members/dean_small.jpg" alt="Dean Starrett" width="100" border="0"></td> 
+                <td> 
+                    <p class="alumni_name">Dean Starrett, Ph.D.</p> 
+                    <p class="alumni_position">Postdoctoral Scholar</p> 
+                    <p class="alumni_interests">Muliple alignment, Phylogeny inference, Protein interaction prediction<br /> 
+                    <a class="alumni_interests" href="http://phylofacts.berkeley.edu/phog/net/">Webserver</a> 
+                <!--<a class="alumni_interests" href="http://nar.oxfordjournals.org/cgi/content/full/gkp339?ijkey=pKHrBi9dQ7NDyjo&keytype=ref">Paper</a></p>--> 
+                </td> 
+            </tr> 
+            <tr><!--bryan--> 
+                <td><img src="/static/img/members/kolaczkowski01_small.jpg" alt="" width="100" border="0"></td> 
+                <td> 
+                    <p class="alumni_name">Bryan Kolaczkowski, Ph.D.</p> 
+                    <p class="alumni_position">Postdoctoral Scholar</p> 
+                    <p class="alumni_interests">Reconstructing the evolutionary history of Apicomplexa<br /> 
+                    <a class="alumni_interests" href="http://phylogenomics.berkeley.edu/INTREPID/">Webserver</a> &nbsp; 
+                    <a class="alumni_interests" href="http://nar.oxfordjournals.org/cgi/content/full/gkp339?ijkey=pKHrBi9dQ7NDyjo&keytype=ref">Paper</a></p> 
+                </td> 
+            </tr> 
+            <tr> 
+                <td><img src="/static/img/members/nandini_small.png" alt="" width="100" height="100" border="0"></td> 
+                <td> 
+                    <p class="alumni_name">Nandini Krishnamurthy, Ph.D.</p> 
+                    <p class="alumni_position">Postdoctoral Scholar</p> 
+                    <p class="alumni_interests">FlowerPower phylogenomic clustering<br /> 
+                    <a class="alumni_interests" href="http://phylogenomics.berkeley.edu/flowerpower/">Webserver</a> &nbsp; 
+                    <a class="alumni_interests" href="http://www.biomedcentral.com/1471-2148/7/S1/S12/abstract">Paper</a></p> 
+                </td> 
+            </tr> 
+            <tr> 
+                <td><img src="/static/img/members/duncan_small.jpg" alt="" border="0"></td> 
+                <td> 
+                    <p class="alumni_name">Duncan Brown, Ph.D.</p> 
+                    <p class="alumni_position">Graduate Student, BioE</p> 
+                    <p class="alumni_interests">Automating subfamily classification and subfamily HMM development<br /> 
+                    <a class="alumni_interests" href="http://phylogenomics.berkeley.edu/SCI-PHY/">Webserver</a> &nbsp; 
+                    <a class="alumni_interests" href="http://www.ploscompbiol.org/article/info%3Adoi/10.1371/journal.pcbi.0030160">Paper</a></p> 
+                </td> 
+            </tr> 
+            <tr> 
+                <td><img src="/static/img/members/carolina_small.jpg" alt="" border="0"></td> 
+                <td> 
+                    <p class="alumni_name">Carolina Dallett</p> 
+                    <p class="alumni_position">Graduate Student, PMB</p> 
+                    <p class="alumni_interests">Identification of evolutionarily conserved regions in proteins</p> 
+                </td> 
+            </tr> 
+            <tr> 
+                <td><img src="/static/img/members/raffi_hagopian.jpg" id='why-raffi-why' alt="[Raffi Hagopian]" height='120' border="0"></td> 
+                <td> 
+                    <p class="alumni_name">Raffi Hagopian</p> 
+                    <p class="alumni_position">Undergraduate Student</p> 
+                    <p class="alumni_interests">Multiple Sequence Alignment/SATCHMO development<br /> 
+                    <a class="alumni_interests"
+                        href="http://phylogenomics.berkeley.edu/satchmo2/">Webserver</a> &nbsp; 
+                    <a class="alumni_interests"
+                        href="http://nar.oxfordjournals.org/cgi/content/full/gkq298?ijkey=fQCvSfzjazz8uhd&keytype=ref">Paper</a> 
+                    </p> 
+                </td> 
+            </tr> 
+            <tr> 
+                <td><img src="/static/img/members/jake_small.png" alt="" border="0"></td> 
+                <td> 
+                    <p class="alumni_name">Jake Gunn Glanville</p> 
+                    <p class="alumni_position">Undergraduate Student</p> 
+                    <p class="alumni_interests">Phylobuilder and other webserver development<br /> 
+                    <a class="alumni_interests" href="http://phylogenomics.berkeley.edu/phylobuilder/">Webserver</a> &nbsp; 
+                    <a class="alumni_interests" href="http://nar.oxfordjournals.org/cgi/content/full/gkm325?ijkey=aO7i3BIaubALiyA&amp;keytype=ref">Paper</a></p> 
+                </td> 
+            </tr> 
+            <tr> 
+                <td><img src="/static/img/members/chris_small.jpg" alt="" border="0"></td> 
+                <td> 
+                    <p class="alumni_name">Christopher Meacham, Ph.D.</p> 
+                    <p class="alumni_position">Programmer</p> 
+                    <p class="alumni_interests">PhyloScope phylogenetic tree visualization software and other software development<br /> 
+                    <a class="alumni_interests" href="http://phylofacts.berkeley.edu/phyloscope/help/">Webserver</a> &nbsp;
+                    <a class="alumni_interests" href="http://nar.oxfordjournals.org/cgi/content/full/gkp373?ijkey=KU8e1DWUbzb70Yz&keytype=ref">Paper</a></p> 
+                </td> 
+            </tr> 
+            <tr> 
+                <td><img src="/static/img/members/terry_small.jpg" alt="" border="0"></td> 
+                <td> 
+                    <p class="alumni_name">Terry Farrah</p> 
+                    <p class="alumni_position">Programmer</p> 
+                    <p class="alumni_interests">Protein structure prediction</p> 
+                </td> 
+            </tr> 
+            <tr> 
+                <td><img src='/static/img/members/xia.jpg' alt="" border="0" width="120" /></td> 
+                <td>
+                    <p class="alumni_name">Xia Jiang</p> 
+                    <p class="alumni_position">PhD student</p> 
+                    <p class="alumni_interests">Protein structure prediction</p> 
+                </td> 
+            </tr> 
+            <tr> 
+                <td></td> 
+                <td> 
+                    <p class="alumni_name">Yannet Interian</p> 
+                    <p class="alumni_position">Postdoctoral scholar</p> 
+                    <p class="alumni_interests">Protein-protein interaction prediction</p> 
+                </td> 
+            </tr>
+        </tbody> 
+    </table> 
+</div> 
+
+<!-- Start of StatCounter Code --> 
+<script type="text/javascript"> 
+var sc_project=4594249; 
+var sc_invisible=1; 
+var sc_partition=56; 
+var sc_click_stat=1; 
+var sc_security="d8236ffb"; 
+</script> 
+ 
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter.js"></script><noscript><div
+class="statcounter"><a title="joomla 1.5 statistics"
+href="http://www.statcounter.com/joomla/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/4594249/0/d8236ffb/1/"
+alt="joomla 1.5 statistics" ></a></div></noscript> 
+<!-- End of StatCounter Code --> 
+ 
+<script type="text/javascript"> 
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script> 
+<script type="text/javascript"> 
+try {
+var pageTracker = _gat._getTracker("UA-7134388-1");
+pageTracker._trackPageview();
+} catch(err) {}</script> 
+{% endblock %}

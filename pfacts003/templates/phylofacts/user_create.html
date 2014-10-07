@@ -1,0 +1,223 @@
+{% extends 'common/base_new.html' %}
+
+{% block title %}Create User{% endblock %}
+
+{% block extrastyle %}
+<style>
+.user-create-content{
+    font-family:Verdana;
+    margin:5px 15px;
+}
+.require {
+    color:red;
+}
+.user-create-content label {
+    float:left;
+    margin-top:1px;
+    font-size:13px;
+    margin-right:10px;
+}
+.user-create-content input {
+    height:16px !important;
+    font-size:13px !important;
+}
+.user-create-content select {
+    height:26px !important;
+    margin-right:10px;
+}
+.user-create-content textarea {
+    font-size:13px;
+}
+.user-create-content h3 {
+    line-height:30px;
+    margin-top:5px;
+}
+#buttons {
+    margin-left:226px;
+}
+#institution-country-input {
+    margin-left:3px;
+}
+#institution-type-input {
+    margin-left:26px;
+}
+#institution-input {
+    margin-left:62px;
+}
+#user-position-input {
+    margin-left:79px;
+}
+#lastname-input {
+    margin-left:49px;
+}
+#firstname-input {
+    margin-left:47px;
+}
+#email-input {
+    margin-left:22px;
+}
+#username-input {
+    margin-left:49px;
+}
+.creating {
+    margin-left:3px;
+}
+#email-input .alert {
+    padding-top:7px;
+    padding-bottom:2px;
+    margin-left:10px;
+}
+#firstname-input .alert {
+    padding-top:7px;
+    padding-bottom:2px;
+    margin-left:10px;
+}
+#lastname-input .alert {
+    padding-top:7px;
+    padding-bottom:2px;
+    margin-left:10px;
+}
+#username-input .alert {
+    padding-top:7px;
+    padding-bottom:2px;
+    margin-left:10px;
+}
+</style>
+{% endblock %}
+
+{% block extrascripts %}
+<script>
+$j(document).ready(function() {
+    $j(" #buttons .btn-primary ").click(function() {
+        $j('#buttons button').attr('disabled','disabled');
+        $j('.alert').hide();
+        $j('.creating').show();
+        // handler for submit button click
+        $j.post('/api/user_create/', 
+                    {
+                        'username': $j('#username').val(),
+                        'email': $j('#email').val(),
+                        'first_name': $j('#firstname').val(),
+                        'last_name': $j('#lastname').val(),
+                        'institution_name': $j('#institution-name').val(),
+                        'institution_address': $j('#institution-address').val(),
+                        'institution_country': $j('#institution-country').val(),
+                        'institution_type': $j('#institution-type').val(),
+                        'institution_other': $j('#institution-other').val(),
+                        'user_position': $j('#user-position').val(),
+                        'user_position_other': $j('#user-position-other').val()
+                    },
+            function(data) {
+                if (data.error) {
+                    // there was an error parse it.
+                    if (data.error == 'email') {$j('#email-input .alert').html(data.message).show();}
+                    if (data.error == 'first_name') {$j('#firstname-input .alert').html(data.message).show();}
+                    if (data.error == 'last_name') {$j('#lastname-input .alert').html(data.message).show();}
+                    if (data.error == 'user_create') {$j('#user-create-message').removeClass('alert-success').addClass('alert-error').html(data.message).show();}
+                    if (data.error == 'username') {$j('#username-input .alert').html(data.message).show();}
+                }
+                else {
+                    // success
+                    $j('#user-create-message').removeClass('alert-error').addClass('alert-success').html(data.message).show();
+                }
+                $j('.creating').hide();
+                $j('#buttons button').removeAttr('disabled');
+            }).error(function() {
+                $j('#user-create-message').removeClass('alert-success').addClass('alert-error').html("API error.  Please contact the PhyloFacts Administrators by email at phylofacts.webmaster@gmail.com and describe the problem.").show();
+                $j('.creating').hide();
+                $j('#buttons button').removeAttr('disabled');
+           }); 
+    });
+    $j(" #buttons .btn-r ").click(function() {
+        // handler for clear button click
+        $j(" .user-create-content .alert ").hide();
+        $j(" .user-create-content input ").val('');
+        $j(" .user-create-content textarea ").val('');
+    });
+    $j(" #institution-type ").change(function() {
+        if (($j(this).val() == "Other non-profit") || ($j(this).val() == "Other")) {$j(" #inst-other ").show();}
+        else {$j(" #inst-other ").hide();}
+    });
+    $j(" #user-position ").change(function() {
+        if (($j(this).val() == "Other")) {$j(" #user-pos-other ").show();}
+        else {$j(" #user-pos-other ").hide();}
+    });
+});
+</script>
+
+{% endblock %}
+
+{% block content %}
+<div class="user-create-content">
+    <h3>Create a PhyloFacts user account</h3>
+    <p>Fill this form out and click create - a temporary password will be emailed to you.</p>
+    <p>(<span class="require">*</span>) indicates a required field.</p>
+    <p id="username-input">
+        <label><span class="require">*</span> <strong>Username:</strong></label>
+        <input id='username' type='text'>
+        <span class="alert alert-error hide">Some username error.</span>
+    </p>
+    <p id="email-input">
+        <label><span class="require">*</span> <strong>Email address:</strong></label>
+        <input id="email" type="email">
+        <span class="alert alert-error hide">Some email error.</span>
+    </p>
+    <p id="firstname-input">
+        <label><span class="require">*</span> <strong>First name:</strong></label>
+        <input id="firstname" type="text">
+        <span class="alert alert-error hide">Some firstname error.</span>
+    </p>
+    <p id="lastname-input">
+        <label><span class="require">*</span> <strong>Last name:</strong></label>
+        <input id="lastname" type="text">
+        <span class="alert alert-error hide">Some lastname error.</span>
+    </p>
+    <p id="user-position-input">
+        <label><strong>Position:</strong></label>
+        <select id="user-position">
+            <option value=" "> </option>
+            <option value="Student - Undergraduate">Student - Undergraduate</option>
+            <option value="Student - Graduate">Student - Graduate</option>
+            <option value="Postdoc">Postdoc</option>
+            <option value="Professor">Professor</option>
+            <option value="PI">Principal Investigator</option>
+            <option value="Other">Other</option>
+        </select>
+        <span id="user-pos-other" class="hide"><input id="user-position-other" type="text"></span>
+    </p>
+    <p id="institution-input">
+        <label><strong>Institution:</strong></label>
+        <input id="institution-name" type="text">
+    </p>
+    <p id="institution-type-input"> 
+        <label><strong>Institution type:</strong> </label>
+        <select id="institution-type">
+            <option value=""> </option>
+            <option value="Academic">Academic</option>
+            <option value="Governmental">Governmental</option>
+            <option value="Corporate">Corporate</option>
+            <option value="Other non-profit">Other non-profit</option>
+            <option value="Other">Other</option>
+        </select>
+        <span id="inst-other" class="hide"><input id="institution-other" type="text"></span>
+    </p>
+    <p id="institition-address-input">
+        <label><strong>Institution address:</strong></label>
+        <textarea id="institution-address" rows="3"></textarea>
+    </p>
+    <p id="institution-country-input">
+        <label><strong>Institution country:</strong> </label>
+        <!-- Drop down menu for countries -->
+        {% include 'phylofacts/country_combobox.html' %}
+    </p>
+    <p class="alert hide" id="user-create-message">Some creation message.</p>
+    <p id="buttons">
+        <button class="btn btn-r" type="button">Clear</button>
+        <button class="btn btn-primary" type="button">Create</button>
+        <span class="creating hide">
+            <img class="creating-logo" src="/static/img/icons/small-loading-icon.gif" />
+            <span class="creating-text">Creating user...</span>
+        </span>
+    </p>
+</div>
+{% endblock %}

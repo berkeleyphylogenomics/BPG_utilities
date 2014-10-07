@@ -1,0 +1,47 @@
+
+<script language="text/javascript">
+      jQuery(document).ready(function(){
+           jQuery("#phog-table").dataTable({ 
+            "bJQueryUI": true,
+            "sPaginationType": "full_numbers" 
+           });
+      });
+</script>
+      
+  <div>
+    <table id="phog-table">   
+      <thead>
+        <tr>
+          <th>PHOG Description</th>
+          <th onmouseover="showToolTip('_go_evidence');" onmouseout="UnTip();">Gene Ontology</span></th>
+          <th onmouseover="showToolTip('_pfam');" onmouseout="UnTip();">Pfam</th>
+          <th>Taxonomic Distribution</th>
+          <th onmouseover="showToolTip('_num_seqs');" onmouseout="UnTip();">#Seqs</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for phog_row in phogs %}
+        <tr>
+          <td>{{ phog_row.description_link }}</td>
+          <td>
+          {% if phog_row.go_short_summary_biological_process %}
+            <em>Biological process: </em>&nbsp;
+            {{ phog_row.go_short_summary_biological_process }}<br />
+          {% endif %}
+          {% if phog_row.go_short_summary_molecular_function %}
+            <em>Molecular function: </em>&nbsp;
+            {{ phog_row.go_short_summary_molecular_function }}<br />
+          {% endif %}
+          {% if phog_row.go_short_summary_cellular_component %}
+            <em>Cellular component: </em>&nbsp;
+            {{ phog_row.go_short_summary_cellular_component }}
+          {% endif %}
+          </td>
+          <td>{{ phog_row.pfam_links }}</td>
+          <td>{{ phog_row.taxon_link }}</td>
+          <td class="num_seqs">{{ phog_row.num_nonredundant_sequences }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>

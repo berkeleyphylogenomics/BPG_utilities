@@ -1,0 +1,705 @@
+{% extends 'common/base_new.html' %}
+{% load get_range %}
+{% load msa %}
+
+{% block title %}PhyloFacts Tree Page: {{ treenode.id }}{% endblock %}
+
+{% block extrastyle %}
+<!--<link rel="stylesheet" href="/static/css/pfam.css" type="text/css" />-->
+<link rel="stylesheet" type="text/css" href="/static/css/DT_bootstrap.css">
+<link rel="stylesheer" type="text/css" href="/static/css/ui.spinner.css">
+{% endblock %}
+
+{% block extrascripts %}
+<script type="text/javascript">
+$j(document).ready(function() {
+    var autocompleteSource = new Array();
+    var headerToID = new Array();
+    {% for header_tuple in treenode.get_informative_member_headers %}
+        autocompleteSource.push("{{ header_tuple.0 }}");
+        headerToID.push(["{{ header_tuple.0 }}", {{ header_tuple.1 }}]);
+    {% endfor %} 
+    // For disabling empty left tabs.
+    var disabledArray = new Array();
+    {% if not biocyc_info.reactions %}
+    disabledArray.push(9);
+    {% endif %}
+    {% if not biocyc_info.pathways %}
+    disabledArray.push(10);
+    {% endif %}
+    {% if not biocyc_info.reactions and not biocyc_info.pathways %}
+    disabledArray.push(8);
+    {% endif %}
+    {% if num_GO_annotations == 0 %}
+    disabledArray.push(6);
+    {% endif %}
+    $j( "#left-tabs" ).tabs({ disabled: disabledArray });
+    $j( "#left-tabs" ).tabs().addClass('ui-tabs-vertical ui-helper-clearfix');
+    $j( "#left-tabs li").removeClass('ui-corner-top').addClass('ui-corner-left');
+    $j(" #members-table ").dataTable( {
+        "sDom": "<'row'<'span4'l><'span4'f>r>t<'row'<'span4'i><'span6'p>>",
+        "sPaginationType": "bootstrap",
+        "oLanguage": {
+            "sLengthMenu": "_MENU_ records per page"
+        }
+    } );
+    $j(" #msa-threshold-spinner ").spinner({ min: 1, max: 99 });
+    $j(" #gene-tree-threshold-spinner ").spinner({ min:1, max:99 });
+    $j(" #summary-msa-seed ").autocomplete({
+            source: autocompleteSource
+    });
+    $j(" #summary-gene-tree-seed ").autocomplete({
+            source: autocompleteSource
+    });
+});
+</script>
+
+<script type="text/javascript">
+$j(function() {
+    $j(" #domain-arch-link ").click( function(e) {
+        e.preventDefault();
+        $j("#left-tabs").tabs().tabs('select', 'domains');
+    });
+    $j(" #msa-link ").click( function(e) {
+        e.preventDefault();
+        $j("#left-tabs").tabs().tabs('select', 'alignment');
+    }); 
+    $j(".page-top-navbar a").click( function() {
+        $j("#left-tabs").tabs().tabs('select', $j(this).data("tab"));
+    });
+    $j(" #domains-more-link ").click( function() {
+        $j(" #domains-more-text ").toggle();
+    });
+    $j("#species-tree").jstree({ 
+        'json_data': {
+            'ajax' : {
+                'url':"species_tree/json/",
+                'data': function (n) {
+                    $j("#species-tree-controls").show();
+                    return {};
+                }
+            }},
+        "plugins" : [ "themes", "json_data", "ui" ],
+        "themes" : {"icons":false}
+    });
+    $j(" #species-expand-all ").click( function() {
+        $j(" #species-tree ").jstree("open_all");
+    });
+    $j(" #species-collapse-all ").click( function() {
+        $j(" #species-tree ").jstree("close_all");
+    });
+    $j(" #go_annotations ul ").summarylist({ visible: 20 });
+
+});
+</script>
+
+<script type="text/javascript">
+// Load the pfam domain graphics
+{% for architecture in architectures %}
+    var sequence{{ forloop.counter }} = {"length": {{ architecture.1.0.protein_length }},
+    "regions":[
+    {% for domain_name, domain_coordinates in architecture.1.0.pfam_coordinates %}
+    {
+          "startStyle":"curved",
+          "endStyle":"curved",
+          "start":"{{ domain_coordinates.0 }}",
+          "end":"{{ domain_coordinates.1 }}",
+          "modelStart":"{{ domain_coordinates.0 }}",
+          "modelEnd":"{{ domain_coordinates.1 }}",
+          "aliStart":"{{ domain_coordinates.0 }}",
+          "aliEnd":"{{ domain_coordinates.1 }}",
+          "display":true,
+          "text":"{{ domain_name }}", 
+          "type":"pfama",
+          "colour": {% for d_name, color in domain_colormap.items %}
+                        {% if d_name == domain_name %}
+                            "{{ color }}"
+                        {% endif %}
+                    {% endfor %}
+    } {% if not forloop.last %}, {% endif %}
+    {% endfor %}],
+
+    "markups":[],
+
+    "motifs":[]}; 
+
+    document.observe("dom:loaded", function() {
+    var pg{{ forloop.counter }} = new PfamGraphic("dg{{ forloop.counter }}", sequence{{ forloop.counter }});
+      pg{{ forloop.counter }}.render();
+      });
+{% endfor %}
+
+{% if treenode.get_phobius_results_for_family.transmembrane or treenode.get_phobius_results_for_family.signal_peptide %}
+// Load the phobius transmembrane helices
+    var tm_sequence = {"length":{{ treenode.get_consensus_sequence_for_family.1|length }},
+        "regions":[],
+        "markups":[],
+        "motifs":[
+            {% if treenode.get_phobius_results_for_family.transmembrane %}
+                {% for start, end in treenode.get_phobius_results_for_family.transmembrane %}
+                    { 
+                    "start":"{{ start }}",
+                    "end":"{{ end }}",
+                    "display":true,
+                    "colour": "#FF0000",
+                    "text":"TMR",
+                    "type":"pfamb"
+                    } {% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            {% endif %}
+            {% if treenode.get_phobius_results_for_family.signal_peptide %},
+                {% for start, end in treenode.get_phobius_results_for_family.signal_peptide %}
+                    {
+                    "start":"{{ start }}",
+                    "end":"{{ end }}",
+                    "display":true,
+                    "colour": "#00FF00",
+                    "text": "SP",
+                    "type":"pfamb"
+                    } {% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            {% endif %}
+            ]};
+
+    document.observe("dom:loaded", function() {
+        var tm = new PfamGraphic("tm", tm_sequence);
+            tm.render();
+        });
+{% endif %}
+
+{% if treenode.is_in_mda_family %}
+    // sequence 1 is the most common domain architecture for this family.
+    document.observe("dom:loaded", function() {
+        var mode_mda = new PfamGraphic("mode-mda", sequence1);
+            mode_mda.render();
+        });
+
+{% endif %}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<div class="phylofacts-well">              
+  <div class="phylofacts-well-header">
+    <h2>{{ treenode.get_treenode_names.treenode_type }}: {{ treenode.get_treenode_names.treenode_name }} [{{ treenode.get_treenode_names.treenode_accession }}]</h2>
+    <div class="page-top-navbar">
+      {% if not treenode.is_leaf %}
+      <div id="msa_icon" class="top-navbar-icon">
+        <img src="/static/img/icons/alignment_icon.png" alt="alignments" />
+        <a href="javascript:;" data-tab="alignment">Sequence<br />Alignment</a>
+      </div>
+      <div id="tree_icon" class="top-navbar-icon">
+        <img src="/static/img/icons/Super-orthology-icon.png" alt="gene tree" />
+        <a href="javascript:;" data-tab="gene_tree">Gene Tree(s)</a><a href="javascript:;" data-tab="orthologs">Orthology groups</a>
+      </div>
+      {% endif %}
+      <div id="species_icon" class="top-navbar-icon">
+        <img src="/static/img/icons/tree-of-life-species.png" alt="species" />
+        <a href="javascript:;" data-tab="species">{{ num_species }}{% if num_species > 1 %} Taxa{% else %} Taxon{% endif %}</a>
+      </div>
+      <div id="pathway_icon" class="top-navbar-icon">
+        <img src="/static/img/icons/pathway-icon.png" alt="pathways" />
+        {% if biocyc_info.reactions %}<a href="javascript:;" data-tab="reactions">{{ biocyc_info.reactions|length }}
+	   {% if biocyc_info.reactions|length > 1 %}Reactions{% else %}Reaction{% endif %}</a>
+	{% else %}<span>0 Reactions</span>{% endif %}
+	{% if biocyc_info.pathways %}<a  href="javascript:;" data-tab="pathways">{{ biocyc_info.pathways|length }} 
+	   {% if biocyc_info.pathways|length > 1 %}Pathways{% else %}Pathway{% endif %}</a>
+	{% else %}<span>0 Pathways</span>{% endif %}
+      </div>
+      <div id="structure_icon" class="top-navbar-icon">
+        <img src="/static/img/icons/VIRB4_model.png" alt="structures" />
+        <span>0 Structures</span>
+        <!--<a href="javascript:;" data-tab="structures">{{ num_structures }} structures</a>-->
+      </div>
+      <div id="domains_icon" class="top-navbar-icon">
+        <img src="/static/img/icons/MYD88-MDA.png" alt="domains" />
+        <a href="javascript:;" data-tab="domains">{{ num_architectures }} Domain<br />{% if num_architectures > 1 or num_architectures == 0 %}Architectures{% else %}Architecture{% endif %}</a>
+      </div>      
+      <div id="literature_icon" class="top-navbar-icon">
+        <img src="/static/img/icons/pubmed.png" alt="literature" />
+        <span>0 Papers</span>
+        <!--<a href="javascript:;" data-tab="reactions">{{ num_papers }} {% if num_papers > 1 or num_papers == 0 %}Papers{% else %}Paper{% endif %}</a> -->
+      </div>
+      <div id="annotation_icon" class="top-navbar-icon">
+        <img src="/static/img/icons/quillPen.png" alt="annotations" />
+        <a href="javascript:;" data-tab="go_annotations">
+          {{ num_GO_annotations }} GO annotations</a>
+        <a href="javascript:;" data-tab="user_annotations">
+          {{ num_user_annotations }} user annotations</a>
+      </div>
+    </div>
+    <div class="cleaner">
+      <!-- empty. -->
+    </div>                    
+  </div>
+  <div id="left-tabs">  
+      <ul class="left-tabs-cls">
+        <li><a href="#summary">Summary</a></li>
+        <li><a href="#species">Species</a></li>
+        <li><a href="#gene_tree">Gene Tree(s)</a></li>
+        <li><a href="#members">Members</a></li>
+        {% comment %}<li><a href="#orthologs">Orthologs & Subfamilies</a></li>{% endcomment %}
+        <li><a href="#alignment">Sequence Alignment</a></li>
+        <li><a href="#domains">Domain Architecture(s)</a></li>
+        {% comment %}<li><a href="#annotations">Annotations</a></li>{% endcomment %}
+        <li><a href="#go_annotations">Gene Ontology</a></li>
+        {% if 1 == 0 %}
+        <li><a href="#user_annotations">&nbsp&nbsp&nbspUser</a></li>
+        <li><a href="#phylofacts_annotations">&nbsp&nbsp&nbspPhyloFacts</a></li>
+        <li><a href="#structures">Structures</a></li>
+        {% endif %}
+        <li><a href="#downloads">Downloads</a></li>
+        {% if 1 == 0 %}
+        <li><a href="#notes">Construction Notes</a></li>
+        {% endif %}
+        <li><a href="#biocyc">BioCyc</a></li>
+        <li><a href="#reactions">&nbsp&nbsp&nbspReactions</a></li>
+        <li><a href="#pathways">&nbsp&nbsp&nbspPathways</a></li>
+      </ul>
+    <div id="summary" class="phylofacts-treenode-content">
+        <h3>Summary</h3>
+        {% if treenode.is_in_pfam_family %}
+            <p>This PhyloFacts family was constructed as part of our 
+            <a>PhyloFacts-Pfam project</a>.  
+            Sequences in this family all contain the {{ pfam_shortname }} domain, 
+            but may have different overall domain architectures.</p>
+        {% else %}
+            <p>This PhyloFacts family represents a group of sequences that share 
+            a common multi-domain architecture: sequences align along their entire 
+            lengths and are retrieved using the <a href='http://www.biomedcentral.com/1471-2148/7/S1/S12/abstract' target='_blank'>FlowerPower algorithm</a>.</p>
+            <p>The most common multi-domain architecture is shown below.  See 
+            <a id="domain-arch-link" href="javascript:;">domain architecture tab</a> for a full list.</p>
+        {% endif %}
+            <dl class="dl-horizontal summary-description-list">
+              <dt>Family Accession</dt>
+              <dd><a href="/phylofacts/family/{{ treenode.tree.family.get_accession }}/">{{ treenode.tree.family.get_accession }}</a></dd>
+              <dt>Tree Size</dt>
+              <dd>{{ treenode.get_informative_members|length }}</dt>
+              <dt>Subtree Minimum % ID</dt>
+              <dd>{{ treenode.minimum_pairwise_identity_belvu|floatformat:"-2" }} %</dd>
+            </dl>
+            {% if treenode.is_in_mda_family %}
+              <dl class="dl-horizontal">
+                  <dt>Most Common<br />Architecture</dt>
+                  <dd><div id="mode-mda"></div></dd>
+              </dl>
+            {% endif %}
+    </div>
+    <div id="species" class="phylofacts-treenode-content">
+        <h3>Species</h3>
+        <p>This PhyloFacts tree contains <b>{{ treenode.get_informative_members|length }} sequence(s)</b> representing <b>{{ num_species }} unique taxa</b>.</p>
+        <div id="species-tree-controls" class="species-tree-controls">
+           <div class="label">Tree Controls</div>
+           <div class="btn-group">
+              <button id="species-expand-all" class="btn">Expand All</button>
+              <button id="species-collapse-all" class="btn">Collapse All</button>
+           </div>
+        </div>
+        <div id="species-tree"></div>
+    </div>
+    {% if not treenode.is_leaf %}
+    <div id="gene_tree" class="phylofacts-treenode-content">
+        <h3>Gene Tree</h3>
+        <p>PhyloFacts trees are constructed using the pipeline described <a>here</a>.  
+        Most PhyloFacts trees contain multiple mutually paralogous groups (i.e., 
+        they are not restricted to orthologs).  Orthologs can be identified by 
+        examining the phylogenetic tree manually.</p>
+        <div id="gene-tree-view-control">
+            <div class="bordered">
+                <h4>Full Tree</h4>
+                <div class="btn-toolbar">
+                    <div class="btn-group">
+                        <button class="btn btn-large dropdown-toggle" data-toggle="dropdown">View Gene Tree</button>
+                        <button class="btn btn-large dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            {% if treenode.get_included_leaves|length <= 700 %} 
+                            <a href="javascript:;" onclick="window.open('orthoscope/', 
+                            'PhyloScope view of {{ treenode.id }}',
+            'height=800,width=800,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes');">View with Phyloscope (Best for small or moderate trees &lt; 500 sequences)</a>
+                            {% endif %}
+                            <a href="javascript:;" onClick="openArchaeopteryxWin( 
+                 'http://makana.berkeley.edu/phylofacts/tree_node_view/{{ treenode.id }}/download/tree/newick/',
+                 'http://makana.berkeley.edu/phylofacts/archaeopteryx_config/' ); return false;">View with Archaeopteryx (Best for large trees &gt; 500 sequences)</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% if 1 == 0 %}
+            <div class="bordered">
+                <h4>Summary Tree</h4>
+                <div id="summary-gene-tree-controls">
+                    <label id="gene-tree-threshold-label" for="gene-tree-threshold-spinner" class="label">Threshold (%): </label>
+                    <input type="text" id="gene-tree-threshold-spinner" value="70" maxlength="2">
+                    <label id="gene-tree-seed-label" for="summary-gene-tree-seed" class="label">Seed: </label>
+                    <input id="summary-gene-tree-seed"></input>
+                </div>
+                <div class="btn-toolbar">
+                    <div class="btn-group"> 
+                        <button id="summary-gene-tree-view-phylogram" class="btn btn-large">View with Phylogram</button>
+                        <button class="btn btn-large dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <a id="summary-gene-tree-view-phylogram" href="javascript:;">View with Phyloscope</a>
+                            <a href="javascript:;">View with Archaeopteryx</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <div id="gene-tree"></div>
+        </div>
+    </div>
+    {% endif %}
+    <div id="members" class="phylofacts-treenode-content">
+        <h3>Members</h3>
+        <table id="members-table" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Identifier</th>
+                    <th>Species</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for member in treenode.get_included_leaves %}
+                    <tr>
+                    {% if member.sequence_header.uniprot %}
+                            <td><a href="{{ member.sequence_header.uniprot.get_absolute_url }}">{{ member.sequence_header.uniprot.uniprot_identifier }}</a></td>
+                            <td><a href="{{ member.sequence_header.uniprot.taxon.get_absolute_url }}">{{ member.sequence_header.uniprot.taxon.scientific_name }}{% if member.sequence_header.uniprot.taxon.common_name %} ({{ member.sequence_header.uniprot.taxon.common_name }}){% endif %}</a></td>
+                            <td>{{ member.sequence_header.uniprot.description }}</td>
+                    {% else %}
+                            <td>{{ member.sequence_header.parse_header.identifier }}</td>
+                            <td>
+                                {% if member.sequence_header.parse_header.tax_id %}
+                                <a href="http://www.uniprot.org/taxonomy/{{ member.sequence_header.parse_header.tax_id }}">{{ member.sequence_header.parse_header.scientific_name }}{% if member.sequence_header.parse_header.common_name %} ({{ member.sequence_header.parse_header.common_name }}){% endif %}</a>
+                                {% else %}{% if member.sequence_header.parse_header.species %}{{ member.sequence_header.parse_header.species }}{% endif %}{% endif %}</td>
+                            <td>{{ member.sequence_header.parse_header.description }}</td>
+                    {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% comment %}
+    <div id="orthologs" class="phylofacts-treenode-content">
+        <h3>Orthologs and Subfamilies</h3>
+        <p>We use multiple approaches to identify orthologs.  The PHOG algorithm 
+        <a>(Datta et al.)</a> analyzes the phylogenetic tree to differentiate orthologs 
+        and paralogs.  
+
+        {% if ortholog_info.orthomcl_supported_ancestor or ortholog_info.oma_supported_ancestor or ortholog_info.kerf_supported_ancestor or ortholog_info.phog_supported_ancestor %}
+        <h4>Supported orthology groups at or above this tree node</h4>
+        <dl class="dl-horizontal">
+        {% if ortholog_info.orthomcl_supported_ancestor %}
+              <dt style="clear:none;">OrthoMCL</dt>
+              <dd><a href="/phylofacts/tree_node_view/{{ ortholog_info.orthomcl_supported_ancestor.id }}">
+               {{ ortholog_info.orthomcl_supported_ancestor }}</a> 
+               (OrthoMCL group: {{ortholog_info.orthomcl_supported_ancestor.is_orthomcl_supported}})</dd>
+        {% endif %}
+        {% if ortholog_info.oma_supported_ancestor %}
+              <dt style="clear:none;">OMA</dt>
+              <dd><a href="/phylofacts/tree_node_view/{{ ortholog_info.oma_supported_ancestor.id }}">
+               {{ ortholog_info.oma_supported_ancestor }}</a> 
+               (OMA group: {{ortholog_info.oma_supported_ancestor.is_oma_supported}})</dd>
+        {% endif %}
+        {% if ortholog_info.kerf_supported_ancestor %}
+              <dt style="clear:none;">Kerf70</dt>
+              <dd><a href="/phylofacts/tree_node_view/{{ ortholog_info.kerf_supported_ancestor.id }}">
+               {{ ortholog_info.kerf_supported_ancestor }}</a></dd>
+        {% endif %}
+        {% if ortholog_info.phog_supported_ancestor %}
+              <dt style="clear:none;">PHOG T(0)</dt>
+              <dd><a href="/phylofacts/tree_node_view/{{ ortholog_info.phog_supported_ancestor.id }}">
+               {{ ortholog_info.phog_supported_ancestor }}</a></dd>
+        {% endif %}
+            </dl>
+        {% endif %}
+    </div>
+    {% endcomment %}
+    {% if not treenode.is_leaf %}
+    <div id="alignment" class="phylofacts-treenode-content">
+        <h3>Sequence Alignment</h3>
+        <p>We use the <a href="http://mafft.cbrc.jp/alignment/software/">MAFFT software</a> to construct multiple sequence 
+        alignments.  Multiple sequence alignments are masked to hide columns with 
+        many gap characters, and then used as input to phylogenetic tree estimation 
+        and hidden Markov model (HMM) construction.  The consensus sequence for the 
+        alignment is used to identify Pfam domains and transmembrane helices.</p>
+        <div>
+            <div class="bordered">
+                <h4>Full Alignment</h4>
+                <p>You can view the full alignment of all sequences that descend from this node.</p>
+                <div class="btn-toolbar">
+                    <div class="btn-group">
+                        <button data-toggle="dropdown" class="btn btn-large dropdown-toggle">View Alignment</button>
+                        <button class="btn btn-large dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <a href="javascript:;" treenode="{{ treenode.id }}" id="jalview-applet-for-treenode">View with Jalview</a>    
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% if 1 == 0 %}
+            <div class="bordered">
+                <h4>Summary Alignment</h4>
+                <p>The sequences under this node have a minimum pairwise percent 
+identity of <b>{{ treenode.minimum_pairwise_identity_belvu|floatformat }} %</b>.
+  You can select a percent identity threshold and a seed sequence below to view a summary alignment of the sequences in the maximal subtree where the minimum percent identity of all members is above the threshold selected.</p>
+                <div id="summary-msa-controls">
+                    <label id="msa-threshold-label" for="msa-threshold-spinner" class="label">Threshold (%): </label>
+                    <input type="text" id="msa-threshold-spinner" value="70" maxlength="2">
+                    <label id="msa-seed-label" for="summary-msa-seed" class="label">Seed: </label>
+                    <input id="summary-msa-seed"></input>
+                </div>
+                <div class="btn-toolbar">
+                    <div class="btn-group">
+                        <button id="jalview-applet-for-summary-treenode" treenode="{{ treenode.id }}" class="btn btn-large">View with Jalview</button>
+                        <button class="btn btn-large dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                        <ul class="dropdown-menu"></ul>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    <div id="domains" class="phylofacts-treenode-content">
+        {% if treenode.get_phobius_results_for_family.transmembrane or treenode.get_phobius_results_for_family.signal_peptide %}
+        <h3>Transmembrane Helices and Signal Peptides</h3>
+        <div class="pfam-domain-architecture">
+          <p class="bold">Phobius prediction on family consensus ({{ treenode.get_consensus_sequence_for_family.1|length }} amino acids).</p>
+            <div id="tm"></div>
+        </div>
+        {% endif %}
+        <h3>Domain Architectures</h3>
+        {% if treenode.is_in_pfam_family %}<p>This family is defined based on the presence of a common Pfam domain.  Many sequence in the family have different domain architectures outside of this region, as shown below.</p>
+        {% else %}
+        <p>Sequences in multi-domain architecture (MDA) families are clustered 
+        using FlowerPower to align well along their entire lengths 
+        with minimal gaps or insertions relative to the family consensus.
+        <a href="javascript:;" id="domains-more-link">More . . .</a></p>
+        <div id="domains-more-text" class="hidden">
+        <p>This allows us to assume a common multi-domain architecture. 
+        <p>We use the <a href="http://phobius.sbc.su.se/">Phobius server</a> to predict transmembrane helices and 
+        signal peptides using the family consensus sequence as a query.</p>
+        <p>However, Pfam domain analysis sometimes identifies different 
+        multi-domain architectures for individual members.  
+        In some cases, these disagreements reflect limitations of pre-defined 
+        score cutoffs using Pfam HMMs, while in other cases, 
+        the FlowerPower algorithm may have incorrectly clustered sequences.  
+        To disambiguate such cases, we recommend you examine the 
+        <a href="javascript:;" id="msa-link">multiple sequence alignment</a>.</p>
+        </div>
+        {% endif %}
+        {% for architecture in architectures %}
+            <div class="pfam-domain-architecture{% cycle ' light-gray-row' ' gray-row'%}">
+                <p class="bold">{{ architecture.2.num_this_grp }} ({{ architecture.2.fraction }}%) member(s) have the following Pfam domain architecture: {{ architecture.0 }}.</p>
+                <p>Sample Domain Architecture for <a href="/phylofacts/sequence/UniProt/{{ architecture.1.0.uniprot_accession }}">{{ architecture.1.0.uniprot_accession }}</a> ({{ architecture.1.0.protein_length }} amino acids).</p>
+                <div class="pfam-domain-graphic" id="dg{{ forloop.counter }}"></div>
+            </div>
+        {% endfor %}
+        {% if treenode.no_pfam_domain_members.0 != 0 %}
+        <div class="pfam-domain-architecture {% if architectures|length|divisibleby:2 %}light-gray-row{% else %}gray-row{% endif %}">
+          <p class="bold">{{ treenode.no_pfam_domain_members.0 }} ({{ treenode.no_pfam_domain_members.1 }}%) member(s) have no Pfam domains.</p>
+        </div>
+        {% endif %} 
+    </div>
+    {% comment %}
+    <div id="annotations" class="phylofacts-treenode-content">
+        <h3>Annotation Summary</h3>
+        <p>This subtree has leaves with {{ num_GO_annotations }} Gene Ontology {% if num_GO_annotations == 1 %}annotation.{% else %}annotations.{% endif %}</p>
+    </div>
+    {% endcomment %}
+    <div id="go_annotations" class="phylofacts-treenode-content">
+        {% include "phylofacts/treenode_go.js" %}
+        <h3>Gene Ontology Annotations</h3>
+    	{% if go_info.biological_process|length %}
+    	    <h4>Biological process</h4>
+            {% include "phylofacts/treenode_go.html" with go_terms=go_info.biological_process %}
+        {% endif %}  <!-- End of GO biological process -->
+    	{% if go_info.molecular_function|length %}
+    	    <h4>Molecular function</h4>
+            {% include "phylofacts/treenode_go.html" with go_terms=go_info.molecular_function %}
+        {% endif %}  <!-- End of GO molecular_function -->
+    	{% if go_info.cellular_component|length %}
+    	    <h4>Cellular component</h4>
+            {% include "phylofacts/treenode_go.html" with go_terms=go_info.cellular_component %}
+        {% endif %}  <!-- End of GO cellular component -->
+    </div>
+    {% if 1 == 0 %}
+    <div id="user_annotations" class="phylofacts-treenode-content">
+        <h3>User Annotations</h3>
+        <p></p>
+    </div>
+    <div id="phylofacts_annotations" class="phylofacts-treenode-content">
+        <h3>PhyloFacts Annotations</h3>
+        <p></p>
+    </div>
+    <div id="structures" class="phylofacts-treenode-content">
+        <h3>Structures</h3>
+        <p>We score the family HMM against the Protein Data Bank (PDB) to find homologous structures.  Matches with significant scores are shown below.</p>
+        <!-- PDB_ID | Header | E-Value | View alignment 
+        E-Value of 10^-3
+        -->
+    </div>
+    {% endif %}
+    {% if not treenode.is_leaf %}
+    <div id="downloads" class="phylofacts-treenode-content">
+        <h3>Downloads</h3>
+        <p>You can download from this page, the following data: </p>
+        <h4>HMM</h4>
+        <ul>
+            <li><a href='/phylofacts/tree_node_view/{{ treenode.id }}/download/hmm/'>[HMMER3 format]</a> {{ treenode.subtree_hmm|length|filesizeformat }}</li>
+        </ul>    
+        <h4>Multiple Sequence Alignment</h4>
+        <ul>
+            <li><a href='/phylofacts/tree_node_view/{{ treenode.id }}/download/a2m_msa/'>Alignment (a2m format)</a> {{ treenode.msa|length|filesizeformat }}</li>
+            <li><a href='/phylofacts/tree_node_view/{{ treenode.id }}/download/masked_msa/'>Alignment (aligned FASTA format)</a> {{ treenode.uc_msa|length|filesizeformat }}</li>
+        </ul>
+        <h4>Gene Tree</h4>
+        <ul>
+            <li><a href='/phylofacts/tree_node_view/{{ treenode.id }}/download/tree/phyloxml/'>Full Tree (phyloxml)</a> {{ treenode.phyloxml|length|filesizeformat }}</li>
+            <li><a href='/phylofacts/tree_node_view/{{ treenode.id }}/download/tree/newick/'>Full Tree (Newick)</a> {{ treenode.newick|length|filesizeformat }}</li>
+        </ul>
+        <!--<h4>Member Sequences</h4>
+        <ul>
+            <li><a href='/phylofacts/tree_node_view/{{ treenode.id }}/download/members/'>Member Sequences (FASTA)</a> {{ treenode.get_member_fasta|length|filesizeformat }}</li>
+        </ul>-->
+    </div>
+    {% endif %}
+    {% if 1 == 0 %}
+    <div id="notes" class="phylofacts-treenode-content">
+        <h3>Notes</h3>
+        <p></p>
+    </div>
+    {% endif %}
+    <div id="biocyc" class="phylofacts-treenode-content">
+        <h3>BioCyc Summary</h3>
+        <p>
+	{% if biocyc_info.reactions or biocyc_info.pathways %}
+	  The members included below this node participate in 
+	  {% if biocyc_info.reactions %} {% if biocyc_info.reactions|length > 1 %} 
+	  {{ biocyc_info.reactions|length }} biocyc reactions {% else %} 1 BioCyc reaction {% endif %} 
+	  {% else %} 0 BioCyc reactions {% endif %} and 
+	  {% if biocyc_info.pathways %} {% if biocyc_info.pathways|length > 1 %} 
+	  {{ biocyc_info.pathways|length }} BioCyc pathways {% else %} 1 BioCyc pathway {% endif %} 
+	  {% else %} 0 BioCyc pathways{% endif %}.
+	{% else %}
+	  None of the sequences in this subtree are associated with a BioCyc reaction or a BioCyc pathway.
+	{% endif %}
+	</p>
+    </div>
+    <div id="reactions" class="phylofacts-treenode-content">
+        <h3>BioCyc Reactions</h3>
+        <p>
+	{% if biocyc_info.reactions %}
+	Sequences in this subtree participate in {% if biocyc_info.reactions|length > 1 %} these {{ biocyc_info.reactions|length }} reactions{% else %} this reaction{% endif %}.
+	{% else %}
+	None of the sequences in this subtree are associated with a BioCyc reaction.
+	{% endif %}
+          <ul>
+            {% for reaction, uniprot_list in biocyc_info.reactions.items %}
+	       <li>
+	         {% if reaction.ec_number %}EC: {{ reaction.ec_number }},{% endif %}
+	      	 <a title="Link to the BioCyc page" href="http://biocyc.org/{{reaction.db}}/NEW-IMAGE?object={{reaction.id}}">
+	      {% if reaction.common_name %}{{ reaction.common_name|safe }}{% else %}
+	         {% if reaction.systematic_name %}{{ reaction.systematic_name|safe }}{% else %}
+		   {{reaction.id}}</a>
+		 {% endif %}
+	      {% endif %}
+	      <a id="reaction-button-{{forloop.counter}}" href="javascript:;">({{uniprot_list|length}} {% if uniprot_list|length > 1 %}sequences{% else %}sequence{% endif %} participate in this reaction)</a>
+
+            <script>
+             $j(document).ready(function() {
+	     	$j("#reaction-sequences-{{forloop.counter}}").dataTable( {
+		"sDom": "<'row'<'span4'l><'span4'f>r>t<'row'<'span4'i><'span6'p>>",
+		"sPaginationType": "bootstrap",
+		"oLanguage": {
+			"sLengthMenu": "_MENU_ records per page"
+		}
+		} );
+		} );
+            $j("#reaction-button-{{forloop.counter}}").click(function () {
+                   $j("#reaction-sequence-table-{{forloop.counter}}").toggle("slow");
+                   });
+            </script>
+	    
+	     <div id="reaction-sequence-table-{{forloop.counter}}" style="display:none">
+	     <hr />
+	     <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="reaction-sequences-{{forloop.counter}}">
+		   <thead>
+		   <tr><th>Identifier</th><th>Description</th><th>Species</th>
+		   </tr></thead>
+		   <tbody>
+		 {% for seq in uniprot_list %}
+		   <tr>
+		   <td><a href="/phylofacts/sequence/UniProt/?acc_or_ident={{ seq.accession }}">{{ seq.uniprot_identifier }}</a></td>
+		   <td>{{ seq.description }}</td>
+		   <td>{{ seq.taxon }}</td>
+		   </tr>
+		 {% endfor %}
+		   </tbody>
+		 </table>
+	     <br /><br /><hr />
+	     </div>
+
+	     </li>
+      	    {% endfor %}
+      </ul></p>
+    </div>
+    <div id="pathways" class="phylofacts-treenode-content">
+        <h3>BioCyc Pathways</h3>
+        <p>
+	{% if biocyc_info.pathways %}
+	Sequences in this subtree participate in {% if biocyc_info.pathways|length > 1 %} these {{ biocyc_info.pathways|length }} pathways{% else %} this pathway{% endif %}.
+	{% else %}
+	None of the sequences in this subtree are associated with a BioCyc pathway.
+	{% endif %}
+          <ul>
+            {% for pathway, uniprot_list in biocyc_info.pathways.items %}
+	       <li>
+	       <a title="Link to the BioCyc page" href="http://biocyc.org/{{pathway.db}}/NEW-IMAGE?object={{pathway.id}}">{{ pathway.common_name|safe }}</a>
+	      <a id="pathway-button-{{forloop.counter}}" href="javascript:;">({{uniprot_list|length}} {% if uniprot_list|length > 1 %}sequences{% else %}sequence{% endif %} participate in this pathway)</a>
+
+            <script>
+             $j(document).ready(function() {
+	     	$j("#pathway-sequences-{{forloop.counter}}").dataTable( {
+		"sDom": "<'row'<'span4'l><'span4'f>r>t<'row'<'span4'i><'span6'p>>",
+		"sPaginationType": "bootstrap",
+		"oLanguage": {
+			"sLengthMenu": "_MENU_ records per page"
+		}
+		} );
+		} );
+            $j("#pathway-button-{{forloop.counter}}").click(function () {
+                   $j("#pathway-sequence-table-{{forloop.counter}}").toggle("slow");
+                   });
+            </script>
+	    
+	     <div id="pathway-sequence-table-{{forloop.counter}}" style="display:none">
+	     <hr />
+	     <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="pathway-sequences-{{forloop.counter}}">
+		   <thead>
+		   <tr><th>Identifier</th><th>Description</th><th>Species</th>
+		   </tr></thead>
+		   <tbody>
+		 {% for seq in uniprot_list %}
+		   <tr>
+		   <td><a href="/phylofacts/sequence/UniProt/?acc_or_ident={{ seq.accession }}">{{ seq.uniprot_identifier }}</a></td>
+		   <td>{{ seq.description }}</td>
+		   <td><a href="http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id={{seq.taxon.id}}">{{ seq.taxon }}</a></td>
+		   </tr>
+		 {% endfor %}
+		   </tbody>
+		 </table>
+	     <br /><br /><hr />
+	     </div>
+	     </li>
+      	    {% endfor %}
+      </ul></p>
+    </div>
+    <div class="bottom-border">
+        <p></p>
+    </div>
+  </div>
+</div>
+{% endblock %}

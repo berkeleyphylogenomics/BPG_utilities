@@ -1,0 +1,32 @@
+          <ul>
+            {% for term in go_terms %}
+	       <li>
+	       	   <a href='http://www.ebi.ac.uk/QuickGO/GTerm?id={{term.accession}}'>{{term.name}}</a> 
+		   {% for evidence in term.evidence %}
+		   (<a href="javascript:;" title="{{evidence.name}}">{{evidence.evidence_code}}</a>:{{evidence.count}}) 
+		   {% endfor %}
+	      <a class="go-table-toggle" href="javascript:;">(View all sequences with this GO term)</a>
+
+	    
+	     <div class="go-sequence-table-container" style="display:none">
+	     <hr />
+	     <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered go-sequence-table" >
+		   <thead>
+		   <tr><th>Identifier</th><th>Description</th><th>Species</th>
+		   </tr></thead>
+		   <tbody>
+		 {% for seq in term.members %}
+		   <tr>
+		   <td><a href="/phylofacts/sequence/UniProt/?acc_or_ident={{ seq.accession }}">{{ seq.uniprot_identifier }}</a></td>
+		   <td>{{ seq.description }}</td>
+		   <td><a href="http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id={{seq.taxon.id}}">{{ seq.taxon }}</a></td>
+		   </tr>
+		 {% endfor %}
+		   </tbody>
+		 </table>
+	     <br /><br /><hr />
+	     </div>
+
+	       </li>
+	       {% endfor %}
+      </ul>

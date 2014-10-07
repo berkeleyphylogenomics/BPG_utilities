@@ -1,0 +1,19 @@
+<html>
+<head></head>
+<body>
+{% if object_list %}<table>
+    <tr>
+        <th>BPG ID</th>
+        <th>UniProt</th>
+        <th>Identifier</th>
+        <th>Taxon</th>
+    </tr>{% for object in object_list %}
+    <tr>
+        <td><a href='{{ object.get_absolute_url }}'>bpgseq{{ object.id }}</a></td>
+        <td>{{ object.uniprot }}</td>
+        <td>{{ object.identifier }}</td>
+        <td>{{ object.taxon }}</td>
+    </tr>{% endfor %}
+</table>{% endif %}
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% extends "phog/tutorial/tutorial_bottompagenav.html" %}
+
+{% block content %}
+<td>
+<p>
+<strong>
+Table of orthologs and in-species paralogs for a query sequence specified by ID/accession.
+</strong>
+</p>
+<hr>
+<p>
+The next table has a row for each ortholog and in-species paralog from one or more PhyloFacts families, with the following information. 
+</p>
+<p>
+<ul>
+<li>The gene ID/accession and a link to the associated web page.</li>
+<li>The scientific and common species names.</li>
+<li>A description of the protein.</li>
+<li>A link to the SwissProt curated sequence, if available.</li>
+<li>A link to Gene Ontology annotations with experimental evidence, if available.</li>
+<li>The <a href="http://www.ebi.ac.uk/intenz/">IntEnz</a> (EC) classification at the EBI IntEnz database and link to the associated EC page, if available.</li>
+<li>A link to the associated <a href="http://www.genome.jp/kegg/">Kyoto Encyclopedia of Genes and Genomes</a> (KEGG) web page, if available.
+<li>A link to the associated <a href="http://biocyc.org/">BioCyc</a> metabolic pathway page, if available.
+<li>A link to the <a href="/phylofacts/">PhyloFacts</a> interacting proteins, if available.</li>
+<li>The <a href="http://pfam.sanger.ac.uk/">Pfam</a> domains found in the family, linked to the associated Pfam web pages.</li>
+<li>A link to the PhyloFacts family containing the sequence.</li>
+<li>The alignment type, whether global or local.</li>
+<li>The PHOG containing the sequence, linked to the associated PHOG web page.</li>
+<li>Links to view the PhyloFacts tree for either the full family or the PHOG.  (For help with the tree viewer click the "Need help?" link at the top of the viewer page, or click <a href="/phyloscope/help/">here</a>.)</li>
+<li>Links to UniProt literature associated with the sequence, if available.
+</ul>
+</p>
+<p>
+Note that the table may consist of multiple pages which can be navigated via the links at the bottom of the table.  The table can also be downloaded in CSV format (comma separated values) by clicking the "Download as CSV" button below the table.
+</p>
+</td>
+</tr>
+</table>
+<hr>
+
+{% endblock %}
+
+</body>
+</html>
+

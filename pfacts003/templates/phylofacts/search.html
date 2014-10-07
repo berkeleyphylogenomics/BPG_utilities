@@ -1,0 +1,152 @@
+{% extends 'common/base.html' %}
+{% load get_range %}
+
+{% block extrastyle %}{% endblock %}
+
+{% block extrascripts %}
+<script type="text/javascript" charset="utf-8" src="/static/js/ColReorder.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/js/ColVis.js"></script>
+{% endblock %}
+
+{% block title %}Phylofacts Search{% endblock %}
+
+{% block content %}
+<style>
+.dataTables_filter {
+    display: none; /* Hiding the search form because we are setting it via the main form to link everything */
+}
+#query {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-bottom: 35px;
+}
+#query_field {
+    width: 70%;
+    margin-right: 20px;
+    height: 25px;
+    font-size: 20px;
+}
+.dataTables_wrapper {
+    margin-bottom: 30px;
+}
+</style>
+<script>
+jQuery(function() {
+    function make_sequence_link(acc_or_ident) {
+        return "<a href='/phylofacts/sequence/UniProt/" + acc_or_ident + "' >" + acc_or_ident + "</a>";
+    }   
+
+    function make_phog_link(acc) {
+        return "<a href='/phog/" + acc + "' >" + acc + "</a>";
+    }   
+
+    function make_family_link(id, name) {
+        function zeroFill( number, width )
+        {
+          width -= number.toString().length;
+          if ( width > 0 )
+          {
+            return new Array( width + (/\./.test( number ) ? 2 : 1) ).join( '0' ) + number;
+          }
+          return number;
+        }
+        var acc = "bpg" + zeroFill(id, 7);
+        if (name === undefined ) { name = acc; }
+        return "<a href='/phylofacts/family/" + acc + "' >" + name + "</a>";
+    }   
+
+    UniProtResultsTable = $("#uniprot_results").dataTable({
+        "sDom": 'R<"H"lfr<"right"C>>t<"F"ip>', // No, this isn't a good way.  Check the datatable docs
+        "bStateSave": true,
+        "bJQueryUI": true, 
+        "bFilter": true,
+        "sPaginationType": "full_numbers",
+        "bSort": false,
+        "bProcessing": true,
+        "bServerSide": true,
+        "sAjaxSource": '/api/solr_uniprot',
+        "aoColumns": [ 
+            { "sTitle": "Accession", "mDataProp": "uniprot_accession","fnRender": function( o, val ) { return make_sequence_link(o.aData.uniprot_accession); } },
+            { "sTitle": "Identifier", "mDataProp": "uniprot_identifier", "fnRender": function( o ) { return make_sequence_link(o.aData.uniprot_identifier); }  },  
+            { "sTitle": "Pfam", "mDataProp": "pfam_names", "fnRender": function( o ) { return o.aData.pfam_names.join("<br/>") }  },  
+            { "sTitle": "EC", "bVisible": false, "mDataProp": "ec_numbers", "fnRender": function( o ) { return o.aData.ec_numbers.join(", ") }  },  
+            { "sTitle": "GO", "bVisible": false, "mDataProp": "go_accessions", "fnRender": function( o ) { return o.aData.go_accessions.join(", ") }  },  
+            { "sTitle": "Description", "mDataProp": "de" }
+        ]
+    });
+    FamilyResultsTable = $("#family_results").dataTable({
+        "sDom": 'R<"H"lfr<"right"C>>t<"F"ip>',
+        "bStateSave": true,
+        "bJQueryUI": true, 
+        "bFilter": true,
+        "sPaginationType": "full_numbers",
+        "bSort": false,
+        "bProcessing": true,
+        "bServerSide": true,
+        "sAjaxSource": '/api/solr_family',
+        "aoColumns": [ 
+            { "sTitle": "Family", "mDataProp": "id","fnRender": function( o, val ) { return make_family_link(o.aData.id, o.aData.family_name); } },
+            { "sTitle": "Pfam", "mDataProp": "pfam_names", "fnRender": function( o ) { return o.aData.pfam_names.join(", ") }  },  
+            { "sTitle": "EC", "bVisible": false, "mDataProp": "ec_numbers", "fnRender": function( o ) { return o.aData.ec_numbers.join(", ") }  },  
+            { "sTitle": "GO", "bVisible": false, "mDataProp": "go_accessions", "fnRender": function( o ) { return o.aData.go_accessions.join(", ") }  },
+        ]
+    });
+    PhogResultsTable = $("#phog_results").dataTable({
+        "sDom": 'R<"H"lfr<"right"C>>t<"F"ip>',
+        "bStateSave": true,
+        "bJQueryUI": true, 
+        "bFilter": true,
+        "sPaginationType": "full_numbers",
+        "bSort": false,
+        "bProcessing": true,
+        "bServerSide": true,
+        "sAjaxSource": '/api/solr_phog',
+        "aoColumns": [ 
+            { "sTitle": "PHOG", "mDataProp": "phog_accession","fnRender": function( o, val ) { return make_phog_link(o.aData.phog_accession); } },
+            { "sTitle": "Members", "mDataProp": "number_of_members" },
+            { "sTitle": "Pfam", "bVisible": false, "mDataProp": "pfam_names", "fnRender": function( o ) { return o.aData.pfam_names.join(", ") }  },  
+            { "sTitle": "EC", "bVisible": false, "mDataProp": "ec_numbers", "fnRender": function( o ) { return o.aData.ec_numbers.join(", ") }  },  
+            { "sTitle": "GO", "bVisible": false, "mDataProp": "go_accessions", "fnRender": function( o ) { return o.aData.go_accessions.join(", ") }  },  
+            { "sTitle": "GO Exp", "mDataProp": "go_experimental_evidence", "fnRender": function( o ) { return o.aData.go_experimental_evidence.join(", ") }  },  
+            { "sTitle": "SwissProt", "mDataProp": "swissprot", "fnRender": function( o ) { return o.aData.swissprot.sort().reverse()[0]; }  }  
+        ]
+    });
+
+    UniProtResultsTable.fnFilter( "{{ query }}" );
+    FamilyResultsTable.fnFilter( "{{ query }}" );
+    PhogResultsTable.fnFilter( "{{ query }}" );
+
+    jQuery("#search").click(function() {
+        var q = jQuery("#query_field").val();
+        UniProtResultsTable.fnFilter(q);
+        FamilyResultsTable.fnFilter(q);
+    });
+    jQuery("#query_field").keyup(function(e) {
+        if(e.keyCode == 13) {
+            var q = jQuery("#query_field").val();
+            UniProtResultsTable.fnFilter(q);
+            FamilyResultsTable.fnFilter(q);
+        }
+    });
+
+    jQuery("#search").button();
+
+});
+</script>
+
+
+<div id="query">
+  <input id="query_field" value="{{ query }}">
+  <a id="search" href="javascript:;">Search</a>
+</div>
+
+<div id="results">
+    <h2>Sequence Results</h2>
+    <table id="uniprot_results"></table>
+    <h2>Family Results</h2>
+    <table id="family_results"></table>
+    <h2>PHOG Results</h2>
+    <table id="phog_results"></table>
+<div>
+{% endblock %}

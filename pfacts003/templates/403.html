@@ -1,0 +1,35 @@
+{% extends "common/legacy_base.html" %}
+
+
+{% block content %}
+<h2><b>Oh no!</b> You don't have access.</h2>
+<p>{{message}}</p>
+
+<p>
+Not all of our files are available to the public. If you think you received
+this error by mistake, please
+<a href="mailto://phylofacts.webmaster@gmail.com">let us know</a>.
+</p>
+
+
+<p>
+Some helpful information to include:
+</p>
+<ul
+<li>What page you were on previously</li>
+<li>What you were trying to do</li>
+<li>Any input or parameters you may have been using on the site.</li>
+</ul>
+</p>
+
+<p>
+Thank you again.
+</p>
+
+<p>
+Sincereley,
+<br />
+<br />
+The PhyloFacts Administrators
+</p>
+{% endblock %}

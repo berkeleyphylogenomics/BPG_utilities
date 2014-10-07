@@ -1,0 +1,70 @@
+{% extends "dbquery/base.html" %}
+
+{% block sub_content %}
+<p>Protein sequences in PhyloFacts have been classified into families, subfamilies and orthology groups.  Our database query page allows you to find genes having particular functions based on these pre-calculated relationships.</p>
+<p><a href='/dbquery/tutorial/'>View tutorial</a></p>
+<form id='submission_form' action='.' method='get' enctype='multipart/form-data'>
+<h3>Using <a href='/phog/orthologs/quickstart/'>orthology</a> to predict function, find genes: (<a href='?{% ifequal term_type 'go' %}taxon=Klebsiella+pneumoniae&amp;term_type=molecular_function&amp;name=low+voltage-gated+calcium+channel+activity&amp;evidence_code=EXP{% else %}taxon=Clostridium&amp;ec=2.6.1.82&amp;brenda=True{% endifequal %}'>example</a>)</h3>
+<table>
+<tr><td></td><td>
+{% block form_explanation %}{% endblock %}
+</td></tr>
+{{ form }}
+{% if email_form %}
+  {% with email_form as right_help_form %}
+    {% include 'common/right_help_form.html' %}
+  {% endwith %}
+{% endif %}<tr><td></td><td><input type='submit' value='Find' /></td></tr>
+{% if advanced_form %}<tr><td id='advanced_options' class='expandable' colspan='2'>
+<a href='#' class='expand'>Show Advanced Options</a>
+<a href='#' class='collapse'>Hide Advanced Options</a>
+<table>
+{{ advanced_form }}
+</table></td></tr>{% endif %}
+</table>
+</form>
+{% if results %}
+<div id='dbqresults'>
+  <h1>Results</h1>
+  <table>
+    <tr>
+      <th>Gene</th>
+      <th>Description</th>
+      <th>PHOGs</th>
+      <th>Orthologs</th>
+    </tr>
+  {% for item in results.object_list %}
+  {% with item.canonical_tree_node.sequence_header as tn %}
+  {% with item.phogs as phogs %}
+  {% with item.orthologs as orthologs %}
+    <tr>
+      <td><a href='/phog/orthologs/{{ tn.identifier }}/'>{{ tn.identifier }}</a></td>
+      <td>{{ tn.description }}</td>
+      <td>
+{% for phog in phogs %}
+        <a href='/phog/{{ phog.get_accession }}/'>{{ phog.get_accession }}</a>{% if not forloop.last %},{% endif %}
+{% endfor %}
+      </td>
+      <td>
+{% for ortholog_id, ortholog in orthologs.items %}
+        <a href='/phog/orthologs/{{ ortholog_id }}/'>{{ ortholog_id }}</a> <a href='http://www.uniprot.org/taxonomy/{{ ortholog.0.1.sequence_header.uniprot.taxon.id }}'>({{ ortholog.0.1.sequence_header.uniprot.taxon.scientific_name }})</a>{% if not forloop.last %},{% endif %}
+{% endfor %}
+      </td>
+    <tr>
+  {% endwith %}
+  {% endwith %}
+  {% endwith %}
+  {% endfor %}
+  </table>
+  {% if results.has_other_pages %}
+  <ul class='paginator'>
+{% if results.has_previous %}    <li><a href='?{{ form.as_url }}&amp;page={{ results.previous_page_number }}'>&lt;</a></li>{% endif %}
+{% for num in results.paginator.page_range %}
+    <li>{% ifequal num results.number %}{{ num }}{% else %}<a href='?{{ form.as_url }}&amp;page={{ num }}'>{{ num }}</a>{% endifequal %}</li>
+{% endfor %}
+{% if results.has_next %}    <li><a href='?{{ form.as_url }}&amp;page={{ results.next_page_number }}'>&gt;</a></li>{% endif %}
+  </ul>pages
+  {% endif %}
+</div>
+{% endif %}
+{% endblock %}

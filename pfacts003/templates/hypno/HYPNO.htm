@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"> 
+ 
+<head> 
+    <meta http-equiv="content-type" 
+          content="text/html;charset=utf-8" /> 
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=4594231;
+var sc_invisible=1;
+var sc_security="9a31b554";
+</script>
+
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter_xhtml.js"></script><noscript><div
+class="statcounter"><a title="stat tracker for tumblr" class="statcounter"
+href="http://www.statcounter.com/tumblr/"><img class="statcounter"
+src="http://c.statcounter.com/4594231/0/9a31b554/1/" alt="stat tracker for
+tumblr" /></a></div></noscript>
+<!-- End of StatCounter Code -->
+
+    <link rel="stylesheet"
+          href="/static/css/bpg_base.css" 
+          type="text/css" />
+    
+<style type='text/css'>
+#content {
+    margin: 0 1em;
+}
+p, caption {
+    line-height: 105%;
+}
+</style>
+
+    <title>HYPNO HYbrid Protein NucleOtide Phylogenetic Trees
+</title>
+</head>
+
+<body><div id='frame'>
+<div id='header'>
+    <div id="app_logo"><a href='/HYPNO'><span>HYPNO</span></a></div>
+    <div id='site_logo'>
+    <a href='/'><img
+        src='/static/img/logos/bpg.png'
+        alt='Celtic Tree of Life by Jen Detyth (c) 1990; http://www.kelticdesigns.com/'
+        width='300' height='120' /></a></div>
+    <div id='kmenu'>
+        <ul>											
+            <li><a href='/'>Home</a> | </li>            <li><a href='/HYPNO'>About HYPNO</a> | </li>
+            <li><a href='/HYPNO/help'>Help</a> | </li>
+            <li><a href='/contact_us'>Contact</a></li>
+        </ul>
+    </div>
+</div>
+<!--<div id='top_menu'>-->
+<!--</div>-->
+
+<div id='content'>
+
+<div>
+<h1 class="ktitle">Details on HYPNO</h1>
+<p>
+HYPNO (HYbrid Protein NucleOtide phylogenetic trees) uses both nucleic acid and amino acid sequence data to perform topological refinement of the fine-branching order in protein-based phylogenetic trees.
+</p>
+
+<!-- HYPNO algorithm description -->
+<p>
+Given a protein multiple sequence alignment (MSA) and matching phylogenetic tree, 
+HYPNO programmatically retrieves the corresponding nucleic acid sequences 
+and derives a nucleotide MSA. Nucleotide data is used to refine the fine-branching 
+order within user-defined subtrees, while retaining the original tree topology 
+above the subtree level. Subtrees targeted for refinement are selected based on 
+a user-specified threshold of subtree sequence divergence. HYPNO outputs include 
+the derived nucleotide MSA and HYPNO phylogenetic tree. For details on specific 
+user parameters and usage cases, please refer to the HYPNO Supplementary Material page.
+</p>
+
+<p>
+An illustration of example input and output trees are presented below. The input tree (left) is a subset of the sequences from the 
+PhyloFacts Toll-like Receptor gene family <a href="http://phylogenomics.berkeley.edu/phylofacts/family/bpg0240833/">bpg0240833</a>, 
+which contains <i>Hominidae</i> species Human (<i>Homo sapiens</i>, <a href="http://www.uniprot.org/uniprot/D1CS93">D1CS93 HUMAN</a>), Chimpanzee (<i>Pan troglodytes</i>, <a href="http://www.uniprot.org/uniprot/B3Y641">B3Y641 PANTR</a>), "Bonobo" Pygmy Chimpanzee (<i>Pan paniscus</i>, <a href="http://www.uniprot.org/uniprot/B3Y642">B3Y642 PANPA</a>), Gorilla (<i>Gorilla gorilla</i>, <a href="http://www.uniprot.org/uniprot/B3Y643">B3Y643 9PRIM</a>), and Orangutan 
+(<i>Pongo pygmaeus</i>, <a href="http://www.uniprot.org/uniprot/B3Y644">B3Y644 PONPY</a>). Although the <i>Hominidae</i> topology in the input tree is not reflective of
+the trusted species phylogeny [1], after nucleic acid information is incorporated at the subtree level during
+HYPNO processing, the output HYPNO tree (right) conforms to the <i>Hominidae</i> species phylogeny. For 
+the exact usage case that produced the below trees, please refer to the HYPNO Supplementary Material page.
+</p>
+
+<table class='table' align='center' cellpadding='20'>
+    <tbody>
+        <tr><td valign='bottom'>
+        <p><a href="/static/img/graphs/before.png" ><img src="/static/img/graphs/before.png" height="450" alt="" width="450" border="0"></p>
+        <p align='center'><b>Protein-based Toll-like Receptor Input Tree (click to enlarge)</b></p>
+        </td><td valign='bottom'>
+        <p><a href="/static/img/graphs/after.png"><img src="/static/img/graphs/after.png" alt="" height="450" width="450" border="0"></p>
+        <p align='center'><b>Hybrid (HYPNO) Toll-like Receptor Output Tree (click to enlarge)</b></p>
+        </td></tr>
+    </tbody>
+</table>
+
+<p>
+<b>Details of the pipeline</b>: Under standard usage, HYPNO takes as input a protein MSA and corresponding phylogenetic tree, in FASTA and Newick format, respectively. The alignment headers and leaf labels must contain valid and matching UniProt sequence accessions. The pipeline has the following stages:
+</p>
+
+<ol class='pipelist'>
+<li>Within the input tree, identify and prune all subtrees meeting a pairwise, percent identity threshold among subtree leaves (Kerf algorithm).</li>
+<li>Attempt to retrieve nucleotide sequences for each leaf using UniProt sequence accession information or tBLASTn [2].</li>
+<li>Using the given protein MSA as a template, derive the respective alignment of the nucleotide sequences, overlaying the matching codon at the site of each amino acid.</li>
+<li>For each of the designated subtrees, re-estimate the subtree phylogeny by passing the subtree nucleotide MSA (snMSA) to FastTree-2 [3].</li>
+<li>Root re-estimated subtrees at midpoints and graft subtree Newick strings back onto their branch of origin, replacing the protein-based subtree phylogeny</li>
+<li>Pass the HYPNO tree topology to FastTree-2 for branch length reoptimization; as specified by the user, either the ntMSA or amino acid MSA is used to recalculate branch lengths for the fixed hybrid tree topology.</li>
+</ol>
+
+<p>
+    <!--a href="http://www.drive5.com/lobster"-->
+    <a href="https://github.com/mazimi/HYPNO/archive/master.zip">
+    HYPNO source code and README download link
+    </a>
+    <br>
+
+    <p>
+        <a href="/HYPNO/data/supplementary/">
+        HYPNO Supplementary Data
+        </a>
+    (Supplementary Tables 1 and 2 presented in .csv format) in tar/gzip file
+    </p>
+    <br>
+
+</p>
+
+<p>References cited:</p>
+<ol class='refs'>
+<li><a target='_blank' href='http://www.ncbi.nlm.nih.gov/pubmed/3193878' class='ref'>Pamilo, P., &amp; Nei, M. (1988). Relationships between gene trees and species trees. <i>Molecular biology and evolution</i>, 5(5), <b>568–83</b>.</a></li>
+<li><a target='_blank' href='http://www.ncbi.nlm.nih.gov/pubmed/17156431' class='ref'>Gertz,E.M. <i>et al</i>. (2006) Composition-based statistics and translated nucleotide searches: improving the TBLASTN module of BLAST. <i>BMC biology</i>, 4, <b>41</b>.</a></li>
+<li><a target='_blank' href='http://www.ncbi.nlm.nih.gov/pubmed/20224823' class='ref'>Price,M.N. <i>et al</i>. (2010) FastTree 2--approximately maximum-likelihood trees for large alignments. PloS one, <b>5</b>, e9490.</a></li>
+</ol>
+</div>
+</div>
+
+<!--div id='footer_menu'></div-->
+</div></body>
+</html>

@@ -1,0 +1,284 @@
+
+{% extends "common/base.html" %}
+{% block extrastyle %}<style type="text/css">
+  .bold-name {font-style: bold; font-weight: bold;}
+  .journal {font-style: italic;}
+  .comment {font-style: italic;}
+  .author {}
+  .pub_title {}
+</style>
+{% endblock %}
+{% block extrascripts %}
+<script type="text/javascript">
+jQuery(document).ready( function()
+{
+    pf_pfam_size_chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'pfam-size-chart',
+            type: 'column'
+        },
+        credits: {
+            enabled: false
+        },
+        title: {
+            text: 'PhyloFacts-Pfam family size distribution'
+        },
+        xAxis: {
+            categories: [
+                '1',
+                '2-10',
+                '11-50',
+                '51-100',
+                '101-200',
+                '201-300',
+                '301-400',
+                '401-500',
+                '501-600',
+                '601-700',
+                '701-800',
+                '801-900',
+                '901-1000',
+                '>1000'                      
+            ],
+            labels: {
+                rotation: -45,
+                align: 'right'
+            },
+             title: {
+                text: 'PhyloFacts-Pfam family size'
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Number of PhyloFacts-Pfam families'
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            formatter: function() {
+                if (this.x == 1)
+                {
+                    return ''+ this.y +' PhyloFacts-Pfam families have a single unique sequence';
+                }
+                else
+                {
+                    return '' + this.y + ' PhyloFacts-Pfam families have ' + this.x + ' unique sequences';
+                }
+            }
+        },
+    navigation: {
+        buttonOptions: {
+            verticalAlign: 'bottom',
+            y: -10
+        }
+    },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+            series: [{
+            name: 'PhyloFacts-Pfam Families',
+            data: [0,0,174,2141,2606,1510,1191,1265,2398,2947,2466,1712,1270,5766]
+
+        } 
+        ]
+    });
+    pf_pfam_taxa_chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'pfam-taxa-chart',
+            type: 'column'
+        },
+        credits : {
+            enabled: false
+        },
+        title: {
+            text: 'PhyloFacts-Pfam taxonomic range distribution'
+        },
+        xAxis: {
+            categories: [
+                '1',
+                '2-10',
+                '11-50',
+                '51-100',
+                '101-200',
+                '201-300',
+                '301-400',
+                '401-500',
+                '501-600',
+                '601-700',
+                '701-800',
+                '801-900',
+                '901-1000',
+                '>1000'                      
+            ],
+            labels: {
+                rotation: -45,
+                align: 'right'
+            },
+             title: {
+                text: 'PhyloFacts-Pfam taxonomic range'
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Number of PhyloFacts-Pfam families'
+            }
+        },
+        legend: {
+           enabled: false
+        },
+        tooltip: {
+            formatter: function() {
+                if (this.x == 1)
+                {
+                    return '' + this.y + ' PhyloFacts-Pfam families have a single unique taxon';
+                }
+                else
+                {
+                    return ''+ this.y +' PhyloFacts-Pfam families have '+ this.x + ' unique taxa';
+                }
+            }
+        },
+    navigation: {
+        buttonOptions: {
+            verticalAlign: 'bottom',
+            y: -10
+        }
+    },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+            series: [{
+            name: 'PhyloFacts-Pfam Families',
+            data: [10,215,1812,2439,2823,1809,1835,2297,3102,2712,2116,1384,902,1990]
+        } 
+        ]
+    });
+    pf_pfam_coverage_chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'pfam-coverage-chart',
+            type: 'column'
+        },
+        credits: {
+            enabled: false
+        },
+        title: {
+            text: 'PhyloFacts coverage of Pfam domains'
+        },
+        xAxis: {
+            categories: [
+                '1',
+                '2',
+                '3',
+                '4',
+                '5',
+                '6',
+                '7',
+                '8',
+                '9',
+                '10',
+                '11-20',
+                '21-30',
+                '31-40',
+                '41-50',
+                '>50'                      
+            ],
+            labels: {
+                rotation: -45,
+                align: 'right'
+            },
+             title: {
+                text: 'Number of PhyloFacts families'
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Number of Pfam domains'
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            formatter: function() {
+                if (this.x == 1)
+                {
+                    return '' + this.y + ' Pfam domains are covered by ' + this.x + ' PhyloFacts family';
+                }
+                else
+                {
+                    return ''+ this.y +' Pfam domains are covered by '+ this.x + ' PhyloFacts families';
+                }
+            }
+        },
+    navigation: {
+        buttonOptions: {
+            verticalAlign: 'bottom',
+            y: -10
+        }
+    },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+            series: [{
+            name: 'PhyloFacts-Pfam Families',
+            data: [4356,1093,558,409,309,185,133,103,77,57,295,57,32,16,31]
+        }
+        ]
+    });
+
+});
+</script>
+{% endblock %}
+
+{% block title %}The PhyloFacts-Pfam Project{% endblock %}
+
+{% block content %}
+    <div id="about_pf_genomes">
+        <h3 id="news" style="font-size:24px;">The PhyloFacts-Pfam Project</h3>
+        <p id="news" style="font-size:14px;"><a href="/phylofacts/#phylofacts-pfam-search">Search PhyloFacts-Pfam</a></p>
+        <p>While most PF3.0 families are based on multi-domain architecture clusters, Pfam-based trees and orthology 
+        relationships provide complementary views of how protein families evolve. These increase the recall and precision
+        of orthology identification and functional annotation  (<a href= "http://bib.oxfordjournals.org/cgi/content/full/bbr036?ijkey=h6SI9uww4qEZU6Y&keytype=ref">Sj&ouml;lander et al, Briefings in Bioinformatics 2011</a>).
+        <table>
+            <thead>
+                <th><center>PhyloFacts Ortholog identification pipeline</center></th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td valign="top">
+                        <center><img src="/static/img/graphs/PFOrthologPipeline.png" 
+                            width="651" height="149" border="0" alt="My Image" />
+                        </center>
+                    </td>
+                </tr>
+            </tbody>    
+        </table>
+        <p>Some Pfam families are very large - these are represented in PhyloFacts by multiple trees. For example, the
+Pfam MFS_1 domain (PF07690) has 121,061 members in the Pfam full alignment.  In PhyloFacts, we represent this family with 282 trees containing a total of 68,652 sequences.</p>
+        <p>As another example, the 7TM_1 Pfam family has 26,656 members in the Pfam full alignment.  In PhyloFacts, we represent this family with 27 trees containing a total of 10,490 unique uniprot accessions and 2,157 unique taxa.</p>
+<div>
+<div id="pfam-size-chart" style="float: left; width: 400px;"></div>
+<div id="pfam-taxa-chart" style="float: left; width: 400px;"></div>
+<div id="pfam-coverage-chart" style="float: left; width: 400px;"></div>
+</div>
+<div style="clear: both;">
+</div>
+<p>Most Pfam families are represented by a single PhyloFacts family. <br />For more detailed statistics of our coverage, click <a href="/phylofacts/statistics/">here</a></p> 
+    </div>
+</div>
+{% endblock %}
+  

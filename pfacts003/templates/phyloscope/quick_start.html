@@ -1,0 +1,83 @@
+{% extends "phog/bpg_base.html" %}
+
+{% block rightlogo %}
+            <img src="/static/img/logos/phyloscope.jpg" width="185" height="120" border="0" />
+{% endblock %}
+
+{% block title %}Phyloscope Quick Start Guide{% endblock %}
+
+{% block content %}
+
+<div class="page_heading">PhyloScope Quick Start Guide</div>
+
+<div class="text_section_heading"><br />About PhyloScope</div>
+
+<div class="inset">
+  <p>PhyloScope is a tool for visualization of evolutionary trees. It supports a number of features:
+  </p>
+    
+    <ul>
+      <li>Interactive user control of information detail</li>
+      <li>Linking of leaves to internet resources</li>
+      <li>Display of node-specific information by tool tip</li>
+      <li>Highlighting of path from mouse-over node to tree root</li>
+      <li>Display of edge lengths on mouse-over</li>
+      <li>Interactive collapsing of tree nodes</li>
+      <li>Coloring of subtrees to show relationships, such as orthology, among leaves</li>
+      <li>Selection of subsets of leaves with highlighted spanning subtree</li>
+    </ul>  
+</div>
+
+<div class="text_section_heading"><br />Known browser incompatibilities</div>
+
+<div class="inset">
+  <p><span style="color: red;"><strong><em>There are known problems with user interaction using Internet Explorer, and Phyloscope will not render in Safari 4.0.3.</em></strong></span> 
+    We recommend the use of Firefox or earlier versions of Safari as browsers for viewing trees with PhyloScope. Please avoid using Internet Explorer until 
+    these issues are resolved.
+  </p>
+</div>
+
+<div class="text_section_heading"><br />PhyloScope functions</div>
+
+<table width="796" align="center" cellpadding="12" cellspacing="16">
+  <tr><td class="lt_gray">
+    <em>Figure 1.</em> The controls for the tree display appear at the top of the PhylosScope window. The user can control the 
+    display of information by clicking on the checkbox next to the information type:<br /><br />
+    <img src="/static/apps/phyloscope/img/window.png" width="796" height="450" align="middle" />
+  </td></tr>
+  <tr><td class="lt_gray">
+    <em>Figure 2.</em> In this display, each subtree of sequences belonging to the same subfamily has been collapsed to an internal node 
+    indicated by a square.  The number in brackets at the node shows the number of sequences in the collapsed subtree:<br /><br />
+    <img src="/static/apps/phyloscope/img/collapsed_tree.png" width="796" height="220" />
+  </td></tr>
+  <tr><td class="lt_gray">
+    <em>Figure 3.</em> When the tree is fully expanded, the subtrees are indicated by color:<br /><br />
+  <img src="/static/apps/phyloscope/img/expanded_tree.png" width="796" height="380" />
+  </td></tr>
+  <tr><td class="lt_gray">
+    <em>Figure 4.</em> Placing the cursor over an edge in the tree shows the length of that highlighted edge in a tool tip:<br /><br />
+    <img src="/static/apps/phyloscope/img/length_tooltip.png" width="796" height="168" />
+  </td></tr>
+  <tr><td class="lt_gray">
+    <em>Figure 5.</em> Tool tips are also shown for links that appear in the leaves of the tree.  In most cases, a click 
+    will take the user to the internet information resource that is the origin of the information.  The path in the tree from
+    the leaf to the root of the tree is highlighted:<br /><br />
+    <img src="/static/apps/phyloscope/img/leaf_tooltip.png" width="796" height="140" />
+  </td></tr>
+  <tr><td class="lt_gray">
+    <em>Figure 6.</em> At subfamily nodes, the tool tip displays summary information for that subtree:<br /><br />
+    <img src="/static/apps/phyloscope/img/subfamily_tooltip.png" width="796" height="176" />
+  </td></tr>
+  <tr><td class="lt_gray">
+    <em>Figure 7.</em> Clicking on any internal node will collapse the subtree above that node.  Information about the subfamily will
+    be displayed for subfamily nodes:<br /><br />
+    <img src="/static/apps/phyloscope/img/collapsed_subfamily.png" width="796" height="146" />
+  </td></tr>
+  <tr><td class="lt_gray">
+    <em>Figure 8.</em> When a set of leaves is selected, the leaves and spanning subtree are highlighted.  
+    To aid in finding widely separated leaves on large trees, a graphic is drawn in the right margin that points to all the leaves
+    in the selected set:<br /><br />
+    <img src="/static/apps/phyloscope/img/selected_leaves.png" width="796" height="370" />
+</td></tr></table> 
+
+{% endblock %}

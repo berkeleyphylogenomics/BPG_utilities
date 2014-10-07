@@ -1,0 +1,84 @@
+<div class="tree-menu">
+    <div class="tree-loading-container">
+        <img class="tree-loading-logo" src="/static/img/icons/small-loading-icon.gif" />
+        <div id="loading-text" class="loading-text">Loading...</div>
+    </div>
+    <div class="empty-loading-container"></div>
+    <ul class="nav">
+        <li class="dropdown">
+            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" id>Tree<b class="caret"></b></a>
+            <ul id="tree-options-menu" class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li><a id="open-new-tree" data-fn="open_tree" href="javascript:;">Open new tree</a></li>
+                <li><a id="export-tree" data-fn="export_tree" href="javascript:;">Export tree</a></li>
+                <li class="dropdown-submenu">
+                    <a href="javascript:;">Choose colorset</a>
+                    <ul id="choose-colorset" class="dropdown-menu">
+                        <li>None <input type="checkbox" value="no_colorset" checked></li>
+                        <li>Primary <input type="checkbox" value="primary_colorset"></li>
+                    </ul>
+                </li>
+                <li class="dropdown-submenu">
+                    <a href="javascript:;">Vertical leaf spacing</a>
+                    <ul id="set-leaf-spacing" class="dropdown-menu">
+                        <li>25 <input type="checkbox" value="leaf25"></li>
+                        <li>30 <input type="checkbox" value="leaf30"></li>
+                        <li>35 <input type="checkbox" value="leaf35" checked></li>
+                        <li>40 <input type="checkbox" value="leaf40"></li>
+                        <li>45 <input type="checkbox" value="leaf45"></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" id>Summarize tree by<b class="caret"></b></a>    
+            <ul id="summarize-tree-menu" class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li><a id="no-summary" data-fn="no-summary" href="javascript:;">None (Expand all)</a></li>
+                <li class="dropdown-submenu">
+                    <a href="javascript:;">Minimum pairwise % ID</a>
+                    <ul id="kerf-summary" class="dropdown-menu">
+                        <li><a data-fn="kerf-summary" data-kerf=40 href="javascript:;">40</a></li>
+                        <li><a data-fn="kerf-summary" data-kerf=50 href="javascript:;">50</a></li>
+                        <li><a data-fn="kerf-summary" data-kerf=60 href="javascript:;">60</a></li>
+                        <li><a data-fn="kerf-summary" data-kerf=70 href="javascript:;">70</a></li>
+                        <li><a data-fn="kerf-summary" data-kerf=80 href="javascript:;">80</a></li>
+                        <li><a data-fn="kerf-summary" data-kerf=90 href="javascript:;">90</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown-submenu">
+                    <a href="javascript:;">Tree depth</a>
+                    <ul id="depth-summary" class="dropdown-menu">
+                        <li><a data-fn="depth-summary" data-depth=1 href="javascript:;">1</a></li>
+                        <li><a data-fn="depth-summary" data-depth=2 href="javascript:;">2</a></li>
+                        <li><a data-fn="depth-summary" data-depth=3 href="javascript:;">3</a></li>
+                        <li><a data-fn="depth-summary" data-depth=4 href="javascript:;">4</a></li>
+                        <li><a data-fn="depth-summary" data-depth=5 href="javascript:;">5</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" id>Color tree by<b class="caret"></b></a>    
+            <ul id="color-tree-menu" class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li id="no-coloring-list">None <input type="checkbox" value="no_coloring" checked></li>
+                <li class="dropdown-submenu">
+                    <a href="javascript:;">Minimum pairwise % ID</a>
+                    <ul id="color-by-kerf" class="dropdown-menu">
+                        <li>40 <input type="checkbox" value="kerf40color"></li> 
+                        <li>50 <input type="checkbox" value="kerf50color"></li>
+                        <li>60 <input type="checkbox" value="kerf60color"></li>
+                        <li>70 <input type="checkbox" value="kerf70color"></li>
+                        <li>80 <input type="checkbox" value="kerf80color"></li>
+                        <li>90 <input type="checkbox" value="kerf90color"></li>
+                    </ul>
+               </li>
+            </ul>
+        </li>
+    </ul>
+    <div class="tree-menu-separator"></div>
+    <form class="form-search">
+        <div class="input-prepend">
+            <button type="submit" class="btn">Search</button>
+            <input type="text" class="span2 search-query">
+        </div>
+    </form>
+</div>

@@ -1,0 +1,204 @@
+<table class='job-summary-table'>
+    <tbody>
+        <tr>
+            <td>Query header</td>
+            <td>{{ job.fasta_header }}</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Query sequence</td>
+            <td style='font-family:monospace; font-size:11px;'>{% for line in sequence %}{{ line }}{% if not forloop.last %}<br />{% endif %}{% endfor %}</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Comments</td>
+            <td>{% if job.fatcat_job_name %}{{ job.fatcat_job_name }}{% else %}N/A{% endif %}</td>
+            <td>&nbsp;</td>
+        </tr>
+        <!--<tr>
+            <td>Job complete time</td>
+            <td>{{ job.job_completion_time|floatformat:"-2" }} seconds</td>
+        </tr>-->
+    </tbody>
+</table>
+
+<h4 class='summary-main-header'>Parameters</h4>
+
+<table class='job-summary-table' style='margin-bottom:10px;'>
+    <tbody>
+        <tr>
+            <td style=>Parameterization</td>
+            <td>{{ job.parameterization }}</td>
+            <td>&nbsp;</td>
+        </tr>
+    </tbody>
+</table>
+
+<table class='parameter-summary-table'>
+    <tbody>
+        <tr>
+            <td colspan='3' class='summary-sub-header colored-header'>Stage 1 Parameters</td>
+        </tr>
+        <tr>
+            <td>E-Value</td>
+            <td>{{ job.stage1_e_value }}</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan='3' class='summary-sub-header'>Fraction of the query that matches an HMM</td>
+        </tr>
+        <tr>
+            <td>Multi-Domain Architecture Families</td>
+            <td>{{ job.readable_stage1_mda_family_query_coverage }}</td>
+            <td>%</td>
+        </tr>
+        <tr>
+            <td colspan='3' class='summary-sub-header'>Fraction of the HMM that matches the query</td>
+        </tr>
+        <tr>
+            <td>Multi-Domain Architecture Families</td>
+            <td>{{ job.readable_stage1_mda_family_hmm_coverage }}</td>
+            <td>%</td>
+        </tr>
+        <tr>
+            <td>Pfam Families</td>
+            <td>{{ job.readable_stage1_pfam_family_hmm_coverage }}</td>
+            <td>%</td>
+        </tr>
+
+        <tr>
+            <td colspan='3' class='summary-sub-header'>Redundancy removal parameters</td>
+        </tr>
+        <tr>
+            <td>Redundancy removal</td>
+            <td>{{ job.run_ellis_island }}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Maximum sequences</td>
+            <td>{{ job.ellis_island_maxseqs }}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Maximum families</td>
+            <td>{{ job.ellis_island_maxfams }}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Member coverage</td>
+            <td>{{ job.readable_ellis_island_member_coverage }}</td>
+            <td>%</td>
+        </tr>
+        <tr>
+            <td>Query coverage</td>
+            <td>{{ job.readable_ellis_island_query_coverage }}</td>
+            <td>%</td>
+        </tr>
+        <tr>
+            <td>Taxon cluster identity</td>
+            <td>{{ job.readable_ellis_island_taxon_clustering_pid }}</td>
+            <td>%</td>
+        </tr>
+
+        <tr>
+            <td colspan='3' class='summary-sub-header colored-header'>Stage 2 Parameters</td>
+        </tr>
+        <tr>
+            <td>E-Value</td>
+            <td>{{ job.stage2_e_value }}</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan='3' class='summary-sub-header'>Fraction of the query that matches an HMM</td>
+        </tr>
+        <tr>
+            <td>Multi-Domain Architecture Families</td>
+            <td>{{ job.readable_stage2_mda_family_query_coverage }}</td>
+            <td>%</td>
+        </tr>
+        <tr>
+            <td colspan='3' class='summary-sub-header'>Fraction of the HMM that matches the query</td>
+        </tr>
+        <tr>
+            <td>Multi-Domain Architecture Families</td>
+            <td>{{ job.readable_stage2_mda_family_hmm_coverage }}</td>
+            <td>%</td>
+        </tr>
+        <tr>
+            <td>Pfam Families</td>
+            <td>{{ job.readable_stage2_pfam_family_hmm_coverage }}</td>
+            <td>%</td>
+        </tr>
+        <tr>
+            <td>Query to TSN % ID</td>
+            <td>{{ job.stage2_query_hmm_pid }}</td>
+            <td>%</td>
+        </tr>
+        <tr>
+            <td>Orthology methods</td>
+            <td>{{ job.stage2_orthology_methods }}</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Number of methods required</td>
+            <td>{{ job.stage2_redundant_methods_required }}</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Enclosing Clade kerf threshold</td>
+            <td>{{ job.stage2_enclosing_clade_kerf_threshold }}</td>
+            <td>%</td>
+        </tr>
+        <tr>
+            <td>Maximum sequences examined</td>
+            <td>{{ job.stage2_max_sequences }}</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan='3' class='summary-sub-header colored-header'>Stage 3 Parameters</td>
+        </tr>
+        <tr>
+            <td>Query-candidate ortholog % ID</td>
+            <td>{{ job.stage3_query_ortholog_pid }}</td>
+            <td>%</td>
+        </tr>
+        <tr>
+            <td>Query coverage</td>
+            <td>{{ job.stage3_query_coverage }}</td>
+            <td>%</td>
+        </tr>
+        <tr>
+            <td>Candidate ortholog coverage</td>
+            <td>{{ job.stage3_ortholog_coverage }}</td>
+            <td>%</td>
+        </tr>
+        <tr>
+            <td>Maximum sequences displayed on tree</td>
+            <td>{{ job.stage3_max_sequences }}</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Cluster similarity</td>
+            <td>{{ job.stage3_ortholog_cluster_similarity }}</td>
+            <td>%</td>
+        </tr>
+        <tr>
+            <td colspan='3' class='summary-sub-header colored-header'>Stage 4 Parameters</td>
+        </tr>
+        <tr>
+            <td>Exponential decay &lambda;</td>
+            <td>{{ job.stage4_consensus_uniprot_weighting_lambda }}</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Threshold for high confidence</td>
+            <td>{{ job.stage4_consensus_uniprot_threshold_for_high_confidence }}</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Threshold for medium confidence</td>
+            <td>{{ job.stage4_consensus_uniprot_threshold_for_medium_confidence }}</td>
+            <td>&nbsp;</td>
+        </tr>
+    </tbody>
+</table>

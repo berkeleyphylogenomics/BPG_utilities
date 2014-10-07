@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"> 
+
+<head> 
+    <meta http-equiv="content-type" 
+          content="text/html;charset=utf-8" /> 
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+{% block extrastyle %}
+{% endblock %}
+{% block extrascript %}
+{% endblock %}
+<script type='text/javascript'>
+$(function () {
+    $('a').attr('target', '_parent');
+    $('.paginator a').attr('target', '_self');
+    if (parent.$) {
+        var body_height = $('body').height();
+        parent.$(function () {
+            parent.$('iframe').each(function () {
+                var oDoc = (this.contentWindow || this.contentDocument);
+                if (oDoc && oDoc.document) oDoc = oDoc.document;
+                if (oDoc && oDoc === document) {
+                    if (body_height) $(this).height(body_height+20);
+                    $(this).parent().children('.spinner').hide();
+                }
+            });
+        });
+    }
+});
+</script>
+</head>
+<body>
+{% block content %}{% endblock %}
+</body>
+</html>
+

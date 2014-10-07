@@ -1,0 +1,37 @@
+{% extends "phog/phog_base.html" %}
+
+{% block content %}
+<div class="large_inset">
+  <p>
+  Download pairwise orthology relationships in <a
+  href="http://orthoxml.org">orthoXML</a> format.
+  </p>
+  <form>
+    <table>
+      <tr>
+        <td>Species 1: </td>
+      </tr>
+      <tr>
+        <td>{{ form.taxon1 }}</td>
+      </tr>
+      <tr>
+        <td>Species 2: </td>
+      </tr>
+      <tr>
+        <td>{{ form.taxon2 }}</td>
+      </tr>
+      <tr>
+        <td>
+          <input type=submit value="Download pairwise orthology file">
+        </td>
+      </tr>
+      <tr>
+        <td> {{ form.errors }}</td>
+      </tr>
+      <tr>
+        <td>{{ missing_file_error }}</td>
+      </td>
+    </table>
+  </form>
+</div>
+{% endblock %}

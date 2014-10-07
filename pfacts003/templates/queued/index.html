@@ -1,0 +1,26 @@
+{% extends "queued/base.html" %}
+
+{% block sub_content %}
+{% block index_form %}
+{% block message %}{% endblock %}
+<form id='submission_form' action='/q/{{ main_viewing }}/' method='post' enctype='multipart/form-data'>
+<table>
+<tr><td></td><td>
+{% block form_explanation %}{% endblock %}
+</td></tr>
+{{ form }}
+{% if email_form %}
+  {% with email_form as right_help_form %}
+    {% include 'common/email_form.html' %}
+  {% endwith %}
+{% endif %}<tr><td></td><td><input type='submit' value='Go' /><input id='formreset' type='reset' value='Reset' /></td></tr>
+{% if advanced_form %}<tr><td id='advanced_options' class='expandable' colspan='2'>
+<a href='#' class='expand'>Show Advanced Options</a>
+<a href='#' class='collapse'>Hide Advanced Options</a>
+<table>
+{{ advanced_form }}
+</table></td></tr>{% endif %}
+</table>
+</form>
+{% endblock %}
+{% endblock %}

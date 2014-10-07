@@ -1,0 +1,324 @@
+{% extends 'common/base.html' %}
+{% load get_range %}
+
+{% block extrastyle %}{% endblock %}
+
+{% block extrascripts %}
+{% endblock %}
+
+{% block title %}PhyloFacts Sequence Page: {{ object.uniprot_identifier }} {% endblock %}
+
+{% block content %}
+
+  {% if object %}
+    <h2>PhyloFacts Sequence: {{object.uniprot_identifier }}</h2>
+    <script type="text/javascript">
+    jQuery(function() {
+        jQuery("#sequence_tabs").tabs().addClass('ui-tabs-vertical ui-helper-clearfix');
+        jQuery("#sequence_tabs li").removeClass('ui-corner-top').addClass('ui-corner-left');
+    });
+    </script>
+
+<div id="sequence_tabs">
+    <ul>
+        <li><a href="#seqinfo">Summary</a></li>
+        <li><a href="#orthologs">PHOG Orthologs</a></li>
+        {% if ghg_families or pfam_family_map %} 
+            <li><a href="#families">Phylofacts Families</a></li>
+        {% endif %}
+        <li><a href="#gene_ontology">Gene Ontology</a></li>
+	{% if metacyc_obj %}
+	<li><a href="#pathways">Pathways</a></li>
+	{% endif %}
+        {% if structures %}
+<!--            <li><a href="#structure">Structure</a></li>-->
+        {% endif %}
+    </ul>
+
+    <div id='seqinfo'>
+        <div class="row">
+          <label>UniProt Identifier (Accession)</label>
+          <span><a href='{{ object.get_absolute_url }}'>{{ object.uniprot_identifier }} ({{ object.accession }})</a></td>
+        </div>
+
+        <div class="row">
+          <label>Taxon</label>
+	  <span>
+              <a href='{{ object.taxon.get_absolute_url }}'>{{ object.taxon }}</a> 
+	      <a href="#" id="show-lineage"> (Show full lineage)</a>
+	      <a href="#" id="hide-lineage"> (Hide full lineage)</a>
+          </span>
+        </div>
+ 
+        <div id="lineage" class="row">
+          <label>Lineage</label>
+          <span class='lineage'>
+            {% for taxon in object.taxon.lineage %}
+              {% if not forloop.last %}
+                {% for i in forloop.counter0|get_range %}&nbsp;&nbsp;{% endfor %}&gt; 
+                {% if taxon.scientific_name.islower %}
+                  <a href='{{ taxon.get_absolute_url }}'><span>{{ taxon }}</span></a>
+                {% else %}
+                  <i><a href='{{ taxon.get_absolute_url }}'>{{ taxon }}</a></i>
+                {% endif %}
+                {% if not forloop.last %}<br />{% endif %}
+              {% endif %}
+            {% endfor %}
+          </span>
+        </div>
+
+        <div class="row">
+          <label>Description</label>
+          <span>{{ object.de }}</label>
+        </div>
+  
+        <div class="row">
+          <label>Length</label>
+          <span>{{ object.chars|length }}</label>
+        </div>
+        <pre class="fasta">{{object.fasta}}</pre>
+      </div>
+      <div id="families">
+        <!-- MOVE ME -->
+        <script>
+            jQuery(function() {
+                jQuery(".show-only-top").each(function(el) {
+                    jQuery(this).find("li").hide();
+                    jQuery(this).find("li:first").show();
+                });
+            });
+        </script>
+
+        {% if ghg_families or pfam_family_map %} 
+          <div class="row">
+    	    {% if ghg_families %}
+              <h2>This protein is present in the following PhyloFacts families:</h2>
+                <h3>PhyloFacts families for the same multi-domain architecture:</h3>
+                    <table style="margin-left:30px; width:80%;">
+                        <tr>
+                            <td style="width:25%"><span style="text-decoration:underline">Description</span></td>
+                            <td style="width:25%"><span style="text-decoration:underline">PhyloFacts family</span></td>
+                        </tr>
+                        <tr>
+                            <td style="width:25%">{{ ghg_families.0.get_family_name }}</td>
+                            <td style="width:25%"><a href= '/phylofacts/family/{{ ghg_families.0.get_accession }}/'>{{ ghg_families.0.get_accession }}</a></td>
+                        </tr>
+                    </table>  
+            {% endif %}
+
+            {% if pfam_family_map %}
+	            <h3>PhyloFacts families for Pfam domains:</h3>
+                <table style="margin-left:30px; width:80%;">
+                    <tr>
+                        <td style="width:25%"><span style="text-decoration:underline">Domain</span></td>
+                        <td style="width:25%"><span style="text-decoration:underline">PhyloFacts family</span></td>
+                    </tr>
+                {% for key, value in pfam_family_map.items %}
+                    <tr>
+                        <td style="width:25%"><a href="{{ value.pfam_object.get_absolute_url }}">{{ value.pfam_object.name }}</a></td>
+                        <td style="width:25%"><a href="/phylofacts/family/{{ value.families.0.get_accession }}/">{{ value.families.0.get_accession }}</a></td>
+                    </tr>
+                {% endfor %}
+                </table>
+            {% endif %}
+                    		  
+	    </div><!-- end of right column td  -->
+
+        {% endif %}
+      </div>
+      <div id="orthologs">
+          <div class="row">
+            <span>
+              <a href="/phog/orthologs/?sequence_id={{ object.uniprot_identifier }}">View Ortholog Groups</a> 
+            </span>
+          </div>
+          <div id="phog"></div>
+          <script>
+            jQuery(function() { jQuery("#phog").load("/phog/orthologs/?sequence_id={{ object.uniprot_identifier }}&for_iframe=1"); });
+          </script>
+      </div>
+      <div id="gene_ontology">
+        {% with go_biological_process as annots %}
+          {% if annots|length %}
+              <div class="row">
+                <label>GO Biological process</label>
+                <div class="rightcol">{% include 'phylofacts/snippets/annotation_entries.html' %}</div>
+              </div>
+          {% endif %}
+        {% endwith %}
+        {% with go_molecular_function as annots %}
+          {% if annots|length %}
+              <div class="row">
+                <label>GO Molecular function</label>
+                <div class="rightcol">{% include 'phylofacts/snippets/annotation_entries.html' %}</div>
+              </div>
+          {% endif %}
+        {% endwith %}
+        {% with go_cellular_component as annots %}
+          {% if annots|length %}
+              <div class="row">
+                <label >GO Cellular component</label>
+                <div class="rightcol">{% include 'phylofacts/snippets/annotation_entries.html' %}</div>
+              </div>
+          {% endif %}
+        {% endwith %}
+    </div>
+
+<div id="pathways">
+{% if metacyc_obj %}
+                <h2>BioCyc (v. {{ metacyc_obj.version }})</h2>
+		<dl>
+		<dt>Gene:</dt>
+		<dd><ul>
+		<li>
+		{% for gene in metacyc_obj.gene %}
+		<i>{{ gene.common_name }}</i> (<a href="http://biocyc.org/{{gene.db}}/NEW-IMAGE?object={{gene.id}}">{{ gene.id }}</a>)
+		{% endfor %}
+		</li></ul>
+		</dd>
+		
+		<dt>Gene product:</dt>
+		<dd><ul>
+		<li>
+		<a href="http://biocyc.org/{{metacyc_obj.db}}/NEW-IMAGE?object={{metacyc_obj.product}}"> {{ metacyc_obj.product }}</a>
+		</li>
+		</ul>
+		</dd>
+
+		{% with metacyc_obj.complexes as cplxs %}
+		  {% if cplxs %}
+		  <dt>Protein complexes:</dt>
+		  <dd>
+		  <ol>
+		    {% for cplx in cplxs %}
+		    <li>
+		    {% if cplx.common_name %}
+		    <b>{{ cplx.common_name|safe }}</b>
+		    {% else %}
+		    N/A
+		    {% endif %}
+		    <br />
+		    <a href="http://biocyc.org/{{cplx.db}}/NEW-IMAGE?object={{cplx.id}}">{{ cplx.id }}</a>
+		    </li>
+		    {%  endfor %}
+		  </ol>
+		  </dd>
+		  {% endif %}		  
+		{% endwith %}
+
+		{% with metacyc_obj.reactions as rxns %}
+		  {% if rxns %}
+		  <dt>Reactions:</dt>
+		  <dd>
+		  <ol>
+		    {% for rxn in rxns %}
+		    <li>
+		    {% if rxn.common_name %}
+		    <b>{{ rxn.common_name|safe }}</b>
+		    {% else %}
+		    {% if rxn.systematic_name %}
+		    <b>{{ rxn.systematic_name|safe }}</b>
+		    {% else %}
+		    N/A
+		    {% endif %}
+		    {% endif %}
+		    <br />
+		    <a href="http://biocyc.org/{{rxn.db}}/NEW-IMAGE?object={{rxn.id}}">{{ rxn.id }}</a>
+		    <br />
+		    EC number: {{ rxn.ec_number }} 
+		    {% if rxn.ec_number %}
+		    (<a href="http://www.brenda-enzymes.info/php/result_flat.php4?ecno={{rxn.ec_number}}"> link to BRENDA</a>)
+		    {% endif %}
+		    </li>
+		    {%  endfor %}
+		    </ol>
+		  </dd>
+		  {% endif %}		  
+		{% endwith %}
+
+		{% with metacyc_obj.pathways as pwys %}
+		  {% if pwys %}
+		  <dt>Pathways:</dt>
+		  <dd>
+		  <ol>
+		    {% for pwy in pwys %}
+		    <li>
+		    {% if pwy.common_name %}
+		    <b>{{ pwy.common_name|safe }}</b>
+		    {% else %}
+		    N/A
+		    {% endif %}
+		    <br />
+		    <a href="http://biocyc.org/{{pwy.db}}/NEW-IMAGE?object={{pwy.id}}">{{ pwy.id }}</a>
+		    </li>
+		    {%  endfor %}
+		  </ol>
+		  </dd>
+		  {% endif %}		  
+		{% endwith %}
+		</dl>
+{% endif %}
+    </div>
+    
+    {% if 1 == 0 and structures %}
+    <div id="structure">
+          <script src="/static/apps/jmol/Jmol.js" type="text/javascript"></script>
+          <ul>
+          {% for pdb in structures %}
+               <li><a href="javascript:load_structure('{{ pdb.id }}')">{{ pdb.id }}</a></li>
+          {% endfor %}
+          </ul>
+          <div class="viewer">
+            <div class="controls">
+                <label>Color By</label>
+                <span>
+                    <select style="float:left;" name="group2" id="group2">                      
+                        <option></option>
+                        <option>Secondary Structure</option>
+                        <option>By Chain</option>
+                        <option>Rainbow</option>                                                
+                        <option>By Amino Acid</option>
+                        <option>Hydrophobicity</option>
+                    </select>
+                </span>
+            </div>
+            <script>
+            jQuery(function() {
+                jQuery('#group2').change(function() {
+                     var text =  jQuery(this).val();
+                    if ( text == 'By Chain') {
+                        jmolScript("hide null; select all;set defaultColors Jmol; color_by_chain(\"cartoon\"); color_by_chain(\"\"); select ligand;wireframe 0.16;spacefill 0.5; color cpk ;; select all; " ); 
+                     }
+                    else if ( text == 'By Temperature') {
+                        jmolScript("hide null; select all;spacefill off; wireframe off; backbone 0.4; cartoon off; set defaultColors Jmol; color relativeTemperature; color cartoon relateiveTemperature select ligand;wireframe 0.16;spacefill 0.5; color cpk ;; select all; " );
+                     }
+                    else if ( text == 'Rainbow'){
+                         jmolScript("hide null; select all; set defaultColors Jmol; color group; color cartoon group; select ligand;wireframe 0.16;spacefill 0.5; color cpk ;; select all; " );
+                    } 
+                    else if ( text == 'Secondary Structure'){
+                        jmolScript("hide null; select all; set defaultColors Jmol; color structure; color cartoon structure;select ligand;wireframe 0.16;spacefill 0.5; color cpk ;; select all; " );                    
+                    } 
+                    else if ( text == 'By Element'){
+                         jmolScript("hide null; select all; set defaultColors Jmol; color cpk; color cartoon cpk; select ligand;wireframe 0.16;spacefill 0.5; color cpk ;; select all; " );
+                    }
+                    else if ( text == 'By Amino Acid'){
+                        jmolScript("hide null; select all; set defaultColors Jmol; color amino; color cartoon amino; select ligand;wireframe 0.16;spacefill 0.5; color cpk ;; select all; " );
+                    }
+                    else if ( text == 'Hydrophobicity'){
+                         jmolScript("hide null; set defaultColors Jmol; select hydrophobic; color red; color cartoon red; select not hydrophobic ; color blue ; color cartoon blue; select ligand;wireframe 0.16;spacefill 0.5; color cpk ;; select all; " );
+                    }
+                });
+            });
+  
+            jmolInitialize( "/static/apps/jmol" );
+            jmolApplet([500, 500], "script /static/apps/jmol/customcolor.spt; set antialiasDisplay on;");
+            function load_structure(id) {
+                jmolScript( "load /phylofacts/pdb/"+ id +"/; select all; spacefill off; wireframe off; cartoon off; restrict protein; cartoon; hover on; set showHydrogens off");
+            }
+            </script>
+        </div>
+    </div>
+  {% endif %}
+  {% endif %}
+</div>
+{% endblock %}

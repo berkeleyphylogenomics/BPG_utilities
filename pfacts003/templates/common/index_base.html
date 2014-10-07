@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>{% block title %}ERROR: Add a 'title' block{% endblock %}</title>
+{% block head %}{% endblock %}
+    <link rel="stylesheet" href="/static/css/base.css" type="text/css">
+</head>
+<body>
+    <!-- bpg base header -->
+
+    <center>
+        <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="300" align="left" valign="top">
+                    <img src="/static/img/logos/bpg.png" width="300" height="120" border="0">
+                </td>
+                <td class="navtop" align="center">
+                    {% block toplinks %}BPG APP BASE TEMPLATE{% endblock %}
+                </td>
+                <td width="400" align="right" valign="center">
+                    <img src="{% block appicon %}{% endblock %}" width="400" border="0">
+                </td>
+            </tr>
+        </table>
+    </center>
+
+    <div style="margin-left: 50px; margin-right: 50px;">
+
+    <!-- header info -->
+
+    <br>
+    <b>{% block apptitle %}BPG APPLICATION BASE TEMPLATE {% endblock %}</b>
+    <br>
+    {% block appdesc %}BPG APPLICATION BASE TEMPLATE {% endblock %}
+    <br>
+    <br>
+
+    <!-- basic sequence-input form  -->
+
+    <form action="./" method="POST">
+        <table>
+            {{ inputform.as_table }}
+        </table>
+    </form>
+
+    <!-- citation information  -->
+
+    <br>
+    <b>Citing {% block appname %}this webserver{% endblock %}</b>
+        <p style="font-size: 11pt;">
+            We hope you find this webserver useful; if you do, please consider citing
+            the following:
+        </p>
+        <ul style="font-size: 2pt;">
+            {% block citations %}{% endblock %}
+        </ul>
+
+    <!-- funding information -->
+
+    <br>
+    <b>Funding provided by:</b>
+        <ul style="font-size: 2pt;">
+            {% block funding %}{% endblock %}        
+        </ul>
+
+    </div>
+</body>
+</html>
+

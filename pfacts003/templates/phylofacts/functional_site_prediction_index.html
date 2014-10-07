@@ -1,0 +1,99 @@
+{% extends 'common/base.html' %}
+
+b{% block extrastyle %}{% endblock %}
+
+{% block rightlogo %}
+<!--    <img src="/static/img/logos/intrepid.jpg"
+        width="300"
+        height="120"
+    </img>-->
+{% endblock %}
+
+{% block extrascripts %}
+<script>
+
+jQuery(function() {
+    $( "#parameters" ).click(function(e) {
+        e.preventDefault();
+        $( "#parameters_div" ).toggle();
+    });
+    $( "#submit" ).click(function() {
+        $.post('/api/functional_site_prediction_jobs/', 
+            { 
+            fasta: $( "#fasta" ).val(), 
+            jackhmmer_evalue: $( "#j_evalue" ).val(), 
+            email: $( "#email" ).val(),
+            jackhmmer_iterations: $( "#j_iterations_slider" ).slider("value"), 
+            treecut_pid: $( "#treecut_slider" ).slider("value")
+            },
+            function(data) {
+                console.log(data);
+                window.location="/phylofacts/FSP/" + data.id;
+            }
+        );
+    });
+    jQuery( "#j_iterations_slider" ).slider({
+        range: "max",
+        min: 1,
+        max: 10,
+        value: 2,
+        slide: function( event, ui ) {
+            jQuery( "#j_iterations" ).val(ui.value);
+        }
+    });
+    jQuery( "#j_iterations" ).val( jQuery("#j_iterations_slider").slider("value"));
+    jQuery( "#treecut_slider" ).slider({
+        range: "max",
+        min: 1,
+        max: 100,
+        value: 70,
+        slide: function( event, ui ) {
+            jQuery( "#treecut_pid" ).val(ui.value);
+        }
+    });
+    jQuery( "#treecut_pid" ).val( jQuery("#treecut_slider").slider("value"));
+});
+</script>
+{% endblock %}
+
+{% block title %}PhyloFacts Functional Site Prediction{% endblock %}
+
+{% block content %}
+
+<div id="fsp">
+    <div id="title">
+        <h1>PhyloFacts Functional Site Prediction - Job Submission</h1>
+    </div>
+    <div id="fasta_input">
+        <h2>Fasta sequence input</h2>
+        <p>
+            <textarea id="fasta"></textarea>
+        </p>
+    <p><input id="submit" type="button" value="Submit"></p>
+    </div>
+    <div id="email_input">
+        <p>Optional email address for notification of completed results:&nbsp;&nbsp;&nbsp;&nbsp;<input id = "email" type="text" size = "40"/></p>
+    </div>
+    <div id="algorithm parameters" style="width:611px;">
+        <a id="parameters" href="#">View/Hide Algorithm parameters</a>
+        <div id="parameters_div" style="display:none;">
+            <div align="right">
+                <label for="j_evalue">Maximum evalue for significance in jackhmmer:</label>
+                <input type="text" id="j_evalue" / value="0.000001">
+            </div>
+            <div align="right">
+                <label for="j_iterations">Number of jackhmmer iterations: </label>
+                <input type="text" id="j_iterations" style="border:none" readonly/>
+            </div>
+            <div id = "j_iterations_slider"></div>
+            <div align="right">
+                <label for="treecut_pid">Minimum Pairwise % identity for summary MSA and tree generation:</label>
+                <input type="text" id="treecut_pid" style="border:none" readonly/>
+            </div>
+            <div id = "treecut_slider"></div>
+        </div>
+    </div>
+    <br />
+</div>
+
+{% endblock %}

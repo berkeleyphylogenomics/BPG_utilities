@@ -1,0 +1,518 @@
+PQQD_PSEU5 Coenzyme PQQ synthesis protein D 
+PQQD_PSEA7 Coenzyme PQQ synthesis protein D 
+PQQD_XANCB Coenzyme PQQ synthesis protein D 
+PQQD_ACIBY Coenzyme PQQ synthesis protein D 
+PQQD_ACIBS Coenzyme PQQ synthesis protein D 
+PQQD_PSEPW Coenzyme PQQ synthesis protein D 
+PQQD_ACIBC Coenzyme PQQ synthesis protein D 
+PQQD_XANOP Coenzyme PQQ synthesis protein D 
+PQQD_RHOPT Coenzyme PQQ synthesis protein D 
+PQQD_KLEP3 Coenzyme PQQ synthesis protein D 
+PQQD_ACIB3 Coenzyme PQQ synthesis protein D 
+PQQD_ACIB5 Coenzyme PQQ synthesis protein D 
+PQQD_PSEA8 Coenzyme PQQ synthesis protein D 
+PQQD_AZOVD Coenzyme PQQ synthesis protein D 
+PQQD_PSEFS Coenzyme PQQ synthesis protein D 
+PQQD_RAHAQ Coenzyme PQQ synthesis protein D 
+PQQD_ACICA Coenzyme PQQ synthesis protein D 
+PQQD_KLEPN Coenzyme PQQ synthesis protein D 
+YXBA_BACSU Uncharacterized protein yxbA 
+PQQD_ENTIT Coenzyme PQQ synthesis protein D 
+PQQD_PSEAB Coenzyme PQQ synthesis protein D 
+PQQD_XANOR Coenzyme PQQ synthesis protein D 
+PQQD_RHOPS Coenzyme PQQ synthesis protein D 
+PQQD_PSEE4 Coenzyme PQQ synthesis protein D 
+PQQD_RHOP2 Coenzyme PQQ synthesis protein D 
+PQQD_XANOM Coenzyme PQQ synthesis protein D 
+PQQD_XANC5 Coenzyme PQQ synthesis protein D 
+PQQD_PSEPF Coenzyme PQQ synthesis protein D 
+PQQD_PSE14 Coenzyme PQQ synthesis protein D 
+PQQCD_METEA Bifunctional coenzyme PQQ synthesis protein C/D 
+PQQD_PSEF5 Coenzyme PQQ synthesis protein D 
+PQQD_XANC8 Coenzyme PQQ synthesis protein D 
+PQQD_PSEU2 Coenzyme PQQ synthesis protein D 
+PQQD_SILPO Coenzyme PQQ synthesis protein D 
+PQQD_METCA Coenzyme PQQ synthesis protein D 
+PQQD_ACIAD Coenzyme PQQ synthesis protein D 
+PQQD_RHOPA Coenzyme PQQ synthesis protein D 
+PQQD_PSESM Coenzyme PQQ synthesis protein D 
+PQQD2_PSEPK Coenzyme PQQ synthesis protein D 2 
+PQQD1_PSEPK Coenzyme PQQ synthesis protein D 1 
+PQQD_BRAJA Coenzyme PQQ synthesis protein D 
+PQQD_XANCP Coenzyme PQQ synthesis protein D 
+PQQD_XANAC Coenzyme PQQ synthesis protein D 
+PQQD_RHIME Coenzyme PQQ synthesis protein D 
+PQQD_PSEAE Coenzyme PQQ synthesis protein D 
+PQQD_GLUOX Coenzyme PQQ synthesis protein D 
+A0B2H7_BURCH Coenzyme PQQ synthesis D 
+A0JZX9_ARTS2 Coenzyme PQQ synthesis D 
+A0LKC9_SYNFM Coenzyme PQQ synthesis D 
+A0LQF0_SYNFM Putative uncharacterized protein 
+A0LQH2_SYNFM Putative uncharacterized protein 
+A0LW77_ACIC1 Putative uncharacterized protein 
+A0Q3K7_CLONN Putative uncharacterized protein 
+A0Q6F6_FRATN Putative uncharacterized protein 
+A0QYN4_MYCS2 Bifunctional coenzyme PQQ synthesis protein C/D 
+A0Y879_9GAMM Pyrroloquinoline quinone biosynthesis protein PqqD 
+A0YK07_LYNSP Thymidylate synthase-like protein 
+A0Z533_9GAMM Pyrroloquinoline quinone biosynthesis protein PqqD 
+A1AK18_PELPD Putative uncharacterized protein 
+A1B4K6_PARDP Coenzyme PQQ synthesis D 
+A1K4Q1_AZOSB PqqD protein 
+A1SY09_PSYIN Putative uncharacterized protein 
+A1VK71_POLNA Coenzyme PQQ synthesis D 
+A1WQ35_VEREI Coenzyme PQQ synthesis D 
+A2CD72_PROM3 Putative uncharacterized protein 
+A2SJ02_METPP Pyrroloquinoline quinone biosynthesis protein D 
+A2W3A7_9BURK Putative uncharacterized protein 
+A2WIB6_9BURK Putative uncharacterized protein 
+A3DPC5_STAMF Putative uncharacterized protein 
+A3DPF0_STAMF Putative uncharacterized protein 
+A3JCI6_9ALTE Pyrroloquinoline quinone biosynthesis protein PqqD 
+A3K1I9_9RHOB Coenzyme PQQ synthesis protein D 
+A3KTI3_PSEAE Pyrroloquinoline quinone biosynthesis protein D 
+A3L785_PSEAE Pyrroloquinoline quinone biosynthesis protein D 
+A3PJ08_RHOS1 Putative uncharacterized protein 
+A3PMI3_RHOS1 Coenzyme PQQ synthesis D 
+A3VLH6_9RHOB Putative pyrroloquinoline quinone synthesis protein D 
+A3W1G2_9RHOB Coenzyme PQQ synthesis protein D 
+A3WF91_9SPHN Putative uncharacterized protein 
+A4BR28_9GAMM Pyrroloquinoline quinone biosynthesis protein PqqD 
+A4FI18_SACEN Putative uncharacterized protein 
+A4JT47_BURVG Coenzyme PQQ synthesis D 
+A4TXA6_9PROT Putative uncharacterized protein 
+A4VL86_PSEU5 Pyrroloquinoline quinone biosynthesis protein D 
+A4WPI1_RHOS5 Coenzyme PQQ synthesis D 
+A4WTZ4_RHOS5 Putative uncharacterized protein 
+A4XTR3_PSEMY Coenzyme PQQ synthesis D 
+A4YEJ3_METS5 Putative uncharacterized protein 
+A4YZY6_BRASO Coenzyme PQQ synthesis protein D (Pyrroloquinoline quinone biosynthesis protein D)(PqqD) 
+A5EPX7_BRASB Coenzyme PQQ synthesis protein D 
+A5FUM7_ACICJ Coenzyme PQQ synthesis D 
+A5GA48_GEOUR Putative uncharacterized protein 
+A5GEV2_GEOUR Putative uncharacterized protein 
+A5I401_CLOBH Putative uncharacterized protein 
+A5IIE8_LEGPC Putative uncharacterized protein 
+A5KIJ7_9FIRM Putative uncharacterized protein 
+A5KLB0_9FIRM Putative uncharacterized protein 
+A5KMP6_9FIRM Putative uncharacterized protein 
+A5VF19_SPHWW Putative uncharacterized protein 
+A5VXG5_PSEP1 Coenzyme PQQ synthesis D 
+A5W4Z9_PSEP1 Coenzyme PQQ synthesis D 
+A5Z5Q7_9FIRM Putative uncharacterized protein 
+A5Z8I4_9FIRM Putative uncharacterized protein 
+A5ZKY0_9BACE Putative uncharacterized protein 
+A5ZVM8_9FIRM Putative uncharacterized protein 
+A6BH58_9FIRM Putative uncharacterized protein 
+A6DRP4_9BACT Putative uncharacterized protein 
+A6E1W3_9RHOB Coenzyme PQQ synthesis protein D 
+A6EAA8_9SPHI Putative uncharacterized protein 
+A6EBR7_9SPHI Putative uncharacterized protein 
+A6EYQ7_9ALTE Pyrroloquinoline quinone biosynthesis protein PqqD 
+A6FRA6_9RHOB Pyrroloquinoline quinone biosynthesis protein PqqE 
+A6GSH7_9BURK Pyrroloquinoline quinone synthesis D 
+A6LSU2_CLOB8 Putative uncharacterized protein 
+A6NPS7_9BACE Putative uncharacterized protein 
+A6QC08_SULNB Putative uncharacterized protein 
+A6UGE6_SINMW Coenzyme PQQ synthesis D 
+A7B2T7_RUMGN Putative uncharacterized protein 
+A7FVP6_CLOB1 Putative uncharacterized protein 
+A7GFG9_CLOBL Putative uncharacterized protein 
+A7IGA2_XANP2 Coenzyme PQQ synthesis D 
+A7M519_BACOV Putative uncharacterized protein 
+A7MN59_ENTS8 Putative uncharacterized protein 
+A7VAP2_BACUN Putative uncharacterized protein 
+A8LNP3_DINSH Coenzyme PQQ synthesis D 
+A8PLU3_9COXI Coenzyme PQQ synthesis protein D 
+A8S1L1_9CLOT Putative uncharacterized protein 
+A9ASV2_BURM1 Coenzyme PQQ synthesis D 
+A9B191_HERA2 Putative uncharacterized protein 
+A9HEB9_GLUDA Coenzyme PQQ synthesis D 
+A9HL89_9RHOB Putative uncharacterized protein 
+A9HTV9_9RHOB Coenzyme PQQ synthesis protein D 
+A9NEK3_ACHLI Putative uncharacterized protein 
+A9QPG1_METI4 Coenzyme PQQ synthesis protein D 
+A9QS78_LACLK Putative uncharacterized protein 
+A9VPY2_BACWK Putative uncharacterized protein 
+A9W3R1_METEP Coenzyme PQQ biosynthesis protein C 
+B0A8Y3_9CLOT Putative uncharacterized protein 
+B0ACH7_9CLOT Putative uncharacterized protein 
+B0CEH3_ACAM1 Putative uncharacterized protein 
+B0G798_9FIRM Putative uncharacterized protein 
+B0KGL3_PSEPG Coenzyme PQQ synthesis D 
+B0KJ67_PSEPG Coenzyme PQQ synthesis D 
+B0NVF0_BACSE Putative uncharacterized protein 
+B0NXJ8_9CLOT Putative uncharacterized protein 
+B0P3J0_9CLOT Putative uncharacterized protein 
+B0PD97_9FIRM Putative uncharacterized protein 
+B0R9T9_HALS3 Putative uncharacterized protein 
+B0S2Z9_FINM2 Putative uncharacterized protein 
+B0UE12_METS4 Coenzyme PQQ synthesis D 
+B0VJF7_CLOAI Putative uncharacterized protein 
+B1BCI4_CLOBO Putative uncharacterized protein 
+B1BJS5_CLOPE Putative uncharacterized protein 
+B1BNJ5_CLOPE Putative uncharacterized protein 
+B1BWX8_CLOPE Putative uncharacterized protein 
+B1C0E6_9FIRM Putative uncharacterized protein 
+B1C8T8_9FIRM Putative uncharacterized protein 
+B1FEJ4_9BURK Coenzyme PQQ synthesis D 
+B1FSF7_9BURK Coenzyme PQQ synthesis D 
+B1G1B1_9BURK Coenzyme PQQ synthesis D 
+B1IHF0_CLOBK Putative uncharacterized protein 
+B1K6Y6_BURCC Coenzyme PQQ synthesis D 
+B1KEF3_SHEWM Coenzyme PQQ synthesis D 
+B1KVX8_CLOBM Putative uncharacterized protein 
+B1LUE8_METRJ Coenzyme PQQ biosynthesis protein C 
+B1QC78_CLOBO Putative uncharacterized protein 
+B1R2U8_CLOBU Putative uncharacterized protein 
+B1R3X0_CLOPE Putative uncharacterized protein 
+B1REJ5_CLOPE Putative uncharacterized protein 
+B1SY64_9BURK Coenzyme PQQ synthesis D 
+B1UZN3_CLOPE Putative uncharacterized protein 
+B1V0N1_CLOPE Putative uncharacterized protein 
+B1Y7S4_LEPCP Coenzyme PQQ synthesis D 
+B1Z3M4_BURA4 Coenzyme PQQ synthesis D 
+B1ZIB3_METPB Coenzyme PQQ biosynthesis protein C 
+B2AIN7_CUPTR Coenzyme Pyrroloquinoline quinone (PQQ) synthesis protein D 
+B2IDU7_BEII9 Coenzyme PQQ synthesis D 
+B2JUL9_BURP8 Coenzyme PQQ synthesis D 
+B2JX64_BURP8 Coenzyme PQQ synthesis D 
+B2U9I7_RALPJ Coenzyme PQQ synthesis D 
+B2UEV5_RALPJ Coenzyme PQQ synthesis D 
+B2VL11_ERWT9 Coenzyme PQQ synthesis protein D (Pyrroloquinoline quinone biosynthesis protein D) 
+B3CE77_9BACE Putative uncharacterized protein 
+B3CID2_9BACE Putative uncharacterized protein 
+B3DVD7_METI4 Coenzyme PQQ synthesis protein D 
+B3EF81_CHLL2 Putative uncharacterized protein 
+B3R8D2_CUPTR Coenzyme PQQ synthesis protein D 
+B3U4I5_9BACT Putative uncharacterized protein 
+B3W9Q8_LACCB Putative uncharacterized protein 
+B3Z5H1_BACCE Putative uncharacterized protein 
+B4AU18_FRANO Putative uncharacterized protein 
+B4CZR0_9BACT Coenzyme PQQ synthesis D 
+B4D272_9BACT Putative uncharacterized protein 
+B4EHL2_BURCJ Coenzyme PQQ synthesis protein D 
+B5CN47_9FIRM Putative uncharacterized protein 
+B5CRC6_9FIRM Putative uncharacterized protein 
+B5CSH1_9FIRM Putative uncharacterized protein 
+B5CTC1_9FIRM Putative uncharacterized protein 
+B5CU03_9BACE Putative uncharacterized protein 
+B5GWT8_STRCL Putative uncharacterized protein 
+B5JNJ2_9BACT Putative uncharacterized protein 
+B5WCK0_9BURK Coenzyme PQQ synthesis D 
+B5WSQ9_9BURK Coenzyme PQQ synthesis D 
+B5Y9W6_COPPD Putative uncharacterized protein 
+B6B5C5_9RHOB Coenzyme PQQ synthesis protein D 
+B6BU82_9PROT Pyrroloquinoline quinone biosynthesis protein PqqD 
+B6C4L0_9GAMM Coenzyme PQQ synthesis protein D 
+B6FJG6_9CLOT Putative uncharacterized protein 
+B6FLX1_9CLOT Putative uncharacterized protein 
+B6FQ94_9CLOT Putative uncharacterized protein 
+B6W3X3_9BACE Putative uncharacterized protein 
+B6YV48_THEON Putative uncharacterized protein 
+B7AG50_9BACE Putative uncharacterized protein 
+B7APF6_9BACE Putative uncharacterized protein 
+B7GNX9_BIFLI Putative uncharacterized protein 
+B7KXC7_METC4 Coenzyme PQQ biosynthesis protein C 
+B7RIH9_9RHOB Bifunctional coenzyme PQQ synthesis protein C/D 
+B7RW77_9GAMM Putative uncharacterized protein 
+B8CX46_HALOH Putative uncharacterized protein 
+B8D4F7_DESK1 Putative uncharacterized protein 
+B8ENI8_METSB Coenzyme PQQ synthesis D 
+B8FK78_DESAA Putative uncharacterized protein 
+B8HXX5_CYAP4 Putative uncharacterized protein 
+B8ITV8_METNO Coenzyme PQQ synthesis D 
+B8KVB4_9GAMM Coenzyme PQQ synthesis protein D 
+B9B5W7_9BURK Coenzyme PQQ synthesis D 
+B9JJ31_AGRRK Putative uncharacterized protein 
+B9KMC2_RHOSK Coenzyme PQQ synthesis D 
+B9KR01_RHOSK Putative uncharacterized protein 
+B9M512_GEOSF Putative uncharacterized protein 
+B9YZH5_9NEIS Coenzyme PQQ synthesis D 
+B9Z7P8_9NEIS Coenzyme PQQ synthesis D 
+C0D171_9CLOT Putative uncharacterized protein 
+C0ED68_9CLOT Putative uncharacterized protein 
+C0EZR6_9FIRM Putative uncharacterized protein 
+C0LU63_9PROT PqqD protein 
+C0MFJ9_STRS7 Putative uncharacterized protein 
+C0N6I3_9GAMM Coenzyme PQQ synthesis protein D 
+C0QCG3_DESAH Putative uncharacterized protein 
+C0QGZ5_DESAH Putative uncharacterized protein 
+C0VHU7_9GAMM Coenzyme PQQ synthesis protein D (Coenzyme PQQ synthesis protein II) 
+C0WBU8_9FIRM Putative uncharacterized protein 
+C0ZZN8_RHOE4 Putative uncharacterized protein 
+C1C7L1_STRP7 Putative uncharacterized protein 
+C1FQM6_CLOBJ Putative uncharacterized protein 
+C1I6P9_9CLOT Putative uncharacterized protein 
+C1V5U0_9EURY Putative uncharacterized protein 
+C2CMW2_CORST Putative uncharacterized protein 
+C2FBY3_LACPA Putative uncharacterized protein 
+C2FUI1_9SPHI Putative uncharacterized protein 
+C2PZ76_BACCE Putative uncharacterized protein 
+C2QFA0_BACCE Putative uncharacterized protein 
+C2U0X3_BACCE Putative uncharacterized protein 
+C2UYR1_BACCE Putative uncharacterized protein 
+C2VF87_BACCE Putative uncharacterized protein 
+C2WEL9_BACCE Putative uncharacterized protein 
+C2X1P3_BACCE Putative uncharacterized protein 
+C2XXD2_BACCE Putative uncharacterized protein 
+C2Z0U3_BACCE Putative uncharacterized protein 
+C3AEH7_BACMY Putative uncharacterized protein 
+C3AT80_BACMY Putative uncharacterized protein 
+C3BAS3_BACMY Putative uncharacterized protein 
+C3BSN4_9BACI Putative uncharacterized protein 
+C3DZY3_BACTU Putative uncharacterized protein 
+C3G6I3_BACTU Putative uncharacterized protein 
+C3JT56_RHOER Coenzyme PQQ synthesis D 
+C3KZ06_CLOB6 Putative uncharacterized protein 
+C3MK50_SULIL Putative uncharacterized protein 
+C3MU19_SULIM Putative uncharacterized protein 
+C3N0N1_SULIA Putative uncharacterized protein 
+C3N8L9_SULIY Putative uncharacterized protein 
+C3NM89_SULIN Putative uncharacterized protein 
+C3PZ06_9BACE Putative uncharacterized protein 
+C3QE00_9BACE Putative uncharacterized protein 
+C3QSW9_9BACE Putative uncharacterized protein 
+C3R5A3_9BACE Putative uncharacterized protein 
+C3VIT7_RAHAQ PqqD 
+C4IKD2_CLOBU Putative uncharacterized protein 
+C4KAK7_THASP Coenzyme PQQ synthesis D 
+C4KK74_SULIK Putative uncharacterized protein 
+C4X8Q6_KLEPN Pyrroloquinoline quinone synthesis protein D 
+C4XMG5_DESMR Putative uncharacterized protein 
+C4Z7C0_EUBE2 Putative uncharacterized protein 
+C5AL12_BURGB Pyrroloquinoline quinone biosynthesis protein PqqD 
+C5CPT4_VARPS Coenzyme PQQ synthesis D 
+C5EQM0_9FIRM Putative uncharacterized protein 
+C5F8Q5_LACPA Putative uncharacterized protein 
+C5V2W9_9PROT Putative uncharacterized protein 
+C5VN91_CLOBO Putative uncharacterized protein 
+C6A4R5_THESM Putative uncharacterized protein 
+C6BKQ5_RALP1 Coenzyme PQQ synthesis D 
+C6BTN6_DESAD Putative uncharacterized protein 
+C6CW46_PAESJ Putative uncharacterized protein 
+C6GNH5_STRSX Putative uncharacterized protein 
+C6I4Z8_9BACE Putative uncharacterized protein 
+C6IK68_9BACE Putative uncharacterized protein 
+C6IMQ8_9BACE Putative uncharacterized protein 
+C6IW64_9BACL Putative uncharacterized protein 
+C6JG49_9FIRM Putative uncharacterized protein 
+C6PMJ5_9CLOT Putative uncharacterized protein 
+C6QGQ9_9RHIZ Coenzyme PQQ synthesis D 
+C6QGW4_9RHIZ Coenzyme PQQ synthesis D 
+C6R550_9MICC Putative uncharacterized protein 
+C6W7P1_DYAFD Putative uncharacterized protein 
+C6WVF6_METML Coenzyme PQQ synthesis D 
+C6XDZ6_METSD Coenzyme PQQ synthesis D 
+C7C9L9_METED Bifunctional coenzyme pyrroloquinoline quinone (PQQ) biosynthesis protein pyrroloquinoline-quinone synthase/PQQ synthesis protein D 
+C7DRH8_PSEFL Coenzyme PQQ biosynthesis protein PqqD 
+C7JE59_ACEP3 Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein D PqqD 
+C7JQB9_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein D PqqD 
+C7JZI4_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein D PqqD 
+C7K2A2_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein D PqqD 
+C7KBH1_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein D PqqD 
+C7KKT7_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein D PqqD 
+C7KV48_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein D PqqD 
+C7L4X6_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein D PqqD 
+C7LVC8_DESBD Putative uncharacterized protein 
+C7PND1_CHIPD Putative uncharacterized protein 
+C7RET7_ANAPD Putative uncharacterized protein 
+C8Q577_9ENTR Coenzyme PQQ synthesis D 
+C8SNK9_9RHIZ Putative uncharacterized protein 
+C8SNN1_9RHIZ Hymidylate synthase 
+C8TA99_KLEPR Coenzyme PQQ synthesis protein D 
+C8VWA1_DESAS Putative uncharacterized protein 
+C8VWU3_DESAS Putative uncharacterized protein 
+C8W094_DESAS Putative uncharacterized protein 
+C8W1A1_DESAS Putative uncharacterized protein 
+C8W2H1_DESAS Putative uncharacterized protein 
+C8W5K9_DESAS Putative uncharacterized protein 
+C8X6N3_NAKMY Putative uncharacterized protein 
+C9L3J5_9BACE Putative uncharacterized protein 
+C9LHW7_9BACT Putative uncharacterized protein 
+C9XQ40_CLODC Putative uncharacterized protein 
+C9XWH6_CROTZ Coenzyme PQQ synthesis protein D 
+C9YKZ9_CLODR Putative uncharacterized protein 
+D0BZT4_9GAMM Coenzyme PQQ synthesis protein D 
+D0C783_ACIBA Coenzyme PQQ synthesis protein D 
+D0DC74_9RHOB Bifunctional coenzyme PQQ synthesis protein C/D 
+D0FP10_ERWPY Coenzyme PQQ synthesis protein D (Pyrroloquinoline quinone biosynthesis protein D) 
+D0I8M4_VIBHO Coenzyme PQQ synthesis protein D 
+D0IJX2_9VIBR Coenzyme PQQ synthesis protein D 
+D0KV02_SULS9 Putative uncharacterized protein 
+D0MHA8_RHOM4 Putative uncharacterized protein 
+D0MJ13_RHOM4 Putative uncharacterized protein 
+D0RXY7_ACICA Coenzyme PQQ synthesis protein D 
+D0TVQ2_9BACE Putative uncharacterized protein 
+D0WKU6_9ACTO Putative uncharacterized protein 
+D0WKV9_9ACTO Putative uncharacterized protein 
+D1CB99_THET1 Putative uncharacterized protein 
+D1CIY1_THET1 Putative uncharacterized protein 
+D1CIZ5_THET1 Putative uncharacterized protein 
+D1JJI7_9BACE Putative uncharacterized protein 
+D1JY67_9BACE Putative uncharacterized protein 
+D1N1X7_9BACT Putative uncharacterized protein 
+D1N5H8_9BACT Putative uncharacterized protein 
+D1PD98_9BACT Putative uncharacterized protein 
+D1PK42_9FIRM Putative uncharacterized protein 
+D1QUS1_9BACT Putative uncharacterized protein 
+D1RRG4_SEROD Coenzyme PQQ synthesis D 
+D1SU14_9BURK Putative uncharacterized protein 
+D1U7Y1_9DELT Putative uncharacterized protein 
+D1UD46_9BURK Coenzyme PQQ synthesis D 
+D1USH6_9BURK Coenzyme PQQ synthesis D 
+D1VYB1_9BACT Putative uncharacterized protein 
+D1W4R1_9BACT Putative uncharacterized protein 
+D1YWY6_METPS Putative uncharacterized protein 
+D1YYV8_METPS Putative uncharacterized protein 
+D2EIR3_PEDAC Putative uncharacterized protein 
+D2EZW8_9BACE Putative uncharacterized protein 
+D2LAQ6_RHOVA Coenzyme PQQ synthesis D 
+D2MBN7_RHOPA Coenzyme PQQ synthesis D 
+D2NP40_ROTMD Methyl-accepting chemotaxis protein 
+D2PEL0_SULID Putative uncharacterized protein 
+D2QG28_SPILD Putative uncharacterized protein 
+D2RRM3_HALTV Putative uncharacterized protein 
+D2S4D6_GEOOG Coenzyme PQQ synthesis D 
+D2T3L8_ERWP6 Coenzyme PQQ synthesis protein D 
+D3DIL9_HYDTT Coenzyme PQQ synthesis protein D 
+D3EH82_GEOS4 Putative uncharacterized protein 
+D3HZC3_9BACT Putative uncharacterized protein 
+D3N0G3_9BURK Pyrroloquinoline quinone synthesis D 
+D3NFU6_9BURK Putative coenzyme PQQ synthesis protein D 
+D3NHQ7_9FIRM Putative uncharacterized protein 
+D3P1K1_AZOS1 Coenzyme PQQ synthesis protein D 
+D3Q201_STANL Coenzyme PQQ synthesis D 
+D3REI6_KLEVT Coenzyme PQQ synthesis D 
+D3T878_THEIA Putative uncharacterized protein 
+D4CLT9_9FIRM Putative uncharacterized protein 
+D4E6C9_SEROD Coenzyme PQQ synthesis protein D 
+D4GEB6_PANAM PqqD 
+D4I1A1_ERWAC Coenzyme PQQ synthesis protein D 
+D4IFL3_ERWAE Coenzyme PQQ synthesis protein D 
+D4IWD3_BUTFI Coenzyme PQQ synthesis protein D (PqqD) 
+D4L7W5_9FIRM Coenzyme PQQ synthesis protein D (PqqD) 
+D4LAD1_9FIRM Coenzyme PQQ synthesis protein D (PqqD) 
+D4LMT2_9FIRM Coenzyme PQQ synthesis protein D (PqqD) 
+D4LRW0_9FIRM Coenzyme PQQ synthesis protein D (PqqD) 
+D4M6N4_9FIRM Coenzyme PQQ synthesis protein D (PqqD) 
+D4MWN1_9FIRM Coenzyme PQQ synthesis protein D (PqqD) 
+D4N156_9FIRM Coenzyme PQQ synthesis protein D (PqqD) 
+D4P6Z7_PANAN PqqD 
+D4SFB2_9ACTO Putative uncharacterized protein 
+D4UUL5_RUMAL Putative uncharacterized protein 
+D4VIZ8_9BACE Putative uncharacterized protein 
+D4WFN1_BACOV Putative uncharacterized protein 
+D4WZ50_BACOV Putative uncharacterized protein 
+D4XM51_ACIHA Coenzyme PQQ synthesis protein D (Pyrroloquinoline quinone biosynthesis protein D) 
+D5C1I4_NITHN Coenzyme PQQ synthesis D 
+D5EUT8_PRER2 Putative uncharacterized protein 
+D5H529_SALRM Putative uncharacterized protein 
+D5H586_SALRM Putative uncharacterized protein 
+D5H597_SALRM Putative uncharacterized protein 
+D5MM76_9BACT Putative uncharacterized protein 
+D5NL94_9BURK Coenzyme PQQ synthesis D 
+D5NM97_9BURK Coenzyme PQQ synthesis D 
+D5Q658_CLODI Putative uncharacterized protein 
+D5QAQ7_ACEHA Coenzyme PQQ synthesis protein D 
+D5QQ09_METTR Putative uncharacterized protein 
+D5QU41_METTR Putative uncharacterized protein 
+D5R803_9FIRM Putative uncharacterized protein 
+D5S2F1_CLODI Putative uncharacterized protein 
+D5TBH4_LEGP2 Putative uncharacterized protein 
+D5U0P7_THEAM Putative uncharacterized protein 
+D5V709_ARCNC Coenzyme PQQ synthesis D 
+D5W150_CLOB2 Putative uncharacterized protein 
+D5W7F5_BURSC Coenzyme PQQ synthesis D 
+D5WEF5_BURSC Coenzyme PQQ synthesis D 
+D6CRJ6_THIS3 Coenzyme PQQ synthesis protein D 
+D6D255_9BACE Coenzyme PQQ synthesis protein D (PqqD) 
+D6DSU2_ENTCL Coenzyme PQQ synthesis protein D (PqqD) 
+D6EAX8_9ACTN Coenzyme PQQ synthesis protein D (PqqD) 
+D6GCX9_9ENTR Coenzyme PQQ synthesis protein D 
+D6JPG1_ACIG3 Putative uncharacterized protein 
+D6S7T6_PEPMA Putative uncharacterized protein 
+D6UQD1_9BACT Coenzyme PQQ synthesis D 
+D6UV26_9BACT Putative uncharacterized protein 
+D7A702_THINO Coenzyme PQQ synthesis D 
+D7ADR3_GEOSL Putative uncharacterized protein 
+D7AN93_9THEO Putative uncharacterized protein 
+D7BSZ9_9ACTO Putative uncharacterized protein 
+D7D8N6_9CREN Putative uncharacterized protein 
+D7D8R1_9CREN Putative uncharacterized protein 
+D7DHP3_9PROT Coenzyme PQQ synthesis D 
+D7I5Z6_PSESS Coenzyme PQQ synthesis protein D 
+D7I8W3_9BACE Putative uncharacterized protein 
+D7J3F6_9BACE Putative uncharacterized protein 
+D7J4L0_9BACE Putative uncharacterized protein 
+D7K9A9_9BACE Putative uncharacterized protein 
+D7N978_9BACT Putative uncharacterized protein 
+O58098_PYRHO Putative uncharacterized protein PH0360 
+Q036E0_LACC3 Putative uncharacterized protein 
+Q05W89_9SYNE Putative uncharacterized protein 
+Q05YX1_9SYNE Putative uncharacterized protein 
+Q07TD4_RHOP5 Coenzyme PQQ synthesis D 
+Q0B2B2_BURCM Coenzyme PQQ synthesis D 
+Q0BQS7_GRABC Coenzyme PQQ synthesis protein D 
+Q0F0M2_9PROT Putative uncharacterized protein 
+Q0FSC4_9RHOB Coenzyme PQQ synthesis protein D 
+Q0G4F9_9RHIZ Coenzyme PQQ synthesis D 
+Q0GFB4_SERMA PqqD 
+Q0K2D3_RALEH Pyrroloquinoline quinone (Coenzyme PQQ) biosynthesis protein D 
+Q0W8E7_UNCMA Putative uncharacterized protein 
+Q13JV1_BURXL Putative coenzyme PQQ synthesis protein D 
+Q13QW7_BURXL Pyrroloquinoline quinone synthesis D 
+Q161N0_ROSDO Putative uncharacterized protein 
+Q16B41_ROSDO Coenzyme PQQ synthesis protein D 
+Q18BS2_CLOD6 Putative uncharacterized protein 
+Q1BQG2_BURCA Coenzyme PQQ synthesis D 
+Q1D611_MYXXD Putative uncharacterized protein 
+Q1H0N8_METFK Coenzyme PQQ synthesis D 
+Q1M2R2_RHIME Coenzyme PQQ synthesis protein D 
+Q1Q1Q3_9BACT Putative uncharacterized protein 
+Q1Q200_9BACT Putative uncharacterized protein 
+Q1QZA4_CHRSD Coenzyme PQQ synthesis D 
+Q1YPJ7_9GAMM Coenzyme PQQ synthesis D 
+Q21AY4_RHOPB Coenzyme PQQ synthesis D 
+Q2BNP8_9GAMM Coenzyme PQQ synthesis protein D 
+Q2G395_NOVAD Putative uncharacterized protein 
+Q2N6T8_ERYLH Putative uncharacterized protein 
+Q2RPX5_RHORT Putative uncharacterized protein 
+Q2RUC9_RHORT Putative uncharacterized protein 
+Q2RUW3_RHORT Putative uncharacterized protein 
+Q2RW42_RHORT Putative uncharacterized protein 
+Q2RW71_RHORT Putative uncharacterized protein 
+Q2S9H6_HAHCH Putative uncharacterized protein 
+Q2W7A8_MAGSA Putative uncharacterized protein 
+Q314S7_DESDG Putative uncharacterized protein 
+Q32X70_PSEFL Pyrroloquinoline quinone biosynthesis protein D 
+Q38YV6_LACSS Putative uncharacterized protein 
+Q39Y66_GEOMG Putative uncharacterized protein 
+Q3IZR6_RHOS4 Putative pyrroloquinoline quinone synthesis protein D 
+Q3J3C1_RHOS4 Putative uncharacterized protein 
+Q3J7X1_NITOC Coenzyme PQQ synthesis D 
+Q3SUT5_NITWN Coenzyme PQQ synthesis D 
+Q466Z4_METBF Putative uncharacterized protein 
+Q470N7_RALEJ Coenzyme PQQ synthesis D 
+Q47FD3_DECAR Coenzyme PQQ synthesis D 
+Q48840_LACSK L.sake gene cluster 
+Q488A8_COLP3 Coenzyme PQQ synthesis protein D 
+Q4JA44_SULAC Conserved protein 
+Q5JJ49_PYRKO Putative uncharacterized protein 
+Q5LGJ7_BACFN Putative uncharacterized protein 
+Q5V4B9_HALMA Putative uncharacterized protein 
+Q5ZRD4_LEGPH Putative uncharacterized protein 
+Q60AG6_METCA Putative uncharacterized protein 
+Q64XE0_BACFR Putative uncharacterized protein 
+Q6W1W3_RHISN Coenzyme PQQ synthesis protein D 
+Q83X98_STRRO Pyrroloquinoline quinone biosynthesis protein D 
+Q89ZJ7_BACTN Putative uncharacterized protein 
+Q8ABQ3_BACTN Putative uncharacterized protein 
+Q8PRA2_XANAC Putative uncharacterized protein 
+Q8RD86_THETN Putative uncharacterized protein 
+Q8XN70_CLOPE Putative uncharacterized protein CPE0468 
+Q975A9_SULTO Putative uncharacterized protein STS069 
+Q97W72_SULSO Putative uncharacterized protein 
+Q98C83_RHILO Msl5258 protein 
+Q9HHR3_HALSA Vng6269c 
+Q9RZP9_DEIRA Putative uncharacterized protein 

@@ -1,0 +1,38 @@
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <td class="tip" title="SwissProt">SP</td>
+            <td>Identifier</td>
+            <td>Description</td>
+            <td>Species</td>
+            <td class="tip" title="Best PhyloFacts family containing hit">Family</td>
+            <td class="tip" title="Pairwise percent identity between query and hit<br />Click to view the query-hit alignment in Jalview">% ID</td>
+            <td class="tip" title="Fractional coverage of query">Q-Cov. %</td>
+            <td class="tip" title="Fractional coverage of hit">H-Cov. %</td>
+            <td class="tip" title="Enclosing clade defined by the Kerf algorithm">Kerf</td>
+            <td class="tip" title="Enclosing clade defined by PHOG">PHOG</td>
+            <td class="tip" title="Enclosing clade defined by subtree bracketing of OMA orthologs">OMA</td>
+            <td class="tip" title="Enclosing clade defined by subtree bracketing of OrthoMCL orthologs">Ortho<br />MCL</td>
+            <td class="tip" title="Cluster size">No.</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for homolog in homologs %}
+            <tr>
+                <td>{% if homolog.0.0.in_swissprot_f %}<img class="tip" title="SwissProt" src='/static/img/icons/icon_swiss_flag_12.png'>{% endif %}</td>
+                <td><a href="/phylofacts/sequence/UniProt/{{ homolog.0.0.uniprot_identifier }}">{{ homolog.0.0.uniprot_identifier }}</a></td>
+                <td>{{ homolog.0.0.description }}</td>
+                <td><a {% if homolog.0.0.taxon.common_name %}class="tip" title="{{ homolog.0.0.taxon.common_name }}" {% endif %}href="http://www.uniprot.org/taxonomy/{{homolog.0.0.taxon.id}}">{{ homolog.0.0.taxon.scientific_name }}</a></td>
+                <td class="tip" title="{% if homolog.0.0.family.family_type_id == 'C' %}Pfam: {% else %}MDA: {% endif %}{{ homolog.0.0.family.canonical_root_node.get_treenode_names.treenode_name }}"><a href="/phylofacts/family/{{ homolog.0.0.family.get_accession }}/">{{ homolog.0.0.family.get_accession }}</a></td>
+                <td><a href="javascript:;" onClick="startJalview({{homolog.0.0.alignment}}, 'Ortholog: {{homolog.0.0.uniprot_identifier}} alignment to query','alwvar')">{{ homolog.0.0.pwid_to_query|floatformat:1 }}</a></td>
+                <td>{{ homolog.0.0.query_coverage|floatformat }}</td>
+                <td>{{ homolog.0.0.ortholog_coverage|floatformat }}</td>
+                <td>{% if homolog.0.0.orthology_support.kerf70 %}<i class="icon-ok"></i>{% endif %}</td>
+                <td>{% if homolog.0.0.orthology_support.phogt0 %}<i class="icon-ok"></i>{% endif %}</td>
+                <td>{% if homolog.0.0.orthology_support.oma %}<i class="icon-ok"></i>{% endif %}</td>            
+                <td>{% if homolog.0.0.orthology_support.orthomcl %}<i class="icon-ok"></i>{% endif %}</td>
+                <td>{% if homolog|length > 1 %}<a class="tip otjqs" title="View/Hide cluster members" href="javascript:;" data-accession={{ homolog.0.0.accession }}>{{ homolog|length }}</a>{% else %}1{% endif %}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

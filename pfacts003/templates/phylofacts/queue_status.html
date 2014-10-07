@@ -1,0 +1,24 @@
+{% extends 'common/base_new.html' %}
+
+{% block extrascripts %}
+<script type="text/javascript">
+function pollQueue() {
+    $j.get('/phylofacts/queue_table/', function(data) {
+        $j(" #queue-status ").html(data);
+    });
+}
+
+$j(document).ready(function() {
+    pollQueue();
+    var pollingInterval = window.setInterval(function() {pollQueue()},15000);
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<div style="margin-left:10px;margin-right:10px;">
+    <h3>Ohana Queue Status</h3>
+    <p>Table updates every 15 seconds.</p>
+    <div id="queue-status"></div>
+</div>
+{% endblock %}

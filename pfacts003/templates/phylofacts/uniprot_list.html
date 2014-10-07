@@ -1,0 +1,13 @@
+<html>
+<head></head>
+<body>
+{% if object_list %}<table>
+    <tr>
+        <th>IDENTIFIER</th>
+    </tr>{% for object in object_list %}
+    <tr>
+        <td><a href='{{ object.get_pfacts_url }}'>{{ object.uniprot_identifier }}{% if object.has_medium_phogs %}*{% endif %}{% if object.get_ec.0 %}+{% endif %}</a></td>
+    </tr>{% endfor %}
+</table>{% endif %}
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% extends "common/legacy_base.html" %}
+
+
+{% block content %}
+{% if error_message %}
+<h2>{{ error_message }}</h2>
+{% else %}
+<h2><b>Oh no!</b> The page you're looking for isn't on our server.</h2>
+{% endif %}
+<p>
+ If you were using our webservers and received this error,
+please <a href="mailto:phylofacts.webmaster@gmail.com">do let us know</a>.
+</p>
+
+
+<p>
+Some helpful information to include:
+</p>
+<ul
+<li>What page you were on previously</li>
+<li>What you were trying to do</li>
+<li>Any input or parameters you may have been using on the site.</li>
+</ul>
+</p>
+
+<p>
+Thank you again.
+</p>
+
+<p>
+Sincereley,
+<br />
+<br />
+The PhyloFacts Administrators
+</p>
+{% endblock %}

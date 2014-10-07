@@ -1,0 +1,136 @@
+{% extends "queued/results.html" %}
+
+{% block mid_menu %}{% include "satchmo/mid_menu.html" %}{% endblock %}
+
+{% block app_logo %}<a href='/q/satchmo/'><span>SATCHMO-JS</span></a>{% endblock %}
+{% block statcounter %}{% include "satchmo/statcounter.html" %}{% endblock %}
+
+{% block title %}{% include "satchmo/title.html" %}{% endblock %}
+
+{% block extrascripts %}
+<script type="text/javascript" src="/static/apps/phyloscope/js/minimal_phyloscope.js"></script>
+<script type="text/javascript" src="/static/apps/phyloscope/js/phylo_tree.js"></script>
+<script type="text/javascript">
+function drawSatchmoTree() {
+  
+  $('#loadingtree').show();
+  
+  var cRequest = new XMLHttpRequest();
+  var sURL = "/q/satchmo/{{ relative_path }}/satchmo_tree.newick";
+  cRequest.open("GET", sURL, false);
+  cRequest.setRequestHeader("User-Agent",navigator.userAgent);
+  cRequest.send(null)
+  theTreeDiv = document.getElementById("treediv"); 
+  subtreeLeftId = 1;
+  highlightLeftIds = [];
+  colorLeftIds = [{{ left_id }}];
+  subalignmentLeftIds = {};
+  {% for left_id in left_ids_with_alignments %}
+    subalignmentLeftIds[{{ left_id }}] = true;
+  {% endfor %}
+  if (cRequest.status==200) drawTreeStr(cRequest.responseText);
+
+  $('#loadingtree').hide();
+
+}
+
+var resizeTimer = null;
+$(window).bind('resize', function() {
+    if (resizeTimer) clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(drawSatchmoTree, 200);
+});
+
+$('document').ready(function() {
+  $('#results_tabs').tabs();
+  drawSatchmoTree();
+});
+</script>
+{% endblock %}
+
+{% block body_title %}{% include 'satchmo/body_title.html' %}{% endblock %}
+
+{% block results %}
+<a href='/q/satchmo/'>Submit New Input</a><br />
+<p>This SATCHMO job has completed. The SATCHMO phylogenetic tree and multiple sequence alignment can be viewed (and downloaded) using the tabs below.</p>
+<p class='expandable'>
+    <a href='#' class='expand'>(Help?)</a>
+    <span>
+'PhyloScope Viewer' features an interactive image of the tree and a display of the multiple sequence alignment and subalignments from SATCHMO.<br />
+'Jalview Viewer' features the JAVA Jalview applet for displaying the tree and the alignment simultaneously.<br />
+'Downloads' provides links to downloadable results from this submission.<br/>
+</span>
+    <a href='#' class='collapse'>(Hide Help)</a>
+</p>
+<div id='results_tabs'>
+<ul>
+<li><a href='#web' title='Preview the SATCHMO alignment and tree'>Phyloscope Viewer</a></li>
+<li><a href='#jalview' title='Preview SATCHMO results with the Java viewer Jalview'>Jalview Viewer</a></li>
+<li><a href='#downloads' title='Download SATCHMO results'>Downloads</a></li>
+</ul>
+    <div id='web'>
+<div style='display:none;'>
+  <form action="." method="get" id="subtree_form"><div>
+    <input type="hidden" name="left_id" value='{{ left_id }}' />
+    <input type="submit" name="submit_leftid" />
+  </div></form>
+</div>
+        <div id="treediv">
+        "<div style='text-align: center;' id='loadingtree'><img src='/static/img/widgets/EMBLTreeOfLifeWhirlingLayers.gif' /><h1 style='text-align: center;'>Loading...</h1></div>"
+        </div>
+        <!--<button type='button' onclick='window.location="?left_id=1"'>Reset Tree and Alignment</button><br />-->
+        <p class='expandable'><a class='expand' href='#'>(What is this?)</a><span>Clicking any node of the <a href='http://phylofacts.berkeley.edu/phyloscope/help/' target='_blank'>PhyloScope</a> tree above will adjust the following multiple sequence alignment to reflect the alignment of the sequences descending from that node.  The alignment is in<a href='http://compbio.soe.ucsc.edu/a2m-desc.html' target='_blank'>A2M format</a>, and coloration reflects the conservation of a residue at a given position: <span class='align_low'>low</span>, <span class='align_moderate'>moderate</span> or <span class='align_high'>high</span>.</span> <a class='collapse' href='#'>(Hide)</a></p>
+<table class='alignment'>{% for alignment_block in alignment_blocks %}{% for alignment_row in alignment_block %}
+  <tr><td class='name'>{{ alignment_row.id }}</td><td class='start'>{{ alignment_row.start|add:'1' }}</td>{% for spec in alignment_row.seq %}<td{% if spec.class %} class='{{ spec.class }}'{% endif %}>{{ spec.residue }}</td>{% endfor %}<td class='stop'>{{ alignment_row.stop }}</td>
+</tr>
+{% endfor %}{% if not forloop.last %}<tr><td class='spacer' colspan='{{ alignment_block.0.seq|length|add:'3' }}'>&nbsp;</td></tr>{% endif %}{% endfor %}
+</table>
+    </div>
+    <div id='downloads'>
+    <ul>
+    <li><a href="/q/satchmo/{{ relative_path }}/input_unaligned.fasta">Submitted Sequences (unaligned)</a></li>
+    <li><a href="/q/satchmo/{{ relative_path }}/satchmo_alignment.fasta">SATCHMO Multiple Sequence Alignment (MSA) in aligned FASTA format</a><br /><a href='http://compbio.soe.ucsc.edu/a2m-desc.html' target='_blank'>(about A2M)</a></li>
+    <li><a href="/q/satchmo/{{ relative_path }}/satchmo_tree.newick">SATCHMO tree with ML-optimized branch lengths (Newick Format)</a><br /><a href='http://evolution.genetics.washington.edu/phylip/newicktree.html' target='_blank'>(about Newick)</a></li>
+    <li><a href="/q/satchmo/{{ relative_path }}/satchmo_tree_wo_lengths.newick">SATCHMO tree without ML-optimized branch lengths (Newick Format)</a><br /><a href='http://evolution.genetics.washington.edu/phylip/newicktree.html' target='_blank'>(about Newick)</a></li>
+    <li><a href="/q/satchmo/{{ relative_path }}/satchmo.smo">Combined Tree and Alignment File</a>.
+    View with the
+    <a href="/static/apps/satchmo/download/sv.exe">Satchmo Viewer</a>
+    (Windows only)
+    </li>
+    </ul>
+    </div>
+    <div id='jalview'>
+<applet code='jalview.bin.JalviewLite'
+                    width="320" height="35"
+                    archive="/static/java/jalviewApplet.jar"> 
+                        <param name="file" value="/q/satchmo/{{ relative_path }}/satchmo_alignment.fasta" /> 
+                        <param name="label"
+                              value="View Multiple Sequence Alignment and Tree" />
+                        <param name="treeFile" value="/q/satchmo/{{relative_path}}/satchmo_tree.newick" />
+                        <param name="userDefinedColour" value="C=yellow; R,K,H=FF5555; D,E=5555FF" />
+                        <param name="showFullId" value="false" />
+                        <param name="showTreeDistances" value="false" />
+                        <param name="showTreeBootstraps" value="false" />
+                        <param name="RGB"  value="DDDDDD" />
+                        <param name="linkLabel_1" value="SRS" />
+                        <param name="linkUrl_1" value="http://srs.ebi.ac.uk/srs7bin/cgi-bin/wgetz?-e+[uniprot-all:$SEQUENCE_ID$]+-vn+2" />
+                        <param name="linkLabel_2" value="Uniprot" />
+                        <param name="linkUrl_2" value="http://us.expasy.org/cgi-bin/niceprot.pl?$SEQUENCE_ID$" />
+                        <param name="APPLICATION_URL" value="http://www.jalview.org/services/launchApp" />
+                        The <a href='http://www.jalview.org/' target='_blank'>Jalview</a> applet failed to load; please <a href='http://java.com/en/download/'>download Java</a>.
+                      </applet>
+                  <p>Waterhouse, A.M., Procter, J.B., Martin, D.M.A, Clamp, M. and 
+                  Barton, G. J. (2009)<br /> 
+                  &quot;Jalview Version 2 - a multiple sequence alignment editor 
+                  and analysis workbench&quot;<br /> 
+                  <em>Bioinformatics</em> <strong>25 </strong>(9) 1189-1191 <a href="http://bioinformatics.oxfordjournals.org/cgi/content/abstract/btp033" target="_blank">doi: 
+                  10.1093/bioinformatics/btp033</a></p>
+
+    </div>
+    <!--<div id='info'>
+       <h3>Replaced Characters</h3>
+       <p>Characters '(', ')', '[', ']', ';', ':', and ',' were replaced with %28, %29, %5B, %5D, %3B, %3A, and %2C, respectively.  These characters must be replaced to conform with most implementations of the Newick Tree Format.<p>
+    </div>-->
+</div>
+
+{% endblock %}
+{% block references %}{% include 'satchmo/references.html' %}{% endblock %}

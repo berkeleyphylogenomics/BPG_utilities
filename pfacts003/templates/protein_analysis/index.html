@@ -1,0 +1,70 @@
+{% extends 'protein_analysis/base.html' %}
+
+{% block title %}PhyloFacts Sequence Analysis Sandbox{% endblock %}
+
+{% block extrastyle %}
+
+{% endblock %}
+
+{% block extrascripts %}
+<script type="text/javascript">
+// Django to javascript variables
+
+</script>
+<script type="text/javascript" src="/static/js/protein_analysis_index.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class='main-content'>
+    <div class='protein-analysis-header'>
+        <h2>PhyloFacts Sequence Analysis Sandbox</h2>
+        <p>With this webserver you can analyze a protein with the BPG protein analysis tools.</p>
+    </div>
+
+    <div class='protein-analysis-input-form'>
+        <div class='analysis-step'>
+            <h3>Step 1.  Paste your protein sequence in <a href=''>FASTA</a> format below</h3>
+            <div class='analysis-step-content'>
+                <table>
+                    <tr>
+                        <td><strong>FASTA sequence</strong><br /><span class='italicized small-font'>(50-2000 Amino Acids)</span></td>
+                        <td><textarea rows='5' class='fasta-input'></textarea></td>
+                        <td><span class='fasta-error'></span></td>
+                    </tr>
+               </table>
+            </div>
+        </div>
+        <div class='analysis-step'>
+            <h3>Step 2.  Identify regions in your sequence corresponding to</h3>
+            <div class='analysis-step-content'>
+                <div class='domains-scanned control-group'>
+                    <div class='controls'>
+                        <label class='checkbox'>
+                            <input type='checkbox' value='pfam' checked><strong>Pfam</strong> - significant Pfam-A domains</input>
+                        </label>
+                        <label class='checkbox'>
+                            <input type='checkbox' value='pdb' checked><strong>PDB</strong> - significant PDB structures</input>
+                        </label>
+                    </div>
+                </div>
+                <p><a href='javascript:;' class='jqsh' data-toggle='#step2-parameters'>View/hide step 2 parameters</a></p>
+                <div id='step2-parameters' class='bordered index-parameters hide'>
+                     <table>
+                        <tr>
+                            <td>Minimum domain length</td>
+                            <td><input id='minimum-domain-length-input' type='number' min='50' max='200' value='50'></input></td>
+                            <td><div class='minimum-domain-length-error'></div></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class='alert hide' id='job-create-message'>
+            <button type='button' class='close' data-dismiss='alert'>&times;</button>
+            <span></span>
+        </div>
+        <hr>
+        <button type='button' class='btn btn-primary' id='submit'>Analyze</button>
+    </div>
+</div>
+{% endblock %}

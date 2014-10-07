@@ -1,0 +1,73 @@
+{% extends "kegg/map_base.html" %}
+
+{% block node_overlay %}
+  .node_2_3_1_9_instance_0
+    { position: absolute;
+      left: 254px; top: 201px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+  .node_1_1_1_30_instance_0
+    { position: absolute;
+      left: 267px; top: 454px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+  .node_4_1_3_4_instance_0
+    { position: absolute;
+      left: 188px; top: 345px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+  .node_2_8_3_5_instance_0
+    { position: absolute;
+      left: 50px; top: 307px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+  .node_2_3_3_10_instance_0
+    { position: absolute;
+      left: 188px; top: 267px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+  .node_4_1_1_4_instance_0
+    { position: absolute;
+      left: 189px; top: 454px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+{% endblock %}
+{% block mapdata %}
+<area shape=circle	coords=211,210,4	href="/dbget-bin/www_bget?C00332"	title="C00332 (Acetoacetyl-CoA)" />
+<area shape=circle	coords=211,320,4	href="/dbget-bin/www_bget?C00356"	title="C00356 ((S)-3-Hydroxy-3-methylglutaryl-CoA)" />
+<area shape=circle	coords=211,510,4	href="/dbget-bin/www_bget?C00207"	title="C00207 (Acetone)" />
+<area shape=circle	coords=211,429,4	href="/dbget-bin/www_bget?C00164"	title="C00164 (Acetoacetate)" />
+<area shape=circle	coords=289,510,4	href="/dbget-bin/www_bget?C01089"	title="C01089 ((R)-3-Hydroxybutanoate)" />
+<area shape=circle	coords=333,259,4	href="/dbget-bin/www_bget?C00024"	title="C00024 (Acetyl-CoA)" />
+<area shape=rect	coords=188,267,234,284	href="/dbget-bin/www_bget?K01641+2.3.3.10+R01978"	title="K01641 (E2.3.3.10), 2.3.3.10, R01978" />
+<area shape=rect	coords=188,345,234,362	href="/dbget-bin/www_bget?K01640+4.1.3.4+R01360"	title="K01640 (E4.1.3.4), 4.1.3.4, R01360" />
+<area shape=rect	coords=189,454,235,471	href="/dbget-bin/www_bget?K01574+4.1.1.4+R01366"	title="K01574 (E4.1.1.4), 4.1.1.4, R01366" />
+<area shape=rect	coords=254,201,300,218	href="/dbget-bin/www_bget?K00626+2.3.1.9+R00238"	title="K00626 (E2.3.1.9), 2.3.1.9, R00238" />
+<area shape=rect	coords=267,454,313,471	href="/dbget-bin/www_bget?K00019+1.1.1.30+R01361"	title="K00019 (E1.1.1.30), 1.1.1.30, R01361" />
+<area shape=rect	coords=50,307,96,324	href="/dbget-bin/www_bget?K01027+K01028+K01029+2.8.3.5+R00410"	title="K01027 (OXCT), K01028 (E2.8.3.5A), K01029 (E2.8.3.5B), 2.8.3.5, R00410" />
+<area shape=rect	coords=117,45,375,80	href="/dbget-bin/www_bget?map00072"	title="map00072: Synthesis and degradation of ketone bodies" />
+<area shape=rect	coords=150,129,277,155	href="/kegg-bin/show_pathway?map00071"	title="map00071: Fatty acid metabolism" />
+<area shape=rect	coords=335,169,458,195	href="/kegg-bin/show_pathway?map00620"	title="map00620: Pyruvate metabolism" />
+<area shape=rect	coords=375,247,449,273	href="/kegg-bin/show_pathway?map00010"	title="map00010: Glycolysis / Gluconeogenesis" />
+<area shape=rect	coords=50,483,122,518	href="/kegg-bin/show_pathway?map00650"	title="map00650: Butanoate metabolism" />
+{% endblock %}
+{% block color_nodes %}
+  {% if nodes_to_color.2_3_1_9 %}
+    <div class="node_2_3_1_9_instance_0"></div>
+  {% endif %}
+  {% if nodes_to_color.1_1_1_30 %}
+    <div class="node_1_1_1_30_instance_0"></div>
+  {% endif %}
+  {% if nodes_to_color.4_1_3_4 %}
+    <div class="node_4_1_3_4_instance_0"></div>
+  {% endif %}
+  {% if nodes_to_color.2_8_3_5 %}
+    <div class="node_2_8_3_5_instance_0"></div>
+  {% endif %}
+  {% if nodes_to_color.2_3_3_10 %}
+    <div class="node_2_3_3_10_instance_0"></div>
+  {% endif %}
+  {% if nodes_to_color.4_1_1_4 %}
+    <div class="node_4_1_1_4_instance_0"></div>
+  {% endif %}
+{% endblock %}

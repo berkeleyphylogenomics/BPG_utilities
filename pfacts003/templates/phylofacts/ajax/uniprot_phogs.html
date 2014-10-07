@@ -1,0 +1,124 @@
+{% extends 'common/for_iframe.html' %}
+
+{% block extrascript %}
+<script type="text/javascript"
+      src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js">
+      </script>
+{% endblock %}
+{% block extrastyle %}
+<style type='text/css'>
+
+/* This should really really be merged with whatever uniprot_detail.html
+   is using for its styles.  This is just a convenient place to copy it
+   for now.  Don't judge. :p
+*/
+body {
+    background-color: #ddd;
+    font-size: 87%;
+    padding: 0;
+    margin: 0;
+}
+h2 {
+    font-size: 100%;
+    margin: 1em 0 0 0;
+    padding: 0.25em;
+    background-color: #88aacc;
+}
+
+.spinner {
+    position: absolute;
+    left: 50%;
+    margin-left: -62px;
+}
+
+.go_list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+th[colspan] {
+    text-align: left;
+    border: none;
+    padding: 0.25em;
+}
+th[colspan] a {
+    margin:0;
+    padding: 0;
+    position: relative;
+    left: -0.25em;
+    text-decoration: underline;
+}
+th[colspan] a:hover {
+    background-color: #eee;
+}
+th:not([colspan]) {
+    white-space: nowrap;
+    text-align: left;
+    vertical-align: text-top;
+    padding: 0 0.25em;
+    font-weight: normal;
+    width: 10em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    margin-bottom: 1em;
+}
+table td {
+    border-left: 1px solid #888;
+}
+table td, table th:not(.go_list) {
+    padding: 0.5em;
+}
+table th:not([colspan]), table td {
+    border-top: 1px solid #888;
+}
+table td a {
+    color: #0000ff;
+    text-decoration: none;
+}
+table td a:hover {
+    text-decoration: underline;
+}
+li.go_item {
+    margin: 3px;
+    padding: 0.25em;
+    background-color: #eee;
+}
+.lineage span {
+    color: #777;
+}
+#uniprot_phogs tr td {
+    padding: 0;
+}
+#phog_orthologs {
+    position: relative;
+}
+
+
+</style>
+
+{% endblock %}
+
+{% block content %}
+<h2>PhyloFacts Orthology Groups (PHOGs) containing this sequence</h2>
+<table id='uniprot_phogs'>{% for sh in object.sequenceheader_set.all %}{% for tn in sh.treenode_set.all %}{% with tn.phogt_medium_node.get_phog as ph %}{% if ph %}
+    <tr>
+        <th colspan='2'><a href='{{ ph.get_absolute_url }}'>{{ ph.accession }}: {{ ph.get_description }}</a></th>
+    </tr>{% with ph.get_usual_summaries as gs %}{% if gs.biological_process %}
+    <tr>
+        <th>Biological process</th>
+        <td>{% with gs.biological_process as annots %}{% include 'phylofacts/snippets/annotation_entries.html' %}{% endwith %}</td>
+    </tr>{% endif %}{% if gs.molecular_function %}
+    <tr>
+        <th>Molecular function</th>
+        <td>{% with gs.molecular_function as annots %}{% include 'phylofacts/snippets/annotation_entries.html' %}{% endwith %}</td>
+    </tr>{% endif %}{% if gs.cellular_component %}
+    <tr>
+        <th>Cellular location</th>
+        <td>{% with gs.cellular_component as annots %}{% include 'phylofacts/snippets/annotation_entries.html' %}{% endwith %}</td>
+    </tr>{% endif %}{% endwith %}
+{% endif %}{% endwith %}{% endfor %}{% endfor %}</table>
+{% endblock %}

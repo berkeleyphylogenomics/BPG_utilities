@@ -1,0 +1,31 @@
+{% if messages %}
+    <p class="text-error">{{ messages }}</p>
+{% else %}
+    {% for family, ortholog_info in orthology_groups.items %}
+    <h4>Orthology Groups in {{ family }} containing {{ uniprot_identifier }}</h4>
+    <dl class="dl-horizontal">
+    {% if ortholog_info.orthomcl_supported_ancestor %}
+          <dt style="clear:none;">OrthoMCL</dt>
+          <dd><a href="/phylofacts/tree_node_view/{{ ortholog_info.orthomcl_supported_ancestor.id }}">
+           {{ ortholog_info.orthomcl_supported_ancestor }}</a> 
+           (OrthoMCL group: {{ortholog_info.orthomcl_supported_ancestor.is_orthomcl_supported}})</dd>
+    {% endif %}
+    {% if ortholog_info.oma_supported_ancestor %}
+          <dt style="clear:none;">OMA</dt>
+          <dd><a href="/phylofacts/tree_node_view/{{ ortholog_info.oma_supported_ancestor.id }}">
+           {{ ortholog_info.oma_supported_ancestor }}</a> 
+           (OMA group: {{ortholog_info.oma_supported_ancestor.is_oma_supported}})</dd>
+    {% endif %}
+    {% if ortholog_info.kerf_supported_ancestor %}
+          <dt style="clear:none;">Kerf70</dt>
+          <dd><a href="/phylofacts/tree_node_view/{{ ortholog_info.kerf_supported_ancestor.id }}">
+           {{ ortholog_info.kerf_supported_ancestor }}</a></dd>
+    {% endif %}
+    {% if ortholog_info.phog_supported_ancestor %}
+          <dt style="clear:none;">PHOG T(0)</dt>
+          <dd><a href="/phylofacts/tree_node_view/{{ ortholog_info.phog_supported_ancestor.id }}">
+           {{ ortholog_info.phog_supported_ancestor }}</a></dd>
+    {% endif %}
+    </dl>
+    {% endfor %}
+{% endif %}

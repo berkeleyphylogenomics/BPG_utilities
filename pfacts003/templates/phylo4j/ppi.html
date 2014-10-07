@@ -1,0 +1,54 @@
+{% extends 'phylo4j/base.html' %}
+
+{% block title %}Phylo4j{% endblock %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="/static/apps/phylo4j/css/jquery.dataTables_themeroller.min.css"
+    type="text/css" media="screen"/>
+{% endblock %}
+
+{% block extrascripts %}
+<script type="text/javascript" src="/static/apps/phylo4j/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/static/apps/phylo4j/js/dataTables.jqueryui.js"></script>
+<script type="text/javascript">
+    $j(document).ready(function() {
+        $j('#interaction-table').dataTable();
+    });
+    
+</script>
+{% endblock %}
+
+{% block content %}
+{% if interactions|length > 0%}
+<p>Protein Protein Interactions in Phylo4j for <span style="color:red;">{{ query }}</span>:</p>
+<hr>
+<table id="interaction-table" class="display" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Accession 1</th>
+            <th>Identifier 1</th>
+            <th>Description 1</th>
+            <th>Accession 2</th>
+            <th>Identifier 2</th>
+            <th>Description 2</th>
+            <th>Interaction Source</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for interaction in interactions %}
+            <tr>
+                <td>{{ interaction.start_node_accession }}</td>
+                <td>{{ interaction.start_node_uniprot_identifier }}</td>
+                <td>{{ interaction.start_node_description }}</td>
+                <td>{{ interaction.end_node_accession }}</td>
+                <td>{{ interaction.end_node_uniprot_identifier }}</td>
+                <td>{{ interaction.end_node_description }}</td>
+                <td>{{ interaction.interaction_source }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No Protein Protein Interactions found for <span style="color:red;">{{ query }}</span>.</p>
+{% endif %}
+{% endblock %}

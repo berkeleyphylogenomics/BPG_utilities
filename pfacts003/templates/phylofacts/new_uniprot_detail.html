@@ -1,0 +1,280 @@
+{% extends 'common/base_new.html' %}
+{% load get_range %}
+
+{% block title %}PhyloFacts Sequence Page: {{ object.uniprot_identifier }} {% endblock %}
+
+{% block extrascripts %}
+<script type="text/javascript">
+$j(document).ready(function() {
+    var disabledArray = new Array();
+    {% if not biocyc_info.reactions %}
+        disabledArray.push(4);
+    {% endif %}
+    {% if not biocyc_info.pathways %}
+        disabledArray.push(5);
+    {% endif %}
+    {% if not biocyc_info.reactions and not biocyc_info.pathways %}
+        disabledArray.push(3);
+    {% endif %}
+    {% if num_GO_annotations == 0 %}
+        disabledArray.push(6);
+        disabledArray.push(7);
+    {% endif %}
+    {% if structures|length == 0 %}
+        disabledArray.push(8);
+    {% endif %}
+    $j( "#left-tabs" ).tabs({ disabled: disabledArray });
+    $j( "#left-tabs" ).tabs().addClass('ui-tabs-vertical ui-helper-clearfix');
+    $j( "#left-tabs li").removeClass('ui-corner-top').addClass('ui-corner-left');
+    $j(".page-top-navbar a").click( function() {
+        $j("#left-tabs").tabs().tabs('select', $j(this).data("tab"));
+    });
+    $j(" #go_annotations ul ").summarylist({ visible: 3 });
+    $j(" #orthology-groups ").load('orthologs/', function(data) {});
+    $j("#species-tree").jstree({ 
+        'json_data': {
+            'ajax' : {
+                'url':"/phylofacts/tree_node_view/{{ object.get_treenodes.0.id }}/species_tree/json/",
+                'data': function (n) {
+                    $j("#species-tree-controls").show();
+                    return {};
+                }
+            }},
+        "plugins" : [ "themes", "json_data", "ui" ],
+        "themes" : {"icons":false}
+    });
+    $j(" #species-expand-all ").click( function() {
+        $j(" #species-tree ").jstree("open_all");
+    });
+    $j(" #species-collapse-all ").click( function() {
+        $j(" #species-tree ").jstree("close_all");
+    });
+});
+</script>
+<script type="text/javascript">
+{% if object.pfam_architecture %}
+var sequence = {"length": {{ object.sequence_length }},
+    "regions":[
+    {% for domain_name, domain_coordinates in object.pfam_architecture.1.pfam_coordinates %}
+    {
+          "startStyle":"curved",
+          "endStyle":"curved",
+          "start":"{{ domain_coordinates.0 }}",
+          "end":"{{ domain_coordinates.1 }}",
+          "modelStart":"{{ domain_coordinates.0 }}",
+          "modelEnd":"{{ domain_coordinates.1 }}",
+          "aliStart":"{{ domain_coordinates.0 }}",
+          "aliEnd":"{{ domain_coordinates.1 }}",
+          "display":true,
+          "text":"{{ domain_name }}", 
+          "type":"pfama",
+          "colour": {% for d_name, color in domain_colormap.items %}
+                        {% if d_name == domain_name %}
+                            "{{ color }}"
+                        {% endif %}
+                    {% endfor %}
+    } {% if not forloop.last %}, {% endif %}
+    {% endfor %}],
+
+    "markups":[],
+
+    "motifs":[]};
+
+ document.observe("dom:loaded", function() {
+    var pg = new PfamGraphic("mda", sequence);
+      pg.render();
+      });
+{% endif %}
+</script>
+{% endblock %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="/static/css/DT_bootstrap.css">
+<style>
+#go_annotations ul li {
+    list-style:none;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="phylofacts-well">
+  <div class="phylofacts-well-header">
+    <h2>Sequence: {{ object.description }} [{{ object.uniprot_identifier }}]</h2>
+    <div class="page-top-navbar">
+      <div id="species_icon" class="top-navbar-icon">
+        <img src="/static/img/icons/tree-of-life-species.png" alt="species" />
+        <a href="javascript:;" data-tab="species">1 Taxon</a>
+      </div>
+      <div id="pathway_icon" class="top-navbar-icon">
+        <img src="/static/img/icons/pathway-icon.png" alt="pathways" />
+        {% if biocyc_info.reactions %}<a href="javascript:;" data-tab="reactions">{{ biocyc_info.reactions|length }}
+       {% if biocyc_info.reactions|length > 1 %}Reactions{% else %}Reaction{% endif %}</a>
+    {% else %}<span>0 Reactions</span>{% endif %}
+    {% if biocyc_info.pathways %}<a  href="javascript:;" data-tab="pathways">{{ biocyc_info.pathways|length }} 
+       {% if biocyc_info.pathways|length > 1 %}Pathways{% else %}Pathway{% endif %}</a>
+    {% else %}<span>0 Pathways</span>{% endif %}
+      </div>
+      <div id="structure_icon" class="top-navbar-icon">
+        <img src="/static/img/icons/VIRB4_model.png" alt="structures" />
+        {% if structures %}<a href="javascript:;" data-tab="structures">{{ structures|length }} {% if structures|length == 1 %}Structure{% else %}Structures{% endif %}</a>{% else %}<span>0 Structures</span>{% endif %}
+        <!--<a href="javascript:;" data-tab="structures">{{ num_structures }} structures</a>-->
+      </div>
+      <div id="literature_icon" class="top-navbar-icon">
+        <img src="/static/img/icons/pubmed.png" alt="literature" />
+        <span>0 Papers</span>
+        <!--<a href="javascript:;" data-tab="reactions">{{ num_papers }} {% if num_papers > 1 or num_papers == 0 %}Papers{% else %}Paper{% endif %}</a> -->
+      </div>
+      <div id="annotation_icon" class="top-navbar-icon">
+        <img src="/static/img/icons/quillPen.png" alt="annotations" />
+        <a href="javascript:;" data-tab="go_annotations">
+          {{ num_GO_annotations }} {% if num_GO_annotations != 1 %}GO annotations{% else %}GO annotation{% endif %}</a>
+        <span>0 User annotations</span>
+        <!-- <a href="javascript:;" data-tab="user_annotations">{{ num_user_annotations }} user annotations</a> -->
+      </div>
+    </div>
+    <div class="cleaner">
+      <!-- empty. -->
+    </div>
+  </div>
+  <div id="left-tabs">
+      <ul class="left-tabs-cls">
+        <li><a href="#summary">Summary</a></li>
+        <li><a href="#species">Species</a></li>
+        <li><a href="#orthologs">Orthology Groups</a></li>
+        <li><a href="#biocyc">BioCyc</a></li>
+        <li><a href="#reactions">&nbsp&nbsp&nbspReactions</a></li>
+        <li><a href="#pathways">&nbsp&nbsp&nbspPathways</a></li>
+        <li><a href="#annotations">Annotations</a></li>
+        <li><a href="#go_annotations">&nbsp&nbsp&nbspGO</a></li>
+        <li><a href="#structures">Structures</a></li>
+      </ul>
+    <div id="summary" class="phylofacts-treenode-content">
+      <h3>Summary</h3>
+        {% if ghg_families or pfam_family_map %}
+        <h4>PhyloFacts families containing {{ object.uniprot_identifier }}</h4>
+        <dl class="dl-horizontal">
+        {% for family in ghg_families %}
+          <dt><a href='/phylofacts/family/{{ family.get_accession }}/'>{{ family.get_accession }}</a></dt>
+          <dd>MDA: {{ object.description }}</dd>
+        {% endfor %}
+        {% for pfam_domain, domain_object in pfam_family_map.items %}
+          {% for family in domain_object.families %}
+            <dt><a href='/phylofacts/family/{{ family.get_accession }}/'>{{ family.get_accession }}</a></dt>
+            <dd>Pfam: {{ domain_object.pfam_object.name }}</dd>
+          {% endfor %}
+        {% endfor %}
+        </dl>
+        {% endif %}
+        <h4>UniProt Data</h4>
+        <dl class="dl-horizontal">
+          <dt>Accession</dt>
+          <dd><a href='{{ object.get_absolute_url }}'>{{ object.accession }}</a></dd>
+          <dt>Species</dt>
+          <dd><a href='{{ object.taxon.get_absolute_url }}'>{{ object.taxon.scientific_name }}{% if object.taxon.common_name %} ({{ object.taxon.common_name }}){% endif %}</a></dd>
+          <dt>Length</dt>
+          <dd>{{ object.sequence_length }} AA</dd>
+        </dl>
+        {% if object.pfam_architecture %}
+        <dl class="dl-horizontal">
+          <dt>Architecture</dt>
+          <dd><div id="mda"></div></dd>
+        </dl>
+        {% endif %}
+    </div>
+    <div id="species" class="phylofacts-treenode-content">
+      <h3>Species</h3>
+      <div id="species-tree-controls" class="species-tree-controls">
+          <div class="label">Tree Controls</div>
+          <div class="btn-group">
+            <button id="species-expand-all" class="btn">Expand All</button>
+            <button id="species-collapse-all" class="btn">Collapse All</button>
+          </div>
+      </div>
+      <div id="species-tree"></div>
+    </div>
+    <div id="orthologs" class="phylofacts-treenode-content">
+      <h3>Orthology Groups</h3>
+        <div id="orthology-groups"><p class="text-info">Loading . . .</p></div>
+    </div>
+    <div id="biocyc" class="phylofacts-treenode-content">
+      <h3>BioCyc Summary</h3>
+    </div>
+    <div id="reactions" class="phylofacts-treenode-content">
+      <h3>BioCyc Reactions</h3>
+    </div>
+    <div id="pathways" class="phylofacts-treenode-content">
+      <h3>BioCyc Pathways</h3>
+    </div>
+    <div id="annotations" class="phylofacts-treenode-content">
+      <h3>Annotation Summary</h3>
+        <p>This sequence is associated with {{ num_GO_annotations }} Gene Ontology {% if num_GO_annotations == 1 %}annotation.{% else %}annotations.{% endif %}</p>
+    </div>
+    <div id="go_annotations" class="phylofacts-treenode-content">
+      <h3>GO Annotations</h3>
+        {% if go_biological_process %}
+            <h4>Biological process</h4>
+              <ul>
+                {% for term in go_biological_process %}
+                <li><a href='http://www.ebi.ac.uk/QuickGO/GTerm?id={{ term.accession }}'>{{ term.description }}</a> ({{ term.evidence_code }})</li>
+                {% endfor %}
+              </ul>
+        {% endif %}  <!-- End of GO biological process -->
+        {% if go_molecular_function %}
+            <h4>Molecular function</h4>
+              <ul>
+                {% for term in go_molecular_function %}
+                <li><a href='http://www.ebi.ac.uk/QuickGO/GTerm?id={{ term.accession }}'>{{ term.description }}</a> ({{ term.evidence_code }})</li>
+                {% endfor %}
+              </ul>
+        {% endif %}  <!-- End of GO molecular_function -->
+        {% if go_cellular_component %}
+            <h4>Cellular component</h4>
+              <ul>
+                {% for term in go_cellular_component %}
+                  <li><a href='http://www.ebi.ac.uk/QuickGO/GTerm?id={{ term.accession }}'>{{ term.description }}</a> ({{ term.evidence_code }})</li>
+                {% endfor %}
+              </ul>
+        {% endif %}
+    </div>
+    <div id="structures" class="phylofacts-treenode-content">
+      <h3>Structures</h3>
+        {% if structures|length != 0 %}
+            <script src="/static/apps/jmol/jmol-13.0.4/Jmol.js" type="text/javascript"></script>
+            <div class="viewer">
+                <script>
+                jmolInitialize( "/static/apps/jmol/jmol-13.0.4" );
+                jmolApplet([400, 400], "script /static/apps/jmol/jmol-13.0.4/customcolor.spt; set antialiasDisplay on;");
+                $j( "#jmolApplet0" ).css("float", "left");
+                jmolHtml("<div style='float:left; margin-left:15px;'><h4>PDB Structure</h4>");
+                jmolMenu(
+                    [ ["", ""], 
+                    {% for pdb in structures %}["load /phylofacts/pdb/{{ pdb.id }}/; select all; spacefill off; wireframe off; cartoon off; restrict protein; cartoon; hover on; set showHydrogens off", "{{ pdb.id }}"]{% if not forloop.last %},{% endif %}{% endfor %} ]);
+                jmolHtml("</div>");
+                jmolHtml("<div style='float:left; margin-left:15px;'><h4>Color By</h4>");
+                jmolMenu(
+                    [ 
+                      ["", ""],
+                      ["hide null; select all;set defaultColors Jmol; color_by_chain(\"cartoon\"); color_by_chain(\"\"); select ligand;wireframe 0.16;spacefill 0.5; color cpk ;; select all; ", "Chain"],
+                      //["hide null; select all;spacefill off; wireframe off; backbone 0.4; cartoon off; set defaultColors Jmol; color relativeTemperature; color cartoon relateiveTemperature select ligand;wireframe 0.16;spacefill 0.5; color cpk ;; select all; ", "By Temperature"],
+                      ["hide null; select all; set defaultColors Jmol; color group; color cartoon group; select ligand;wireframe 0.16;spacefill 0.5; color cpk ;; select all; ", "Rainbow"],
+                      ["hide null; select all; set defaultColors Jmol; color structure; color cartoon structure;select ligand;wireframe 0.16;spacefill 0.5; color cpk ;; select all; ", "Secondary Structure"],
+                      ["hide null; select all; set defaultColors Jmol; color cpk; color cartoon cpk; select ligand;wireframe 0.16;spacefill 0.5; color cpk ;; select all; ", "By Element"],
+                      ["hide null; select all; set defaultColors Jmol; color amino; color cartoon amino; select ligand;wireframe 0.16;spacefill 0.5; color cpk ;; select all; ", "By Amino Acid"],
+                      ["hide null; set defaultColors Jmol; select hydrophobic; color red; color cartoon red; select not hydrophobic ; color blue ; color cartoon blue; select ligand;wireframe 0.16;spacefill 0.5; color cpk ;; select all; ", "Hydrophobicity"]]);
+                jmolHtml("</div>");
+                $j( "#jmolMenu0" ).css("width", "113px");
+                $j( "#jmolMenu1" ).css("width", "160px");
+                //jmolScript("load /phylofacts/pdb/{{ structures.0.id }}/; select all; spacefill off; wireframe off; cartoon off; restrict protein; cartoon; hover on; set showHydrogens off;");
+                //jmolScript(" hide null; select all;set defaultColors Jmol; color_by_chain(\"cartoon\"); color_by_chain(\"\"); select ligand;wireframe 0.16;spacefill 0.5; color cpk ;; select all; ");
+                </script>
+            </div>
+        {% endif %}
+    </div>
+    <div class="bottom-border">
+        <p></p>
+    </div>
+  </div>
+</div> 
+{% endblock %}

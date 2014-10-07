@@ -1,0 +1,40 @@
+{% extends "phog/tutorial/phog_tutorial_base.html" %}
+
+{% block toppagenav %}
+
+<table width="100%">
+   <tr>
+      <td align="left" width="30%">
+	 {% if previous %}
+	    <a href="/phog/orthologs/tutorial/?page={{ previous }}"><img src="/static/apps/phog/img/tutorial-{{padded_previous}}.png" height=100></a><br>
+	    <a href="/phog/orthologs/tutorial/?page={{ previous }}">Previous</a>
+	 {% else %}
+	    <a href="/phog/orthologs/">PHOG Server</a><br />
+	    <a href="/phog/orthologs/faq/">PHOG FAQ</a>
+	 {% endif %}
+	    
+      </td>
+      <td align="center">
+         <h1>PHOG tutorial</h1><h3>March 2009</h3>Page {{ page }}
+
+      </td>
+      <td align="right" width="30%">
+	 {% if next %}
+	    <a href="/phog/orthologs/tutorial/?page={{ next }}"><img src="/static/apps/phog/img/tutorial-{{padded_next}}.png" height=100></a><br>
+	    <a href="/phog/orthologs/tutorial/?page={{ next }}">Next</a> >
+         {% else %}
+	    <a href="/phog/orthologs/">PHOG Server</a> ><br />
+	    <a href="/phog/orthologs/faq/">PHOG FAQ</a> >
+
+         {% endif %}
+      </td>
+   </tr>
+</table>
+<hr>
+<table width="100%" cellspacing="10">
+<tr valign="top">
+<td>
+<center>(Click image to expand)</center>
+<a href="/static/apps/phog/img/tutorial-{{padded_page_num}}.png" target="_blank"><img src="/static/apps/phog/img/tutorial-{{padded_page_num}}.png"  width=500 align="left"/></a>
+</td>
+{% endblock %}

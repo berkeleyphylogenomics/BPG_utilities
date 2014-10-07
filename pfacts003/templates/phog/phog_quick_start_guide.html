@@ -1,0 +1,144 @@
+{% extends "phog/phog_base.html" %}
+
+{% block title %}Quick-start guide to using PHOG{% endblock %}
+
+{% block content %}
+
+<h1 align="center">Quick-start guide to using PHOG</h1>
+
+<div style="margin-left: 50px; margin-right: 50px; margin-top: 30px;">
+
+
+
+<p class="text_section_body">
+A detailed step-by-step tutorial is available <a href="/phog/orthologs/tutorial/">here.</a></p>
+
+<p class="text_section_body">
+The PHOG webserver provides a way of retrieving pre-calculated super-orthology
+groups for sequences in the PhyloFacts resource 
+(<a href="/phylofacts/">http://phylogenomics.berkeley.edu/phylofacts/</a>).
+PhyloFacts is an encyclopedia of thousands of protein families from across the
+Tree of Life, including phylogenetic trees, predicted subfamilies, family and
+subfamily hidden Markov models, predicted 3D structures, GO annotations and
+links to external resources. PHOGs are derived by analysis of phylogenetic
+trees for PhyloFacts families, and correspond to super-orthology groups found
+in these trees.
+</p>
+
+<p class="text_section_body">
+If you use PHOG, please cite the following paper which describes it:
+</p>
+
+<ul class="list">
+
+<li>
+Ruchira S. Datta, Christopher Meacham, Bushra Samad, Christoph Neyer, Kimmen
+Sj&ouml;lander,<br>
+<a
+href="http://nar.oxfordjournals.org/cgi/content/full/gkp373?ijkey=KU8e1DWUbzb70Yz&keytype=ref"><i>Berkeley
+PHOG: PhyloFacts orthology group prediction web server</i></a>, <a
+href="http://nar.oxfordjournals.org/">Nucleic Acids Research</a> 2009; doi:
+10.1093/nar/gkp373
+</li>
+
+</ul>
+
+<p class="text_section_body">
+PhyloFacts is described in the following papers:
+</p>
+
+
+
+<ul class="list">
+
+<li>
+  Krishnamurthy, Brown, Kirshner and Sj&ouml;lander, &quot;PhyloFacts: An online
+  structural phylogenomic encyclopedia for protein functional and structural
+  classification,&quot; <a href="http://genomebiology.com/2006/7/9/R83"><em>Genome Biology</em> 2006</a></li>
+
+<li>
+  Glanville, Kirshner, Krishnamurthy and Sj&ouml;lander, &quot;Berkeley Phylogenomics
+  Group web servers: resources for structural phylogenomic analysis,&quot;
+  <a href="http://nar.oxfordjournals.org/cgi/content/full/gkm325?ijkey=aO7i3BIaubALiyA&keytype=ref"><em>Nucleic Acids Research</em> 2007</a></li>
+
+</ul>
+
+<p class="text_section_body">
+<b>Step 1: </b>Type (or paste) in a protein sequence identifier or accession. See <a href="/phog/orthologs/faq/#input_types">examples and details</a> of accepted inputs.
+</p>
+
+<p class="text_section_body">
+<b>Step 2:</b> Click &ldquo;Search&rdquo;.   Results will display within a few seconds on the page below.
+</p>
+
+
+
+<p class="text_section_body">
+  If your input sequence is contained in a PhyloFacts orthology group, two
+  tables will be displayed.  The first, "PhyloFacts Orthology Groups Containing
+  the Query Sequence", gives a list of orthology groups, with summary data and
+  links to each PHOG page.  The second table, "Orthologs and In-Species
+  Paralogs from One or More PhyloFacts Families", gives a list of orthologs,
+  retrieved from the orthology groups listed in the first table.
+</p>
+
+<p class="text_section_heading">
+  Orthologs and In-Species Paralogs from One or More PhyloFacts Families
+</p>
+
+
+<ul class="list">
+
+<li>
+  <b>Gene: </b>UniProt accession. Clicking on this link will bring you to the corresponding page in the UniProt resource.  	 
+</li>
+
+<li>
+  <b>Species: </b>The species of origin.  	
+</li>
+
+<li>
+  <b>UniProt ID: </b>The identifier for the sequence.
+</li>
+
+<li>
+  <b>Description: </b>A description of the molecular function of the protein, drawn from the UniProt resource.  
+</li>
+
+<li>
+  <b>Links to other resources: </b>The next five columns include icons displaying links to external resources where available: SwissProt, Gene Ontology and biological literature links in the UniProt resource, and KEGG and BioCyc pathway data.
+</li>
+
+<li>
+  <b>Protein-protein interactions: </b>Link to information about interactions between this and other proteins.
+</li>
+
+<li>
+  <strong>Alignment</strong>: PhyloFacts families are of various types, depending on the degree of alignment overlap. There are three basic types: <i>Domain</i> (sequences share a common structural domain), <i>Global</i> (sequences align along their entire lengths), and<em> Local </em>(local alignments with no correspondence to a solved structure).  Orthologs defined within Global Homology Group families are more likely to have a common function than those that share only a local region of homology.
+</li>
+
+<li>
+  <b>PHOG:</b> the accession for the PhyloFacts orthology group.
+</li>
+
+<li>
+  <b>View Tree: </b>clicking on the link will bring you to the family tree, which you can view using the Berkeley Phylogenomics Group Javascript tree viewer, PhyloScope. 
+</li>
+
+
+<li>
+  <b>EC: </b>a link to the IntEnz database at the EBI (<a href="http://www.ebi.ac.uk/intenz/">http://www.ebi.ac.uk/intenz/</a>) 
+    providing information about Enzyme Commission numbers. 	
+</li>
+</ul>
+
+<!--Section Ends-->
+
+</li></ul>
+
+</div>
+
+{% endblock %}
+
+</body>
+</html>

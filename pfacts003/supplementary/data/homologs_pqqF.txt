@@ -1,0 +1,572 @@
+Y5738_STRCO Uncharacterized zinc protease SCO5738 
+PQQF_KLEPN Coenzyme PQQ synthesis protein F 
+PQQF_PSEFL Coenzyme PQQ synthesis protein F 
+Y4WA_RHISN Uncharacterized zinc protease y4wA 
+PQQF_PSESM Coenzyme PQQ synthesis protein F 
+PQQF_PSEPK Coenzyme PQQ synthesis protein F 
+PQQF_PSEAE Coenzyme PQQ synthesis protein F 
+A0L289_SHESA Peptidase M16 domain protein 
+A0L9K2_MAGSM Peptidase M16 domain protein 
+A0LN99_SYNFM Peptidase M16 domain protein 
+A0LV19_ACIC1 Peptidase M16 domain protein 
+A0M7C7_GRAFK Secreted peptidase, family M16 
+A0NV33_9RHOB Putative protease 
+A0Q5N4_FRATN Metallopeptidase, M16 family 
+A0RP27_CAMFF Peptidase, M16 family 
+A1AX48_RUTMC Peptidase M16 domain protein 
+A1B5K5_PARDP Peptidase M16 domain protein 
+A1K3H7_AZOSB Probable Zn dependent peptidase 
+A1RF55_SHESW Peptidase M16 domain protein 
+A1SB90_SHEAM Conserved hypothetical Zn-dependent peptidase 
+A1T7L5_MYCVP Peptidase M16 domain protein 
+A1TTX9_ACIAC Peptidase M16 domain protein 
+A1UET7_MYCSK Peptidase M16 domain protein 
+A1VKN1_POLNA Peptidase M16 domain protein 
+A1VZF3_CAMJJ Peptidase, M16 family 
+A1WBK7_ACISJ Peptidase M16 domain protein 
+A1WS48_VEREI Peptidase M16 domain protein 
+A1WZF7_HALHL Peptidase M16 domain protein 
+A1ZEB4_9BACT Protease 
+A1ZLP0_9BACT Peptidase, M16 family 
+A2TNK7_9FLAO Probable peptidase 
+A2TXW3_9FLAO Peptidase family M16 
+A2V2M7_SHEPU Peptidase M16-like 
+A3CZ28_SHEB5 Peptidase M16 domain protein 
+A3EP83_9BACT Putative peptidase M16 
+A3HW76_9BACT Putative protease 
+A3HX74_9BACT Probable peptidase 
+A3J2K9_9FLAO Peptidase M16-like protein 
+A3JWD2_9RHOB Putative zinc protease 
+A3K3W2_9RHOB Peptidase, M16 family protein 
+A3KTG9_PSEAE Pyrroloquinoline quinone biosynthesis protein F 
+A3L053_PSEAE Putative uncharacterized protein 
+A3LHI1_PSEAE Putative uncharacterized protein 
+A3PNE6_RHOS1 Peptidase M16 domain protein 
+A3PY94_MYCSJ Peptidase M16 domain protein 
+A3QIZ9_SHELP Peptidase M16 domain protein 
+A3RS79_RALSO Zinc protease 
+A3S8S5_9RHOB Peptidase, M16 family protein 
+A3SKN4_9RHOB Peptidase, M16 family protein 
+A3STN8_9RHOB Peptidase, M16 family 
+A3TW17_9RHOB Peptidase, M16 family protein 
+A3U5W3_9FLAO Putative protease 
+A3V2V9_9RHOB Putative zinc protease 
+A3VCF5_9RHOB Putative zinc protease 
+A3VZ63_9RHOB Peptidase, M16 family protein 
+A3X1I4_9BRAD Peptidase M16 
+A3XDM4_9RHOB Peptidase, M16 family protein 
+A3XQ79_LEEBM Peptidase family M16 
+A3YM56_CAMJE Peptidase, M16 family 
+A3YSL7_CAMJE Peptidase, M16 family 
+A3ZE50_CAMJE Peptidase, M16 family 
+A3ZKB9_CAMJE Peptidase, M16 family 
+A4AWE8_9FLAO Putative zinc protease 
+A4BP11_9GAMM Peptidase, M16 family protein 
+A4BXJ9_9FLAO Probable peptidase 
+A4C7W6_9GAMM Hypothetical Zn-dependent peptidase 
+A4CIU2_ROBBH Probable peptidase 
+A4EM46_9RHOB Peptidase, M16 family protein 
+A4ET11_9RHOB Peptidase, M16 family protein 
+A4FM21_SACEN Putative zinc protease 
+A4G930_HERAR Putative peptidase M16 
+A4IME5_GEOTN Processing peptidase-like protein 
+A4IZ60_FRATW Metallopeptidase, M16 family 
+A4KSH2_FRATU Peptidase, M16 family 
+A4T075_POLSQ Peptidase M16 domain protein 
+A4TCH5_MYCGI Peptidase M16 domain protein 
+A4TY37_9PROT Peptidase, M16 family 
+A4VL01_PSEU5 Pyrroloquinoline quinone biosynthesis protein F 
+A4VRL5_PSEU5 Zinc protease, putative 
+A4WWQ3_RHOS5 Peptidase M16 domain protein 
+A4XTN3_PSEMY Coenzyme PQQ biosynthesis protein PqqF 
+A4Y007_PSEMY Peptidase M16 domain protein 
+A4YB67_SHEPC Peptidase M16 domain protein 
+A4Z0P7_BRASO Putative Zn-dependent protease 
+A5D2S9_PELTS Predicted Zn-dependent peptidases 
+A5ECM8_BRASB Putative Zn-dependent protease 
+A5ETZ3_BRASB Putative zinc protease 
+A5FJP4_FLAJ1 Peptidase subfamily M16B-like protein 
+A5G7L5_GEOUR Peptidase M16 domain protein 
+A5IAQ5_LEGPC Zinc protease (Peptidase, M16 family) 
+A5VTV0_BRUO2 Protease 
+A5VXG8_PSEP1 Coenzyme PQQ biosynthesis protein PqqF 
+A5WAE5_PSEP1 Peptidase M16 domain protein 
+A5WAE8_PSEP1 Peptidase M16 domain protein 
+A5ZK95_9BACE Putative uncharacterized protein 
+A6DCH6_9PROT Putative zinc protease 
+A6E2H5_9RHOB Peptidase, M16 family protein 
+A6ED17_9SPHI Zinc protease 
+A6EM55_9BACT Probable peptidase 
+A6FKW6_9RHOB Peptidase, M16 family, putative 
+A6GM44_9BURK Peptidase M16 
+A6KXD3_BACV8 Putative zinc protease 
+A6Q2V5_NITSB Peptidase, M16 family 
+A6Q8F9_SULNB Peptidase, M16 family 
+A6T2T1_JANMA Zn-dependent peptidase 
+A6T9H3_KLEP7 Pyrroloquinolinquinone Synthase F 
+A6UYH7_PSEA7 Probable zinc protease 
+A6V6J7_PSEA7 Coenzyme PQQ biosynthesis protein PqqF 
+A6WTV8_SHEB8 Peptidase M16 domain protein 
+A6X3E2_OCHA4 Peptidase M16 domain protein 
+A7GYB1_CAMC5 Peptidase, M16 family 
+A7H444_CAMJD Peptidase, M16 family 
+A7HBS9_ANADF Peptidase M16 domain protein 
+A7HPT0_PARL1 Peptidase M16 domain protein 
+A7I0X9_CAMHC Peptidase, M16 family 
+A7IHF5_XANP2 Peptidase M16 domain protein 
+A7JDV5_FRATT Putative uncharacterized protein 
+A7JH16_FRANO Putative uncharacterized protein 
+A7JL71_FRANO Putative uncharacterized protein 
+A7M0L9_BACOV Putative uncharacterized protein 
+A7MN61_ENTS8 Putative uncharacterized protein 
+A7NDI9_FRATF Peptidase M16 family protein 
+A7V4D2_BACUN Putative uncharacterized protein 
+A7YUJ8_FRATU Metallopeptidase 
+A7ZDQ4_CAMC1 Peptidase, M16 family 
+A8DVH0_NEMVE Predicted protein (Fragment) 
+A8ET61_ARCB4 Putative zinc protease 
+A8FLL8_CAMJ8 Putative zinc protease 
+A8FPV1_SHESH Peptidase M16 domain protein 
+A8H9M1_SHEPA Peptidase M16 domain protein 
+A8HT11_AZOC5 Putative protease 
+A8L6G2_FRASN Peptidase M16 domain protein 
+A8LMD3_DINSH Peptidase M16 protein 
+A8M759_SALAI Peptidase M16 domain protein 
+A8PPQ8_9COXI Peptidase, M16 family 
+A8TSG8_9PROT Peptidase M16-like protein 
+A8UFB5_9FLAO Putative uncharacterized protein 
+A9BUY0_DELAS Peptidase M16 domain protein 
+A9CXT8_9GAMM Hypothetical Zn-dependent peptidase 
+A9DL67_9FLAO Probable peptidase 
+A9DY17_9RHOB Peptidase, M16 family, putative 
+A9FJ68_9RHOB Peptidase, M16 family protein 
+A9GNL1_9RHOB Peptidase, M16 family 
+A9GWY9_SORC5 Putative uncharacterized protein 
+A9HI50_9RHOB Peptidase, M16 family, putative 
+A9KBU7_COXBN Peptidase, M16 family 
+A9KU33_SHEB9 Peptidase M16 domain protein 
+A9MDW3_BRUC2 Peptidase M16 domain protein 
+A9NB90_COXBR Peptidase, M16 family 
+A9W567_METEP Peptidase M16 domain protein 
+A9WXR2_BRUSI Putative uncharacterized protein 
+A9ZKB0_COXBU Peptidase, M16 family 
+B0KJ70_PSEPG Coenzyme PQQ biosynthesis protein PqqF 
+B0KN66_PSEPG Peptidase M16 domain protein 
+B0KN69_PSEPG Peptidase M16 domain protein 
+B0NKV8_BACSE Putative uncharacterized protein 
+B0TPM4_SHEHH Peptidase M16 domain protein 
+B0TYM0_FRAP2 Metallopeptidase, M16 family 
+B0UDF7_METS4 Peptidase M16 domain protein 
+B0ULI3_METS4 Peptidase M16 domain protein 
+B1I395_DESAP Peptidase M16 domain protein 
+B1J2G0_PSEPW Peptidase M16 domain protein 
+B1JDZ5_PSEPW Coenzyme PQQ biosynthesis protein PqqF 
+B1KN64_SHEWM Peptidase M16 domain protein 
+B1LSB5_METRJ Peptidase M16 domain protein 
+B1VXQ1_STRGG Putative M16-family peptidase 
+B1VXZ5_STRGG Putative protease 
+B1XL67_SYNP2 Insulinase (Peptidase family M16 protein) 
+B1XS71_POLNS Peptidase M16 domain protein 
+B1Z8C5_METPB Peptidase M16 domain protein 
+B2II69_BEII9 Peptidase M16 domain protein 
+B2SD05_BRUA1 Zinc protease 
+B2SDG3_FRATM Metallopeptidase M16 family protein 
+B2UEQ8_RALPJ Peptidase M16 domain protein 
+B2USR8_HELPS Putative zinc protease 
+B2VL09_ERWT9 Coenzyme PQQ synthesis protein F (Pyrroloquinoline quinone biosynthesis protein F) 
+B3CID9_9BACE Putative uncharacterized protein 
+B3CPV6_WOLPP Protease, insulinase family 
+B3JKH3_9BACE Putative uncharacterized protein 
+B3Q7Z2_RHOPT Peptidase M16 domain protein 
+B3QYA3_CHLT3 Peptidase M16 domain protein 
+B4AQM7_FRANO Peptidase M16 inactive domain family protein 
+B4BIZ1_9BACI Peptidase M16 domain protein 
+B4D031_9BACT Peptidase M16 domain protein 
+B4D4A9_9BACT Peptidase M16 domain protein 
+B4UBF9_ANASK Peptidase M16 domain protein 
+B4ULA5_ANASK Peptidase M16 domain protein 
+B4V203_9ACTO Protease 
+B4V8R3_9ACTO Zinc protease 
+B4X0C8_9GAMM Peptidase M16 inactive domain family 
+B5D066_9BACE Putative uncharacterized protein 
+B5GIN1_9ACTO M16 family peptidase 
+B5GW80_STRCL Protease 
+B5H1S9_STRCL Protease 
+B5H8T3_STRPR Protease 
+B5HEU5_STRPR Protease 
+B5I2F3_9ACTO Zinc protease 
+B5I6U7_9ACTO Protease 
+B5IZ61_9RHOB Peptidase M16 inactive domain family 
+B5JXP9_9GAMM Putative zinc protease 
+B5K5M9_9RHOB Peptidase M16 
+B5QIT5_CAMJE Putative zinc protease 
+B5S876_RALSO Peptidase protein 
+B5SFK6_RALSO Peptidase protein 
+B5XX57_KLEP3 Coenzyme PQQ biosynthesis protein PqqF 
+B5YG88_THEYD Peptidase, M16 family 
+B5Z6I1_HELPG Putative zinc protease 
+B6ALP0_9BACT Putative peptidase M16 
+B6AV03_9RHOB Peptidase M16 
+B6BEZ1_9RHOB Peptidase, M16 family 
+B6BNG6_9PROT Peptidase, M16 family 
+B6BWR1_9PROT Peptidase PpqF, involved in biosynthesis of pyrroloquinoline quinone 
+B6BY17_9GAMM Peptidase M16 inactive domain family 
+B6IXB4_RHOCS Peptidase, M16 family, putative 
+B6J297_COXB2 Peptidase, M16 family 
+B6J8T1_COXB1 Peptidase, M16 family 
+B6JIU8_OLICO Peptidase M16 domain protein 
+B6JL10_HELP2 Zinc protease 
+B6R8A4_9RHOB Protease 
+B6VRV8_9BACE Putative uncharacterized protein 
+B7AE49_9BACE Putative uncharacterized protein 
+B7GG67_ANOFW Zn-dependent peptidase 
+B7IGQ7_THEAB Zinc protease 
+B7L2G0_METC4 Peptidase M16 domain protein 
+B7RKR5_9RHOB Peptidase M16 
+B7V3V8_PSEA8 Probable zinc protease 
+B7VAD2_PSEA8 Pyrroloquinoline quinone biosynthesis protein F 
+B7WVE9_COMTE Peptidase M16 domain protein 
+B8CUS5_SHEPW Insulinase-like:Peptidase M16 
+B8E405_SHEB2 Peptidase M16 domain protein 
+B8ETD8_METSB Peptidase M16 domain protein 
+B8FQZ7_DESHD Peptidase M16 domain protein 
+B8GPD7_THISH M16 family peptidase 
+B8IB43_METNO Peptidase M16 domain protein 
+B8J7Y7_ANAD2 Peptidase M16 domain protein 
+B8J8C0_ANAD2 Peptidase M16 domain protein 
+B9D2Z4_WOLRE Peptidase, M16 family 
+B9KFX1_CAMLR Peptidase, M16 family 
+B9KGU2_ANAMF Putative uncharacterized protein 
+B9KP33_RHOSK Peptidase M16 domain protein 
+B9L9P8_NAUPA Peptidase, M16 family 
+B9MF06_ACIET Peptidase M16 domain protein 
+B9NTU2_9RHOB Peptidase, M16 family 
+B9T8D3_RICCO Mitochondrial-processing peptidase subunit beta, mitochondrial, putative 
+B9XT89_HELPY Putative uncharacterized protein 
+B9XY67_HELPY Putative uncharacterized protein 
+B9Z921_9NEIS Peptidase M16 domain protein 
+C0BIE3_9BACT Peptidase M16 domain protein 
+C0BLH2_9BACT Peptidase M16 domain protein 
+C0BNW7_9BACT Peptidase M16 domain protein 
+C0DYC9_EIKCO Putative uncharacterized protein 
+C0EPH8_NEIFL Putative uncharacterized protein 
+C0G9E9_9RHIZ Protease 
+C0R386_WOLWR Peptidase, M16 family 
+C0YT54_9FLAO Probable peptidase 
+C1A9T1_GEMAT Putative M16B family peptidase 
+C1AEN4_GEMAT Peptidase S16B family protein 
+C1DAP9_LARHH Peptidase M16 domain protein 
+C1DEW2_AZOVD Coenzyme PQQ biosynthesis protein F 
+C1DIB6_AZOVD Peptidase M16-like protein 
+C2FTR4_9SPHI M16 family peptidase 
+C2M2E6_CAPGI Peptidase M16 domain protein 
+C3J5B6_9BACI Peptidase M16 domain protein 
+C3K346_PSEFS Putative coenzyme PQQ biosynthesis-related protein 
+C3K3M5_PSEFS Putative peptidase 
+C3Q320_9BACE Putative uncharacterized protein 
+C3QEY2_9BACE Putative uncharacterized protein 
+C3QXW0_9BACE Putative uncharacterized protein 
+C3RC29_9BACE Putative uncharacterized protein 
+C3VIT9_RAHAQ PqqF 
+C3X6N8_OXAFO Zn-dependent peptidase 
+C3XCV7_OXAFO Zn-dependent peptidase 
+C3XDT5_9HELI Putative uncharacterized protein 
+C3XNE7_9HELI Putative uncharacterized protein 
+C4IUK0_BRUAB Zinc protease 
+C4KDP4_THASP Peptidase M16 domain protein 
+C4PL81_BRAEL Putative uncharacterized protein 
+C4WMI4_9RHIZ Peptidase M16 domain-containing protein 
+C4X8Q8_KLEPN Pyrroloquinoline quinone synthesis protein F 
+C5AQL6_METEA Putative protease 
+C5CZ23_VARPS Peptidase M16 domain protein 
+C5D9D7_GEOSW Processing peptidase 
+C5F0V5_9HELI Putative uncharacterized protein 
+C5PV60_9SPHI M16 family peptidase 
+C5TPL7_NEIFL Peptidase, M16 family 
+C5V4Z2_9PROT Peptidase M16 domain protein 
+C5ZYB3_9HELI Putative zinc protease 
+C6BBG4_RALP1 Peptidase M16 domain protein 
+C6HUW2_9BACT Peptidase M16 domain protein 
+C6IPJ0_9BACE Putative uncharacterized protein 
+C6M944_NEISI Peptidase, M16 family 
+C6MII2_9PROT Peptidase M16 domain protein 
+C6N5T9_9GAMM Zinc protease 
+C6QBR8_9RHIZ Peptidase M16 domain protein 
+C6QMF6_9BACI Peptidase 
+C6RF86_9PROT Cytochrome c551 peroxidase 
+C6RNM8_ACIRA Peptidase, M16 family 
+C6V626_NEORI Peptidase, M16 family 
+C6W3E2_DYAFD Peptidase M16 domain protein 
+C6W5E8_DYAFD Peptidase M16 domain protein 
+C6WXK6_METML Peptidase M16 domain protein 
+C6X6F7_FLAB3 Probable peptidase 
+C6X721_METSD Peptidase M16 domain protein 
+C6YQS7_FRATT Peptidase M16 family protein 
+C6YWX5_9GAMM Metallopeptidase 
+C6Z760_9BACE Putative uncharacterized protein 
+C7BYI3_HELPB Putative zinc protease; putative signal peptide 
+C7CLD3_METED Putative protease 
+C7DD97_9RHOB Peptidase M16 domain protein 
+C7DRH4_PSEFL Coenzyme PQQ biosynthesis protein PqqF 
+C7LH52_BRUMC Peptidase M16 domain protein 
+C7M4P3_CAPOD Peptidase M16 domain protein 
+C7Q7A9_CATAD Peptidase M16 domain protein 
+C7RN70_ACCPU Peptidase M16 domain protein 
+C8PFV4_9PROT Peptidase, M16 family 
+C8Q579_9ENTR Coenzyme PQQ biosynthesis protein PqqF 
+C8RXG7_9RHOB Peptidase M16 domain protein 
+C8SPY4_9RHIZ Peptidase M16 domain protein 
+C9CZ22_9RHOB Peptidase M16 domain protein 
+C9KZU8_9BACE Zinc protease 
+C9NB86_9ACTO Peptidase M16 domain protein 
+C9NH54_9ACTO Processing peptidase 
+C9S0D4_GEOSY Peptidase M16 domain protein 
+C9U0L7_9RHIZ Peptidase M16 domain-containing protein 
+C9UAR6_BRUAB Peptidase M16 domain-containing protein 
+C9UI75_BRUAB Peptidase M16 domain-containing protein 
+C9USX1_BRUAB Peptidase M16 domain-containing protein 
+C9V6R2_BRUNE Peptidase M16 domain-containing protein 
+C9VE94_9RHIZ Peptidase M16 domain-containing protein 
+C9VQQ2_BRUAB Peptidase M16 domain-containing protein 
+C9XWH4_CROTZ Putative uncharacterized protein 
+C9Y797_9BURK Putative uncharacterized protein 
+C9Z0I8_STRSW Putative M16 family peptidase 
+C9Z239_STRSW Putative M16 family endopeptidase 
+D0AVR3_BRUAB Zinc protease 
+D0B643_BRUME Zinc protease 
+D0BHU8_BRUSU Zinc protease 
+D0CTW6_9RHOB Peptidase M16 
+D0D6L1_9RHOB Peptidase M16 domain protein 
+D0FP12_ERWPY Coenzyme PQQ synthesis protein F (Pyrroloquinoline quinone biosynthesis protein F) 
+D0GBX8_BRUME Zinc protease 
+D0IRU0_HELP1 Zinc protease 
+D0J5Z6_COMT2 Peptidase M16-like protein 
+D0J8M1_BLASP Probable peptidase 
+D0JBP5_BLASB Peptidase M16 family domain-containing protein 
+D0JYX7_HELP5 Putative zinc protease 
+D0LI29_HALO1 Processing peptidase 
+D0MIC9_RHOM4 Peptidase M16 domain protein 
+D0P5S8_BRUSU Peptidase M16 domain-containing protein 
+D0PES4_BRUSU Peptidase M16 domain-containing protein 
+D0RCX2_9RHIZ Zinc protease 
+D0SEM6_ACIJO Putative uncharacterized protein 
+D0SSU6_ACILW Putative uncharacterized protein 
+D0T3W2_ACIRA Putative uncharacterized protein 
+D0TLN3_9BACE Putative uncharacterized protein 
+D1AAE8_THECD Processing peptidase 
+D1ATS3_ANACI Putative peptidase 
+D1B1W2_SULD5 Peptidase M16 domain protein 
+D1CZW0_9RHIZ Peptidase M16 domain-containing protein 
+D1EJ81_9RHIZ Peptidase M16 domain-containing protein 
+D1ETC9_BRUME Peptidase M16 domain-containing protein 
+D1F4T1_BRUME Peptidase M16 domain-containing protein 
+D1FDG4_9RHIZ Peptidase M16 domain-containing protein 
+D1JX51_9BACE Putative uncharacterized protein 
+D1K655_9BACE Putative uncharacterized protein 
+D1RC23_LEGLO Putative uncharacterized protein 
+D1RRG2_SEROD Coenzyme PQQ synthesis protein F 
+D1T2E5_9BURK Peptidase M16 domain protein 
+D1WVR7_9ACTO Peptidase M16 domain protein 
+D1X904_9ACTO Peptidase M16 domain protein 
+D1XHJ3_9ACTO Peptidase M16 domain protein 
+D1XUY3_9ACTO Peptidase M16 domain protein 
+D2AK69_FRATE Peptidase M16 family protein 
+D2EVL4_9BACE Putative uncharacterized protein 
+D2MEI0_RHOPA Peptidase M16 domain protein 
+D2MVK8_CAMJE Peptidase, M16 family 
+D2MXT9_CAMJE Putative zinc protease 
+D2QBB1_SPILD Peptidase M16 domain protein 
+D2QSH4_SPILD Peptidase M16 domain protein 
+D2T3M0_ERWP6 Coenzyme PQQ synthesis protein F 
+D2ZZV5_NEIMU Peptidase, M16 family 
+D3A2R5_NEISU Peptidase, M16 family 
+D3D7B1_9ACTO Peptidase M16 domain protein 
+D3DJR4_HYDTT Processing protease 
+D3E6N9_GEOS4 Peptidase M16 domain protein 
+D3FM26_CAMJI M16 family peptidase 
+D3HP87_LEGLN Putative zinc protease 
+D3NSG2_AZOS1 Zinc protease 
+D3REI4_KLEVT Coenzyme PQQ biosynthesis protein PqqF 
+D3RQV9_ALLVD Peptidase M16 domain protein 
+D3SCG8_THISK Peptidase M16 domain protein 
+D3SPI6_THEAH Peptidase M16 domain protein 
+D3UJI1_HELM1 Putative zinc protease 
+D4DQK8_NEIEG Peptidase, M16 family 
+D4GEB8_PANAM PqqF 
+D4I199_ERWAC Coenzyme PQQ synthesis protein F 
+D4IFL5_ERWAE Coenzyme PQQ synthesis protein F (Pyrroloquinolin quinone biosynthesis protein F) (Putative peptidase) 
+D4P6Z9_PANAN PqqF 
+D4V530_BACVU Peptidase M16 inactive domain protein 
+D4VMS5_9BACE Peptidase M16 inactive domain protein 
+D4WHL6_BACOV Peptidase M16 inactive domain protein 
+D4WQV9_BACOV Peptidase M16 inactive domain protein 
+D4Y4P6_BACTR Processing peptidase 
+D4ZEH7_SHEVD Peptidase, M16 family 
+D5ALH7_RHOCB Peptidase, M16 family 
+D5BCG0_ZUNPS M16 family peptidase 
+D5C571_NITHN Peptidase M16 domain protein 
+D5CMC3_SIDLE Peptidase M16 domain protein 
+D5H9Q0_SALRM Zinc protease 
+D5MHK0_9BACT Putative Zn-dependent protease, involved in pqq synthesis (PpqF) 
+D5QKC4_METTR Peptidase M16 domain protein 
+D5RMI1_9PROT Peptidase M16 family protein (Fragment) 
+D5T9U5_LEGP2 Zinc protease (Peptidase, M16 family) 
+D5V0G7_ARCNC Peptidase M16 domain protein 
+D5VBY0_MORCR M16-like peptidase 
+D5XF28_THEPJ Peptidase M16 domain protein 
+D5ZT57_9ACTO Protease (Fragment) 
+D6AS37_STRFL Protease 
+D6AT48_STRFL Zinc protease 
+D6BA10_9ACTO Protease 
+D6BB30_9ACTO Zinc protease 
+D6D6J6_9BACE Predicted Zn-dependent peptidases 
+D6EP35_STRLI Zinc protease 
+D6EQ57_STRLI Protease 
+D6GCX7_9ENTR Coenzyme PQQ biosynthesis protein PqqF 
+D6K2U8_9ACTO M16 family peptidase 
+D6K3H7_9ACTO M16B family peptidase 
+D6KXZ2_9NEIS Peptidase, M16 family 
+D6LS05_9RHIZ Zinc protease 
+D6M3U9_9ACTO M16B family peptidase 
+D6PLF7_9ZZZZ Predicted Zn dependent peptidase 
+D6UHI7_HELPY Coenzyme PQQ synthesis protein E (Pyrroloquinoline quinone biosynthesis protein E) 
+D6V7G6_9BRAD Peptidase M16 domain protein 
+D6VCX1_9BURK Peptidase M16 domain protein 
+D6XP49_HELPY Zinc protease 
+D6Y7X2_MICBI Peptidase M16 domain protein 
+D6Z5Q6_9DELT Peptidase M16 domain protein 
+D6ZZG0_THINO Peptidase M16 domain protein 
+D7AH72_GEOSL Protease 
+D7C8L7_9ACTO Zinc protease 
+D7CAD1_9ACTO Putative protease 
+D7CZI4_9BACI Peptidase M16 domain protein 
+D7DKG8_9PROT Peptidase M16 domain protein 
+D7FES8_HELPY Protease 
+D7H534_BRUAB Protease 
+D7HV08_PSESS Peptidase, M16 family 
+D7I5Z3_PSESS Coenzyme PQQ synthesis protein F 
+D7IH06_9BACE Zinc protease 
+D7J673_9BACE Zinc protease 
+D7K4U3_9BACE Zinc protease 
+D7N4Q3_9NEIS Peptidase, M16 family 
+O25656_HELPY Protease (PqqE) 
+O50511_STRCO Zinc protease 
+O67308_AQUAE Processing protease 
+Q026D1_SOLUE Peptidase M16 domain protein 
+Q02LB9_PSEAB Pyrroloquinoline quinone biosynthesis protein F 
+Q02U41_PSEAB Putative zinc protease 
+Q07RR5_RHOP5 Peptidase M16 domain protein 
+Q088Z9_SHEFN Peptidase M16 domain protein 
+Q08QQ2_STIAU Protease 
+Q09DU6_STIAU Zinc protease 
+Q0A589_ALHEH Peptidase M16 domain protein 
+Q0AFV8_NITEC Peptidase M16 domain protein 
+Q0BKY6_FRATO M16 family peptidase 
+Q0C3W4_HYPNA Insulinase family protein 
+Q0EX62_9PROT Peptidase M16 
+Q0FHK9_9RHOB Peptidase, M16 family protein 
+Q0HDR2_SHESM Peptidase M16 domain protein 
+Q0HQ13_SHESR Peptidase M16 domain protein 
+Q0PA85_CAMJE Putative zinc protease 
+Q0RDT2_FRAAA Putative zinc protease 
+Q0VLD5_ALCBS Zinc protease, putative 
+Q11L91_MESSB Peptidase M16-like 
+Q11Q91_CYTH3 Zinc protease 
+Q12E13_POLSJ Peptidase M16-like 
+Q12IG5_SHEDO Peptidase M16-like protein 
+Q131I5_RHOPS Peptidase M16-like 
+Q14GS1_FRAT1 Peptidase M16 family protein 
+Q16CD7_ROSDO Peptidase, M16 family, putative 
+Q17WU8_HELAH Putative zinc protease 
+Q1CU71_HELPH Putative zinc protease 
+Q1D625_MYXXD Peptidase, M16 (Pitrilysin) family 
+Q1DE69_MYXXD Peptidase, M16 (Pitrilysin) family 
+Q1GKI9_SILST Peptidase M16-like protein 
+Q1H3D5_METFK Peptidase PpqF, involved in biosynthesis of pyrroloquinoline quinone 
+Q1IG44_PSEE4 Coenzyme PQQ synthesis protein F 
+Q1IGE1_PSEE4 Putative zinc-dependent peptidase, M16 family 
+Q1PXU6_9BACT Putative uncharacterized protein 
+Q1QAP2_PSYCK Peptidase M16-like 
+Q1QIP7_NITHX Peptidase M16-like 
+Q1VQT1_9FLAO Peptidase M16-like protein 
+Q1YH13_MOBAS Peptidase, M16 family 
+Q1Z6R0_PHOPR Putative Zn-dependent peptidase 
+Q219I2_RHOPB Peptidase M16-like 
+Q21XV2_RHOFD Peptidase M16-like 
+Q24UJ7_DESHY Putative uncharacterized protein 
+Q28K00_JANSC Peptidase M16-like protein 
+Q2A2B9_FRATH Peptidase M16 family protein 
+Q2B0B5_9BACI Zinc protease (Fragment) 
+Q2CKE8_9RHOB Peptidase, M16 family protein 
+Q2GCL8_NEOSM Peptidase, M16 family 
+Q2GFE1_EHRCR Peptidase, M16 family 
+Q2GIV2_ANAPZ Peptidase, M16 family 
+Q2IJ05_ANADE Peptidase M16-like 
+Q2IM49_ANADE Peptidase M16-like 
+Q2ISD9_RHOP2 Peptidase M16-like 
+Q2RQ28_RHORT Peptidase M16-like 
+Q2S227_SALRD Protease, putative 
+Q2S363_SALRD Peptidase M16 inactive domain family 
+Q2W934_MAGSA Predicted Zn-dependent peptidase 
+Q2Y5E7_NITMU Peptidase M16-like 
+Q30R78_SULDN Peptidase M16-like protein 
+Q31E92_THICR M16 peptidase family protein 
+Q32X66_PSEFL Secreted/periplasmic Zn-dependent peptidase 
+Q3IYV1_RHOS4 Putative zinc protease 
+Q3J9V1_NITOC Peptidase M16-like 
+Q3K579_PSEPF Zinc protease 
+Q3K5R1_PSEPF Putative coenzyme PQQ biosynthesis-related protein 
+Q3SLS5_THIDA Insulinase family protein 
+Q3SPJ3_NITWN Peptidase M16 
+Q3YQX5_EHRCJ Insulinase-like:Peptidase M16, C-terminal 
+Q479N3_DECAR Peptidase M16, C-terminal:Peptidase M16, N-terminal 
+Q48CL1_PSE14 Peptidase, M16 family 
+Q48CT8_PSE14 Coenzyme PQQ biosynthesis protein PqqF 
+Q4BY25_CROWT Insulinase-like:Peptidase M16, C-terminal 
+Q4EC49_9RICK Protease, insulinase family 
+Q4FT73_PSYA2 Probable Insulinase-like peptidase, family M16 
+Q4HIA3_CAMCO Protease (PqqE) 
+Q4HQN6_CAMUP Protease (PqqE) 
+Q4K4B7_PSEF5 Peptidase, M16 family 
+Q4K4V3_PSEF5 Coenzyme pqq synthesis protein f 
+Q4ZM43_PSEU2 Insulinase-like:Peptidase M16, C-terminal 
+Q4ZMC6_PSEU2 Insulinase-like:Peptidase M16, C-terminal 
+Q579N7_BRUAB Hypothetical protease 
+Q5FGG8_EHRRG Hypothetical zinc protease 
+Q5GSL8_WOLTR Zn-dependent peptidase 
+Q5HA72_EHRRW Hypothetical zinc protease 
+Q5HUY7_CAMJR Peptidase, M16 family 
+Q5L0I0_GEOKA Processing protease 
+Q5LN41_SILPO Peptidase, M16 family 
+Q5NFB8_FRATT Peptidase M16 family protein 
+Q5P733_AZOSE Predicted Zn-dependent peptidase 
+Q5P9U1_ANAMM Putative uncharacterized protein 
+Q5WTC7_LEGPL Putative uncharacterized protein 
+Q5X1L8_LEGPA Putative uncharacterized protein 
+Q5ZS48_LEGPH Zinc protease (Peptidase, M16 family) 
+Q60CP2_METCA Peptidase, M16 family 
+Q65JH3_BACLD MlpA 
+Q6FA30_ACIAD Putative zinc protease 
+Q6LHM1_PHOPR Putative Zn-dependent peptidase 
+Q6MNZ5_BDEBA Protease 
+Q6N1N1_RHOPA Putative protease 
+Q73H15_WOLPM Protease, insulinase family 
+Q74EN5_GEOSL Peptidase, M16 family 
+Q7M7L7_WOLSU PUTATIVE ZINC PROTEASE 
+Q7NF40_GLOVI Glr3686 protein 
+Q7VFQ0_HELHP Putative zinc protease 
+Q7X5R9_ENTIT PqqF 
+Q82K81_STRAW Putative protease 
+Q82KI1_STRAW Putative protease 
+Q82UR5_NITEU Insulinase family (Peptidase family M16) 
+Q83AI4_COXBU Peptidase, M16 family 
+Q88AG4_PSESM Peptidase, M16 family 
+Q88CR5_PSEPK Zinc protease, putative 
+Q88CR8_PSEPK Zinc protease, putative 
+Q89DF5_BRAJA Hypothetical zinc protease 
+Q8A164_BACTN Putative zinc protease 
+Q8GHF8_EHRCA Protease A 
+Q8Y2E9_RALSO Probable peptidase protein 
+Q8YB63_BRUME Zinc protease 
+Q983M9_RHILO Protease 
+Q9I6C2_PSEAE Probable zinc protease 

@@ -1,0 +1,49 @@
+{% extends "common/base.html" %}
+
+{% block extrastyle %}
+{% endblock %}
+{% block extrascripts %}{% endblock %}
+
+
+{% block content %}
+<br />
+<h2>Software</h2>
+<p>
+Key downloadable code from the PhyloFacts repository.
+</p>
+
+<h3>INTREPID <a href="https://github.com/berkeleyphylogenomics/intrepid">(GitHub repository)</a></h3>
+<p>INTREPID is a method for functional site identification that exploits the information in large diverse multiple sequence alignments.<br />
+<i>Sankararaman, S. and Sj&ouml;lander, K., <a href="http://dx.doi.org/10.1093/bioinformatics/btn474">"INTREPID - INformation-theoretic TREe traversal for Protein functional site IDentification"</a>, Bioinformatics 2008; doi: 10.1093/bioinformatics/btn474</i></p>
+
+<h3>Discern <a href="http://phylogenomics.berkeley.edu/static/apps/discern/discern.tar.gz">(.tar.gz download)</a></h3>
+<p>Discern is a method for catalytic residue prediction derived from the combination of three ingredients: the use of the INTREPID phylogenomic method to extract conservation information; the use of 3D structure data, including features computed for residues that are proximal in the structure; and a statistical regularization procedure to prevent overfitting. 
+<br />
+<i>Sankararaman, S., Sha, F., Kirsch, J.F., Jordan, M.I., and Sj&ouml;lander, K., <a href="http://bioinformatics.oxfordjournals.org/cgi/content/abstract/btq008?ijkey=lhkjC1zrzV56Xmo&keytype=ref">Active Site Prediction using Evolutionary and Structural Information"</a>, Bioinformatics 2010; doi: 10.1093/bioinformatics/btq008</i></p>
+
+
+<h3>SATCHMO <a href="http://phylogenomics.berkeley.edu/static/apps/satchmo/download/satchmo_206.tar.gz">(.tar.gz download)</a></h3>
+<p>SATCHMO (Simultaneous Alignment and Tree Construction using Hidden Markov Models) uses HMM-HMM scoring and alignment to simultaneously estimate a phylogenetic tree and a multiple sequence alignment (MSA).<br />
+<i>Edgar, R., and Sj&ouml;lander, K., <a href="http://bioinformatics.oupjournals.org/cgi/content/abstract/19/11/1404?maxtoshow=&HITS=10&hits=10&RESULTFORMAT=&author1=Sjolander&andorexacttitle=and&andorexacttitleabs=and&andorexactfulltext=and&searchid=1074798462276_1761&stored_search=&FIRSTINDEX=0&sortspec">SATCHMO: Sequence Alignment and Tree Construction using Hidden Markov models"</a>, Bioinformatics. 2003 Jul 22; 19(11):1404-11.</i></p>
+
+<h3>SATCHMO-JS <a href="http://phylogenomics.berkeley.edu/static/apps/satchmo/download/satchmojs.tar.gz">(.tar.gz download)</a></h3>
+<p>SATCHMO-JS is a variant of the SATCHMO algorithm designed for scalability to large datasets. We use a jump-start (JS) protocol to reduce complexity, employing computationally efficient MSA methods for subgroups of closely related sequences and saving the computationally expensive HMM-HMM scoring and alignment to estimate the tree and MSA between more distantly related subgroups. SATCHMO-JS requires the folowing to be installed: SATCHMO, MAFFT, RAxML, BioPython.<br />
+<i>Hagopian, R., Davidson, J., Datta, R., Samad, B., Jarvis, G., and Sj&ouml;lander, K. <a href="http://nar.oxfordjournals.org/cgi/content/full/gkq298?ijkey=fQCvSfzjazz8uhd&keytype=ref">"SATCHMO-JS: a webserver for simultaneous protein multiple sequence alignment and phylogenetic tree construction"</a>, Nucleic Acids Research 2010, doi:10.1093/nar/gkq298</i></p>
+
+<h3>SCI-PHY version 1 <a href="http://makana-static.berkeley.edu/sciphy/sciphy.tar.gz">(.tar.gz download)</a></h3>
+<p>
+The original implementation of the SCI-PHY algorithm that builds subfamily HMMs. However, the subfamily HMMs are in UCSC SAM format.
+</p>
+
+<h3>SCI-PHY version 3 <a href="http://makana-static.berkeley.edu/sciphy/sciphy-3.0.tar.gz">(.tar.gz download)</a></h3>
+<p>
+The current version of the SCI-PHY code that returns a subfam file showing the subfamily multiple sequence alignments. Subfamily HMM files can be created using <a href="http://hmmer.janelia.org/">HMMER</a>.
+</p>
+
+<h3>FlowerPower <a href="http://phylogenomics.berkeley.edu/static/apps/flowerpower.tar.gz">(.tar.gz download)</a></h3>
+<p>
+FlowerPower is a clustering algorithm designed for the identification of global homologs. It employs an iterative approach to clustering sequences. However, rather than using a single HMM or profile to expand the cluster, FlowerPower identifies subfamilies using the SCI-PHY algorithm and then selects and aligns new homologs using subfamily hidden Markov models. FlowerPower is shown to outperform BLAST, PSI-BLAST and the UCSC SAM-Target 2K methods at discrimination between proteins in the same domain architecture class and those having different overall domain structures.
+<br />
+<i>Krishnamurthy, N., Brown, D. and Sj&ouml;lander, K., <a hreef="http://www.biomedcentral.com/1471-2148/7/S1/S12/abstract">FlowerPower: clustering proteins into domain architecture classes for phylogenomic inference of protein function"</a>, BMC Evolutionary Biology 2007, 7 Suppl 1:S12 doi:10.1186/1471-2148-7-S1-S12</i></p>
+
+{% endblock %}

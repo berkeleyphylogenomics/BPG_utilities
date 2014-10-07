@@ -1,0 +1,116 @@
+{% extends 'common/base.html' %}
+{% block title %}PhyloFacts-BioCyc: {{ web_dict.biocyc_common_name|safe }}{% endblock %}
+
+{% block extrastyle %}
+    <STYLE type="text/css">
+    .ui-tabs-vertical .ui-tabs-nav { width: 8em;  }
+    .ui-tabs-vertical .ui-tabs-panel { margin-left: 9em;}
+.dataTables_length { float: right; width: auto;}
+.dataTables_filter { width: 50%; float: left; text-align: right; margin-right:5px;}
+    </STYLE>
+{% endblock %}
+
+{% block content %}
+  <h3 style="font-size:24px;"> <h2>PhyloFacts-BioCyc</h2>
+<h3 style="font-weight: bold; font-size:18px; font-size: 1.6em;"> Reaction: 
+	      {% if web_dict.reaction_obj.common_name %}
+		 {{ web_dict.reaction_obj.common_name|safe }}
+	      {% else %}
+	         {% if web_dict.reaction_obj.systematic_name %}
+		   {{ web_dict.reaction_obj.systematic_name|safe }}
+		 {% else %}
+		   {{web_dict.reaction_obj.id}}</a>
+		 {% endif %}
+	      {% endif %}
+	      {% if web_dict.reaction_obj.ec_number %}
+	      (EC: {{web_dict.reaction_obj.ec_number}})
+	      {% endif %}</h3>
+ </h3>  
+
+
+    <script type="text/javascript">
+    jQuery(function() {
+        jQuery("#reaction_tabs").tabs().addClass('ui-tabs-vertical ui-helper-clearfix');
+        jQuery("#reaction_tabs li").removeClass('ui-corner-top').addClass('ui-corner-left');
+	jQuery("#reaction_tables").dataTable({"bJQueryUI" : true, "aaSorting" : [[4, "desc"]],
+	                                 "aoColumns" : [null, null, null, null, {"bVisible" : false},
+					                null, null],
+					 "sPaginationType" : "full_numbers",
+					 "iDisplayLength" : 25,
+					 "sDom": '<"H"ip<fl>>t<"F"ilfp>'});
+	
+    });
+    </script>
+
+<div id="reaction_tabs">
+    <ul>
+        <li><a href="#pf_coverage">Summary</a></li>
+        <li><a href="#pf_statistics">Statistics</a></li>
+        <li><a href="#external_links">External<br />links</a></li>
+    </ul>
+
+<div id="external_links">
+Here is the BioCyc page for {{ web_dict.biocyc_reaction_id }}: <a href="http://biocyc.org/{{web_dict.reaction_obj.db}}/NEW-IMAGE?object={{web_dict.reaction_obj.id}}">link</a>
+</div>
+    <div id="pf_coverage">
+<table id="reaction_tables"> 
+<thead>
+<tr>
+<th>Orthology groups <br />(Family)</th>
+<th>Taxonomic distribution</th>
+<th>#Taxa</th>
+<th>Family type</th>
+<th>Num reaction seqs</th>
+<th>EC (# members)</th>
+<th>Top ten descriptions (# members)</th>
+</tr>
+</thead>
+
+<script>
+jQuery(function() {
+    jQuery(".show_uniprot").click(function() { $(this).parent().find("span").show(); } );
+    jQuery(".hide_uniprot").click(function() { $(this).parent().find("span").each(function(idx, el) {
+        if ( idx > 5 ) { jQuery(el).hide(); }
+    }); } );
+    jQuery(".hide_uniprot").trigger('click');
+});
+</script>
+
+    <tbody>
+{% for phog_val in web_dict.phog_info.values %}
+<tr>
+          <td><a href="/phog/{{ phog_val.phog_id}}">{{ phog_val.phog_description }}</a> (<a href="/phylofacts/family/{{phog_val.family}}">{{phog_val.family}}</a>)</td>
+          <td>{{ phog_val.taxonomic_distribution }}</td>
+          <td style="text-align:right">{{ phog_val.num_unique_taxa }}</td>
+          <td>{{ phog_val.family_type }}</td>
+	  <td>{{ phog_val.num_reaction_seqs }}</td>
+          <td>{{ phog_val.ec_list }}</td>
+          <td>{% for description in phog_val.uniprot_descriptions %}
+	  <span class="uniprot_description_span">{{description}}; </span>
+	  {% endfor %}
+	  	  <a class="show_uniprot" href="javascript:;">More... </a><a class="hide_uniprot" href="javascript:;">Less... </a>
+</td>
+        </tr>
+{% endfor %}
+</tbody>
+</table>
+    </div>
+
+<div id="pf_statistics">
+        <div class="row">
+          <label  class="family-data-item">Number of unique taxa</label>
+          <span style="float:right">{{ web_dict.num_unique_taxa }}</span>
+        </div>
+        <div class="row">
+          <label  class="family-data-item">Number of unique sequences</label>
+          <span style="float:right">{{ web_dict.num_unique_sequences }}</span>
+        </div>
+        <div class="row">
+          <label  class="family-data-item">Number of Families</label>
+          <span style="float:right">{{ web_dict.num_bpgs }}</span>
+        </div>
+</div> <!-- End of pf_statistics div -->
+</div>
+</div>
+{% endblock %}
+

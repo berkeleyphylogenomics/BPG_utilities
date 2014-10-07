@@ -1,0 +1,74 @@
+{% extends "kegg/map_base.html" %}
+
+{% block node_overlay %}
+  .node_2_8_1_8_instance_0
+    { position: absolute;
+      left: 157px; top: 196px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+  .node_2_8_1_8_instance_1
+    { position: absolute;
+      left: 257px; top: 296px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+  .node_6_______instance_0
+    { position: absolute;
+      left: 423px; top: 296px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+  .node_2_7_7_63_instance_0
+    { position: absolute;
+      left: 373px; top: 296px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+  .node_2_7_7_63_instance_1
+    { position: absolute;
+      left: 373px; top: 196px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+  .node_2_3_1_181_instance_0
+    { position: absolute;
+      left: 157px; top: 296px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+  .node_2_3_1_181_instance_1
+    { position: absolute;
+      left: 257px; top: 196px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+{% endblock %}
+{% block mapdata %}
+<area shape=circle	coords=179,257,4	href="/dbget-bin/www_bget?C16239"	title="C16239 (Lipoyl-[acp])" />
+<area shape=circle	coords=179,162,4	href="/dbget-bin/www_bget?C05752"	title="C05752 (Octanoyl-[acp])" />
+<area shape=circle	coords=421,162,4	href="/dbget-bin/www_bget?C00725"	title="C00725 (Lipoate)" />
+<area shape=circle	coords=421,257,4	href="/dbget-bin/www_bget?C16238"	title="C16238 (Lipoyl-AMP)" />
+<area shape=circle	coords=279,257,4	href="/dbget-bin/www_bget?C16236"	title="C16236 (Protein N6-(octanoyl)lysine)" />
+<area shape=circle	coords=279,353,4	href="/dbget-bin/www_bget?C16237"	title="C16237 (Protein N6-(lipoyl)lysine)" />
+<area shape=rect	coords=157,196,203,213	href="/dbget-bin/www_bget?K03644+2.8.1.8+R07768"	title="K03644 (lipA), 2.8.1.8, R07768" />
+<area shape=rect	coords=157,296,203,313	href="/dbget-bin/www_bget?K03801+2.3.1.181+R07769"	title="K03801 (lipB), 2.3.1.181, R07769" />
+<area shape=rect	coords=373,296,419,313	href="/dbget-bin/www_bget?K03800+2.7.7.63+R07771"	title="K03800 (lplA), 2.7.7.63, R07771" />
+<area shape=rect	coords=257,296,303,313	href="/dbget-bin/www_bget?K03644+2.8.1.8+R07767"	title="K03644 (lipA), 2.8.1.8, R07767" />
+<area shape=rect	coords=257,196,303,213	href="/dbget-bin/www_bget?K03801+2.3.1.181+R07766"	title="K03801 (lipB), 2.3.1.181, R07766" />
+<area shape=rect	coords=373,196,419,213	href="/dbget-bin/www_bget?K03800+2.7.7.63+R07770"	title="K03800 (lplA), 2.7.7.63, R07770" />
+<area shape=rect	coords=423,196,469,213	href="/dbget-bin/www_bget?up:ACSM1_BOVIN+R07770"	title="ACSM1_BOVIN, R07770" />
+<area shape=rect	coords=423,296,469,313	href="/dbget-bin/www_bget?K10105+6.-.-.-+R07771"	title="K10105 (LIPT1), 6.-.-.-, R07771" />
+<area shape=rect	coords=40,45,247,71	href="/dbget-bin/www_bget?map00785"	title="map00785: Lipoic acid metabolism" />
+<area shape=rect	coords=42,145,129,180	href="/kegg-bin/show_pathway?map00061"	title="map00061: Fatty acid biosynthesis" />
+{% endblock %}
+{% block color_nodes %}
+  {% if nodes_to_color.2_8_1_8 %}
+    <div class="node_2_8_1_8_instance_0"></div>
+    <div class="node_2_8_1_8_instance_1"></div>
+  {% endif %}
+  {% if nodes_to_color.6______ %}
+    <div class="node_6_______instance_0"></div>
+  {% endif %}
+  {% if nodes_to_color.2_7_7_63 %}
+    <div class="node_2_7_7_63_instance_0"></div>
+    <div class="node_2_7_7_63_instance_1"></div>
+  {% endif %}
+  {% if nodes_to_color.2_3_1_181 %}
+    <div class="node_2_3_1_181_instance_0"></div>
+    <div class="node_2_3_1_181_instance_1"></div>
+  {% endif %}
+{% endblock %}

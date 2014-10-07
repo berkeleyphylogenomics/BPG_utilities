@@ -1,0 +1,35 @@
+{% extends "phog/tutorial/tutorial_bottompagenav.html" %}
+
+{% block content %}
+<td>
+<p>
+<strong>
+The PhyloFacts Orthology Group Web Server takes as input a query protein sequence and delivers predicted orthologs.
+</strong>
+</p>
+<hr>
+<p>
+The PHOG Server takes as input your query <font size=+1><b>protein sequence</b></font> as a sequence identifier or in FASTA sequence format.
+</p>
+<p>
+The output depends on the form of input (ID/accession or FASTA).
+</p>
+<p>
+In the case where a sequence ID or accession is provided as input, we search for all orthology groups containing the sequence. If any are found, we produce a report with data about these predicted orthologs (jump to <a href="/phog/orthologs/tutorial/?page=08">page 8</a>). 
+</p>
+<p>
+If a sequence is given in FASTA format, we run BLAST to search for any homologs to that sequence that are placed in any orthology groups. Users can then select a homolog to view its pre-computed orthologs (jump to <a href="/phog/orthologs/tutorial/?page=14">page 19</a>).
+</p>
+<p>
+We describe both forms of output in more detail later.
+</p>
+</td>
+</tr>
+</table>
+<br />
+<hr>
+
+{% endblock %}
+
+</body>
+</html>

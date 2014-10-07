@@ -1,0 +1,201 @@
+{% extends 'intrepid/base.html' %}
+
+{% load intrepid_tags %}
+
+{% block title %}FSP Job {{ job.id }} Results{% endblock %} 
+
+{% block extrastyle %}
+<link rel='stylesheet' type='text/css' href='/static/css/new_phylofacts.css' media='screen'>
+<link rel="stylesheet" type="text/css" href="/static/css/DT_bootstrap.css">
+<link rel='stylesheet' type='text/css' href='/static/css/intrepid_pane.css' media='screen'>
+<!--
+<link rel='stylesheet' type='text/css' href='/static/css/fatcat.css' media='screen'>
+-->
+<style>
+
+</style>
+{% endblock %}
+
+{% block extrascripts %}
+<script type='text/javascript'>
+// django to javascript variables used in other files
+var jobID = {{ job.id }};
+var pfam_domains = [
+    {% for domain in job.pfams.all %}
+    {
+        'id': {{ domain.id }},
+        'alignment_from': {{ domain.ali_from }},
+        'alignment_to': {{ domain.ali_to }},
+        'pfam_accession': '{{ domain.pfam_accession }}',
+        'description': '{{ domain.pfam_description }}',
+        'shortName': '{{ domain.pfam_shortname }}',
+        'evalue': {{ domain.i_evalue }},
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+];
+//var full_length_score_chart = 
+var pdb_domains = [];
+var masterSequenceLength = {{ query_length }};
+var discern_scores = {{ job.get_discern_ranks }};
+var intrepid_scores = {{ job.get_intrepid_ranks }};
+var unrankedResidueColor = '[100,100,100]';
+var knownResidueColor = 'red';
+var pdbPlusChainID = '{{ job.pdb_id }}';
+var pdbID = pdbPlusChainID.substring(0,4);
+var chainID = (pdbPlusChainID.substring(4,5).length > 0) ? pdbPlusChainID.substring(4,5) : 'A';
+var solventSurface = false;
+var csaResidues = '{{ job.get_csa_residues }}';
+</script>
+<script type="text/javascript" src="/static/js/underscore-min.js"></script>
+<script type="text/javascript" src="/static/js/raphael-min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/static/js/DT_bootstrap.js"></script>
+<script type="text/javascript" src="/static/js/jquery.flot.min.js"></script>
+<script type='text/javascript' src='/static/js/intrepid_widgets.js'></script>
+<script type='text/javascript' src='/static/js/intrepid_results.js'></script>
+<script type='text/javascript' src='/static/js/archaeopteryx.js'></script>
+<script type='text/javascript' src='/static/js/jsmol/JSmol.min.nojq.js'></script>
+<script type='text/javascript'>
+$j(document).ready(function() {
+    // document ready code that needs to use django's template stuff should go here
+    //$j(' #full-length-score-chart ').plot({{ job.intrepid_chart_series }});
+    $j(' .intrepid-score-table ').dataTable({
+        "sDom": "t<'row'<'span3'l><'span6'p>>",
+        "iDisplayLength": 25,
+        "aaSorting": [[ 4, 'asc' ]],
+        "sPaginationType":"bootstrap",
+        "aLengthMenu": [[10,25,50,100,-1],["10","25","50","100","All"]],
+        "oLanguage": {
+            "sLengthMEnu": "_MENU_ records per page"
+        }
+    });
+    // do each domain also
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<!-- Applet for Jalview -->
+<applet name="JalviewLite"  code="jalview.bin.JalviewLite"
+        archive="/static/java/jalviewApplet.jar" width="0" height="0">
+   <param name="debug" value="true"/>
+   <param name="showbutton" value="false"/>
+</applet>
+<div class='phylofacts-well'>
+    <div class='phylofacts-well-header'>
+        <table class='header-table'>
+            <tbody>
+                <tr>
+                    <td><h2>Results for {{ job.fasta_header.split.0 }}</h2></td>
+                    <td><!--<img src="/static/img/logos/intrepid_fade_small.png"></img>--></td>
+                </tr>
+                <tr>
+                    <td><a href="/intrepid/" style="font-size:12px;margin-bottom:8px;margin-left:10px;">Click here to return to the input form</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class='cleaner'></div>
+    </div>
+
+    <div id='left-tabs'>
+        <ul class='left-tabs-cls'>
+            <li><a id='full-length-selector' href='#full-length'>{{ job.name }}</a></li>
+            {% for domain in job.ordered_pfams %}
+                <li><a id='{{ domain.id }}-selector' href='#{{ domain.id }}'>{{ domain.pfam_shortname }}</a></li>
+            {% endfor %}
+                <li><a id='structure-selector' href='#structures'>Structure Data</a></li>
+                <li><a id='download-selector' href='#downloads'>Downloads</a></li>
+        </ul>
+        <div id='full-length' class='phylofacts-treenode-content'>
+            <h3>{{ job.name }}:&nbsp;{{ job.internal_name }}</h3>
+            <p class='content-description'>Your protein contains the domains shown below.  The amino acid scores shown here are for the full length protein.  To view amino acid scores that are local to a domain, click on the domain, or use the navigation tabs to the left.</p>
+            <table>
+                <tr>
+                    <td><div>Query</div></td>
+                    <td><div id='query-line-widget'></div></td>
+                    <td><div></div></td>
+                </tr>
+                <tr>
+                    <td><div>Pfam-A Domains</div></td>
+                    <td><div id='pfam-match-widget'></div></td>
+                    <td><div></div></td>
+                </tr>
+            </table>
+            <div id="full-length-information-pane" class='intrepid-information-pane'>
+                <ul>
+                    <li><a id='residue-scores-selector' href='#residue-scores'>Residue Scores</a></li>
+                    <li><a id='full-length-statistics-selector' href='#full-length-statistics'>Homolog Data</a></li>
+                    {% if job.save_program_outputs %}<li><a id='console-output-selector' href='#console-output'>Program Outputs</a></li>{% endif %}
+                </ul>
+                <div id='residue-scores' class='intrepid-information-pane-content'>
+                    <table class='intrepid-score-table table table-bordered'>
+                        <thead>
+                            <tr>
+                                <th>Sequence<br />Position</th>
+                                <th>Sequence<br />Residue</th>
+                                <th>Structure<br />Position</th>
+                                <th>Structure<br />Residue</th>
+                                <th>DISCERN<br />Rank</th>
+                                <th>DISCERN<br />Score</th>
+                                <th>INTREPID<br />Rank</th>
+                                <th>INTREPID<br />Cons. JS</th>
+                                <th>INTREPID<br />Global JS</th>
+                                <th>Residue<br />Centrality</th>
+                                <th>Support</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for residue in job.residues.all %}
+                                <tr>
+                                    <td>{{ residue.fasta_position }}</td>
+                                    <td>{{ residue.fasta_residue }}</td>
+                                    <td>{{ residue.structure_position }}</td>
+                                    <td>{{ residue.structure_residue }}</td>
+                                    <td>{{ residue.discern_rank }}</td>
+                                    <td>{{ residue.discern_score|floatformat:"-2" }}</td>
+                                    <td>{{ residue.intrepid_rank }}</td>
+                                    <td>{{ residue.intrepid_cons_js_score|floatformat:"-2" }}</td>
+                                    <td>{{ residue.intrepid_global_js_score|floatformat:"-2" }}</td>
+                                    <td>{{ residue.discern_centrality_score|floatformat:"-2"}}</td>
+                                    <td>{{ residue.support_html|safe }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>    
+                    </table>
+                </div>
+                <div id='full-length-statistics' class='intrepid-information-pane-content'>
+                    <h4>Homolog data for full length protein</h4>
+                    <ul>
+                        <li>Number of homologs gathered on the full length protein: {{ job.num_homologs }}</li>
+                        <li>Number of iterations required for homolog gathering: {{ job.num_iterations }}</li>
+                        <li>Percent ID between query and most distant homolog: {{ job.maximum_divergence|readable_percent:"2" }}</li>
+                        <li>Header of most distant homolog: {{ job.most_remote_homolog_info.0 }}</li>
+                    </ul>
+                </div>
+                {% if job.save_program_outputs %}
+                <div id='console-output' class='intrepid-information-pane-content'>
+                    <textarea class='console-output' rows="5">{{ substatus }}</textarea>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div id='structures' class='phylofacts-treenode-content'>
+            <h3>Structure Data</h3>
+            {% include 'intrepid/discern_structure.html' with job=job %}
+        </div>
+        <div id='downloads' class='phylofacts-treenode-content'>
+            <h3>Downloads</h3>
+            <ul class='download-list'>
+                <li>Multiple sequence alignment: (<a href='download/msa_0/' target='_blank'>Aligned FASTA format</a>)</li>
+                <li>Phylogenetic Tree (PhyML): (<a href='download/tree_0/' target='_blank'>Newick format</a>)</li>
+                <li>INTREPID scores: (<a href='download/scores_0/' target='_blank'> | separated value</a>)</li>
+                <li>DISCERN scores: (<a href='download/discern_0/' target='_blank'>tab separated value</a>)</li>
+                {% if job.save_program_outputs %}
+                    <li>Program outputs (<a href='download/progout_0/' target='_blank'>.txt file</a>)</li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class='bottom-border'>&nbsp;</div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'common/for_iframe.html' %}
+{% block extrastyle %}
+<link rel="stylesheet" href="/static/apps/phog/css/base_style.css" />
+<link rel="stylesheet" type="text/css" href="/static/apps/phog/css/phog_datagrid.css" />
+<style type="text/css">
+  a img {
+    border: none;
+  }
+  div.loading-invisible{
+    display:none;
+  }
+  div.loading-visible{
+    display:block;
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:125px;
+    margin-left:-63px;
+    background:#fff;
+    opacity:.75;
+  }
+  div.go_summary-visible{
+    display:block;
+  }
+  div.go_summary-invisible{
+    display:none;
+  }
+  input.fake_btn{
+    color:#00F;
+    background-color:#FFF;
+    border: 1px solid;
+    border-color:#FFF;
+  }
+  td, th {
+    padding: 0.25em;
+  }
+</style>
+{% endblock %}
+{% block extrascript %}
+<script type="text/javascript" src="/static/js/legacy/jquery-1.2.6.min.js"></script> 
+<script type="text/javascript" src="/static/js/legacy/jquery-ui-1.6rc1.packed.js"></script>
+<script type="text/javascript" src="/static/js/legacy/jquery.gravy.js"></script> 
+<script type="text/javascript" src="/static/apps/djblets/js/datagrid.js"></script>
+<script type="text/javascript">
+  function switchVisible(id1, id2) {
+    document.getElementById(id1).className = 'go_summary-invisible';
+    document.getElementById(id2).className = 'go_summary-visible';
+  };
+  $(function () {
+      if (parent.$) {
+        parent.$(function () {
+            var body_height = $('body').height();
+            if (body_height) {
+                parent.$('iframe').filter(function () {
+                    var oDoc = (this.contentWindow || this.contentDocument);
+                    if (oDoc.document) oDoc = oDoc.document;
+                    return oDoc === document;
+                }).height(body_height+20);
+            }
+            parent.$('#phog_orthologs .spinner').hide();
+        });
+      }
+  });
+</script>
+{% endblock %}
+{% block content%}
+<script type="text/javascript" src="/static/js/bpg_tooltip.js"></script> 
+<script type="text/javascript" src="/static/apps/phog/js/phog_tooltip.js"></script> 
+
+{{datagrid.render_listview}}
+{% endblock %}

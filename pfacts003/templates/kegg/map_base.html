@@ -1,0 +1,339 @@
+{% extends "common/base.html" %}
+{% load datagrid %}
+{% load djblets_deco %}
+<!---
+ENTRY       {{ kegg_map_id }}
+DEFINITION  {{ kegg_map_title }} - Reference pathway
+--->
+{% block title %}
+KEGG PATHWAY: {{ kegg_map_title }} - Reference pathway
+{% endblock %}
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="/static/apps/phog/css/phog_datagrid.css" />
+<script type="text/javascript" src="/static/apps/djblets/js/datagrid.js"></script>
+<style type="text/css">
+  div.loading-invisible{
+    display:none;
+  }
+  div.loading-visible{
+    display:block;
+	position:absolute;
+    top:50%;
+	left:50%;
+    width:125px;
+	margin-left:-63px;
+    background:#fff;
+    opacity:.75;
+  }
+</style>
+<style>
+<!--
+div.poplay {
+  position: absolute;
+  padding: 2px;
+  background-color: #ffff99;
+  border-top: solid 1px #c0c0c0;
+  border-left: solid 1px #c0c0c0;
+  border-bottom: solid 1px #808080;
+  border-right: solid 1px #808080;
+  visibility: hidden;
+}
+
+span.popup
+{
+  font-weight: bold;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+form {
+  margin: 0px;
+}
+-->
+</style>
+<link rel="stylesheet" href="http://www.genome.jp/css/kegg.css" type="text/css" />
+<script language="JavaScript" src="http://www.genome.jp/js/dhtml.js"></script>
+<script language="JavaScript">
+<!---
+
+
+function resize_map(scale){
+  var form = document.forms["form2"];
+  form.scale.value = scale;
+  form.submit();
+}
+
+function select_menu(){
+  var form = document.forms["selmenu"];
+  if(form.org_name.value == 'set_cookie' || form.org_name.value == 'reset_cookie'){
+    window.open('http://www.genome.jp/kegg/misc/kegg2_select.html','sel_org','toolbar=no,location=no,directories=no,width=500,height=320,resizable=yes');
+  }else{
+    form.action='http://www.genome.jp/kegg-bin/show_pathway';
+    form.submit();
+  }
+}
+
+var timer = 0;
+var p_entry, p_title, p_bgcolor;
+function popupTimer(entry, title, bgcolor)
+{
+  p_entry = entry;
+  p_title = title;
+  p_bgcolor = bgcolor;
+
+  if(timer == 0){
+    var func = "showThumbnail()";
+    timer = setTimeout(func, 1200);
+  }
+}
+
+
+function showThumbnail()
+{
+
+  var url = "";
+  if(p_entry.match(/^[A-Z]\d+$/))
+  {
+    url = "http://www.genome.jp/kegg/misc/thumbnail/" + p_entry + ".gif";
+  }
+  else if(p_entry.match(/(\d+)$/))
+  {
+    url = "http://www.genome.jp/kegg/misc/thumbnail/map" + RegExp.$1 + ".gif";
+  }
+
+  var html = "";
+  html += "<span class=\"popup\">" + p_entry + "</span><br />";
+  html += "<img src=\"" + url + "\" alt=\"Loading...\">";
+
+  var x = getCurrentMouseX();
+  var y = getCurrentMouseY();
+
+  var layer = new Component("poplay");
+  layer.backgroundColor(p_bgcolor);
+  layer.HTML(html);
+  layer.move(x, y+40);
+  layer.visible(true);
+
+  timer = 0;
+}
+
+
+function hideMapTn(){
+  var layer = new Component("poplay");
+  layer.visible(false);
+
+  if(timer != 0){
+    clearTimeout(timer);
+    timer = 0;
+  }
+}
+
+function switchDescription(){
+  var form = document.forms[0];
+  var status = form.show_description.value;
+
+  if(status == "hide"){
+    document.getElementById("description").style.display = "";
+    document.getElementById("descLink").innerHTML = "Hide description";
+    form.show_description.value='show';
+
+    if(document.forms[1]){
+    	document.forms[1].show_description.value='show';
+    }
+  }
+  else
+  {
+    document.getElementById("description").style.display = 'none';
+    document.getElementById("descLink").innerHTML = "Show description";
+    form.show_description.value='hide';
+
+    if(document.forms[1]){
+      document.forms[1].show_description.value='hide';
+    }
+  }
+}
+
+function btn(bobj,img) { bobj.src = "http://www.genome.jp/Fig/bget/button_" + img + ".gif"; }
+//--->
+</script>
+<style type="text/css">
+.node_overlay {position:relative}
+.node_overlay img {position:relative;z-index:-1}
+{% block node_overlay %}
+{% endblock %}
+</style>
+{% endblock %}
+<body>
+
+{% block content %}
+<div style="margin-left: 100px">
+  <form action="/kegg/{{ kegg_map_id }}/" method="GET" name = "phog_kegg_map">
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td colspan="4">{{ form_error }}</td>
+    </tr>
+        <tr><td height="6" colspan="5"></td></tr>
+        
+        <tr>
+          <td valign="bottom">
+            <label for="id_taxon_id">Select taxon&nbsp;&nbsp;</label>&nbsp;
+	      </td>
+	      <td valign="bottom">
+            {{ form.taxon_id }}&nbsp;&nbsp;&nbsp;<INPUT TYPE=submit Value="Select"
+            onclick="document.getElementById('loading').className = 'loading-visible';">
+          </td>
+	      <td width="40"></td>
+          <td class="smalltext">
+            <span style="line-height: 1.5em">Select 
+              <a href="/phog/orthologs/faq/#evolutionary_distance">evolutionary distance</a>:</span><br />
+            {{ form.ortholog_type }}
+          </td>
+        </tr>
+        
+        <tr><td height="6" colspan="4"></td></tr>
+        
+	    <tr>
+          <td></td>
+	      <td valign="top" class="smalltext">
+	        <a onmouseover="showInputTip();" onmouseout="UnTip();"
+            href="/kegg/faq#input_types">NCBI taxonomy ids only</a><br />
+            Enter test data:&nbsp;<span class="linklike"
+            onclick="document.getElementById('id_taxon_id').value='317';">Test 1.</span>
+          </td>
+          <td></td>
+          <td class="smalltext" valign="top">
+            {{ form.threshold }}<br />
+          	Threshold: [0.0 to 1.5]
+          </td>
+        </tr>
+    <tr>
+    <td></td>
+    <td colspan="2" valign="top">
+    <label for "id_require_brenda">Require BRENDA evidence</label>
+    {{ form.require_brenda }}
+    </td>
+    <td></td>
+    </tr>
+        
+        <tr>
+          <td height="40" colspan="3" align="center" valign="top">
+            {{ form.taxon_id.errors }}
+            {% if form.cleaned_data.taxon_id %}
+              {% if db_error %}
+                <ul class="errorlist"><li>{{ db_error }}</li></ul>
+              {% endif %}
+            {% endif %}
+          </td>
+          <td class="smalltext" valign="top">
+            {{ form.threshold.errors }}          
+          </td>
+		</tr>
+        <tr><td height="6" colspan="5"></td></tr>
+  </form>
+</div>
+<table cellpadding="0" width="100%" cellspacing="0" border="0">
+ <tr>
+  <td>
+   <a href="http://www.genome.jp/kegg/kegg2.html"><img align="middle"
+   alt="KEGG" border="0" src="http://www.genome.jp/Fig/bget/kegg3.gif" /></a>
+   &nbsp;&nbsp;&nbsp;<font class="title3"><b>{{ kegg_map_title }} - Reference pathway</b></font>
+  </td>
+  <td valign="bottom" align="right">
+   <a
+   href="javascript:void(window.open('http://www.genome.jp/kegg/document/help_pathway.html','KEGG_Help','toolbar=no,location=no,directories=no,width=720,height=640,resizable=yes,scrollbars=yes'))"><img
+   name="help" src="http://www.genome.jp/Fig/bget/button_Hb.gif" border="0" align="middle" alt="Help" onmouseout="btn(this,'Hb')" onmousedown="btn(this,'Hbd')" onmouseover="btn(this,'Hbh')" onmouseup="btn(this,'Hb')" /></a>
+  </td>
+ </tr>
+</table>
+[ <a href="http://www.genome.jp/kegg-bin/get_htext?query={{ kegg_map_number }}&htext=br08901.keg">Pathway menu</a>
+| <a href="/kegg/{{ kegg_map_id }}/">Pathway entry</a>
+]
+<table><tr><td>
+<form name="selmenu" method="get">
+<select name="org_name">
+<!--#exec cmd="http://www.genome.jp/iKeg/WWW/cgi/kegg/bin/put_org_options {{
+kegg_map_number }} map" -->
+</select>
+<input type="hidden" name="mapno" value="{{ kegg_map_number }}" />
+<input type="hidden" name="mapscale" value="1.0" />
+<input type="button" value="Go" onclick="select_menu(this.form)" />
+<input type="hidden" name="show_description" value="show" />
+</form>
+</td><td>
+<form name="form2" method="get" action="http://www.genome.jp/kegg-bin/show_pathway">
+<!--#exec cmd="http://www.genome.jp/iKeg/WWW/cgi/kegg/bin/put_resize_btn {{
+kegg_map_id }}" -->
+&nbsp;&nbsp;<input type="text" name="query" size=20 />
+<input type="hidden" name="map" value="{{ kegg_map_id }}" />
+<input type="hidden" name="scale" value="1.0" />
+<input type="hidden" name="show_description" value="show" />
+</form>
+</td></tr></table>
+<div id="loading" class="loading-invisible">
+  <p><img src="/static/img/widgets/EMBLTreeOfLifeWhirlingLayers.gif" alt="Loading"></p>
+</div>
+<script type="text/javascript">
+  document.getElementById("loading").className = "loading-visible";
+  window.onload = function() {
+    document.getElementById("loading").className = "loading-invisible";
+  }
+</script>
+<div class="node_overlay">
+<img src="http://www.genome.jp/kegg/pathway/map/{{ kegg_map_id }}.png"
+usemap="#mapdata" border="0" style="opacity:0.9"/>
+{% block color_nodes %}{% endblock %}
+<map name="mapdata">
+{% block mapdata %}
+{% endblock %}
+</map>
+</div>
+{% if phogs_of_uniprot_of_ec %}
+<br />  
+<div class="datagrid-wrapper">
+  <div class="datagrid-titlebox">
+    <h1 class="datagrid-title">Predicted Enzymes in the Query Taxon</h1>
+</div>
+  <div class="datagrid-main">
+    <table class="datagrid">
+      <colgroup>
+        <col class="ec" />
+        <col class="uniprot" />
+        <col class="phogs" />
+        <col class="known_uniprots" />
+      </colgroup>    
+      <thead>
+        <tr class="datagrid-headers">
+          <th class="datagrid-header"><span>Enzyme Classification</span></th>
+          <th class="datagrid-header">Sequence in Query Taxon</th>
+          <th class="datagrid-header"><span>Supporting PHOGs</span></th>
+          <th class="datagrid-header"><span>Supporting Orthologs</span></th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for ec, dict1 in phogs_of_uniprot_of_ec.items %}
+        {% for uniprot, dict2 in dict1.items %}
+        <tr>
+            <td>{{ ec }}</td>
+            <td>{{ uniprot.uniprot_identifier }}</td>
+            <td>
+            {% for phog_accession in dict2.phog_accessions %}
+              {{ phog_accession }}
+            {% endfor %}
+            </td>
+            <td>
+            {% for known_uniprot in dict2.known_uniprots %}
+              {{ known_uniprot.uniprot_identifier }}
+            {% endfor %}
+            </td>
+          </tr>
+        {% endfor %}
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>  
+</div>
+<br />  
+{% endif %}
+<div id="poplay" class="poplay" />
+      <br /><br /><br />
+{% endblock %}    

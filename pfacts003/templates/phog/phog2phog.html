@@ -1,0 +1,34 @@
+{% extends "phog/phog_base.html" %}
+{% load datagrid %}
+{% load djblets_deco %}
+
+{% block title %}Interactions Between PHOGs{% endblock %}
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="/static/apps/phog/css/phog_datagrid.css" />
+<script type="text/javascript" src="/static/js/legacy/jquery-1.2.6.min.js"></script>
+<script type="text/javascript" src="/static/js/legacy/jquery-ui-1.6rc1.packed.js"></script>
+<script type="text/javascript" src="/static/js/legacy/jquery.gravy.js"></script>
+<script type="text/javascript" src="/static/apps/djblets/js/datagrid.js"></script>
+{% endblock %}
+
+{% block pagetitle %}
+<h1>{{pagetitle}}</h1>
+<h2>{{subtitle}}</h2>
+{% endblock %}
+
+{% block content %}
+
+<h1 align="center">Interactions Between {{ phog_row1.accession_link }} 
+and {{ phog_row2.accession_link }}</h1>
+
+
+{% box %}
+  {{datagrid.render_listview}}
+{% endbox %}
+
+
+<p>Interaction data courtesy of <a href="http://dip.doe-mbi.ucla.edu/">DIP</a>, the Database of Interacting Proteins, a member of <a href="http://imex.sourceforge.net">the IMEx Consortium</a>.
+</p>
+					
+{% endblock %}

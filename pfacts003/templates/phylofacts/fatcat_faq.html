@@ -1,0 +1,14 @@
+{% extends "common/base.html" %}
+
+{% block title %}FAT-CAT Frequently Asked Questions{% endblock %}
+
+{% block content %}
+
+<h2>Frequently Asked Questions about FAT-CAT</h2>
+
+<p><b>Why does FAT-CAT display multiple orthologs from the same species to a query, and how should we interpret these results?</b></p>
+
+<p>We gather putative orthologs from subtrees identified by FAT-CAT based on significant HMM scores and alignment statistics. In some cases, a single subtree will contain multiple members from the same species, while in other cases, different subtrees contribute different UniProt accessions for the same species. In most cases, these duplicate UniProt accessions correspond to duplicate entries in the UniProt database for the same gene (e.g., different isoforms for the same gene, corrections to gene model errors, etc.). In a few cases, for instance if a user selects highly inclusive parameters, subtrees will include paralogs. To help users differentiate between presumed orthologs and possible paralogs, the Orthologs tab displays the percent identity between the query and each putative ortholog.  If two or more sequences from the same species are listed, the one with the highest %ID should be selected. If several tie for the highest %ID, they are likely to be distinct isoforms (or gene model modifications) for the same gene; these are also apparent when examining the phylogenetic tree, as they typically cluster together into the same subtree. Protein sequences with very different pairwise identities to the query will most likely correspond to different genes, and the one(s) with the highest %ID are most likely to represent orthologs.</p>
+
+
+{% endblock %}

@@ -1,0 +1,6 @@
+<!-- TODO: Shailen, please style the LIs as inline and the li.evidence as gray -->
+<ul>{% for annot in annots %}
+  <li>
+  <a href='http://amigo.geneontology.org/cgi-bin/amigo/term_details?term={{ annot.accession }}'>{{ annot.description}}</a> 
+  (<a class='evidence' title="{{annot.evidence_description}}" href='http://www.geneontology.org/GO.evidence.shtml#{{ annot.evidence_code.lower }}'>{{ annot.evidence_code}})</a>
+  </li> {% endfor %}</ul>

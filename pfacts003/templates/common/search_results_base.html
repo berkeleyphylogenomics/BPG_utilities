@@ -1,0 +1,171 @@
+{% extends "common/results_base.html" %}
+
+{% block javascriptfunctions %}{% endblock %}
+
+{% block results %}
+    {% if pdb %}
+
+    <script type="text/javascript">
+        function reload()
+        {
+            var w      = document.pdbform.pdbstructures.selectedIndex;
+            var newpdb = document.pdbform.pdbstructures.options[w].value;
+            
+            if(window.location.pathname.indexOf("{{ pdb }}") > -1)
+            {
+                window.location.href = '../' + newpdb;
+            }
+
+            else
+            {
+                window.location.href = newpdb;
+            }
+        }
+    </script>
+
+    <table id="jmolresults">
+        <tr>
+            <td style="font-size: 10pt; vertical-align: top; text-align: right;">
+                Predicted functional residues displayed using PDB structure 
+                <a href="http://www.rcsb.org/pdb/explore/explore.do?structureId={{ pdb }}">{{ pdb }}</a>
+                chain {{ pdbchain }}. Select a different structure:
+            </td> 
+            <td style="vertical-align: bottom;">
+                <form name="pdbform">
+                    <select name="pdbstructures" onChange="reload()">
+                        {% for pdbthing in allpdb %}
+                            {% ifequal pdbthing.value pdbid %}
+                            <option value="{{ pdbthing.value }}" selected="selected">{{ pdbthing.displaystr }}</option>
+                            {% else %}
+                            <option value="{{ pdbthing.value }}">{{ pdbthing.displaystr }}</option>
+                            {% endifequal %}
+                        {% endfor %}
+                    </select>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <table>
+    <tr>
+    <td>
+    <script type="text/javascript" src="/static/apps/jmol/Jmol.js"></script>
+    <script type="text/javascript">
+        jmolInitialize("http://makana.berkeley.edu/static/apps/jmol");
+        jmolApplet(450, "load http://makana.berkeley.edu/static/apps/jmol/pdb/{{ pdbdir }}/pdb{{ pdb }}.ent; select all; cpk off; wireframe off; select :{{ pdbchain }}; center :{{ pdbchain }}; cartoon on; color darkgray; {{ pdbinquery }}");
+    </script>
+    </td>
+    <td title="drag to zoom in/out on structure">
+    <form action="./" method="POST">
+        <div style="height: 450px;">
+        <input name="jmolzoom" id="jmolzoom" type="text" title="50 - 1000" class="fd_tween fd_range_1000_50 fd_inc_10 fd_slider_cb_update_updateZoom fd_vertical fd_hide_input" value="100" />
+        </div>
+    </form>
+    </td>
+    {% if safari %}
+    <td style="font-size: 10pt; color: red;">
+    You appear to be using the Safari web browser. Please be aware that there
+    is a known issue with Safari version 3.2.3 (and possibly other versions of
+    Safari) that prevents the full functionality of the structure display from
+    working properly.<br><br>
+    We recommend using the current version of the free
+    <a href="http://www.mozilla.com/firefox">Firefox</a>
+    browser to view this page, as it has been confirmed to support the full
+    functionality of the structure viewer.
+    </td>
+    {% endif %}
+    </tr>
+    </table>
+
+    <script type="text/javascript">
+        jmolCheckbox("select :{{ pdbchain }}; spacefill on;", "select :{{ pdbchain }}; spacefill off;", "display using spacefill");
+    </script>
+        
+    {% else %}
+
+    <p style="font-size: 10pt;">
+    No evident homology to any PDB structure.
+    </p>
+
+    {% endif %}
+
+    <script type="text/javascript" src="/static/js/slider.js"></script>
+
+    <table style="font-size: 10pt;">
+        <tr>
+        <td width="450" title="drag to change score cutoff">
+            <form action="./" method="post" id="cutoffform">
+            <input name="selectcutoff" id="selectcutoff" type="text" title="0 - 4" class="fd_tween fd_range_0d00_4d00 fd_inc_0d05 fd_hide_input fd_slider_cb_update_updateCutoff" value="2.00" />
+            </form>
+        </td>
+        </tr>
+        <tr>
+        <td id="cutofflabel">
+        residues with score &gt; 2.00 are highlighted in blue
+        </td>
+        </tr>
+        {% if pdb %}
+        <tr>
+        <td style="font-size: 9pt;">
+        residues with homologous positions in the query sequence are in yellow
+        </td>
+        </tr>
+        {% endif %}
+     </table>
+
+    <br>
+    <table style="font-family: monospace;" cellspacing=1 cellpadding=2>
+        <tr>
+            <td style="text-align: right; white-space: nowrap;">{{ seed }}&nbsp;&nbsp;</td>
+            {% for alignmentitem in alignment %}
+                {% if alignmentitem.querypos %}
+                <td id="query_{{ alignmentitem.querypos }}" title="{{ alignmentitem.querypos }} [{{ alignmentitem.score }}]">{{ alignmentitem.querychar }}</td>
+                {% else %}
+                <td>{{ alignmentitem.querychar }}</td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+        {% if pdb %}
+        <tr>
+            <td style="text-align: right; white-space: nowrap;">{{ pdbid }}&nbsp;&nbsp;</td>
+            {% for alignmentitem in alignment %}
+                {% if alignmentitem.querypos %}
+                    {% if alignmentitem.pdbpos %} 
+                        {% if alignmentitem.match %}
+                    <td id="pdb_{{ alignmentitem.pdbpos }}" style="background-color: yellow;" title="{{ alignmentitem.pdbpos }} [{{ alignmentitem.score }}]">{{ alignmentitem.pdbchar }}</td>
+                        {% else %}
+                    <td id="pdb_{{ alignmentitem.pdbpos }}" title="{{ alignmentitem.pdbpos }}">{{ alignmentitem.pdbchar }}</td>
+                        {% endif %}
+                    {% else %}
+                    <td>{{ alignmentitem.pdbchar }}</td>
+                    {% endif %}
+
+                {% else %} {%if alignmentitem.pdbpos %}
+                <td title="{{ alignmentitem.pdbpos }}">{{ alignmentitem.pdbchar }}</td>
+                {% else %}
+                <td>{{ alignmentitem.pdbchar }}</td>
+                {% endif %} {% endif %}
+            {% endfor %}
+        </tr>
+        {% endif %}
+    </table>
+
+    <form name="hiddenscores" id="hiddenscores" action="./" method="POST">
+        {% for alignmentitem in alignment %}
+            {% if alignmentitem.querypos %}
+            <input type="hidden" id="{{ alignmentitem.querypos }}" name="{{ alignmentitem.pdbpos }}:{{ pdbchain }}" value="{{ alignmentitem.score }}">
+            {% endif %}
+        {% endfor %}
+    </form>
+
+    <form name="jmolscript" id="jmolscript" action="./" method="POST">
+        <input type="hidden" id="initjmolscript" name="initjmolscript" value="{{ pdbinquery }}; wireframe off; cartoon on;">
+    </form>
+
+    {% if pdb %}
+    <script type="text/javascript">
+        updateCutoff();
+    </script>
+    {% endif %}
+
+{% endblock %}

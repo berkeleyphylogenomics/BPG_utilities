@@ -1,0 +1,86 @@
+{% for cluster in job.orthologs %}
+    {% if cluster|length > 1 %}
+        <div id="{{ cluster.0.0.accession }}" data-group="orthologs" style="display:none">
+            <div class="cluster-detail-row">
+                <h4>{{ cluster|length }} sequence cluster from {{ cluster.0.0.taxon.scientific_name }}{% if cluster.0.0.taxon.common_name %} ({{ cluster.0.0.taxon.common_name }}){% endif %}</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td class="tip" title="SwissProt">SP</td>
+                            <td>Identifier</td>
+                            <td>Description</td>
+                            <td class="tip" title="Best PhyloFacts family containing hit">Family</td>
+                            <td class="tip" title="Percent identity between query and hit">% ID</td>
+                            <td class="tip" title="Fractional coverage of query">Q-Cov. %</td>
+                            <td class="tip" title="Fractional coverage of hit">H-Cov. %</td>
+                            <td><p data-linkto="orthology-help" data-otype="Kerf">Kerf</p></td>
+                            <td><p data-linkto="orthology-help" data-otype="PHOG">PHOG</p></td>
+                            <td><p data-linkto="orthology-help" data-otype="OMA">OMA</p></td>
+                            <td><p data-linkto="orthology-help" data-otype="OrthoMCL">OrthoMCL</p></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for uni_list in cluster %}
+                            <tr>
+                                <td>{% if uni_list.0.in_swissprot_f %}<img src='/static/img/icons/icon_swiss_flag_12.png'>{% endif %}</td>
+                                <td><a href="/phylofacts/sequence/UniProt/{{ uni_list.0.uniprot_identifier }}/">{{ uni_list.0.uniprot_identifier }}</a></td>
+                                <td>{{ uni_list.0.description }}</td>
+                                <td class="tip" title="{% if uni_list.0.family.family_type_id == 'C' %}Pfam: {% else %}MDA: {% endif %}{{ uni_list.0.family.canonical_root_node.get_treenode_names.treenode_name }}"><a href="/phylofacts/family/{{ uni_list.0.family.get_accession }}/">{{ uni_list.0.family.get_accession }}</a></td>
+                                <td><a class="tip" title="View the query-hit alignment with Jalview" href="javascript:;" onClick="startJalview({{uni_list.0.alignment|safe}}, 'Ortholog: {{ uni_list.0.uniprot_identifier }} alignment to query','alwvar')">{{ uni_list.0.pwid_to_query|floatformat:1 }}</a></td>
+                                <td>{{ uni_list.0.query_coverage|floatformat:1 }}</td>
+                                <td>{{ uni_list.0.ortholog_coverage|floatformat:1 }}</td>
+                                <td>{% if uni_list.0.orthology_support.kerf70 %}<i class="icon-ok"></i>{% endif %}</td>
+                                <td>{% if uni_list.0.orthology_support.phogt0 %}<i class="icon-ok"></i>{% endif %}</td>
+                                <td>{% if uni_list.0.orthology_support.oma %}<i class="icon-ok"></i>{% endif %}</td>
+                                <td>{% if uni_list.0.orthology_support.orthomcl %}<i class="icon-ok"></i>{% endif %}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}
+{% for cluster in job.paralogs %}
+    {% if cluster|length > 1 %}
+        <div id="{{ cluster.0.0.accession }}" data-group="paralogs" style="display:none">
+            <div class="cluster-detail-row">
+                <h4>{{ cluster|length }} sequence cluster from {{ cluster.0.0.taxon.scientific_name }}{% if cluster.0.0.taxon.common_name %} ({{ cluster.0.0.taxon.common_name }}){% endif %}</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td class="tip" title="SwissProt">SP</td>
+                            <td>Identifier</td>
+                            <td>Description</td>
+                            <td class="tip" title="Best PhyloFacts family containing hit">Family</td>
+                            <td class="tip" title="Percent identity between query and hit">% ID</td>
+                            <td class="tip" title="Fractional coverage of query">Q-Cov. %</td>
+                            <td class="tip" title="Fractional coverage of hit">H-Cov. %</td>
+                            <td><p data-linkto="orthology-help" data-otype="Kerf">Kerf</p></td>
+                            <td><p data-linkto="orthology-help" data-otype="PHOG">PHOG</p></td>
+                            <td><p data-linkto="orthology-help" data-otype="OMA">OMA</p></td>
+                            <td><p data-linkto="orthology-help" data-otype="OrthoMCL">OrthoMCL</p></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for uni_list in cluster %}
+                            <tr>
+                                <td>{% if uni_list.0.in_swissprot_f %}<img src='/static/img/icons/icon_swiss_flag_12.png'>{% endif %}</td>
+                                <td><a href="/phylofacts/sequence/UniProt/{{ uni_list.0.uniprot_identifier }}/">{{ uni_list.0.uniprot_identifier }}</a></td>
+                                <td>{{ uni_list.0.description }}</td>
+                                <td class="tip" title="{% if uni_list.0.family.family_type_id == 'C' %}Pfam: {% else %}MDA: {% endif %}{{ uni_list.0.family.canonical_root_node.get_treenode_names.treenode_name }}"><a href="/phylofacts/family/{{ uni_list.0.family }}/">{{ uni_list.0.family }}</a></td>
+                                <td><a class="tip" title="View the query-hit alignment with Jalview" href="javascript:;" onClick="startJalview({{uni_list.0.alignment|safe}}, 'Ortholog: {{ uni_list.0.uniprot_identifier }} alignment to query','alwvar')">{{ uni_list.0.pwid_to_query|floatformat:1 }}</a></td>
+                                <td>{{ uni_list.0.query_coverage|floatformat:1 }}</td>
+                                <td>{{ uni_list.0.ortholog_coverage|floatformat:1 }}</td>
+                                <td>{% if uni_list.0.orthology_support.kerf70 %}<i class="icon-ok"></i>{% endif %}</td>
+                                <td>{% if uni_list.0.orthology_support.phogt0 %}<i class="icon-ok"></i>{% endif %}</td>
+                                <td>{% if uni_list.0.orthology_support.oma %}<i class="icon-ok"></i>{% endif %}</td>
+                                <td>{% if uni_list.0.orthology_support.orthomcl %}<i class="icon-ok"></i>{% endif %}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}

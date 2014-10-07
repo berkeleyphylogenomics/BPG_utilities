@@ -1,0 +1,21 @@
+{% extends "common/search_results_base.html" %}
+
+{% block title %}Keyword and Accession Search Results{% endblock %}
+
+{% block appicon %}{% endblock %}
+
+{% block extrastylesheets %}
+<link rel="stylesheet" type="text/css"
+      href="/static/apps/phog/css/phog_datagrid.css" />
+{% endblock %}
+
+{% block header_message %}<h4>Query: {{query_description}}</h4>{% endblock %}
+
+{% block apptitle %}Search{% endblock %}
+
+{% block toplinks %}{% endblock %}
+
+{% block results %}
+<br />
+{{datagrid.render_listview}}
+{% endblock %}

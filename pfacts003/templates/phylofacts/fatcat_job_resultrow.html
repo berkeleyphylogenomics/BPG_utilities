@@ -1,0 +1,89 @@
+<div id="result_row_{{ f.as_result.family_id }}" class="result-row"> 
+    <div class="result-summary">
+        <span class="tip" title="Automatic description of your sequence based on this subtree's UniProt descriptions">{{ f.as_result.node_description }}</span> 
+        <span class="tip" title="Taxonomic distribution of the subtree your sequence was placed into."><i>{{ f.as_result.node_taxonomic_distribution }}</i></span> 
+        <span class="tip" title="The E-Value of the hit.  Lower is better.">{{ f.as_result.node_e_value }}</span> 
+        <span class="tip" title="The percent identity between the cosensus sequence of this node and your query.">{{ f.as_result.query_to_hmm_pid|floatformat }} %</span>
+        <span><a href="/phylofacts/family/bpg0{{ f.as_result.family_id }}" title="Link to the PhyloFacts Family" class="tip">{{ f.as_result.family_type }}</a></span> 
+	<a class="tip toggle-tree" title="Phylogram" href="javascript:;"><img src="/static/img/icons/tree-icon.png"></a> 
+        <a class="tip toggle-annotations" title="Annotations" href="javascript:;"><img src="/static/img/icons/annotation-icon.png"></a>
+        <a class="tip" title="Alignment" href="javascript:;" onClick="startJalview({{f.as_result.alignment}}, 'subtree alignment','alwvr_{{f.as_result.family_id}}')"><img src="/static/img/icons/alignment-icon.png"></a>
+    </div>
+    
+    <div class="annotations">
+        <div class="annotation-header">
+            <h5 class="go_molecular_function">Go Molecular Function</h5>
+            <h5 class="go_biological_process">Go Biological Process</h5>
+            <h5 class="go_cellular_component">Go Cellular Component</h5>
+            <h5 class="ec">E.C. Numbers</h5>
+            <h5 class="biocyc_reactions">BioCyc Reactions</h5>
+            <h5 class="biocyc_pathways">BioCyc Pathways</h5>
+            <h5 class="sfld">SFLD</h5>
+            <div style="clear:both"></div>
+        </div>
+        <ul class="annotation-list go_molecular_function">
+            {% for go in f.as_result.go_molecular_function%}
+                <li class="annotation">
+                    <a href="http://amigo.geneontology.org/cgi-bin/amigo/term_details?term={{ go.accession }}" >{{ go.description }}</a> 
+                    <a href="http://www.geneontology.org/GO.evidence.shtml#{{ go.evidence_code|lower }}" class="tip" title="{{ go.evidence_description }}">({{ go.evidence_code }})</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <ul class="annotation-list go_biological_process">
+            {% for go in f.as_result.go_biological_process%}
+                <li class="annotation">
+                    <a href="http://amigo.geneontology.org/cgi-bin/amigo/term_details?term={{ go.accession }}" >{{ go.description }}</a> 
+                    <a href="http://www.geneontology.org/GO.evidence.shtml#{{ go.evidence_code|lower }}" class="tip" title="{{ go.evidence_description }}">({{ go.evidence_code }})</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <ul class="annotation-list go_cellular_component">
+            {% for go in f.as_result.go_cellular_component%}
+                <li class="annotation">
+                    <a href="http://amigo.geneontology.org/cgi-bin/amigo/term_details?term={{ go.accession }}" >{{ go.description }}</a> 
+                    <a href="http://www.geneontology.org/GO.evidence.shtml#{{ go.evidence_code|lower }}" class="tip" title="{{ go.evidence_description }}">({{ go.evidence_code }})</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <ul class="annotation-list ec">
+            {% for ec in f.as_result.ec%}
+                <li class="annotation">
+                {% if ec.3 %}
+                    <a href="http://www.ebi.ac.uk/intenz/query?cmd=SearchEC&ec={{ec.0.value}}.{{ec.1.value}}.{{ec.2.value}}.{{ec.3.value}}">{{ec.3.description}}</a>
+                {% else %} 
+                    {% if ec.2 %}
+                        <a href="http://www.ebi.ac.uk/intenz/query?cmd=SearchEC&ec={{ec.0.value}}.{{ec.1.value}}.{{ec.2.value}}.-">{{ec.2.description}}</a>
+                    {% else %} 
+                        {% if ec.1 %}
+                            <a href="http://www.ebi.ac.uk/intenz/query?cmd=SearchEC&ec={{ec.0.value}}.{{ec.1.value}}.-.-">{{ec.1.description}}</a>
+                        {% else %} 
+                            {% if ec.0 %}
+                                <a href="http://www.ebi.ac.uk/intenz/query?cmd=SearchEC&ec={{ec.0.value}}.-.-.-">{{ec.0.description}}</a>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+        <ul class="annotation-list sfld">
+            {% for sfld in f.as_result.sfld%}
+                <li class="annotation">
+                {% if sfld.2 %}
+                    <a href="http://sfld.rbvi.ucsf.edu/django/family/{{sfld.2.value}}/">{{sfld.2.name}}</a>
+                {% else %} 
+                    {% if sfld.1 %}
+                        <a href="http://sfld.rbvi.ucsf.edu/django/subgroup/{{sfld.1.value}}/">{{sfld.1.name}}</a>
+                    {% else %} 
+                        {% if sfld.0 %}
+                            <a href="http://sfld.rbvi.ucsf.edu/django/superfamily/{{sfld.0.value}}/">{{sfld.0.name}}</a>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div style="clear:left">&nbsp;</div>
+    <div class="tree" data-family="{{f.id}}"></div>
+</div>

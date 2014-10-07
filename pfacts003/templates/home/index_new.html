@@ -1,0 +1,120 @@
+{% extends 'common/base_new.html' %}
+
+{% block title %}Berkeley Phylogenomics Group{% endblock %}
+
+{% block extrastyle %}
+<style type='text/css'>
+.main-content {
+    float:left;
+    margin-left:15px;
+    margin-right:20px;
+    margin-bottom:20px;
+    font-family:sans-serif;
+}
+.main-content h2 {
+    color:#074987;
+    font-weight:bold;
+    font-size:1.8em;
+    margin-top:0px;
+}
+.main-content table tr td:nth-child(1) {
+    text-align:right;
+    font-weight:bold;
+    line-height:14px;
+    padding-top:0.4em;
+    padding-bottom:0.4em;
+}
+.main-content table tr td:nth-child(2) {
+    line-height:14px;
+    padding-top:0.4em;
+    padding-bottom:0.4em;
+    padding-left:20px;
+}
+.main-content table tr td:nth-child(1) a {
+    text-decoration:none;
+    color:#074987;
+}
+</style>
+{% endblock %}
+
+{% block extrascripts %}
+<script type='text/javascript'>
+</script>
+{% endblock %}
+
+{% block content %}
+<div class='main-content'>
+    <h2>Phylogenomics tools and databases for the scientific community</h2>
+    <table>
+        <tbody>
+            <tr>
+                <td><a href='/phylofacts/'>PHYLOFACTS</a></td>
+                <td>Phylogenomic Encyclopedias of Protein Families</td>
+            </tr>
+            <tr>
+                <td><a href='/intrepid/'>FUNCTIONAL SITE PREDICTION</a></td>
+                <td>Protein functional site prediction using the INTREPID and Discern algorithms</td>
+            </tr>
+            <tr>
+                <td><a href='/fatcat/'>FAT-CAT</a></td>
+                <td>Phylogenomic ortholog identification and function prediction</td>
+            </tr>
+            <tr>
+                <td><a href='/satchmo-js/'>SATCHMO-JS</a></td>
+                <td>Simultaneous alignment and tree construction using HMMs</td>
+            </tr>
+            <tr>
+                <td><a href='/research/'>RESEARCH</a></td>
+                <td>Find out about research being done at the lab</td>
+            </tr>
+            <tr>
+                <td><a href='/affiliations/'>AFFILIATIONS</a></td>
+                <td>Our Affiliations and Collaborators</td>
+            </tr>
+            <tr>
+                <td><a href='/software/'>SOFTWARE</a></td>
+                <td>Research software available for download, including source code</td>
+            </tr>
+            <tr>
+                <td><a href='/courses/'>COURSES</a></td>
+                <td>Research software available for download, including source code</td>
+            </tr>
+            <tr>
+                <td><a href='/members/'>PEOPLE</a></td>
+                <td>Meet members of the Berkeley Phylogenomics Group</td>
+            </tr>
+        </tbody>
+    </table>
+    <!--
+    <div class='panels'>
+        <div class='index-left-panel'>
+            <ul>
+                <li><span style='color:red;margin-bottom:0px;'>New!</span>&nbsp;<a href='/phylofacts/fatcat/'>FAT-CAT</a></li>
+                <li><a href='/phylofacts/'>PHYLOFACTS</a></li>
+                <li><a href='/phog/'>PHOG</a></li>
+                <li><a href='/satchmo-js/'>SATCHMO-JS</a></li>
+                <li><a href='/research/'>RESEARCH</a></li>
+                <li><a href='/affiliations/'>AFFILIATIONS</a></li>
+                <li><a href='/positions/'>POSITIONS</a></li>
+                <li><a href='/software/'>SOFTWARE</a></li>
+                <li><a href='/courses/'>COURSES</a></li>
+                <li><a href='/members/'>PEOPLE</a></li>
+            </ul>
+        </div>
+        <div class='index-right-panel'>
+            <ul>
+                <li>Ortholog identification and function prediction using phylogenomic HMMs</li>
+                <li>Phylogenomics Encyclopedias of Protein Families Across the Tree of Life</li>
+                <li>PhyloFacts Orthology Group: phylogenetic orthologs</li>
+                <li>Simultaneous alignment and tree construction using HMMs</li>
+                <li>Find out about research being done at the lab</li>
+                <li>Our Affiliations and Collaborators</li>
+                <li>Job openings in the lab</li>
+                <li>Research software available for download</li>
+                <li>Bioinformatics courses offered</li>
+                <li>Meet members of the Berkeley Phylogenomics Group</li>
+            </ul>
+        </div>
+    </div> -->
+</div>
+{% endblock %}

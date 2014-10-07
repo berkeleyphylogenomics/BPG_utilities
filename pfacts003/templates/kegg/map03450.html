@@ -1,0 +1,45 @@
+{% extends "kegg/map_base.html" %}
+
+{% block node_overlay %}
+  .node_6_5_1_1_instance_0
+    { position: absolute;
+      left: 219px; top: 336px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+  .node_2_7_7_31_instance_0
+    { position: absolute;
+      left: 796px; top: 485px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+{% endblock %}
+{% block mapdata %}
+<area shape=rect	coords=796,568,842,585	href="/dbget-bin/www_bget?K10777"	title="K10777 (LIG4)" />
+<area shape=rect	coords=535,602,581,619	href="/dbget-bin/www_bget?K10983"	title="K10983 (NEJ1)" />
+<area shape=rect	coords=796,464,842,481	href="/dbget-bin/www_bget?K03512"	title="K03512 (POLL)" />
+<area shape=rect	coords=535,568,581,585	href="/dbget-bin/www_bget?K10777"	title="K10777 (LIG4)" />
+<area shape=rect	coords=796,485,842,502	href="/dbget-bin/www_bget?K00977"	title="K00977 (E2.7.7.31)" />
+<area shape=rect	coords=849,464,895,481	href="/dbget-bin/www_bget?K03513"	title="K03513 (POLM)" />
+<area shape=rect	coords=796,336,841,355	href="/dbget-bin/www_bget?K10887"	title="K10887 (DCLRE1C)" />
+<area shape=rect	coords=535,464,581,481	href="/dbget-bin/www_bget?K10981"	title="K10981 (POL4)" />
+<area shape=rect	coords=219,336,265,353	href="/dbget-bin/www_bget?K01971"	title="K01971 (E6.5.1.1)" />
+<area shape=rect	coords=530,350,576,367	href="/dbget-bin/www_bget?K10865"	title="K10865 (MRE11)" />
+<area shape=rect	coords=530,334,576,351	href="/dbget-bin/www_bget?K10866"	title="K10866 (RAD50)" />
+<area shape=rect	coords=796,353,842,370	href="/dbget-bin/www_bget?K06642"	title="K06642 (PRKDC)" />
+<area shape=rect	coords=530,367,576,384	href="/dbget-bin/www_bget?K10868"	title="K10868 (XRS2)" />
+<area shape=rect	coords=217,206,263,223	href="/dbget-bin/www_bget?K10979"	title="K10979 (ku)" />
+<area shape=rect	coords=665,218,711,235	href="/dbget-bin/www_bget?K10885"	title="K10885 (XRCC5)" />
+<area shape=rect	coords=796,585,842,602	href="/dbget-bin/www_bget?K10886"	title="K10886 (XRCC4)" />
+<area shape=rect	coords=665,201,711,218	href="/dbget-bin/www_bget?K10884"	title="K10884 (XRCC6)" />
+<area shape=rect	coords=535,485,581,502	href="/dbget-bin/www_bget?K04799"	title="K04799 (FEN1)" />
+<area shape=rect	coords=796,602,842,619	href="/dbget-bin/www_bget?K10980"	title="K10980 (NHEJ1)" />
+<area shape=rect	coords=535,585,581,602	href="/dbget-bin/www_bget?K10982"	title="K10982 (LIF1)" />
+<area shape=rect	coords=40,45,294,71	href="/kegg-bin/show_pathway?map03440"	title="map03440: Homologous recombination" />
+{% endblock %}
+{% block color_nodes %}
+  {% if nodes_to_color.6_5_1_1 %}
+    <div class="node_6_5_1_1_instance_0"></div>
+  {% endif %}
+  {% if nodes_to_color.2_7_7_31 %}
+    <div class="node_2_7_7_31_instance_0"></div>
+  {% endif %}
+{% endblock %}

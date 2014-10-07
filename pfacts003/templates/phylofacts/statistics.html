@@ -1,0 +1,197 @@
+{% extends 'common/base.html' %}
+
+{% block extrascripts %}
+<script type="text/javascript">
+var chart_pf_sequences_taxonomic_domain;
+var chart_pf_taxa_taxonomic_domain;
+var chart_pf_families_taxonomic_domain;
+
+var colors_taxonomic_domain = new Array();
+colors_taxonomic_domain['Bac'] = '#074987';
+colors_taxonomic_domain['Euk'] = '#FFC800';
+colors_taxonomic_domain['Arch'] = '#196554';
+colors_taxonomic_domain['Vir'] = '#875000';
+colors_taxonomic_domain['Unc'] = '#31C194';
+
+jQuery(document).ready( function() {
+	chart_pf_sequences_taxonomic_domain = new Highcharts.Chart({
+		chart: {
+		        renderTo: 'pf_sequences_container',
+			plotBackgroundColor: null,
+			plotBorderWidth: null,
+			plotShadow: false,
+		},
+		title: {
+			text: 'Distribution of sequences across taxonomic domains'
+		},
+		tooltip: {
+			formatter: function() {
+				return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+			}
+		},
+		plotOptions: {
+			pie: {
+				allowPointSelect: true,
+				cursor: 'pointer',
+				dataLabels: {
+					enabled: false
+				},
+				showInLegend: true
+			}
+		},
+		series: [{
+			type: 'pie',
+			name: 'Taxonomic distribution',
+			data: [
+				{name: 'Archaea (157K)',   y: 2.14, color: colors_taxonomic_domain.Arch},
+				{name: 'Eukaryotes (1.6M)', y: 21.97, color: colors_taxonomic_domain.Euk},
+				{name: 'Bacteria (5.4M)', y: 73.73, color: colors_taxonomic_domain.Bac, sliced: true, selected: true},
+				{name : 'Viruses (153K)',    y: 2.09, color : colors_taxonomic_domain.Vir},
+				{name : 'Unclassified (4.3K)',    y: 0.07, color : colors_taxonomic_domain.Unc}
+			]
+		}],
+		credits: {enabled: false}
+	});
+	chart_pf_taxa_taxonomic_domain = new Highcharts.Chart({
+		chart: {
+		        renderTo: 'taxa_container',
+			plotBackgroundColor: null,
+			plotBorderWidth: null,
+			plotShadow: false,
+		},
+		title: {
+			text: 'Distribution of unique taxon identiiers across taxonomic domains'
+		},
+		tooltip: {
+			formatter: function() {
+				return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+			}
+		},
+		plotOptions: {
+			pie: {
+				allowPointSelect: true,
+				cursor: 'pointer',
+				dataLabels: {
+					enabled: false
+				},
+				showInLegend: true
+			}
+		},
+		series: [{
+			type: 'pie',
+			name: 'Taxonomic distribution',
+			data: [
+				{name: 'Archaea (788)',   y: 0.8, color: colors_taxonomic_domain.Arch},
+				{name: 'Eukaryotes (64.8K)', y: 65.3, color: colors_taxonomic_domain.Euk},
+				{name: 'Bacteria (18K)', y: 18.2, color: colors_taxonomic_domain.Bac, sliced: true, selected: true},
+				{name : 'Viruses (15.4K)',    y: 15.5, color : colors_taxonomic_domain.Vir},
+				{name : 'Unclassified (236)',    y: 0.2, color : colors_taxonomic_domain.Unc}
+			]
+		}],
+		credits: {enabled: false}
+	});
+    chart_pf_families_taxonomic_domain = new Highcharts.Chart({
+        chart: {
+            renderTo: 'pf_fam_taxonomic_domain',
+            type: 'column'
+        },
+        credits: {
+            enabled: false
+        },
+        title: {
+            text: 'Number and percent of PF3.0 families with members in selected taxonomic groups'
+        },
+        xAxis: {
+            categories: [
+                'Any (92.8K)',
+                'Eukaryotes (71.8K)',
+                'Bacteria (35.8K)',
+                'Archaea (16.9K)',
+                'Unclassified (6.3K)',
+                'Viruses (4.4K)',
+            ],
+	    legend: {
+	     enabled: false
+	     },
+            labels: {
+                align: 'center'
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Percent of PhyloFacts families'
+            }
+        },
+
+        tooltip: {
+            formatter: function() {
+                if (this.x.search('Any') != -1) {
+                    return 'All PhyloFacts families';
+                } else if (this.x.search('Unclassified') != -1) {
+                    return '' + this.y + '% of PhyloFacts families have at least one ' + this.x.split(' ')[0] + ' member.';
+                } else {
+                    return '' + this.y + '% of PhyloFacts families have at least one member from ' + this.x.split(' ')[0] + '.';
+                }
+            }
+        },
+    navigation: {
+        buttonOptions: {
+            verticalAlign: 'bottom',
+            y: -10
+        }
+    },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+	    legend: {
+	     enabled: false
+	     },
+            series: [{
+            data: [{ y : 100, color: '#4b078c'}, 
+	    { y : 77.4, color: colors_taxonomic_domain['Euk']}, 
+	    {y : 38.6, color: colors_taxonomic_domain['Bac']}, 
+	    { y : 18.2, color: colors_taxonomic_domain['Arch']}, 
+	    { y : 6.9, color: colors_taxonomic_domain['Unc']}, 
+	    { y : 4.7, color: colors_taxonomic_domain['Vir']}]
+        } 
+        ]
+    });
+    jQuery("#seq-chart").gchart({type: 'pie3D', series: [jQuery.gchart.series('bysequence',
+        [73.7,22.0, 2.1, 2.1, 0.05],[jQuery.gchart.color(7,73,135),
+    jQuery.gchart.color(255,204,0),jQuery.gchart.color(25,101,84),
+    jQuery.gchart.color(135,80,0),jQuery.gchart.color(49,197,148)])],
+        extension: {chdl: 'Bacteria (5.4M, 73.7%)|Eukaryotes (1.6M, 22.0%)|Archaea (157k, 2.1%)|Viruses (153k, 2.1%)|Unclassified (4.3k, 0.05%)'}, 
+        legend: 'right', height: 250, width: 625, pieOrientation: 90,
+        legendSize: 14, legendColor: jQuery.gchart.color(0,0,0)});
+
+    jQuery("#tax-chart").gchart({type: 'pie3D', series: [jQuery.gchart.series('bytaxa',
+        [65.3,18.2, 15.5, 0.8, 0.2],[jQuery.gchart.color(255,204,0),
+    jQuery.gchart.color(7,73,135),jQuery.gchart.color(135,80,0),
+    jQuery.gchart.color(25,101,84),jQuery.gchart.color(49,197,148)])],
+        extension: {chdl: 'Eukaryotes (64.8k, 65.3%)|Bacteria (18k, 18.2%)|Viruses (15.4k, 15.5%)|Archaea (788, 0.8%)|Unclassified (236, 0.2%)'}, 
+        legend: 'right', height: 250, width: 625, pieOrientation: 90,
+        legendSize: 14, legendColor: jQuery.gchart.color(0,0,0)});
+
+    jQuery("#fam-chart").gchart({type: 'barVertGrouped', series: [jQuery.gchart.series('byfam',
+        [92.8, 71.8, 35.8, 16.9, 6.4, 4.4],[jQuery.gchart.color(75,7,140), 
+        jQuery.gchart.color(255,204,0), jQuery.gchart.color(7,73,135),
+        jQuery.gchart.color(25,101,84), jQuery.gchart.color(49,197,148),
+        jQuery.gchart.color(135,80,0)])],
+        extension: {chdl: 'Any (92.8k, 100%)|Eukaryotes (71.8k, 77.4%)|Bacteria (35.8k, 38.6%)|Archaea (16.9k, 18.2%)|Unclassified (6.3k, 6.9%)|Viruses (4.4k, 4.7%)'},
+        legend: 'right', height: 300, width: 500, legendSize: 14,
+        legendColor: jQuery.gchart.color(0,0,0) });
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+<h2>PhyloFacts Statistics</h3>
+<p>PhyloFacts release PF3.0.2 contains 7,337,238 protein sequences from the UniProt database. Proteins correspond to 99,254 unique taxon identifiers (including strains). Proteins are distributed across 92,800 families: 25,446 families for individual PFAM domains and 67,354 families based on sharing the same multi-domain architecture. PhyloFacts clusters use a set-covering protocol, so that there is some overlap across families (sequences can belong to multiple families).</p>
+<div id="pf_sequences_container" style="width: 700px; height: 500px; margin-left:100px;"></div>
+<div id="taxa_container" style="width: 700px; height: 500px; margin-left:100px;"></div>
+<div id="pf_fam_taxonomic_domain" style="width: 700px; height: 500px; margin-left:100px;"></div>
+{% endblock %}

@@ -1,0 +1,656 @@
+{% extends 'common/base.html' %}
+{% load get_range %}
+{% load msa %}
+
+{% block title %}PhyloFacts Family: {{ family }} {% endblock %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" href="/static/css/prototip.css" type="text/css" />
+{% endblock %}
+
+{% block extrascripts %}
+    <script type="text/javascript" src="/static/js/prototype.js"></script> 
+    <script type="text/javascript" src="/static/js/tooltips/scriptaculous.js?load=builder,effects"></script>
+    <script type="text/javascript" src="/static/js/tooltips/tooltips.js"></script> 
+  <script type="text/javascript" src="/static/js/archaeopteryx.js"></script>
+
+<!-- the following libraries are all hosted on the Pfam site, but can obviously be
+         retrieved and served locally --> 
+ 
+    <!-- the domain graphics library --> 
+    <script type="text/javascript" src="/static/js/domain_graphics.js"></script> 
+
+ 
+    <!-- in order to standardize the look of text, and in order to make it work at
+         all in older browsers (and IE), we need the canvas text library. And, in turn,
+         that library uses a font description in a separate javascript file --> 
+    <script type="text/javascript" src="/static/js/canvas.text.js?dontUseMoz=true&amp;reimplement=true"></script> 
+    <script type="text/javascript" src="/static/js/faces/optimer-bold-normal.js"></script> 
+ 
+    <!-- we use the (non-free) prototip2 library to add tooltips. It's not free, but
+         nearly. The domain graphics code should cope if it's not loaded, so you
+         could just omit the prototip load --> 
+    <script type="text/javascript" src="/static/js/prototip.js"></script> 
+    <script type="text/javascript" src="/static/js/styles.js"></script> 
+ 
+    <!-- stylesheets. We only really need the rules that are specific to the tooltips --> 
+    <link rel="stylesheet" href="/static/css/pfam.css" type="text/css" /> 
+    <link rel="stylesheet" href="/static/css/prototip.css" type="text/css" /> 
+ 
+    <!-- IE, being IE, needs extra help. In particular we need to add an extra library
+         that implements <canvas> using the VML drawing layer in IE. And, so that 
+         "console.log" calls don't screw everything up, we include the firebug-lite 
+         script --> 
+    <!--[if IE]>
+      <script type="text/javascript" src="/static/js/excanvas.js"></script>
+      <script type="text/javascript" src="http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js"></script>
+    <![endif]-->
+
+
+{% if hmms %}
+  <script type='text/javascript'>
+    var sequence = {"length":{{ consensus_sequence_length }},
+	"regions":[
+    {% for hmm in hmms %}
+	{
+          "start":"{{ hmm.aliStart }}",
+       	  "end":"{{ hmm.aliEnd }}",
+       	  "modelStart":"{{ hmm.modelStart }}",
+       	  "modelEnd":"{{ hmm.modelEnd }}",
+       	  "aliStart":"{{ hmm.aliStart }}",
+       	  "aliEnd":"{{ hmm.aliEnd }}",
+       	  "startStyle":"{{ hmm.startStyle }}",
+       	  "endStyle":"{{ hmm.endStyle }}",
+       	  "display":true,
+       	  "colour":"{{ hmm.color }}",
+       	  "modelLength":"{{ hmm.modelLength }}",
+       	  "text":"{{ hmm.pfam_name }}", 
+       	  "href":"/phylofacts/pfam/{{ hmm.pfam_accession }}",
+       	  "type":"pfama",
+       	  "metadata":
+	    {
+	      "scoreName" : "e-value",
+	      "score" : "{{ hmm.e_value }}",
+	      "description" : "{{ hmm.pfam_description }}",
+	      "accession" : "{{ hmm.pfam_accession }}",
+	      "end" : "{{ hmm.aliEnd }}",
+	      "database" : "{{ hmm.pfam_source }}",
+	      "identifier" : "{{ hmm.pfam_description }}",
+	      "aliEnd" : "{{ hmm.aliEnd }}",
+	      "type" : "Domain",
+	      "aliStart":"{{ hmm.aliStart }}",
+	      "start":"{{ hmm.aliStart }}"
+	    },
+	  } {% if not forloop.last %}, {% endif %}
+	   
+        {% endfor %}],
+
+"markups":[],
+
+"motifs":[]}; 
+
+  document.observe("dom:loaded", function() {
+    var pg = new PfamGraphic("dg", sequence );
+      pg.render();
+      });
+
+  </script>
+
+{% endif %}
+
+{% if transmembrane_regions or signal_regions %}
+  <script type='text/javascript'>
+    var tm_sequence = {"length":{{ consensus_sequence_length }},
+	"regions":[],
+
+    "markups":[
+    {% if signal_regions %}
+
+    {% endif %}
+],
+
+    "motifs":[
+    {% if transmembrane_regions %}
+        {% for start ,end, color in transmembrane_regions %}
+        { 
+          "start":"{{ start }}",
+       	  "end":"{{ end }}",
+       	  "display":true,
+       	  "colour":"{{ color }}",
+       	  "text":"TMR", 
+       	  "type":"pfamb",
+       	  "metadata":
+	        {
+	        "description" : "Phobius predicted transmembrane region",
+	        "end" : "{{ end }}",
+	        "type" : "Transmembrane Region",
+	        "start":"{{ start }}"
+	        },
+        } {% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    {% endif %}
+    {% if signal_regions %},
+        {% for start,end,color in signal_regions %}
+        { 
+          "start":"{{ start }}",
+       	  "end":"{{ end }}",
+       	  "display":true,
+       	  "colour":"{{ color }}",
+       	  "text":"Signal Peptide", 
+       	  "type":"pfamb",
+       	  "metadata":
+	        {
+	        "description" : "Phobius predicted signal peptide region",
+	        "end" : "{{ end }}",
+	        "type" : "Signal Peptide Region",
+	        "start":"{{ start }}"
+	        },
+        } {% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    {% endif %}
+]}; 
+
+  document.observe("dom:loaded", function() {
+    var tm = new PfamGraphic("tm", tm_sequence );
+      tm.render();
+      });
+
+  </script>
+
+{% endif %}
+{% endblock %}
+
+{% block toplinks %}
+{% endblock %}
+
+{% block content %}
+
+
+{% if family %}
+  <p><a href="#" id='another-search'>Search for another family</a></p>
+{% endif %}
+
+<form action="/phylofacts/family/" method="get">
+  <h3>View PhyloFacts family data</h3>
+
+  <p>Enter a PhyloFacts family accession, e.g., bpg0240116</p>
+
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %} 
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {{ form.family_accession.errors }}
+  
+  <table>
+    {{ form.family_accession }}
+  </table>
+
+  <p><input type="submit" value="Submit">&nbsp;&nbsp;<a href="#" id='hide-form'>hide form</a></p>
+</form>
+
+
+{% if family %}
+  <script type="text/javascript">
+    jQuery(function() {
+      jQuery("form").hide();
+      jQuery("#another-search").show();
+      jQuery("#phogdiv").load("phog_table");
+      jQuery("#seqdiv").load("sequence_data");
+      {% if not isPfam %}
+      jQuery("#descriptiontable").dataTable({
+        "bPaginate" : false,
+        "bLengthChange" : false,
+        "bFilter" : false,
+        "bInfo" : true,
+        "bJQueryUI" : true,
+        "bAutoWidth" : false,
+        "aoColumns" : [{ "bSortable" : false, "sWidth" : "80%" },{"sWidth" : "10%"},{"sWidth" : "10%"}],
+        "aaSorting" : [[ 1, "desc" ]]
+      });
+      {% endif %}
+    }); 
+ </script>
+
+  <h3 style="font-size:24px;">{% if not isPfam %} PhyloFacts-MDA family: {{ family.get_family_name }}{% endif %} 
+    {% if isPfam %}PhyloFacts-Pfam family: {{ pfam_longname }} ({{ pfam_name }}){% endif %} 
+ </h3>  
+
+
+    <script type="text/javascript">
+    jQuery(document).ready(function() {
+        {% if not isPfam %}
+        jQuery("#descriptiontable_wrapper").hide();
+        jQuery("#descriptiontable_wrapper .ui-widget-header:first").html("<center><b>Top ranked family descriptions (truncated at 50)</b></center>");
+        {% endif %}
+    });
+
+    jQuery(function() {
+        jQuery("#family_tabs").tabs().addClass('ui-tabs-vertical ui-helper-clearfix');
+        jQuery("#family_tabs li").removeClass('ui-corner-top').addClass('ui-corner-left');
+        jQuery("#showmembertab").click( function(e)
+        {
+            e.preventDefault();
+            jQuery("#membertab").click();
+        });
+        {% if not isPfam %}
+        jQuery("").html("Top 50 Ranked UniProt Descriptions")
+        jQuery("#toggledescriptiontable").click( function(e)
+        {
+            e.preventDefault();
+            if (jQuery("#toggledescriptiontable").html() == "More")
+                {jQuery("#toggledescriptiontable").html("Less");}
+            else {jQuery("#toggledescriptiontable").html("More");}
+            jQuery("#descriptiontable_wrapper").toggle();
+        });
+        {% endif %}
+    });
+    </script>
+
+<div id="family_tabs">
+    <ul>
+        <li><a href="#summary">Summary</a></li>
+        <li><a href="#tree">Gene Tree</a></li>
+        <li><a id="membertab" href="#members">Members</a></li>
+        <li><a href="#orthologs">Orthologs</a></li>
+        <li><a href="#msa">Alignment</a></li>
+        <li><a href="#gene_ontology">Gene Ontology</a></li>
+	{% if reactions %}
+	<li><a href="#reactions">Reactions</a></li>
+	{% endif %}
+	{% if pathways %}
+	<li><a href="#pathways">Pathways</a></li>
+	{% endif %}
+        {% if ec_links %}
+        <!--  <li><a href="#enzyme">Enzyme Commission</a></li>-->
+        {% endif %}
+        <li><a href="#downloads">Downloads</a></li>
+        <li><a href="#construction">Construction Notes</a></li>
+        {% if isPfam and 1 == 0 %}<li><a href="">About<br />PhyloFacts-Pfam</a></li>{% endif %}
+    </ul>
+
+    <div id="summary">
+          {% if hmms %}
+          {% if not isPfam %}
+            <div class="row">
+              <label>Pfam-A domains</label>
+              <span id="dg" style="margin-top:20px; margin-bottom:10px;"></span>
+            </div>
+          {% endif %}
+          {% endif %}
+          {% if transmembrane_regions or signal_regions  %}
+            <div class="row">
+              <label >TM helices/signal peptides</label>
+              <span id="tm" style="margin-top:10px; margin-bottom:10px;"></span>
+            </div>
+          {% endif %}
+        <div class="row">
+          <label  class="family-data-item">PhyloFacts Accession</label>
+          <span>{{ family.get_accession }}</span>
+        </div>
+    
+        <div style="width:600px;" class="row">
+            <label class="family-data-item">Description(s)</label>
+            {% if not isPfam %}
+                <span>{{ description.0.0 }} | <a href="#" id="toggledescriptiontable">More</a></span>
+                <table id="descriptiontable" style="margin:0; padding:0; font-size:.9em;">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Score</th>
+                            <th>Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for desc in description %}
+                        <tr>
+                            <td>{{ desc.0 }}</td>
+                            <td>{{ desc.1 }}</td>
+                            <td>{{ desc.2 }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+            <span>{{ description }}</span>
+            {% endif %}    
+        </div>
+
+        <div class="row">
+          <label>Homology Clustering Mode</label>
+          <span>
+            {% if family.family_type.id == 'C' %}
+    		PFAM (sequences match this PFAM domain)
+          	{% else %}
+    		Multi-domain architecture (FlowerPower)
+    	{% endif %}
+          </span>
+        </div>
+    
+        <div class="row">
+          <label class="family-data-item">Taxonomic Distribution</label>
+          <span>{{ family_taxon }}</span>
+        </div>
+        
+        <div class="row">
+          <label  class="family-data-item">Number of Sequences</label>
+          <span>{{ num_nonredundant_sequences }} | <a id="showmembertab" href= "#">See Sequence Data</a></span>
+        </div>
+
+        <div class="row">
+          <label  class="family-data-item" >Alignment Length</label>
+          <span>{{ alignment_length }} | <a href="#" bpg_accession="{{ family.get_accession }}" id="show-jalview-applet">See Alignment</a></span>
+        </div>
+        
+	{% if pfam_links %}
+        <div class="row">
+          <label  class="family-data-item">Pfam</label>
+          <span>{{ pfam_links }}</span>
+        </div>
+	{% endif %}
+          <div>
+            <label>Consensus Sequence</label>
+            <span>
+              View in <a href="/phylofacts/family/{{ family.get_accession }}/consensus/">FASTA</a> format
+            </span>
+          </div>
+    </div>
+    <div id="orthologs">
+      <label class="family-data-item">PHOG orthology groups</label>
+      <span><a href="/phylofacts/family/{{ family.get_accession }}/phog_data/">Download</a></span>
+      <div id="phogdiv">
+        <p style="padding-left:300px">Loading . . . . .</p>
+      </div>
+    </div>
+
+    <div id="members">
+        <label class="family-data-item">Member Sequences</label>
+        <div id="seqdiv">
+            <p style="padding-left:300px">Loading . . . . .</p>
+        </div>
+    </div>
+
+
+    <div id="tree">
+        <div class="row">
+          <label>Gene Family Tree</label>
+          <div class="rightcol"> 
+            {% if treeMethod %}
+    	      {% if small_tree %}
+                <a href="/phog/orthoscope/?family={{ family.get_accession }}&treeMethod={{ treeMethod }}">View tree in Phyloscope</a>
+    	      {% else %}
+                The PhyloScope tree viewer is only available for trees with less than {{ max_phyloscope_tree_size }} sequences.
+    	      {% endif %}
+              <br>
+              <a href="#" onClick="openArchaeopteryxWin( 
+                'http://makana-test.berkeley.edu/phylofacts/family/{{ family.get_accession }}/tree/',
+                '/phylofacts/archaeopteryx_config/' ); return false;">View tree in Archaeopteryx (requires Sun Java 1.5)</a>
+              <br />
+            {% else %}
+              No PhyloScope tree is available for this family.
+            {% endif %}
+          </div>
+        </div>  
+    </div>
+
+    <div id="msa">
+        <div class="row">
+          <label  class="family-data-item" >View Alignment in</label>
+          <span><a href="#" bpg_accession="{{ family.get_accession }}" id="show-jalview-applet2">JalView</a></span>
+        </div>
+    </div>
+
+    <div id="gene_ontology">
+      {% if go_data %}
+        {% for gd in go_data %}
+          <div class="row">
+      	  <label>GO {{ gd.0 }} ({{ gd.1|length }})</label>
+          <div class="rightcol">
+            {% for item in gd.1 %}
+      		  {% if forloop.counter0 ==  default_num_go_items_to_display %}
+      		    <span><a href="#" class="show-more-go-data" id="more-{{ gd.0|cut:" " }}">more...</a></span>
+      		  {% endif %}
+
+      		    {% if forloop.counter0 >=  default_num_go_items_to_display %}
+      		      <span class="hidden-go-data-{{ gd.0|cut:" " }}"> 
+      		    {% else %}  
+      	           <span>
+                  {% endif %}
+      		    <a href="{{ ebi_link }}?id={{ item.1 }}">{{ item.0 }}</a>, 
+      	        <a class='evidence-code'  href="#" 
+      	          onmouseover="document.getElementById('{{ item.1 }}').style.display='inline'; return false;"
+      	          onmouseout="document.getElementById('{{ item.1 }}').style.display='none'; return false;" >{{ item.2 }}</a>
+      	        <span style="display:none" id="{{ item.1 }}">{{ item.3 }} </span><br>
+      	      </span>
+
+      	      {% if forloop.counter0 >= default_num_go_items_to_display and forloop.last %}
+                <span><a href="#" class = "show-less-go-data" id="less-{{ gd.0|cut:" " }}">less...</a></span>
+      		  {% endif %}
+      	  {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      {% endif %}
+      {% endif %}
+     </div>
+
+    <div id="reactions">
+      {% if reactions %}
+      	  <h2>BioCyc Reactions ({{ reactions|length }})</h2>
+          <ul>
+            {% for reaction, values in reactions %}
+	    <li style="clear:right;">
+	    {% if reaction.ec_number %}
+	    EC: {{ reaction.ec_number }}, 
+	    {% endif %}
+
+	      	 <a title="Link to the BioCyc page" href="http://biocyc.org/{{reaction.db}}/NEW-IMAGE?object={{reaction.id}}">
+	      {% if reaction.common_name %}
+		 {{ reaction.common_name|safe }}
+	      {% else %}
+	         {% if reaction.systematic_name %}
+		   {{ reaction.systematic_name|safe }}
+		 {% else %}
+		   {{reaction.id}}</a>
+		 {% endif %}
+	      {% endif %}
+	    <a title="Show or hide member sequences." id="reaction-button-{{forloop.counter}}" href="#">({{values.members|length}} {% if values.members|length > 1 %}sequences{% else %}sequence{% endif %})</a>
+
+
+            <script>
+            jQuery(document).ready(function(){
+              jQuery("#reaction-sequences-{{forloop.counter}}").dataTable({
+                     "iDisplayLength": 100,
+                     "bJQueryUI": true,
+                     "sPaginationType": "full_numbers"
+                     });
+                   });
+            jQuery("#reaction-button-{{forloop.counter}}").click(function () {
+                   jQuery("#reaction-sequence-table-{{forloop.counter}}").toggle("slow");
+                   });
+            </script>
+	     <br />
+	      <div id="reaction-sequence-table-{{forloop.counter}}" style="display:none">
+	         <table id="reaction-sequences-{{forloop.counter}}" 
+		 style="margin:0; padding:0; font-size:.9em;">
+		   <thead>
+		   <tr style="background-color:rgb(250,250,255)">
+		   <th>Identifier</th>
+		   <th>DB of Origin</th>
+		   <th>Description</th>
+		   <th>Species</th>
+		   <th>Gene Ontology (GO) data</th>
+		   </tr>
+		   </thead>
+		   <tbody>
+		 {% for result in values.members %}
+		   <tr>
+		   <td style="vertical-align:top"><a href="/phylofacts/sequence/UniProt/?acc_or_ident={{ result.1 }}">{{ result.2 }}</a></td>
+		   <td style="vertical-align:top">{{ result.3 }}</td>
+		   <td style="vertical-align:top">{{ result.4 }}</td>
+		   <td style="vertical-align:top">
+		   <a href='http://www.uniprot.org/taxonomy/{{ result.8 }}'>{{ result.6 }}
+		     {% if result.7 %}
+		     ({{ result.7 }})
+		     {% endif %}
+		   </a>
+		   </td>
+		   <td>
+		   {% for go_category in result.9 %}
+		     <table style="margin:0px; padding:0px">
+		       {% if go_category.1 %}
+		       <tr><td>{{ go_category.0 }}</td></tr>
+		         {% for go_item in go_category.1 %}
+		       <tr>
+		       <td style="padding-left:20px">
+		       <a href="http://www.ebi.ac.uk/QuickGO/GTerm?id={{ go_item.1 }}">
+		       {{ go_item.0 }} ({{go_item.2 }})</a></td></tr>
+		       {% endfor %}
+		       {% endif %}	
+		     </table>
+		   {% endfor %}
+		  </td>
+		  </tr>
+		  {% endfor %}
+		</tbody>
+		</table>
+	     </div>
+	     </li>
+      	    {% endfor %}
+      {% endif %}
+      </ul>
+    </div>
+    <div id="pathways">
+      {% if pathways %}
+      	  <h2>BioCyc Pathways ({{ pathways|length }})</h2>
+          <ul>
+            {% for pathway, values in pathways %}
+	    <li style="clear:right;">
+	      <a title="Link to the BioCyc page" href="http://biocyc.org/{{pathway.db}}/NEW-IMAGE?object={{pathway.id}}">{{ pathway.common_name|safe }}</a>
+	    <a title="Show or hide member sequences." id="pathway-button-{{forloop.counter}}" href="#">({{values.members|length}} {% if values.members|length > 1 %}sequences{% else %}sequence{% endif %})</a>
+            <script>
+            jQuery(document).ready(function(){
+              jQuery("#pathway-sequences-{{forloop.counter}}").dataTable({
+                     "iDisplayLength": 100,
+                     "bJQueryUI": true,
+                     "sPaginationType": "full_numbers"
+                     });
+                   });
+            jQuery("#pathway-button-{{forloop.counter}}").click(function () {
+                   jQuery("#pathway-sequence-table-{{forloop.counter}}").toggle("slow");
+                   });
+            </script>
+	     <br />
+	      <div id="pathway-sequence-table-{{forloop.counter}}" style="display:none">
+	         <table id="pathway-sequences-{{forloop.counter}}" 
+		 style="margin:0; padding:0; font-size:.9em;">
+		   <thead>
+		   <tr style="background-color:rgb(250,250,255)">
+		   <th>Identifier</th>
+		   <th>DB of Origin</th>
+		   <th>Description</th>
+		   <th>Species</th>
+		   <th>Gene Ontology (GO) data</th>
+		   </tr>
+		   </thead>
+		   <tbody>
+		 {% for result in values.members %}
+		   <tr>
+		   <td style="vertical-align:top"><a href="/phylofacts/sequence/UniProt/?acc_or_ident={{ result.1 }}">{{ result.2 }}</a></td>
+		   <td style="vertical-align:top">{{ result.3 }}</td>
+		   <td style="vertical-align:top">{{ result.4 }}</td>
+		   <td style="vertical-align:top">
+		   <a href='http://www.uniprot.org/taxonomy/{{ result.8 }}'>{{ result.6 }}
+		     {% if result.7 %}
+		     ({{ result.7 }})
+		     {% endif %}
+		   </a>
+		   </td>
+		   <td>
+		   {% for go_category in result.9 %}
+		     <table style="margin:0px; padding:0px">
+		       {% if go_category.1 %}
+		       <tr><td>{{ go_category.0 }}</td></tr>
+		         {% for go_item in go_category.1 %}
+		       <tr>
+		       <td style="padding-left:20px">
+		       <a href="http://www.ebi.ac.uk/QuickGO/GTerm?id={{ go_item.1 }}">
+		       {{ go_item.0 }} ({{go_item.2 }})</a></td></tr>
+		       {% endfor %}
+		       {% endif %}	
+		     </table>
+		   {% endfor %}
+		  </td>
+		  </tr>
+		  {% endfor %}
+		</tbody>
+		</table>
+	     </div>
+	     </li>
+      	    {% endfor %}
+      {% endif %}
+
+      </ul>
+     </div>
+
+     <div id="downloads">
+          <div class="row">
+                <label style="width:260px; !important">Phylogenetic (gene) tree</label><span><a href="/phylofacts/family/{{ family.get_accession }}/tree/">RAxML Maximum Likelihood tree (Newick Format)</a></span>
+          </div>
+          <div class="row">
+    	        <label style="width:260px; !important">Hidden Markov model (HMM)</label><span><a href="/phylofacts/family/{{ family.get_accession }}/hmm/HMMER3/">(HMMER3 format)</a></span>
+          </div>
+          <div class="row">
+                <label style="width:260px; !important">Family member sequences</label><span><a href="/phylofacts/family/{{ family.get_accession }}/sequences/">(Fasta format)</a></span>
+          </div>
+          <div class="row">
+    	        <label style="width:260px; !important">Multiple sequence alignment (MSA)</label><span><a href="/phylofacts/family/{{ family.get_accession }}/alignment/">(UCSC a2m format)</a></span>
+          </div>
+          <div class="row">
+                <label style="width:260px; !important">Orthologs</label><span><a href="/phylofacts/family/{{ family.get_accession }}/phog_data/">PHOG2.0 (machine-readable text format)</a></span>
+          </div>
+          <div class="row">
+                <label style="width:260px; !important">Family summary data</label><span><a href="/phylofacts/family/{{ family.get_accession }}/summary/">(machine-readable text format)</a></span>
+          </div>
+     </div>
+     <div id="construction">
+        <div class="row">
+          <label>Homology Clustering Mode</label>
+          <span>
+            {% if family.family_type.id == 'C' %}
+    		PFAM (sequences match this PFAM domain)
+          	{% else %}
+    		Multi-domain architecture (FlowerPower)
+    	{% endif %}
+          </span>
+        </div>
+        <div class="row">
+          <label>Sequence Database</label>
+          <span> {{ family.build_database_source }}</span>
+        </div>
+        <div class="row">
+          <label>Seed Sequence</label>
+          <div class="rightcol">
+    	  {% if family.seed_sequence_header and family.seed_sequence_header.uniprot %}
+            <div ><span >UniProt: <a href="/phylofacts/sequence/UniProt/?acc_or_ident={{ family.seed_sequence_header.uniprot.accession }}">{{ family.seed_sequence_header.uniprot.uniprot_identifier }} ({{ family.seed_sequence_header.uniprot.accession  }})</a></span></div>
+            <div><span>Description: {{ family.seed_sequence_header.uniprot.de  }}</span></div>
+            <div><span>Species: {{ family.seed_sequence_header.taxon.scientific_name }}</span></div>
+    	  {% endif %}
+            <div><span>View in <a href="/phylofacts/family/{{ family.get_accession }}/seed/">FASTA</a> format</span></div>
+          </div>
+        <div class="row">
+            <label>Beta Page View</label>
+            <div class="rightcol">
+                <div><span><a href="/phylofacts/tree_node_view/{{ family.canonical_root_node.id }}/">Click here</a></span></div>
+            </div>
+        </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

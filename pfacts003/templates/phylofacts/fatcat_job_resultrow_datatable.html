@@ -1,0 +1,34 @@
+<tr id="result_row_{{ f.as_result.family_id }}">
+    <td><a href="/phylofacts/family/{{ f.family.get_accession }}/" target="_blank">{{ f.family.get_accession }}</a></td>
+    {% if f.as_result.family_type == 'Pfam' %}
+        <td class="">Pfam : {{ f.family.get_pfams.pop.0.name }}</td>
+    {% else %}
+        <td class="">MDA : {{ f.as_result.most_common_mda_string }}</td>
+    {% endif %}
+    <td class=""><a href="/phylofacts/tree_node_view/{{ f.as_result.node.id }}/">{{ f.as_result.node.get_treenode_names.treenode_accession }}</a></td>
+    <td class="">{{ f.as_result.node.get_treenode_names.treenode_name }}</td>
+    <td class="">{{ f.as_result.node_taxonomic_distribution }}</td>
+    <td>Not Done Yet.</td>
+    <td class="">{{ f.as_result.node_e_value }}</td>
+    <td class=""><a href="javascript:;" onclick="startJalview({{ f.as_result.alignment }}, 'subtree alignment', 'alwvr_{{ f.as_result.family_id }}')">{{ f.as_result.query_to_hmm_pid|floatformat:"-1" }} %</a></td>
+    <td class="">{{ f.as_result.subtree_min_pairwise_id|floatformat:"-1" }} %</td>
+    <td class="">{{ f.as_result.query_coverage|floatformat:"-1" }} %</td>
+    <td class="">{{ f.as_result.hmm_coverage|floatformat:"-1" }} %</td>
+    <td class="">{{ f.as_result.match_positions.0.best_alignment_from }} - {{ f.as_result.match_positions.0.best_alignment_to }}</td>
+    <td>
+        <div class="btn-toolbar">
+            <div class="btn-group">
+                {% if f.as_result.informative %}
+                <a class="btn" href="javascript:;" 
+                    onclick="window.open('/phylofacts/fatcat_family/{{ f.id }}/orthoscope/', 
+                    'height=800,width=800,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes');"><img class="tree-image tip" title="View the enclosing clade." src="/static/img/icons/tree-icon.png"></a>
+                {% else %}
+                <a class="btn" href="javascript:;"
+                    onclick="window.open('/phylofacts/tree_node_view/{{ f.as_result.node.id }}/orthoscope/', 
+                    'height=800,width=800,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes');"><img class="tree-image tip" title="View subtree." src="/static/img/icons/tree-icon.png"></a>
+                {% endif %}
+                <a class="btn" href="/phylofacts/tree_node_view/{{ f.best_tree_node.id }}/"><img class="annotation-image tip" target="_blank" title="View more information about the top-scoring node." src="/static/img/icons/annotation-icon.png"></a>
+            </div>
+        </div>    
+    </td>
+</tr>

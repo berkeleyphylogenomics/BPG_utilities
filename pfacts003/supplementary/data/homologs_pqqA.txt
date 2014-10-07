@@ -1,0 +1,119 @@
+PQQA_RHOS1 Coenzyme PQQ synthesis protein A 
+PQQA_PSEMY Coenzyme PQQ synthesis protein A 
+PQQA_PSEA7 Coenzyme PQQ synthesis protein A 
+PQQA_DINSH Coenzyme PQQ synthesis protein A 
+PQQA_GLUDA Coenzyme PQQ synthesis protein A 
+PQQA_ACIBY Coenzyme PQQ synthesis protein A 
+PQQA_ACIBS Coenzyme PQQ synthesis protein A 
+PQQA_PSEPW Coenzyme PQQ synthesis protein A 
+PQQA_METRJ Coenzyme PQQ synthesis protein A 
+PQQA_CUPTR Coenzyme PQQ synthesis protein A 
+PQQA_BURCJ Coenzyme PQQ synthesis protein A 
+PQQA_KLEP3 Coenzyme PQQ synthesis protein A 
+PQQA_PSEFS Coenzyme PQQ synthesis protein A 
+PQQA_VARPS Coenzyme PQQ synthesis protein A 
+PQQA_KLEPN Coenzyme PQQ synthesis protein A 
+PQQA_ACICA Coenzyme PQQ synthesis protein A 
+PQQA_PSEFL Coenzyme PQQ synthesis protein A 
+PQQA_ENTIT Coenzyme PQQ synthesis protein A 
+PQQA_PSEAB Coenzyme PQQ synthesis protein A 
+PQQA_ROSDO Coenzyme PQQ synthesis protein A 
+PQQA_PSEE4 Coenzyme PQQ synthesis protein A 
+PQQA_PSEPF Coenzyme PQQ synthesis protein A 
+PQQA_COLP3 Coenzyme PQQ synthesis protein A 
+PQQA_PSE14 Coenzyme PQQ synthesis protein A 
+PQQA_METEA Coenzyme PQQ synthesis protein A 
+PQQA_PSEU2 Coenzyme PQQ synthesis protein A 
+PQQA_METFL Coenzyme PQQ synthesis protein A 
+PQQA_SILPO Coenzyme PQQ synthesis protein A 
+PQQA_METCA Coenzyme PQQ synthesis protein A 
+PQQA_ACIAD Coenzyme PQQ synthesis protein A 
+PQQA_PSESM Coenzyme PQQ synthesis protein A 
+PQQA_PSEPK Coenzyme PQQ synthesis protein A 
+PQQA_BRAJA Coenzyme PQQ synthesis protein A 
+PQQA_RHIME Coenzyme PQQ synthesis protein A 
+PQQA_PSEST Coenzyme PQQ synthesis protein A 
+PQQA_GLUOX Coenzyme PQQ synthesis protein A 
+PQQA_PSEAE Coenzyme PQQ synthesis protein A 
+A0QYN7_MYCS2 Coenzyme PQQ biosynthesis protein A 
+A2P7D7_VIBCH Putative uncharacterized protein 
+A3K1I6_9RHOB Pyrroloquinoline quinone biosynthesis protein PqqB 
+A3VLH9_9RHOB Putative uncharacterized protein 
+A4BR25_9GAMM Putative uncharacterized protein 
+A4FI17_SACEN Putative uncharacterized protein 
+A4FI42_SACEN Putative uncharacterized protein 
+A4VL87_PSEU5 Putative uncharacterized protein 
+A4WPH8_RHOS5 Coenzyme PQQ biosynthesis protein A 
+A4YNW1_BRASO Coenzyme PQQ synthesis protein A (Pyrroloquinoline quinone biosynthesis protein A) 
+A4YZ28_BRASO Coenzyme PQQ synthesis protein A 
+A4YZY3_BRASO Pyrroloquinoline quinone biosynthesis protein A (Coenzyme PQQ synthesis protein A) 
+A5EDG7_BRASB Coenzyme PQQ synthesis protein A (Pyrroloquinoline quinone biosynthesis protein A) 
+A5EP06_BRASB Coenzyme PQQ (Pyrroloquinoline quinone) synthesis protein A 
+A5EPX4_BRASB Pyrroloquinoline quinone biosynthesis protein A 
+A5W500_PSEP1 Coenzyme PQQ biosynthesis protein A 
+A6EYR0_9ALTE Putative uncharacterized protein 
+A6FRA9_9RHOB Coenzyme PQQ biosynthesis protein A 
+A6GLU6_9BURK Putative uncharacterized protein 
+A9HTV4_9RHOB Coenzyme PQQ synthesis protein A 
+A9W3R3_METEP Coenzyme PQQ biosynthesis protein A 
+B0RQ29_XANCB Coenzyme PQQ biosynthesis protein A 
+B0UE08_METS4 Coenzyme PQQ biosynthesis protein A 
+B0UE09_METS4 Coenzyme PQQ biosynthesis protein A 
+B1Y7S1_LEPCP Coenzyme PQQ biosynthesis protein A 
+B2AIN4_CUPTR Coenzyme Pyrroloquinoline quinone (PQQ) synthesis protein A, putative 
+B2U9I4_RALPJ Coenzyme PQQ biosynthesis protein A 
+B2UEV0_RALPJ Coenzyme PQQ biosynthesis protein A 
+B2VDD0_ERWT9 Coenzyme PQQ biosynthesis protein A 
+B3DVD4_METI4 Coenzyme PQQ synthesis protein A 
+B8ITW1_METNO Coenzyme PQQ biosynthesis protein A 
+C0LU60_9PROT PQQ 
+C3VIT4_RAHAQ PqqA 
+C4X8Q3_KLEPN Pyrroloquinoline quinone synthesis protein A 
+C5AL15_BURGB Coenzyme PQQ synthesis protein PqqA 
+C5AQY4_METEA Coenzyme pyrroloquinoline quinone (PQQ) biosynthesis protein A (Coenzyme PQQ synthesis protein D) 
+C5AQY5_METEA Coenzyme pyrroloquinoline quinone (PQQ) biosynthesis protein A (Coenzyme PQQ synthesis protein D) 
+C6BKQ2_RALP1 Coenzyme PQQ biosynthesis protein A 
+C6Q9X7_9RHIZ Coenzyme PQQ biosynthesis protein A 
+C6QGR2_9RHIZ Coenzyme PQQ biosynthesis protein A 
+C6QGW5_9RHIZ Coenzyme PQQ biosynthesis protein A 
+C6WTX0_METML Coenzyme PQQ biosynthesis protein A 
+C6X7M7_METSD Coenzyme PQQ biosynthesis protein A 
+C6XBM6_METSD Coenzyme PQQ biosynthesis protein A 
+C7C9M1_METED Coenzyme pyrroloquinoline quinone (PQQ) biosynthesis protein A 
+C7CLK2_METED Coenzyme pyrroloquinoline quinone (PQQ) biosynthesis protein A (Coenzyme PQQ synthesis protein D) 
+C7DRH5_PSEFL Coenzyme PQQ biosynthesis protein PqqA 
+C7DRI9_PSEFL Coenzyme PQQ biosynthesis protein PqqA 
+C7JE56_ACEP3 Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein A PqqA 
+C7JQB6_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein A PqqA 
+C7JZI1_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein A PqqA 
+C7K299_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein A PqqA 
+C7KBG8_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein A PqqA 
+C7KKT4_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein A PqqA 
+C7KV45_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein A PqqA 
+C7L4X3_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein A PqqA 
+D0BZT7_9GAMM Coenzyme PQQ biosynthesis protein A 
+D0FP07_ERWPY Coenzyme PQQ biosynthesis protein A, probable 
+D1RRG7_SEROD Putative uncharacterized protein 
+D1UD61_9BURK Coenzyme PQQ biosynthesis protein A 
+D2LG62_RHOVA Coenzyme PQQ biosynthesis protein A 
+D2S4D3_GEOOG Coenzyme PQQ biosynthesis protein A 
+D2T3L5_ERWP6 Putative uncharacterized protein 
+D3Q203_STANL Coenzyme PQQ biosynthesis protein A 
+D3REI9_KLEVT Coenzyme PQQ biosynthesis protein A 
+D4IFL0_ERWAE Coenzyme PQQ synthesis protein A (Pyrroloquinoline quinone biosynthesis protein A) 
+D4P6Z4_PANAN PqqA 
+D5C1I1_NITHN Coenzyme PQQ biosynthesis protein A 
+D6CRJ3_THIS3 Coenzyme PQQ synthesis protein A (Pyrroloquinoline quinone biosynthesis protein A) 
+D6DSU0_ENTCL Coenzyme PQQ biosynthesis protein A 
+D7BT02_9ACTO Putative uncharacterized protein 
+D7DHP0_9PROT Coenzyme PQQ biosynthesis protein A 
+Q0FSC1_9RHOB Putative uncharacterized protein 
+Q0G4G2_9RHIZ Pyrroloquinoline quinone biosynthesis protein PqqB 
+Q0GFB7_SERMA PqqA 
+Q1GX88_METFK Coenzyme PQQ biosynthesis protein A 
+Q32X67_PSEFL Pyrroloquinoline quinone biosynthesis protein A 
+Q3IZR3_RHOS4 Putative coenzyme PQQ synthesis protein A 
+Q4K4V2_PSEF5 Coenzyme PQQ biosynthesis protein A 
+Q4KEK3_PSEF5 Coenzyme PQQ biosynthesis protein A 
+Q6W1W6_RHISN Coenzyme PQQ synthesis protein A 
+Q83X96_STRRO Pyrroloquinoline quinone biosynthesis protein A 

@@ -1,0 +1,32 @@
+{% extends 'intrepid/base.html' %}
+
+{% block title %}INTREPID{% endblock %}
+
+{% block extrastyle %}
+
+{% endblock %}
+
+{% block extrascripts %}
+<script type="text/javascript">
+// Django to javascript variables
+var progressAPIUpdateInterval = {{ progress_update_interval }};
+var getString = "/api/intrepid/{{ job.id }}/";
+</script>
+<script type="text/javascript" src="/static/js/intrepid_scanning.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class='main-content'>
+    <div>
+        <h4 style='margin-bottom:5px; margin-top:0px;'></h4>
+        <div class='progress progress-striped active' style='margin-bottom:5px;'>
+            <div class='bar' style='width:0%;'></div>
+        </div>
+        <p class='status-text' style='font-size:12px;'></p>
+        <a style='float:left;' href="javascript:;" class='shjs' data-uncover="#verbose-consoles">View/Hide Additional Information</a>
+        <div id="verbose-consoles" >
+            <p>Loading displays . . .</p>
+        </div> 
+    </div>
+</div>
+{% endblock %}

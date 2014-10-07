@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>{% block title %}BPG APPLICATION BASE TEMPLATE{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/base.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/slider.css" type="text/css">
+    {% block extrastylesheets %}{% endblock %}
+    {% block javascriptfunctions %} {% endblock %}    
+</head>
+<body>
+    <!-- bpg base header -->
+
+    <center>
+        <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="300" align="left" valign="top">
+                    <img src="/static/img/logos/bpg.png" width="300" height="120" border="0">
+                </td>
+                <td class="navtop" align="center">
+                    {% block toplinks %}BPG APP BASE TEMPLATE{% endblock %}
+                </td>
+                <td width="400" align="right" valign="center">
+                    <img src="{% block appicon %}{% endblock %}" width="400" border="0">
+                </td>
+            </tr>
+        </table>
+    </center>
+
+    <div style="margin-left: 50px; margin-right: 50px;">
+
+    <!-- header info -->
+
+    <br>
+    <b>{% block apptitle %}BPG APPLICATION BASE TEMPLATE{% endblock %} results</b>
+    <br>
+
+    {% block header_message %}{% endblock %}
+    {% block scoreblock %}{% endblock %}
+    </p>
+
+    {% block results %}BPG APPLICATION BASE TEMPLATE{% endblock %}
+
+</body>
+</html>
+

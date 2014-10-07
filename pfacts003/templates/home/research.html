@@ -1,0 +1,132 @@
+{% extends "common/base.html" %}
+
+{% block extrastyle %}
+{% endblock %}
+{% block extrascripts %}{% endblock %}
+
+
+{% block content %}
+<br />
+<h2>Research areas</h2>
+<p>
+We work on algorithm development for homolog identification, multiple sequence
+alignment, phylogenetic tree construction, protein fold prediction,
+identification of domain boundaries (and novel domains), and detection of key
+amino acids, such as catalytic or binding pocket residues. Structure prediction
+methods have obvious implications on the inference of protein function, as
+protein function is mediated by protein fold. Because evolution conserves
+structure in order to conserve function, we integrate phylogenetic tree
+construction and subfamily identification into our protein structure and
+function prediction methods, to enable us to infer the changes produced in
+protein function and structure over the evolution of a protein superfamily.
+</p>
+
+<h3>Rotation opportunities</h3>
+<p>
+We have rotation opportunities (and openings for additional "permanent" lab
+members) in several areas of bioinformatics, funded by grants from the National
+Science Foundation and the DOE. Each of these rotations involves a significant
+degree of programming to develop and test bioinformatics methods; many involve
+collaboration with an experimental lab to test the predictions (of protein
+structure and/or function) produced by our methods. Students interested in
+these rotations need to have strong programming skills, although assistance
+will be provided to students who are interested in computational biology but
+have limited prior experience. These rotations are good opportunities for
+students who are interested in sharpening existing programming skills or in
+learning more about bioinformatics.
+</p>
+
+<p>
+<b>About the Berkeley Phylogenomics Group (aka Sj&ouml;lander lab)</b>. We are
+a group of computational biologists, and members of the <a
+href='http://qb3.org/education/ucb-computational-biology/'>Berkeley Center for
+Computational Biology</a>. Some members of the group have joined with primarily
+experimental biology backgrounds and virtually no math/computational skills.
+Other members have had the opposite background. Both type of background is
+acceptable, although each will need to work hard to acquire the skills needed
+to do true computational biology. The main focus of our group is algorithm/
+method development and validation (see areas shown below). We have current
+funding from the National Science Foundation and Department of Energy (Systems
+Biology Knowledgebase) to develop computational systems for microbial
+(meta)genome functional annotation. Our collaborators are at UCSF, Princeton,
+Harvard, and in several international sites: Rio de Janeiro (Brazil), Amsterdam
+(Netherlands), Madrid (Spain), Granada (Spain), Tokyo and Kyoto (Japan). Here
+is a list of our <a
+href='/publications/'>publications</a>.
+</p>
+
+<p>
+<b>Protein structure prediction</b>. This project involves the development of
+improved statistical modeling methods for protein structure prediction using
+phylogenomic predictions of structural and functional changes over evolution.
+This project builds on the expertise in the Sjölander lab in the use of hidden
+Markov models and in CASP. Collaborators on this project include Dr Andrej Sali
+(UCSF, Department of Bioengineering and Therapeutic Sciences) and Dr Michael
+Jordan (UCB, EECS and Statistics).
+</p>
+
+<p><b>Protein functional site prediction</b>. This project involves the
+development of improved statistical modeling methods for protein functional
+site identification. This project builds on our previous work in the Sjölander
+lab on enzyme active site prediction, to extend this work to predict allosteric
+residues, specificity determinants, and residues involved in intermolecular
+interaction. Our Discern ("Active Site Prediction using Evolutionary and
+Structural Information," Bioinformatics 2010) and INTREPID ("INTREPID -
+INformation- theoretic TREe traversal for Protein functional site
+IDentification," Bioinformatics 2008) methods are top performers in this area.
+Collaborators on this project include Dr Michael Jordan (UCB, EECS and
+Statistics), Dr Jasper Rine (MCB) and other experimental biologists in various
+departments.
+</p>
+
+<p><b>Automated methods for prediction of protein function, protein-protein
+interaction, biological pathway and process prediction</b>.  In this project,
+you will work on methods for inferring protein function using graphical models
+of “relationships” between genes, including orthology, genomic locus,
+correlated expression patterns, and so on. Our orthology prediction method,
+PHOG, will play a key role in this project; PHOG out- performs OrthoMCL and
+InParanoid (Datta et al, "Berkeley PHOG: PhyloFacts Orthology Group Prediction
+Web Server" Nucleic Acids Research, 2009). Collaborators on this project
+include Dr Olga Troyanskaya, Princeton University, Dr Kiyoshi Asai (Tokyo,
+Japan) and Dr Hiroshi Mamitsuka (Kyoto, Japan).
+</p>
+
+<p><b>Simultaneous multiple sequence alignment and tree construction</b>.  In
+this project, you will extend our existing method for simultaneous protein
+multiple sequence alignment and phylogenetic tree construction using hidden
+Markov models (SATCHMO) for improved accuracy and speed. Our current method for
+this was selected by the Nucleic Acids Research as a featured article (Hagopian
+et al, "SATCHMO-JS: a webserver for simultaneous protein multiple sequence
+alignment and phylogenetic tree construction," Nucleic Acids Research 2010).
+</p>
+
+<p>
+<b>Metagenomics</b>. This project involves the development of phylogenomic
+methods to predict the taxonomic diversity in environmental samples (e.g., the
+human gut, ocean waters, soil) while simultaneously predicting the biological
+pathways and processes represented by a sample, and to apply these methods to
+various datasets produced by our collaborators. Collaborators on this project
+include Dr Colleen Cavanaugh (Harvard University) and Dr Kiyoshi Asai
+(University of Tokyo, Japan).
+</p>
+
+<p>
+
+<b>Human pathogenomics</b>. This project involves the phylogenomic analysis of
+human pathogens (e.g., TB, Plasmodium falciparum (the causative agent of
+malaria), Schistosoma, Leishmania, etc.), with a particular emphasis of
+pathogens afflicting developing nations and emerging and neglected diseases. We
+are part of the <a href='http://globalhealth.berkeley.edu/cend/'>Berkeley
+Center for Emerging and Neglected Diseases</a>; our collaborators on this
+project are in Rio de Janeiro (Brazil), Granada (Spain) and Amsterdam
+(Netherlands).
+</p>
+
+<p>
+<b>Human cancer genomics and interpretation of human genetic variation</b>.
+This project involves the application of several methods to the task of
+predicting the impact of allelic variation and mutations on function.
+Collaborators on this project include Dr Jasper Rine (UCB MCB), and Dr Alfonso
+Valencia (CNIO Madrid, Spain).
+</p>
+{% endblock %}

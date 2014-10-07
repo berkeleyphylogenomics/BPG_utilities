@@ -1,0 +1,115 @@
+{% extends 'phylo4j/base.html' %}
+
+{% block title %}phylo4j Explorer{% endblock %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="/static/apps/phylo4j/css/bootstrap.min.css"
+    type="text/css" media="screen"/>
+<link rel="stylesheet" href="/static/apps/phylo4j/css/jquery.dataTables_themeroller.min.css"
+    type="text/css" media="screen"/>
+{% endblock %}
+
+{% block extrascripts %}
+<script type="text/javascript" src="/static/apps/phylo4j/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/apps/phylo4j/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/static/apps/phylo4j/js/dataTables.jqueryui.js"></script>
+<script type="text/javascript" src="/static/apps/phylo4j/js/arbor.js"></script>
+<script type="text/javascript">
+    // DJANGO TO JAVASCRIPT VARIABLES HERE
+    var allRelationships = {{ all_relationships|safe }};
+</script>
+<script type="text/javascript" src="/static/apps/phylo4j/js/phylo4j-explorer.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class='explorer-pane'>
+    <table class='explorer-title'>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="input-group">
+                          <input type="text" class="form-control" id="explorer-search-input">
+                          <span class="input-group-btn">
+                            <button class="btn btn-default" id="explorer-search-button" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                          </span>
+                        </div><!-- /input-group -->
+                      </div><!-- /.col-lg-6 -->
+                      <div class='explorer-search-loading hidden'>
+                        <img src='/static/apps/phylo4j/images/24-24-loading-icon.gif' />
+                      </div>
+                    </div><!-- /.row -->
+                </td>
+                <td rowspan="2"><p class='hidden graph-title'></p></td>
+                <td rowspan="2"><p class='app-title'>phylo4j explorer</p></td>
+            </tr>
+            <tr>
+                <td>
+                    <p class='instruction-text'>Search for a region of the graph to explore <a href="javascript:;" class="tip"  
+                    title="Enter a UniProt accession, GenBank identifier, bpg accession or node id to jump to the corresponding node in the graph.">?</a>
+                    </p><p class='search-error hidden'></p><p class='explorer-loading-status hidden'></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Begin explorer display table -->
+    <div class='explorer-display-main-holder'>
+        <div class='explorer-display ui-widget-content hidden'>
+            <table class='explorer-display-table'>
+                <tbody>
+                    <tr>
+                        <td><div class='explorer-graph-display'></div></td>
+                        <td>
+                            <div class='explorer-graph-toolbar'>
+                                <p>Toolbar</p>
+                                <!-- Table for toolbar -->
+                                <p>Display depth <select id='graph-depth-control'>
+                                                    <option value='1'>1</option>
+                                                    <option value='2'>2</option>
+                                                </select></p>
+                                <p><button class='ui-widget-content ui-corner-all' id='customize-edges'>Customize Edges</button><button class='ui-widget-content ui-corner-all tip' title='Refresh graph visualization' id='refresh-graph'><span class="ui-icon ui-icon-refresh"></span></button></p>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- End explorer display table --> 
+    <table class='explorer-properties-main-table hidden'>
+        <tbody>
+            <tr>
+                <td class='first-col'>
+                    <div class='explorer-property-subtable this-node'>
+                        <p>Properties of this node</p>
+                        <div class='this-node-table hidden'></div>
+                    </div>
+                </td>
+                <td class='second-col'>
+                    <div class='explorer-property-subtable these-relations'>
+                        <p>Relations to/from this node</p>
+                        <div class='these-relations-table hidden'>
+                        </div>
+                        
+                    </div>
+                </td>
+                <td class='third-col'>
+                    <div class='explorer-property-subtable this-selection hidden'>
+                        <p>Properties of this selection</p>
+                        <div class='this-selection-table hidden'></div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="edge-modal" title="Customize displayed edge types">
+    <div class="edge-checkbox-container">
+        {% for rel in all_relationships %}
+            <span>{{ rel }} <input type="checkbox" name="edge" value="{{ rel }}" id="{{ rel }}" checked="checked"/></span>
+        {% endfor %}
+    </div>
+</div>            
+{% endblock %}

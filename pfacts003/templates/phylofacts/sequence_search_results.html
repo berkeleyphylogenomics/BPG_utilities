@@ -1,0 +1,30 @@
+{% extends "common/base.html" %}
+
+{% block title %}PhyloFacts Sequence Search{% endblock %}
+
+{# TODO Make Universal and not for each page #}
+{% block extrastyle %}  
+  <link rel="stylesheet" href="/static/css/blueprint/screen.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" type="text/css" href="/static/apps/phog/css/phog_datagrid.css"/>
+{% endblock %}
+
+{% block extrascripts %}
+<script type='text/javascript'>
+    jQuery(document).ready( function() 
+    {
+        // load the final results from the api
+        jQuery.get("/api/sequence_classifier_jobs/{{ id }}/",
+            function(data) 
+            {
+                    jQuery("#results").html("<li>"+data["results"]+"</li>");
+            });
+    });
+</script>
+
+
+{% endblock %} 
+
+{% block content %}
+<div id="results"> </div>
+
+{% endblock %}

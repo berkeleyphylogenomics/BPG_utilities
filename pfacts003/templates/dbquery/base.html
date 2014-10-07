@@ -1,0 +1,18 @@
+{% extends "common/legacy_base.html" %}
+
+{% block mid_menu %}
+<li><a href='/dbquery/about/'>About DB Query</a> | </li>
+<li><a href='/dbquery/help/'>Help</a> | </li>
+{% endblock %}
+
+{% block app_logo %}<a href='/dbquery/'><span>DB Query</span></a>{% endblock %}
+
+{% block content %}
+
+<h3>{% block body_title %}DB Query{% endblock %}</h3>
+
+{% block sub_content %}{% endblock %}
+<p>Funding for PhyloFacts is provided by the <a href='http://phylofacts.berkeleye.edu/funding/'>National Science Foundation</a>.</p>
+
+<p><a href="/contact_us/?subject=DB+Query+Web+Site+Questions+and+Comments">Contact us</a> to submit feedback, request help, or report a bug.</p>
+{% endblock %}

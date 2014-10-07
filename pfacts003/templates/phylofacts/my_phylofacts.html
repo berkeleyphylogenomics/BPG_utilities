@@ -1,0 +1,250 @@
+{% extends 'common/base_new.html' %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="/static/css/DT_bootstrap.css">
+<style>
+.deleted-job {
+    background-color:#FCF8E3 !important;
+    color:#C09853;
+}
+.deleted-job td {
+    background-color:#FCF8E3 !important;
+}
+.legend {
+    float:left;
+    margin-bottom:10px;
+    width:100%;
+}
+.row-explanation {
+    float:left;
+    margin-right:10px;
+}
+.row-explanation div {
+    width:40px;
+    height:20px;
+    float:left;
+    margin-right:5px;
+}
+.running-job {
+    background-color:#D9EDF7 !important;
+    color:#3A87AD;
+}
+.running-job td {
+    background-color:#D9EDF7 !important;
+}
+.error-job {
+    background-color:#F2DEDE !important;
+    color:#B94A48;
+}
+.error-job td {
+    background-color:#F2DEDE !important;
+}
+#fatcat-table {
+    float:left;
+    margin-left:20px;
+    margin-right:20px;
+}
+#fatcat-jobs {
+    float:left;
+    margin-bottom:20px;
+}
+#fatcat-jobs h4 {
+    float:left;
+    width:100%;
+    margin-top:0px;
+}
+#view-hide-fatcat {
+    text-decoration:none;
+    color:#41677A;
+}
+</style>
+{% endblock %}
+
+{% block extrascripts %}
+<script type="text/javascript">
+$j(document).ready(function() {
+    $j( '#view-hide-fatcat' ).click(function() {
+        if ($j(this).find('.icon-plus').length != 0) {
+            $j(this).find('.icon-plus').removeClass('icon-plus').addClass('icon-minus');
+            $j( '#fatcat-table' ).show();
+        }
+        else {
+            $j(this).find('.icon-minus').removeClass('icon-minus').addClass('icon-plus');
+            $j('#fatcat-table').hide();
+        }
+    });
+    $j( "#left-tabs" ).tabs();
+    $j( "#left-tabs" ).tabs().addClass('ui-tabs-vertical ui-helper-clearfix');
+    $j( "#left-tabs li" ).removeClass('ui-corner-top').addClass('ui-corner-left');
+    $j.extend( $j.fn.dataTableExt.oSort, {
+        'datetime-pre': function ( a ) {
+            var d = a.split(',')[1];
+            var t = a.split(',')[0];
+            if (t.match(/p/)) {
+                t = t.split(' ')[0];
+                return Date.parse(d) + 43200000 + parseInt(t.split(':')[0])*60*60*1000 + parseInt(t.split(':')[1])*60*1000;
+            }
+            else {
+                t = t.split(' ')[0];
+                return Date.parse(d) + parseInt(t.split(':')[0])*60*60*1000 + parseInt(t.split(':')[1])*60*1000;
+            }
+        },
+        'datetime-asc': function ( a, b ) {
+            return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+        },
+        'datetime-desc': function ( a, b ) {
+            return ((a < b) ? 1 : ((a > b) ? -1 : 0));
+        }
+    });
+    $j( '#fatcat-jobs table' ).dataTable({
+        'sDom': "<'row'<'span4'l><'span4'f>r>t<'row'<'span4'i><'span6'p>>",
+        'sPaginationType': 'bootstrap',
+        'iDisplayLength': 5,
+        'aaSorting': [[ 1, 'desc' ]],
+        'aoColumns' : [
+                        null, // job ID
+                        {'sType': 'datetime'}, // created at
+                        null, // status
+                        null, // header
+                        null  // submitting ip
+                      ],
+        'oLanguage': {
+            'sLengthMenu': '_MENU_ records per page'
+        }
+    });
+    
+    $j(" #password-form-hide ").click(function() {
+        if ($j(this).html() == "Change") {$j(this).html('Close'); $j('.password-change').show();}
+        else {$j(this).html('Change'); $j('.password-change').hide();}
+    });
+    $j('#pass-change').click(function() {
+        $j('#pass-change').attr('disabled','disabled');
+        $j('.creating').show();
+        if ($j('#first-password').val().length > 5) {
+            if ($j('#first-password').val() == $j('#confirm-password').val()) {
+                $j.post('/api/password_change/', {'password': $j('#confirm-password').val()},
+                    function(data) {
+                        if (data.error) {
+                            $j('.control-group').removeClass('success').addClass('error');
+                            $j('#password-help').html('Error changing password');
+                        }
+                        else {
+                            $j('.control-group').removeClass('error').addClass('success');
+                            $j('#password-help').html('Password changed');
+                        }
+                    });
+            }
+            else {
+                $j('.control-group').removeClass('success').addClass('error');
+                $j('#password-help').html('Passwords must match');
+            }
+        }
+        else {
+            $j('.control-group').removeClass('success').addClass('error');
+            $j('#password-help').html('Password must be greater than 5 characters');
+        }
+        $j('#pass-change').removeAttr('disabled');
+        $j('.creating').hide();
+    });
+});
+</script>
+{% endblock %}
+
+{% block title %}{{ user.username }}'s PhyloFacts{% endblock %}
+
+{% block content %}
+<div class="phylofacts-well">
+  <div class="phylofacts-well-header">
+    <h2>{{ user.username }}'s PhyloFacts</h2>
+    <p>Last login: {{ user.last_login }}</p>
+    <div class="cleaner"></div>
+  </div>
+
+  <div id="left-tabs">
+      <ul class="left-tabs-cls">
+        <li><a href="#user-profile">Profile</a></li>
+        <li><a href="#user-annotations">Annotated Nodes</a></li>
+        <li><a href="#user-jobs">Submitted Jobs</a></li>
+      </ul>
+    <div id="user-profile" class="phylofacts-treenode-content">
+        <h3>Your profile</h3>
+        <p><strong>Username:</strong> {{ user.username }}</p>
+        <p><strong>Password:</strong> <button id="password-form-hide" class="btn" type="button">Change</button></p>
+        <div class="password-change hide">
+            <div class="control-group">
+                <label class="control-label" for "first-password">New password</label>
+                <div class="controls">
+                    <input type="password" id="first-password">
+                    <span class="help-inline"></span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for "confirm-password">Confirm password</label>
+                <div class="controls">
+                    <input type="password" id="confirm-password">
+                    <span id="password-help" class="help-inline"></span>
+                </div>
+            </div>
+            <p>
+                <button id="pass-change" class="btn-primary" type="button">Change</button>
+                <span class="creating hide">
+                    <img class="creating-logo" src="/static/img/icons/small-loading-icon.gif" />
+                    <span class="creating-text">Changing password...</span>
+                </span>
+            </p>
+        </div>
+        <p><strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+        <h4>Profile Information</h4>
+        <p><strong>Institution:</strong> {{ user.profile.get.institution }}</p>
+        <p><strong>Position:</strong> {{ user.profile.get.user_position }}</p>
+        <p><strong>Institution Address:</strong> {{ user.profile.get.institution_address }}</p>
+        <p><strong>Institution Country:</strong> {{ user.profile.get.institution_country }}</p>
+    </div>
+    <div id="user-annotations" class="phylofacts-treenode-content">
+        <h3>Nodes you annotated</h3>
+        <p></p>
+    </div>
+    <div id="user-jobs" class="phylofacts-treenode-content">
+        <h3>Jobs you submitted</h3>
+        <div class='legend'><div class='row-explanation'><div class='deleted-job'></div> = Job deleted</div><div class='row-explanation'><div class='running-job'></div> = Job running</div><div class='row-explanation'><div class='error-job'></div> = Job Error</div></div>
+        <div id='fatcat-jobs'>
+            <h4><a href='javascript:;' id='view-hide-fatcat'><i class='icon-plus'></i>FAT-CAT Jobs</a></h4>
+        <div id='fatcat-table' style='display:none'> 
+        <table class='table table-bordered'>
+            <thead>
+                <tr>
+                    <th>Job ID</th>
+                    <th>Created at</th>
+                    <th>Status</th>
+                    <th>Header</th>
+                    <th>Submitting IP</th>
+                </tr>
+            </thead> 
+            <tbody>
+                {% for job in fatcat_jobs %}
+                    <tr {% if job.is_deleted %} 
+                            class='deleted-job'
+                        {% else %}
+                            {% if job.is_running %}
+                                class='running-job'
+                            {% else %}
+                                {% if job.is_error %}
+                                    class='error-job'
+                                {% else %}
+                                    class='completed-job'
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}>
+                        <td>{% if job.is_deleted %}{{ job.id }}{% else %}<a href='/phylofacts/fatcat/{{ job.id }}/'>{{ job.id }}</a>{% endif %}</td>
+                        <td>{{ job.created_at|date:"g:i a, D d M Y" }}</td>
+                        <td>{{ job.status.status }}</td>
+                        <td>{{ job.fasta_header }}</td>
+                        <td>{{ job.submitter_ip_address }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        </div>
+    </div>
+{% endblock %}

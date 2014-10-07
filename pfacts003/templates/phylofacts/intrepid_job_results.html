@@ -1,0 +1,115 @@
+<head>
+    <link rel="stylesheet" href="/static/css/blueprint/screen.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/static/css/blueprint/print.css" type="text/css" media="print" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.dataTables.min.js"></script>
+    <script src="/static/js/highcharts/highcharts.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/static/css/custom-theme/jquery-ui-1.8.17.custom.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/static/css/phylofacts.css" type="text/css" />
+    <link rel="stylesheet" href="/static/css/tooltips.css" type="text/css" media="screen" />
+</head>
+
+<script>
+var score_chart;
+//var res_array = {{ intrepid_res_name }};
+//var rank_array = {{ intrepid_cons_js_rank }};
+$(document).ready(function() {
+    //console.log(res_array);
+    //console.log(rank_array);
+    $( "#residue_table" ).dataTable(
+    {
+        "iDisplayLength": 25,
+        "bJQueryUI": true,
+        "sPaginationType": "full_numbers",
+        "aaSorting": [[0, 'asc']]
+    });
+    score_chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'graph_div',
+            type: 'line',
+            //marginRight: 130,
+            //marginBottom: 100,
+            reflow: false,
+            zoomType: 'x',
+            width: 700
+        },
+        plotOptions: {
+            area: {
+                lineWidth: 1,
+                shadow: false,
+                states: {
+                    hover: {
+                        lineWidth: 1
+                        }
+                    }
+                },
+            series: {
+                marker: {
+                    enabled: false,
+                    states: {
+                        hover: {
+                            enabled: true
+                            }
+                        }
+                    }
+                }
+        },
+        credits: {enabled:false},
+        title: {
+            text: 'INTREPID Scores for job {{ id }}'
+        },
+        subtitle: {
+            text: 'Click and drag the plot area to zoom in'
+        },
+        xAxis: {
+            title: {
+                text: 'Residue Position'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Residue Score'
+            }
+        },
+        tooltip: {shared: true},
+        legend: {enabled: false},
+        series: [
+            {
+                name: 'Residue Score',
+                data: {{ intrepid_cons_js_score }}
+            }]
+    });
+});
+
+</script>
+
+<h2 style="margin-top:20px;">INTREPID Results</h2>
+
+<div id="graph_div">
+</div>
+
+<h3>Residue Rank Table</h3>
+
+<div id="table_div">
+    <table id="residue_table">
+        <thead>
+            <tr>
+                <th>Residue<br />Rank</th>
+                <th>Residue</th>
+                <th>Residue<br />Position</th>
+                <th>Residue<br />J-S Score</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for row in intrepid_datatable_rows %}
+            <tr>
+                <td>{{ row.5 }}</td>
+                <td>{{ row.1 }}</td>
+                <td>{{ row.0 }}</td>
+                <td>{{ row.4 }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+

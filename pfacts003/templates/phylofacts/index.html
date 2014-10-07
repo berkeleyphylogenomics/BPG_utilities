@@ -1,0 +1,405 @@
+{% extends "common/base.html" %}
+
+{% block title %}PhyloFacts{% endblock %}
+{% block extrastyle %}
+<style type="text/css">
+    div.loading-invisible{
+        display:none;
+    }
+    div.loading-visible{
+        display:block;
+        position:absolute;
+        top:50%;
+        left:50%;
+        width:125px;
+        margin-left:-63px;
+        background:#fff;
+        opacity:.75;
+    }
+</style>
+{% endblock %}
+
+{% block extrascripts %}
+<script type='text/javascript'>
+    var jobID;
+    var intID;
+    jQuery(document).ready(function() 
+    {
+        jobID = "-1";
+        jQuery("#loading").attr('class','loading-invisible');
+        jQuery("#sequence-search-messages").hide();
+        jQuery("#force-sequence-search").hide();
+        jQuery("#sequence-search-errors").hide();
+    });
+    function parseHMMBLASTReturn(data)
+    {
+        switch ( data["status"] )
+        {
+            case "existing":
+                jQuery("#sequence-search-messages").html(
+                    "<li>Your query (" + data["accession"] +
+                    ") is already classified in a PhyloFacts family.</li>" + 
+                    "<li><a href='sequence/UniProt/" + data["accession"] +
+                    "'>Click here to view the PhyloFacts sequence page " +
+                    "for your query</a></li><li>OR</li>"); 
+                jQuery("#force-sequence-search").html(
+                    "Submit to HMM-BLAST search anyway");
+                jQuery("#sequence-search-messages").show();
+                jQuery("#force-sequence-search").show();
+                break;
+            case "error":
+                var errs = data["errors"];
+                errorstring = "";
+                for (var err = 0; err < errs.length; errs++)
+                {
+                    errorstring += "<li>" + errs[err] + "</li>";    
+                }
+                jQuery("#sequence-search-errors").html(errorstring); 
+                jQuery("#sequence-search-errors").show();
+                break;
+            case "created":
+                jQuery("#loading").attr('class','loading-visible');
+                jobID = data["id"];
+                intID = window.setInterval("checkStatus()",1000)
+                break;
+            case "done":
+                window.clearInterval(intID)
+                window.location="/phylofacts/search/sequence/results/" + jobID
+            default:
+                jQuery("#sequence-search-messages").html( 
+                    "<li>" + data["status"] + "</li>");
+                jQuery("#sequence-search-messages").show();
+        }
+    }
+
+    function checkStatus()
+    {
+        jQuery.get("/api/sequence_classifier_jobs/" + jobID + "/", 
+            function(data) { parseHMMBLASTReturn(data); });
+    }
+
+    function postHMMBLASTSearchJob( force )
+    {
+        jQuery("#sequence-search-messages").hide();
+        jQuery("#sequence-search-errors").hide();
+        jQuery("#force-sequence-search").hide();
+        jQuery("#loading").attr('class','loading-invisible');
+        jQuery.post("/api/sequence_classifier_jobs/",
+          {'input' : jQuery("#sequence-search-field").val(), 'f': force},
+           function(data) { parseHMMBLASTReturn(data); });
+    }
+    
+    function parsePhyloFactsSearchReturn(data)
+    {
+        switch ( data["status"] )
+        {
+            case "redirect":
+                window.location = data["url"]
+                break;
+            case "error":
+                jQuery(data["displaytodiv"]).html(data["message"]);
+                jQuery(data["displaytodiv"]).show();
+                break;
+        }
+    }
+
+    // TODO: We can make this more clever with some string functions
+
+    jQuery(function() {
+        jQuery("#sequence-search-field").keypress(function(event) {
+            if ( event.which == 13)
+            {
+                event.preventDefault();
+                jQuery("#sequence-search-button").click();
+            }
+        });
+        jQuery("#phylofacts-family-search-field").keypress(function(event) {
+            if ( event.which == 13)
+            {
+                event.preventDefault();
+                jQuery("#phylofacts-family-search-button").click();
+            }
+        });
+        jQuery("#accession-search-field").keypress(function(event) {
+            if ( event.which == 13)
+            {
+                event.preventDefault();
+                jQuery("#accession-search-button").click();
+            }
+        });
+
+	// Added to link the phylofacts-pfam-search from another page.
+	if (window.location.hash == "#phylofacts-pfam-search") {
+	    jQuery("#phylofacts-pfam-search").click();
+	 }
+
+        jQuery("#phylofacts-pfam-search-field").keypress(function(event) {
+            if ( event.which == 13)
+            {
+                event.preventDefault();
+                jQuery("#phylofacts-pfam-search-button").click();
+            }
+        });
+        jQuery("#phylofacts-biocyc-search-field").keypress(function(event) {
+            if ( event.which == 13)
+            {
+                event.preventDefault();
+                jQuery("#phylofacts-biocyc-search-button").click();
+            }
+        });
+        jQuery("#sequence-submit").click( function() 
+        {
+            postHMMBLASTSearchJob( "F" );
+            window.clearInterval(intID);
+        });
+        jQuery("#phylofacts-pfam-search-button").click( function()
+        {
+            jQuery.post("/api/phylofacts/search/",
+                {'input' : jQuery("#phylofacts-pfam-search-field").val(),
+                'div_id' : '#phylofacts-pfam-search-errors'},
+                function(data) {parsePhyloFactsSearchReturn(data); });
+        });
+        jQuery("#phylofacts-biocyc-search-button").click( function()
+        {
+            jQuery.post("/api/phylofacts/search/",
+                {'input' : jQuery("#phylofacts-biocyc-search-field").val(),
+                'div_id' : '#phylofacts-biocyc-search-errors'},
+                function(data) {parsePhyloFactsSearchReturn(data); });
+        });
+        jQuery("#phylofacts-family-search-button").click( function()
+        {
+            jQuery.post("/api/phylofacts/search/",  
+            {'input' : jQuery("#phylofacts-family-search-field").val(),
+            'div_id' : '#phylofacts-family-search-errors'}, 
+            function(data) {parsePhyloFactsSearchReturn(data); });
+        });
+        jQuery("#accession-search-button").click( function()
+        {
+            jQuery.post("/api/phylofacts/search/",  
+            {'input' : jQuery("#accession-search-field").val(),
+            'div_id' : '#accession-search-errors'}, 
+            function(data) {parsePhyloFactsSearchReturn(data); });
+        });
+        jQuery("#force-sequence-search").click( function(e)
+        {
+            e.preventDefault();
+            postHMMBLASTSearchJob( "T" );
+            window.clearInterval(intID);
+        });
+        jQuery("#phylofacts-family-search").click( function()
+        {
+            jQuery("#loading").attr('class','loading-invisible');
+            window.clearInterval(intID);
+        }); 
+        jQuery("#accession-search").click( function()
+        {
+            jQuery("#loading").attr('class','loading-invisible');
+            window.clearInterval(intID);
+        });
+        jQuery(".close-panel").click(function()
+        {
+            jQuery("#loading").attr('class','loading-invisible');
+            window.clearInterval(intID);
+        });
+    });
+</script>
+
+
+{% endblock %}
+
+
+{% block content %}
+    <div id="loading" class="loading-invisible">
+        <p>
+        <img src="/static/img/widgets/EMBLTreeOfLifeWhirlingLayers.gif" alt="Loading">
+        </p>
+    </div>
+
+      <!-- TODO: we may not need blueprint wrappers separately from the classes they wrap  -->
+      <div style="width:1100px;">
+        <div id="index">
+          <div class="span-24" >
+            <div id="intro">
+              <h2>PhyloFacts 3.0.2</h2>
+              <p>
+	            PhyloFacts release PF3.0.2 contains 7,337,238 protein sequences from 
+                99,254 unique taxa (including strains) across 92,800 families 
+                (25,446 grouped by PFAM domain and 67,354 grouped by multi-domain 
+                architecture agreement).&nbsp;<a href="#" id="show-full-description-link">More ...</a>
+
+              <span id="hidden-description">
+              The PhyloFacts resource integrates a wealth of information on
+              protein families from across the Tree of Life. For each family,
+              PhyloFacts includes a multiple sequence alignment, one or more
+              phylogenetic trees, predicted 3D protein structures, cellular
+              localization, and Gene Ontology (GO) annotations and evidence
+              codes. PhyloFacts includes hidden Markov models for
+              classification of user-submitted protein sequences to protein
+              families across the Tree of Life. 
+              <br /><br />
+              The protein families in
+              PhyloFacts typically contain homologs from many species. The
+              phylogenetic distribution of a protein family can vary from
+              highly restricted (e.g., mammals) to throughout the Tree of Life.
+              Gathering homologs from many divergent species enables us to take
+              advantage of experimental investigations in different systems,
+              and allows powerful inferences of function and structure that
+              might not otherwise be possible.  &nbsp;<a href="#"
+              id="hide-full-description-link">Less ...</a>
+              </span>
+              </p>
+            </div><!-- close of "#intro" div -->
+          </div><!-- close "span-24" div that holds the "#intro" div -->
+
+          <div>
+            <div class="span-7" >
+              <div id="controlPanel" >
+                <ul>
+                  <li><a href="#" id="accession-search">SEQUENCE ACCESSION SEARCH</a></li>
+		          <li><a href="/phog/">ORTHOLOG IDENTIFICATION</a></li>
+                  <!-- <li><a href="#" id="sequence-search">HMM-BLAST SEARCH</a></li> -->
+                  <!-- <li><a href="#" id="orthology-search">ORTHOLOGY SEARCH</a></li> -->
+                  <li><a href="#" id="phylofacts-family-search">JUMP TO PHYLOFACTS FAMILY</a></li>
+                  <li><a href="#" id="phylofacts-pfam-search">PHYLOFACTS-PFAM SEARCH</a></li>
+                  <li><a href="#" id="phylofacts-biocyc-search">PHYLOFACTS-BioCyc SEARCH</a></li>
+                  <li><a href="coverage/" >GENOME COVERAGE</a></li>
+                  <!-- <li><a href="#" id="download">DOWNLOAD</a></li> -->
+                  <!-- <li><a href="/phylofacts/quick_start/" id="quick-start">QUICK START</a></li> -->
+                  <li><a href="statistics/">STATISTICS</a></li>
+                  <li><a href="downloads/" >DOWNLOADS</a></li>
+		  <!-- <li><a href="/phog/">PHOG</a></li> -->
+                  <li><a href="citations/ ">CITING PHYLOFACTS</a></li>
+                </ul>
+              </div><!-- end of "#controlPanel" div -->
+            </div><!-- end of "span-8" div that holds the "#controlPanel" div -->
+
+            <div class="span-12" >
+              <div id="rightPanel">
+                <ul id="menu-options">
+                  <li>Query PhyloFacts by UniProt accession or identifier</li>
+		          <li>PhyloFacts Orthology Group: phylogenetic orthologs</li>
+                  <!-- <li>Find PhyloFacts matches to your protein sequence</li> -->
+                  <!-- <li>Find orthologs to your sequence using PhyloFacts</li> -->
+                  <li>View PhyloFacts family alignments, trees, and annotations</li>
+                  <li>Query PhyloFacts by Pfam accession (<a href="about_pf_pfam/" style="font-weight: normal;">PhyloFacts-Pfam Project)</a></li>
+                  <li>Query PhyloFacts by BioCyc reactions (<a href="about_pf_pfam/" style="font-weight: normal;">PhyloFacts-BioCyc Project)</a></li>
+                  <li>View coverage of key species in PhyloFacts</li>
+                  <!-- <li>Download PhyloFacts data and software</li> -->
+                  <li>View PhyloFacts coverage statistics</li>
+                  <li>Download PhyloFacts data</li>
+                  <!-- <li>How to use PhyloFacts</li> -->
+		  <!-- <li>PhyloFacts Orthology Group: phylogenetic orthologs</li> -->
+                  <li>How to cite PhyloFacts</li>
+                </ul>
+                <div id="phylofacts-pfam-search-panel" class="panel">
+		<h3><a href="about_pf_pfam/">The PhyloFacts-Pfam Project</a></h3>
+                  <h3 style="text-transform: none;">Query PhyloFacts by Pfam accession</h3>
+                    <p>Enter a Pfam accession, e.g., PF00069</p>
+                    <form id="phylofacts-pfam-search-form">
+                    <div>
+                        <div id="phylofacts-pfam-search-errors" class="form-errors"></div>
+                        <input class='input-box'
+                                type='text'
+                                name='query'
+                                id='phylofacts-pfam-search-field'
+                                size="30" />
+                        <input id="phylofacts-pfam-search-button" type="button" value="Submit" />
+                        <input id="phylofacts-pfam-search-example" type="submit" value="Example" />
+                    </div>
+                    <div class="close-panel-div"><a class="close-panel"  href="#">Close This Panel</a></div>
+                    </form>
+                    </div>
+                <div id="phylofacts-biocyc-search-panel" class="panel">
+		<h3><a href="about_pf_pfam/">The PhyloFacts-BioCyc Project</a></h3>
+                  <h3 style="text-transform: none;">Query PhyloFacts by BioCyc data</h3>
+                    <p>Enter a BioCyc reaction id or EC number, e.g., 2.7.7.- or 3.1.1.1 or CARBOXYLESTERASE-RXN to view associated information in PhyloFacts</p>
+                    <form id="phylofacts-biocyc-search-form">
+                    <div>
+                        <div id="phylofacts-biocyc-search-errors" class="form-errors"></div>
+                        <input class='input-box'
+                                type='text'
+                                name='query'
+                                id='phylofacts-biocyc-search-field'
+                                size="30" />
+                        <input id="phylofacts-biocyc-search-button" type="button" value="Submit" />
+                        <input id="phylofacts-biocyc-search-example" type="submit" value="Example" />
+                    </div>
+                    <div class="close-panel-div"><a class="close-panel"  href="#">Close This Panel</a></div>
+                    </form>
+                    </div>
+                <div id="phylofacts-family-search-panel" class="panel">
+                  <h3>View PhyloFacts family alignments, trees and annotations</h3>
+                  <p>Enter a PhyloFacts family accession, e.g., bpg0240116</p>
+                  <form id="phylofacts-family-search-form">
+                    <div>
+                      <div id="phylofacts-family-search-errors" class="form-errors" > </div>
+                      <input class='input-box' 
+                             
+                             type="text"
+                             name="query"
+                             id="phylofacts-family-search-field"
+                             size="30" />
+                      <input id ='phylofacts-family-search-button' type="button" value="Submit" />
+                      <input id='phylofacts-family-search-example' type="submit" value="Example" />
+                    </div>
+                    <div class="close-panel-div"><a class="close-panel"  href="#">Close This Panel</a></div>
+                  </form>
+                </div>
+
+                <div id="sequence-search-panel" class="panel">
+                  <h3>Analyze your protein sequence for PhyloFacts matches</h3>
+                  <p>
+                  Paste your protein sequence in FASTA format here to find matching PhyloFacts families.
+                  </p>
+                  <form id="sequence-search-form">
+                    <div>
+                        <div id="sequence-search-messages" class="form-errors"></div><a href="#" id="force-sequence-search"></a>
+                        <div id="sequence-search-errors" class="form-errors" > </div>
+                      <textarea name="input" id="sequence-search-field"></textarea>
+                    </div>
+                    <p class="small nlh">
+                    <!-- Put details of sequence search here when they are completed -->
+                    </p>
+                    <p>
+                      <input id="sequence-submit" type="button" value="Submit" />
+                      <input id="sequence-search-example" type="submit" value="Example" />
+                    </p>
+                  </form>
+                  <div class="close-panel-div"><a class="close-panel"  href="#">Close This Panel</a></div>
+                </div>
+
+
+                <div id="accession-search-panel" class="panel">
+                  <h3>Query Phylofacts by accession</h3>
+                  <p>Enter a UniProt accession or identifier, e.g., P30559 or OXYR_HUMAN, to view associated information in PhyloFacts.</p>
+                  <form id="accession-search-form">
+                    <div>
+                      <div id="accession-search-errors" class="form-errors" > </div>
+                      <input class='input-box'
+                             type="text"
+                             name="query"
+                             id="accession-search-field"
+                             size="30" />
+                      <input id = "accession-search-button" type="button" value="Submit" />
+                      <input id="accession-search-example" type="submit" value="Example" />
+                    </div>
+                  </form>
+                  <div class="close-panel-div"><a class="close-panel"  href="#">Close This Panel</a></div>
+                </div>
+
+
+
+              </div><!-- close of "#rightPanel" div -->
+            </div><!-- close of "span-16" div that holds the "#rightPanel" div -->
+	    <center>
+	    <p style="clear: both; padding-top: 2em;">PhyloFacts is funded by a grant from the Department of Energy, Division of Biological and Environmental Research (<a href="/funding">details</a>).</p>
+	    </center>
+          </div><!-- close of "span-24" div -->
+
+        </div><!-- close of "#index" div -->
+
+      </div><!-- close of "span-24" div that holds the "#index" div -->
+
+
+
+{% endblock %}

@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"> 
+ 
+<head> 
+    <meta http-equiv="content-type" 
+          content="text/html;charset=utf-8" /> 
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=4594231;
+var sc_invisible=1;
+var sc_security="9a31b554";
+</script>
+
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter_xhtml.js"></script><noscript><div
+class="statcounter"><a title="stat tracker for tumblr" class="statcounter"
+href="http://www.statcounter.com/tumblr/"><img class="statcounter"
+src="http://c.statcounter.com/4594231/0/9a31b554/1/" alt="stat tracker for
+tumblr" /></a></div></noscript>
+<!-- End of StatCounter Code -->
+
+    <link rel="stylesheet"
+          href="/static/css/bpg_base.css" 
+          type="text/css" />
+    
+<style type='text/css'>
+#content {
+    margin: 0 1em;
+}
+p, caption {
+    line-height: 105%;
+}
+</style>
+
+    <title>HYPNO HYbrid Protein NucleOtide Phylogenetic Trees
+</title>
+</head>
+
+<body><div id='frame'>
+<div id='header'>
+    <div id="app_logo"><a href='/HYPNO'><span>HYPNO</span></a></div>
+    <div id='site_logo'>
+    <a href='/'><img
+        src='/static/img/logos/bpg.png'
+        alt='Celtic Tree of Life by Jen Detyth (c) 1990; http://www.kelticdesigns.com/'
+        width='300' height='120' /></a></div>
+    <div id='kmenu'>
+        <ul>                      
+            <li><a href='/'>Home</a> | </li>            <li><a href='/HYPNO/'>About HYPNO</a> | </li>
+            <li><a href='/HYPNO/help'>Help</a> | </li>
+            <li><a href='/contact_us'>Contact</a></li>
+        </ul>
+    </div>
+</div>
+<!--<div id='top_menu'>-->
+<!--</div>-->
+
+<div id='content'>
+
+<div id='content'>
+
+<h1>User Guide</h1>
+<p>
+New users: Please see the HYPNO README (included in source code ZIP file) for installation and usage details.
+</p>
+
+<a name='faq'></a>
+<h1>Frequently Asked Questions (FAQ)</h1>
+<p><i>Q: My input tree and MSA contain a sequence with a valid UniProt accession. 
+  However, the HYPNO output tree and MSA do not contain entries for this accession. 
+  Where did it go?</i></p>
+
+<p>
+A: In this case, a nucleic acid sequence could not be retrieved for the given tree/MSA 
+entry (for an explanation of this, see next question). However, if the total percent 
+of entries for which nucleotide sequences were succesfully retrieved surpasses the --s 
+threshold, then HYPNO execution continues and leaves that entry out of the output tree/MSA.
+</p><br>
+
+<p><i>Q: When I try to run HYPNO under a given set of conditions, I am getting a 
+  "** HYPNO execution error" because not all nucleotide sequences were retrieved. 
+  First, why is this? Second, can you explain how to handle this?</i></p>
+
+<p>
+A: If a nucleic acid sequence cannot be retrieved for a given tree/MSA entry with 
+a valid UniProt ID, it may be for the following reasons:
+</p>
+
+<ol class='pipelist'>
+<li>The UniProt accession in question is an obsolete, demerged, or deleted entry 
+  -- in this case, a warning is printed to the command line standard output.</li>
+<li>A nucleic acid sequence could not be retrieved for this entry. More specifically, 
+  either <b>(a)</b> a matching nucleotide sequence was not retrieved from NCBI / EMBL / tBLASTn, 
+  or <b>(b)</b> a nucleotide sequence was retrieved, but the translation of this 
+  sequence failed to match the "--n" threshold for percent identity to the expected 
+  protein sequence (please refer to the README for explanation of the "--n" 
+  threshold criterion).</li>
+<li>Since HYPNO retrieves sequences from online NCBI, EMBL, and BLAST server resources, 
+  it is possible that issues with these servers, such as system downtime and time-outs, 
+  may prevent HYPNO from accessing information that would be available otherwise.</li>
+</ol>
+
+<p>
+In either of these cases, this error is incurred when the total percent of entries 
+for which nucleotide sequences were succesfully retrieved did not meet the "--s" 
+threshold, which is 100 percent by default, and the UniProt accession(s) for which 
+nucleotide sequence retrieval failed will be printed at standard output.
+</p>
+
+<p>
+In the event cases (i) and (ii), the user can relax the ivocation parameters "--n" and "--s".
+Decreasing the "--n" parameter may potentially allow the inclusion of a nucleic acid sequence
+which matches the given protein sequence at a lower percent identity. Likewise, relaxing the
+"--s" threshold may allow HYPNO execution to complete by simply discarding sequences for which
+the "--n" threshold cannot be satisfied. For a more formal description of these user parameters,
+please refer to the HYPNO README (included in source code ZIP 
+file) and/or the Supplementary Materials document.</p>
+
+<p>
+However, in the event that the remote database servers are temporarily unavailable, the user may
+have to wait until these resources come back online and are available for HYPNO remote database
+queries.</p><br>
+
+<p><i>Q: <b>HYPNO "debug" directory description</b>: First, how do I find out which subtrees were 
+refined by HYPNO? Also, what other information is available in the HYPNO "debug" directory?</i></p>
+
+<p>
+A: Upon successful execution of HYPNO, the standard output will refer the user to a HYPNO debug
+directory. This directory is created at the same path at which HYPNO is invoked, and it will have
+a name that derives from the current timestamp (e.g. "1361535403.34/"). In the "--tree" hybrid 
+tree refinement usage case, this directory contains lots of informative files. For example, it
+contains subtree protein MSA's (e.g. "foosf1.afa" through "foosf$.afa", where the input MSA 
+is "foo.msa" and $ total subtrees are selected) and subtree nucleotide MSA's and trees 
+(e.g. subtree1.afa / subtree1.ml through subtree$.afa /subtree$.ml under the same scenario)
+for each subtree selected by Kerf.
+</p>
+
+<p>
+For the user, two of the files in this directory may be the most informative:
+<ol class='pipelist'>
+<li>The lone .csv file in the directory (e.g. "foo.csv" where "foo.msa" is the input MSA). This file indicates which subtrees were refined by HYPNO by assigning subtree numbers to sequence clusters.</li>
+<li>The HYPNO.debug file. This file contains useful information regarding Nucleic Acid sequence retrieval for the given UniProt ID's (i.e. the given UniProt ID along with the database/accession for the matching nucleic acid sequence).</li>
+</ol>
+</p>
+
+<p>
+An example .csv file is as follows:
+<br>&nbsp;&nbsp;1, C3ZHF3
+<br>&nbsp;&nbsp;2, C3ZHF4
+<br>&nbsp;&nbsp;3, C3XZ54
+<br>&nbsp;&nbsp;4, C3YPJ0
+<br>&nbsp;&nbsp;5, C3YW84
+<br>&nbsp;&nbsp;5, C3YR62
+<br>&nbsp;&nbsp;6, Q4TJE1
+<br>&nbsp;&nbsp;6, Q4T5K8
+<br>&nbsp;&nbsp;6, Q4TES4
+<br>&nbsp;&nbsp;6, C3UZU5
+</p>
+<p>In this tree, sequences C3ZHF3, C3ZHF4, C3XZ54, and C3YPJ0 have not clustered with any other 
+sequences (i.e. are each pruned as a single leaf, with no characteristic topology).</p> 
+<p>Sequences C3YW84 and C3YR62 have been pruned as a subtree (number "5") -- however, because they comprise a 
+subtree with less than 3 leaves, the topology is relative and no topological re-ordering is possible.</p> 
+<p>The remaining accessions form a subtree (number "6") containing 4 leaves -- in this subtree, because it has at
+least three leaves, topological re-ordering is possible and is estimated by HYPNO.</p>
+<br>
+
+<p><i>Q: In my input MSA, protein sequence "X" has a specific amino acid at position "Y". However,
+the corresponding codon in the nucleotide MSA is "---", three gap characters. Why is this?</i></p>
+
+<p>
+A: When a nucleotide sequence is retrieved by HYPNO, there is the possibility that there will be 
+a mismatch between the given protein sequence and the retrieved nucleotide sequence. HYPNO tries
+to minimize these mismatches by selecting the top nucleotide sequence hits from sequence databases
+and identifying the best matching open reading frames within those hits. However, a case may still
+arise where nucleotide codon at a certain position does not not translate to the expected amino acid.
+This my arise for a couple reasons:
+</p>
+
+<ol class='pipelist'>
+<li>The UniProt sequence is an isoform representation (please see <a href='http://www.uniprot.org/faq/30'>
+  UniProt discussion on isoforms</a>) of the "canonical sequence" for a given gene, and does not perfectly
+  match the available nucleotide sequence for another isoform of the same gene.</li>
+<li>The nucleotide sequence indicated by UniProt or retrieved with tBLASTn surpasses the user specified
+  "--n" threshold but is not a perfect match for the given gene for another reason.</li>
+<li>The user provided protein sequence has an error at the position(s) in question.</li>
+</ol><br>
+
+<p><i>Q: When I try to run the program with a set of inputs, I am getting an error message: 
+"Bio.Data.CodonTable.TranslationError: Codon 'NUL' is invalid". What does this mean?</i></p>
+
+<p>
+A: This message means that the remote sequence databases that HYPNO uses to find nucleic acid sequences
+are temporarily unavailable, and attempts to access them have timed-out. Unfortunately, HYPNO execution
+can only successfully complete when these databases become available once again.
+</p>
+
+<!--img src="/static/apps/satchmo/img/icons/notepad_icon.png"
+     style="height:129px;width:111px" /-->
+<!--img src="/static/apps/satchmo/img/icons/text_edit_icon.png"
+     style="height:89px;width:91px" /-->
+
+<h1>Bugs</h1>
+<p>If you suspect you have found a bug, please report it by sending us an email at bpgHYPNO@gmail.com.
+</p>
+
+<!-- TODO: uncomment to add references
+
+  <h1>References cited:</h1>
+
+  <ol class='refs'>
+  <li><a target='_blank' href='[URL]' class='ref'> [Title] <i> [Journal] </i>, [Year], [Vol], [No] <b> [Pg].</b></a></li>
+  </ol>
+  </div>
+
+-->
+
+<!--div id='footer_menu'></div-->
+</div></body>
+</html>

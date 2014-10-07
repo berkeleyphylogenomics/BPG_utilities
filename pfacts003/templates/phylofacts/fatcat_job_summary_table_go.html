@@ -1,0 +1,29 @@
+{% for go_acc, tuple_list in go %}
+    <li class="annotation">
+        <a href="http://amigo.geneontology.org/cgi-bin/amigo/term_details?term={{ tuple_list.0.0.accession }}">{{ tuple_list.0.0.description }}</a>
+        <a href="http://www.geneontology.org/GO.evidence.shtml#{{ tuple_list.0.0.evidence_code|lower }}" class="tip" title="{{ tuple_list.0.0.evidence_description }}">({{ tuple_list.0.0.evidence_code }})</a>
+        <a href="javascript:;" class="tip jqs" title="View/Hide all orthologs with this GO annotation." data-otable="#go-{{ go_type }}-table{{ forloop.counter }}"><i class="icon-zoom-in"></i></a>
+        <div class="summary-go-ortholog-table" id="go-{{ go_type }}-table{{ forloop.counter }}">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Uniprot ID</td>
+                    <td>Description</td>
+                    <td>Species</td>
+                    <td>Evidence</td>
+                </tr>   
+            </thead>
+            <tbody>
+                {% for annotation, uni in tuple_list %}
+                    <tr>
+                        <td><a href="/phylofacts/sequence/UniProt/{{ uni.uniprot_identifier }}/">{{ uni.uniprot_identifier }}</a></td>
+                        <td>{{ uni.description }}</td>
+                        <td><a href="http://www.uniprot.org/taxonomy/{{ uni.taxon.id }}"{% if uni.taxon.common_name %} class="tip" title="{{ uni.taxon.common_name }}"{% endif %}>{{ uni.taxon.scientific_name }}</a></td>
+                        <td><p>{{ annotation.evidence_code }}: {{ annotation.evidence_description }}</p></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>  
+    </li>
+{% endfor %}

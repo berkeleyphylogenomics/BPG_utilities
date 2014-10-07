@@ -1,0 +1,86 @@
+{% extends "common/base.html" %}
+
+{% block title %}PhyloFacts Sequence Search{% endblock %}
+
+{# TODO Make Universal and not for each page #}
+{% block extrastyle %}  
+  <link rel="stylesheet" href="/static/css/blueprint/screen.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" type="text/css" href="/static/apps/phog/css/phog_datagrid.css"/>
+{% endblock %}
+
+
+{% block extrascripts %} {% endblock %}
+
+{% block content %}
+
+  <form action="/phylofacts/search/sequence/" method="post">
+    <h3>Enter a sequence in FASTA format:</h3>
+  
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %} 
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  
+    {{ form.input.errors }}
+    
+    <table>
+      {{ form.input }}
+    </table>
+  
+    <p><input type="submit" value="Submit"></p>
+  </form>
+
+
+
+
+{% if no_result_found %}
+  <p>{{ no_result_found }}</p>
+{% endif %}
+
+{% if best_ghg_matches %}
+<h4><b>Query:</b> {{ query_title }}</h4>
+<br />
+<h3>Matches to families sharing the same domain architecture</h3>
+<div class="datagrid-wrapper">
+  <div class="datagrid-titlebox">
+    <h1 class="datagrid-title"></h1>
+  </div>
+
+  <div class="datagrid-main">
+    <table class="datagrid" border=1>
+      <colgroup>
+        <col />
+        <col width="50%"/>
+        <col />
+        <col />
+        <col />
+      </colgroup>    
+      <thead>
+        <tr class="datagrid-headers">
+          <th class="datagrid-header"><span>PhyloFacts<br />Family</span></th>
+          <th class="datagrid-header"><span>Description</span></th>
+          <th class="datagrid-header"><span>Start-End</span></th>
+          <th class="datagrid-header"><span>E-value</span></th>
+          <th class="datagrid-header"><span>Alignment</span></th>
+        </tr>
+      </thead>
+      <tbody border=1>
+        {% for match_object in best_ghg_matches %}
+          <tr>
+            <td>{{ match_object.family_link }}</td>
+            <td>{{ match_object.description }}</td>
+            <td>{{ match_object.best_match.seq_from }} - {{ match_object.best_match.seq_to }}</td>
+            <td>{{ match_object.best_match.i_evalue }}</td>
+            <td>{{ match_object.alignment_link }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>  
+  <br />  
+{% endif %}
+
+{% endblock %}

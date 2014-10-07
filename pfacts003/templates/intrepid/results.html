@@ -1,0 +1,263 @@
+{% extends 'intrepid/base.html' %}
+
+{% load intrepid_tags %}
+
+{% block title %}FSP Job {{ job.id }} Results{% endblock %} 
+
+{% block extrastyle %}
+<link rel='stylesheet' type='text/css' href='/static/css/new_phylofacts.css' media='screen'>
+<link rel="stylesheet" type="text/css" href="/static/css/DT_bootstrap.css">
+<link rel='stylesheet' type='text/css' href='/static/css/intrepid_pane.css' media='screen'>
+<!--
+<link rel='stylesheet' type='text/css' href='/static/css/fatcat.css' media='screen'>
+-->
+<style>
+
+</style>
+{% endblock %}
+
+{% block extrascripts %}
+<script type='text/javascript'>
+// django to javascript variables used in other files
+var jobID = {{ job.id }};
+var pfam_domains = [
+    {% for domain in job.pfams.all %}
+    {
+        'id': {{ domain.id }},
+        'alignment_from': {{ domain.ali_from }},
+        'alignment_to': {{ domain.ali_to }},
+        'pfam_accession': '{{ domain.pfam_accession }}',
+        'description': '{{ domain.pfam_description }}',
+        'shortName': '{{ domain.pfam_shortname }}',
+        'evalue': {{ domain.i_evalue }},
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+];
+//var full_length_score_chart = 
+var pdb_domains = [];
+var masterSequenceLength = {{ query_length }};
+</script>
+<script type="text/javascript" src="/static/js/underscore-min.js"></script>
+<script type="text/javascript" src="/static/js/raphael-min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/static/js/DT_bootstrap.js"></script>
+<script type="text/javascript" src="/static/js/jquery.flot.min.js"></script>
+<script type='text/javascript' src='/static/js/intrepid_widgets.js'></script>
+<script type='text/javascript' src='/static/js/intrepid_results.js'></script>
+<script type='text/javascript' src='/static/js/archaeopteryx.js'></script>
+<script type='text/javascript' src='/static/js/jsmol/JSmol.min.nojq.js'></script>
+<script type='text/javascript'>
+$j(document).ready(function() {
+    // document ready code that needs to use django's template stuff should go here
+    //$j(' #full-length-score-chart ').plot({{ job.intrepid_chart_series }});
+
+    // do each domain also
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<!-- Applet for Jalview -->
+<applet name="JalviewLite"  code="jalview.bin.JalviewLite"
+        archive="/static/java/jalviewApplet.jar" width="0" height="0">
+   <param name="debug" value="true"/>
+   <param name="showbutton" value="false"/>
+</applet>
+<div class='phylofacts-well'>
+    <div class='phylofacts-well-header'>
+        <table class='header-table'>
+            <tr>
+                <td><h2>Results for {{ job.fasta_header.split.0 }}</h2></td>
+                <td><!--<img src="/static/img/logos/intrepid_fade_small.png"></img>--></td>
+            </tr>
+        </table>
+        <div class='cleaner'></div>
+    </div>
+
+    <div id='left-tabs'>
+        <ul class='left-tabs-cls'>
+            <li><a id='full-length-selector' href='#full-length'>{{ job.name }}</a></li>
+            {% for domain in job.ordered_pfams %}
+                <li><a id='{{ domain.id }}-selector' href='#{{ domain.id }}'>{{ domain.pfam_shortname }}</a></li>
+            {% endfor %}
+                <li><a id='structure-selector' href='#structures'>3D Structures</a></li>
+        </ul>
+        <div id='full-length' class='phylofacts-treenode-content'>
+            <h3>{{ job.name }}:&nbsp;{{ job.internal_name }}</h3>
+            <p class='content-description'>Your protein contains the domains shown below.  The amino acid scores shown here are for the full length protein.  To view amino acid scores that are local to a domain, click on the domain, or use the navigation tabs to the left.</p>
+            <table>
+                <tr>
+                    <td><div>Query</div></td>
+                    <td><div id='query-line-widget'></div></td>
+                    <td><div></div></td>
+                </tr>
+                <tr>
+                    <td><div>Pfam-A Domains</div></td>
+                    <td><div id='pfam-match-widget'></div></td>
+                    <td><div></div></td>
+                </tr>
+            </table>
+            <div id="full-length-information-pane" class='intrepid-information-pane'>
+                <ul>
+                    {% if job.is_discern_job %}
+                        <li><a id='full-length-discern-selector' href='#full-length-discern'>DISCERN Scores</a></li>
+                    {% endif %}
+                    <li><a id='full-length-scores-selector' href='#full-length-scores'>INTREPID Scores</a></li>
+                    <li><a id='full-length-statistics-selector' href='#full-length-statistics'>Homolog Data</a></li>
+                    <li><a id='full-length-downloads-selector' href='#full-length-downloads'>Downloads</a></li>
+                </ul>
+                {% if job.is_discern_job %}
+                <div id='full-length-discern' class='intrepid-information-pane-content'>
+                    <table class='intrepid-score-pane'>
+                        <tr>
+                            <td>
+                                <table class='intrepid-score-table table table-bordered'>
+                                    <thead>
+                                        <tr>
+                                            <th>Rank</th>
+                                            <th>Residue</th>
+                                            <th>Position</th>
+                                            <th>Score</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for tuple in job.discern_scores|slice:":25" %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td class="tip" title="{{ tuple.4 }}">{{ tuple.2 }} ({{ tuple.3 }})</td>
+                                                <td>{{ tuple.0 }}</td>
+                                                <td>{{ tuple.1|floatformat:"-2" }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>    
+                                </table>
+                            </td>
+                            <td><!--<div class='intrepid-score-chart' id='full-length-score-chart'></div>--></td>
+                        </tr>
+                    </table>
+                </div>
+                {% endif %}
+                <div id='full-length-scores' class='intrepid-information-pane-content'>
+                    <table class='intrepid-score-pane'>
+                        <tr>
+                            <td>
+                                <table class='intrepid-score-table table table-bordered'>
+                                    <thead>
+                                        <tr>
+                                            <th>Rank</th>
+                                            <th>Residue</th>
+                                            <th>Position</th>
+                                            <th>Score</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for tuple in job.intrepid_scores|slice:":25" %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td class="tip" title="{{ tuple.1 }}">{{ tuple.0 }}</td>
+                                                <td>{{ tuple.2 }}</td>
+                                                <td>{{ tuple.3 }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>    
+                                </table>
+                            </td>
+                            <td><!--<div class='intrepid-score-chart' id='full-length-score-chart'></div>--></td>
+                        </tr>
+                    </table>
+                </div>
+                <div id='full-length-statistics' class='intrepid-information-pane-content'>
+                    <h4>Homolog data for full length protein</h4>
+                    <ul>
+                        <li>Number of homologs gathered on the full length protein: {{ job.num_homologs }}</li>
+                        <li>Number of iterations required for homolog gathering: {{ job.num_iterations }}</li>
+                        <li>Percent ID between query and most distant homolog: {{ job.maximum_divergence|readable_percent:"2" }}</li>
+                        <li>Header of most distant homolog: {{ job.most_remote_homolog_info.0 }}</li>
+                    </ul>
+                </div>
+                <div id='full-length-downloads' class='intrepid-information-pane-content'>
+                    <ul class='download-list'>
+                        <li>Multiple sequence alignment: (<a href='download/msa_0/' target='_blank'>Aligned FASTA format</a>)</li>
+                        <li>Phylogenetic Tree (PhyML): (<a href='download/tree_0/' target='_blank'>Newick format</a>)</li>
+                        <li>INTREPID scores: (<a href='download/scores_0/' target='_blank'> | separated value</a>)</li>
+                        {% if job.is_discern_job %}
+                            <li>DISCERN scores: (<a href='download/discern_0/' target='_blank'>tab separated value</a>)</li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% for domain in job.ordered_pfams %}
+            <div id='{{ domain.id }}' class='phylofacts-treenode-content'>
+                <h3>{{ domain.pfam_shortname }} ({{ domain.pfam_accession }}): {{ domain.pfam_description }}</h3>
+                <p class='content-description'>The amino acid scores shown on this tab are local to this domain only.</p>
+                <div id="{{ domain.id }}-information-pane" class='intrepid-information-pane'>
+                    <ul>
+                        <li><a id='{{ domain.id }}-scores-selector' href='#{{ domain.id }}-scores'>INTREPID Scores</a></li>
+                        <li><a id='{{ domain.id }}-statistics-selector' href='#{{ domain.id }}-statistics'>Homolog data</a></li>
+                        <li><a id='{{ domain.id }}-downloads-selector' href='#{{ domain.id }}-downloads'>Downloads</a></li>
+                    </ul>
+                    <div id='{{ domain.id }}-scores' class='intrepid-information-pane-content'>
+                    <table class='intrepid-score-pane'>
+                        <tr>
+                            <td>
+                                <table class='intrepid-score-table table table-bordered'>
+                                    <thead>
+                                        <tr>
+                                            <th>Rank</th>
+                                            <th>Residue</th>
+                                            <th>Global<br />Position</th>
+                                            <th>Score</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for tuple in domain.intrepid_scores|slice:":25" %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td class="tip" title="{{ tuple.1 }}">{{ tuple.0 }}</td>
+                                                <td>{{ tuple.5 }}</td>
+                                                <td>{{ tuple.3 }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>    
+                                </table>
+                            </td>
+                            <td><!--<div class='intrepid-score-chart' id='r-score-chart'></div>--></td>
+                        </tr>
+                    </table>
+                    </div>
+                    <div id='{{ domain.id }}-statistics' class='intrepid-information-pane-content'>
+                        <h4>Homolog data for the {{ domain.pfam_shortname }} domain</h4>
+                        <ul>
+                            <li>Number of homologs gathered on this domain ({{ domain.pfam_shortname }}): {{ domain.num_homologs }}</li>
+                            <li>Number of iterations required for hmmsearch: {{ domain.num_iterations }}</li>
+                            <li>Percent ID between query and most distant homolog: {{ domain.maximum_divergence|readable_percent:"2" }}</li>
+                        </ul>
+                    </div>
+                    <div id='{{ domain.id }}-downloads' class='intrepid-information-pane-content'>
+                        <ul class='download-list'>
+                            <li>Multiple sequence alignment: (<a href='download/msa_{{ domain.id }}/' target='_blank'>Aligned FASTA format</a>)</li>
+                            <li>Phylogenetic tree (PhyML):  (<a href='download/tree_{{ domain.id }}/' target='_blank'>Newick format</a>)</li>
+                            <li>INTREPID scores: (<a href='download/scores_{{ domain.id }}/' target='_blank'> | separated value</a>)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+        {% endfor %}
+        <div id='structures' class='phylofacts-treenode-content'>
+            <h3>3D Structures</h3>
+            {% if job.is_discern_job %}
+                {% include 'intrepid/discern_structure.html' with job=job %}
+            {% else %}
+                {% if job.structures.all|length != 0 %}
+                    {% include 'intrepid/intrepid_structure.html' with job=job %}
+                {% else %}
+                    <p>No homologous structures were found.</p>
+                {% endif %}
+            {% endif %}
+        </div>
+        <div class='bottom-border'>&nbsp;</div>
+    </div>
+</div>
+{% endblock %}

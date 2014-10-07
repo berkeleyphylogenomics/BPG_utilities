@@ -1,0 +1,357 @@
+>sp|A3PMI6|PQQA_RHOS1 Coenzyme PQQ synthesis protein A OS=Rhodobacter sphaeroides (strain ATCC 17029 / ATH 2.4.9) GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+----------AW---KTPRYDETPVGMEINMYACAKRK----------
+>sp|A4XTR0|PQQA_PSEMY Coenzyme PQQ synthesis protein A OS=Pseudomonas mendocina (strain ymp) GN=pqqA PE=3 SV=1
+------------------------------------------------------------
+----------MW---TKPAYTDLRIGFEVTMYFANR------------
+>sp|A6V6I4|PQQA_PSEA7 Coenzyme PQQ synthesis protein A OS=Pseudomonas aeruginosa (strain PA7) GN=pqqA PE=3 SV=1
+------------------------------------------------------------
+----------MW---TKPSFTDLRLGFEVTLYFANR------------
+>sp|A8LN54|PQQA_DINSH Coenzyme PQQ synthesis protein A OS=Dinoroseobacter shibae (strain DFL 12) GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+----------AW---TKPIIREIECGMEINMYGPDSDE----EREVLF
+>sp|A9HEC6|PQQA_GLUDA Coenzyme PQQ synthesis protein A OS=Gluconacetobacter diazotrophicus (strain ATCC 49037 / DSM 5601 / PAl5) GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+----------AW---TAPKITEVPLGAEINSYVCGQKK----------
+>sp|B0V498|PQQA_ACIBY Coenzyme PQQ synthesis protein A OS=Acinetobacter baumannii (strain AYE) GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+----------QW---TKPAFTDLRIGFEVTMYFEAR------------
+>sp|B0VQD3|PQQA_ACIBS Coenzyme PQQ synthesis protein A OS=Acinetobacter baumannii (strain SDF) GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+----------QW---TKPAFTDLRIGFEVTMYFEAR------------
+>sp|B1JDZ6|PQQA_PSEPW Coenzyme PQQ synthesis protein A OS=Pseudomonas putida (strain W619) GN=pqqA PE=3 SV=1
+------------------------------------------------------------
+----------MW---TKPAYTDLRIGFEVTMYFASR------------
+>sp|B1LV85|PQQA_METRJ Coenzyme PQQ synthesis protein A OS=Methylobacterium radiotolerans (strain ATCC 27329 / DSM 1819 / JCM 2831) GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+----------KW---AAPIVSEICVGMEVTSYESAEIDTFN-------
+>sp|B3R8D5|PQQA_CUPTR Coenzyme PQQ synthesis protein A OS=Cupriavidus taiwanensis (strain R1 / LMG 19424) GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+----------TW---TTPAYTELRLGFEITMYIANR------------
+>sp|B4EHL5|PQQA_BURCJ Coenzyme PQQ synthesis protein A OS=Burkholderia cepacia (strain J2315 / LMG 16656) GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+----------QW---TTPSYTDLRFGFEITMYIANR------------
+>sp|B5XX62|PQQA_KLEP3 Coenzyme PQQ synthesis protein A OS=Klebsiella pneumoniae (strain 342) GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+-----------W---KKPAFIDLRLGLEVTLYISNR------------
+>sp|C3K347|PQQA_PSEFS Coenzyme PQQ synthesis protein A OS=Pseudomonas fluorescens (strain SBW25) GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+----------TW---SKPAYTDLRIGFEVTMYFASR------------
+>sp|C5CPT7|PQQA_VARPS Coenzyme PQQ synthesis protein A OS=Variovorax paradoxus (strain S110) GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+----------KW---ETPTATDLRFGFEITMYVSAR------------
+>sp|P27503|PQQA_KLEPN Coenzyme PQQ synthesis protein A OS=Klebsiella pneumoniae GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+-----------W---KKPAFIDLRLGLEVTLYISNR------------
+>sp|P27532|PQQA_ACICA Coenzyme PQQ synthesis protein A OS=Acinetobacter calcoaceticus GN=pqqA PE=1 SV=1
+-----------M------------------------------------------------
+----------QW---TKPAFTDLRIGFEVTMYFEAR------------
+>sp|P55171|PQQA_PSEFL Coenzyme PQQ synthesis protein A OS=Pseudomonas fluorescens GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+----------TW---SKPAYTDLRIGFEVTMYFASR------------
+>sp|P59726|PQQA_ENTIT Coenzyme PQQ synthesis protein A OS=Enterobacter intermedius GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+-----------W---KKPAFIDLRLGLEVTLYISNR------------
+>sp|Q02LD2|PQQA_PSEAB Coenzyme PQQ synthesis protein A OS=Pseudomonas aeruginosa (strain UCBPP-PA14) GN=pqqA PE=3 SV=1
+------------------------------------------------------------
+----------MW---TKPSFTDLRLGFEVTLYFANR------------
+>sp|Q16B38|PQQA_ROSDO Coenzyme PQQ synthesis protein A OS=Roseobacter denitrificans (strain ATCC 33942 / OCh 114) GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+----------AW---TKPIIREIECGMEINMYGPENED-RHDDRDDLF
+>sp|Q1IG45|PQQA_PSEE4 Coenzyme PQQ synthesis protein A OS=Pseudomonas entomophila (strain L48) GN=pqqA PE=3 SV=1
+------------------------------------------------------------
+----------MW---TKPAYTDLRIGFEVTMYFANR------------
+>sp|Q3K5R0|PQQA_PSEPF Coenzyme PQQ synthesis protein A OS=Pseudomonas fluorescens (strain Pf0-1) GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+----------AW---TKPAYTDLRIGFEVTMYFASR------------
+>sp|Q488A4|PQQA_COLP3 Coenzyme PQQ synthesis protein A OS=Colwellia psychrerythraea (strain 34H / ATCC BAA-681) GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+-----------W---TKPKFEEMRLGFEVTLYISNR------------
+>sp|Q48CT7|PQQA_PSE14 Coenzyme PQQ synthesis protein A OS=Pseudomonas syringae pv. phaseolicola (strain 1448A / Race 6) GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+----------SW---TKPAYTDLRIGFEVTMYFASR------------
+>sp|Q49148|PQQA_METEA Coenzyme PQQ synthesis protein A OS=Methylobacterium extorquens (strain ATCC 14718 / DSM 1338 / AM1) GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+----------KW---AAPIVSEICVGMEVTSYESAEIDTFN-------
+>sp|Q4ZMC5|PQQA_PSEU2 Coenzyme PQQ synthesis protein A OS=Pseudomonas syringae pv. syringae (strain B728a) GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+----------SW---TKPAYTDLRIGFEVTMYFASR------------
+>sp|Q50436|PQQA_METFL Coenzyme PQQ synthesis protein A OS=Methylobacillus flagellatum GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+----------MW---TKPEVTEMRFGFEVTMYVCNR------------
+>sp|Q5LTB0|PQQA_SILPO Coenzyme PQQ synthesis protein A OS=Silicibacter pomeroyi GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+----------AW---TAPKLREVNCGMEINMYAPAEDEGGRGTDP-IL
+>sp|Q608P4|PQQA_METCA Coenzyme PQQ synthesis protein A OS=Methylococcus capsulatus GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+----------RW---EKPSYNDMRFGFEVTMYIYNR------------
+>sp|Q6F9J3|PQQA_ACIAD Coenzyme PQQ synthesis protein A OS=Acinetobacter sp. (strain ADP1) GN=pqqA PE=3 SV=1
+------------------------------------------------------------
+----------MW---TKPAFEDIRLGFEITMYAAVE------------
+>sp|Q88A80|PQQA_PSESM Coenzyme PQQ synthesis protein A OS=Pseudomonas syringae pv. tomato GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+----------SW---TKPAYTDLRIGFEVTMYFASR------------
+>sp|Q88QV4|PQQA_PSEPK Coenzyme PQQ synthesis protein A OS=Pseudomonas putida (strain KT2440) GN=pqqA PE=3 SV=1
+------------------------------------------------------------
+----------MW---TKPAYTDLRIGFEVTMYFANR------------
+>sp|Q89FG5|PQQA_BRAJA Coenzyme PQQ synthesis protein A OS=Bradyrhizobium japonicum GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+----------AW---KAPKIVEVPCGMEINMYVSATRK----------
+>sp|Q9EXV2|PQQA_RHIME Coenzyme PQQ synthesis protein A OS=Rhizobium meliloti GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+----------AW---HKPKFIEVSCAMEITRYAPADGD-----EPILF
+>sp|Q9F9U1|PQQA_PSEST Coenzyme PQQ synthesis protein A OS=Pseudomonas stutzeri GN=pqqA PE=3 SV=1
+------------------------------------------------------------
+----------MW---TKPSYTDLRIGFEVTLYFANR------------
+>sp|Q9L3B4|PQQA_GLUOX Coenzyme PQQ synthesis protein A OS=Gluconobacter oxydans GN=pqqA PE=3 SV=1
+-----------M------------------------------------------------
+----------AW---NTPKVTEIPLGAEINSYVCGEKK----------
+>sp|Q9ZAA0|PQQA_PSEAE Coenzyme PQQ synthesis protein A OS=Pseudomonas aeruginosa GN=pqqA PE=3 SV=1
+------------------------------------------------------------
+----------MW---TKPSFTDLRLGFEVTLYFANR------------
+>tr|A0QYN7|A0QYN7_MYCS2 Coenzyme PQQ biosynthesis protein A OS=Mycobacterium smegmatis (strain ATCC 700084 / mc(2)155) GN=pqqA PE=4 SV=1
+-----------MEKKSAGALQ---------------------------------------
+----------KW---ERPTFAEIRVSAEVTAYVAVLDGDD--------
+>tr|A2P7D7|A2P7D7_VIBCH Putative uncharacterized protein OS=Vibrio cholerae 1587 GN=A55_2035 PE=4 SV=1
+-----------MDAAALLATFVHPNHMLMGINLPVVSLQRQFVKTL--------------
+----------EWIQNEKPSFAETRLGLEYY------------------
+>tr|A3K1I6|A3K1I6_9RHOB Pyrroloquinoline quinone biosynthesis protein PqqB OS=Sagittula stellata E-37 GN=SSE37_04030 PE=4 SV=1
+-----------M------------------------------------------------
+----------AW---TKPKIREIECGMEINMYGPDGEE----EREVLF
+>tr|A3VLH9|A3VLH9_9RHOB Putative uncharacterized protein OS=Rhodobacterales bacterium HTCC2654 GN=RB2654_21903 PE=4 SV=1
+-----------M------------------------------------------------
+----------AW---DAPKVREIPVGMEINMYACAKQK----------
+>tr|A4BR25|A4BR25_9GAMM Putative uncharacterized protein OS=Nitrococcus mobilis Nb-231 GN=NB231_06541 PE=4 SV=1
+-----------MK-----------------------------------------------
+----------RW---IKPAFINRRLGFEINLYINSR------------
+>tr|A4FI17|A4FI17_SACEN Putative uncharacterized protein OS=Saccharopolyspora erythraea (strain NRRL 23338) GN=SACE_4423 PE=4 SV=1
+-----------MESDATRSVLTWEPPEFEEA-----------------------------
+----------EW---EAPEFEELMCASEVTMYIARMEG----------
+>tr|A4FI42|A4FI42_SACEN Putative uncharacterized protein OS=Saccharopolyspora erythraea (strain NRRL 23338) GN=SACE_4448 PE=4 SV=1
+-----------MESAAAGPERL--------------------------------------
+----------EW---EPPEFEEIGCASEVTMYVAQLED----------
+>tr|A4VL87|A4VL87_PSEU5 Putative uncharacterized protein OS=Pseudomonas stutzeri (strain A1501) GN=PST_2070 PE=4 SV=1
+-----------MIPDKGAEPQRKYSPSARKARPKACKTDPKVLLDAPAKRLSFELRYRIS
+QRQHERRYAMQW---IDPDFCDLRLGFEVTAYVYVR------------
+>tr|A4WPH8|A4WPH8_RHOS5 Coenzyme PQQ biosynthesis protein A OS=Rhodobacter sphaeroides (strain ATCC 17025 / ATH 2.4.3) GN=Rsph17025_0386 PE=4 SV=1
+-----------M------------------------------------------------
+----------AW---KTPRYDETPVGMEINMYSCAKRK----------
+>tr|A4YNW1|A4YNW1_BRASO Coenzyme PQQ synthesis protein A (Pyrroloquinoline quinone biosynthesis protein A) OS=Bradyrhizobium sp. (strain ORS278) GN=BRADO1710 PE=4 SV=1
+-----------M------------------------------------------------
+----------SW---TAPKIVEVPVGMEINMYACASRK-AERRS----
+>tr|A4YZ28|A4YZ28_BRASO Coenzyme PQQ synthesis protein A OS=Bradyrhizobium sp. (strain ORS278) GN=BRADO5478 PE=4 SV=1
+-----------M------------------------------------------------
+----------AW---KTPKIVEVPVGMEINMYACAARK----------
+>tr|A4YZY3|A4YZY3_BRASO Pyrroloquinoline quinone biosynthesis protein A (Coenzyme PQQ synthesis protein A) OS=Bradyrhizobium sp. (strain ORS278) GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+----------AW---KAPKIVEVPVGMEINMYACAARK----------
+>tr|A5EDG7|A5EDG7_BRASB Coenzyme PQQ synthesis protein A (Pyrroloquinoline quinone biosynthesis protein A) OS=Bradyrhizobium sp. (strain BTAi1 / ATCC BAA-1182) GN=BBta_2020 PE=4 SV=1
+-----------M------------------------------------------------
+----------SW---TAPKIVEVAVGMEINMYACASRQAAQRKS----
+>tr|A5EP06|A5EP06_BRASB Coenzyme PQQ (Pyrroloquinoline quinone) synthesis protein A OS=Bradyrhizobium sp. (strain BTAi1 / ATCC BAA-1182) GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+----------AW---KTPKIVEVPVGMEINMYACAARK----------
+>tr|A5EPX4|A5EPX4_BRASB Pyrroloquinoline quinone biosynthesis protein A OS=Bradyrhizobium sp. (strain BTAi1 / ATCC BAA-1182) GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+----------AW---KAPKIVEVPVGMEINMYACAARK----------
+>tr|A5W500|A5W500_PSEP1 Coenzyme PQQ biosynthesis protein A OS=Pseudomonas putida (strain F1 / ATCC 700007) GN=Pput_3082 PE=4 SV=1
+-----------MHGLPVPTHPASSFQSSIRSGPPPCINASTGILRHKKRTCP--------
+----------MW---TKPAYTDLRIGFEVTMYFANR------------
+>tr|A6EYR0|A6EYR0_9ALTE Putative uncharacterized protein OS=Marinobacter algicola DG893 GN=MDG893_04367 PE=4 SV=1
+------------------------------------------------------------
+----------MW---TKPAYEDLRIGFEVTMYFANR------------
+>tr|A6FRA9|A6FRA9_9RHOB Coenzyme PQQ biosynthesis protein A OS=Roseobacter sp. AzwK-3b GN=RAZWK3B_13939 PE=4 SV=1
+-----------M------------------------------------------------
+----------TW---NAPKLKEINCGMEINMYAPAEDE-RRGHEPDLF
+>tr|A6GLU6|A6GLU6_9BURK Putative uncharacterized protein OS=Limnobacter sp. MED105 GN=LMED105_05492 PE=4 SV=1
+-----------M------------------------------------------------
+----------SW---TTPQFVDMRFGFEITMYIANR------------
+>tr|A9HTV4|A9HTV4_9RHOB Coenzyme PQQ synthesis protein A OS=Roseobacter litoralis Och 149 GN=RLO149_07454 PE=4 SV=1
+-----------M------------------------------------------------
+----------AW---TKPIIREIECGMEINMYGPENED-RHDDRDDLF
+>tr|A9W3R3|A9W3R3_METEP Coenzyme PQQ biosynthesis protein A OS=Methylobacterium extorquens (strain PA1) GN=Mext_1820 PE=4 SV=1
+-----------MRKRVRRQYLTILLISGIARFRRSIKSRRDTM-----------------
+----------KW---AAPIVSEICVGMEVTSYESAEIDTFN-------
+>tr|B0RQ29|B0RQ29_XANCB Coenzyme PQQ biosynthesis protein A OS=Xanthomonas campestris pv. campestris (strain B100) GN=pqqA PE=4 SV=1
+-----------MK-----------------------------------------------
+----------TW---KKPVVREVNCGAEINCYVSGEF-----------
+>tr|B0UE08|B0UE08_METS4 Coenzyme PQQ biosynthesis protein A OS=Methylobacterium sp. (strain 4-46) GN=M446_5763 PE=4 SV=1
+-----------M------------------------------------------------
+----------KW---ALPVVAEVCVGMEVTSYESAEIDPFN-------
+>tr|B0UE09|B0UE09_METS4 Coenzyme PQQ biosynthesis protein A OS=Methylobacterium sp. (strain 4-46) GN=M446_5764 PE=4 SV=1
+-----------M------------------------------------------------
+----------KW---ALPVVAEICVGMEVTSYESAEIDPFN-------
+>tr|B1Y7S1|B1Y7S1_LEPCP Coenzyme PQQ biosynthesis protein A OS=Leptothrix cholodnii (strain ATCC 51168 / LMG 8142 / SP-6) GN=Lcho_0244 PE=4 SV=1
+-----------MVLAMTPRAPAPTLHPHQHTLLASLTRTANPIEGDLM------------
+----------TW---TTPAACDFRFGFEITMYIAAR------------
+>tr|B2AIN4|B2AIN4_CUPTR Coenzyme Pyrroloquinoline quinone (PQQ) synthesis protein A, putative OS=Cupriavidus taiwanensis (strain R1 / LMG 19424) GN=pqqA PE=4 SV=1
+-----------MR-----------------------------------------------
+----------TW---TTPKVVEVCLGCEINCYMSAER-----------
+>tr|B2U9I4|B2U9I4_RALPJ Coenzyme PQQ biosynthesis protein A OS=Ralstonia pickettii (strain 12J) GN=Rpic_2488 PE=4 SV=1
+-----------M------------------------------------------------
+----------NW---TTPAYTELRLGFEITMYIANR------------
+>tr|B2UEV0|B2UEV0_RALPJ Coenzyme PQQ biosynthesis protein A OS=Ralstonia pickettii (strain 12J) GN=Rpic_0286 PE=4 SV=1
+-----------M------------------------------------------------
+----------AW---QKPEATDLRFGFEITMYIANR------------
+>tr|B2VDD0|B2VDD0_ERWT9 Coenzyme PQQ biosynthesis protein A OS=Erwinia tasmaniensis (strain DSM 17950 / Et1/99) GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+----------QW---TKPTFIDMRLGLEVTLYISNR------------
+>tr|B3DVD4|B3DVD4_METI4 Coenzyme PQQ synthesis protein A OS=Methylacidiphilum infernorum (isolate V4) GN=Minf_1233 PE=4 SV=1
+-----------M------------------------------------------------
+----------NW---EKPVFEELNLCMEVTAYAFIAEN----------
+>tr|B8ITW1|B8ITW1_METNO Coenzyme PQQ biosynthesis protein A OS=Methylobacterium nodulans (strain ORS2060 / LMG 21967) GN=Mnod_5992 PE=4 SV=1
+-----------MIRDRRRRVM---------------------------------------
+----------KW---ALPVVAEVCVGMEVTSYESAEIDPFN-------
+>tr|C0LU60|C0LU60_9PROT PQQ OS=Gluconobacter sp. H24 GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+----------AW---NTPKVTEIPLGAEINSYVCGEKK----------
+>tr|C3VIT4|C3VIT4_RAHAQ PqqA OS=Rahnella aquatilis GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+-----------W---TKPSFEDLRLGLEVTLYISNR------------
+>tr|C4X8Q3|C4X8Q3_KLEPN Pyrroloquinoline quinone synthesis protein A OS=Klebsiella pneumoniae NTUH-K2044 GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+-----------W---KKPAFIDLRLGLEVTLYISNR------------
+>tr|C5AL15|C5AL15_BURGB Coenzyme PQQ synthesis protein PqqA OS=Burkholderia glumae (strain BGR1) GN=bglu_2g22340 PE=4 SV=1
+-----------MS-----------------------------------------------
+----------KW---IKPAYTDLRLGFEITMYISNR------------
+>tr|C5AQY4|C5AQY4_METEA Coenzyme pyrroloquinoline quinone (PQQ) biosynthesis protein A (Coenzyme PQQ synthesis protein D) OS=Methylobacterium extorquens (strain ATCC 14718 / DSM 1338 / AM1) GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+----------KW---SAPIVAEICVGMEVTSYESAEIDTFN-------
+>tr|C5AQY5|C5AQY5_METEA Coenzyme pyrroloquinoline quinone (PQQ) biosynthesis protein A (Coenzyme PQQ synthesis protein D) OS=Methylobacterium extorquens (strain ATCC 14718 / DSM 1338 / AM1) GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+----------KW---SAPVVAEICVGMEVTSYESAEIDTFN-------
+>tr|C6BKQ2|C6BKQ2_RALP1 Coenzyme PQQ biosynthesis protein A OS=Ralstonia pickettii (strain 12D) GN=Rpic12D_2094 PE=4 SV=1
+-----------M------------------------------------------------
+----------NW---TTPAYTELRLGFEITMYIANR------------
+>tr|C6Q9X7|C6Q9X7_9RHIZ Coenzyme PQQ biosynthesis protein A OS=Hyphomicrobium denitrificans ATCC 51888 GN=HdenDRAFT_0462 PE=4 SV=1
+MED-------IMK-----------------------------------------------
+----------TW---TKPAVREQEVGLEVTSYLPAEID--------LI
+>tr|C6QGR2|C6QGR2_9RHIZ Coenzyme PQQ biosynthesis protein A OS=Hyphomicrobium denitrificans ATCC 51888 GN=HdenDRAFT_2436 PE=4 SV=1
+MESSYRFGGTTMK-----------------------------------------------
+----------IW---TKPAVREQEVGLEVTSYLPAEID--------LI
+>tr|C6QGW5|C6QGW5_9RHIZ Coenzyme PQQ biosynthesis protein A OS=Hyphomicrobium denitrificans ATCC 51888 GN=HdenDRAFT_2489 PE=4 SV=1
+-----------MQESLLKEPEAK-------------------------------------
+----------TW---VAPAYCDLRLGFEVTAYIYVR------------
+>tr|C6WTX0|C6WTX0_METML Coenzyme PQQ biosynthesis protein A OS=Methylotenera mobilis (strain JLW8 / ATCC BAA-1282 / DSM 17540) GN=Mmol_0021 PE=4 SV=1
+------------------------------------------------------------
+----------MW---TTPAATEMRFGFEVTMYVMNK------------
+>tr|C6X7M7|C6X7M7_METSD Coenzyme PQQ biosynthesis protein A OS=Methylovorus sp. (strain SIP3-4) GN=Msip34_0020 PE=4 SV=1
+-----------MKLRMRLSPRKPMMCFMQHPLTTKEIT----------------------
+----------MW---TKPEATEMRFGFEVTMYVCNR------------
+>tr|C6XBM6|C6XBM6_METSD Coenzyme PQQ biosynthesis protein A OS=Methylovorus sp. (strain SIP3-4) GN=Msip34_1529 PE=4 SV=1
+------------------------------------------------------------
+----------MW---TKPEATEMRFGFEVTMYVCNR------------
+>tr|C7C9M1|C7C9M1_METED Coenzyme pyrroloquinoline quinone (PQQ) biosynthesis protein A OS=Methylobacterium extorquens (strain DSM 5838 / DM4) GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+----------KW---AAPIVSEICVGMEVTSYESAEIDTFN-------
+>tr|C7CLK2|C7CLK2_METED Coenzyme pyrroloquinoline quinone (PQQ) biosynthesis protein A (Coenzyme PQQ synthesis protein D) OS=Methylobacterium extorquens (strain DSM 5838 / DM4) GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+----------KW---SAPIVAEICVGMEVTSYESAEIDTFN-------
+>tr|C7DRH5|C7DRH5_PSEFL Coenzyme PQQ biosynthesis protein PqqA OS=Pseudomonas fluorescens GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+----------SW---SKPAYIDLRIGFEVTMYFASR------------
+>tr|C7DRI9|C7DRI9_PSEFL Coenzyme PQQ biosynthesis protein PqqA OS=Pseudomonas fluorescens GN=pqqA2 PE=4 SV=1
+------------------------------------------------------------
+----------MW---TKPAYTDLRIGFEVTMYFANR------------
+>tr|C7JE56|C7JE56_ACEP3 Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein A PqqA OS=Acetobacter pasteurianus (strain NBRC 3283 / LMG 1513 / CCTM 1153) GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+----------AW---TAPKVTEIPLGAEINSYVCGQKK----------
+>tr|C7JQB6|C7JQB6_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein A PqqA OS=Acetobacter pasteurianus IFO 3283-03 GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+----------AW---TAPKVTEIPLGAEINSYVCGQKK----------
+>tr|C7JZI1|C7JZI1_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein A PqqA OS=Acetobacter pasteurianus IFO 3283-07 GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+----------AW---TAPKVTEIPLGAEINSYVCGQKK----------
+>tr|C7K299|C7K299_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein A PqqA OS=Acetobacter pasteurianus IFO 3283-22 GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+----------AW---TAPKVTEIPLGAEINSYVCGQKK----------
+>tr|C7KBG8|C7KBG8_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein A PqqA OS=Acetobacter pasteurianus IFO 3283-26 GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+----------AW---TAPKVTEIPLGAEINSYVCGQKK----------
+>tr|C7KKT4|C7KKT4_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein A PqqA OS=Acetobacter pasteurianus IFO 3283-32 GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+----------AW---TAPKVTEIPLGAEINSYVCGQKK----------
+>tr|C7KV45|C7KV45_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein A PqqA OS=Acetobacter pasteurianus IFO 3283-01-42C GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+----------AW---TAPKVTEIPLGAEINSYVCGQKK----------
+>tr|C7L4X3|C7L4X3_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein A PqqA OS=Acetobacter pasteurianus IFO 3283-12 GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+----------AW---TAPKVTEIPLGAEINSYVCGQKK----------
+>tr|D0BZT7|D0BZT7_9GAMM Coenzyme PQQ biosynthesis protein A OS=Acinetobacter sp. RUH2624 GN=HMPREF0014_01648 PE=4 SV=1
+-----------M------------------------------------------------
+----------QW---TKPAFTDLRIGFEVTMYFEAR------------
+>tr|D0FP07|D0FP07_ERWPY Coenzyme PQQ biosynthesis protein A, probable OS=Erwinia pyrifoliae GN=pqqA PE=4 SV=1
+-----------MQHLSRCVINIGNVAILVNIENLIFFTPEELIM----------------
+----------QW---TKPTFIDMRLGLEVTLYISNR------------
+>tr|D1RRG7|D1RRG7_SEROD Putative uncharacterized protein OS=Serratia odorifera 4Rx13 GN=SOD_b00610 PE=4 SV=1
+-----------MT-----------------------------------------------
+----------TW---TKPEFVDLRLGLEVTLYISNR------------
+>tr|D1UD61|D1UD61_9BURK Coenzyme PQQ biosynthesis protein A OS=Burkholderia sp. CCGE1001 GN=BC1001DRAFT_0370 PE=4 SV=1
+-----------MTLIQPMEEASM-------------------------------------
+----------QW---TTPSYTDMRFGFEITMYIATR------------
+>tr|D2LG62|D2LG62_RHOVA Coenzyme PQQ biosynthesis protein A OS=Rhodomicrobium vannielii ATCC 17100 GN=RvanDRAFT_1939 PE=4 SV=1
+-----------MK-----------------------------------------------
+----------VW---SKPVVSAVEAGFEVTRYLPSTLDVAAKRACPK-
+>tr|D2S4D3|D2S4D3_GEOOG Coenzyme PQQ biosynthesis protein A OS=Geodermatophilus obscurus (strain ATCC 25078 / DSM 43160 / JCM 3152 / G-20) GN=Gobs_2452 PE=4 SV=1
+-----------MDQELRVSPLCAD------------------------------------
+----------EW---EAPSFEEIRVSAEATAYMGVQEDWD--------
+>tr|D2T3L5|D2T3L5_ERWP6 Putative uncharacterized protein OS=Erwinia pyrifoliae (strain DSM 12163 / CIP 106111 / Ep16/96) GN=EPYR_00594 PE=4 SV=1
+-----------M------------------------------------------------
+----------QW---TKPTFIDMRLGLEVTLYISNR------------
+>tr|D3Q203|D3Q203_STANL Coenzyme PQQ biosynthesis protein A OS=Stackebrandtia nassauensis (strain DSM 44728 / NRRL B-16338 / NBRC 102104 / LLR-40K-21) GN=Snas_2178 PE=4 SV=1
+-----------MTEESPQLE----------------------------------------
+----------VW---TTPDFVEYETPMEVTSYAGREED----------
+>tr|D3REI9|D3REI9_KLEVT Coenzyme PQQ biosynthesis protein A OS=Klebsiella variicola (strain At-22) GN=Kvar_2491 PE=4 SV=1
+-----------M------------------------------------------------
+-----------W---KKPAFIDLRLGLEVTLYISNR------------
+>tr|D4IFL0|D4IFL0_ERWAE Coenzyme PQQ synthesis protein A (Pyrroloquinoline quinone biosynthesis protein A) OS=Erwinia amylovora (strain ATCC 49946 / CCPPB 0273 / Ea273 / 27-3) GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+----------QW---TKPTFIDMRLGLEVTLYISNR------------
+>tr|D4P6Z4|D4P6Z4_PANAN PqqA OS=Pantoea ananas GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+-----------W---KKPTFVDLRLGLEVTLYISNR------------
+>tr|D5C1I1|D5C1I1_NITHN Coenzyme PQQ biosynthesis protein A OS=Nitrosococcus halophilus (strain Nc4) GN=Nhal_3509 PE=4 SV=1
+------------------------------------------------------------
+----------MW---TKPAYYDLRFGFEVTMYICHR------------
+>tr|D6CRJ3|D6CRJ3_THIS3 Coenzyme PQQ synthesis protein A (Pyrroloquinoline quinone biosynthesis protein A) OS=Thiomonas sp. (strain 3As) GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+----------KW---TKPSFIDMRFGFEITMYIATR------------
+>tr|D6DSU0|D6DSU0_ENTCL Coenzyme PQQ biosynthesis protein A OS=Enterobacter cloacae subsp. cloacae NCTC 9394 GN=ENC_12470 PE=4 SV=1
+-----------M------------------------------------------------
+-----------W---KKPAFIDLRLGLEVTLYISNR------------
+>tr|D7BT02|D7BT02_9ACTO Putative uncharacterized protein OS=Streptomyces bingchenggensis BCW-1 GN=SBI_02096 PE=4 SV=1
+-----------MNETVQRNEPQSRRTAEQARPRIEET-----------------------
+----------AW---QTPDYVVVDTALEVTAYSLTTR-----------
+>tr|D7DHP0|D7DHP0_9PROT Coenzyme PQQ biosynthesis protein A OS=Methylotenera sp. 301 GN=M301_0054 PE=4 SV=1
+------------------------------------------------------------
+----------MW---TTPAATEMRFGFEVTMYVMNK------------
+>tr|Q0FSC1|Q0FSC1_9RHOB Putative uncharacterized protein OS=Roseovarius sp. HTCC2601 GN=R2601_04913 PE=4 SV=1
+-----------M------------------------------------------------
+----------AW---NKPVIREIECGMEINMYGPEHDDGV------LF
+>tr|Q0G4G2|Q0G4G2_9RHIZ Pyrroloquinoline quinone biosynthesis protein PqqB OS=Fulvimarina pelagi HTCC2506 GN=FP2506_13839 PE=4 SV=1
+-----------M------------------------------------------------
+----------AW---NKPVITEVCVAMEINGYMPIEF-----------
+>tr|Q0GFB7|Q0GFB7_SERMA PqqA OS=Serratia marcescens GN=pqqA PE=4 SV=1
+-----------MT-----------------------------------------------
+----------TW---TKPEFVDLRLGLEVTLYISNR------------
+>tr|Q1GX88|Q1GX88_METFK Coenzyme PQQ biosynthesis protein A OS=Methylobacillus flagellatus (strain KT / ATCC 51484 / DSM 6875) GN=Mfla_0021 PE=4 SV=1
+-----------MSKLGLYDGNHGLRGTDCAASTHLKRRLI--------------------
+----------MW---TKPEVTEMRFGFEVTMYVCNR------------
+>tr|Q32X67|Q32X67_PSEFL Pyrroloquinoline quinone biosynthesis protein A OS=Pseudomonas fluorescens GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+----------SW---SKPAYTDLRIGFEVTMYFASR------------
+>tr|Q3IZR3|Q3IZR3_RHOS4 Putative coenzyme PQQ synthesis protein A OS=Rhodobacter sphaeroides (strain ATCC 17023 / 2.4.1 / NCIB 8253 / DSM 158) GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+----------AW---KTPRYDETPVGMEINMYSCAKRK----------
+>tr|Q4K4V2|Q4K4V2_PSEF5 Coenzyme PQQ biosynthesis protein A OS=Pseudomonas fluorescens (strain Pf-5 / ATCC BAA-477) GN=pqqA PE=4 SV=1
+-----------M------------------------------------------------
+----------TW---SKPAYTDLRIGFEVTMYFASR------------
+>tr|Q4KEK3|Q4KEK3_PSEF5 Coenzyme PQQ biosynthesis protein A OS=Pseudomonas fluorescens (strain Pf-5 / ATCC BAA-477) GN=pqqA PE=4 SV=1
+------------------------------------------------------------
+----------MW---HKPAYTDLRIGFEVTMYFANR------------
+>tr|Q6W1W6|Q6W1W6_RHISN Coenzyme PQQ synthesis protein A OS=Rhizobium sp. (strain NGR234) GN=RNGR10005 PE=4 SV=1
+-----------M------------------------------------------------
+----------SW---HAPKFIDVSCAMEITRYAPADGS-----EPVLF
+>tr|Q83X96|Q83X96_STRRO Pyrroloquinoline quinone biosynthesis protein A OS=Streptomyces rochei GN=lkcK PE=4 SV=1
+-----------MRTSGKELPAKK-------------------------------------
+----------AW---HRPDFVTIDTGMEVTAYFSR-------------

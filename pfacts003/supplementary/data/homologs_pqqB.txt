@@ -1,0 +1,797 @@
+PQQB_AZOSB Coenzyme PQQ synthesis protein B 
+PQQB_PSEU5 Coenzyme PQQ synthesis protein B 
+PQQB_PSEMY Coenzyme PQQ synthesis protein B 
+PQQB_PSEP1 Coenzyme PQQ synthesis protein B 
+PQQB_KLEP7 Coenzyme PQQ synthesis protein B 
+PQQB_PSEA7 Coenzyme PQQ synthesis protein B 
+PQQB_GLUDA Coenzyme PQQ synthesis protein B 
+PQQB_METEP Coenzyme PQQ synthesis protein B 
+PQQB_PSEPG Coenzyme PQQ synthesis protein B 
+PQQB_XANCB Coenzyme PQQ synthesis protein B 
+PQQB_METS4 Coenzyme PQQ synthesis protein B 
+PQQB_ACIBY Coenzyme PQQ synthesis protein B 
+PQQB_ACIBS Coenzyme PQQ synthesis protein B 
+PQQB_PSEPW Coenzyme PQQ synthesis protein B 
+PQQB_METRJ Coenzyme PQQ synthesis protein B 
+PQQB_METPB Coenzyme PQQ synthesis protein B 
+PQQB_ACIBC Coenzyme PQQ synthesis protein B 
+PQQB_ERWT9 Coenzyme PQQ synthesis protein B 
+PQQB_RHOPT Coenzyme PQQ synthesis protein B 
+PQQB_CUPTR Coenzyme PQQ synthesis protein B 
+PQQB_KLEP3 Coenzyme PQQ synthesis protein B 
+PQQB_ACIB5 Coenzyme PQQ synthesis protein B 
+PQQB_METC4 Coenzyme PQQ synthesis protein B 
+PQQB_PSEA8 Coenzyme PQQ synthesis protein B 
+PQQB_METNO Coenzyme PQQ synthesis protein B 
+PQQB_AZOVD Coenzyme PQQ synthesis protein B 
+PQQB_PSEFS Coenzyme PQQ synthesis protein B 
+PQQB_ACICA Coenzyme PQQ synthesis protein B 
+PHNP_ECOLI Protein phnP 
+PQQB_KLEPN Coenzyme PQQ synthesis protein B 
+PQQB_PSEFL Coenzyme PQQ synthesis protein B 
+PQQB_PSEAB Coenzyme PQQ synthesis protein B 
+PQQB_RALEH Coenzyme PQQ synthesis protein B 
+PQQB_RHOPS Coenzyme PQQ synthesis protein B 
+PQQB_METFK Coenzyme PQQ synthesis protein B 
+PQQB_PSEE4 Coenzyme PQQ synthesis protein B 
+PQQB_XANOM Coenzyme PQQ synthesis protein B 
+PQQB_XANC5 Coenzyme PQQ synthesis protein B 
+PQQB_NITOC Coenzyme PQQ synthesis protein B 
+PQQB_PSEPF Coenzyme PQQ synthesis protein B 
+PQQB_PSE14 Coenzyme PQQ synthesis protein B 
+PQQB_METEA Coenzyme PQQ synthesis protein B 
+PQQB_XANC8 Coenzyme PQQ synthesis protein B 
+PQQB_PSEU2 Coenzyme PQQ synthesis protein B 
+PQQB_METFL Coenzyme PQQ synthesis protein B 
+PQQB_XANOR Coenzyme PQQ synthesis protein B 
+PQQB_SILPO Coenzyme PQQ synthesis protein B 
+PQQB_METCA Coenzyme PQQ synthesis protein B 
+PQQB_ACIAD Coenzyme PQQ synthesis protein B 
+PQQB_RHOPA Coenzyme PQQ synthesis protein B 
+PQQB_PSESM Coenzyme PQQ synthesis protein B 
+PQQB_PSEPK Coenzyme PQQ synthesis protein B 
+PQQB_BRAJA Coenzyme PQQ synthesis protein B 
+PQQB_XANCP Coenzyme PQQ synthesis protein B 
+PQQB_XANAC Coenzyme PQQ synthesis protein B 
+PQQB_RHIME Coenzyme PQQ synthesis protein B 
+PQQB_PSEST Coenzyme PQQ synthesis protein B 
+PQQB_PSEAE Coenzyme PQQ synthesis protein B 
+PQQB_GLUOX Coenzyme PQQ synthesis protein B 
+A0B2H9_BURCH Coenzyme PQQ biosynthesis protein B 
+A0B5L4_METTP Beta-lactamase domain protein 
+A0M1C8_GRAFK Metallo-beta-lactamase domain protein 
+A0NSR5_9RHOB Putative uncharacterized protein 
+A0QYN6_MYCS2 Coenzyme PQQ biosynthesis protein B 
+A0Y880_9GAMM Pyrroloquinoline quinone biosynthesis protein PqqB 
+A0Z531_9GAMM Pyrroloquinoline quinone biosynthesis protein PqqB 
+A1AIT9_ECOK1 PhnP, carbon-phosphorus lyase complex accessory protein 
+A1AUI5_PELPD Beta-lactamase domain protein 
+A1B3Z5_PARDP Beta-lactamase domain protein 
+A1B4K8_PARDP Coenzyme PQQ biosynthesis protein B 
+A1JJ00_YERE8 PhnP protein 
+A1QZW3_BORT9 Metal-dependent hydrolase 
+A1T0U6_PSYIN Beta-lactamase domain protein 
+A1TX62_MARAV Beta-lactamase domain protein 
+A1U305_MARAV Beta-lactamase domain protein 
+A1U7M5_MARAV Beta-lactamase domain protein 
+A1UT04_BARBK Metallo-beta-lactamase family protein 
+A1VK73_POLNA Coenzyme PQQ biosynthesis protein B 
+A1VQ99_POLNA Beta-lactamase domain protein 
+A1WQ33_VEREI Coenzyme PQQ biosynthesis protein B 
+A1ZEE4_9BACT Lipoyltransferase 
+A1ZPI3_9BACT Coenzyme PQQ synthesis protein B, putative 
+A2EY89_TRIVA Lipoate-protein ligase, putative 
+A2EZM9_TRIVA Metallo-beta-lactamase superfamily protein 
+A2SJ00_METPP Coenzyme PQQ synthesis protein B 
+A2SNR8_METPP Phosphonate metabolism protein 
+A2SS79_METLZ Beta-lactamase domain protein 
+A2TP21_9FLAO Putative hydrolase 
+A2U1B3_9FLAO Metallo-beta-lactamase superfamily protein 
+A3CXB3_METMJ Beta-lactamase domain protein 
+A3ERA4_9BACT Putative metallo-beta-lactamase family protein 
+A3I0G7_9BACT Putative hydrolase 
+A3J6A8_9FLAO Metal-dependent hydrolase 
+A3JCI8_9ALTE Pyrroloquinoline quinone biosynthesis protein PqqB 
+A3JHA3_9ALTE Carbon-phosphorus lyase complex accessory protein 
+A3JTF5_9RHOB Beta-lactamase-like protein 
+A3K0G7_9RHOB Putative uncharacterized protein 
+A3K1I7_9RHOB Pyrroloquinoline quinone biosynthesis protein PqqB 
+A3KTI1_PSEAE Pyrroloquinoline quinone biosynthesis protein B 
+A3KX44_PSEAE Putative uncharacterized protein 
+A3L783_PSEAE Pyrroloquinoline quinone biosynthesis protein B 
+A3LDG9_PSEAE Putative uncharacterized protein 
+A3PM66_RHOS1 PhnP-like protein 
+A3PMI5_RHOS1 Coenzyme PQQ biosynthesis protein B 
+A3SCK2_9RHOB Putative uncharacterized protein 
+A3SHF9_9RHOB Putative uncharacterized protein 
+A3SXU9_9RHOB Putative uncharacterized protein 
+A3TUH6_9RHOB Putative uncharacterized protein 
+A3U8Y8_9FLAO Hydrolase, metal-dependent 
+A3V7U4_9RHOB Putative uncharacterized protein 
+A3VAY9_9RHOB Putative uncharacterized protein 
+A3VLH8_9RHOB Pyrroloquinoline quinone biosynthesis protein PqqB 
+A3W1G0_9RHOB Pyrroloquinoline quinone biosynthesis protein PqqB 
+A3W5U9_9RHOB Putative uncharacterized protein 
+A3WC65_9SPHN Metal-dependent hydrolase 
+A3WEH8_9SPHN Putative uncharacterized protein 
+A3WWN5_9BRAD Putative uncharacterized protein 
+A3X5V2_9RHOB Putative uncharacterized protein 
+A3XLY8_LEEBM Hydrolase, metal-dependent 
+A3ZNC6_9PLAN PhnP protein-like 
+A4APA8_9FLAO Putative uncharacterized protein 
+A4AUL5_9FLAO Putative hydrolase 
+A4BR26_9GAMM Coenzyme PQQ biosynthesis protein B 
+A4BW04_9FLAO Pyrroloquinoline quinone biosynthesis protein PqqB 
+A4C042_9FLAO Putative hydrolase 
+A4CI59_ROBBH Pyrroloquinoline quinone biosynthesis protein PqqB 
+A4CLJ0_ROBBH Putative hydrolase 
+A4ENE8_9RHOB Putative uncharacterized protein 
+A4EX17_9RHOB Putative uncharacterized protein 
+A4FI41_SACEN Coenzyme PQQ synthesis protein B 
+A4JT49_BURVG Coenzyme PQQ biosynthesis protein B 
+A4TQS0_YERPP PhnP protein 
+A4WPH9_RHOS5 Coenzyme PQQ biosynthesis protein B 
+A4WPZ6_RHOS5 Beta-lactamase domain protein 
+A4XWB7_PSEMY Beta-lactamase domain protein 
+A4YUM0_BRASO Putative uncharacterized protein 
+A4YZY4_BRASO Pyrroloquinoline quinone biosynthesis protein B (Coenzyme PQQ synthesis protein B/G) 
+A5CF95_ORITB Putative uncharacterized protein 
+A5EJ20_BRASB Putative uncharacterized protein 
+A5EPX5_BRASB Pyrroloquinoline quinone biosynthesis protein B 
+A5FH55_FLAJ1 Beta-lactamase domain protein 
+A5FUM5_ACICJ Coenzyme PQQ biosynthesis protein B 
+A5FWZ4_ACICJ Beta-lactamase domain protein 
+A5GCC5_GEOUR Beta-lactamase domain protein 
+A5L444_9GAMM Carbon-phosphorus lyase complex accessory protein 
+A5P7L1_9SPHN Metal-dependent hydrolase 
+A5V3J0_SPHWW Beta-lactamase domain protein 
+A5VQE1_BRUO2 Putative uncharacterized protein 
+A5ZHZ5_9BACE Putative uncharacterized protein 
+A6BY41_YERPE PhnP protein 
+A6CBJ4_9PLAN Putative uncharacterized protein 
+A6CWQ1_9VIBR Beta-lactamase-like protein 
+A6DXR4_9RHOB Putative uncharacterized protein 
+A6E1W5_9RHOB Pyrroloquinoline quinone biosynthesis protein PqqB 
+A6E6H8_9SPHI Metal-dependent hydrolase 
+A6EQY9_9BACT Metal-dependent hydrolase 
+A6EYQ9_9ALTE Pyrroloquinoline quinone biosynthesis protein PqqB 
+A6FPR1_9RHOB Beta-lactamase-like protein 
+A6FRA8_9RHOB Pyrroloquinoline quinone biosynthesis protein PqqB 
+A6GGA4_9DELT Coenzyme PQQ synthesis protein B 
+A6GN48_9BURK Carbon-phosphorus lyase complex accessory protein 
+A6GSH9_9BURK Coenzyme PQQ biosynthesis protein B 
+A6GYL3_FLAPJ PhnP protein 
+A6L2I6_BACV8 Metal-dependent hydrolase 
+A6LB46_PARD8 Metal-dependent hydrolase 
+A6NQ35_9BACE Putative uncharacterized protein 
+A6TH12_KLEP7 Phosphonate metabolism 
+A6U908_SINMW Beta-lactamase domain protein 
+A6UGE8_SINMW Coenzyme PQQ biosynthesis protein B 
+A6V256_PSEA7 Phosphonate metabolism protein PhnP 
+A6X0P3_OCHA4 Beta-lactamase domain protein 
+A7AAI5_9PORP Putative uncharacterized protein 
+A7FMP4_YERP3 Phosphonate metabolism protein PhnP 
+A7HXT9_PARL1 Beta-lactamase-like protein 
+A7I5J2_METB6 Beta-lactamase domain protein 
+A7IGA4_XANP2 Coenzyme PQQ biosynthesis protein B 
+A7LQY4_BACOV Putative uncharacterized protein 
+A7MN57_ENTS8 Putative uncharacterized protein 
+A7ZUW2_ECO24 Phosphonate utilization protein 
+A8A7I9_ECOHS Phosphonate utilization protein 
+A8F091_RICCK Putative uncharacterized protein 
+A8F309_RICM5 Metal-dependent hydrolases of the beta-lactamase superfamily I 
+A8GQ93_RICAH Metal-dependent hydrolase of the beta-lactamase superfamily I 
+A8GU37_RICRS PhnP protein 
+A8GUG5_RICB8 Metal-dependent hydrolases of the beta-lactamase superfamily I 
+A8I5D4_AZOC5 Metal-dependent hydrolase 
+A8LN55_DINSH Coenzyme PQQ biosynthesis protein B 
+A8LRV7_DINSH Beta-lactamase domain protein 
+A8PLU6_9COXI Coenzyme PQQ biosynthesis protein B 
+A8UHR1_9FLAO Coenzyme PQQ synthesis protein B 
+A8ULY3_9FLAO Metal-dependent hydrolase 
+A9ASV4_BURM1 Coenzyme PQQ biosynthesis protein B 
+A9B7J5_HERA2 Beta-lactamase domain protein 
+A9CJ02_AGRT5 Metal dependent hydrolase 
+A9D917_9RHIZ Metal dependent hydrolase 
+A9DXY0_9FLAO Metal-dependent hydrolase 
+A9E820_9RHOB Beta-lactamase-like protein 
+A9F6P5_9RHOB Putative uncharacterized protein 
+A9GC23_9RHOB Putative uncharacterized protein 
+A9H1B7_9RHOB Putative uncharacterized protein 
+A9HTV6_9RHOB Pyrroloquinoline quinone biosynthesis protein PqqB 
+A9IUC8_BART1 Putative uncharacterized protein 
+A9MB14_BRUC2 Beta-lactamase domain protein 
+A9QPC2_METI4 Putative coenzyme PQQ synthesis protein G 
+A9QPG3_METI4 Coenzyme PQQ synthesis protein B 
+A9R5D3_YERPG Phosphonate metabolism protein PhnP 
+A9VY00_METEP Beta-lactamase-like protein 
+A9W9X8_CHLAA Beta-lactamase domain protein 
+A9Z508_YERPE Phosphonate metabolism protein PhnP 
+A9ZY35_YERPE Phosphonate metabolism protein PhnP 
+B0B7U9_CHLT2 Metal-dependent hydrolase 
+B0BC14_CHLTB Metal-dependent hydrolase 
+B0BVM9_RICRO Metal-dependent hydrolase 
+B0CGE9_BRUSI Beta-lactamase domain protein 
+B0GBH7_YERPE Phosphonate metabolism protein PhnP 
+B0GTF6_YERPE Phosphonate metabolism protein PhnP 
+B0H0T2_YERPE Phosphonate metabolism protein PhnP 
+B0HN29_YERPE Phosphonate metabolism protein PhnP 
+B0HUS2_YERPE Phosphonate metabolism protein PhnP 
+B0NMK4_BACSE Putative uncharacterized protein 
+B0R6Y9_HALS3 PhnP-like protein 
+B0SY76_CAUSK Putative uncharacterized protein 
+B1FSF9_9BURK Coenzyme PQQ biosynthesis protein B 
+B1ITW7_ECOLC Phosphonate metabolism 
+B1JLV2_YERPY Phosphonate metabolism protein PhnP 
+B1K6Y4_BURCC Coenzyme PQQ biosynthesis protein B 
+B1KEF5_SHEWM Coenzyme PQQ biosynthesis protein B 
+B1KFM6_SHEWM Coenzyme PQQ synthesis protein B 
+B1LPR1_ECOSM Phosphonate utilization protein 
+B1M5C0_METRJ Beta-lactamase domain protein 
+B1TGJ5_9BURK Coenzyme PQQ biosynthesis protein B 
+B1XCX7_ECODH Carbon-phosphorus lyase complex accessory protein 
+B1XZ40_LEPCP Pyrroloquinoline quinone biosynthesis protein PqqB 
+B1Y7S2_LEPCP Coenzyme PQQ biosynthesis protein B 
+B1Z3M2_BURA4 Coenzyme PQQ biosynthesis protein B 
+B1ZIV8_METPB Beta-lactamase domain protein 
+B1ZMR2_OPITP Beta-lactamase domain protein 
+B2A495_NATTJ Beta-lactamase domain protein 
+B2AIN5_CUPTR Coenzyme Pyrroloquinoline quinone (PQQ) synthesis protein B 
+B2IB81_BEII9 Metal-dependent hydrolase 
+B2IDU9_BEII9 Coenzyme PQQ biosynthesis protein B 
+B2JX62_BURP8 Coenzyme PQQ biosynthesis protein B 
+B2K2T3_YERPB Phosphonate metabolism protein PhnP 
+B2N276_ECOLX Phosphonate utilization protein 
+B2NQS6_ECO57 Phosphonate utilization protein 
+B2P2R1_ECO57 Phosphonate utilization protein 
+B2PJF8_ECO57 Phosphonate utilization protein 
+B2S0N1_BORHD Metal-dependent hydrolase 
+B2S5L0_BRUA1 Beta-lactamase-like protein 
+B2SSW0_XANOP Coenzyme PQQ biosynthesis protein B 
+B2U9I5_RALPJ Coenzyme PQQ biosynthesis protein B 
+B2UEV3_RALPJ Coenzyme PQQ biosynthesis protein B 
+B2UQH6_AKKM8 Beta-lactamase domain protein 
+B3A6C4_ECO57 Phosphonate utilization protein 
+B3AHB9_ECO57 Phosphonate utilization protein 
+B3B040_ECO57 Phosphonate utilization protein 
+B3BAW6_ECO57 Phosphonate utilization protein 
+B3BTK0_ECO57 Phosphonate utilization protein 
+B3CV05_ORITI PhnP protein 
+B3E083_METI4 Metal-dependent hydrolase of the beta-lactamase superfamily 
+B3E5H3_GEOLS Beta-lactamase domain protein 
+B3EBJ7_GEOLS Beta-lactamase domain protein 
+B3HJP5_ECOLX Phosphonate utilization protein 
+B3HRY9_ECOLX Phosphonate utilization protein 
+B3I3D0_ECOLX Phosphonate utilization protein 
+B3IGT5_ECOLX Phosphonate utilization protein 
+B3Q0J2_RHIE6 Probable metal-dependent hydrolase protein 
+B3QKH5_RHOPT Putative uncharacterized protein 
+B3QWC4_CHLT3 Beta-lactamase domain protein 
+B3WJ25_ECOLX Phosphonate utilization protein 
+B3WYU2_SHIDY Phosphonate utilization protein 
+B3XCL2_ECOLX Phosphonate utilization protein 
+B4CZR2_9BACT Coenzyme PQQ biosynthesis protein B 
+B4D0N8_9BACT Beta-lactamase domain protein 
+B4EHL4_BURCJ Coenzyme PQQ synthesis protein B 
+B4EZX9_PROMH Putative uncharacterized protein 
+B4RAW2_PHEZH Putative uncharacterized protein 
+B4WF01_9CAUL Putative uncharacterized protein 
+B5CY07_9BACE Putative uncharacterized protein 
+B5EAQ4_GEOBB Beta-lactamase domain protein 
+B5EQA4_ACIF5 Beta-lactamase domain protein 
+B5IS80_9EURY Metallo-beta-lactamase superfamily, putative 
+B5ISN4_9EURY Metallo-beta-lactamase superfamily, putative 
+B5IW21_9EURY Metallo-beta-lactamase superfamily protein 
+B5IXI0_9RHOB Putative uncharacterized protein 
+B5JGN9_9BACT Putative uncharacterized protein 
+B5KF17_9RHOB Beta-lactamase domain protein 
+B5RM85_BORDL PhnP protein 
+B5RPN1_BORRA PhnP protein 
+B5WKT3_9BURK Phosphonate metabolism protein PhnP 
+B5WSQ7_9BURK Coenzyme PQQ biosynthesis protein B 
+B5XXS0_KLEP3 Phosphonate utilization protein 
+B5Z1F7_ECO5E Phosphonate utilization protein 
+B5ZJ55_GLUDA Beta-lactamase domain protein 
+B5ZPW5_RHILW Beta-lactamase domain protein 
+B6AR38_9BACT Putative metallo-beta-lactamase family protein 
+B6AXG1_9RHOB Beta-lactamase domain protein 
+B6B5C3_9RHOB Coenzyme PQQ biosynthesis protein B 
+B6B9T7_9RHOB Beta-lactamase domain protein 
+B6BTX8_9PROT PhnP protein 
+B6BU84_9PROT Coenzyme PQQ biosynthesis protein B 
+B6C4K8_9GAMM Coenzyme PQQ biosynthesis protein B 
+B6I5W4_ECOSE Phosphonate metabolism protein 
+B6IMK6_RHOCS Metallo-beta-lactamase superfamily 
+B6JEC2_OLICO Hydrolase 
+B6QYC8_9RHOB Lipoyltransferase, putative 
+B6W1H5_9BACE Putative uncharacterized protein 
+B6YQL0_AZOPC Putative uncharacterized protein 
+B6ZV51_ECO57 Phosphonate utilization protein 
+B7AH00_9BACE Putative uncharacterized protein 
+B7H2Y4_ACIB3 Coenzyme PQQ biosynthesis protein B 
+B7J294_BORBZ PhnP protein 
+B7J7G9_ACIF2 Metallo-beta-lactamase family protein 
+B7KP80_METC4 Beta-lactamase-like protein 
+B7LB33_ECO55 Carbon-phosphorus lyase complex accessory protein 
+B7M800_ECO8A Carbon-phosphorus lyase complex accessory protein 
+B7MJW7_ECO45 Carbon-phosphorus lyase complex accessory protein 
+B7MR98_ECO81 Carbon-phosphorus lyase complex accessory protein 
+B7NG29_ECOLU Carbon-phosphorus lyase complex accessory protein 
+B7NSQ5_ECO7I Carbon-phosphorus lyase complex accessory protein 
+B7QXN8_9RHOB Beta-lactamase domain protein 
+B7R3S4_9EURY ATP-binding protein phnp 
+B7R579_9EURY Phnp protein 
+B7RIH0_9RHOB Beta-lactamase domain protein 
+B7RIH7_9RHOB Coenzyme PQQ biosynthesis protein B 
+B7UPR6_ECO27 Carbon-phosphorus lyase complex accessory protein 
+B7V2W1_PSEA8 Putative phosphonate metabolism protein 
+B7XRS4_BORGA PhnP protein 
+B7XU29_BORGA PhnP protein 
+B8CX35_HALOH Beta-lactamase domain protein 
+B8ELC2_METSB Beta-lactamase domain protein 
+B8ENI6_METSB Coenzyme PQQ biosynthesis protein B 
+B8FQM7_DESHD Beta-lactamase domain protein 
+B8GBT1_CHLAD Beta-lactamase domain protein 
+B8GF46_METPE Beta-lactamase domain protein 
+B8GWH0_CAUCN Metal-dependent hydrolase 
+B8IHK1_METNO Beta-lactamase domain protein 
+B8KVB6_9GAMM Coenzyme PQQ biosynthesis protein B 
+B9AC47_BORBU PhnP protein 
+B9B5W9_9BURK Coenzyme PQQ biosynthesis protein B 
+B9JFC2_AGRRK Metal-dependent hydrolase protein 
+B9JJ29_AGRRK Coenzyme PQQ biosynthesis protein B 
+B9JWB5_AGRVS Metal dependent hydrolase 
+B9KHT2_ANAMF PhnP protein 
+B9KLL8_RHOSK PhnP-like protein 
+B9KMC4_RHOSK Coenzyme PQQ biosynthesis protein B 
+B9L2G7_THERP Conserved protein 
+B9LCQ4_CHLSY Beta-lactamase domain protein 
+B9M4L7_GEOSF Beta-lactamase domain protein 
+B9NNK8_9RHOB Beta-lactamase domain protein 
+B9X3R6_BORBU PhnP protein 
+B9X5G2_BORBU PhnP protein 
+B9X8H7_9SPIO PhnP protein 
+B9XP67_9BACT Beta-lactamase domain protein 
+B9YZH7_9NEIS Coenzyme PQQ biosynthesis protein B 
+B9Z1S8_9NEIS Beta-lactamase domain protein 
+C0AAJ2_9BACT Beta-lactamase domain protein 
+C0AHG3_BORBU PhnP protein 
+C0AK21_BORBU PhnP protein 
+C0ANH8_9SPIO PhnP protein 
+C0AU47_9ENTR Putative uncharacterized protein 
+C0BIM2_9BACT Coenzyme PQQ synthesis protein B 
+C0BJK4_9BACT Beta-lactamase domain protein 
+C0BMV6_9BACT Coenzyme PQQ synthesis protein B 
+C0G690_9RHIZ Putative uncharacterized protein 
+C0LU61_9PROT PqqB protein 
+C0N6I1_9GAMM Coenzyme PQQ biosynthesis protein B 
+C0QXE2_BRAHW Metal-dependent hydrolase 
+C0RIX3_BRUMB Beta-lactamase domain protein 
+C0SXF1_BORBU PhnP protein 
+C0T0W0_BORBU PhnP protein 
+C0VHU5_9GAMM Coenzyme PQQ synthesis protein B (Coenzyme PQQ synthesis protein V) 
+C0YH47_9FLAO Possible phosphonate metabolism protein PhnP 
+C1A7D7_GEMAT Putative uncharacterized protein 
+C1CVZ3_DEIDV Putative Metallo-beta-lactamase superfamily protein 
+C1DCQ6_LARHH Probable hydrolase protein 
+C1F6C1_ACIC5 Metallo-beta-lactamase family protein 
+C1NAY2_9ESCH PhnP 
+C1V7S5_9EURY Ribonuclease Z 
+C1VA73_9EURY Metal-dependent hydrolase, beta-lactamase superfamily I 
+C2DTA7_ECOLX Carbon-phosphorus lyase complex accessory protein 
+C2FW76_9SPHI Phosphonate metabolism protein PhnP 
+C2LEM4_PROMI Carbon-phosphorus lyase complex accessory protein 
+C2M1Z6_CAPGI Octanoyltransferase 
+C3K5M4_PSEFS Phosphorous compounds metabolism-related protein 
+C3MD49_RHISN Metal dependent hydrolase 
+C3PM06_RICAE Metal-dependent hydrolases of the beta-lactamase superfamily I 
+C3Q1R8_9BACE Metal-dependent hydrolase 
+C3QFR3_9BACE Hydrolase 
+C3R1J5_9BACE Hydrolase 
+C3RFG6_9BACE Metal-dependent hydrolase 
+C3SH32_ECOLX Phosphonate metabolism 
+C3SH35_ECOLX Phosphonate metabolism 
+C3VIT5_RAHAQ PqqB 
+C4HA64_YERPE PhnP protein 
+C4HCQ4_YERPE PhnP protein 
+C4HZY7_YERPE PhnP protein 
+C4IQR7_BRUAB Putative uncharacterized protein 
+C4K2X3_RICPU Beta-lactamase superfamily hydrolase 
+C4PMN6_CHLTZ Metal-dependent hydrolase 
+C4PR55_CHLTJ Metal-dependent hydrolase 
+C4WJL8_9RHIZ Beta-lactamase domain-containing protein 
+C4X126_KLEPN Phosphonate utilization protein 
+C4X8Q4_KLEPN Pyrroloquinoline quinone synthesis protein B 
+C4YW13_9RICK PhnP protein 
+C5A186_ECOBW Carbon-phosphorus lyase complex accessory protein 
+C5A3A7_THEGJ Metallo-beta-lactamase superfamily protein 
+C5A5Z3_THEGJ Metallo-beta-lactamase superfamily protein 
+C5AL14_BURGB Pyrroloquinoline quinone biosynthesis protein PqqB 
+C5AQE5_METEA Putative metal-dependent hydrolase 
+C5CPT6_VARPS Coenzyme PQQ biosynthesis protein B 
+C5D1P0_VARPS Coenzyme PQQ biosynthesis protein B 
+C5PXA1_9SPHI Phosphonate metabolism protein PhnP 
+C5TGE9_ZYMMO Beta-lactamase domain protein 
+C5V204_9PROT Phosphonate metabolism protein PhnP 
+C5VIK8_9BACT Lipoate-protein ligase B 
+C5WBX3_ECOBB PhnP protein 
+C6A0X4_THESM Metallo-beta-lactamase superfamily protein 
+C6A3B9_THESM Phosphonate matabolism protein PhnP like protein, metallo-beta-lactamase superfamily 
+C6ADT5_BARGA Putative PhnP protein 
+C6AYG6_RHILS Beta-lactamase domain protein 
+C6BKQ3_RALP1 Coenzyme PQQ biosynthesis protein B 
+C6DKA6_PECCP Phosphonate metabolism protein PhnP 
+C6DYC0_GEOSM Beta-lactamase domain protein 
+C6ED31_ECOBD Carbon-phosphorus lyase complex accessory protein 
+C6HW84_9BACT Putative metallo-beta-lactamase family protein 
+C6I690_9BACE Metal-dependent hydrolase 
+C6ISR3_9BACE Hydrolase 
+C6JLU6_FUSVA Coenzyme PQQ synthesis protein B 
+C6KEK9_METME PqqB (Fragment) 
+C6MX25_9DELT Beta-lactamase domain protein 
+C6NYK1_9GAMM Metal-dependent hydrolase of the beta-lactamase superfamily I; PhnP protein 
+C6QCY1_9RHIZ Beta-lactamase domain protein 
+C6QGR1_9RHIZ Coenzyme PQQ biosynthesis protein B 
+C6UK90_ECOBR Carbon-phosphorus lyase complex accessory protein 
+C6V2Z4_ECO5T Carbon-phosphorus lyase complex accessory protein 
+C6V567_NEORI Metallo-beta-lactamase family protein 
+C6VUH6_DYAFD Beta-lactamase domain protein 
+C6WVF4_METML Coenzyme PQQ biosynthesis protein B 
+C6WVU1_METML Beta-lactamase domain protein 
+C6X693_FLAB3 Metal-dependent hydrolases of the beta-lactamase superfamily I; PhnP protein 
+C6XDJ7_METSD Beta-lactamase domain protein 
+C6XDZ8_METSD Coenzyme PQQ biosynthesis protein B 
+C6XHE4_LIBAP Metal-dependent hydrolase protein 
+C6XJM1_HIRBI Beta-lactamase-like protein 
+C6Y2Q0_PEDHD Beta-lactamase domain protein 
+C6Z5F9_9BACE Metal-dependent hydrolase 
+C7C9M0_METED Pyrroloquinoline quinone (PQQ) biosynthesis protein B 
+C7CKM9_METED Putative metal-dependent hydrolase 
+C7DCD9_9RHOB Beta-lactamase domain protein 
+C7DRH6_PSEFL Coenzyme PQQ biosynthesis protein PqqB 
+C7JE57_ACEP3 Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein B PqqB 
+C7JGT7_ACEP3 Metal-dependent hydrolase PhnP 
+C7JMM2_ACEPA Metal-dependent hydrolase PhnP 
+C7JQB7_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein B PqqB 
+C7JWT8_ACEPA Metal-dependent hydrolase PhnP 
+C7JZI2_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein B PqqB 
+C7K2A0_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein B PqqB 
+C7K732_ACEPA Metal-dependent hydrolase PhnP 
+C7KBG9_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein B PqqB 
+C7KGA1_ACEPA Metal-dependent hydrolase PhnP 
+C7KKT5_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein B PqqB 
+C7KQL5_ACEPA Metal-dependent hydrolase PhnP 
+C7KV46_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein B PqqB 
+C7KZY0_ACEPA Metal-dependent hydrolase PhnP 
+C7L279_ACEPA Metal-dependent hydrolase PhnP 
+C7L4X4_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein B PqqB 
+C7LBU3_BRUMC Metallo-beta-lactamase family protein 
+C7M5N3_CAPOD Metallo-beta-lactamase domain protein 
+C7NUM3_HALUD Beta-lactamase domain protein 
+C7NZV7_HALMD Beta-lactamase domain protein 
+C7PQ93_CHIPD Beta-lactamase domain protein 
+C7X8A2_9PORP Metal-dependent hydrolase 
+C8Q575_9ENTR Coenzyme PQQ biosynthesis protein B 
+C8S0G5_9RHOB Beta-lactamase domain-containing protein 
+C8SE04_9RHIZ Beta-lactamase domain protein 
+C8TA97_KLEPR Coenzyme PQQ synthesis protein B 
+C8TMX7_ECO26 Carbon-phosphorus lyase complex accessory protein PhnP 
+C8U020_ECO10 Carbon-phosphorus lyase complex accessory protein PhnP 
+C8ULU1_ECO1A Carbon-phosphorus lyase complex accessory protein PhnP 
+C8WFU0_ZYMMN Beta-lactamase domain protein 
+C9CSR9_9RHOB Beta-lactamase domain protein 
+C9KRP0_9BACE Lipoate-protein ligase B 
+C9MN60_9BACT Lipoate-protein ligase B 
+C9Q0B6_9BACT Lipoate-protein ligase B 
+C9QUA5_ECOD1 Phosphonate metabolism protein PhnP 
+C9T680_9RHIZ Beta-lactamase domain-containing protein 
+C9TEL4_9RHIZ Beta-lactamase domain-containing protein 
+C9TLX3_9RHIZ Beta-lactamase domain-containing protein 
+C9TVA1_9RHIZ Beta-lactamase domain-containing protein 
+C9U3L3_BRUAB Beta-lactamase domain-containing protein 
+C9UCT6_BRUAB Beta-lactamase domain-containing protein 
+C9UM14_BRUAB Beta-lactamase domain-containing protein 
+C9UY15_BRUAB Beta-lactamase domain-containing protein 
+C9VAF6_BRUNE Beta-lactamase domain-containing protein 
+C9VJI1_9RHIZ Beta-lactamase domain-containing protein 
+C9VSP1_BRUAB Beta-lactamase domain-containing protein 
+C9XWH8_CROTZ Coenzyme PQQ synthesis protein B 
+D0AW63_BRUAB Beta-lactamase domain-containing protein 
+D0B339_BRUME Beta-lactamase domain-containing protein 
+D0BBD8_BRUSU Beta-lactamase domain-containing protein 
+D0BZT6_9GAMM Coenzyme PQQ synthesis protein B 
+D0C785_ACIBA Coenzyme PQQ biosynthesis protein B 
+D0CT33_9RHOB Beta-lactamase domain protein 
+D0D853_9RHOB Beta-lactamase domain protein 
+D0DC76_9RHOB Coenzyme PQQ biosynthesis protein B 
+D0EXG3_PSEPU Coenzyme PQQ synthesis protein (Fragment) 
+D0FP08_ERWPY Coenzyme PQQ synthesis protein B (Pyrroloquinoline quinone biosynthesis protein B) 
+D0GFE2_BRUME Beta-lactamase domain-containing protein 
+D0I8M6_VIBHO Coenzyme PQQ synthesis protein B 
+D0IJX0_9VIBR Coenzyme PQQ synthesis protein B 
+D0J8K5_BLASP Metal-dependent hydrolase 
+D0JBR3_BLASB Metallo-beta-lactamase domain protein 
+D0JHG2_YERPD PhnP protein 
+D0JRX9_YERP1 PhnP protein 
+D0KG94_PECWW Phosphonate metabolism protein PhnP 
+D0MD01_RHOM4 Beta-lactamase domain protein 
+D0PCV7_BRUSU Beta-lactamase domain-containing protein 
+D0PJ25_BRUSU Beta-lactamase domain-containing protein 
+D0RHI6_9RHIZ Beta-lactamase domain-containing protein 
+D0RXY5_ACICA Coenzyme PQQ synthesis protein B 
+D0TC46_9BACE Metal-dependent hydrolase 
+D0TW85_9BACE Hydrolase 
+D1ASU1_ANACI Putative hydrolase 
+D1C698_SPHTD Beta-lactamase domain protein 
+D1CDQ1_THET1 Beta-lactamase domain protein 
+D1CXW4_9RHIZ Beta-lactamase domain-containing protein 
+D1ESB4_9RHIZ Beta-lactamase domain-containing protein 
+D1EZ37_BRUME Beta-lactamase domain-containing protein 
+D1F8N7_BRUME Beta-lactamase domain-containing protein 
+D1FFF3_9RHIZ Beta-lactamase domain-containing protein 
+D1JTH4_9BACE Metal-dependent hydrolase 
+D1JZS9_9BACE Metal-dependent hydrolase 
+D1PQV8_9FIRM Putative uncharacterized protein 
+D1QM66_9BACT Lipoate-protein ligase B 
+D1R5A8_9CHLA Putative uncharacterized protein 
+D1RRG6_SEROD Coenzyme PQQ synthesis protein B 
+D1S087_SEROD Carbon-phosphorus lyase complex accessory protein 
+D1UD48_9BURK Coenzyme PQQ biosynthesis protein B 
+D1W280_9BACT Metallo-beta-lactamase domain protein 
+D1W4H0_9BACT Metallo-beta-lactamase domain protein 
+D1XYT1_9BACT Metallo-beta-lactamase domain protein 
+D2F0K7_9BACE Putative uncharacterized protein 
+D2LCB8_RHOVA Beta-lactamase domain protein 
+D2LG63_RHOVA Coenzyme PQQ biosynthesis protein B 
+D2MBN5_RHOPA Coenzyme PQQ biosynthesis protein B 
+D2MBY0_RHOPA Putative uncharacterized protein 
+D2NFL3_ECOS5 Phosphonate metabolism protein 
+D2QN99_SPILD Beta-lactamase domain protein 
+D2R3W4_PIRSD Beta-lactamase domain protein 
+D2RG87_ARCPA Beta-lactamase domain protein 
+D2RQC0_HALTV Beta-lactamase domain protein 
+D2S4D4_GEOOG Pyrroloquinoline quinone biosynthesis protein PqqB 
+D2T3L6_ERWP6 Coenzyme PQQ synthesis protein B 
+D3AF11_9CLOT Putative uncharacterized protein 
+D3DIL7_HYDTT Coenzyme PQQ synthesis protein B 
+D3ECG9_GEOS4 Putative uncharacterized protein 
+D3GTX2_ECO44 Carbon-phosphorus lyase complex accessory protein (Metallo-beta-lactamase superfamily protein) 
+D3HYB9_9BACT Lipoate-protein ligase B 
+D3I602_9BACT Lipoate-protein ligase B 
+D3IE01_9BACT Lipoate-protein ligase B 
+D3II00_9BACT Lipoate-protein ligase B 
+D3N0G5_9BURK Pyrroloquinoline quinone biosynthesis protein PqqB 
+D3NVM9_AZOS1 PhnP protein 
+D3P1J9_AZOS1 Pyrroloquinoline quinone biosynthesis protein B 
+D3Q1Z9_STANL Coenzyme PQQ biosynthesis protein B 
+D3QK99_ECOCB Phosphonate utilization protein 
+D3REI8_KLEVT Coenzyme PQQ biosynthesis protein B 
+D3RG00_KLEVT Phosphonate metabolism protein PhnP 
+D3RWX5_FERPA ATP-binding protein PhnP (PhnP) 
+D3SST2_NATMM PhnP-like protein 
+D3UUJ4_CHLTS Metal-dependent hydrolase 
+D4C0Y1_PRORE Putative uncharacterized protein 
+D4E6D1_SEROD Coenzyme PQQ biosynthesis protein B 
+D4GEB4_PANAM PqqB 
+D4GHP0_PANAM PhnP 
+D4GTD8_HALVD ATP-binding protein 
+D4I1A3_ERWAC Coenzyme PQQ synthesis protein B 
+D4IFL1_ERWAE Coenzyme PQQ synthesis protein B (Pyrroloquinoline quinon biosynthesis protein B) 
+D4IIR9_9BACT Metal-dependent hydrolases of the beta-lactamase superfamily I 
+D4P6Z5_PANAN PqqB 
+D4SXT9_9XANT Pyrroloquinoline quinone biosynthesis protein PqqB 
+D4T9K7_9XANT Pyrroloquinoline quinone biosynthesis protein PqqB 
+D4VCP1_BACVU Metallo-beta-lactamase domain protein 
+D4VTA8_9BACE Metallo-beta-lactamase domain protein 
+D4WL16_BACOV Metallo-beta-lactamase domain protein 
+D4WSW5_BACOV Metallo-beta-lactamase domain protein 
+D4XM49_ACIHA Coenzyme PQQ synthesis protein B (Pyrroloquinoline quinone biosynthesis protein B) 
+D4Z1L6_SPHJU PhnP protein 
+D5ASB4_RHOCB Metallo-beta-lactamase family protein 
+D5AYG1_RICPP Metal-dependent hydrolases of the beta-lactamase superfamily I 
+D5B3H8_YERPZ PhnP protein 
+D5BE98_ZUNPS Metallo-beta-lactamase domain-containing protein 
+D5BQA5_PUNMI Beta-lactamase-like protein 
+D5C1I2_NITHN Coenzyme PQQ biosynthesis protein B 
+D5D7A0_ECOKI Phosphonate utilization protein 
+D5DFU8_BACMD Putative uncharacterized protein 
+D5DSK2_BACMQ Putative uncharacterized protein 
+D5E973_METMS Beta-lactamase domain protein 
+D5EJ63_CORAD Beta-lactamase domain-containing protein 
+D5EYA5_PRER2 Putative phnP protein 
+D5H638_SALRM Metallo-beta-lactamase superfamily protein 
+D5NM99_9BURK Coenzyme PQQ biosynthesis protein B 
+D5QAQ5_ACEHA Pyrroloquinoline quinone biosynthesis protein PqqB 
+D5QNT8_METTR Beta-lactamase domain protein 
+D5QP93_METTR Coenzyme PQQ biosynthesis protein B 
+D5RQ51_9PROT Phosphonate metabolism protein PhnP 
+D5SNK2_PLAL2 Beta-lactamase domain protein 
+D5U667_BRAM5 Beta-lactamase domain protein 
+D5V548_ARCNC Carbon-phosphorus lyase complex accessory protein 
+D5V712_ARCNC Coenzyme PQQ biosynthesis protein B 
+D5VJQ6_CAUST Metal-dependent hydrolase 
+D5WEF7_BURSC Coenzyme PQQ biosynthesis protein B 
+D6CRJ4_THIS3 Coenzyme PQQ synthesis protein B (Pyrroloquinoline quinone biosynthesis protein B) 
+D6DSU1_ENTCL Coenzyme PQQ biosynthesis protein B 
+D6GCY1_9ENTR Coenzyme PQQ biosynthesis protein B 
+D6GLX1_9ENTR Phosphonate metabolism protein PhnP 
+D6I3X4_ECOLX Phosphonate metabolism protein PhnP 
+D6IH34_ECOLX Phosphonate metabolism protein PhnP 
+D6IIR0_ECOLX PhnP 
+D6JPG3_ACIG3 Putative uncharacterized protein 
+D6LPU4_9RHIZ PhnP protein 
+D6RY17_BORVA PhnP protein 
+D6UP01_9BACT Beta-lactamase-like protein 
+D6UQC9_9BACT Pyrroloquinoline quinone biosynthesis protein PqqB 
+D6V6H6_9BRAD Hydrolase 
+D6YDE3_CHLTR Metal-dependent hydrolase 
+D6YFI6_CHLTR Metal-dependent hydrolase 
+D6YI52_CHLTR Metal-dependent hydrolase 
+D6YKS7_CHLTR Metal-dependent hydrolase 
+D6YMJ1_CHLTR Metal-dependent hydrolase 
+D6YY64_CHLTR Metal-dependent hydrolase 
+D6ZYG6_THINO Metal-dependent hydrolase 
+D7A700_THINO Coenzyme PQQ biosynthesis protein B 
+D7AK62_GEOSL Metal-dependent hydrolases of the beta-lactamase superfamily I; PhnP protein 
+D7BT01_9ACTO Pyrroloquinoline quinone biosynthesis protein PqqB 
+D7CUD4_9DEIN Beta-lactamase-like protein 
+D7DDK2_CHLTR Metal-dependent hydrolase 
+D7DGX7_CHLTR Metal-dependent hydrolase 
+D7DHP1_9PROT Coenzyme PQQ biosynthesis protein B 
+D7DI49_9PROT Beta-lactamase domain protein 
+D7EA08_9EURY Beta-lactamase-like protein 
+D7H3E5_BRUAB PhnP protein 
+D7I0Z6_PSESS Metal-dependent hydrolases of the beta-lactamase superfamily I; PhnP protein 
+D7I5Z4_PSESS Coenzyme PQQ synthesis protein B 
+D7IF84_9BACE Hydrolase, metal-dependent 
+D7IU77_9BACE Lipoate-protein ligase B 
+D7J431_9BACE Lipoate-protein ligase B 
+D7JI98_ECOLX PhnP 
+D7K2K0_9BACE Lipoate-protein ligase B 
+D7N947_9BACT Lipoate-protein ligase B 
+O29772_ARCFU ATP-binding protein PhnP (PhnP) 
+O51483_BORBU PhnP protein (PhnP) 
+O57998_PYRHO Putative uncharacterized protein PH0260 
+O59242_PYRHO 249aa long hypothetical PHNP protein 
+O84384_CHLTR Predicted metal dependent hydrolase (Histidinic triad) 
+Q027I3_SOLUE Beta-lactamase domain protein 
+Q02QK9_PSEAB Putative phosphonate metabolism protein 
+Q07MM8_RHOP5 Putative hydrolase 
+Q07TD2_RHOP5 Coenzyme PQQ biosynthesis protein B 
+Q0ANY4_MARMM Coenzyme PQQ synthesis protein B 
+Q0APP4_MARMM Beta-lactamase-like protein 
+Q0B2B4_BURCM Coenzyme PQQ biosynthesis protein B 
+Q0BQS5_GRABC Coenzyme PQQ synthesis protein B 
+Q0BT75_GRABC Metal-dependent hydrolase 
+Q0C179_HYPNA Metallo-beta-lactamase family protein 
+Q0FAY4_9RHOB Putative uncharacterized protein 
+Q0FSC2_9RHOB Pyrroloquinoline quinone biosynthesis protein PqqB 
+Q0FT23_9RHOB Putative uncharacterized protein 
+Q0G4G1_9RHIZ Pyrroloquinoline quinone biosynthesis protein PqqB 
+Q0G736_9RHIZ Probable hydrolase 
+Q0GFB6_SERMA PqqB 
+Q0SMX7_BORAP PhnP protein 
+Q0T9V0_ECOL5 PhnP protein 
+Q0W2M9_UNCMA Putative metallo-beta-lactamase 
+Q11HZ5_MESSB Beta-lactamase-like 
+Q11RC8_CYTH3 Metal-dependent hydrolase 
+Q12UP1_METBU Protein with beta-lactamase-like domain 
+Q136P1_RHOPS Putative hydrolase 
+Q13QW5_BURXL Pyrroloquinoline quinone biosynthesis protein B 
+Q162Y9_ROSDO Putative uncharacterized protein 
+Q16B39_ROSDO Coenzyme PQQ biosynthesis protein B 
+Q1BQG4_BURCA Coenzyme PQQ biosynthesis protein B 
+Q1C3P3_YERPA PhnP protein 
+Q1CM26_YERPN PhnP protein 
+Q1GLA5_SILST Beta-lactamase-like protein 
+Q1GTP7_SPHAL Beta-lactamase-like protein 
+Q1INB9_ACIBL Beta-lactamase-like 
+Q1IY03_DEIGD Beta-lactamase-like protein 
+Q1JVX8_DESAC Beta-lactamase-like 
+Q1K2J1_DESAC Beta-lactamase-like 
+Q1MGG3_RHIL3 Putative uncharacterized protein 
+Q1NDV6_9SPHN Metal-dependent hydrolase 
+Q1Q1M5_9BACT Putative uncharacterized protein 
+Q1QLU2_NITHX Putative uncharacterized protein 
+Q1QZA6_CHRSD Coenzyme PQQ biosynthesis protein B 
+Q1R3G9_ECOUT PhnP protein 
+Q1RGW4_RICBR Metal-dependent hydrolases of the beta-lactamase superfamily I 
+Q1VVK0_9FLAO Putative hydrolase 
+Q1YKD8_MOBAS Coenzyme PQQ (Pyrroloquinoline quinone) biosynthesis protein 
+Q1YNM5_MOBAS Possible hydrolase 
+Q1YPJ6_9GAMM Coenzyme PQQ synthesis protein B 
+Q1Z613_PHOPR PhnP protein 
+Q1ZN03_PHOAS Beta-lactamase-like protein 
+Q214D0_RHOPB Putative hydrolase 
+Q21AY6_RHOPB Coenzyme PQQ biosynthesis protein B 
+Q24RM4_DESHY Putative uncharacterized protein 
+Q26E97_FLABB Metal-dependent hydrolase, beta-lactamase family 
+Q28SX1_JANSC Beta-lactamase-like protein 
+Q2BNP6_9GAMM Coenzyme PQQ synthesis protein B 
+Q2CCB6_9RHOB PhnP-like protein 
+Q2FNB4_METHJ Beta-lactamase-like 
+Q2G6Z6_NOVAD Beta-lactamase-like protein 
+Q2GDI5_NEOSM Metallo-beta-lactamase family protein 
+Q2GFL1_EHRCR Metallo-beta-lactamase family protein 
+Q2GJ33_ANAPZ Metallo-beta-lactamase family protein 
+Q2IUJ2_RHOP2 Coenzyme PQQ biosynthesis protein B 
+Q2IWM5_RHOP2 Hydrolase 
+Q2K898_RHIEC Probable metal-dependent hydrolase protein 
+Q2N8C8_ERYLH Coenzyme PQQ synthesis protein B 
+Q2NAF2_ERYLH Metal-dependent hydrolase 
+Q2RTP6_RHORT Beta-lactamase-like 
+Q2S595_SALRD Metallo-beta-lactamase superfamily protein 
+Q2YQ74_BRUA2 Beta-lactamase-like 
+Q32X68_PSEFL Beta-lactamase superfamily I metal-dependent hydrolase 
+Q39XL7_GEOMG Beta-lactamase-like 
+Q3A832_PELCD Phosphonate metabolism 
+Q3IRM7_NATPD PhnP-like protein 
+Q3IZR4_RHOS4 Putative coenzyme PQQ synthesis protein B 
+Q3J033_RHOS4 PhnP-like protein 
+Q3KLX4_CHLTA Metal-dependent hydrolase 
+Q3SGK9_THIDA Phosphonate metabolism protein, PhnP 
+Q3SSM0_NITWN Putative uncharacterized protein 
+Q3SUT3_NITWN Coenzyme PQQ biosynthesis protein B 
+Q3YSW1_EHRCJ Beta-lactamase-like 
+Q3YUP9_SHISS Phosphonate metabolism 
+Q40JC5_EHRCH Beta-lactamase-like 
+Q46F33_METBF ATP-binding protein PhnP 
+Q470N9_RALEJ Coenzyme PQQ biosynthesis protein B 
+Q47FD5_DECAR Coenzyme PQQ biosynthesis protein B 
+Q488A5_COLP3 Coenzyme PQQ synthesis protein B 
+Q48HM4_PSE14 Phosphonate metabolism protein PhnP 
+Q4K4V1_PSEF5 Coenzyme pqq synthesis protein b 
+Q4KEK2_PSEF5 Coenzyme PQQ synthesis protein B 
+Q4UJR7_RICFE Metal-dependent hydrolases of the beta-lactamase superfamily I 
+Q57DD1_BRUAB Putative uncharacterized protein 
+Q5FH59_EHRRG PhnP protein 
+Q5FUX8_GLUOX PhnP protein 
+Q5HC29_EHRRW PhnP protein 
+Q5JEN9_PYRKO Alkylphosphonate utilization protein PhnP homolog, metallo-beta-lactamase superfamily 
+Q5JFY7_PYRKO Phosphonate matabolism protein PhnP homolog, metallo-beta-lactamase superfamily 
+Q5L6K8_CHLAB Putative hydrolase 
+Q5LBG6_BACFN Putative hydrolase 
+Q5LPV6_SILPO Putative uncharacterized protein 
+Q5NNJ2_ZYMMO Beta-lactamase domain protein 
+Q5PBJ3_ANAMM Putative uncharacterized protein 
+Q5UYS7_HALMA ATP-binding protein PhnP 
+Q64RZ9_BACFR Metal-dependent hydrolase 
+Q660Z1_BORGA PhnP protein 
+Q66F32_YERPS PhnP protein 
+Q68VP3_RICTY Phosphonate metabolism protein PhnP 
+Q6D9W5_ERWCT Putative phosphonate metabolism protein 
+Q6FZV2_BARQU Putative uncharacterized protein 
+Q6G3D2_BARHE Putative uncharacterized protein 
+Q6N639_RHOPA Possible hydrolase 
+Q6RCC8_PSEST PhnP 
+Q6W1W5_RHISN Coenzyme PQQ synthesis protein B 
+Q74AC5_GEOSL Metallo-beta-lactamase family protein 
+Q7BTG7_PSEST HtxN 
+Q7CKG9_YERPE PhnP protein 
+Q7NRR2_CHRVO Probable hydrolase protein 
+Q7PA80_RICSI PhnP protein 
+Q7UJJ2_RHOBA PhnP protein homolog-putative hydrolase 
+Q7X1I2_9BACT Lfe137p1 (Fragment) 
+Q7X5S1_ENTIT PqqB 
+Q823Y9_CHLCV Metal-dependent hydrolase, putative 
+Q83XA0_STRRO Pyrroloquinoline quinone biosynthesis protein B 
+Q882Q8_PSESM Phosphonate metabolism protein, PhnP 
+Q89LM9_BRAJA Bll4514 protein 
+Q8A807_BACTN Hydrolase, metal-dependent 
+Q8FAW2_ECOL6 PhnP protein 
+Q8G0T9_BRUSU Putative uncharacterized protein 
+Q8PYK8_METMA Conserved protein 
+Q8TIS7_METAC ATP-binding protein PhnP 
+Q8TZQ8_PYRFU ATP-binding protein phnp 
+Q8U0H1_PYRFU ATP-binding protein phnp 
+Q8X5P8_ECO57 Phosphonate metabolism 
+Q8YH19_BRUME Phnp protein 
+Q92FY5_RICCN PhnP protein 
+Q92PX2_RHIME Putative uncharacterized protein 
+Q98MW0_RHILO Probable hydrolase 
+Q9A7A4_CAUCR Putative uncharacterized protein 
+Q9HNK7_HALSA ATP-binding protein 
+Q9HYM9_PSEAE Putative uncharacterized protein 
+Q9PK14_CHLMU Hydrolase, metal-dependent, putative 
+Q9V171_PYRAB Alkylphosphonate uptake/carbon-phosphorus lyase, membrane bound subunit, phnP homolog 
+Q9ZC97_RICPR Putative uncharacterized protein RP869 

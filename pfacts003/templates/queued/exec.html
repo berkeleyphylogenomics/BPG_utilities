@@ -1,0 +1,69 @@
+{% extends "common/legacy_base.html" %}
+
+{% block extrascripts %}
+    <script type='text/javascript'>
+        $(function() {
+            $('#execcordion').accordion({
+                autoHeight: false,
+                animated: false{% if not job_info.is_finished %},
+                active: 'h3:last'{% endif %}
+            });
+            $('#execbar').progressbar({
+                value: {{ job_info.get_percent_complete }}
+            });{% if job_info.is_finished or job_info.errored %}
+            $('.ui-progressbar-value').addClass('stop_progressbar');{% endif %}
+        });
+        $('document').ready(function () {
+            var timer = $('#timer')[0];
+            var time = parseInt(timer.innerHTML);
+            $(timer).width(timer.innerHTML.length + 'em');
+            function display() {
+                time--;
+                if (time > -1) {
+                    timer.innerHTML = time;
+                } else {
+                    clearInterval(set_int);
+                }
+            }
+            set_int = setInterval(display, 1000);
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+<div id='exec_header'>
+{% if job_info.errored %}
+    <h1 class='error'>{{ job_info.title }} has encountered an error.</h1>
+{% else %}{% if job_info.start %}
+    <h1>{{ job_info.title }} is executing; submitted {{ job_info.start }}.</h1>
+{% else %}
+    <h1>{{ job_info.title }} is queued</h1>
+    <p class='disclaimer'>Completing this submission may take some time.  You may wait for the job to complete or bookmark this <a href="#">{{ job_info.title }} Submission</a> and return later.</p>
+{% endif %}{% endif %}
+    <div id='execbar'><span style='left: {{ job_info.get_percent_complete }}%;'>{{ job_info.get_percent_complete }}%</span></div>
+    {% block message %}
+    {% endblock %}
+    {% if refresh_time %}
+    <p>This page will refresh in <span id='timer'>{{ refresh_time }}</span> seconds.</p>
+    {% endif %}
+</div>
+
+{% if job_info.steps %}<div id='execcordion'>{% for step in job_info.steps %}{% if step.start %}
+    <h3><a href='#'>{{ forloop.counter }}. {{ step.title }}</a></h3>
+    {% if step.entries %}<div>
+        <table>
+        <tr><th>Time</th><th>Message</th></tr>
+        <tr class='step_start'><td>{{ step.start }}</td><td>Started</td></tr>
+        {% for entry in step.get_entries %}
+            <tr class='{{ entry.levelname|lower }} {% cycle 'even' 'odd' %}'><td>{{ entry.asctime }}</td><td>{{ entry.message }}</td></tr>
+        {% endfor %}{% if step.is_finished %}
+        <tr class='step_stop'><td>{{ step.stop }}</td><td>Completed</td></tr>{% endif %}
+        </table>{% if step.display_outfile %}
+        <div class='display_outfile expandable'><a class='expand' href='#'>Show Detailed Step Output</a><a class='collapse' href='#'>Collapse Detailed Step Output</a><div><pre>{{ step.display_outfile }}</pre></div></div>{% endif %}
+    </div>{% endif %}
+{% endif %}{% endfor %}</div>{% endif %}
+<div id='remaining_steps'>{% for step in job_info.steps %}{% if not step.start %}
+    <h3>{{ forloop.counter }}. {{ step.title }}</h3>
+{% endif %}{% endfor %}</div>
+
+{% endblock %}

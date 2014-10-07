@@ -1,0 +1,28 @@
+{% extends "kegg/map_base.html" %}
+
+{% block node_overlay %}
+  .node_3_5_2_6_instance_0
+    { position: absolute;
+      left: 463px; top: 181px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+{% endblock %}
+{% block mapdata %}
+<area shape=circle	coords=400,290,4	href="/dbget-bin/www_bget?C00039"	title="C00039 (DNA)" />
+<area shape=circle	coords=400,189,4	href="/dbget-bin/www_bget?C00039"	title="C00039 (DNA)" />
+<area shape=circle	coords=128,238,4	href="/dbget-bin/www_bget?C03438"	title="C03438 (beta-Lactam antibiotics)" />
+<area shape=rect	coords=259,230,305,247	href="/dbget-bin/www_bget?K02352"	title="K02352 (drp35)" />
+<area shape=rect	coords=463,282,509,299	href="/dbget-bin/www_bget?K02545"	title="K02545 (mecA)" />
+<area shape=rect	coords=292,282,338,299	href="/dbget-bin/www_bget?K02546"	title="K02546 (mecI)" />
+<area shape=rect	coords=199,282,245,299	href="/dbget-bin/www_bget?K02547"	title="K02547 (mecR1)" />
+<area shape=rect	coords=463,181,509,198	href="/dbget-bin/www_bget?K01467+3.5.2.6"	title="K01467 (E3.5.2.6), 3.5.2.6" />
+<area shape=rect	coords=292,181,338,198	href="/dbget-bin/www_bget?K02171"	title="K02171 (blaI)" />
+<area shape=rect	coords=199,181,245,198	href="/dbget-bin/www_bget?K02172"	title="K02172 (blaR1)" />
+<area shape=rect	coords=41,107,211,143	href="/kegg-bin/show_pathway?map00311"	title="map00311: Penicillin and cephalosporin biosynthesis" />
+<area shape=rect	coords=40,45,238,71	href="/dbget-bin/www_bget?map00312"	title="map00312: beta-Lactam resistance" />
+{% endblock %}
+{% block color_nodes %}
+  {% if nodes_to_color.3_5_2_6 %}
+    <div class="node_3_5_2_6_instance_0"></div>
+  {% endif %}
+{% endblock %}

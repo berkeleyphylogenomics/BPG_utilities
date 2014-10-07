@@ -1,0 +1,204 @@
+{% extends 'common/base.html' %}
+
+{% block extrastyle %}
+<link rel="stylesheer" type="text/css" href="/static/css/ui.spinner.css">
+<style>
+form p {
+    clear: left;
+    padding-top: 10px;
+}
+form p label {
+    display: block;
+    float: left;
+    width: 10em;
+    text-align: right;
+    padding-right: 2em;
+}
+form p textarea, form p input {
+    width: 25em;
+    float: left;
+    margin: 0 0 0 10px;
+}
+form p .error {
+    margin: 0 0 0 10px;
+    padding: 5px;
+}
+#view-hide-params {
+    margin-top: 15px;
+    display:inline-block;    
+    margin-bottom: 15px;
+}
+#parameters label {
+    width: 17em;
+    float: left;
+    text-align:right;
+    padding-right: 2em;
+}
+#parameters p {
+    display:inline-block;
+    width: 100%;
+}
+#parameters input {
+    text-align:right;
+    margin: 0 0 0 0px !important;
+    float:left;
+}
+#parameters h3 {
+    background-color:#41677A;
+    color:white;
+    padding-left:0.2em;
+    padding-top:0.2em;
+    padding-bottom:0.2em;
+}
+.ui-spinner-buttons {
+    float:left;
+    margin-top:0px !important;
+}
+.ui-icon-triangle-1-n {
+    margin-top: -5px !important;
+}
+.ui-icon-triangle-1-s {
+    margin-top: -4px !important;
+}
+.ui-spinner-button {
+    height:7px !important;
+}
+</style>
+{% endblock %}
+
+{% block extrascripts %}
+    <script src="/static/js/jquery.validate.js"></script>
+    <script type="text/javascript" src="/static/js/ui.spinner.min.js"></script>
+{% endblock %}
+
+{% block title %}Phylofacts FAT-CAT Job Submission{% endblock %}
+
+{% block content %}
+
+<script>
+$(document).ready(function () {
+    jQuery("#stage-one-mda-overlap").spinner({min: 1, max: 99});
+    jQuery("#stage-one-pfam-overlap").spinner({min: 1, max: 99});
+    jQuery("#stage-two-mda-overlap").spinner({min: 1, max: 99});
+    jQuery("#stage-two-pfam-overlap").spinner({min: 1, max: 99});
+    jQuery("#stage-two-query-hmm-pid").spinner({min: 1, max: 99});
+    jQuery("#stage-two-subtree-min-pid").spinner({min: 1, max: 99});
+});
+
+$(function() {
+
+jQuery("#view-hide-params").click(function () {
+    jQuery("#parameters").toggle();
+});
+
+jQuery.validator.addMethod("fasta", function(value, element) {
+    var lines = value.split("\n");
+    if (lines.length < 2) {
+        return false;
+    }
+    if (lines[0][0] != '>'){
+        return false;
+    }
+    l = lines;
+    return lines.slice(1,lines.length).join('').replace(/[\s\n]/g,'').match(/^[ARNDCEQGHILKMFPSTWYVX]+$/)
+}, 'Invalid FASTA');
+
+    $("#fatcat_form").validate({
+        rules: {
+            fasta: {
+                fasta: true,
+                required: true
+            }
+        },
+        submitHandler: function(form) {
+            
+            $.post('/api/fatcat/', { fasta: $("#fasta").val(), email: $("#email").val(), stageOneEvalue: $("#stage-one-evalue").val(),
+                                    stageOneMDAOverlap: $("#stage-one-mda-overlap").val(), stageOnePfamOverlap: $("#stage-one-pfam-overlap").val(),
+                                    stageTwoMDAOverlap: $("#stage-two-mda-overlap").val(), stageTwoPfamOverlap: $("#stage-two-pfam-overlap").val(),
+                                     stageTwoQueryHMMPID: $("#stage-two-query-hmm-pid").val(), stageTwoSubtreeMinPID: $("#stage-two-subtree-min-pid").val()}, function(data) {
+                if ( data.id ) {
+                    window.location="/phylofacts/fatcat/" + data.id;
+                } else {
+                    $("#error").show().text(data); 
+                }
+            }).error(function(d) {
+                var total_seconds = parseInt(d.responseText.split(' ')[2]);
+                var hours = Math.floor(total_seconds/3600);
+                var minutes = Math.floor((total_seconds - 3600*hours)/60)
+                var seconds = total_seconds - hours*3600 - minutes*60;
+                $(" #submission-error ").html('FAT-CAT submissions from this IP address have exceeded the limits of 20 jobs per day.<br />You will need to wait ' + hours.toString() + ' hours ' + minutes.toString() + ' minutes ' + seconds.toString() + ' seconds before any new submissions.').show();
+            });
+        },
+        errorPlacement: function(error, element) {
+            error.insertAfter(element);
+        }
+    });
+});
+</script>
+
+<div id="fatcat">
+    <div id="title">
+        <h1 style="font-family:Verdana">FAT-CAT: Fast Approximate Tree Classification</h1>
+    </div>
+    <div id="">
+        <p id="error" style="display:none" class="error"></p>
+        <p style="font-family:Verdana">FAT-CAT uses hidden Markov models (HMMs) to derive approximate placements of user sequences in existing PhyloFacts gene family trees. 
+In some cases, the phylogenetic placement allows us to identify putative orthologs, 
+from which predicted functions can be derived. In other cases, only distant homologs 
+can be detected. Details on the pipeline are available <a href="about" target="_blank">here</a>.
+        <p style="font-family:Verdana">
+            Paste your protein sequence in FASTA format below.  Results normally take between 2 and 20 minutes.
+        </p>
+   
+        <form id="fatcat_form">
+            <p>
+                <label for="fasta" >FASTA</label>
+                <textarea id="fasta" name="fasta" class="required fasta"></textarea>
+            </p>
+            <p>
+                <label for="email" >E-Mail Address</label>
+                <input id="email" name="email" class="required email">
+            </p>
+            <p style="color:red;margin-left:172px;margin-bottom:3px">Please, no more than 20 submissions per user per day.</p>    
+            <p style="margin-left:172px;margin-top:13px;float:left;display:none" class="error" id="submission-error"></p>
+            <p>
+                <label>&nbsp;</label>
+                <input type="submit" value="Submit">
+            </p>
+        </form>
+        <a href="javascript:;" id="view-hide-params">View/Hide Parameters</a>
+        <div id="parameters" style="display: none">
+            <h3>Stage 1 - Parameters for placing your query in a family</h3>
+            <p>
+                <label for="stage-one-evalue">Maximum E-Value</label>
+                <input type="text" id="stage-one-evalue" value="0.0001" />
+            </p>
+            <p>
+                <label for="stage-one-mda-overlap">MDA coverage</label>
+                <input type="text" id="stage-one-mda-overlap" value="60" maxlength="2"/>
+            </p>
+            <p>
+                <label for="stage-one-pfam-overlap">Pfam coverage</label>
+                <input type="text" id="stage-one-pfam-overlap" value="60" maxlength="2"/>
+            </p>
+            <h3>Stage 2 - Parameters for placing your query to a best node</h3>
+            <p>
+                <label for="stage-two-mda-overlap">MDA coverage</label>
+                <input type="text" id="stage-two-mda-overlap" value="60" maxlength="2"/>
+            </p>
+            <p>
+                <label for="stage-two-pfam-overlap">Pfam coverage</label>
+                <input type="text" id="stage-two-pfam-overlap" value="60" maxlength="2"/>
+            </p>
+            <p>
+                <label for="stage-two-query-hmm-pid">Minimum query to node PID</label>
+                <input type="text" id="stage-two-query-hmm-pid" value="60" maxlength="2"/>
+            </p>
+            <p>
+                <label for="stage-two-subtree-min-pid">Minimum pariwise percent ID of node</label>
+                <input type="text" id="stage-two-subtree-min-pid" value="60" maxlength="2"/>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,507 @@
+{% extends "common/base_new.html" %}
+
+{% block title %}PhyloFacts{% endblock %}
+
+{% block extrastyle %}
+<style type="text/css">
+#fatcat-index, #accession-search, #family-search, #pfam-search, #biocyc-search, .hidden-description {
+    display:none;
+}
+#index {
+    font-family:sans-serif;
+    float:left;
+    margin-left:20px;
+}
+.panels {
+    float:left;
+    margin-top:18px;
+}
+.footer {
+    clear:both;
+    margin-top:10px;
+    float:left;
+    margin-left:95px;
+}
+.index-left-panel {
+    width:250px;
+    float:left;
+}
+.index-left-panel li {
+    text-align:right;
+    list-style:none;
+    line-height:14px;
+    padding-top:6px;
+    padding-bottom:6px;
+}
+.index-left-panel li a {
+    color: #074987;
+    font-weight:bold;
+    text-decoration:none;
+}
+.index-right-panel li {
+    list-style:none;
+    line-height:14px;
+    padding-top:6px;
+    padding-bottom:6px;
+}
+.index-right-panel {
+    float:left;
+    margin-left:15px;
+}
+.index-right-panel-content {
+    float:left;
+    margin-left:23px;
+    width:630px;
+} 
+#intro h2 {
+    color:#074987;
+    font-weight:bold;
+    font-size:28px;
+    margin-bottom:12px;
+}
+#intro p {
+    font-size:1.2em;
+}
+#fatcat-index .fasta-input {
+    float:left;
+}
+#fatcat-index label {
+    float:left;
+    margin-top:0px;
+    margin-bottom:0px;
+    margin-right:5px;
+    font-size:12px;
+    font-weight:bold;
+}
+#fatcat-index .fasta-input-label {
+    float:left;
+}
+#fatcat-index .fasta-input-box, #fatcat-index .standard-input-box {
+    clear:both;
+    float:left;
+    resize:none;
+    font-size:12px;
+}
+#fatcat-index .standard-input-box {
+    height:16px;
+}
+#fatcat-index .email-input {
+    float:left;
+    clear:both;
+}
+#fatcat-index .email-input-label {
+    float:left;
+}
+#fatcat-index .captcha-input {
+    float:left;
+    clear:both;
+}
+#fatcat-index .captcha-input-label {
+    float:left;
+}
+.fatcat-index-buttonset {
+    clear:both;
+    padding-top:3px;
+    padding-bottom:3px;
+    float:left;
+    display:table;
+}
+.fatcat-table-cell {
+    display:table-cell;
+    vertical-align:middle;
+}
+#fatcat-index .right-panel-close {
+    clear:both;
+    float:left;
+    margin-top:10px;
+}
+.main-alert {
+    clear:both;
+    float:left;
+    width:450px;
+}
+.main-alert .close {
+    right:0px;
+}
+#fatcat-index .alert p {
+    margin-bottom:0px;
+}
+#fatcat-index .alert {
+    float:left;
+    padding:0px 4px 0px 4px;
+    margin-bottom:3px;
+}
+.fasta-input-box {
+    height:120px !important;
+    width:600px;
+    font-family:monospace;
+}
+#fatcat-index .fatcat-submit, #fatcat-index .example {
+    font-size:12px;
+    font-family:sans-serif;
+    padding:2px 25px 2px 25px;
+    float:left;
+}
+#fatcat-index .fatcat-submit {
+    margin-left:5px;
+}
+.fatcat-loading-container {
+    display:none;
+}
+.fatcat-loading-container .loading-icon {
+    margin-top:-3px;
+    margin-left:7px;
+}
+.fatcat-loading-text {
+    margin-bottom:0px;
+    margin-left:-2px;
+    color:#074987;
+}
+#fatcat-index .alert {
+    display:none;
+}
+.index-right-panel-content h3 {
+    font-size:13px;
+    padding:2px 0px;
+    font-weight:bold;
+    text-transform:uppercase;
+    margin:0px;
+    color:#666;
+    line-height:30px;
+}
+.index-right-panel-content h3 a {
+}
+.index-right-panel-content .input-prepend .btn {
+    margin-right:-5px;
+}
+.index-right-panel-content .alert {
+    float:left;
+    padding: 0px 4px 0px 4px;
+    margin-bottom:10px;
+    display:none;
+}
+.index-right-panel-content .form-search {
+    float:left;
+    clear:both;
+}
+.index-right-panel-content .right-panel-close {
+    float:left;
+    clear:both;
+    margin-top:10px;
+}
+.index-right-panel-content .alert p {
+    margin-bottom:0px;
+}
+.index-right-panel-content .btn {
+    font-family:sans-serif;
+    font-size:12px;
+}
+.index-right-panel-content .form-search input {
+    font-family:sans-serif;
+    font-size:12px;
+}
+.lighten {
+    color:#666 !important;
+}
+</style>
+{% endblock %}
+
+{% block extrascripts %}
+<script type="text/javascript">
+$j(document).ready(function() {
+    // the more description link on the phylofacts index.html
+    $j(" .view-hide-text-link ").click(function(e) {
+        e.preventDefault();
+        $j( $j(this).attr('href') ).toggle();
+        if ( $j(this).html() == "More ...") {$j(this).html("Less ...");}
+        else {$j(this).html("More ...");}
+    });
+
+    // left panel control for phylofacts index.html
+    $j(" .index-left-panel a ").click(function(e) {
+        if ($j(this).attr('href')[0] == "#") {
+            e.preventDefault();
+            $j( ".index-menu-descriptions, .index-right-panel-content ").hide();
+            $j( $j(this).attr('href') ).show();
+            $j(" .index-left-panel a ").removeClass("lighten");
+            $j(this).addClass("lighten");     
+        }
+    });
+
+    // handle the right panel close links
+    $j(" .right-panel-close ").click(function() {
+        $j( ".index-right-panel-content" ).hide();
+        $j(".index-menu-descriptions").show();
+        $j(".index-left-panel a").removeClass("lighten");
+    });
+
+    // handle the example inputs
+    $j(" .example ").click(function() {
+                    $j(' #fatcat-submit .main-alert ').removeClass('alert-success').addClass('alert-error');
+        $j( $j(this).data().inputselector ).val( $j( $j(this).data().inputselector ).data().example);});
+
+    // handle submission of fatcat jobs
+    $j(" .fatcat-submit ").click(function() {
+        // disable the submit button until a response from the server so we can't subnit miltiple jobs...
+        $j(this).attr("disabled","disabled");
+        // hide the displayed fatcat alerts
+        $j(' #fatcat-index .alert ').hide();
+        // show the loading indicator
+        $j(" .fatcat-loading-container ").show();
+        // post to api to create fatcat job
+        $j.post('/api/fatcat/', {'fasta': $j(' #fatcat-index .fasta-input-box ').val(), 
+                'email': $j(' #fatcat-index .email-input .standard-input-box ').val(), 
+                'captcha-answer': $j(' #fatcat-index .captcha-input .standard-input-box ').val(), 
+                'captcha-hash': $j(' #form-h ').val(),
+                'stageOneEvalue': '0.000001', 'stageOneMDAOverlap':60, 
+                'stageOnePfamOverlap':60, 'stageTwoMDAOverlap': 60,
+                'stageTwoPfamOverlap':60, 'stageTwoQueryHMMPID': 60,
+                'stageTwoSubtreeMinPID':60}, function(data) {
+            $j( ".fatcat-loading-container ").hide();
+            $j( ".fatcat-submit" ).removeAttr("disabled");
+            if (data.id) {
+                // successful creation, show it
+                $j(' .main-alert ').removeClass('alert-error').addClass('alert-success');
+                $j(' .main-alert p ').html("Your FAT-CAT job was created.  If you specified an email address,<br />an email will be sent on job completion.<br />To view the progress of your job, please visit or bookmark:<br /><br /><a target='_blank' href='/phylofacts/fatcat/" + data.id.toString() + "/'>FAT-CAT job " + data.id.toString() + "</a>");
+                $j(' .main-alert ').show();
+            }
+            else {
+                // there is an error
+                if (data['fasta-error']) {
+                // fasta validation error
+                    $j(' .fasta-input-label p ').html(data['fasta-error']);
+                    $j(' .fasta-input-label .alert ').show();
+                }
+                if (data['email-error']) {
+                // email validation error
+                    $j(' .email-input-label p ').html(data['email-error']);
+                    $j(' .email-input-label .alert ').show();
+                }
+                if (data['captcha-error']) {
+                // did not pass captcha
+                    $j(' .captcha-input-label p ').html(data['captcha-error']);
+                    $j(' .captcha-input-label .alert ').show();
+                }
+                if (data['create-error']) {
+                // could not create job - we could flesh this out later
+                    $j(' #fatcat-submit .main-alert p').html(data['create-error']);
+                    $j(' #fatcat-submit .main-alert ').removeClass('alert-success').addClass('alert-error');
+                    $j(' .main-alert ').show();
+                }
+            }
+        });
+    });
+
+    // handle submission of searches
+    $j(" .search-submit ").click(function() {
+        var s = '#' + $j(this).parents(".index-right-panel-content").attr('id') + ' .alert-error';
+        postSearch($j(this).siblings().val(),s);
+    });
+
+    // handle pressing return on the search form
+    $j(" .index-right-panel-content .form-search input ").keypress(function(event) {
+        if ( event.which == 13 ) {
+            event.preventDefault();
+            var s = '#' + $j(this).parents(".index-right-panel-content").attr('id') + ' .alert-error';
+            if ($j(this).val().length > 0) {postSearch($j(this).val(), s);}
+        }
+    }); 
+});
+</script>
+{% endblock %}
+{% block content %}
+<div id="index">
+    <div id="intro">
+        <h2>PhyloFacts 3.0.2</h2>
+        <p>
+            PhyloFacts release PF3.0.2 contains 7,337,238 protein sequences from 
+            99,254 unique taxa (including strains) across 92,800 families
+            (25,446 grouped by Pfam domain and 67,354 grouped by multi-domain
+            architecture agreement).
+            <span class="hidden-description" id="hidden-description">
+                The PhyloFacts resource integrates a wealth of information on
+                protein families from across the Tree of Life. For each family,
+                PhyloFacts includes a multiple sequence alignment, one or more
+                phylogenetic trees, predicted 3D protein structures, cellular 
+                localization, and Gene Ontology (GO) annotations and evidence
+                codes. PhyloFacts includes hidden Markov models for
+                classification of user-submitted protein sequences to protein
+                families across the Tree of Life. 
+                <br /><br /> 
+                The protein families in
+                PhyloFacts typically contain homologs from many species. The
+                phylogenetic distribution of a protein family can vary from
+                highly restricted (e.g., mammals) to throughout the Tree of Life.
+                Gathering homologs from many divergent species enables us to take
+                advantage of experimental investigations in different systems,
+                and allows powerful inferences of function and structure that
+                might not otherwise be possible.
+            </span>
+            <a class="view-hide-text-link" href="#hidden-description">More ...</a>
+            </span>
+        </p>
+    </div>
+    <div class="panels">
+        <div class="index-left-panel">        
+            <ul>
+                <!-- <li><a href="#fatcat-index">SEQUENCE SEARCH</a></li>-->
+                <li><a href="/fatcat/">FAT-CAT SEQUENCE SEARCH</a></li>
+                <li><a href="#accession-search">SEQUENCE ACCESSION SEARCH</a></li>
+                <li><a href="/intrepid/">FUNCTIONAL SITE PREDICTION</a></li>
+                <!--<li><a href="/phog/">PHOG ORTHOLOGS</a></li>-->
+                <li><a href="#family-search">JUMP TO PHYLOFACTS FAMILY</a></li>
+                <li><a href="#pfam-search">PHYLOFACTS-PFAM SEARCH</a></li>
+                <li><a href="#biocyc-search">PHYLOFACTS-BioCyc SEARCH</a></li>
+                <li><a href="coverage/">GENOME COVERAGE</a></li>
+                <li><a href="statistics/">STATISTICS</a></li>
+                <li><a href="downloads/">DOWNLOADS</a></li>
+                <li><a href="citations/">CITING PHYLOFACTS</a></li>
+            </ul>
+        </div>
+        <div class="index-right-panel">
+            <div class="index-menu-descriptions">
+                <ul>
+                    <!-- <li><p style="margin-bottom:0px;">FAT-CAT ortholog identification and function prediction <span style="margin-bottom:0px; color:red">Beta</span></p></li> -->
+                    <li>FAT-CAT ortholog identification and function prediction <span style="margin-bottom:0px;color:red">New!</span></li>
+                    <li>Query PhyloFacts by UniProt accession or identifier</li>
+                    <li>Protein functional site prediction using the INTREPID and Discern algorithms</li>
+                    <!--<li>PhyloFacts Orthology Group: phylogenetic orthologs</li>-->
+                    <li>View PhyloFacts family alignments, trees, and annotations</li>
+                    <li>Query PhyloFacts by Pfam accession (<a href="about_pf_pfam/">PhyloFacts-Pfam Project</a>)</li>
+                    <li>Query PhyloFacts by BioCyc reactions (<a href="about_pf_pfam/">PhyloFacts-Biocyc Project</a>)</li>
+                    <li>View coverage of key species in PhyloFacts</li>
+                    <li>View PhyloFacts coverage statistics</li>
+                    <li>Download PhyloFacts data</li>
+                    <li>How to cite PhyloFacts</li>
+                </ul>
+            </div>
+            <div class="index-right-panel-content" id="fatcat-index">
+                <h3>ANALYZE YOUR PROTEIN SEQUENCE USING <a href="javascript:;" onclick="">FAT-CAT</a></h3>
+                <p>
+                Paste your protein sequence in FASTA format here to find matching PhyloFacts families and predicted orthologs.
+                </p>
+                <div class="fasta-input">
+                    <div class="fasta-input-label">
+                        <label><a href="javascript:;" onclick="">FASTA</a>:</label>
+                        <div class="alert alert-error">
+                            <p></p>
+                        </div>
+                    </div>
+                    <textarea rows="6" cols="60" class="fasta-input-box"  
+                        data-example=">sp|P01321|INS_CANFA Insulin OS=Canis familiaris GN=INS PE=1 SV=1&nbsp&#13MALWMRLLPLLALLALWAPAPTRAFVNQHLCGSHLVEALYLVCGERGFFYTPKARREVEDLQVRDVELAGAPGEGGLQPLALEGALQKRGIVEQCCTSICSLYQLENYCN">
+                    </textarea>
+                </div>
+                <div class="email-input">
+                    <div class="email-input-label">
+                        <label>E-mail address:</label>
+                        <div class="alert alert-error">
+                            <p></p>
+                        </div>
+                    </div>
+                    <input type="text" class="standard-input-box">
+                </div>
+                <div class="captcha-input">
+                    <div class="captcha-input-label">
+                        <label>{{ captcha_question }}</label>
+                        <div class="alert alert-error">
+                            <p></p>
+                        </div>
+                    </div>
+                    <input type="text" class="standard-input-box">
+                </div>
+                <div class="alert alert-success main-alert">
+                        <button type="button" class="close" data-dismiss="alert">x</button>
+                        <p></p>
+                </div>
+                <div class="fatcat-index-buttonset">
+                    <div class="fatcat-table-cell">
+                        <input class="btn example" type="button" value="Example"
+                            data-inputselector="#fatcat-index .fasta-input-box">
+                    </div>
+                    <div class="fatcat-table-cell">
+                        <input class="btn fatcat-submit" type="submit" value="Submit">
+                    </div>
+                    <div class="fatcat-table-cell fatcat-loading-container">
+                        <img class="loading-icon" src="/static/img/icons/small-loading-icon.gif">
+                        <span class="fatcat-loading-text">Creating FAT-CAT job ...</span>    
+                    </div>
+                </div>
+                <a href="javascript:;" class="right-panel-close">Close this panel</a>
+            </div>
+            <div class="index-right-panel-content" id="accession-search">
+                <h3>Query Phylofacts by accession</h3>
+                <p>Enter a UniProt accession or identifier, e.g., P30559 or OXYR_HUMAN, to view associated information in PhyloFacts.</p>
+                <div class="alert alert-error">
+                    <p></p>
+                </div>
+                <div class="form-search">
+                    <div class="input-prepend">
+                        <button class="btn example" data-inputselector="#accession-search .form-search input">Example</button>
+                    </div>
+                    <div class="input-append">
+                        <input type="text" class="span2" data-example="APAF_HUMAN">
+                        <button class="btn search-submit">Submit</button>
+                    </div>
+                </div>
+                <a href="javascript:;" class="right-panel-close">Close this panel</a>
+            </div>
+            <div class="index-right-panel-content" id="family-search">
+                <h3>View phylofacts family alignments, trees and annotations</h3>
+                <p>Enter a PhyloFacts family accession, e.g., bpg0240116</p>
+                <div class="alert alert-error">
+                    <p></p>
+                </div>
+                <div class="form-search">
+                    <div class="input-prepend">
+                        <button class="btn example" data-inputselector="#family-search .form-search input">Example</button>
+                    </div>
+                    <div class="input-append">
+                        <input type="text" class="span2" data-example="bpg0240116">
+                        <button class="btn search-submit">Submit</button>
+                    </div>
+                </div>
+                <a href="javascript:;" class="right-panel-close">Close this panel</a>
+            </div>
+            <div class="index-right-panel-content" id="pfam-search">
+                <h3>Query Phylofacts by Pfam accession</h3>
+                <p>Enter a Pfam accession, e.g., PF00069</p>
+                <div class="alert alert-error">
+                    <p></p>
+                </div>
+                <div class="form-search">
+                    <div class="input-prepend">
+                        <button class="btn example" data-inputselector="#pfam-search .form-search input">Example</button>
+                    </div>
+                    <div class="input-append">
+                        <input type="text" class="span2" data-example="PF00001">
+                        <button class="btn search-submit">Submit</button>
+                    </div>
+                </div>
+                <a href="javascript:;" class="right-panel-close">Close this panel</a>
+            </div>
+            <div class="index-right-panel-content" id="biocyc-search">
+                <h3>Query Phylofacts by biocyc accession</h3>
+                <p>Enter a BioCyc reaction id or EC number, e.g., 2.7.7.- or 3.1.1.1 or CARBOXYLESTERASE-RXN to view associated information in PhyloFacts.</p>
+                <div class="alert alert-error">
+                    <p></p>
+                </div>
+                <div class="form-search">
+                    <div class="input-prepend">
+                        <button class="btn example" data-inputselector="#biocyc-search .form-search input">Example</button>
+                    </div>
+                    <div class="input-append">
+                        <input type="text" class="span2" data-example="3.1.1.1">
+                        <button class="btn search-submit">Submit</button>
+                    </div>
+                </div>
+                <a href="javascript:;" class="right-panel-close">Close this panel</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>PhyloFacts is funded by a grant from the Department of Energy, Division of Biological and Environmental Research (<a href="">details</a>).</p>
+        <input type="hidden" value="{{ answer_hash }}" id="form-h">
+    </div>
+</div>
+{% endblock %}
+

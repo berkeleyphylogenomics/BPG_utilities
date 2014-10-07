@@ -1,0 +1,40 @@
+{% extends 'common/base_new.html' %}
+
+{% block title %}TV Test{% endblock %}
+
+{% block extrastyle %}
+{% endblock %}
+
+{% block extrascripts %}
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        jQuery.get("/phylofacts/tree_node/146220145/tree", function(data) {
+            var dataObject = {xml: data};      
+            jQuery("#tree").phylotree({
+                data: dataObject,
+                edgeStyle: {
+                    stroke: "rgb(0,0,0)",
+                    'stroke-width': 3,
+                },
+                leafLabelAttributes: ['name', 'go', 'ec', 'taxonomy', 'description'],
+                pathCallback: function(r, length) {
+                    jQuery(r.node).qtip({
+                        content: "Distance: " + length, 
+                        position: {
+                            my: 'top left',
+                            target: 'mouse',
+                            viewport: $j(window), // Keep it on-screen at all times if possible
+                            adjust: { x: 10,  y: 10 }
+                        },
+                        style: { classes: 'ui-tooltip-shadow', widget: true, width: '400px' }
+                    });
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+    <div id="tree" style="width:100%"></div>
+{% endblock %}

@@ -1,0 +1,53 @@
+  <script>
+    jQuery(document).ready(function(){
+         jQuery("#sequence-table").dataTable({ 
+          "iDisplayLength": 100,
+          "bJQueryUI": true,
+          "sPaginationType": "full_numbers" 
+         });
+    });
+  </script>
+  
+ <table id="sequence-table" style="margin:0; padding:0; font-size:.9em;">
+    <thead>
+    <tr style="background-color:rgb(250,250,255)">
+      <th>Identifier</th>
+      <th>DB of Origin</th>
+      <th>Description</th>
+      <th>Species</th>
+      <th>Gene Ontology (GO) data</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for result in final_results %}
+    <tr>
+      	<td style="vertical-align:top"><a href="/phylofacts/sequence/UniProt/?acc_or_ident={{ result.1 }}">{{ result.2 }}</a></td>
+      	<td style="vertical-align:top">{{ result.3 }}</td>
+        <td style="vertical-align:top">{{ result.4 }}</td>
+        <td style="vertical-align:top">
+        <a href='http://www.uniprot.org/taxonomy/{{ result.8 }}'>{{ result.6 }}
+            {% if result.7 %}
+                ({{ result.7 }})
+            {% endif %}
+        </a>
+        </td>
+        <td>
+          {% for go_category in result.9 %}
+	    <table style="margin:0px; padding:0px">
+	      {% if go_category.1 %}
+	        <tr><td>{{ go_category.0 }}</td></tr>
+                {% for go_item in go_category.1 %}
+	          <tr>
+		    <td style="padding-left:20px">
+		    <a href="http://www.ebi.ac.uk/QuickGO/GTerm?id={{ go_item.1 }}">
+		  {{ go_item.0 }} ({{go_item.2 }})</a></td></tr>
+	        {% endfor %}
+	      {% endif %}	
+	    </table>
+	  {% endfor %}
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+

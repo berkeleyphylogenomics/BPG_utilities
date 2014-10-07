@@ -1,0 +1,114 @@
+{% extends 'protein_analysis/base.html' %}
+
+{% block extrastyle %}
+<link rel='stylesheet' type='text/css' href='/static/css/new_phylofacts.css' media='screen'>
+<link rel="stylesheet" type="text/css" href="/static/css/DT_bootstrap.css">
+<link rel='stylesheet' type='text/css' href='/static/css/fatcat.css' media='screen'>
+<style>
+
+</style>
+{% endblock %}
+
+{% block extrascripts %}
+<script type='text/javascript'>
+// django to javascript variables used in other files
+var jobID = {{ job.id }};
+var pfam_domains = [
+    {% for domain in job.pfam_domains %}
+    {
+        'id': {{ domain.id }},
+        'alignment_from': {{ domain.ali_from }},
+        'alignment_to': {{ domain.ali_to }},
+        'pfam_accession': '{{ domain.accession }}',
+        'description': '{{ domain.description }}',
+        'shortName': '{{ domain.shortname }}',
+        'evalue': {{ domain.i_evalue }},
+        'status_bit': {{ domain.status_id }},
+        'currentlyRunningJobStages': {{ domain.currently_running_job_stages }},
+        'status': {{ domain.status.status }}
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+];
+var mda_domain = [
+    {
+        'id': {{ mda_domain_id }},
+        'alignment_from': 1,
+        'alignment_to': {{ query_length }},
+        'description': 'Query sequence'
+    }
+];
+var pdb_domains = [];
+var masterSequenceLength = {{ query_length }};
+</script>
+<script type="text/javascript" src="/static/js/underscore-min.js"></script>
+<script type="text/javascript" src="/static/js/raphael-min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/static/js/DT_bootstrap.js"></script>
+<script type='text/javascript' src='/static/js/protein_analysis_widgets.js'></script>
+<script type='text/javascript' src='/static/js/protein_analysis_results.js'></script>
+<script type='text/javascript' src='/static/js/archaeopteryx.js'></script>
+{% endblock %}
+
+{% block content %}
+<!-- Applet for Jalview -->
+<applet name="JalviewLite"  code="jalview.bin.JalviewLite"
+        archive="/static/java/jalviewApplet.jar" width="0" height="0">
+   <param name="debug" value="true"/>
+   <param name="showbutton" value="false"/>
+</applet>
+<div class='phylofacts-well'>
+    <div class='phylofacts-well-header'>
+        <h2>Results for {{ job.fasta_header.split.0 }}</h2>
+        <div class='cleaner'></div>
+    </div>
+
+    <div id='left-tabs'>
+        <ul class='left-tabs-cls'>
+            <li><a id='protein-summary-selector' href='#protein-summary'>Protein Summary</a></li>
+        </ul>
+        <div id='protein-summary' class='phylofacts-treenode-content'>
+            <h3>Protein Summary</h3>
+            <p class='content-description'>Your protein contains the domains shown below.  Click on a domain to analyze it in greater detail.</p>
+            <table>
+                <tr>
+                    <td><div>Query</div></td>
+                    <td><div id='query-line-widget'></div></td>
+                    <td><div></div></td>
+                </tr>
+                <tr>
+                    <td><div class='tip' title='Multiple Domain Architecture'>MDA</div></td>
+                    <td><div id='mda-match-widget'></div></td>
+                    <td><div></div></td>
+                </tr>
+                <tr>
+                    <td><div>Pfam-A Domains</div></td>
+                    <td><div id='pfam-match-widget'></div></td>
+                    <td><div></div></td>
+                </tr>
+                <tr>
+                    <td><div>PDB matches</div></td>
+                    <td><div id='pdb-match-widget'></div></td>
+                    <td><div></div></td>
+                </tr>
+            </table>
+        </div>
+        <div class='bottom-border'>&nbsp;</div>
+    </div>
+</div>
+<div class='modal hide fade'>
+    <div class='modal-header'>
+        <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+        <h3></h3>
+    </div>
+    <div class='modal-body'>
+        
+        <table>
+                
+    </div>
+    <div class='modal-footer'>
+        <a href='#' class='btn'>Close</a>
+        <a href='#' class='btn btn-primary'>Analyze</a>
+    </div>
+</div>
+{% endblock %}
+

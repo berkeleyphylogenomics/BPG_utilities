@@ -1,0 +1,78 @@
+{% extends 'phylo4j/base.html' %}
+
+{% block title %}Phylo4j{% endblock %}
+
+{% block extrastyle %}
+<style>
+#funding-tab p {
+    margin-bottom:2px;
+}
+#funding-tab p:first-child {
+    margin-bottom:5px;
+}
+#explorer-tab {display:none;}
+</style>
+{% endblock %}
+
+{% block extrascripts %}
+<script type="text/javascript">
+$j(document).ready(function() {
+    $j('#main-tabs').tabs().addClass('ui-tabs-vertical ui-helper-clearfix');
+    $j('#main-tabs li').removeClass('ui-corner-top').addClass('ui-corner-left');
+    
+    // click handler for example buttons
+    $j(' .filler ').click(function() {$j($j(this).data().location).val($j(this).data().accession);});
+
+    // click handler for ppi submit button
+    $j(' #ppi-submit ').click(function() { });
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<h3>Phylo4j</h3>
+<div id="main-tabs">
+    <ul>
+        <li><a href="#intro-tab">What is phylo4j?</a></li>
+        <li><a href="#ppi-tab">Protein Protein Interactions</a></li>
+        <!--<li><a href="#explorer-tab">Explore phylo4j</a></li>-->
+        <li><a href="#funding-tab">Funding</a></li>
+        <li><a href="#downloads-tab">Downloads</a></li>
+    </ul>
+    <div id="intro-tab">
+        <p>Phylo4j is a graph database of biological information built on top of <a href="http://bio4j.com/" target="_blank">bio4j</a>.  In addition to the information in bio4j, BPG have added trees and orthology relationships from <a href="http://phylogenomics.berkeley.edu/phylofacts/" target="_blank">PhyloFacts</a>.</p>
+    </div>
+    <div id="ppi-tab">
+        <p>Enter a UniProt accession to query phylo4j for protein protein interactions.</p>
+        <form name="ppi-form" action="ppi" method="get">
+            <input type="text" id="ppi-input" name="query"/>
+            <button id="ppi-submit" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false" type="submit"><span class="ui-button-text">Submit</span></button>
+            <button id="ppi-example" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only filler" role="button" aria-disabled="false" data-accession="O14727" data-location="#ppi-input"><span class="ui-button-text">Example</span></button>
+        </form>
+    </div>
+    <div id="explorer-tab">
+        <p>Enter a UniProt accession, BPG accession, etc to explore a region of the phylo4j graph.</p>
+        <input type="text" id="explorer-input" />
+        <button id="explorer-submit" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Submit</span></button>
+        <button id="explorer-example" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only filler" role="button" aria-disabled="false" data-accession="O14727" data-location="#explorer-input"><span class="ui-button-text">Example</span></button>
+        
+    </div>
+    <div id='funding-tab'>
+        <p>Phylo4j development is funded by the following grant:</p>
+        <hr>
+        <p>Funding Agency: National Science Foundation</p> 
+        <p>Division: Division of Molecular and Cellular Biosciences</p> 
+        <p>Title: EAGER: Towards a self-organizing map and hyper-dimensional information network for the human genome</p> 
+    
+        <p>Grant number: <a href="http://www.nsf.gov/awardsearch/showAward.do?AwardNumber=1355632">1355632</a></p> 
+        <p>Project duration: 2013-2015</p> 
+        <p>PI: Kimmen Sj&ouml;lander</p> 
+    </div>
+    <div id="downloads-tab">
+        <p>Downloads</p>
+        <ul>
+            <li>Entire phylo4j database directory (<a href="">.tar.gz</a>)</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

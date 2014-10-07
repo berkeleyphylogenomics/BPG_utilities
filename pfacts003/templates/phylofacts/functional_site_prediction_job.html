@@ -1,0 +1,102 @@
+{% extends 'common/base.html' %}
+
+{% block extrastyle %}{% endblock %}
+
+{% block extrascripts %}
+
+{% endblock %}
+
+{% block title %}Phylofacts Functional Site Prediction Job Page{% endblock %}
+
+{% block content %}
+
+<script>
+id = {{ job.id }};
+
+function update() {
+    $.get('/api/functional_site_prediction_jobs/' + id, {}, function(data) {
+        $("#progressbar" ).progressbar("value", data.status_id * (100 / 11));
+        $("#status").text(data["status"]);
+        //TODO set this higher
+        if (data["status_id"] < 11) {
+            // Not Complete, update the page again for them
+            setTimeout(update, 3000);
+        } else {
+            $( "#progress" ).hide();
+            $( "#results" ).load('/phylofacts/FSP/results/' + id);
+            $( "#num_homologs" ).html(data["num_homologs"]);
+            $( "#downloads" ).html('<p>MSA (FASTA) <a href="/phylofacts/FSP/results/' + id + '/summary_msa/">Summary</a> | <a href="/phylofacts/FSP/results/' + id + '/full_msa/">Full</a></p>' +
+                                   '<p>Tree (Newick) <a href="/phylofacts/FSP/results/' + id + '/summary_tree/">Summary</a> | <a href="/phylofacts/FSP/results/' + id + '/full_tree/">Full</a></p>' +
+                                    '<p><a href="/phylofacts/FSP/results/' + id + '/hmm/">HMM (HMMER3)</a></p>' +
+                                    '<p><a href="/phylofacts/FSP/results/' + id + '/intrepid_rank/">INTREPID Residue Rank</a></p>' +
+                                    '<p><a href="/phylofacts/FSP/results/' + id + '/intrepid_score/">INTREPID Residue Raw Score</a></p>');  
+        }
+        });
+}
+
+$(function() {
+    $( "#progressbar" ).progressbar({
+        value: {{ job.status_id }} * (100/11)
+    });
+    update();
+    $( "#fsp_result_tabs" ).tabs().addClass('ui-tabs-vertical ui-helper-clearfix');
+    $( "#fsp_result_tabs li" ).removeClass('ui-corner-top').addClass('ui-corner-left');
+});
+</script>
+
+<div id="title">
+    <h1>Functional Site Prediction Job {{ job.id }}</h1>
+</div>
+<div id="progress">
+    <div id="progressbar"></div>
+    <p id="status">{{ job.status.status }}</p>
+</div>
+
+<div id="fsp_result_tabs">
+    <ul>
+        <li><a href="#summary">Summary</a></li>
+        <li><a href="#intrepid_results">INTREPID<br />Results</a></li>
+        <li><a href="#structure">Structure</a></li>
+        <li><a href="#download">Downloads</a></li>
+    </ul>
+    <div id="summary">
+        <div class="row">
+            <label class="family-data-item">Query Sequence</label>        
+            <div class="rightcol">
+                <span>
+                    <p id="fasta_header">&gt;{{ job.fasta_header }}</p>
+                    {% for line in fasta_sequence %}
+                        <p class="fasta_line">{{ line }}</p>
+                    {% endfor %}
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <label class="family-data-item">Homologs Gathered</label>
+            <div id="num_homologs" class="rightcol">N/A pending Job Completion</div>
+        </div>
+        <div class="row">
+            <label class="family-data-item">Tree-cut % Identity</label>
+            <div class="rightcol">{{ job.treecut_pid }}</div>
+        </div>
+        <div class="row">
+            <label class="family-data-item">Jackhmmer E-value</label>
+            <div class="rightcol">{{ job.jackhmmer_evalue }}</div>
+        </div>
+        <div class="row">
+            <label class="family-data-item">Jackhmmer Iterations</label>
+            <div class="rightcol">{{ job.jackhmmer_iterations }}</div>
+        </div>
+    </div>
+    <div id="intrepid_results">
+        <div id="results"><p>Pending Job Completion . . .</p></div>
+    </div>
+    <div id="structure">
+        <div id="structures">Pending Job Completion . . .</p></div>
+    </div>
+    <div id="download">
+        <div id="downloads">Pending Job Completion . . .</p></div>
+    </div>
+</div>
+{% endblock %}
+

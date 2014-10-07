@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>{% block title %}Berkeley Phylogenomics Group{% endblock %}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/static/apps/phog/css/base_style.css" />
+{% block extrahead %}{% endblock %}
+</head>
+<body>
+{% block bodyscript %}{% endblock %}
+{% block banner %}
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="300" align="left" valign="middle">
+          {% block leftlogo %}
+            <map name="bpg_logo_map">
+              <area shape=circle coords="70,60,50" href="http://phylogenomics.berkeley.edu">
+              <area shape=circle coords="70,60,60" href="http://www.kelticdesigns.com">
+              <area shape=rect coords="0,0,300,120" href="http://phylogenomics.berkeley.edu">
+            </map>
+            <img src="/static/img/logos/bpg.png" width="300" height="120" border="0" usemap="#bpg_logo_map" />
+          {% endblock %}    
+        </td>
+        <td class="navtop" align="center">
+          {% block navigation %}
+          <a class="navtoplink" href="http://phylogenomics.berkeley.edu/">Home</a> |
+          <a class="navtoplink" href="http://phylofacts.berkeley.edu/research/">Research</a> |
+          <a class="navtoplink" href="http://phylogenomics.berkeley.edu/publications-bpg.php">Publications</a> | 
+          <a class="navtoplink" href="http://phylogenomics.berkeley.edu/contact_us.php">Contact&nbsp;us</a>
+          {% endblock %}
+        </td>
+        <td width="300" align="right" valign="middle">
+          {% block rightlogo %}
+          {% endblock %}    
+        </td>
+  </tr>
+</table>
+{% endblock %}
+{% block pagetitle %}
+<div class="pagetitle" id="pagetitle">
+  {% if pagetitle %}<h1>{{ pagetitle }}</h1>{% endif %}
+  {% if subtitle %}<h2>{{ subtitle }}</h2>{% endif %}
+</div>
+{% endblock %}
+{% block precontent %}{% endblock %}
+<div class="content" id="content">
+{% block content %}{% endblock %}
+</div>
+{% block postcontent %}{% endblock %}
+{% block contactlink %}
+    <div class="contactlink" id="contactlink">
+        <form method="link" action="http://phylogenomics.berkeley.edu/contact_us.php" target="_blank">
+            <input type="submit" value="Comments, questions, and bug reports">
+        </form>
+    </div>
+{% endblock %}   
+{% block acknowledgment %}
+  <div class="acknowledgment">
+    Funding for <a href="http://phylogenomics.berkeley.edu/phylofacts/">PhyloFacts</a> is provided by the 
+    <a href="http://phylofacts.berkeley.edu/funding/">National Science Foundation</a> and by the 
+    <a href="http://phylofacts.berkeley.edu/funding/">National Institutes of Health</a>. 
+  </div>  
+{% endblock %}   
+{% block trackerscripts %}
+
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=4594249; 
+var sc_invisible=1; 
+var sc_partition=56; 
+var sc_click_stat=1; 
+var sc_security="d8236ffb"; 
+</script>
+
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter.js"></script><noscript><div
+class="statcounter"><a title="joomla 1.5 statistics"
+href="http://www.statcounter.com/joomla/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/4594249/0/d8236ffb/1/"
+alt="joomla 1.5 statistics" ></a></div></noscript>
+<!-- End of StatCounter Code -->
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7134388-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+{% endblock %}
+</body>
+</html>

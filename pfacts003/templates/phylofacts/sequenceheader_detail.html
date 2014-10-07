@@ -1,0 +1,67 @@
+<html>
+<head></head>
+<body>
+
+<table>
+<tr>
+    <th>UniProt</th>
+    <td><a href='{{ object.get_absolute_url }}'>{{ object.uniprot_identifier }}</a></td>
+</tr>
+<tr>
+    <th>Sequence</th><td>
+<pre>{{ object.wrapped_chars }}</pre>
+    </td>
+</tr>
+<tr>
+    <th>Length</th><td>
+<pre>{{ object.chars|length }}</pre>
+    </td>
+</tr>
+<tr>
+    <th>Description</th>
+    <td>{{ object.description }}</td>
+</tr>{% with object.get_usual_summaries as go %}{% if go %}
+<tr>
+    <th>Annotation</th>
+    <td><ul>{% if go.biological_process %}
+        <li>Biological process: {% with go.biological_process as annot %}{% include 'phylofacts/snippets/annotation_entry.html' %}{% endwith %}</li>{% endif %}{% if go.molecular_function %}
+        <li>Molecular function: {% with go.molecular_function as annot %}{% include 'phylofacts/snippets/annotation_entry.html' %}{% endwith %}</li>{% endif %}{% if go.cellular_location %}
+        <li>Cellular component: {% with go.cellular_component as annot %}{% include 'phylofacts/snippets/annotation_entry.html' %}{% endwith %}</li>{% endif %}
+    </td></ul>
+</tr>
+{% endif %}{% endwith %}<tr>
+<tr>
+    <th>Taxon</th>
+    <td>{{ object.taxon }}</td>
+</tr>
+<tr>
+    <th>Lineage</th>
+    <td>{% for taxon in object.taxon.lineage %}{% if taxon.scientific_name.islower %}{{ taxon }}{% else %}<i>{{ taxon }}</i>{% endif %}{% if not forloop.last %}; {% endif %}{% endfor %}</td>
+</tr>
+</table>
+
+<table>
+    <tr>
+        <th colspan='3'>PhyloFacts Orthology Groups (PHOGS) containing this sequence:</th>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <th>GO Evidence</th>
+        <th>PHOG</th>
+    </tr>{% for sh in object.sequenceheader_set.all %}{% for tn in sh.treenode_set.all %}{% with tn.phogt_medium_node.get_phog as ph %}{% if ph %}
+    <tr>
+        <td>{{ ph.get_description }}</td>
+        <td>{% with ph.get_usual_summaries as gs %}<ul>
+            {% if gs.biological_process %}<li>Biological process: {% with gs.biological_process as annots %}{% include 'phylofacts/snippets/annotation_entries.html' %}{% endwith %}</li>{% endif %}
+            {% if gs.molecular_function %}<li>Molecular function: {% with gs.molecular_function as annots %}{% include 'phylofacts/snippets/annotation_entries.html' %}{% endwith %}</li>{% endif %}
+            {% if gs.cellular_component %}<li>Cellular component: {% with gs.cellular_component as annots %}{% include 'phylofacts/snippets/annotation_entries.html' %}{% endwith %}</li>{% endif %}
+        </ul>{% endwith %}</td>
+        <td><a href='{{ ph.get_absolute_url }}'>{{ ph.accession }}</a></td>
+    </tr>
+{% endif %}{% endwith %}{% endfor %}{% endfor %}</table>
+
+<h3>Cross-links</h3>
+<p>(links go here)</p>
+
+</body>
+</html>

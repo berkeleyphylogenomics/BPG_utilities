@@ -1,0 +1,82 @@
+{% extends "common/legacy_base.html" %}
+
+{% block mid_menu %}{% include "satchmo/mid_menu.html" %}{% endblock %}
+
+{% block app_logo %}<a href='/q/satchmo/'><span>SATCHMO-JS</span></a>{% endblock %}
+{% block statcounter %}{% include "satchmo/statcounter.html" %}{% endblock %}
+
+{% block title %}{% include "satchmo/title.html" %}{% endblock %}
+
+{% block body_title %}SATCHMO-JS Supplementary Material{% endblock %}
+
+{% block extrascripts %}{% endblock %}
+
+{% block extrastyle %}
+<style type='text/css'>
+#content {
+    margin: 0 1em;
+}
+p, caption {
+    line-height: 105%;
+}
+</style>
+{% endblock %}
+
+{# block toplinks #}
+{# include "snippets/menu.html" #}
+{# endblock #}
+
+{% block content %}
+<h2>Table of Contents</h2>
+<ol id='toc'>
+  <li><a href='#id_intro'>Introduction</a></li>
+  <li><a href='#id_psd'>Publications Supplementary Data</a>
+      <ol>
+           <li><a href="/supplementary/satchmo/webserver/">SATCHMO-JS: A webserver for simultaneous protein multiple sequence alignment and tree construction </a></li>
+           <!--<li><a href="/supplementary/satchmo/algorithm/">SATCHMO-JS co-estimation of a multiple sequence alignment and phylogenetic tree under extreme protein structural divergence</a></li>-->
+      </ol>
+  </li>
+  <li><a href='#id_resources'>Resources</a></li>
+</ol>
+
+<h2 id='id_intro'>Introduction</h2>
+<p>
+SATCHMO stands for Simultaneous Alignment and Tree Construction using
+Hidden Markov Models. The original algorithm used all-vs-all HMM-HMM
+scoring and alignment to co-estimate a phylogenetic tree and multiple
+sequence alignment for protein sequences <a href="#ref1">[1]</a>. This gave
+SATCHMO robustness to handling highly variable sequences, but made it
+computationally too expensive to apply to large datasets. SATCHMO-JS is
+an extension of the SATCHMO algorithm and employs a divide-and-conquer
+strategy to jump-start SATCHMO at a higher point in the phylogenetic tree,
+reducing the computational complexity of the progressive all-vs-all HMM-HMM
+scoring and alignment.</p>
+
+<h2 id='id_psd'>Publications Supplementary Data</h2>
+<div>
+<p>The following links provide data downloads, tables, and figures related to SATCHMO-JS publications.</p>
+<ol>
+   <li><a href="/supplementary/satchmo/webserver/">SATCHMO-JS: A webserver for simultaneous protein multiple sequence alignment and tree construction </a></li>
+   <!--<li><a href="/supplementary/satchmo/algorithm/">SATCHMO-JS co-estimation of a multiple sequence alignment and phylogenetic tree under extreme protein structural divergence</a></li>-->
+</ol>
+</div>
+
+<p>Reference cited:</p>
+<ol class='refs'>
+    <li><a target='_blank' href='http://www.ncbi.nlm.nih.gov/pubmed/12874053?dopt=Abstract' class='ref' name='ref1'>Edgar, R., and Sj&ouml;lander, K., "SATCHMO: Sequence Alignment and Tree Construction using Hidden Markov models," <i>Bioinformatics</i>. 2003 Jul 22;19(11):<b>1404-11</b>.</a>
+    </li>
+</ol>
+
+<h2 id='id_resources'>Resources</h2>
+<ul>
+    <li>
+        <a href='/q/satchmo/'>SATCHMO-JS Webserver</a>
+    </li>
+    <li>
+        <a href='http://phylogenomics.berkeley.edu/cgi-bin/satchmo/input_satchmo.py'>Original SATCHMO Webserver</a>
+    </li>
+    <li>
+        <a href='http://phylogenomics.berkeley.edu/'>Berkeley Phylogenomics Group Website</a>
+    </li>
+</ul>
+{% endblock %}

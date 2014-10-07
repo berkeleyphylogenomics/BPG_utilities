@@ -1,0 +1,198 @@
+{% extends 'common/base.html' %}
+
+{% block title %}PhyloFacts {{ genome_dict.genome_name }} genome{% endblock %}
+
+{% block content %}
+  <h3 style="font-size:24px;"> PhyloFacts Genome:
+    {{ genome_dict.genome_name }} 
+ </h3>  
+
+
+    <script type="text/javascript">
+    jQuery(function() {
+        jQuery("#family_tabs").tabs().addClass('ui-tabs-vertical ui-helper-clearfix');
+        jQuery("#family_tabs li").removeClass('ui-corner-top').addClass('ui-corner-left');
+    });
+    </script>
+
+<div id="family_tabs">
+    <ul>
+        <li><a href="#pf_coverage">Summary</a></li>
+        <li><a href="#downloads">Downloads</a></li>
+        <li><a href="#scripts">Scripts</a></li>
+        <li><a href="#about_pf_genomes">About PF3.0 genomes</a></li>
+    </ul>
+
+    <div id="pf_coverage">
+<i>Source: PhyloFacts release PF3.0.2. Statistics updated on December 7, 2011</i> <br /><br />
+{% if genome_dict.num_genes %}                                                                  
+<table id="coverage_stats">
+<tr><td>Number of genes:</td><td> {{ genome_dict.num_genes }}</td></tr>
+<tr><td>Number of books for multi-domain architectures:</td><td> {{ genome_dict.num_GHG_books }}</td></tr>
+
+<tr><td>Number of books for Pfam domains:</td><td> {{ genome_dict.num_pfam_books }}</td></tr>
+<tr><td>Number of genes in multi-domain architecture books:</td><td> {{ genome_dict.num_genes_in_GHG }} ({{ genome_dict.num_genes_in_GHG_pct }}%)</td></tr>
+<tr><td>Number of genes in books for Pfam domains:</td><td> {{ genome_dict.num_genes_in_PFAM }} ({{ genome_dict.num_genes_in_PFAM_pct }}%)</td></tr>
+<tr><td>Number of genes in any book:</td><td> {{ genome_dict.num_genes_in_any }} ({{ genome_dict.num_genes_in_any_pct }}%)</td></tr>
+</table>
+<br />
+Reference proteome used for generating statistics: <a href="{{ genome_dict.source_link }}">{{ genome_dict.source_reference }}</a> <br />
+Copy of the reference fasta file: <a href="{{ genome_dict.source_fasta_file }}">download</a><br /> 
+
+{% else %}                                                                                      
+No stats are currently available for <i>{{ genome_dict.genome_name }}</i>. <br />               
+{% endif %}    
+<br />
+<a href="/phylofacts/coverage/">Return to the PF3.0 genome coverage page.</a>
+
+    </div>
+
+
+
+    <div id="downloads">
+We provide a number of downloads from this page for PhyloFacts families containing <i>{{ genome_dict.genome_name }}</i> proteins. Gzipped (gz) files are provided; Windows users can extract these files using the free utility <a href="http://www.7-zip.org/">7-zip</a>.
+</p>
+
+<b>For families agreeing on the multi-domain architecture:</b><br />
+
+<!-- Possibly none of these are available -->
+{% if genome_dict.ghg_hmms or genome_dict.ghg_msas or genome_dict.ghg_ml_trees or genome_dict.ghg_nj_trees or genome_dict.ghg_summary %}
+
+{% if genome_dict.ghg_hmms %}
+Hidden Markov models (HMMs, in HMMER3 format) ({{ genome_dict.ghg_hmm_size }}, <a
+href="{{ genome_dict.ghg_hmms }}">gz</a>)
+<br />
+{% endif %}
+
+{% if genome_dict.ghg_msas %}
+Multiple sequence alignments (in UCSC A2M format) ({{ genome_dict.ghg_msa_size }}, <a
+href="{{ genome_dict.ghg_msas }}">gz</a>)
+<br />
+{% endif %}
+
+{% if genome_dict.ghg_ml_trees or genome_dict.ghg_nj_trees %}
+Phylogenetic Trees (in Newick format) : 
+{% if genome_dict.ghg_ml_trees %}
+Maximum Likelihood ({{ genome_dict.ghg_ml_trees_size }}, <a
+href="{{ genome_dict.ghg_ml_trees }}">gz</a>), 
+{% endif %}
+{% if genome_dict.ghg_nj_trees %}
+Neighbor joining ({{ genome_dict.ghg_nj_trees_size }}, <a
+href="{{ genome_dict.ghg_nj_trees }}">gz</a>)
+{% endif %}
+<br />
+{% endif %}
+
+{% if genome_dict.ghg_summary %}
+Family summary data (in machine-readable format) ({{ genome_dict.ghg_summary_size }}, <a
+href="{{ genome_dict.ghg_summary }}">gz</a>)
+<br />
+{% endif %}
+
+{% else %}
+No downloads are currently available in this section.
+{% endif %}
+<br />
+
+
+<b>For Pfam domain families:</b> <br />
+
+<!-- Possibly none of these are available -->
+{% if genome_dict.pfam_hmms or genome_dict.pfam_msas or genome_dict.pfam_ml_trees or genome_dict.pfam_nj_trees or genome_dict.pfam_summary %}
+
+{% if genome_dict.pfam_hmms %}
+Hidden Markov models (HMMs, in HMMER3 format) for domain books ({{ genome_dict.pfam_hmm_size }}, <a
+href="{{ genome_dict.pfam_hmms }}">gz</a>)
+<br />
+{% endif %}
+
+{% if genome_dict.pfam_msas %}
+Multiple sequence alignments (in UCSC A2M format) for domain books ({{ genome_dict.pfam_msa_size }}, <a
+href="{{ genome_dict.pfam_msas }}">gz</a>)
+<br />
+{% endif %}
+
+{% if genome_dict.pfam_ml_trees or genome_dict.pfam_nj_trees %}
+Phylogenetic Trees (in Newick format): 
+{% if genome_dict.pfam_ml_trees %}
+Maximum Likelihood ({{ genome_dict.pfam_ml_trees_size }}, <a
+href="{{ genome_dict.pfam_ml_trees }}">gz</a>), 
+{% endif %}
+{% if genome_dict.pfam_nj_trees %}
+Neighbor Joining ({{ genome_dict.pfam_nj_trees_size }}, <a
+href="{{ genome_dict.pfam_nj_trees }}">gz</a>)
+{% endif %}
+<br />
+{% endif %}
+
+{% if genome_dict.pfam_summary %}
+Family summary data (in machine-readable format) ({{ genome_dict.pfam_summary_size }}, <a
+href="{{ genome_dict.pfam_summary }}">gz</a>)
+<br />
+{% endif %}
+
+{% else %}
+No downloads are currently available in this section.
+{% endif %}
+<br />
+<!--
+<br />
+PHOG summary data (..MB bzipped file)</a>
+-->
+<br />
+<br />
+<p>To download files pertaining to an individual PhyloFacts 3.0 family, please visit the corresponding family webpage from <a href="/phylofacts/family/">here</a>.
+</p>
+</div>
+
+    </di<v>
+
+    <div id="scripts">
+Scripts to extract data (HMMs, phylogenetic trees, etc.) for specific families.<br /><br />
+Detailed usage instructions for each script can be obtained by running the script without any arguments or in the README file below.
+The following scripts are included in the zip file (<a href="{{  genome_dict.python_scripts_location }}">download</a>) :
+<br />
+<br />
+<dl>
+<dt><a href="http://makana-static.berkeley.edu/phylofacts3/code/python_scripts/README">README</a></dt>
+<dd>Instructions for using the scripts</dd>
+<dt><a href="http://makana-static.berkeley.edu/phylofacts3/code/python_scripts/extract_protein_info.py">extract_protein_info.py</a></dt>
+<dd>Obtain a list of PhyloFacts families for a given input protein.</dd>
+<dt><a href="http://makana-static.berkeley.edu/phylofacts3/code/python_scripts/extract_summary.py">extact_summary.py</a></dt>
+<dd>Extracts summary data for PhyloFacts families. Input arguments are either a single bpg accession or a file containing a list of bpg accessions.</dd>
+<dt><a href="http://makana-static.berkeley.edu/phylofacts3/code/python_scripts/extract_tree.py">extract_tree.py</a></dt>
+<dd>Extracts trees for PhyloFacts families. Input arguments are either a single bpg accession or a file containing a list of bpg accessions.</dd>
+<dt><a href="http://makana-static.berkeley.edu/phylofacts3/code/python_scripts/extract_msa.py">extact_msa.py</a></dt>
+<dd>Extracts msa (Multiple Sequence Alignment) for PhyloFacts families. Input arguments are either a single bpg accession or a file containing a list of bpg accessions.</dd>
+<dt><a href="http://makana-static.berkeley.edu/phylofacts3/code/python_scripts/extract_hmm.py">extract_hmm.py</a></dt>
+<dd>Extracts hmm (Hidden Markov Models) for PhyloFacts families. Input arguments are either a single bpg accession or a file containing a list of bpg accessions.</dd>
+</dl>
+<br />  
+For detailed information on usage, please refer to the README file included in the <a href="{{  genome_dict.python_scripts_location }}">zip file</a>.
+     </div>
+
+    <div id="about_pf_genomes">
+<p>The PhyloFacts Encyclopedia is composed of "books" to represent gene families, clustered in two distinct ways: requiring agreement along the entire multi-domain architecture, and based on sharing a single Pfam domain. Each book contains a multiple sequence alignment, phylogenetic tree, inferred orthologs (using the <a href="http://makana.berkeley.edu/phog/">PHOG</a> algorithm (<a href="http://nar.oxfordjournals.org/cgi/content/full/gkp373?ijkey=KU8e1DWUbzb70Yz&keytype=ref">Datta et al., Nucleic Acids Research, 2009</a>)), hidden Markov model, and associated experimental and annotation data.</p>  
+<p>Details on the library construction pipeline are provided in the following article. <br />   
+  <span class="author">                                                                         
+  Nandini Krishnamurthy, Duncan Brown, Dan Kirshner and <span                                   
+  class="bold-name">Kimmen Sj&ouml;lander</span>,                                               
+  </span>                                                                                       
+                                                                                                
+  <span class="pub_title">                                                                      
+  "PhyloFacts: An online structural phylogenomic encyclopedia for protein                       
+  functional and structural classification,"                                                    
+  </span>                                                                                       
+                                                                                                
+  <a href="http://genomebiology.com/2006/7/9/R83"><span class="journal">Genome Biology</span> 2006,                                                                                            
+  7:R83</a>                                                                                     
+                                                                                                
+  <a href="/static/doc/pub/2006_GB_PhyloFacts.pdf">PDF</a>.                                     
+</p>                                                                                            
+<br />
+    </div>
+
+
+
+</div>
+{% endblock %}

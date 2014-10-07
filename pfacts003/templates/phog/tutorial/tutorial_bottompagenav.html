@@ -1,0 +1,26 @@
+{% extends "phog/tutorial/tutorial_toppagenav.html" %}
+
+{% block bottompagenav %}
+
+<table width="100%">
+   <tr>
+      <td align="left">
+         Page {{ page }}
+      </td>
+      <td align="right">
+	 {% if previous %}
+	    < <a href="/phog/orthologs/tutorial/?page={{ previous }}">Previous</a>
+	 {% endif %}
+
+         {% for num in page_numbers %}
+	    &nbsp; <a href="/phog/orthologs/tutorial/?page={{ num }}">{{ num }}</a>	    
+         {% endfor %}
+
+	 {% if next %}
+	    &nbsp; <a href="/phog/orthologs/tutorial/?page={{ next }}">Next</a> >
+         {% endif %}
+      </td>
+   </tr>
+</table>
+
+{% endblock %}

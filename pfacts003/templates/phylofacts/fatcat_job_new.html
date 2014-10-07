@@ -1,0 +1,117 @@
+{% extends 'common/base_new.html' %}
+
+{% block extrastyle %}
+<style type='text/css'>
+.instruction {
+    width:950px;
+}
+.main-content {
+    font-family:Verdana;
+    margin-left:20px;
+    margin-right:20px;
+    margin-bottom:20px;
+}
+.main-content h2 {
+    font-size:29px;
+}
+.progress {
+    margin-bottom:5px;
+    height:35px;
+ }
+.left-title {
+    float:left;
+    min-width:745px;
+    margin-right:30px;
+}
+.right-title {
+    float:left;
+}
+.fatcat-title {
+    float:left;
+    width:100%;
+    margin-bottom:10px;
+}
+#status {
+    font-weight:bold;
+}
+.main-content .dl-horizontal dt {
+    width:120px;
+    margin-bottom: 10px;
+}
+.main-content .dl-horizontal dd {
+    margin-left:140px;
+    margin-bottom:10px;
+}
+.fasta-sequence {
+    float:left;
+    margin-top:5px;
+}
+.fasta-line {
+    margin-bottom:5px;
+    font-family:monospace;
+    font-size:12px;
+    line-height:12px;
+}
+</style>
+{% endblock %}
+
+{% block extrascripts %}
+<script type='text/javascript'>
+function update() {
+    console.log('in update');
+    $j.get('/api/fatcat/{{ job.id }}/', {}, function(data) {
+        $j(' .bar ').css('width', (data.status_id * (100/9)).toString() + '%');
+        $j('#status').text(data['status']);
+        if (data['status_id'] < 9) {
+            setTimeout(update, 10000);
+        }
+        else {
+            $j('#status').text('Please wait while your results load.');
+            location.reload(true);
+        }
+    });
+}
+
+$j(document).ready(function() {
+    console.log('in document ready.');
+    update();    
+});
+</script>
+{% endblock %}
+
+{% block title %}PhyloFacts FAT-CAT{% endblock %}
+
+{% block content %}
+<div class='main-content'>
+    <div class='fatcat-title'>
+        <div class='left-title'> 
+            <h2>FAT-CAT Fast Approximate Tree Classification</h2>
+            <div class='progress progress-striped active'>
+                <div class='bar' style="width:0%"></div>
+            </div>
+            <div id='status'></div>
+        </div>
+        <div class='right-title'>
+            <img src='/static/img/logos/fatcat_logo_with_tree.jpg' width='175'>
+        </div>
+    </div>
+    <div class='instruction'>
+        <p>If you submitted a job without an email address 
+        (or if you are not logged in to PhyloFacts), it 
+        is recommended to bookmark this page.  
+        Results will become available as the job completes.</p>
+    </div>
+    <div class='job-summary'>
+        <div class='dl-horizontal'>
+            <dt>Header</dt>
+            <dd>{{ job.fasta_header }}</dd>
+            <dt>Sequence</dt>
+            <dd><div class='fasta-sequence'>
+                {% for line in sequence %}
+                    <p class='fasta-line'>{{ line }}</p>
+                {% endfor %}
+            </dd>
+        </div>    
+    </div>
+</div>
+{% endblock %}

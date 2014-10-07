@@ -1,0 +1,124 @@
+{% extends "phog/phog_base.html" %}
+{% load datagrid %}
+{% load djblets_deco %}
+
+{% block title %}Find Protein-Protein Interactions{% endblock %}
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="/static/apps/phog/css/phog_datagrid.css" />
+<script type="text/javascript" src="/static/js/legacy/jquery-1.2.6.min.js"></script>
+<script type="text/javascript" src="/static/js/legacy/jquery-ui-1.6rc1.packed.js"></script>
+<script type="text/javascript" src="/static/js/legacy/jquery.gravy.js"></script>
+<script type="text/javascript" src="/static/apps/djblets/js/datagrid.js"></script>
+{% endblock %}
+
+{% block pagetitle %}
+<h1>{{pagetitle}}</h1>
+<h2>{{subtitle}}</h2>
+{% endblock %}
+
+{% block content %}
+
+<h1 align="center">Protein-Protein Interactions</h1>
+
+  <div class="inset gray">
+  </div>
+  <div style="margin-left: 100px">
+      <table border="0" cellpadding="0" cellspacing="0">
+  <form action="/ppi/" 
+      METHOD = "GET" name = "interactors">
+        <tr>
+        <td colspan="4">{{ form_error }}</td>
+        </tr>
+        <tr>
+        <td>
+        </td>
+        </tr>
+  </tr>
+        <tr><td height="6" colspan="4"></td></tr>
+	<tr>
+        <tr>
+          <td>
+            <label for="id_sequence_id">Find interacting partners&nbsp;&nbsp;</label>&nbsp;
+	  </td>
+	  <td>
+            {{ form.sequence_id }}
+          </td>
+	  <td width="10"></td>
+          <td>
+            <INPUT TYPE=submit Value="Search">
+          </td>
+        </tr>
+  </tr>
+        <tr><td height="6" colspan="4"></td></tr>
+	<tr>
+  <tr>
+      <td></td>
+	  <td valign="top" style="font-size: 14px">
+	    (Enter UniProt accession or ID,<br> or Genbank ID)
+      <td></td>
+      <td>
+        <input type=button value="Enter test data"  
+        onclick="form.sequence_id.value='COPB2_YEAST'; form.sequence_fasta.value='';">
+      </td>
+  </tr>
+  </tr>
+        <tr><td height="6" colspan="4"></td></tr>
+	<tr>
+	<tr>
+	  <td></td>
+      <td width="30">{{ form.sequence_id.errors }}</td>
+	  </td>
+	  <td></td>
+    <td></td>
+	</tr>
+  </form>
+  <tr>
+  <td></td>
+  <td></td>
+  <td></td>
+	  <td valign="top">
+    <form method=GET action="/ppi/APAF_HUMAN/">
+	    <input type=submit value="View sample results">
+    </form>
+	  </td>
+  </tr>
+  </tr>
+        <tr><td height="6" colspan="4"></td></tr>
+	<tr>
+    </table>
+    
+  <form method=GET action="/ppi/">
+  <input type=submit value="Clear all">
+  </form>
+
+  </div>
+
+  {% if fasta_error %}
+    <p>{{ fasta_error }}</p>
+  {% endif %}
+  {% if form.cleaned_data.sequence_id %}
+    {% if db_error %}
+      <p>{{ db_error }}</p>
+    {% else %}
+      <br />
+      <h4>Query: {{ form.cleaned_data.sequence_id|escape }}
+          {{ query_species }} {{ query_description }}</h4>
+      <br />
+      {% box %}
+        {{datagrid.render_listview}}
+      {% endbox %}
+
+      <form action="/ppi/csv/{{ form.cleaned_data.sequence_id }}"
+          METHOD = get name = 'interactors_as_csv'>
+        <INPUT TYPE=hidden NAME=sequence_id
+          VALUE="{{ form.cleaned_data.sequence_id }}">
+        <p><INPUT TYPE=submit Value="Download As CSV"></p>
+      </form>
+
+      <p>Interaction data courtesy of <a href="http://dip.doe-mbi.ucla.edu/">DIP</a>, the Database of Interacting Proteins, a member of <a href="http://imex.sourceforge.net">the IMEx Consortium</a>.
+      </p>
+					
+    {% endif %}
+  {% endif %}
+{% endblock %}

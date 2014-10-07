@@ -1,0 +1,112 @@
+{% extends 'common/base_new.html' %}
+{% load get_range %}
+
+{% block title %}PhyloFacts Sequence Page: {{ object.uniprot_identifier }} {% endblock %}
+
+{% block extrascripts %}
+<script>
+$j(document).ready(function() {
+    $j( "#left-tabs" ).tabs();
+    $j( "#left-tabs" ).tabs().addClass('ui-tabs-vertical ui-helper-clearfix');
+    $j( "#left-tabs li").removeClass('ui-corner-top').addClass('ui-corner-left');
+});
+</script>
+{% endblock %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="/static/css/DT_bootstrap.css">
+{% endblock %}
+
+{% block content %}
+
+<div class="phylofacts-well">
+  <div class="phylofacts-well-header">
+    <h2>Sequence: {{ object.description }}{% if object.identifier %} [{{ object.identifier }}]{% endif %}</h2>
+    <div class="page-top-navbar">
+      <div id="species_icon" class="top-navbar-icon">
+        <img src="/static/img/icons/tree-of-life-species.png" alt="species" />
+        <a href="javascript:;" data-tab="species">1 Taxon</a>
+      </div>
+      <div id="pathway_icon" class="top-navbar-icon">
+        <img src="/static/img/icons/pathway-icon.png" alt="pathways" />        {% if biocyc_info.reactions %}<a href="javascript:;" data-tab="reactions">{{ biocyc_info.reactions|length }}       {% if biocyc_info.reactions|length > 1 %}Reactions{% else %}Reaction{% endif %}</a>
+    {% else %}<span>0 Reactions</span>{% endif %}
+    {% if biocyc_info.pathways %}<a  href="javascript:;" data-tab="pathways">{{ biocyc_info.pathways|length }} 
+       {% if biocyc_info.pathways|length > 1 %}Pathways{% else %}Pathway{% endif %}</a>
+    {% else %}<span>0 Pathways</span>{% endif %}
+      </div>
+      <div id="structure_icon" class="top-navbar-icon">
+        <img src="/static/img/icons/VIRB4_model.png" alt="structures" />
+        <span>0 Structures</span>
+        <!--<a href="javascript:;" data-tab="structures">{{ num_structures }} structures</a>-->
+      </div>
+      <div id="literature_icon" class="top-navbar-icon">
+        <img src="/static/img/icons/pubmed.png" alt="literature" />
+        <span>0 Papers</span>
+        <!--<a href="javascript:;" data-tab="reactions">{{ num_papers }} {% if num_papers > 1 or num_papers == 0 %}Papers{% else %}Paper{% endif %}</a> -->
+      </div>
+      <div id="annotation_icon" class="top-navbar-icon">
+        <img src="/static/img/icons/quillPen.png" alt="annotations" />
+        <a href="javascript:;" data-tab="go_annotations">
+          {{ num_GO_annotations }} GO annotations</a>
+        <a href="javascript:;" data-tab="user_annotations">
+          {{ num_user_annotations }} user annotations</a>
+      </div>
+    </div>
+    <div class="cleaner">
+      <!-- empty. -->
+    </div>
+  </div>
+  <div id="left-tabs">
+      <ul class="left-tabs-cls">
+        <li><a href="#summary">Summary</a></li>
+        <li><a href="#species">Species</a></li>
+        <li><a href="#orthologs">Orthologs & Subfamilies</a></li>
+        <li><a href="#biocyc">BioCyc</a></li>
+        <li><a href="#reactions">&nbsp&nbsp&nbspReactions</a></li>
+        <li><a href="#pathways">&nbsp&nbsp&nbspPathways</a></li>
+        <li><a href="#annotations">Annotations</a></li>
+        <li><a href="#go_annotations">&nbsp&nbsp&nbspGO</a></li>
+        <li><a href="#structures">Structures</a></li>
+      </ul>
+    <div id="summary" class="phylofacts-treenode-content">
+      <h3>Summary</h3>
+        <dl class="dl-horizontal">
+          <dt></dt>
+          <dd></dd>
+        </dl>
+        <dl class="dl-horizontal">
+          <dt>Architecture</dt>
+          <dd><div id="mda"></div></dd>
+        </dl>
+    </div>
+    <div id="species" class="phylofacts-treenode-content">
+      <h3>Species</h3>
+    </div>
+    <div id="orthologs" class="phylofacts-treenode-content">
+      <h3>Orthologs & Subfamilies</h3>
+    </div>
+    <div id="biocyc" class="phylofacts-treenode-content">
+      <h3>BioCyc Summary</h3>
+    </div>
+    <div id="reactions" class="phylofacts-treenode-content">
+      <h3>BioCyc Reactions</h3>
+    </div>
+    <div id="pathways" class="phylofacts-treenode-content">
+      <h3>BioCyc Pathways</h3>
+    </div>
+    <div id="annotations" class="phylofacts-treenode-content">
+      <h3>Annotation Summary</h3>
+    </div>
+    <div id="go_annotations" class="phylofacts-treenode-content">
+      <h3>GO Annotations</h3>
+    </div>
+    <div id="structures" class="phylofacts-treenode-content">
+      <h3>Structures</h3>
+    </div>
+    <div class="bottom-border">
+        <p></p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

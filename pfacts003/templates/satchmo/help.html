@@ -1,0 +1,160 @@
+{% extends "common/legacy_base.html" %}
+
+{% block mid_menu %}{% include "satchmo/mid_menu.html" %}{% endblock %}
+
+{% block app_logo %}<a href='/q/satchmo/'><span>SATCHMO-JS</span></a>{% endblock %}
+{% block statcounter %}{% include "satchmo/statcounter.html" %}{% endblock %}
+
+{% block title %}{% include "satchmo/title.html" %}{% endblock %}
+
+{% block body_title %}SATCHMO Help{% endblock %}
+
+{% block extrastyle %}{% endblock %}
+
+{% block extrascripts %}{% endblock %}
+
+{# block toplinks #}
+{# include "snippets/menu.html" #}
+{# endblock #}
+
+{% block content %}
+<h1>Quick Start</h1>
+<p>
+New users: Please see our
+<a href="/static/apps/satchmo/pdf/satchmo_quick_start.pdf"
+   title='Getting Started with SATCHMO quick-start guide'><i>Getting Started with SATCHMO</i></a> quick-start guide.
+</p>
+
+
+<h1>Tutorial</h1>
+<p>
+A
+<a href="/static/apps/satchmo/pdf/satchmo_tutorial.pdf"
+   title="more detailed tutorial">more detailed tutorial
+</a>
+explains the webserver pipeline and steps you through how to use the SATCHMO
+webserver.
+</p>
+
+<a name='faq'></a>
+<h1>Frequently Asked Questions (FAQ)</h1>
+<p><i>Q: How are SATCHMO and SATCHMO-JS different?</i></p>
+
+<p>
+A: SATCHMO-JS is a variant of the SATCHMO algorithm designed for scalability to
+large datasets. We use a jump-start (JS) protocol to reduce complexity,
+employing computationally efficient MSA methods for subgroups of closely
+related sequences and saving the computationally expensive HMM-HMM scoring and
+alignment to estimate the tree and MSA between more distantly related
+subgroups.
+</p>
+
+<p>
+In brief, we construct an MSA for the input sequences using MAFFT, construct a
+Neighbor-Joining tree for this MSA using QuickTree, and then cut the tree into
+subtrees using an in-house tool (called kerf) based on a pre-specified maximal
+allowable divergence within each subtree (the default is 35% identity). This
+produces a set of sub-MSAs. We mask these MSAs to remove columns that have
+&gt;70% gaps (turning masked characters to lower-case). The masked MSAs are
+given to SATCHMO, effectively jump-starting the all-vs-all HMM-HMM scoring and
+alignment procedure. Once a rooted tree is produced, Maximum Likelihood is used
+to optimize the edge lengths of the SATCHMO tree. </p>
+
+<p>
+This protocol is computationally efficient, both with respect to time and
+memory, allowing us to apply SATCHMO-JS to very large datasets. The
+accuracy of SATCHMO and SATCHMO-JS are almost indistinguishable. For pairs of
+sequences with high sequence identities, SATCHMO-JS reduces to MAFFT, and the
+accuracy of all three methods is effectively identical. At low sequence
+identities (especially below 10% identity), SATCHMO accuracy is superior to
+SATCHMO-JS.
+</p>
+
+<p><i>Q: What is the SMO (.smo) file and how do I use it?</i><br />
+A: SATCHMO MSAs are of different lengths at internal nodes of the tree,
+reflecting the differing levels of alignability across subgroups. This
+information is provided in the *.smo file. To allow users to view the tree and
+MSA concurrently, we provide a <a href="/static/apps/satchmo/download/sv.exe"
+id=fmfg title="Satchmo Viewer">SATCHMO Viewer</a>, which takes the *.smo file
+as input. Unfortunately, the SATCHMO viewer is currently only available for
+Windows. This <a href="/static/apps/satchmo/pdf/satchmo_tutorial.pdf" id=n872
+title="tutorial">tutorial</a> gives information on how to use the SATCHMO
+Viewer.
+</p>
+
+
+<p><i>Q: Why are some sequences rejected by the SATCHMO server?</i><br />
+A: If you used Microsoft Word, or some other word processing software to create
+and/or edit your FASTA file, the sequences may have hidden characters that
+cause the SATCHMO webserver input validation to reject the sequences. For this
+reason, we recommend that you use a text-only program (instead of a word
+processor) to create or edit FASTA files. Good alternate programs are Notepad
+(Microsoft Windows) and TextEdit (Apple Macintosh).
+</p>
+
+<p><i>
+Q: Why do you provide two SATCHMO trees, one with and one without branch length optimization?
+</i><br />
+A: SATCHMO uses "distances" between HMMs in the HMM-HMM scoring function to
+determine which subtrees to join. These distances do not correspond to true
+evolutionary distances, so we do not include them in the output Newick tree.
+When trees without branch lengths are displayed in a tree viewer, all edges are
+set to unit length.  To allow us to use the SATCHMO tree topology but provide
+informative edge lengths, we use RAxML, a Maximum-Likelihood (ML) tree
+estimation software package[1]. RAxML optimizes the branch lengths
+while keeping the tree topology fixed. We provide both trees for download.
+</p>
+
+<p><i>
+Q: Why are some positions in the MSA displayed in lower-case and some displayed in upper-case?  What is the difference between dots and dashes?
+</i><br />
+
+A: We display SATCHMO alignments using the UCSC a2m format. The UCSC a2m format
+is designed to display sequence paths through an HMM (a2m stands for “align to
+model”) and includes both lowercase and uppercase letters and dots and dashes.
+Uppercase letters correspond to characters emitted in an HMM match state, while
+lowercase letters are emitted in an HMM insert state. Dashes correspond to
+paths through HMM delete (skip) states, and dots are inserted <i>post hoc</i>
+so that all sequences have the same number of characters in each column.
+SATCHMO uses a subtree-specific masking protocol to derive HMMs at internal
+nodes of a tree that represent the predicted conserved core structure for
+sequences descending from that node. Lowercase characters are the result of
+that masking, and indicate positions that do not appear to be part of the
+consensus structure for that subtree.
+</p>
+
+<p><i>Q: Why do you use ReCaptcha?</i><br />
+A: ReCaptcha allows us to provide webservers without fearing that web-bots (or
+industrious external users) will submit hundreds or thousands of jobs which our
+small compute cluster won't be able to handle. By using ReCaptcha, we don't
+need to require email addresses or logins. ReCaptcha also contributes to
+digitizing documents.
+</p>
+
+<p><i>
+Q: When I use the Jalview MSA/tree viewer to view the SATCHMO output, I see numbers on the internal nodes and edges of the tree. What are these numbers? Are they bootstrap support?
+</i><br />
+
+A: The default in Jalview is to display the values for edge lengths.  They are not
+bootstrap values.  If you would like to hide these numbers, you can use the
+pull-down View menu on the tree.  View->Show Distances will be selected by
+default. De-select it using the pull-down menu to hide the numbers on the tree.
+</p>
+
+<!--img src="/static/apps/satchmo/img/icons/notepad_icon.png"
+     style="height:129px;width:111px" /-->
+<!--img src="/static/apps/satchmo/img/icons/text_edit_icon.png"
+     style="height:89px;width:91px" /-->
+
+<h1>Known Bugs</h1>
+<p><i>Q: When I take the SATCHMO source code, and compile it, I am unable to enter a -window option on the command line.</i></p>
+
+<p>A: The -window command line option is not yet available in the SATCHMO executable. It will be available in the next release.
+</p>
+
+<h1>References cited:</h1>
+
+<ol class='refs'>
+<li><a target='_blank' href='http://www.ncbi.nlm.nih.gov/pubmed/16928733?dopt=Abstract' class='ref'>Stamakis A., "RAxML-VI-HPC: maximum likelihood-based phylogenetic analyses with thousands of taxa and mixed models," <i>Bioinformatics</i>, 2006, Vol. 22, No. 21 <b>2688-2690.</b></a></li>
+</ol>
+{% endblock %}

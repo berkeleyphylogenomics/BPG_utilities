@@ -1,0 +1,218 @@
+{% extends 'common/base.html' %}
+
+
+
+{% block title %}PhyloFacts Genome Coverage{% endblock %}
+
+
+
+{% block content %}
+
+  <h2 style="margin-bottom:5px;">Genome coverage of Selected Species in PhyloFacts 3.0.2</h2>
+
+  <p style="margin-bottom:5px; width:680px;">PhyloFacts 3.0 contains proteins from &gt;99,000 unique taxa from across the Tree of Life.  This table presents results for a small subset of these genomes.</p> 
+  <p>Downloads are available for selected species (indicated by hyperlinks) </p>
+
+<p>
+
+  <table class='coverage'>
+
+    <tr>
+
+      <th><b>Species</b></th>
+
+      <th><b># genes</b></th>
+
+      <th><b># in PF3.0</b></th>
+
+      <th><b>Coverage</b></th>
+
+    </tr>
+
+    <tr> <td class='organism' colspan="4"><b>Archaea</b></td></tr>
+
+    <tr><td class="sub-category"><b>Crenarchaeota</b></td</tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/s_solfataricus" title="Genome page for Sulfolobus solfataricus">Sulfolobus solfataricus</a></td><td>2938</td><td>2557</td><td>87.03%</td></tr>
+
+    <tr><td class="sub-category"><b>Euryarchaeota</b></td></tr>
+
+    <tr class="even-species"><td class="species"><a href="../genome/h_salinarum">Halobacterium salinarum</a></td><td>2615</td><td>2366</td><td>90.48%</td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/m_jannaschii">Methanocaldococcus jannaschii</a></td><td>1783</td><td>1227</td><td>68.82%</td></tr>
+
+    <tr><td class="species"><a href="../genome/m_acetivorans">Methanosarcina acetivorans</a></td><td>4468</td><td>2728</td><td>61.06%</td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/p_kodakaraensis">Pyrococcus kodakaraensis</a></td><td>2301</td><td>1512</td><td>65.70%</td></tr>
+
+    <tr><td  class="sub-category"><b>Korarchaeota</b></td>
+
+    <tr class='blue'><td class="species"><a href="../genome/k_cryptofilum">Korarchaeum cryptofilum</a></td><td>1602</td><td>1291</td><td>80.59%</td></tr>
+
+
+
+    <tr > <td class='organism' colspan="4"><b>Bacteria</b></td> </tr>
+
+    <tr><td class="sub-category"><b>Actinobacteria</b></td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/m_tuberculosis">Mycobacterium tuberculosis</a></td><td>3956</td><td>3911</td><td>98.9%</td></tr>
+
+    <tr><td class="species"><a href="../genome/s_coelicolor">Streptomyces coelicolor</a></td><td>8035</td><td>5693</td><td>70.9%</td></tr>
+
+    <tr><td class="sub-category"><b>Aquificae</b></td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/a_aeolicus">Aquifex aeolicus</a></td><td>1552</td><td>1198</td><td>77.19%</td></tr>
+
+    <tr><td class="sub-category"><b>Bacteroidetes</b></td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/b_thetaiotaomicron">Bacteroides thetaiotaomicron</a></td><td>4773</td><td>2884</td><td>60.42%</td></tr>
+
+    <tr><td class="sub-category"><b>Chlamydiae</b></td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/c_trachomatis">Chlamydia trachomatis</a></td><td>917</td><td>537</td><td>58.6%</td></tr>
+
+    <tr><td class="sub-category"><b>Chloroflexi</b></td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/c_aurantiacus">Chloroflexus aurantiacus</a></td><td>3850</td><td>2778</td><td>72.16%</td></tr>
+
+    <tr><td class="sub-category"><b>Cyanobacteria</b></td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/g_violaceus">Gloeobacter violaceus</a></td><td>4406</td><td>3555</td><td>80.69%</td></tr>
+
+    <tr><td class="species"><a href="../genome/synechocystis">Synechocystis sp.</a></td><td>3506</td><td>2554</td><td>72.85%</td></tr>
+
+    <tr><td class="sub-category"><b>Deinococcus-Thermus</b></td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/d_radiodurans">Deinococcus radiodurans</a></td><td>3085</td><td>2450</td><td>79.42%</td></tr>
+
+    <tr><td class="sub-category"><b>Dictyoglomi</b></td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/d_turgidum">Dictyoglomus turgidum</a></td><td>1743</td><td>1430</td><td>82.04%</td></tr>
+
+    <tr><td class="sub-category"><b>Firmicutes</b></td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/b_subtilis">Bacillus subtilis</a></td><td>4188</td><td>3971</td><td>94.82%</td></tr>
+
+    <tr><td class="sub-category"><b>Fusobacteria</b></td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/f_nucleatum">Fusobacterium nucleatum</a></td><td>2046</td><td>1350</td><td>65.98%</td></tr>
+
+    <tr><td class="sub-category"><b>Nitrospirae</b></td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/t_yellowstonii">Thermodesulfovibrio yellowstonii</a></td><td>1982</td><td>1555</td><td>78.46%</td></tr>
+
+    <tr><td class="sub-category"><b>Planctomycetes</b></td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/r_baltica">Rhodopirellula baltica</a></td><td>7271</td><td>2941</td><td>40.45%</td></tr>
+
+    <tr><td class="sub-category"><b>Proteobacteria</b></td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/h_pylori_B38">Helicobacter pylori B38</a></td><td>1369</td><td>1135</td><td>82.9%</td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/b_japonicum">Bradyrhizobium japonicum</a></td><td>8253</td><td>5488</td><td>66.5%</td></tr>
+
+    <tr><td class="species"><a href="../genome/e_coli">Escherichia coli K12</a></td><td>4069</td><td>4069</td><td>100.00%</td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/g_sulfurreducens">Geobacter sulfurreducens</a></td><td>3415</td><td>3097</td><td>90.69%</td></tr>
+
+    <tr><td class="species"><a href="../genome/p_aeruginosa">Pseudomonas aeruginosa</a></td><td>6246</td><td>4833</td><td>77.4%</td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/r_sphaeroides">Rhodobacter sphaeroides</a></td><td>4244</td><td>3837</td><td>90.41%</td></tr>
+
+    <tr><td class="sub-category"><b>Spirochaetes</b></td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/l_interrogans">Leptospira interrogans</a></td><td>3676</td><td>1947</td><td>53.0%</td></tr>
+
+    <tr><td class="sub-category"><b>Thermotogae</b></td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/t_maritima">Thermotoga maritima</a></td><td>1852</td><td>1698</td><td>91.68%</td></tr>
+
+    
+
+    <tr> <td class='organism' colspan="4"><b>Eukaryotes</b></td> </tr>
+
+    <tr><td class="sub-category">Alveolata</td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/p_falciparum">Plasmodium falciparum</a></td><td>5253</td><td>2095</td><td>39.9%</td></tr>
+
+    <tr><td class="sub-category">Amoebozoa</td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/d_discoideum">Dictyostelium discoideum</a></td><td>11940</td><td>5509</td><td>46.1%</td></tr>
+
+    <tr><td class="sub-category">Animals</td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/a_gambiae">Anopheles gambiae</a></td><td>11922</td><td>7782</td><td>65.3%</td></tr>
+
+    <tr><td class="species"><a href="../genome/b_floridae">Branchiostoma floridae</a></td><td>28394</td><td>7548</td><td>26.6%</td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/c_elegans">Caenorhabditis elegans</a></td><td>19778</td><td>9973</td><td>50.4%</td></tr>
+
+    <tr><td class="species"><a href="../genome/d_rerio">Danio rerio</a></td><td>22005</td><td>13900</td><td>63.20%</td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/d_melanogaster">Drosophila melanogaster</a></td><td>13377</td><td>12233</td><td>91.4%</td></tr>
+
+    <tr><td class="species"><a href="../genome/g_gallus">Gallus gallus</a></td><td>18394</td><td>8459</td><td>46.0%</td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/h_sapiens">Homo sapiens</a></td><td>21157</td><td>19422</td><td>91.8%</td></tr>
+
+    <tr><td class="species"><a href="../genome/i_scapularis">Ixodes scapularis</a></td><td>20473</td><td>6821</td><td>33.3%</td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/m_musculus">Mus musculus</a></td><td>21380</td><td>18641</td><td>87.2%</td></tr>
+
+    <tr><td class="species"><a href="../genome/n_vectensis">Nematostella vectensis</a></td><td>24425</td><td>11096</td><td>45.4%</td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/r_norvegicus">Rattus norvegicus</a></td><td>24524</td><td>17452</td><td>71.2%</td></tr>
+
+    <tr><td class="species"><a href="../genome/s_mansoni">Schistosoma mansoni</a></td><td>12648</td><td>10217</td><td>80.8%</td></tr>
+
+    <tr><td class="sub-category">Choanoflagellida</td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/m_brevicollis">Monosiga brevicollis</a></td><td>9169</td><td>4317</td><td>47.1%</td></tr>
+
+    <tr><td class="sub-category">Euglenozoa</td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/l_major">Leishmania major</a></td><td>8108</td><td>2666</td><td>32.9%</td></tr>
+
+    <tr><td class="sub-category">Fungi</td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/a_fumigatus">Aspergillus fumigatus</a></td><td>9922</td><td>5722</td><td>57.7%</td></tr>
+
+    <tr><td class="species"><a href="../genome/c_albicans">Candida albicans</a></td><td>7365</td><td>4342</td><td>59.0%</td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/c_neoformans">Cryptococcus neoformans</a></td><td>6244</td><td>3768</td><td>60.3%</td></tr>
+
+    <tr><td class="species"><a href="../genome/n_crassa">Neurospora crassa</a></td><td>9813</td><td>4596</td><td>46.8%</td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/p_nodorum">Phaeosphaeria nodorum</a></td><td>15977</td><td>5652</td><td>35.4%</td></tr>
+
+    <tr><td class="species"><a href="../genome/s_cerevisiae">Saccharomyces cerevisiae</a></td><td>5814</td><td>5253</td><td>90.40%</td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/s_pombe">Schizosaccharomyces pombe</a></td><td>4937</td><td>3613</td><td>73.2%</td></tr>
+
+    <tr><td class="species"><a href="../genome/u_maydis">Ustilago maydis</a></td><td>6521</td><td>3570</td><td>54.7%</td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/y_lipolytica">Yarrowia lipolytica</a></td><td>6390</td><td>4062</td><td>63.6%</td></tr>
+
+    <tr><td class="species"><a href="../genome/s_sclerotiorum">Sclerotinia sclerotiorum</a></td><td>14400</td><td>5030</td><td>34.90%</td></tr>
+
+    <tr><td class="sub-category">Parabasalia</td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/t_vaginalis">Trichomonas vaginalis</a></td><td>50189</td><td>9155</td><td>18.2%</td></tr>
+
+
+
+    <tr><td class="sub-category">Plant</td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/a_thaliana">Arabidopsis thaliana</a></td><td>28128</td><td>24310</td><td>86.40%</td></tr>
+
+    <tr><td class="species">Oryza sativa japonica</td><td>98020</td><td>61200</td><td>62.44%</td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/p_patens">Physcomitrella patens</a></td><td>33502</td><td>12322</td><td>36.8%</td></tr>
+
+    <tr><td class="sub-category">Stramenopiles</td></tr>
+
+    <tr class='blue'><td class="species"><a href="../genome/t_pseudonana">Thalassiosira pseudonana</a></td><td>11245</td><td>4585</td><td>40.8%</td></tr>
+
+  </table>
+
+{% endblock %}

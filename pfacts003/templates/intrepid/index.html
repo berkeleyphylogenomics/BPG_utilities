@@ -1,0 +1,154 @@
+{% extends 'intrepid/base.html' %}
+
+{% block title %}PhyloFacts FSP{% endblock %}
+
+{% block extrastyle %}
+
+{% endblock %}
+
+{% block extrascripts %}
+<script type="text/javascript">
+// Django to javascript variables
+
+</script>
+<script type="text/javascript" src="/static/js/intrepid_index.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class='main-content'>
+    <div class='intrepid-header'>
+        <h2>PhyloFacts Functional Site Prediction</h2>
+        <p style="margin-bottom:4px;">This webserver uses the <a href="http://bioinformatics.oxfordjournals.org/content/24/21/2445" target="_blank">INTREPID</a> (Information Theoretic Tree Traversal for Protein Functional Site Identification) and/or <a href="http://bioinformatics.oxfordjournals.org/content/26/5/617.abstract?keytype=ref&ijkey=lhkjC1zrzV56Xmo" target="_blank">Discern</a> algorithms.</p>
+        <p style="margin-bottom:2px;"><a href='javascript:;' id='auto-populate-pdb'>Auto-populate this form with PDB ID</a></p>
+    </div>
+
+    <hr>
+
+    <div class='intrepid-input-form'>
+        <div class='analysis-step'>
+            <h3>Step 1.  Enter a <a href='http://en.wikipedia.org/wiki/Protein_Data_Bank' target='_blank'>PDB</a> identifier or upload a structure</h3>
+            <div class='analysis-step-one'>
+                <table>
+                    <tr>
+                        <td>PDB ID</td>
+                        <td><input type='text' class='pdb-input' /></td>
+                        <td>OR</td>
+                        <td><input type='file' class='pdb-file-input' /></td>
+                        <td><span class='file-loading-text'></span></td>
+                    </tr>
+                    <tr>    
+                        <td colspan="5"><span class='pdb-error'></span></td>
+                    </tr>
+               </table>
+            </div>
+        </div>
+        <div class='analysis-step'>
+            <h3>Step 2.  Enter your email address for notification of job completion (recommended)</h3>
+            <div class='analysis-step-content'>
+                <table>
+                    <tr class='centered-row'>
+                        <td><span class='email-label'>Email address</span></td>
+                        <td><input type='text' class='email-input'></input></td>
+                        <td><span class='email-error'></span></td>
+                    </tr>
+               </table>
+            </div>
+        </div>
+        <div class='alert hide' id='job-create-message'>
+            <button type='button' class='close' data-dismiss='alert'>&times;</button>
+            <span></span>
+        </div>
+        <hr>
+        <p><a href='javascript:;' class='shjs' data-uncover='#parameter-form'>View/Hide parameters</a></p>
+        <div id='parameter-form'>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Minimum length of Pfam domain for separate analysis</td>
+                        <td><input type='number' id='minimum-pfam-domain-length' value='40'></input></td>
+                    </tr>
+                    <tr>
+                        <td>ID necessary between query and most remote homolog</td>
+                        <td><p><input type='number' id='pwid-query-homolog' min="0" max="99" value='15'></input> %</p></td>
+                    </tr>
+                    <tr>
+                        <td>Minimum query (hmm) coverage for inclusion into homolog set</td>
+                        <td><p><input type='number' id='minimum-homolog-coverage' min="0" max="99" value='70'></input> %</p></td>
+                    </tr>
+                    <tr>
+                        <td>Maximum iterations of homolog gathering</td>
+                        <td><input type='number' id='homolog-iterations' min="1" max="10" value='4'></input></td>
+                    </tr>
+                    <tr>
+                        <td>Minimum column coverage for inclusion into tree MSA</td>
+                        <td><p><input type='number' id='minimum-column-coverage' min="0" max="99" value='50'></input> %</p></td>
+                    </tr>
+                    <tr>
+                        <td>Maximum number of homologs</td>
+                        <td><input type='number' id='maximum-homologs' min="5" max="5000" value='2000'></input></td>
+                    </tr>
+                    <tr>
+                        <td>Sequence database to gather homologs from</td>
+                        <td>
+                            <input type="radio" name="seqdb" value="{{ uniprot_all_val }}">&nbsp;All UniProt&nbsp;&nbsp;</input>
+                            <input type="radio" name="seqdb" value="{{ uniref100_val }}" checked>&nbsp;UniRef 100&nbsp;&nbsp;</input>
+                            <input type="radio" name="seqdb" value="{{ uniref90_val }}">&nbsp;UniRef 90&nbsp;&nbsp;</input>
+                        </td>
+                    </tr>  
+                    <tr>
+                        <td>Blast tool version to use</td>
+                        <td>
+                            <input type="radio" name="blastv" value="{{ blast_new_val }}">&nbsp;2.2.28+&nbsp;&nbsp;</input>
+                            <input type="radio" name="blastv" value="{{ blast_old_val }}" checked>&nbsp;2.2.18&nbsp;&nbsp;</input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Save program outputs (including error messages)</td>
+                        <td><input type="checkbox" id="save-program-outputs" checked/></td>
+                    </tr>
+                </tbody>        
+            </table> 
+        </div>
+        <hr>
+        <table class='button-row'>
+            <tr>
+                <td><button type='button' class='btn btn-primary' id='submit'>Submit</button></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<textarea rows='5' class='fasta-input hidden'></textarea>
+<div class="modal fade file-upload-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>Upload a structure</h4>
+            </div>
+            <div class="modal-body">
+                <p class="modal-description">You can upload your structure here.</p>
+                <table>
+                    <tbody>
+                        <tr class="structure-instruction">
+                            <td colspan="2">Step 1. Upload your structure</td>
+                        </tr>
+                        <tr>
+                            <td><input type="file" id="structure-upload" /></td>
+                            <td><span class="structure-error"></span></td>
+                        </tr>
+                        <tr class="structure-instruction">
+                            <td colspan="2">Step 2. Input your structure's sequence, or use the sequence from the structure file</td>
+                        </tr>
+                        <tr class="structure-fasta">
+                            
+                            <td>
+
+                            
+                <p class="step-description">Step 1. Upload your structure</p>
+                
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                
+{% endblock %}

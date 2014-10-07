@@ -1,0 +1,10 @@
+<tr><th{% if recaptcha_error %} class='error'{% endif %}>reCAPTCHA:</th><td>
+<script type='text/javascript'>var RecaptchaOptions = {theme : 'white'};</script>
+<script type="text/javascript" src="http://api.recaptcha.net/challenge?k={{ recaptcha_public }}{% if recaptcha_error %}&amp;error={{ recaptcha_error }}{% endif %}"></script>
+<noscript><div>
+<object data="http://api.recaptcha.net/noscript?k={{ recaptcha_public }}{% if recaptcha_error %}&amp;error={{ recaptcha_error }}{% endif %}"
+         height="300" width="500"></object><br />
+<textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+<input type="hidden" name="recaptcha_response_field" value="manual_challenge"/>
+</div></noscript>
+</td></tr>

@@ -1,0 +1,930 @@
+{% extends 'common/base_new.html' %}
+{% load get_range %}
+{% load msa %}
+
+{% block title %}FAT-CAT Job Results{% endblock %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="/static/css/DT_bootstrap.css">
+<link rel="stylesheet" href="/static/css/jquery.qtip.css" type="text/css" media="screen">
+<style>
+.ui-tooltip-content {
+    padding: 10px;
+    text-align: center;
+    background-color: white;
+}
+li {
+    list-style: none;
+}
+.ui-summarylist-show-more, .ui-summarylist-show-fewer {
+    font-style: italic;
+}
+.descriptions {
+    margin-bottom: 10px;
+}
+#description-summarylist {
+    display:none;
+}
+#show-description-summarylist {
+    margin-left:25px;
+    font-family:"Verdana";
+}
+.confidence {
+    color:red;
+    font-family:"Verdana";
+}
+.summary-description {
+    width:450px !important;
+    font-weight:normal;
+}
+#left-tabs .ui-tabs .ui-tabs-nav li a {
+    padding:.5em .5em;
+}
+.summary-description-data {
+    margin-left:475px !important;
+}
+#fasta {
+    margin-bottom: 2em;
+}
+.fasta_line { 
+    display: none;
+    margin: 0;
+    padding: 0;
+    font-size: 8pt;
+}
+.highlighted-row {
+    background-color:#BDDBFD;
+}
+#informative td, th {
+    font-size: 11px;
+}
+#informative tr .btn-toolbar {
+    margin-top:0px !important;
+    margin-bottom:0px !important;
+}
+#remote td, th {
+    font-size: 11px;
+}
+#remote tr .btn-toolbar {
+    margin-top:0px !important;
+    margin-bottom:0px !important;
+}
+#informative tr .btn-group {
+    margin-bottom:0px;
+}
+#remote tr .btn-group {
+    margin-bottom:0px;
+}
+.centertable {
+    text-align:center !important;
+}
+.summary-go-ortholog-table {
+    display:none;
+    margin-left:20px;
+    margin-top:8px;
+    margin-bottom:8px;
+    width:90%;
+}
+.jqs {
+    padding-left:2px !important;
+    padding-right:2px !important;
+    padding-top:0px !important;
+    padding-bottom:0px !important;
+    height:18px !important;
+}
+.summary-go-ortholog-table p {
+    margin-bottom:0px;
+}
+.summary-go-ortholog-table td {
+    padding:3px;
+    vertical-align:middle;
+    line-height:13px;
+}
+.summary-go-ortholog-table thead td {
+    border-bottom:1px solid gray;
+    font-weight:bold;
+}
+.summary-go-ortholog-table td:nth-child(1), .summary-go-ortholog-table td:nth-child(2), .summary-go-ortholog-table td:nth-child(3) {
+    border-right:1px solid gray;
+}
+.opened-row {
+    background-color:#DEE7EC !important;
+    padding-bottom:11px;
+}
+.cluster-detail-row {
+    display:none;
+}
+.cluster-detail-row table {
+    width:90%;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:white;
+    box-shadow: 4px 4px 4px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 4px 4px 4px rgba(0,0,0,0.4);
+    -moz-box-shadow: 4px 4px 4px rgba(0,0,0,0.4);
+}
+.cluster-detail-row table thead td { 
+    vertical-align:bottom;
+    border-bottom:1px solid gray;
+}
+.cluster-detail-row table td { 
+    background-color:white !important;
+    padding-bottom:2px;
+    padding-top:2px;
+} 
+.cluster-detail-row table td p {
+    margin-bottom:0px;
+} 
+.cluster-detail-row h4 { 
+    color:#41677A;
+    margin-top:0px;
+}
+.cluster-detail-row td:nth-child(1) {
+    border-right:1px solid gray; 
+    width:15px;
+}
+.cluster-detail-row td:nth-child(2) {
+    border-right:1px solid gray; 
+    width:105px;
+}
+.cluster-detail-row td:nth-child(3) {
+    border-right:1px solid gray;
+} 
+.cluster-detail-row td:nth-child(4) {
+    border-right:1px solid gray; 
+    width:77px;
+}
+.cluster-detail-row td:nth-child(5) {
+    width:32px;
+    border-right:1px solid gray; 
+}
+.cluster-detail-row td:nth-child(6), .cluster-detail-row td:nth-child(7) { 
+    width:57px;
+    border-right:1px solid gray;
+}
+.cluster-detail-row td:nth-child(8) {
+    width:24px;
+    border-right:1px solid gray;
+    text-align:center !important;
+}
+.cluster-detail-row td:nth-child(9) {
+    width:34px;
+    border-right:1px solid gray;
+    text-align:center !important;
+}
+.cluster-detail-row td:nth-child(10) {
+    width:27px;
+    border-right:1px solid gray;
+    text-align:center !important;
+}
+.cluster-detail-row td:nth-child(11) {
+    width:59px;
+    border-right:1px solid gray;
+    text-align:center !important;
+}
+#stage1-matches table thead {
+    font-weight:bold;
+}
+.summary-results-table tr td:first-child {
+    text-align:right;
+    width:285px;
+} 
+.summary-results-table tr td:nth-child(2) {
+    padding-left:15px;
+}
+</style>
+{% endblock %}
+
+{% block extrascripts %}
+<script type="text/javascript">
+function qtipStyle(obj) {
+    return _.defaults(obj, {
+        position: {
+            my: 'top left',
+            target: 'mouse',
+            viewport: $j(window), // Keep it on-screen at all times if possible
+            adjust: { x: 10,  y: 10 }
+        },
+        hide: { fixed: true },
+        style: { classes: 'ui-tooltip-shadow', widget: true, width: '400px' }
+    });
+}
+
+$j(function() {
+    $j("#fasta_header").click(function() { $j(".fasta_line").toggle("slow"); });
+    {% comment %}
+    var disabledArray = new Array();
+    {% if job.informative_families|length == 0 %}
+        disabledArray.push(4);
+    {% endif %}
+    {% if job.ambiguous_families|length == 0 %}
+        disabledArray.push(5);
+    {% endif %}
+    {% if job.orthologs|length == 0 %}
+        disabledArray.push(2);
+    {% endif %}
+    {% if job.paralogs|length == 0 %}
+        disabledArray.push(3);
+    {% endif %}
+    {% endcomment %}
+    function update_world(event, ui) { 
+        $j("#ambiguous_alignment_map").alignmentmap("refresh"); 
+        $j("#informative_alignment_map").alignmentmap("refresh");
+        //$j("#stage1_alignment_map").alignmentmap("refresh");
+        $j("#orthologous-clades-pfam").pfammap("refresh");
+        $j("#distant-clades-pfam").pfammap("refresh");
+        $j("#summary-pfam").pfammap("refresh");  
+    }
+    $j( "#left-tabs" ).tabs({
+        //'disabled': disabledArray,
+        'create': update_world,
+        'show':  update_world
+    }).addClass('ui-tabs-vertical ui-helper-clearfix');
+    $j( "#left-tabs li").removeClass('ui-corner-top').addClass('ui-corner-left');
+    $j.extend( $j.fn.dataTableExt.oSort, {
+        "num-html-pre": function ( a ) {
+            var x = a.replace( /onclick=".*"/gm, "").replace( /<.*?>/g, "" );
+            return parseFloat( x );
+        },
+     
+        "num-html-asc": function ( a, b ) {
+            return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+        },
+     
+        "num-html-desc": function ( a, b ) {
+            return ((a < b) ? 1 : ((a > b) ? -1 : 0));
+        }
+    } ); 
+    var orthologTable = $j("#orthologs table").dataTable( {
+        "sDom": "<'row'<'span4'l><'span4'f>r>t<'row'<'span4'i><'span6'p>>",
+	    "aaSorting" : [[5, "desc"]],
+        "iDisplayLength" : 100,
+        "sPaginationType": "bootstrap",
+        "aoColumns" : [
+                        {"bSearchable":false}, // swissprot
+                        null, // uniprot identifier
+                        null, // description
+                        null, // species
+                        null, // family
+                        {"sType":"num-html"}, // percent id
+                        null, // query coverage
+                        null, // ortholog coverage
+                        {"bSearchable":false, "bSortable":false, "sClass":"centertable"}, // kerf70
+                        {"bSearchable":false, "bSortable":false, "sClass":"centertable"}, // phog
+                        {"bSearchable":false, "bSortable":false, "sClass":"centertable"}, // oma
+                        {"bSearchable":false, "bSortable":false, "sClass":"centertable"}, // orthomcl
+                        {"bSearchable":false, "sType":"num-html"} // cluster size 
+                      ],
+        "oLanguage": {
+            "sLengthMenu": "_MENU_ records per page"
+        }
+    } );
+    var paralogTable = $j("#paralogs table").dataTable( {
+        "sDom": "<'row'<'span4'l><'span4'f>r>t<'row'<'span4'i><'span6'p>>",
+	    "aaSorting" : [[5, "desc"]],
+        "sPaginationType": "bootstrap",
+        "iDisplayLength": 100,
+        "aoColumns" : [
+                        {"bSearchable":false}, // swissprot
+                        null, // uniprot identifier
+                        null, // description
+                        null, // species
+                        null, // family
+                        {"sType":"num-html"}, // percent id
+                        null, // query coverage
+                        null, // ortholog coverage
+                        {"bSearchable":false, "bSortable":false, "sClass":"centertable"}, // kerf70
+                        {"bSearchable":false, "bSortable":false, "sClass":"centertable"}, // phog
+                        {"bSearchable":false, "bSortable":false, "sClass":"centertable"}, // oma
+                        {"bSearchable":false, "bSortable":false, "sClass":"centertable"}, // orthomcl
+                        {"bSearchable":false, "sType":"num-html"} // cluster size 
+                      ],
+        "oLanguage": {
+            "sLengthMenu": "_MENU_ records per page"
+        }
+    } );
+    // Functions for sorting based on e-value
+    $j.fn.dataTableExt.oSort['scientific-asc']  = function(a,b) {
+          var x = parseFloat(a);
+          var y = parseFloat(b);
+          return ((x < y) ? -1 : ((x > y) ?  1 : 0));
+        };
+    $j.fn.dataTableExt.oSort['scientific-desc']  = function(a,b) {
+          var x = parseFloat(a);
+          var y = parseFloat(b);
+          return ((x < y) ? 1 : ((x > y) ?  -1 : 0));
+        };
+    $j.fn.dataTableExt.oSort['range-desc'] = function(a,b) {
+        var range_a = parseInt(a.split(" - ")[1]) - parseInt(a.split(" - ")[0]);
+        var range_b = parseInt(b.split(" - ")[1]) - parseInt(b.split(" - ")[0]);
+        return ((range_a < range_b) ? -1 : ((range_a > range_b) ? 1 : 0));
+    };
+    $j.fn.dataTableExt.oSort['range-asc'] = function(a,b) {
+        var range_a = parseInt(a.split(" - ")[1]) - parseInt(a.split(" - ")[0]);
+        var range_b = parseInt(b.split(" - ")[1]) - parseInt(b.split(" - ")[0]);
+        return ((range_a < range_b) ? 1 : ((range_a > range_b) ? -1 : 0));
+    };
+    $j("#informative table").dataTable( {
+        "sDom": "<'row'<'span4'>r>t<'row'<'span4'i><'span4'f><'span6'p>>",
+        "sPaginationType": "bootstrap",
+        "bProcessing": false,
+        "bAutoWidth": false,
+        //"bInfo":false,
+        "bLengthChange": false,
+        "iDisplayLength": -1,
+        "aaSorting": [[ 7, 'desc' ] ],
+        "bPaginate": false,
+        "oLanguage": {
+            "sLengthMenu": "_MENU_ records per page"
+        },
+        "aoColumns": [ 
+                        null, // 0 - bpg accession
+                        null, // 1 - family containing orthology group
+                        {"bVisible":false}, // 2 - orthology group accession
+                        null, // 3 - orthology group description
+                        null, // 4 - orthology group species
+                        {"bVisible":false}, // 6 - annotation data
+                        {"sType":'scientific', "sWidth": "70px"}, // 6 - hit e-value
+                        {"sWidth": "55px","sType":'num-html'}, // 7 - query to hmm percent id
+                        {"bVisible":false}, // 8 - subtree minimum pairwise percent id
+                        {"sWidth": "55px"}, // 9 - query coverage
+                        {"sWidth": "55px"}, // 10 - hmm coverage
+                        {"sWidth": "65px", "sType": 'range'}, // 11 - region aligned
+                        {"bSortable": false, "sWidth": "100px"} // links and support
+                     ]
+    } );
+    $j("#remote table").dataTable( {
+        "sDom": "<'row'<'span4'>r>t<'row'<'span4'i><'span4'f><'span4'p>>",
+        "sPaginationType": "bootstrap",
+        "aaSorting": [[ 7, 'desc' ] ],
+        "bProcessing": false,
+        "bLengthChange": false,
+        "iDisplayLength": -1,
+        "bPaginate": false,
+        "bAutoWidth": false,
+        //"bInfo": false,
+        "oLanguage": {
+            "sLengthMenu": "_MENU_ records per page"
+        },
+        "aoColumns": [ 
+                        null, // 0 - bpg accession
+                        null, // 1 - family containing orthology group
+                        {"bVisible":false}, // 2 - orthology group accession
+                        null, // 3 - orthology group description
+                        null, // 4 - orthology group species
+                        {"bVisible":false}, // 5 - annotation data
+                        {"sType":'scientific', "sWidth": "70px"}, // 6 - hit e-value
+                        {"sWidth": "55px","sType":'num-html'}, // 7 - query to hmm percent id
+                        {"bVisible":false}, // 8 - subtree minimum pairwise percent id
+                        {"sWidth": "55px"}, // 9 - query coverage
+                        {"sWidth": "55px"}, // 10 - hmm coverage
+                        {"sWidth": "65px", "sType":'range'}, // 11 - region aligned
+                        {"bSortable": false, "sWidth": "100px"} // links and support
+                     ]
+    } );
+    $j("#stage1-matches table").dataTable( {
+        "sDom": "<'row'<'span4'>r>t<'row'<'span4'i><'span4'f><'span4'p>>",
+        "sPaginationType": "bootstrap",
+        "aaSorting": [[5,'asc']],
+        "bProcessing": false,
+        //"bLengthChange": false,
+        "iDisplayLength": 100,
+        //"bInfo": false,
+        "bAutoWidth": false,
+        "oLanguage": {
+            "sLengthMenu": "_MENU_ records per page"
+        },
+        "aoColumns": [ null, // 0 - family accession
+                        null, // 1 - family type
+                        null, // 2 - consensus pfam mda string
+                        null, // 3 - family description
+                        null, // 4 - family species
+                        {"sType":"scientific"}, // 5 - evalue for family
+                        {"sType":'range'}, // 6 - region query aligned
+                        null, // 7 - hcov
+                        null // 8 - qcov
+                     ]
+    } );
+        
+                
+    $j(".tip").qtip(qtipStyle({}));
+
+    $j(" .summary-go-ortholog-table table").dataTable( {
+        "sDom": "<t>",
+        "bPaginate":false,
+        "bInfo":false,
+        "bLengthChange":false,
+        "bSearchable":false,
+        "aaSorting":[],
+        "aoColumns": [ null, // uniprot id
+                        null, // description
+                        null, // species
+                        null//{"sWidth":"63px"} // evidence code
+                    ],
+        "bAutoWidth":false,
+        "sPaginationType": "bootstrap",
+        "oLanguage": {
+            "sLengthMenu": "_MENU_ records per page"
+        }
+    });
+    $j(" .jqs ").click(function() {
+        $j($j(this).data().otable).toggle('fast');
+        if ($j(this).find('.icon-zoom-in').length != 0) {
+            $j(this).find('.icon-zoom-in').removeClass('icon-zoom-in').addClass('icon-zoom-out');
+        }
+        else {
+            $j(this).find('.icon-zoom-out').removeClass('icon-zoom-out').addClass('icon-zoom-in');
+        }
+    });
+    $j(" .otjqs ").click(function() {
+        var thisTable = ($j( '#' + $j(this).data().accession).data().group == 'orthologs') ? orthologTable : paralogTable;
+        var nTr = $j(this).parents( 'tr' )[0];
+        if ( thisTable.fnIsOpen( nTr ) ) {
+            // close this row
+            $j( '.cluster-detail-row', $j(nTr).next()[0]).slideUp( function() {
+                thisTable.fnClose(nTr);
+            });
+        }
+        else {
+            var newRow = thisTable.fnOpen(nTr, $j( '#'+$j(this).data().accession).html(), 'opened-row'); 
+            $j( '.cluster-detail-row', newRow).slideDown();
+        }
+    });
+    $j(" .jqls ").click(function() {
+        $j( $j(this).data().linkto ).click();
+    });
+    var pfam_domains = [
+    {% for domain in job.pfams.all %}
+        {
+            alignment_from: {{ domain.ali_from }},
+            alignment_to: {{ domain.ali_to }},
+            pfam_accession: "{{ domain.pfam_accession }}",
+            description: "{{ domain.pfam_description }}",
+            shortName: "{{ domain.pfam_shortname }}",
+            evalue: {{ domain.i_evalue }}
+        },
+    {% endfor %}
+    ];
+
+    var stage1_matches = [
+        {% for f in job.all_families %}
+            {% for m in f.coords.all %}
+                {
+                    id: "{{ f.family_id }}",
+                    family_type: "{{ f.family_type }}",
+                    family_name: "{{ f.family.canonical_root_node.get_treenode_names.treenode_name }}",
+                    alignment_match_from: {{ m.ali_from }},
+                    alignment_match_to: {{ m.ali_to }},
+                    evalue: {{ f.family_e_value }}
+                },
+            {% endfor %}
+        {% endfor %}
+    ];
+
+    // todo - remove last comma
+    var ambiguous_matches = [
+        {% for f in job.ambiguous_families %}
+            {% for m in f.coords.all %}
+                {
+                    id: "{{ f.as_result.family_id }}",
+                    family_name: "{{ f.as_result.family_name }}",
+                    description: "{{ f.as_result.node_description }}",
+                    alignment_match_from: {{ m.ali_from }},
+                    alignment_match_to: {{ m.ali_to }},
+                    evalue: {{ f.as_result.node_e_value }},
+                    node_id: {{ f.as_result.node.id }}
+                },
+            {% endfor %}
+        {% endfor %}
+    ];
+    var informative_matches = [
+        {% for f in job.informative_families %}
+            {% for m in f.coords.all %}
+                {
+                    id: "{{ f.as_result.family_id }}",
+                    family_name: "{{ f.as_result.family_name }}",
+                    description: "{{ f.as_result.node_description }}",
+                    alignment_match_from: {{ m.ali_from }},
+                    alignment_match_to: {{ m.ali_to }},
+                    evalue: {{ f.as_result.node_e_value }},
+                    node_id: {{ f.as_result.node.id }}
+                },
+            {% endfor %}
+        {% endfor %}
+    ];
+    var pfam_map_args = {
+            masterLength: {{ job.fasta_sequence|length }},
+            domainCallback: function(domain, dom_rect) {
+                var content = domain.shortName + 
+                    " (" + domain.pfam_accession + ")<br>Alignment: " 
+                    + domain.alignment_from.toString() + " - " + 
+                    domain.alignment_to.toString() + "<br>E-value: " + 
+                    domain.evalue.toExponential() + "<br>" + domain.description;
+                for (var i=0;i < dom_rect.length; i++) {
+                    $j(dom_rect[i].node).qtip(qtipStyle({content: content}));
+                }
+            }
+            //domainHeight: 140
+        };
+    pfam_map_args.domains = pfam_domains;
+    $j(" #orthologous-clades-pfam ").pfammap(pfam_map_args);
+    $j(" #distant-clades-pfam ").pfammap(pfam_map_args);
+    $j(" #summary-pfam ").pfammap(pfam_map_args);
+    var map_args = {
+        masterLength: {{ job.fasta_sequence|length }},
+        matchCallback: function(match, r) { //Add ToolTip
+            var content = "Family: " + match.family_name+ "<br>Subtree: " + match.description + "<br>E-Value: " + match.evalue.toExponential();
+            $j(r.node).qtip(qtipStyle({content: content}));
+        },
+        matchMouseover: function(match) { return function() { 
+            $j("#result_row_" + match.id).addClass("highlighted-row");   
+        } },
+        matchMouseout: function(match) { return function() { 
+            $j("#result_row_" + match.id).removeClass("highlighted-row");   
+        } },
+        matchMouseclick: function(match) { return function() {
+            window.open('/phylofacts/tree_node_view/' + match.node_id.toString() + '/');
+        } }
+    };
+    map_args.matches = informative_matches;
+    $j("#informative_alignment_map").alignmentmap(map_args);
+    map_args.matches = ambiguous_matches;
+    $j("#ambiguous_alignment_map").alignmentmap(map_args);
+    /*var stage1_map_args = {
+        masterLength: {{ job.fasta_sequence|length }},
+        matchCallback: function(match, r) { //Add ToolTip
+            var content = "Family: " + match.family_name + "<br>Type: " + match.family_type + "<br>E-Value: " + match.evalue.toExponential();
+            $j(r.node).qtip(qtipStyle({content: content}));
+        },
+        matchMouseover: function(match) { return function() { 
+            $j("#stage1_result_row_" + match.id).addClass("highlighted-row");   
+        } },
+        matchMouseout: function(match) { return function() { 
+            $j("#stage1_result_row_" + match.id).removeClass("highlighted-row");   
+        } },
+        matchMouseclick: function(match) { return function() {
+            window.open('/phylofacts/family/bpg0' + match.id + '/');
+        } }
+    };
+    stage1_map_args.matches = stage1_matches;*/
+    //$j("#stage1_alignment_map").alignmentmap(stage1_map_args);
+    
+    $j(window).resize(function() { 
+        $j("#ambiguous_alignment_map").alignmentmap("refresh"); 
+        $j("#informative_alignment_map").alignmentmap("refresh");  
+        //$j("#stage1_alignment_map").alignmentmap("refresh");  
+        $j("#orthologous-clades-pfam").pfammap("refresh"); 
+        $j("#distant-clades-pfam").pfammap("refresh");
+        $j("#summary-pfam").pfammap("refresh");
+    });
+    $j(".annotations ul, .annotation-list").summarylist();
+    $j("#show-description-summarylist").click(function() {$j("#description-summarylist").toggle();});
+});
+function startJalview(alignment,title,alwvar) {
+      eval("var "+alwvar+" = document.JalviewLite.loadAlignment(alignment,title)");
+}
+</script>
+
+{% endblock %}
+
+{% block content %}
+<!-- Applet for Jalview -->
+<applet name="JalviewLite"  code="jalview.bin.JalviewLite"
+        archive="/static/java/jalviewApplet.jar" width="0" height="0">
+   <param name="debug" value="true"/>
+   <param name="showbutton" value="false"/>
+</applet>
+<!-- End Applet for Jalview -->
+<div class="phylofacts-well">              
+  <div class="phylofacts-well-header">
+    <h2>FAT-CAT Results for {{ job.fasta_header.split.0 }}</h2>
+    <div class="cleaner"></div>                    
+  </div>
+
+  <div id="left-tabs">  
+      <ul class="left-tabs-cls">
+        <li><a href="#summary">Summary of Results</a></li>
+        <li><a id='fsel' href="#stage1-matches">Family Matches</a></li>
+        <li><a id='osel' href="#orthologs">Candidate Orthologs</a></li>
+        <li><a id='psel' href="#paralogs">Other Sequence Matches</a></li>
+        <li><a id='eclades' href="#informative">Enclosing Clades</a></li>
+        <li><a id='dsel' href="#remote">Distant Clades</a></li>
+        <li><a href="#downloads">Downloads</a></li>
+        <li><a href="#job-summary">Job Summary</a></li>
+        <li><a href="#fatcat-about">About FAT-CAT</a></li>
+      </ul>
+    <div id="summary" class="phylofacts-treenode-content">
+        <h3>Summary of Results</h3>
+        <table class='summary-results-table'>
+            <tbody>
+                <tr>
+                    <td>Pfam MDA</td>
+                    <td><div id='summary-pfam' style='width:500px'></div></td>
+                </tr>
+                <tr>
+                    <td>Number of <a href='javascript:;' class='jqls' data-linkto='#fsel' >family matches</a></td>
+                    <td>{{ job.families.all|length }}</td>
+                </tr>
+                <tr>
+                    <td>Number of <a href='javascript:;' class='jqls' data-linkto='#eclades'>enclosing clades</a></td>
+                    <td>{{ job.informative_families|length }}</td>
+                </tr>
+                <tr>
+                    <td>Number of <a href='javascript:;' class='jqls' data-linkto='#dsel'>distant clades</a></td>
+                    <td>{{ job.ambiguous_families|length }}</td>
+                </tr>
+                <tr>
+                    <td>Number of <a href='javascript:;' class='jqls' data-linkto='#osel'>candidate ortholog clusters</a></td>
+                    <td>{{ job.orthologs|length }}</td>
+                </tr>
+                <tr>
+                    <td>Number of <a href='javascript:;' class='jqls' data-linkto='#psel'>other sequence matches</a><br /> (may include both orthologs and paralogs)</td>
+                    <td>{{ job.paralogs|length }}</td>
+                </tr>
+            </tbody>
+        </table>
+        {% if job.has_informative_families %}
+            {% if job.summary.uniprot_descriptions|length %}
+                <div class="annotations descriptions">
+                    <h4>Consensus UniProt Description</h4>
+                    {% if job.summary.uniprot_descriptions.0.3 >= job.criteria_consensus_uniprot_threshold_for_high_confidence %}
+                        <p><a href="javascript:;" id="show-description-summarylist">{{ job.summary.uniprot_descriptions.0.0 }}</a> <span class="confidence">High Confidence</span></p>
+                    {% else %}
+                        {% if job.summary.uniprot_descriptions.0.3 >= job.criteria_consensus_uniprot_threshold_for_medium_confidence %}
+                        <p><a href="javascript:;" id="show-description-summarylist">{{ job.summary.uniprot_descriptions.0.0 }}</a> <span class="confidence">Medium Confidence</span></p>
+                        {% else %}
+                        <a href="javascript:;" id="show-description-summarylist">Fuzzy Annotation Set</a>
+                        {% endif %}
+                    {% endif %}
+                    <ul id="description-summarylist">
+                        {% for description, score, rawvotes, freq in job.summary.uniprot_descriptions %}
+                        <li class="annotation">{{ description }} ({{ freq|floatformat:"-2" }})</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            {% if job.summary.go_biological_process|length %}
+                <div class="annotations">
+                    <h4>GO Biological Processes</h4>
+                    <ul>
+                    {% include 'phylofacts/fatcat_job_summary_table_go.html' with go=job.summary.go_biological_process go_type="bp" %} 
+                    </ul>
+                </div>
+            {% endif %}
+            {% if job.summary.go_molecular_function|length %}
+                <div class="annotations">
+                    <h4>GO Molecular Function</h4>
+                    <ul>
+                    {% include 'phylofacts/fatcat_job_summary_table_go.html' with go=job.summary.go_molecular_function go_type="mf" %} 
+                    </ul>
+                </div>
+            {% endif %}
+            {% if job.summary.go_cellular_component|length %}
+                <div class="annotations">
+                    <h4>GO Cellular Component</h4>
+                    <ul>
+                    {% include 'phylofacts/fatcat_job_summary_table_go.html' with go=job.summary.go_cellular_component go_type="cc" %} 
+                    </ul>
+                </div>
+            {% endif %}
+            {% if job.summary.ec|length %}
+                <div class="annotations">
+                    <h4>Enzyme Commission Numbers</h4>
+                    <ul>
+                    {% for ec_tuple in job.summary.ec %}
+                    <li class="annotation">{{ ec_tuple.0.description }} <a href="http://www.ebi.ac.uk/intenz/query?cmd=SearchEC&ec={{ ec_tuple.0 }}">{{ ec_tuple.0 }}</a> ({{ ec_tuple.1 }} sequences)</li>
+                    {% endfor %} 
+                    </ul>
+                </div>
+            {% endif %}
+        {% endif %}
+        {% if job.families.all|length == 0 %}<p>There are no family matches based on the parameters set for this FAT-CAT job.  You may want to resubmit using the Remote Homolog or Partial Sequence search and/or modify parameters (for example reduce the Stage 1 fractional overlap requirements) to increase recall.</p>
+        {% else %}
+        {% if job.orthologs|length == 0 %}
+        <p>There are no orthologs based on the parameters set for this FAT-CAT job.  You may want to look at <a href='javascript:;' class='jqls' data-linkto='#psel'>Other Sequence Matches</a> or resubmit using the Remote Homolog or Partial Sequence searches (and/or modify parameters to increase recall).</p>
+        {% endif %}
+        {% endif %}
+        <div style="clear:both">&nbsp;</div>
+    </div>
+    <div id="job-summary" class="phylofacts-treenode-content">
+        <h3>Job Summary</h3>
+        <dl class="dl-horizontal">
+            <dt>Query</dt>
+            <dd>
+                <div id="fasta">
+                    <a id="fasta_header" href="javascript:;">>{{ job.fasta_header }}</a>
+                <p class="fasta_line">&gt;{{ job.fasta_header }}</p>
+                    {% for line in fasta_sequence %}
+                        <p class="fasta_line">{{ line }}</p>
+                    {% endfor %}
+                </div>
+            </dd>
+            <dt>Comments</dt>
+            <dd>{% if job.fatcat_job_name %}{{ job.fatcat_job_name }}{% else %}N/A{% endif %}</dd>
+            <p><strong>Stage 1 Parameters</strong></p>
+            <dt class="summary-description">Family HMM E-Value</dt>
+            <dd class="summary-description-data">{{ job.criteria_get_families_e_value }}</dd>
+            <dt class="summary-description">Query coverage for PhyloFacts MDA HMMs</dt>
+            <dd class="summary-description-data">{{ job.stage_one_mda_query_coverage_criteria|floatformat:"-2" }} %</dd>
+            <dt class="summary-description">HMM coverage for PhyloFacts MDA HMMs</dt>
+            <dd class="summary-description-data">{{ job.stage_one_mda_hmm_coverage_criteria|floatformat:"-2" }} %</dd>
+            <dt class="summary-description">HMM coverage for PhyloFacts Pfam HMMs</dt>
+            <dd class="summary-description-data">{{ job.stage_one_pfam_hmm_coverage_criteria|floatformat:"-2" }} %</dd>
+            <p><strong>Stage 2 Parameters</strong></p>
+            <dt class="summary-description">TSN HMM E-Value</dt>
+            <dd class="summary-description-data">{{ job.criteria_get_families_e_value }}</dd>
+            <dt class="summary-description">Query coverage for PhyloFacts MDA HMMs</dt>
+            <dd class="summary-description-data">{{ job.stage_two_mda_query_coverage_criteria|floatformat:"-2" }} %</dd>
+            <dt class="summary-description">HMM coverage for PhyloFacts MDA HMMs</dt>
+            <dd class="summary-description-data">{{ job.stage_two_mda_hmm_coverage_criteria|floatformat:"-2" }} %</dd>
+            <dt class="summary-description">HMM coverage for PhyloFacts Pfam HMMs</dt>
+            <dd class="summary-description-data">{{ job.stage_two_pfam_hmm_coverage_criteria|floatformat:"-2" }} %</dd>
+            <dt class="summary-description">Minimum % ID between query and subtree HMM consesus</dt>
+            <dd class="summary-description-data">{{ job.criteria_get_best_nodes_query_to_subtree_hmm_pid|floatformat:"-2" }} %</dd>
+            <dt class="summary-description">Minimum pairwise % ID between sequences in a subtree</dt>
+            <dd class="summary-description-data">{{ job.criteria_get_best_nodes_subtree_min_pid|floatformat:"-2" }} %</dd>
+            <dt class="summary-description">Enclosing Clade (EC) kerf threshold</dt>
+            <dd class="summary-description-data">{{ job.criteria_enclosing_clade_kerf_threshold }}</dd>
+            <dt class="summary-description">Orthology methods for choosing EC</dt>
+            <dd class="summary-description-data">{{ job.criteria_enclosing_clade_orthology_methods }}</dd>
+            <dt class="summary-description">Number of orthology methods required for EC</dt>
+            <dd class="summary-description-data">{{ job.criteria_enclosing_clade_orthology_methods_required }}</dd>
+            <p><strong>Stage 3 Parameters</strong></p>
+            <dt class="summary-description">Minimum % ID between query and candidate ortholog</dt>
+            <dd class="summary-description-data">{{ job.criteria_minimum_pid_to_query_for_orthology }} %</dd>
+            <dt class="summary-description">Alignment overlap of query required for orthology</dt>
+            <dd class="summary-description-data">{{ job.criteria_query_coverage }} %</dd>
+            <dt class="summary-description">Alignment overlap of candidate overlap required for orthology</dt>
+            <dd class="summary-description-data">{{ job.criteria_ortholog_coverage }} %</dd>
+            <dt class="summary-description">Maximum % ID divergence per homolog cluster</dt>
+            <dd class="summary-description-data">{{ job.criteria_cluster_similarity }} %</dd>
+        </dl>
+            <!-- include hidden tables -->
+            {% include 'phylofacts/fatcat_job_result_cluster_details.html' %}
+        <div style="clear:both">&nbsp;</div>
+    </div>
+    <div id="informative" class="phylofacts-treenode-content">
+        <h3>Enclosing Clades</h3>
+        {% if job.informative_families|length > 0 %}
+        <p>Enclosing Clades contain top scoring nodes and satisfy stage 2 criteria.  These may include both paralogs and orthologs.</p>
+        <!--<p>Subtrees displayed here meet the following default criteria (unless modified by the user): the clade contains the top-scoring node (TSN); the alignment of the query to the TSN HMM meet specified coverage and percent identity criteria; sequences in the clade appear to be mutually orthologous (based on a consensus across multiple methods); &ge;90% of the sequences in the clade satisfy query-ortholog criteria (alignment overlap and percent identity).</p>-->
+        <div id="orthologous-clades-pfam"></div>
+        <div id="informative_alignment_map"></div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th colspan="2">PhyloFacts Family</th>
+                    <th colspan="2">Enclosing Clade Data</th>
+                    <th colspan="8">Top-scoring Subtree Data</th>
+                </tr>
+                <tr>
+                    <th>Family</th>
+                    <th class="tip" title="Clustering mode:<br />Multi-domain architecture<br />or<br />Pfam">Type (Pfam(s))</th>
+                    <th>Accession</th>
+                    <th>Description</th>
+                    <th>Species</th>
+                    <th>Experimental and Annotation Data</th>
+                    <th>E-val</th>
+                    <th class="tip" title="Query-HMM percent identity<br />Click to view Query-HMM<br />alignment in Jalview">Q-HMM %ID</th>
+                    <th>Subtree Pairwise %ID</th>
+                    <th class="tip" title="Query coverage">Q Cov.</th>
+                    <th class="tip" title="HMM coverage">HMM Cov.</th>
+                    <th>Region Aligned</th>
+                    <th>Support</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for f in job.informative_families %}
+                    {% include "phylofacts/fatcat_job_resultrow_datatable.html" %}
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>Based on the parameters set for this FAT-CAT run, no homologs meet the required criteria to support orthology.  You may wish to look at <a href='javascript:;' class='jqls' data-linkto='#psel'>Other Sequence Matches</a>, or resubmit the query with less stringent parameters.</p>
+        {% endif %}
+        <div style="clear:both">&nbsp;</div>
+    </div>
+    <div id="remote" class="phylofacts-treenode-content">
+        <h3>Distant Clades</h3>
+        <p>Subtrees displayed here correspond to top-scoring nodes (TSNs) that fail one or more of the criteria for enclosing clades.</p>
+        <div id="distant-clades-pfam"></div>
+        {% if job.ambiguous_families|length > 0 %}
+        <div id="ambiguous_alignment_map"></div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th colspan="2">PhyloFacts Family</th>
+                    <th colspan="4">Top-scoring Subtree Information</th>
+                    <th colspan="6">Top-scoring Subtree Data</th>
+                </tr>
+                <tr>
+                    <th>Family</th>
+                    <th class="tip" title="Clustering mode:<br />Multi-domain architecture<br />or<br />Pfam">Type (Pfam(s))</th>
+                    <th>Accession</th>
+                    <th>Description</th>
+                    <th>Species</th>
+                    <th>Experimental and Annotation Data</th>
+                    <th>E-val</th>
+                    <th class="tip" title="Query-HMM percent identity<br />Click to view Query-HMM<br />alignment in Jalview">Q-HMM %ID</th>
+                    <th>Subtree Pairwise %ID</th>
+                    <th>Q-Cov</th>
+                    <th>HMM-Cov</th>
+                    <th>Region Aligned</th>
+                    <th>Support</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for f in job.ambiguous_families %}
+                    {% include "phylofacts/fatcat_job_resultrow_datatable.html" %}
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+        <div style="clear:both">&nbsp;</div>
+    </div>
+    <div id="orthologs" class="phylofacts-treenode-content">
+        <h3>Candidate Orthologs: {{ job.orthologs|length }}</h3>
+        {% if job.orthologs|length > 0 %}
+            <p>We show for each genome the sequence with the highest percent identity to the query that makes stage 3 criteria. If multiple sequences from a genome meet the criteria, we select one as the representative.</p>
+            <!--<p>All candidate orthologs are retrieved from subtrees in
+            <a href='javascript:;' data-linkto='#eclades' class='jqls'>Enclosing Clades</a>
+             to the top-scoring subtree HMM found in <a href='/phylofacts/fatcat/about/'>Stage 2</a>.
+            Each candidate ortholog is aligned to the query, and the overlap (of the
+            query and the candidate ortholog/hit) and percent identity are evaluated and compared to user defined thresholds.</p>
+            <p><em>Please note:</em> depending on FAT-CAT parameter settings, candidate orthologs may include paralogs
+            and distant homologs.  We recommend checking percent identity, alignment overlap (Q-Cov., H-Cov.)  See also  
+            <a href='javascript:;' data-linkto='#psel' class='jqls'>Other Sequence Matches</a>
+             for more distantly related homologs, which may include orthologs that failed one
+            or more QA criteria.</p>-->
+
+            {% include 'phylofacts/fatcat_job_homologs.html' with homologs=job.orthologs %}
+        {% else %}
+            <p>Based on the parameters set for this FAT-CAT run, no homologs meet the required criteria to support orthology.  You may wish to look at <a href='javascript:;' class='jqls' data-linkto='#psel'>Other Sequence Matches</a>, or resubmit the query wih less stringent parameters.</p>
+        {% endif %}
+        <div style="clear:both">&nbsp;</div>
+    </div>
+    <div id="paralogs" class="phylofacts-treenode-content">
+        <h3>Other Sequence Matches: {{ job.paralogs|length }}</h3>
+            <p>Sequences on this page are drawn from the <a href='javascript:;' class='jqls' data-linkto='#eclades'>Enclosing Clades</a> of candidate orthologs but fail one or more criteria for orthology.</p>
+            {% if job.paralogs|length > 0 %}
+                {% include 'phylofacts/fatcat_job_homologs.html' with homologs=job.paralogs %}
+            {% endif %}
+        <div style="clear:both">&nbsp;</div>
+    </div>
+    <div id="stage1-matches" class="phylofacts-treenode-content">
+        <h3>Family Matches</h3>
+        {% if job.all_families|length > 0 %}
+        <p>Families shown here meet user-specified criteria for Stage 1. <!-- Stage 1 matches are further investigated in Stages 2 and 3 to identify <a href='javascript:;' data-linkto='#eclades' class='jqls'>Enclosing Clades</a> containing <a href='javascript:;' data-linkto='#osel' class='jqls'>candidate orthologs to the query</a>.--></p>  
+        <!--<div id="stage1-pfam"></div>
+        <div id="stage1_alignment_map"></div>-->
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>Accession</td>
+                    <td class="tip" title="Clustering mode:<br />Multi-domain architecture<br />or<br />Pfam">Type</td>
+                    <td class="tip" title="The consensus multi-domain architecture for this family.">Consensus<br />MDA
+                    <td>Description</td>
+                    <td>Species</td>
+                    <td>E-val</td>
+                    <td>Region<br />Aligned</td>
+                    <td>HMM Cov.</td>
+                    <td>Q Cov.</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for f in job.all_families %}
+                    <tr id="stage1_result_row_{{ f.family_id }}">
+                        <td><a href="/phylofacts/family/{{ f.family.get_accession }}">{{ f.family.get_accession }}</a></td>
+                        <td>{% if f.family_type == "Pfam" %}Pfam{% else %}MDA{% endif %}</td> 
+                        <td>{{ f.get_family_consensus_pfam_mda }}</td>
+                        <td>{{ f.family.canonical_root_node.get_treenode_names.treenode_name }}</td>
+                        <td>{% if f.get_family_taxon.id > 1 %}<a {% if f.get_family_taxon.common_name %}class="tip" title="{{ f.get_family_taxon.common_name }}" {% endif %}href="http://www.uniprot.org/taxonomy/{{ f.get_family_taxon.id }}" target="_blank">{{ f.get_family_taxon.scientific_name }}</a>{% else %}<span{% if f.get_family_taxon.common_name %} class="tip" title="{{ f.get_family_taxon.common_name }}"{% endif %}>{{ f.get_family_taxon.scientific_name }}{% endif %}</td>
+                        <td>{{ f.family_e_value }}</td>
+                        <td>{{ f.get_family_match_positions.0.alignment_match_from }} - {{ f.get_family_match_positions.0.alignment_match_to }}</td>
+                        <td>{{ f.readable_family_hmm_coverage|floatformat }}</td>
+                        <td>{{ f.readable_family_query_coverage|floatformat }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>Your query didn't match any PhyloFacts family HMMs.  Try <a href='/phylofacts/fatcat/'>resubmitting your query</a> using less stringent parameters.</p>
+        {% endif %}
+        <div style="clear:both">&nbsp;</div>
+    </div>
+    <div id="fatcat-about" class="phylofacts-treenode-content">
+        <h3>About FAT-CAT</h3>
+            <img src="/static/img/graphs/fatcat-combined-pipeline.png" /><br />
+            <p>The <a href="/phylofacts/fatcat/about/" target="_blank">about page</a> contains further information about the FAT-CAT pipeline.<p>
+        <div style="clear:both">&nbsp;</div>
+    </div>
+    <div id='downloads' class='phylofacts-treenode-content'>
+        <h3>Downloads</h3>
+        <p class='tab-description'></p>
+        <p>Orthologs (<a href='orthologs'>csv</a>)</p>
+        <div style="clear:both">&nbsp;</div>
+    </div>
+    <div class="bottom-border">&nbsp; </div>
+  </div>
+</div>
+{% endblock %}

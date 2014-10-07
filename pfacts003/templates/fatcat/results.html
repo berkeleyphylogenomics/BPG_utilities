@@ -1,0 +1,220 @@
+{% extends 'fatcat/base.html' %}
+
+{% block extrastyle %}
+<link rel='stylesheet' type='text/css' href='/static/css/new_phylofacts.css' media='screen'>
+<link rel="stylesheet" type="text/css" href="/static/css/DT_bootstrap.css">
+<link rel='stylesheet' type='text/css' href='/static/css/fatcat.css' media='screen'>
+<style>
+
+</style>
+{% endblock %}
+
+{% block extrascripts %}
+<script type='text/javascript'>
+// django to javascript variables used in other javascript files
+var jobID = {{ job.id }};
+var pfam_domains = [
+    {% for domain in job.pfams.all %}
+    {
+        'alignment_from': {{ domain.ali_from }},
+        'alignment_to': {{ domain.ali_to }},
+        'pfam_accession': "{{ domain.pfam_accession }}",
+        'description': "{{ domain.pfam_description }}",
+        'shortName': "{{ domain.pfam_shortname }}",
+        'evalue': {{ domain.i_evalue }}
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+];
+var masterSequenceLength = {{ job.fasta_sequence|length }}; 
+</script>
+<script type="text/javascript" src="/static/js/underscore-min.js"></script>
+<script type="text/javascript" src="/static/js/raphael-min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/static/js/DT_bootstrap.js"></script>
+<script type='text/javascript' src='/static/js/fatcat_widgets.js'></script>
+<script type='text/javascript' src='/static/js/fatcat_results.js'></script>
+{% comment %}
+<script type='text/javascript' src='/static/js/jqXMLUtils.js'></script>
+<script type='text/javascript' src='/static/apps/phyloscope2/js/tree.js'></script>
+<script type='text/javascript' src='/static/apps/phyloscope2/js/node.js'></script>
+<script type='text/javascript' src='/static/apps/phyloscope2/js/path.js'></script>
+<script type='text/javascript' src='/static/apps/phyloscope2/js/parseServer.js'></script>
+<script type='text/javascript' src='/static/apps/phyloscope2/js/label.js'></script>
+{% endcomment %}
+<script type='text/javascript' src='/static/js/archaeopteryx.js'></script>
+{% comment %}
+<script type='text/javascript' src='/static/js/jsphylosvg-min.js'></script>
+{% endcomment %}
+{% endblock %}
+
+{% block content %}
+<!-- Applet for Jalview -->
+<applet name="JalviewLite"  code="jalview.bin.JalviewLite"
+        archive="/static/java/jalviewApplet.jar" width="0" height="0">
+   <param name="debug" value="true"/>
+   <param name="showbutton" value="false"/>
+</applet>
+<div class='phylofacts-well'>
+    <div class='phylofacts-well-header'>
+        <h2>FAT-CAT Results for {{ job.fasta_header.split.0 }}</h2>
+        <a href='/fatcat/' style="font-size:12px;margin-bottom:8px;margin-left:10px;">Click here to return to the input form</a>
+        <div class='cleaner'></div>
+    </div>
+
+    <div id='left-tabs'>
+        <ul class='left-tabs-cls'>
+            <li><a id='results-summary-selector' href='#results-summary'>Summary of Results</a></li>
+            <li><a id='candidate-orthologs-selector' href='#candidate-orthologs'>Orthologs</a></li>
+            <li><a id='other-sequence-matches-selector' href='#other-sequence-matches'>Other Sequence Matches</a></li>
+            <li><a id='tree-selector' href='#tree'>Tree</a></li>
+            <li><a id='family-matches-selector' href='#family-matches'>Family Matches</a></li>
+            <li><a id='enclosing-clades-selector' href='#enclosing-clades'>Enclosing Clades</a></li>
+            <li><a id='distant-clades-selector' href='#distant-clades'>Distant Clades</a></li>
+            <li><a id='downloads-selector' href='#downloads'>Downloads</a></li>
+            <li><a id='summary-selector' href='#summary'>Program Parameters</a></li>
+            <li><a id='about-selector' href='#about'>About</a></li>
+        
+        </ul>
+        <div id='results-summary' class='phylofacts-treenode-content'>
+            <h3>Summary of Results</h3>
+            <table class='hitmap-table'>
+                <tbody>
+                    <tr>
+                        <td><div>Pfam-A Domain Hits</div></td>
+                        <td><div id='results-summary-pfam'></div></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class='results-summary-table'>
+                <tbody>
+                    <tr>
+                        <td><div>Number of <a href='javascript:;' class='jqls' data-linkto='#family-matches-selector'>Family Matches</a></div></td>
+                        <td>{{ num_stage1_families }}</td>
+                    </tr>        
+                    <tr>
+                        <td><div>Number of <a href='javascript:;' class='jqls' data-linkto='#enclosing-clades-selector'>Enclosing Clades</a></div></td>
+                        <td>{{ num_stage2_families }}</td>
+                    </tr>        
+                    <tr>
+                        <td><div>Number of <a href='javascript:;' class='jqls' data-linkto='#distant-clades-selector'>Distant Clades</a></div></td>
+                        <td>{{ num_distant_clades }}</td>
+                    </tr>
+                    <tr>
+                        <td><div>Number of genomes with <a href='javascript:;' class='jqls' data-linkto='#candidate-orthologs-selector'>orthologs</a></div></td>
+                        <td>{{ num_genomes_with_orthologs }}</td>
+                    </tr>
+                    <tr>
+                        <td><div><a href='javascript:;' class='jqls' data-linkto='#tree-selector'>Tree</a> Size</div></td>
+                        <td>{{ tree_size }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            {% include 'fatcat/functions.html' %}
+        </div>
+        <div id='candidate-orthologs' class='phylofacts-treenode-content'>
+            <h3>Enclosing Clade sequences, with orthologs and possible paralogs</h3>
+            {% include 'fatcat/candidate_orthologs_table.html' %}
+        </div>
+        <div id='other-sequence-matches' class='phylofacts-treenode-content'>
+            <h3>Other Sequence Matches</h3>
+            {% include 'fatcat/other_sequence_matches_table.html' %}
+        </div>
+        <div id='family-matches' class='phylofacts-treenode-content'>
+            <h3>Family Matches</h3>
+            <p class='tab-description'>Families shown here meet the following 
+            criteria: significant HMM score E-Value; minimum length of aligned 
+            region &ge; 50 amino acids.  Families are further investigated in Stages 
+            2 and 3 to identify enclosing clades containing orthologs to the query.</p>
+           
+            <table class='hitmap-table'>
+                <tbody>
+                    <tr>
+                        <td><div>Pfam-A Domain Hits</div></td>
+                        <td><div id='family-matches-pfam'></div></td>
+                    </tr>
+                    <tr>
+                        <td><div>Query</div></td>
+                        <td><div id='family-matches-query'></div></td>
+                    </tr>
+                    <tr>
+                        <td style='vertical-align:top;'><div>PhyloFacts Family Hits</div></td>
+                        <td><div id='family-matches-pfacts'></div><div id='pfacts-loading hide' class='hide'><span class='heatmap-loading'><img src='/static/img/icons/small-loading-icon.gif' />&nbsp;Loading . . .</span></div></td>
+                    </tr>
+    
+                </tbody>
+            </table>
+            {% include 'fatcat/family_matches_table.html' %}            
+        </div>
+        <div id='enclosing-clades' class='phylofacts-treenode-content'>
+            <h3>Enclosing Clades</h3>
+            <p class='tab-description'></p>
+           
+            <table class='hitmap-table'>
+                <tbody>
+                    <tr>
+                        <td><div>Pfam-A Domain Hits</div></td>
+                        <td><div id='enclosing-clades-pfam'></div></td>
+                    </tr>
+                    <tr>
+                        <td><div>Query</div></td>
+                        <td><div id='enclosing-clades-query'></div></td>
+                    </tr>
+                    <tr>
+                        <td style='vertical-align:top;'><div>PhyloFacts Family Hits</div></td>
+                        <td><div id='enclosing-clades-pfacts'></div><div class='pfacts-loading hide'><span class='heatmap-loading'><img src='/static/img/icons/small-loading-icon.gif' />&nbsp;Loading . . .</span></div></td>
+                    </tr>
+    
+                </tbody>
+            </table>
+            {% include 'fatcat/enclosing_clades_table.html' %}            
+        </div>
+        <div id='distant-clades' class='phylofacts-treenode-content'>
+            <h3>Distant Clades</h3>
+            <p class='tab-description'></p>
+           
+            <table class='hitmap-table'>
+                <tbody>
+                    <tr>
+                        <td><div>Pfam-A Domain Hits</div></td>
+                        <td><div id='distant-clades-pfam'></div></td>
+                    </tr>
+                    <tr>
+                        <td><div>Query</div></td>
+                        <td><div id='distant-clades-query'></div></td>
+                    </tr>
+                    <tr>
+                        <td style='vertical-align:top;'><div>PhyloFacts Family Hits</div></td>
+                        <td><div id='distant-clades-pfacts'></div><div class='pfacts-loading hide'><span class='heatmap-loading'><img src='/static/img/icons/small-loading-icon.gif' />&nbsp;Loading . . .</span></div></td>
+                    </tr>
+    
+                </tbody>
+            </table>
+            {% include 'fatcat/distant_clades_table.html' %}            
+        </div>
+        <div id='tree' class='phylofacts-treenode-content'>
+            <h3>Tree</h3>
+            <p class='tab-description'><a href="javascript:;" onClick="openArchaeopteryxWin( 
+                 'http://phylogenomics.berkeley.edu/fatcat/{{ job.id }}/tree/newick/',
+                 'http://phylogenomics.berkeley.edu/phylofacts/archaeopteryx_config/' ); return false;">View with Archaeopteryx</a></p>
+            <div id='phylogram'></div>
+        </div>
+        <div id='downloads' class='phylofacts-treenode-content'>
+            <h3>Downloads</h3>
+            <p class='tab-description'></p>
+            <p>List of orthologs (<a href='orthologs'>csv</a>)</p>
+            <p>Tree (<a href='tree/newick/'>newick</a>) (<a href='tree/phyloxml/'>phyloxml</a>)</p>
+            <p>Query-Candidate Ortholog Multiple Sequence Alignment (<a href='alignment'>aligned fasta</a>)</p>
+        </div>
+        <div id='summary' class='phylofacts-treenode-content'>
+            <h3>Program Parameters</h3>
+            {% include 'fatcat/job_summary_table.html' %}
+        </div>
+        <div id='about' class='phylofacts-treenode-content'>
+            <h3>About FAT-CAT</h3>
+            <img src="/static/img/graphs/fatcat-combined-pipeline.png" /><br />
+            <p>The <a href="/phylofacts/fatcat/about/" target="_blank">about page</a> contains further information about the FAT-CAT pipeline.<p>            
+        </div>
+        <div class='bottom-border'>&nbsp;</div>
+    </div>
+</div>
+{% endblock %}

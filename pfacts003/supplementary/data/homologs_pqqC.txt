@@ -1,0 +1,517 @@
+PQQC_RHOS1 Pyrroloquinoline-quinone synthase 
+PQQC_RHOS5 Pyrroloquinoline-quinone synthase 
+PQQC_PSEMY Pyrroloquinoline-quinone synthase 
+PQQC_BRASO Pyrroloquinoline-quinone synthase 
+PQQC_ACICJ Pyrroloquinoline-quinone synthase 
+PQQC_PSEP1 Pyrroloquinoline-quinone synthase 
+PQQC_KLEP7 Pyrroloquinoline-quinone synthase 
+PQQC_ENTS8 Pyrroloquinoline-quinone synthase 
+PQQC_PSEPG Pyrroloquinoline-quinone synthase 
+PQQC_XANCB Pyrroloquinoline-quinone synthase 
+PQQC_ACIBY Pyrroloquinoline-quinone synthase 
+PQQC_ACIBS Pyrroloquinoline-quinone synthase 
+PQQC_PSEPW Pyrroloquinoline-quinone synthase 
+PQQC_ACIBC Pyrroloquinoline-quinone synthase 
+PQQC_XANOP Pyrroloquinoline-quinone synthase 
+PQQC_ERWT9 Pyrroloquinoline-quinone synthase 
+PQQC_RHOPT Pyrroloquinoline-quinone synthase 
+PQQC_KLEP3 Pyrroloquinoline-quinone synthase 
+PQQC_ACIB3 Pyrroloquinoline-quinone synthase 
+PQQC_ACIB5 Pyrroloquinoline-quinone synthase 
+PQQC_PSEA8 Pyrroloquinoline-quinone synthase 
+PQQC_AGRRK Pyrroloquinoline-quinone synthase 
+PQQC_RHOSK Pyrroloquinoline-quinone synthase 
+PQQC_AZOVD Pyrroloquinoline-quinone synthase 
+PQQCL_CHLTR PqqC-like protein 
+PQQC_ACICA Pyrroloquinoline-quinone synthase 
+PQQC_KLEPN Pyrroloquinoline-quinone synthase 
+PQQC_PSEAB Pyrroloquinoline-quinone synthase 
+PQQC_GRABC Pyrroloquinoline-quinone synthase 
+PQQC_PSEE4 Pyrroloquinoline-quinone synthase 
+PQQC_XANOM Pyrroloquinoline-quinone synthase 
+PQQC_XANC5 Pyrroloquinoline-quinone synthase 
+PQQC_RHOS4 Pyrroloquinoline-quinone synthase 
+PQQC_PSE14 Pyrroloquinoline-quinone synthase 
+PQQC_XANC8 Pyrroloquinoline-quinone synthase 
+PQQC_PSEU2 Pyrroloquinoline-quinone synthase 
+PQQC_XANOR Pyrroloquinoline-quinone synthase 
+PQQC_SILPO Pyrroloquinoline-quinone synthase 
+PQQC_ACIAD Pyrroloquinoline-quinone synthase 
+PQQC_RHOPA Pyrroloquinoline-quinone synthase 
+PQQC_PSESM Pyrroloquinoline-quinone synthase 
+PQQC_PSEPK Pyrroloquinoline-quinone synthase 
+PQQC_BRAJA Pyrroloquinoline-quinone synthase 
+PQQC_XANCP Pyrroloquinoline-quinone synthase 
+PQQC_XANAC Pyrroloquinoline-quinone synthase 
+PQQC_RHIME Pyrroloquinoline-quinone synthase 
+PQQC_PSEAE Pyrroloquinoline-quinone synthase 
+PQQC_GLUOX Pyrroloquinoline-quinone synthase 
+PQQCL_CHLMU PqqC-like protein 
+PQQCL_CHLPN PqqC-like protein 
+A0B2H8_BURCH Coenzyme PQQ biosynthesis protein C 
+A0QSF2_MYCS2 Tena/thi-4 family protein 
+A0QYN5_MYCS2 Coenzyme PQQ biosynthesis protein C 
+A0RA01_BACAH Transcriptional activator 
+A0REK4_BACAH Transcriptional activator 
+A0RY84_CENSY Pyrroloquinoline quinone (Coenzyme PQQ) biosynthesis protein C 
+A0Y877_9GAMM Coenzyme PQQ synthesis protein C 
+A0YSD9_LYNSP Putative coenzyme PQQ synthesis protein c, putative 
+A0Z532_9GAMM Pyrroloquinoline quinone biosynthesis protein PqqC 
+A1B4K7_PARDP Coenzyme PQQ biosynthesis protein C 
+A1K4Q0_AZOSB Coenzyme PQQ synthesis protein C 
+A1SPP6_NOCSJ Putative coenzyme PQQ synthesis protein 
+A1T4Q9_MYCVP TenA/THI-4 protein 
+A1VK72_POLNA Coenzyme PQQ biosynthesis protein C 
+A1WQ34_VEREI Coenzyme PQQ biosynthesis protein C 
+A2SJ01_METPP Coenzyme PQQ synthesis protein C 
+A2W3A6_9BURK Pyrroloquinoline quinone (Coenzyme PQQ) biosynthesis protein C 
+A2WIB5_9BURK Pyrroloquinoline quinone (Coenzyme PQQ) biosynthesis protein C 
+A3JCI7_9ALTE Pyrroloquinoline quinone biosynthesis protein PqqC 
+A3K1I8_9RHOB Pyrroloquinoline quinone biosynthesis protein PqqC 
+A3KTI2_PSEAE Pyrroloquinoline quinone biosynthesis protein C 
+A3L784_PSEAE Pyrroloquinoline quinone biosynthesis protein C 
+A3M5C9_ACIBT Putative uncharacterized protein 
+A3MVS3_PYRCJ Transcriptional activator, TenA family 
+A3NPH1_BURP6 Putative uncharacterized protein 
+A3PA05_BURP0 Putative uncharacterized protein 
+A3VLH7_9RHOB Pyrroloquinoline quinone biosynthesis protein PqqC 
+A3W1G1_9RHOB Pyrroloquinoline quinone biosynthesis protein PqqC 
+A4BR27_9GAMM Pyrroloquinoline quinone biosynthesis protein PqqC 
+A4FI40_SACEN Coenzyme PQQ synthesis protein C 
+A4JT48_BURVG Coenzyme PQQ biosynthesis protein C 
+A4LP36_BURPS Putative uncharacterized protein 
+A4VL91_PSEU5 Pyrroloquinoline quinone biosynthesis protein C 
+A4WMW5_PYRAR Transcriptional activator, TenA family 
+A5EPX6_BRASB Pyrroloquinoline quinone biosynthesis protein C 
+A5FVB8_ACICJ Coenzyme PQQ biosynthesis protein C 
+A6CLN9_9BACI Transcriptional activator tenA 
+A6DRR4_9BACT Putative uncharacterized protein 
+A6E1W4_9RHOB Pyrroloquinoline quinone biosynthesis protein PqqC 
+A6EYQ8_9ALTE Pyrroloquinoline quinone biosynthesis protein C 
+A6FRA7_9RHOB Pyrroloquinoline quinone biosynthesis protein PqqC 
+A6GSH8_9BURK Pyrroloquinoline quinone synthesis C 
+A6UGE7_SINMW Coenzyme PQQ biosynthesis protein C 
+A6V6I2_PSEA7 Coenzyme PQQ biosynthesis protein C 
+A7GLF1_BACCN Transcriptional activator, TenA family 
+A7IGA3_XANP2 Coenzyme PQQ biosynthesis protein C 
+A8EAT8_BURPS Putative uncharacterized protein 
+A8FJ01_BACP2 Thiaminase 
+A8KGV1_BURPS Putative uncharacterized protein 
+A8KY33_FRASN Transcriptional activator, TenA family 
+A8LNP2_DINSH Coenzyme PQQ biosynthesis protein C 
+A8PK48_9COXI Tena/thi-4 family 
+A8PLU4_9COXI Coenzyme PQQ biosynthesis protein C 
+A8YPG9_CHLTR Putative uncharacterized protein pqqC (Fragment) 
+A8YPH2_CHLTR Putative uncharacterized protein pqqC (Fragment) 
+A8YPH3_CHLTR Putative uncharacterized protein pqqC (Fragment) 
+A8YPI4_CHLTR Putative uncharacterized protein pqqC (Fragment) 
+A9A400_NITMS TENA/THI-4 domain protein 
+A9ASV3_BURM1 Coenzyme PQQ biosynthesis protein C 
+A9HEC1_GLUDA Coenzyme PQQ biosynthesis protein C 
+A9HRA0_GLUDA Putative uncharacterized protein 
+A9HTV8_9RHOB Pyrroloquinoline quinone biosynthesis protein PqqC 
+A9KC56_COXBN Coenzyme PQQ synthesis protein C 
+A9NCC2_COXBR Putative uncharacterized protein 
+A9QPG2_METI4 Coenzyme PQQ synthesis protein C 
+A9VFK7_BACWK Transcriptional activator, TenA family 
+A9ZJY0_COXBU Putative uncharacterized protein 
+B0AJL4_BACAN Transcriptional activator TenA 
+B0AW73_BACAN Putative transcriptional activator TenA 
+B0B8I5_CHLT2 Putative uncharacterized protein 
+B0BA64_CHLTB Putative uncharacterized protein 
+B0C2I1_ACAM1 Putative uncharacterized protein 
+B0PXW5_BACAN Transcriptional activator TenA 
+B0Q8B7_BACAN Putative transcriptional activator TenA 
+B0QBM9_BACAN Transcriptional activator TenA 
+B0QNI1_BACAN Putative transcriptional activator TenA 
+B0UE11_METS4 Coenzyme PQQ biosynthesis protein C 
+B0VDX5_ACIBY Putative uncharacterized protein 
+B1ESU3_BACAN Transcriptional activator TenA 
+B1F4E9_BACAN Putative transcriptional activator TenA 
+B1FSF8_9BURK Coenzyme PQQ biosynthesis protein C 
+B1GDG4_BACAN Transcriptional activator TenA 
+B1GP26_BACAN Putative transcriptional activator TenA 
+B1H4E5_BURPS Putative uncharacterized protein 
+B1K6Y5_BURCC Coenzyme PQQ biosynthesis protein C 
+B1KEF4_SHEWM Coenzyme PQQ biosynthesis protein C 
+B1T1D9_9BURK Putative uncharacterized protein 
+B1UKJ8_BACAN Transcriptional activator TenA 
+B1UW75_BACAN Putative transcriptional activator TenA 
+B1Y0C2_LEPCP TENA/THI-4 domain protein 
+B1Y7S3_LEPCP Coenzyme PQQ biosynthesis protein C 
+B1Z3M3_BURA4 Coenzyme PQQ biosynthesis protein C 
+B2AIN6_CUPTR Coenzyme Pyrroloquinoline quinone (PQQ) biosynthesis protein C 
+B2H4N7_BURPS Putative uncharacterized protein 
+B2I0B9_ACIBC Pyrroloquinoline quinone (Coenzyme PQQ) biosynthesis protein C 
+B2IDU8_BEII9 Coenzyme PQQ biosynthesis protein C 
+B2IZ77_NOSP7 TenA/THI-4 protein 
+B2JX63_BURP8 Coenzyme PQQ biosynthesis protein C 
+B2Q791_PROST Putative uncharacterized protein 
+B2U9I6_RALPJ Coenzyme PQQ biosynthesis protein C 
+B2UEV4_RALPJ Coenzyme PQQ biosynthesis protein C 
+B3CLN7_WOLPP Coenzyme PQQ synthesis protein C 
+B3J1K7_BACAN Transcriptional activator TenA 
+B3JB95_BACAN Putative transcriptional activator TenA 
+B3R2L5_CUPTR Putative Pyrroloquinoline quinone (Coenzyme PQQ) biosynthesis protein C 
+B3R8D3_CUPTR Pyrroloquinoline-quinone synthase (Coenzyme PQQ synthesis protein C) 
+B3RB99_CUPTR Putative PQQC-like protein (Coenzyme PQQ synthesis C) 
+B3T2I4_9ZZZZ Putative coenzyme PQQ synthesis protein C (PQQC) 
+B3T5Z4_9ARCH Putative coenzyme PQQ synthesis protein C (PQQC) 
+B3T8Z6_9ARCH Putative coenzyme PQQ synthesis protein C (PQQC) 
+B3TBR9_9ZZZZ Putative coenzyme PQQ synthesis protein C (PQQC) 
+B3TBV2_9ARCH Putative coenzyme PQQ synthesis protein C (PQQC) 
+B3V5P0_9ARCH Coenzyme PQQ synthesis protein C 
+B3YN05_BACCE Transcriptional activator TenA 
+B3Z0N0_BACCE Putative transcriptional activator TenA 
+B3ZGT3_BACCE Putative transcriptional activator TenA 
+B3ZJT8_BACCE Transcriptional activator TenA 
+B3ZU83_BACCE Putative transcriptional activator TenA 
+B4AJW5_BACPU Tena/thi-4 family 
+B4CZR1_9BACT Coenzyme PQQ biosynthesis protein C 
+B4EHL3_BURCJ Coenzyme PQQ synthesis protein C 
+B4X2F7_9GAMM TENA/THI-4 family 
+B5ARG8_CHLPS Putative uncharacterized protein 
+B5HTB6_9ACTO Putative uncharacterized protein 
+B5UJF3_BACCE Putative transcriptional activator TenA 
+B5UZE1_BACCE Transcriptional activator TenA 
+B5V9Z1_BACCE Putative transcriptional activator TenA 
+B5WSQ8_9BURK Coenzyme PQQ biosynthesis protein C 
+B6B5C4_9RHOB Coenzyme PQQ biosynthesis protein C 
+B6BU83_9PROT Coenzyme PQQ biosynthesis protein C 
+B6C4K9_9GAMM Coenzyme PQQ biosynthesis protein C 
+B6J145_COXB2 Coenzyme PQQ synthesis protein C 
+B6J9F6_COXB1 Coenzyme PQQ synthesis protein C 
+B6Y973_9RICK Coenzyme PQQ synthesis protein C 
+B7CWM9_BURPS Putative uncharacterized protein 
+B7DP45_9BACL Putative uncharacterized protein 
+B7GEY9_ANOFW Transcriptional activator TenA 
+B7H3A4_ACIB3 TENA/THI-4/PQQC family protein 
+B7HDE5_BACC4 Putative transcriptional activator TenA 
+B7HSD0_BACC7 Transcriptional activator TenA 
+B7HWE7_BACC7 Putative transcriptional activator TenA 
+B7I5W8_ACIB5 Putative uncharacterized protein 
+B7IXZ5_BACC2 Putative transcriptional activator TenA 
+B7JQK5_BACC0 Transcriptional activator TenA 
+B7JRA4_BACC0 Putative transcriptional activator TenA 
+B7RIH8_9RHOB Coenzyme PQQ biosynthesis protein C 
+B8EKE5_METSB Coenzyme PQQ biosynthesis protein C 
+B8ENI7_METSB Coenzyme PQQ biosynthesis protein C 
+B8ITV9_METNO Coenzyme PQQ biosynthesis protein C 
+B8KVB5_9GAMM Coenzyme PQQ biosynthesis protein C 
+B9B5W8_9BURK Coenzyme PQQ biosynthesis protein C 
+B9J1X7_BACCQ Transcriptional activator TenA 
+B9J516_BACCQ Transcriptional regulator of extracellular enzymes 
+B9KYJ3_THERP TENA/THI-4 family 
+B9KYJ4_THERP TENA/THI-4 family 
+B9YZH6_9NEIS Coenzyme PQQ biosynthesis protein C 
+C0LU62_9PROT PqqC protein 
+C0N6I2_9GAMM Coenzyme PQQ biosynthesis protein C 
+C0R3V4_WOLWR Coenzyme PQQ synthesis protein C, putative 
+C0VHU6_9GAMM Coenzyme PQQ synthesis protein C (Coenzyme PQQ synthesis protein I) 
+C0X7E9_ENTFA Thiaminase 
+C0YDP5_BURPS Putative uncharacterized protein 
+C1BA21_RHOOB Putative uncharacterized protein 
+C1EVU5_BACC3 Transcriptional activator TenA 
+C1EYI6_BACC3 Putative transcriptional activator TenA 
+C1F8W4_ACIC5 Coenzyme PQQ synthesis protein C family protein 
+C2DA09_ENTFA Thiaminase 
+C2H2E2_ENTFA Thiaminase 
+C2JMQ1_ENTFA Thiaminase 
+C2MGC9_BACCE Transcriptional activator 
+C2ML80_BACCE Thiaminase-2 
+C2MWF9_BACCE Transcriptional activator 
+C2NDS0_BACCE Transcriptional activator 
+C2NI78_BACCE Thiaminase-2 
+C2NUG1_BACCE Transcriptional activator 
+C2PAK6_BACCE Transcriptional activator 
+C2PRH1_BACCE Transcriptional activator 
+C2Q7P7_BACCE Transcriptional activator 
+C2QCD1_BACCE Thiaminase-2 
+C2QNL0_BACCE Transcriptional activator 
+C2R1P3_BACCE Thiaminase-2 
+C2R3Q4_BACCE Transcriptional activator 
+C2RIN6_BACCE Transcriptional activator 
+C2RZ89_BACCE Transcriptional activator 
+C2S439_BACCE Thiaminase-2 
+C2SFN5_BACCE Transcriptional activator 
+C2SWH4_BACCE Transcriptional activator 
+C2TC21_BACCE Transcriptional activator 
+C2TH14_BACCE Thiaminase-2 
+C2TSY4_BACCE Transcriptional activator 
+C2TY03_BACCE Thiaminase-2 
+C2U9Z2_BACCE Transcriptional activator 
+C2UVW2_BACCE Thiaminase-2 
+C2V7G9_BACCE Transcriptional activator 
+C2VMA5_BACCE Thiaminase-2 
+C2VP79_BACCE Transcriptional activator 
+C2VUA5_BACCE Thiaminase-2 
+C2W4A5_BACCE Transcriptional activator 
+C2W8L6_BACCE Thiaminase-2 
+C2WI56_BACCE Transcriptional activator 
+C2WYI5_BACCE Transcriptional activator 
+C2X018_BACCE Thiaminase-2 
+C2X7E7_BACCE Transcriptional activator 
+C2XPL4_BACCE Transcriptional activator 
+C2Y6A2_BACCE Transcriptional activator 
+C2YM95_BACCE Transcriptional activator 
+C2YS55_BACCE Thiaminase-2 
+C2Z3E5_BACCE Transcriptional activator 
+C2ZJZ4_BACCE Transcriptional activator 
+C3A1K7_BACMY Transcriptional activator 
+C3AHQ9_BACMY Transcriptional activator 
+C3AZM0_BACMY Transcriptional activator 
+C3BG53_9BACI Transcriptional activator 
+C3BXX1_BACTU Transcriptional activator 
+C3CBG9_BACTU Thiaminase-2 
+C3CEF1_BACTU Transcriptional activator 
+C3CXB1_BACTU Transcriptional activator 
+C3DFH6_BACTS Transcriptional activator 
+C3DZB1_BACTU Transcriptional activator 
+C3EGE2_BACTK Transcriptional activator 
+C3EX98_BACTU Transcriptional activator 
+C3FDM7_BACTU Thiaminase-2 
+C3FFU8_BACTB Transcriptional activator 
+C3FYL6_BACTU Transcriptional activator 
+C3G3H2_BACTU Thiaminase-2 
+C3GEG6_BACTU Transcriptional activator 
+C3GJE3_BACTU Thiaminase-2 
+C3GWN2_BACTU Transcriptional activator 
+C3HE03_BACTU Transcriptional activator 
+C3HIZ9_BACTU Thiaminase-2 
+C3IF15_BACTU Transcriptional activator 
+C3J4Z0_9BACI Transcriptional activator, TenA family 
+C3K349_PSEFS Putative coenzyme PQQ biosynthesis-related protein (Pyrroloquinoline-quinone synthase) 
+C3KBD1_PSEFS Putative uncharacterized protein 
+C3LFB3_BACAC Putative transcriptional activator TenA 
+C3LHM8_BACAC Transcriptional activator TenA 
+C3MMU6_SULIL TENA/THI-4 domain protein 
+C3MTC9_SULIM Transcriptional activator, TenA family 
+C3N3N0_SULIA Transcriptional activator, TenA family 
+C3NCK7_SULIY Transcriptional activator, TenA family 
+C3NFN1_SULIN Transcriptional activator, TenA family 
+C3P0K7_BACAA Putative transcriptional activator TenA 
+C3PB72_BACAA Transcriptional activator TenA 
+C3VIT6_RAHAQ PqqC 
+C4I4I6_BURPS Putative uncharacterized protein 
+C4KF27_SULIK Transcriptional activator, TenA family 
+C4PNC0_CHLTZ Putative uncharacterized protein 
+C4PPZ6_CHLTJ Putative uncharacterized protein 
+C4VJW2_ENTFA Tena/thi-4 family protein 
+C4X8Q5_KLEPN Pyrroloquinoline quinone synthesis protein C 
+C4YWY3_9RICK Tena/thi-4 family protein 
+C5A934_BURGB Putative uncharacterized protein 
+C5AG55_BURGB Putative uncharacterized protein 
+C5AI09_BURGB Diaminobutyrate--2-oxoglutarate aminotransferase 
+C5AL13_BURGB Coenzyme PQQ biosynthesis protein C 
+C5AMG5_BURGB Putative uncharacterized protein 
+C5CPT5_VARPS Coenzyme PQQ biosynthesis protein C 
+C5ZNU2_BURPS Putative uncharacterized protein 
+C6A1N7_THESM Transcriptional activator, putative 
+C6BKQ4_RALP1 Coenzyme PQQ biosynthesis protein C 
+C6J7A9_9BACL Transcriptional regulator 
+C6MGP7_9PROT TENA/THI-4 domain protein 
+C6PVH0_9CLOT TENA/THI-4 family protein 
+C6QGR0_9RHIZ Coenzyme PQQ biosynthesis protein C 
+C6U4N8_BURPS Putative uncharacterized protein 
+C6V4Y1_NEORI Tena/thi-4 family 
+C6WVF5_METML Coenzyme PQQ biosynthesis protein C 
+C6XDZ7_METSD Coenzyme PQQ biosynthesis protein C 
+C7CUE8_ENTFA Transcriptional activator TenA 
+C7D0N1_ENTFA Transcriptional activator TenA 
+C7DRH7_PSEFL Coenzyme PQQ biosynthesis protein PqqC 
+C7JE58_ACEP3 Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein C PqqC 
+C7JQB8_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein C PqqC 
+C7JZI3_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein C PqqC 
+C7K2A1_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein C PqqC 
+C7KBH0_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein C PqqC 
+C7KKT6_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein C PqqC 
+C7KV47_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein C PqqC 
+C7L4X5_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein C PqqC 
+C7U8U2_ENTFA Transcriptional activator TenA 
+C7UAQ2_ENTFA Transcriptional activator TenA 
+C7UXT9_ENTFA Transcriptional activator TenA 
+C7V4B5_ENTFA Transcriptional activator tenA 
+C7VEC1_ENTFA Transcriptional activator tenA 
+C7VT58_ENTFA Transcriptional activator TenA 
+C7W461_ENTFA Transcriptional activator TenA 
+C7W9A8_ENTFA Transcriptional activator TenA 
+C7WHW2_ENTFA Transcriptional activator TenA 
+C7WRJ5_ENTFA Transcriptional regulator TenA 
+C7WZ85_ENTFA Transcriptional activator TenA 
+C7YCM0_ENTFA Transcriptional regulator 
+C8Q576_9ENTR Coenzyme PQQ biosynthesis protein C 
+C8TA98_KLEPR Coenzyme PQQ biosynthesis protein C 
+C8WR23_ALIAD Putative uncharacterized protein 
+C9RX49_GEOSY Transcriptional activator, TenA family 
+C9XWH7_CROTZ Pyrroloquinoline-quinone synthase 
+D0BZT5_9GAMM Coenzyme PQQ synthesis protein C 
+D0C501_9GAMM Pyrroloquinoline quinone biosynthesis protein C 
+D0C784_ACIBA Coenzyme PQQ biosynthesis protein C 
+D0C7F1_ACIBA TENA/THI-4 
+D0DC75_9RHOB Coenzyme PQQ biosynthesis protein C 
+D0FP09_ERWPY Coenzyme PQQ synthesis protein C (Pyrroloquinoline quinone biosynthesis protein C) 
+D0I8M5_VIBHO Coenzyme PQQ synthesis protein C 
+D0IJX1_9VIBR Coenzyme PQQ synthesis protein C 
+D0LLF2_HALO1 Putative pyrroloquinoline quinone (Coenzyme PQQ) biosynthesis protein C 
+D0LRX5_HALO1 Putative uncharacterized protein 
+D0RNA9_9RICK TENA/THI-4 family protein 
+D0RXY6_ACICA Coenzyme PQQ synthesis protein C 
+D0S3T3_ACICA Pyrroloquinoline quinone biosynthesis protein C 
+D0SIP7_ACIJU TENA/THI-4 
+D0ZZS3_CHLPP CADD protein 
+D1RRG5_SEROD Pyrroloquinoline-quinone synthase 
+D1UD47_9BURK Coenzyme PQQ biosynthesis protein C 
+D2LAQ5_RHOVA Coenzyme PQQ biosynthesis protein C 
+D2LY70_BACS4 Transcriptional activator, TenA family 
+D2MBN6_RHOPA Coenzyme PQQ biosynthesis protein C 
+D2PIH6_SULID TENA/THI-4 domain protein 
+D2RWT0_HALTV Transcriptional activator, TenA family 
+D2S4D5_GEOOG Coenzyme PQQ biosynthesis protein C 
+D2SNE8_STRFR Putative coenzyme PQQ synthesis protein c 
+D2T3L7_ERWP6 Pyrroloquinoline-quinone synthase 
+D3DIL4_HYDTT Coenzyme PQQ synthesis protein C 
+D3DIL6_HYDTT Coenzyme PQQ synthesis protein C 
+D3EGQ8_GEOS4 Transcriptional activator, TenA family 
+D3F0J0_CONWI Transcriptional activator, TenA family 
+D3L5E5_9BACT TENA/THI-4 family protein 
+D3N0G4_9BURK Pyrroloquinoline quinone biosynthesis protein PqqC 
+D3P1K0_AZOS1 Pyrroloquinoline-quinone synthase 
+D3Q202_STANL Coenzyme PQQ biosynthesis protein C 
+D3REI7_KLEVT Coenzyme PQQ biosynthesis protein C 
+D3UV78_CHLTS Putative uncharacterized protein 
+D4E6D0_SEROD Coenzyme PQQ biosynthesis protein C 
+D4EHV2_ENTFA TENA/THI-4 family protein 
+D4EY39_ENTFA TENA/THI-4 family protein 
+D4GEB5_PANAM PqqC 
+D4I1A2_ERWAC Pyrroloquinoline-quinone synthase 
+D4IFL2_ERWAE Pyrroloquinoline-quinone synthase (Coenzyme PQ synthesis protein C) 
+D4MDE4_9ENTE Thiaminase/4-amino-5-aminomethyl-2-methylpyrimidine deaminase 
+D4P6Z6_PANAN PqqC 
+D4SXU0_9XANT Pyrroloquinoline quinone biosynthesis protein PqqC 
+D4T9K8_9XANT Pyrroloquinoline quinone biosynthesis protein PqqC 
+D4UXN7_ENTFA TENA/THI-4 family protein 
+D4X6C5_9BURK Coenzyme PQQ synthesis C 
+D4XM50_ACIHA Coenzyme PQQ synthesis protein C (Pyrroloquinoline quinone biosynthesis protein C) 
+D5C1I3_NITHN Coenzyme PQQ biosynthesis protein C 
+D5DCC7_BACMD Tena/thi-4 family domain protein 
+D5DFF0_BACMD Tena/thi-4 family domain protein 
+D5DR20_BACMQ Tena/thi-4 family domain protein 
+D5E234_BACMQ Tena/thi-4 family domain protein 
+D5NCN4_9BURK TENA/THI-4 domain protein 
+D5NM98_9BURK Coenzyme PQQ biosynthesis protein C 
+D5QAQ6_ACEHA Pyrroloquinoline quinone biosynthesis protein PqqC 
+D5QP92_METTR Coenzyme PQQ biosynthesis protein C 
+D5TQM6_BACTK Transcriptional activator tenA 
+D5V710_ARCNC Coenzyme PQQ biosynthesis protein C 
+D5WEF6_BURSC Coenzyme PQQ biosynthesis protein C 
+D6CRJ5_THIS3 Pyrroloquinoline-quinone synthase (Coenzyme PQQ synthesis protein C) (Pyrroloquinoline quinone biosynthesis protein C) 
+D6GCY0_9ENTR Coenzyme PQQ biosynthesis protein C 
+D6JPG2_ACIG3 Putative uncharacterized protein 
+D6JPM0_ACIG3 Putative uncharacterized protein 
+D6TIP8_9CHLR Transcriptional activator, TenA family 
+D6UQD0_9BACT Coenzyme PQQ biosynthesis protein C 
+D6XXQ4_9BACI Transcriptional activator, TenA family 
+D6YE36_CHLTR Putative uncharacterized protein 
+D6YG82_CHLTR Putative uncharacterized protein 
+D6YIV0_CHLTR Putative uncharacterized protein 
+D6YLH3_CHLTR Putative uncharacterized protein 
+D6YN83_CHLTR Putative uncharacterized protein 
+D6YYW2_CHLTR Putative uncharacterized protein 
+D7A701_THINO Coenzyme PQQ biosynthesis protein C 
+D7BT00_9ACTO Pyrroloquinoline quinone biosynthesis protein PqqC 
+D7CSE7_9DEIN Transcriptional activator, TenA family 
+D7D327_9BACI Transcriptional activator, TenA family 
+D7D7Y2_9CREN Transcriptional activator, TenA family 
+D7DE82_CHLTR Chlamydia protein associated with death domains 
+D7DHF1_CHLTR Chlamydial protein associated with death domains 
+D7DHP2_9PROT Coenzyme PQQ biosynthesis protein C 
+D7I5Z5_PSESS Coenzyme PQQ synthesis protein C 
+O58874_PYRHO Putative uncharacterized protein PH1160 
+Q07TD3_RHOP5 Coenzyme PQQ biosynthesis protein C 
+Q08Q49_STIAU Tena/thi-4 family 
+Q0AFT5_NITEC TENA/THI-4 domain protein 
+Q0B2B3_BURCM Coenzyme PQQ biosynthesis protein C 
+Q0FSC3_9RHOB Pyrroloquinoline quinone biosynthesis protein PqqC 
+Q0G4G0_9RHIZ Pyrroloquinoline quinone biosynthesis protein PqqC 
+Q0GFB5_SERMA PqqC 
+Q0K012_RALEH Coenzyme PQQ synthesis protein C 
+Q0K2D2_RALEH Coenzyme PQQ synthesis protein C 
+Q0RGT2_FRAAA Putative uncharacterized protein 
+Q0S8H8_RHOSR Possible coenzyme PQQ synthesis protein 
+Q117R9_TRIEI TENA/THI-4 protein 
+Q119I6_TRIEI TENA/THI-4 protein 
+Q139H3_RHOPS Coenzyme PQQ biosynthesis protein C 
+Q13QW6_BURXL Pyrroloquinoline quinone synthesis C 
+Q13XQ2_BURXL Putative uncharacterized protein 
+Q16B40_ROSDO Coenzyme PQQ biosynthesis protein C 
+Q1AT10_RUBXD TENA/THI-4 protein 
+Q1BQG3_BURCA Coenzyme PQQ biosynthesis protein C 
+Q1CZS9_MYXXD Putative uncharacterized protein 
+Q1H0N7_METFK Coenzyme PQQ biosynthesis protein C 
+Q1HG59_BURCE Pyrroloquinoline-quinone synthase 
+Q1IDA9_PSEE4 Putative uncharacterized protein 
+Q1IVL7_ACIBL TENA/THI-4 protein 
+Q1LH71_RALME Transcriptional activator, TenA family 
+Q1M2R3_RHIME Coenzyme PQQ synthesis protein C 
+Q1PYI1_9BACT Similar to PQQ biosynthesis protein C 
+Q1QZA5_CHRSD Coenzyme PQQ biosynthesis protein C 
+Q1YKD7_MOBAS Coenzyme PQQ (Pyrroloquinoline quinone) biosynthesis protein C/D 
+Q1YPJ9_9GAMM Coenzyme PQQ synthesis protein C 
+Q21AY5_RHOPB Coenzyme PQQ biosynthesis protein C 
+Q256J9_CHLFF Coenzyme PQQ synthesis protein C 
+Q2BNP7_9GAMM Pyrroloquinoline quinone biosynthesis protein PqqC 
+Q2GDR9_NEOSM Coenzyme PQQ synthesis protein C 
+Q2IUJ3_RHOP2 Coenzyme PQQ biosynthesis protein C 
+Q2JBG9_FRASC Putative uncharacterized protein 
+Q2T2S5_BURTA Putative uncharacterized protein 
+Q2Y5P8_NITMU Coenzyme PQQ synthesis C 
+Q32X69_PSEFL Pyrroloquinoline quinone biosynthesis protein C 
+Q3EQX1_BACTI Transcriptional activator tenA 
+Q3J7X2_NITOC Coenzyme PQQ biosynthesis protein C 
+Q3JII1_BURP1 Putative uncharacterized protein 
+Q3K5Q8_PSEPF Putative coenzyme PQQ biosynthesis-related protein pyrroloquinoline-quinone synthase 
+Q3KAW5_PSEPF Putative uncharacterized protein 
+Q3KL85_CHLTA Coenzyme PQQ synthesis protein C 
+Q3SUT4_NITWN Coenzyme PQQ biosynthesis protein C 
+Q46UR4_RALEJ Coenzyme PQQ synthesis C 
+Q470N8_RALEJ Coenzyme PQQ biosynthesis protein C 
+Q47FD4_DECAR Coenzyme PQQ biosynthesis protein C 
+Q47KN6_THEFY Putative transcriptional regulator; RBL02063 
+Q488A7_COLP3 Coenzyme PQQ synthesis protein C 
+Q4EC66_9RICK Coenzyme PQQ synthesis protein C, putative 
+Q4K4V0_PSEF5 Coenzyme PQQ synthesis protein C 
+Q4MLA2_BACCE Transcriptional regulator 
+Q4MWY5_BACCE Transcriptional regulator (TenA) 
+Q4UNG7_RICFE Pyrroloquinoline quinone (Coenzyme PQQ) biosynthesis protein C 
+Q5L2C7_GEOKA Transcriptional regulator 
+Q5L4P2_CHLAB Putative uncharacterized protein 
+Q5WK10_BACSK Transcriptional activator of extracellular enzyme genes 
+Q608P2_METCA Coenzyme PQQ synthesis protein C 
+Q63AX1_BACCZ Transcriptional activator 
+Q63FS2_BACCZ Transcriptional regulator of extracellular enzymes 
+Q63HV3_BURPS Putative uncharacterized protein 
+Q65D46_BACLD Putative uncharacterized protein 
+Q6FAK0_ACIAD Putative uncharacterized protein 
+Q6HIA9_BACHK Transcriptional activator 
+Q6HN91_BACHK Transcriptional regulator of extracellular enzymes 
+Q6KZ95_PICTO TenA/THI-4 family protein 
+Q6W1W4_RHISN Coenzyme PQQ synthesis protein C 
+Q737L9_BACC1 Transcriptional activator TenA 
+Q73DB8_BACC1 Transcriptional activator TenA, putative 
+Q73GQ4_WOLPM Coenzyme PQQ synthesis protein C, putative 
+Q7VSP4_BORPE Putative uncharacterized protein 
+Q7W372_BORPA Putative uncharacterized protein 
+Q7W8P5_BORPA Putative uncharacterized protein 
+Q7WEJ1_BORBR Putative uncharacterized protein 
+Q7WMA9_BORBR Putative uncharacterized protein 
+Q7X5S0_ENTIT PqqC 
+Q81HR2_BACCR Transcriptional activator tenA 
+Q81Q28_BACAN Transcriptional activator TenA 
+Q81UY1_BACAN Putative transcriptional activator TenA 
+Q821E5_CHLCV Coenzyme pqq synthesis protein c, putative 
+Q82UP8_NITEU Putative coenzyme PQQ synthesis protein c, putative 
+Q830L3_ENTFA Transcriptional regulator 
+Q83DQ9_COXBU Coenzyme PQQ synthesis protein C 
+Q83X97_STRRO Pyrroloquinoline quinone biosynthesis protein C 
+Q9UZQ1_PYRAB Putative uncharacterized protein 
+Q9UZQ2_PYRAB Transcription activator, putative 

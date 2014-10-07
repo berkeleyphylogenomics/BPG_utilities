@@ -1,0 +1,743 @@
+{% extends "common/search_results_base.html" %}
+
+{% block title %}Book Info{% endblock %}
+
+{% block appicon %}{% endblock %}
+
+{% block extrastylesheets %}{% endblock %}
+
+{% block header_message %}<h4>Query: {{query_description}}</h4>{% endblock %}
+
+{% block apptitle %}Search{% endblock %}
+
+{% block toplinks %}{% endblock %}
+
+{% block results %}
+    <script src="http://makana-static.berkeley.edu/js/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".toggler").toggleClass('toggled').each(function(i) {
+                this.innerHTML += ' (click to expand)';
+                $("#"+this.id.split('_')[1]).addClass('togglee');
+            }).click(function(e) {
+                $(this).toggleClass('toggled').each(function (i) {
+                    this.innerHTML = this.innerHTML.replace(/expand\)/,'collapse)');
+                });
+                if ($(this).hasClass('toggled')) {
+                    this.innerHTML = this.innerHTML.replace(/expand\)/,'collapse)');
+                } else {
+                    this.innerHTML = this.innerHTML.replace(/collapse\)/,'expand)');
+                }
+                $("#"+this.id.split('_')[1]).toggle();
+                e.preventDefault();
+            }).click();
+        });
+    </script>
+        
+   <script src="book_info.js"            type="text/javascript"></script>
+   <script src="browser_version.js"      type="text/javascript"></script>
+   <script src="../annotate/annotate.js" type="text/javascript"></script>
+
+</HEAD>
+<BODY onLoad="initialize_page()" BGCOLOR=#FFFFFF LEFTMARGIN=20 TOPMARGIN=0  
+      MARGINWIDTH=0 MARGINHEIGHT=0>
+
+   <table width=798 border=0 cellpadding=0 cellspacing=0 align=center 
+          bgcolor=#ffffff>  <!-- main -->
+      <tr>
+
+
+         <!-- First column provides a left margin -->
+
+         <TD WIDTH=20 BGCOLOR=#FFFFFF>
+
+         <TD COLSPAN=2 BGCOLOR=#FFFFFF>
+
+            <table BACKGROUND=/phylofacts/banner_horse.png WIDTH=700 HEIGHT=190>
+                                                            <!-- banner -->
+               <TR VALIGN=bottom>
+                  <TD WIDTH=150>
+                  <td>
+                                          <FONT FACE=sans-serif SIZE=5 COLOR=#990000>
+                     <STRONG> 
+                     PhyloFacts::Protein family                     </STRONG>
+                     </FONT>
+                     <br />
+                     <FONT FACE="sans-serif" size="2" COLOR="#990000">
+                     Summary data and links to additional information and 
+                     analyses
+                     </FONT>
+               </tr>
+            </table> <!-- ends banner -->
+
+
+        
+      <P STYLE="font-size: 8pt;
+                margin-top: 6px;
+                font-family: Geneva, Verdana, Arial, Tahoma; 
+                text-align: center">
+<a href=/>BPG home</a> |
+<a href=/phylofacts/index.php>PhyloFacts home</a> |
+<a href=/phylofacts/search.php?library=innate_immunity>Sequence search</a> |
+<!-- Remove database query link
+<a href=/query_db/query_db.php?library=innate_immunity>Database search</a> |
+-->
+<a href=/cgi-bin/listbooks/listbooks.py?library=innate_immunity>Browse</a> |
+<!--
+<a href=/annotate/index.php>Annotate</a> |
+<a href=/download/downloads.php>Download</a> |
+-->
+<a href=/publications.php>Publications</a> |
+<a href=/phylofacts/help.php>Help</a>
+<br>
+<a href=/cgi-bin/phylobuild/input_phylobuild.py>PhyloBuilder</a> |
+<a href=/cgi-bin/flowerpower/input_flowerpower.py>Gather homologs</a> -&gt;
+<a href=/alignment/index.php>Align sequences</a> -&gt;
+<a href=/treebuild/index.php>Construct trees</a> -&gt;
+<a href=/cgi-bin/SCI-PHY/input_SCI-PHY.py>Find subfamilies</a> -&gt;
+<a href=/phylofacts/search.php?library=structureprediction>Structure prediction</a>
+   
+   <tr>
+       <!-- First column provides a left margin -->
+
+      <td width=20 bgcolor=#ffffff>
+      <td colspan=2 bgcolor=#ffffff>
+
+   <!-- Rest of page nested in this table cell -->
+
+   <br />
+   <table class="header_table" border="0">  <!-- Header, previous name,
+                                                 accession number. -->
+         <tr>
+         <td colspan="2">
+            <h2>FBOX (book2)</h2>
+         </td>
+      </tr>
+            <tr>
+         <td width="150">
+            <span class="header">
+               <b>Accession ID</b>
+            </span>
+         </td>
+         <td>
+            <span class="header">
+               bpg000057            </span>
+         </td>
+      </tr>
+            <tr>
+        <td width="150">
+          <span class="header">
+            <b>Description</b>
+          </td>
+        <td>
+          <span class="header">
+            Putative F-box protein At2g02030                         <a href="javascript:help('consensus_auto_name')"><img
+                                      src="/phylofacts/images/icn_help_blue_cute.png"
+                                      title="Weighted consensus of UniProt DE line"
+                                      border="0"></a>
+          </span>
+        </td>
+      </tr>
+         
+   </table> <!-- End header, previous name, accession number. -->
+   <br />
+
+         <br />
+      <div>
+         FBOX domain, sequences clustered using PSI-BLAST to seed d1fs1a1, realigned using MUSCLE, following by cropping allignment to conserved region, deleting gappy columns and fragmentary sequences.               </div>
+      <br />
+            <h3>
+            Domains found in the
+            <a href="javascript:consensus_window('')">
+               consensus sequence</a>
+               <a href="javascript:help('consensus_sequence')"><img
+                                      src="/phylofacts/images/icn_help_blue_cute.png"
+                                      border="0"></a> 
+            for the family 
+                        </h3>
+
+            <IMG SRC=./adata/B1CvIl.d/bpg000057_pfam_domain_map.png USEMAP=#map1 BORDER=0>
+            <MAP name=map1>
+            <area href="javascript:view_pfam_info('F-box','id')" shape="rect" coords="0,45,700,51" title="F-box - e-value: 3.4e-11 positions: 1-31"></MAP>            <br />
+            <table BORDER=0 ALIGN=center>  <!-- Legend -->
+               <tr>
+                  <td>
+                  <TD VALIGN=bottom>
+                     <B>Domain&nbsp;&nbsp;&nbsp;&nbsp;</B>
+                  <TD VALIGN=bottom>
+                     <B>E-value</B>
+                  <TD ALIGN=center VALIGN=bottom>
+                     <B>% of<br />
+                     <NOBR>&nbsp; &nbsp; &nbsp; alignment &nbsp; &nbsp; &nbsp; 
+                     </NOBR></B>
+                  <TD ALIGN=center VALIGN=bottom>
+                     <B>% of<br />
+                     <NOBR>&nbsp; &nbsp; &nbsp; Pfam domain&nbsp;<A
+                        HREF="javascript:help('%pfam_domain')"><IMG
+                              SRC=/phylofacts/images/icn_help_blue_cute.png
+                              BORDER=0></a></NOBR></B>
+               </tr>
+                           <tr>
+                  <td>
+                                             <DIV STYLE="background-color: 
+                                                    #FF0000;
+                                    width:       30px;
+                                    height:      6px;
+                                    overflow:    hidden;">
+                        </DIV>
+                                          <td>
+                                             <A 
+                         HREF="javascript:view_pfam_info('F-box','id')">
+                           <NOBR>F-box</NOBR></a>
+                                          <td>
+                     <NOBR>3.4e-11</NOBR>
+                                    <TD ALIGN=right>
+                       97%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <TD ALIGN=right>
+                       67%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               </tr>
+               </table><br /> <!-- ends legend -->   <br />
+   <table border="0">  
+               <!-- Four columns: tree viewer, structure, alignment, annots. -->
+      <tr>
+                    <td align="center" valign="bottom">  <!-- First column: tree viewer -->
+                               <h3 style="margin-bottom: 0;">
+                    Tree viewer&nbsp;<a href="/phyloscope/help/">Help</a>
+                 </h3>
+                         </td>
+                  
+         <!-- Second column: structure. -->
+
+         <td align="center" valign="bottom" width="160">
+            <h3 style="margin-bottom: 0;">
+               Conservation analysis            </h3>
+         </td>
+
+         <!-- Third column: alignment. -->
+
+         <td align="center" valign="bottom" width="160">   
+            <h3 style="margin-bottom: 0;">
+               Alignment
+               <a href="javascript:help('alignment')"><img 
+                        SRC="/phylofacts/images/icn_help_blue_cute.png" BORDER=0></a>
+            </h3>
+         </td>
+         
+         <!-- Fourth column: annotations. -->
+
+         <td align="center" valign="bottom" width="160">
+            <h3 style="margin-bottom: 0;">
+               Sequence data
+               <!--
+               <span style="font-size: 8pt;">
+               (annotations, evidence...)
+               </span>
+               -->
+               <a href="javascript:help('sequence_annotation')"><img 
+                        SRC="/phylofacts/images/icn_help_blue_cute.png" BORDER=0></a>
+            </h3>
+         </td>
+      </tr>
+
+      <!-- Second row: icons. -->
+
+      <tr>
+
+         <!-- First major column (tree viewer) -->
+
+                    <td valign="top" align="center" rowspan="3">
+                               <iframe name="atv_frame"
+                         src="view_tree.php?book=bpg000057&book_id=5284&workdir=./adata/B1CvIl.d&short_name=FBOX (book2)&preferred_name=FBOX (book2)&gathering_method=user&n_sequences=2035&n_subfamilies=424&bete_full_tree_f=&family_mrca=Bacteria, Eukaryotes&alignment_to_tree_f=0&GO_to_tree_f=1&seed_sequence_id=5282&seed_protein_sequence_id=&seed_ID=&subfamily="
+                         height="180" width="280" frameborder="0" 
+                         scrolling="no">
+                    Sorry, applet not showing.  Your browser does not
+                    support inline frames.
+                 </iframe>
+                               <input type="hidden" name=view_tree_URL 
+                     value="view_tree.php?book=bpg000057&book_id=5284&workdir=./adata/B1CvIl.d&short_name=FBOX (book2)&preferred_name=FBOX (book2)&gathering_method=user&n_sequences=2035&n_subfamilies=424&bete_full_tree_f=&family_mrca=Bacteria, Eukaryotes&alignment_to_tree_f=0&GO_to_tree_f=1&seed_sequence_id=5282&seed_protein_s" name=seed_ID 
+                     value="">
+              <!--
+              Tree viewer from
+              <br />
+              <a href="/atv/">
+                 ATV</a>
+              -->
+           </td>
+                    
+           <!-- Second major column: structure. -->
+
+           <td align="center" valign="top">
+              <a href="javascript:go_to_alignment_analysis('NA')">
+                 <img src="significance.png" width="100" height="100"
+                      align="center"
+                      border="1"></a>
+           </td>
+         
+         <!-- Third major column: alignment. -->
+
+         <td align="center" valign="top">
+            <a href="javascript:view_select(0,1,1)">
+               <img src="alignment_icon.png" width="100" height="100"
+                    border="0"></a>
+         </td>
+         
+         <!-- Fourth major column: annotation. -->
+
+         <td align="center" valign="top">
+                        <a href="javascript:more_headers(5284,'ALL',0)">
+               <img src="annotation_icon.png" width="100" height="100"
+                    border="0" /></a>
+         </td>
+      </tr>
+
+      <!-- Third row: buttons. -->
+
+      <tr>
+                  <td align="center" valign="center">
+            <input type=button value="View significance scores"
+                   ONCLICK="go_to_alignment_analysis('NA')">
+         </td>
+         <td align="center" valign="center">
+            <select name="view_alignment0_1" 
+                    onchange="view_select(0,1)">
+               <option>
+                  Select viewer
+               <option value=quick>
+                  Quick view - HTML
+               <option value=jalview>
+                  JalView - applet
+            </select>
+         </td>
+         <td align="center" valign="center">
+            <input type=button value="View data"
+                   style="width: 105px;"
+                   onclick="more_headers(5284,'ALL',0)">
+         </td>
+      </tr>
+         </table>  <!-- Four columns: tree viewer, structure, alignm<td valign="top">
+            Number of sequences
+         <td>
+            2035                   </tr>
+
+               <tr>
+            <td valign="top">
+               <nobr>
+               Number of SCI-PHY subfamilies <A 
+                     HREF="javascript:help('SCI-PHY_subfamily')"><IMG 
+                              SRC="/phylofacts/images/icn_help_blue_cute.png"
+                              BORDER=0></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</nobr>
+            <td valign="top">
+               424         </tr>
+
+                     <tr>    
+               <td valign="top">
+                  SCI-PHY subfamilies 
+                  <a href="javascript:help('SCI-PHY_subfamily')"><IMG 
+                                      SRC="/phylofacts/images/icn_help_blue_cute.png"
+                                      BORDER=0></a>
+               <td valign="top">    
+                  <a href="javascript:open_subfamilies_window()">
+                     View subfamily details</a>
+            </tr>  
+
+                  <tr>
+         <td valign="top">
+            Alignment length 
+            <a href="javascript:help('alignment_length')"><IMG 
+                     SRC="/phylofacts/images/icn_help_blue_cute.png" BORDER=0></a>
+         <td>
+            32      </tr>
+            <tr>
+         <td valign="top" style="padding-right: 1em;">
+            <nobr>
+            Taxonomic distribution            <a href="javascript:help('taxonomic_distribution')"
+                ><IMG SRC="/phylofacts/images/icn_help_blue_cute.png"
+                      BORDER=0></a>
+            </nobr>
+         <td>
+            <a href="javascript:browse_taxonomy('5','')" title="View in BPG taxonomy browser">Bacteria, Eukaryotes</a>      </tr>
+               <tr>
+            <td valign="top" style="padding-right: 1em;">
+               Enzyme Classification
+               <a href="javascript:help('enzyme_classification')"
+                   ><IMG SRC="/phylofacts/images/icn_help_blue_cute.png"
+                         BORDER=0></a>
+            <TD VALIGN=top>
+               <a href="javamages/icn_help_blue_cute.png"
+                                      BORDER=0></a>
+               </nobr>
+            <TD VALIGN=top>
+               <nobr>protein binding<span style="color: black;">*</span> <span class="smaller">(84) [<a href="http://www.geneontology.org/GO.evidence.shtml" title="Inferred from Direct Assay">IDA</a>]</span></nobr><br /><nobr>ubiquitin-protein ligase activity<span style="color: black;">*</span> <span class="smaller">(21) [<a href="http://www.geneontology.org/GO.evidence.shtml" title="Inferred from Direct Assay">IDA</a>]</span></nobr><br /><nobr>lyase activity<span style="color: black;">*</span> <span class="smaller">(10) [<a href="http://www.geneontology.org/GO.evidence.shtml" title="Inferred from Electronic Annotation">IEA</a>]</span></nobr><br /><nobr>sugar binding<span style="color: black;">*</span> <span class="smaller">(9) [<a href="http://www.geneontology.org/GO.evidence.shtml" title="Inferred from Electronic Annotation">IEA</a>]</span></nobr><br/>... <span class="smaller">(197 total)</span>         </tr>
+                  <tr>
+            <td valign="top" style="padding-right: 1em;">
+               <nobr>
+               GO processes
+                      <SPAN CLASS=smaller>(no.&nbsp;seqs)</SPAN>                <A HREF="javascript:help('GO')"><IMG
+                                   SRC="/phylofacts/images/icn_help_blue_cute.png"
+                                   BORDER=0></a>
+               </nobr>
+            <td valign="top">
+               <nobr>ubiquitin-dependent protein catabolic process<span style="color: black;">*</span> <span class="smaller">(52) [<a href="http://www.geneontology.org/GO.evidence.shtml" title="Inferred from Direct Assay">IDA</a>]</span></nobr><br /><nobr>ubiquitin cycle<span style="color: black;">*</span> <span class="smaller">(25) [<a href="http://www.geneontology.org/GO.evidence.shtml" title="Inferred from Electronic Annotation">IEA</a>]</span></nobr><br /><nobr>protein ubiquitination<span style="color: black;">*</span> <span class="smaller">(12) [<a href="http://www.geneontologd valign="top" style="padding-right: 1em;">
+               <nobr>
+               GO cellular components
+                      <SPAN CLASS=smaller>(no.&nbsp;seqs)</SPAN>                <a href="javascript:help('GO')"><img
+                                   src="/phylofacts/images/icn_help_blue_cute.png"
+                                   border=0></a>
+               </nobr>
+            <td valign="top">
+               <nobr>nucleus<span style="color: black;">*</span> <span class="smaller">(24) [<a href="http://www.geneontology.org/GO.evidence.shtml" title="Inferred from Direct Assay">IDA</a>]</span></nobr><br /><nobr>SCF ubiquitin ligase complex<span style="color: black;">*</span> <span class="smaller">(18) [<a href="http://www.geneontology.org/GO.evidence.shtml" title="Inferred from Direct Assay">IDA</a>]</span></nobr><br /><nobr>cytoplasm<span style="color: black;">*</span> <span class="smaller">(16) [<a href="http://www.geneontology.org/GO.evidence.shtml" title="Inferred from Direct Assay">IDA</a>]</span></nobr><br /><nobr>ubiquitin ligase complex<span style="color: black;">*</span> <span class="smaller">(12) [<a href="http://www.geneontology.org/GO.evidence.shtml" title="Traceable Author Statement">TAS</a>]</span></nobr><br/>... <span class="smaller">(106 total)</span>         </tr>
+              <tr>
+         <td valign="top">
+            <nobr>
+            Sequence annotations            <a href="javascript:help('sequence_annotation')"><IMG 
+                     SRC="/phylofacts/images/icn_help_blue_cute.png" BORDER=0></a>
+            </nobr>
+         <td>
+                        <a href="javascript:more_headers(5284,'ALL',0)">
+               <nobr>Experimental and annotation data for sequences in 
+               family</nobr></a>
+                  </tr>
+               <tr>
+            <TD COLSPAN=2>
+               <br />
+               <SPAN STYLE="color: black;">*</SPAN>
+               <SPAN CLASS=smaller>
+               Caution: GO annotation present in fewer than
+               80% of sequences that have
+               annotations.
+  adata/B1CvIl.d">
+   <input type="hidden" name=book_dir        value="/home/bpg/pfacts/bpg000/bpg000057/user">
+   <input type="hidden" name=book_id         value="5284">
+   <input type="hidden" name=subfamily_node0 value="0">
+   <input type="hidden" name=hmm_length      value="32">
+   <input type="hidden" name=n_subfamilies
+          value="424">
+   <input type="hidden" name=user_library_f
+          value="0">
+   <input type="hidden" name=gathering_method
+          value="user">
+   <input type="hidden" name=gathering_method0
+          value="user">
+   <input type="hidden" name=n_sequences0
+          value="2035">
+   <input type="hidden" name=subfamily_literature_link_f
+          value="0">
+   <input type="hidden" name=seed_sequence_id 
+          value="5282">
+   <input type="hidden" name=seed_protein_sequence_id 
+          value="">
+   <input type="hidden" name="alignment_to_tree_f" 
+          value="0">
+   <input type="hidden" name="GO_to_tree_f" 
+          value="1">
+   <input type="hidden" name="subfamily" 
+          value="">
+   <input type="hidden" name="library" 
+          value="innate_immunity">
+   <input type="hidden" name="ghg_book_f" 
+          value="">
+   <input type="hidden" name="debug20" 
+          value="">
+   </form>   <!-- view_alignment_form -->
+
+      <br />
+<!-- was linked to javascript:open_downloads_window() -->
+   <a class="toggler" id="toggle_dlTable" href="#">
+      <b>Downloads</b></a> (alignments, HMMs, trees...)
+      <div id='dlTable'><table>
+        </tr>
+<tr>
+            <td>Alignment
+<a href="javascript:help('alignment')"><img 
+                                   src="/static/img/icons/icn_help_blue_cute.png"
+                                   border="0"></a>
+</td>
+            <td><a href="javascript:open_sequence_download('/home/bpg/pfacts/bpg000/bpg000057/user/bpg000057.a2m')">Download</a></td>
+        </tr>        <tr>
+            <td>SCI-PHY subfamilies
+<a href="javascript:help('alignment')"><img 
+                                   src="/static/img/icons/icn_help_blue_cute.png"
+                                   border="0"></a>
+</td>
+            <td><a href="javascript:open_hmms_window()">Download</a></td>
+        </tr>
+        <tr>
+            <td>Phylogenetic trees
+<a href="javascript:help('phylogenetic_trees')"><img 
+                                   src="/static/img/icons/icn_help_blue_cute.png"
+                                   border="0"></a>
+</td>
+            <!--view_tree.php?book=bpg000057&book_id=5284&workdir=./adata/B1CvIl.d&short_name=FBOX (book2)&preferred_name=FBOX (book2)&gathering_method=user&n_sequences=2035&n_subfamilies=424&bete_full_tree_f=&family_mrca=Bacteria, Eukaryotes&alignment_to_tree_f=0&GO_to_tree_f=1&seed_sequence_id=5282&seed_protein_sequence_id=&seed_ID=&subfamily=&download_f=1-->
+            <td><a href="javascript:download_tree_window()">Download</a></td>
+        </tr>
+      </table></div>
+      <form name=astats_data>
+      <input type="hidden" name=preferred_name   value="FBOX (book2)">
+      <input type="hidden" name=book             value="bpg000057">
+      <input type="hidden" name=workdir          value="./adata/B1CvIl.d">
+      <input type="hidden" name=gathering_method value="user">
+      <input type="hidden" name=book_dir         value="/home/bpg/pfacts/bpg000/bpg000057/user">
+      <input type="hidden" name=alignment_file   value="/home/bpg/pfacts/bpg000/bpg000057/user/bpg000057.a2m">
+   </form>
+   
+   <form name=family_details_form action=protein_family_details.php
+         target=details_window method=post>
+      <input type="hidden" name=root_dir         value="/home/bpg/pfacts">
+      <input type="hidden" name=short_name       value="FBOX (book2)">
+      <input type="hidden" name=escaped_short_name
+                         value="FBOX (book2)">
+      <input type="hidden" name=preferred_name   value="FBOX (book2)">
+      <input type="hidden" name=escaped_preferred_name   value="FBOX (book2)">
+      <input type="hidden" name=author           value="Kimmen Sjolander">
+      <input type="hidden" name=editors            value="2035">
+      <input type="hidden" name=build_database_source
+                         value="">
+      <input type="hidden" name=book_specific_evalue_criterion
+                         value="0">
+      <input type="hidden" name=book_specific_sw_method
+                         value="">
+      <input type="hidden" name=build_clustering_method
+                         value="">
+      <input type="hidden" name=user_library_f   value="0">
+      <input type="hidden" name=build_method_notes
+                         value="">
+      <input type="hidden" name=draft_book       value="bpg000057">
+      <input type="hidden" name=build_alignment_editing
+                         value="">
+      <input type="hidden" name=family_bl62_graph_f
+                         value="1">
+      <input type="hidden" name=nr100_used_for_sciphy_f
+                         value="">
+   </form>
+
+   <!--<a href="javascript:open_details_window()">-->
+   <a class="toggler" id="toggle_protFamDetails" href="#">
+
+      <b>Additional data</b></a> (for advanced users / experts)
+      <div id="protFamDetails">
+      <H3>Protein family details - FBOX (book2)</H3>
+   <TABLE>
+      <TR>
+         <TD VALIGN=top WIDTH=150>
+            Preferred name 
+         <TD WIDTH=400 valign="top">
+            FBOX (book2)      </TR>
+               <TR>
+            <TD valign="top">
+               Author
+            <TD COLSPAN=5 valign="top">
+               Kimmen Sjolander         </TR>
+                     
+      <TR>    
+         <td valign="top">    
+            Accession ID&nbsp;/&nbsp;Created         </td>
+         <td valign="top">    
+            bpg000057 / 2004-05-20 15:30         </td>
+      </TR>   
+
+
+      
+      <TR>
+         <TD COLSPAN=2>
+            <BR>
+            <H3 STYLE="margin-bottom: 0;">Protein family statistics</H3>
+      </TR>
+               <TR>
+            <TD VALIGN=top>
+               Family BLOSUM 62 values
+               <A HREF="javascript:help('family_blosum62')"><IMG
+                                      SRC="/phylofacts/images/icn_help_blue_cute.png"
+     X (book2)&workdir=./adata/B1CvIl.d&book_dir=/home/bpg/pfacts/bpg000/bpg000057/user&alignment_file=/home/bpg/pfacts/bpg000/bpg000057/user/bpg000057.a2m" target="_blank">
+               View statistics</A>
+      </TR>
+   </TABLE>
+         <FORM NAME=encoding_cost_data>
+         <INPUT TYPE=hidden NAME=workdir 
+                            VALUE=./adata/B1CvIl.d>
+         <INPUT TYPE=hidden NAME=book 
+                            VALUE=bpg000057>
+         <INPUT TYPE=hidden NAME=gathering_method 
+                            VALUE=user>
+         <INPUT TYPE=hidden NAME=alignment_id 
+                            VALUE=26191>
+         <INPUT TYPE=hidden NAME=encoding_cost_data_file 
+                            VALUE=/home/bpg/pfacts/bpg000/bpg000057/user/shmms/bpg000057.cost>
+         <INPUT TYPE=hidden NAME=n_sequences 
+                            VALUE=2035>
+         <INPUT TYPE=hidden NAME=preferred_name 
+                            VALUE="FBOX (book2)">
+      </FORM>
+      <FORM NAME=astats_data>
+      <INPUT TYPE=hidden NAME=astats_file      VALUE=/home/bpg/pfacts/bpg000/bpg000057/user/bpg000057.astats>
+      <INPUT TYPE=hidden NAME=preferred_name   VALUE="FBOX (book2)">
+
+      <INPUT TYPE=hidden NAME=book             VALUE="bpg000057">
+      <INPUT TYPE=hidden NAME=workdir          VALUE="./adata/B1CvIl.d">
+      <INPUT TYPE=hidden NAME=gathering_method VALUE="user">
+      <INPUT TYPE=hidden NAME=book_dir         VALUE="/home/bpg/pfacts/bpg000/bpg000057/user">
+      <INPUT TYPE=hidden NAME=alignment_file   VALUE="bpg000057.a2m">
+   </FORM>      </div>
+
+   <br />
+   <br />
+
+               <form name=classify_consensus_sequence_form
+                action="/cgi-bin/phylofacts/weblookup2.py"
+                  method=post>
+        <input type="submit"
+                value="Find homologous books">
+        <input type="hidden" name="sequence"
+                    value="%3Ebpg000057_consensus%0ALPDELLLEILSRLPPKDLLRLSLVCKRWRSL%0A">
+        <input type="hidden" name="library"
+                    value="innate_immunity">
+                     <INPUT TYPE=h                      VALUE="casp8">
+                        <INPUT TYPE=hidden NAME=selected_libraries[]
+                               VALUE="Dechloromonas_aromatica">
+                        <INPUT TYPE=hidden NAME=selected_libraries[]
+                               VALUE="dicty">
+                        <INPUT TYPE=hidden NAME=selected_libraries[]
+                               VALUE="discern_supplementary_materials">
+                        <INPUT TYPE=hidden NAME=selected_libraries[]
+                               VALUE="escherichia_coli">
+                        <INPUT TYPE=hidden NAME=selected_libraries[]
+                               VALUE="gpcr_B">
+                        <INPUT TYPE=hidden NAME=selected_libraries[]
+                               VALUE="homo_sapiens">
+                        <INPUT TYPE=hidden NAME=selected_libraries[]
+                               VALUE="innate_immunity_B">
+                        <INPUT TYPE=hidden NAME=selected_libraries[]
+                               VALUE="intrepid">
+                        <INPUT TYPE=hidden NAME=selected_libraries[]
+                               VALUE="ion_channel_B">
+                        <INPUT TYPE=hidden NAME=selected_libraries[]
+                               VALUE="kegg_enzymatic">
+                        <INPUT TYPE=hidden NAME=selected_libraries[]
+                               VALUE="miscellaneous_B">
+                        <INPUT TYPE=hidden NAME=selected_libraries[]
+                               VALUE="mycobacterium_leprae">
+                        <INPUT TYPE=hidden NAME=selected_libraries[]
+                               VALUE="mycobacterium_tuberculosis">
+                        <INPUT TYPE=hidden NAME=selected_libraries[]
+                               VALUE="new_homo_sapiens">
+                        <INPUT TYPE=hidden NAME=selected_libraries[]
+                               VALUE="nocardia_farcinica">
+                        <INPUT TYPE=hidden NAME=selected_libraries[]
+                               VALUE="pdb">
+                        <INPUT TYPE=hidE=selected_libraries[]
+                               VALUE="plant_transmembrane_B">
+                        <INPUT TYPE=hidden NAME=selected_libraries[]
+                               VALUE="plasmodium_falciparum">
+                        <INPUT TYPE=hidden NAME=selected_libraries[]
+                               VALUE="prokaryotes">
+                        <INPUT TYPE=hidden NAME=selected_libraries[]
+                               VALUE="pyrococcus_furiosus">
+                        <INPUT TYPE=hidden NAME=selected_libraries[]
+                               VALUE="saccharomyces_cerevisiae">
+                        <INPUT TYPE=hidden NAME=selected_libraries[]
+                               VALUE="scop_w_human_seqs">
+                        <INPUT TYPE=hidden NAME=selected_libraries[]
+                               VALUE="scop-1.63">
+                        <INPUT TYPE=hidden NAME=selected_libraries[]
+                               VALUE="structure_supplement_B">
+                        <INPUT TYPE=hidden NAME=selected_libraries[]
+                               VALUE="sulfolobus_solfataricus">
+                     <INPUT TYPE=hidden NAME=selected_libraries[] VALUE="xxx">
+         <INPUT TYPE=hidden NAME=selected_libraries[] VALUE="yyy">
+        <input type="hidden" name="debug"
+                    value="l1p1w1f1o1g1">
+        <input type="hidden" name="fast_blast_pre_screen"
+                    value="checked">
+        <input type="hidden" name="blast_pre_screen"
+                    value="checked">
+      </form>
+      <table>  <!-- edit user book -->
+         <tr>
+            <td>
+               <!-- Open new window rather than submit, so cancel button
+                    will work.  
+                    NEW: OPEN IN SAME WINDOW: MAKE CANCEL, ETC. ACTIVELY
+                    RELOAD BOOK (THAT WAY IT WILL BE UPDATED).
+                    -->
+               <form name=edit_user_book_form 
+                     action="/cgi-bin/listbooks/enter_edit_password.py"
+                     method=post>
+                     <!--ONCLICK="go_to_edit_book(284">
+                  <input type="hidden" name="library"
+                         value="innate_immunity">
+                  <input type="hidden" name="short_name"
+                         value="FBOX (book2)">
+                  <input type="hidden" name="preferred_name"
+                         value="FBOX (book2)">
+                  <input type="hidden" name="bpg_use_f"
+                         value="">
+                  <input type="hidden" name="user_library_f"
+                         value="0">
+                  <input type="hidden" name="subfamily" 
+                         value="">
+               </form>
+            <td>
+               <IFRAME name=jalview_frame HEIGHT=50 WIDTH=300 FRAMEBORDER=0 
+                       SRC="blank.html" SCROLLING=no>
+                  Sorry, applet not showing.  Your browser does not support 
+                  inline frames.
+               </IFRAME>
+         </tr>
+      </table>  <!-- ends edit user book -->
+         <form name=alignment_analysis_form method=get  
+         action=alignment_analysis.php target=_blank>
+      <input type="hidden" name=library     
+             value="innate_immunity">
+      <input type="hidden" name=book     
+             value="bpg000057">
+      <input type="hidden" name=draft_book     
+             value="bpg000057">
+      <input type="hidden" name=workdir 
+             value="./adata/B1CvIl.d">
+      <input type="hidden" name=seed_sequence_id 
+             value="5282">
+      <input type="hidden" name=pdb_id 
+             value="NA">
+      <input type="hidden" name=chain_id 
+             value="">
+      <input type="hidden" name="from_book_f" 
+             value="1">
+   </form>
+
+   <form name=consensus_sequence_form>
+      <input type="hidden" name="alignment_id" value="26191">
+      <input type="hidden" name="book"         value="bpg000057">
+      <input type="hidden" name="preferred_name"   value="FBOX (book2)">
+      <input type="hidden" name="book_dir"     value="/home/bpg/pfacts/bpg000/bpg000057/user">
+      <input type="hidden" name="subfamily"    value="">
+ .php" target="downloads_window"
+         method="post">
+      <input type="hidden" name="root_dir"       value="/home/bpg/pfacts">
+      <input type="hidden" name="preferred_name" value="FBOX (book2)">
+      <input type="hidden" name="workdir"        value="./adata/B1CvIl.d">
+      <input type="hidden" name="book"           value="bpg000057">
+      <input type="hidden" name="draft_book"     value="bpg000057">
+      <input type="hidden" name="book_dir"       value="/home/bpg/pfacts/bpg000/bpg000057/user">
+      <input type="hidden" name="n_subfamilies"  value="424">
+      <input type="hidden" name="n_sequences"    value="2035">
+      <input type="hidden" name="bpg_book_f"     value="1">
+
+      <input type="hidden" name="view_tree_URL">
+   </form>
+
+         </td> <!-- ends page nested in table cell -->
+      </tr>
+   </table> <!-- ends main -->
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7133066-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+</BODY>
+</HTML>
+{% endblock %}

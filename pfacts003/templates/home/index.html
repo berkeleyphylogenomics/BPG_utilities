@@ -1,0 +1,82 @@
+{% extends 'common/base.html' %}
+
+{% block extrascripts %}
+<script type="text/javascript">
+
+//jQuery(document).ready( function() {
+
+    //jQuery("#seq-chart").gchart({type: 'pie3D', series: [jQuery.gchart.series('bysequence',
+    //    [73.7,22.0, 2.1, 2.1, 0.05],[jQuery.gchart.color(7,73,135),
+    //jQuery.gchart.color(255,204,0),jQuery.gchart.color(25,101,84),
+    //jQuery.gchart.color(135,80,0),jQuery.gchart.color(49,197,148)])],
+        //title: "7.3M Unique Sequences in PhyloFacts|Grouped by Kingdom", 
+        //titleSize: 15,
+        //titleColor: jQuery.gchart.color(7,73,135),
+    //    extension: {chdl: 'Bacteria (5.4M, 73.7%)|Eukaryotes (1.6M, 22.0%)|Archaea (157k, 2.1%)|Viruses (153k, 2.1%)|Unclassified (4.3k, 0.05%)'}, 
+    //    legend: 'right', legendSize: 12, legendColor: jQuery.gchart.color(0,0,0),
+    //    height: 160, width: 385, pieOrientation: 90});
+    //});
+</script>
+{% endblock %}
+
+{% block extrastyle %} 
+{% endblock %}
+
+{% block content %}
+<div style="clear: both;">
+    <div style="margin-left:15px;"><h2>Phylogenomics tools and databases for the scientific community</h2></div>
+    <div id='index'>
+      <div>
+        <div class="span-5">
+          <div id="controlPanel" >
+            <ul>
+              <li><a href="/phylofacts/">PHYLOFACTS</a></li>
+              <li><a href="/intrepid/">INTREPID</a></li>
+              <li><a href="/fatcat/">FAT-CAT</a></li>
+              <!--<li><a href="/phog/">PHOG ORTHOLOGS</a></li>-->
+              <li><a href="/satchmo-js/">SATCHMO-JS</a></li>
+              <!--<li><a href="http://phylogenomics.berkeley.edu/INTREPID/">INTREPID</a></li>-->
+              <li><a href="/research/">RESEARCH</a></li>
+	          <li><a href="/affiliations/">AFFILIATIONS</a></li>
+	          <!--<li><a href="/positions/">POSITIONS</a></li>-->
+              <li><a href="/software/">SOFTWARE</a></li>	      
+              <li><a href="/courses/">COURSES</a></li>
+              <li><a href="/members/">PEOPLE</a></li>
+            </ul>
+          </div><!-- end of "#controlPanel" div -->
+        </div><!-- end of "span-4" div that holds the "#controlPanel" div -->
+        <div class="span-18" >
+          <div id="rightPanel">
+            <ul id="menu-options">
+              <li>Phylogenomic Encyclopedias of Protein Families</li>
+              <li>Protein functional site prediction using the INTREPID and Discern algorithms</li>
+              <li>Phylogenomic ortholog identification and function prediction</li>
+              <!--<li>PhyloFacts Orthology Group: phylogenetic orthologs</li>-->
+              <li>Simultaneous alignment and tree construction using hidden Markov models</li>
+              <li>Find out about research being done at the lab</li>
+              <li>Our Affiliations and Collaborators</li>
+	          <!--<li>Job openings in the lab</li>-->
+	      <li>Research software available for download, including source code</li>
+              <li>Bioinformatics courses offered</li>
+              <li>Meet members of the Berkeley Phylogenomics Group</li>
+            </ul>
+		  </div>
+		</div>
+	    <!--<div class="span-10 last" onclick="location.href='/phylofacts/statistics/';" style="height:190px; border:#C3D9FF 0px solid; cursor:pointer">
+            <center><div id="news" style="font-size:14px;">PhyloFacts statistics<br />7.3M unique proteins across the Tree of Life</div><div id="seq-chart">
+          </div></center>
+      </div>-->
+    <div class="span-24">
+			<br />
+	<!-- <p id="intro">
+		      <span id="news" style="font-size:14px;">
+		      News from the Lab: 
+		      </span>
+<br />
+Opportunities for programmers, postdocs, and summer interns at Google <a href="/positions/">(check this link).</a>
+<br />
+New publication - Sjölander, K., Datta, R., Shen, Y., Shoffner, G.,   "Ortholog identification in the presence of domain architecture rearrangement,"   <a href= "http://bib.oxfordjournals.org/cgi/content/full/bbr036?ijkey=h6SI9uww4qEZU6Y&keytype=ref"> <i>Briefings in Bioinformatics 2011; doi: 10.1093/bib/bbr036</i></a>
+    	</p>-->
+		</div>
+  </div>
+{% endblock %}

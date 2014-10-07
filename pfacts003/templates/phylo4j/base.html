@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>{% block title %}Phylo4j{% endblock %} </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <link rel='stylesheet' href='/static/apps/phylo4j/css/redmond/jquery-ui-1.10.4.custom.min.css'
+        type='text/css' media='screen'/>
+    <link rel="stylesheet" href="/static/apps/phylo4j/css/phylo4j.css" type="text/css" media="screen">
+    {% block extrastyle %}{% endblock %}
+    <script type="text/javascript" src="/static/apps/phylo4j/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/static/apps/phylo4j/js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script type="text/javascript">
+        jQuery.noConflict();
+        var $j = jQuery;
+    </script>
+    <script>
+      $j( document ).ready(function() {
+        // Document ready functions
+        
+      });
+    </script>
+    {% block extrascripts %}{% endblock %}
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-34580382-1']);
+      _gaq.push(['_setDomainName', 'berkeley.edu']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+  </head>
+  <body>
+    {% block content %}<p>Oops, we forgot to put content on this page.</p>{% endblock %}
+    <!-- Start of StatCounter Code for Default Guide -->
+    <script type="text/javascript">
+        var sc_project=8261423; 
+        var sc_invisible=1; 
+        var sc_security="a6255677"; 
+    </script>
+    <script type="text/javascript"
+        src="http://www.statcounter.com/counter/counter.js"></script>
+    <noscript><div class="statcounter"><a title="drupal
+        statistics module" href="http://statcounter.com/drupal/"
+        target="_blank"><img class="statcounter"
+        src="http://c.statcounter.com/8261423/0/a6255677/1/"
+        alt="drupal statistics module"></a></div></noscript>
+    <!-- End of StatCounter Code for Default Guide -->
+  </body>
+</html>

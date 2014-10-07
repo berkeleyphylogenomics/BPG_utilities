@@ -1,0 +1,34 @@
+{% extends "phog/tutorial/tutorial_bottompagenav.html" %}
+
+{% block content %}
+<td>
+<p>
+<strong>
+Table of PHOGs containing a query sequence specified by ID/accession.
+</strong>
+</p>
+<hr>
+<p>
+For each PHOG that contains the query sequence (when input by ID/accession), the following information is provided in a table.
+</p>
+<p>
+<ul>
+<li>The PHOG identifier and a link to the associated PHOG web page.</li>
+<li>A brief description of the PHOG.</li>
+<li><a href="http://www.geneontology.org/GO.evidence.shtml">Gene Ontology evidence</a> from UniProt, with links to the Gene Ontology term details and evidence code descriptions (the best evidence code is shown in parentheses).</li>
+<li><a href="http://pfam.sanger.ac.uk">Pfam domains</a>, with links to the associated Pfam web pages.</li>
+<li>The <a href="http://www.uniprot.org/taxonomy/">taxonomic distribution</a>, with links to the UniProt taxonomic descriptions.</li>
+<li>The total number of seqences in the PHOG.</li>
+</ul>
+</p>
+</td>
+</tr>
+</table>
+<hr>
+
+{% endblock %}
+
+</body>
+</html>
+
+

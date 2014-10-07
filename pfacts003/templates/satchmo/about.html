@@ -1,0 +1,96 @@
+{% extends "queued/results.html" %}
+
+{% block mid_menu %}{% include "satchmo/mid_menu.html" %}{% endblock %}
+
+{% block app_logo %}<a href='/q/satchmo/'><span>SATCHMO-JS</span></a>{% endblock %}
+{% block statcounter %}{% include "satchmo/statcounter.html" %}{% endblock %}
+
+{% block title %}{% include "satchmo/title.html" %}{% endblock %}
+
+{% block body_title %}About SATCHMO{% endblock %}
+
+{% block extrastyle %}{% endblock %}
+
+{% block extrascripts %}{% endblock %}
+
+{# block toplinks #}
+{# include "snippets/menu.html" #}
+{# endblock #}
+
+{% block content %}
+<div>
+<h1 class="ktitle">Details on SATCHMO  and SATCHMO-JS</h1>
+<p>
+SATCHMO (Simultaneous Alignment and Tree Construction using Hidden Markov
+Models) uses HMM-HMM scoring and alignment to simultaneously estimate a
+phylogenetic tree and a multiple sequence alignment (MSA).  Full details of the
+SATCHMO algorithm are available in [1].
+</p>
+
+<p>
+SATCHMO uses a novel subtree-specific alignment masking proceure at each
+internal node of the tree to predict the conserved core structure for sequences
+descending from that node. The masked MSA is used to derive an HMM at that
+node, which is then used in all-vs-all HMM-HMM scoring to determine the
+branching order (and multiple alignment) from that point upwards to the root.
+Because of this subtree-masking protocol, SATCHMO HMMs and MSAs are typically
+shorter at the root of the SATCHMO tree than they towards the leaves, due to
+the structural variability across the family as a whole.  This is particularly
+true when sequences in a dataset are highly variable.  The PhyloScope tree
+viewer (provided on the SATCHMO-JS webserver) allows users to interact with the
+SATCHMO tree/MSA, to view alignments at internal nodes of the tree.
+</p>
+
+<p>
+SATCHMO all-vs-all HMM-HMM scoring and alignment is computationally expensive,
+limiting its applicability to relative small datasets.  The SATCHMO-JS
+algorithm addresses this using a jump-start protocol. We first align all the
+sequences in a dataset using the MAFFT algorithm [2]. The MAFFT MSA is
+submitted to QuickTree [3] to construct a Neighbor-Joining (NJ) tree. We then
+cut the NJ tree into subtrees such that no pair in each subtree has less than a
+pre-specified percent identity (the default is 35% pairwise identity).  The
+MSAs for each subtree are then masked to remove columns composed entirely of
+gap characters, and used to jump-start SATCHMO.  At this point, we use the
+standard SATCHMO protocol, constructing an HMM for each subtree, and using
+HMM-HMM scoring and alignment to determine the tree topology and MSA.  Once a
+rooted tree has been produced, we submit the tree to the RAxML program to
+optimize the tree edge lengths, keeping the SATCHMO tree topology fixed [4].
+</p>
+
+<p>
+<b>Details of the pipeline</b>: The input to SATCHMO-JS is a set of unaligned protein sequences in FASTA format. Up to 300 sequences are allowed. The pipeline has six stages:
+</p>
+
+<ol class='pipelist'>
+<li>Submitting the input dataset to MAFFT [2] to construct an initial MSA.</li>
+<li>Estimation of a Neighbor-Joining tree from the MAFFT MSA using QuickTree [3].</li>
+<li>Analysis of the MAFFT MSA and NJ tree to identify subtrees whose sequence divergence is no greater than a pre-set threshold  (the program default is 35% identity).</li>
+<li>Masking of subtree MSAs to remove columns containing 100% gap characters.</li>
+<li>Submitting these subtree MSAs to the SATCHMO algorithm (i.e., jump-starting SATCHMO with a smaller number of inputs, so that the HMM-HMM scoring and alignment only needs to be performed from that point upwards to form a rooted tree and MSA).</li>
+<li>Optimizing the SATCHMO tree edge lengths using the RAxML software [5], keeping the SATCHMO tree topology fixed.</li>
+</ol>
+
+<p>
+    <!--a href="http://www.drive5.com/lobster"-->
+    <a href="/static/apps/satchmo/download/satchmo_206.tar.gz">
+    The SATCHMO source code is available for download
+    </a>.
+    <br />
+
+    <a href="/supplementary/satchmo/">
+    Supplementary Material
+    </a>
+
+
+</p>
+
+<p>References cited:</p>
+<ol class='refs'>
+<li><a target='_blank' href='http://bioinformatics.oupjournals.org/cgi/content/abstract/19/11/1404?maxtoshow=&amp;HITS=10&amp;hits=10&amp;RESULTFORMAT=&amp;author1=Sjolander&amp;andorexacttitle=and&amp;andorexacttitleabs=and&amp;andorexactfulltext=and&amp;searchid=1074798462276_1761&amp;stored_search=&amp;FIRSTINDEX=0&amp;sortspec' class='ref'>Edgar, R., and Sj&ouml;lander, K., "SATCHMO: Sequence Alignment and Tree Construction using Hidden Markov models," <i>Bioinformatics</i>. 2003 Jul 22; 19(11):<b>1404-11.</b></a></li>
+<li><a target='_blank' href='http://www.ncbi.nlm.nih.gov/pubmed/12136088?dopt=Abstract' class='ref'>Katoh K., Misawa K., Kuma K., and Miyata T., "MAFFT: a novel method for rapid multiple sequence alignment based on fast Fourier transform," <i>Nucleic Acids Research</i>, 2002, Vol. 30, No. 14 <b>3059-3066.</b></a></li>
+<li><a target='_blank' href='http://www.ncbi.nlm.nih.gov/pubmed/12424131?dopt=Abstract' class='ref'>Howe K., Bateman A., and Durbin R., "QuickTree: building huge Neighbour-Joining trees of protein sequences," <i>Bioinformatics</i>, 2002, Vol. 18, No. 11 <b>1546-1547.</b></a></li>
+    <li>Hagopian, R., Davidson, J., Datta, R., Samad, B., Jarvis, G., and <b>Sj&ouml;lander, K.</b>, "SATCHMO-JS: a webserver for simultaneous protein multiple sequence alignment and phylogenetic tree construction," To appear in NAR Web Server Issue 2010.</li>
+<li><a target='_blank' href='http://www.ncbi.nlm.nih.gov/pubmed/16928733?dopt=Abstract' class='ref'>Stamakis A., "RAxML-VI-HPC: maximum likelihood-based phylogenetic analyses with thousands of taxa and mixed models," <i>Bioinformatics</i>, 2006, Vol. 22, No. 21 <b>2688-2690.</b></a></li>
+</ol>
+</div>
+{% endblock %}

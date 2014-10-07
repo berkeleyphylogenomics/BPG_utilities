@@ -1,0 +1,23 @@
+{% extends "phog/phog_base.html" %}
+
+{% block precontent %}
+{% if topnav %}
+    <div class="topnav" id="topnav">
+        {% block topnav %}{% endblock %}
+    </div>
+{% endif %}
+    <div class="content" id="content">
+        {% block toppagenav %}{% endblock %}
+    </div>
+{% endblock %}
+    <div class="content" id="content">
+        {% block content %}{% endblock %}
+    </div>
+{% block postcontent %}
+    <div class="content" id="content">
+        {% block bottompagenav %}{% endblock %}
+    </div>
+{{ block.super }}
+{% endblock %}
+</body>
+</html>

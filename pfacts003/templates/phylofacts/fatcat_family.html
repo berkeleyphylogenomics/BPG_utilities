@@ -1,0 +1,80 @@
+{% extends 'common/base_new.html' %}
+
+{% block title %}TV Test{% endblock %}
+
+{% block extrastyle %}
+{% endblock %}
+
+{% block extrascripts %}
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        jQuery.get("/phylofacts/fatcat_family/{{ family.id }}/tree", function(data) {
+            var dataObject = {xml: data};      
+            jQuery("#tree").phylotree({
+                data: dataObject,
+                edgeStyle: {
+                    stroke: "rgb(0,0,0)",
+                    'stroke-width': 3,
+                },
+                leafLabelAttributes: $j("#tree_column_selector input:checked").map(function(i, el) { return $j(el).val() }),
+                pathCallback: function(r, length) {
+                    jQuery(r.node).qtip({
+                        content: "Distance: " + length, 
+                        position: {
+                            my: 'top left',
+                            target: 'mouse',
+                            viewport: $j(window), // Keep it on-screen at all times if possible
+                            adjust: { x: 10,  y: 10 }
+                        },
+                        style: { classes: 'ui-tooltip-shadow', widget: true, width: '400px' }
+                    });
+                }
+            });
+        });
+    
+        function update_labels() {
+        $j(".tree").phylotree("option", "leafLabelAttributes",
+            $j("#tree_column_selector input:checked").map(function(i, el) { return $j(el).val() })
+        );
+    }
+
+$j("#tree_column_selector input").change(update_labels);
+
+});
+</script>
+{% endblock %}
+
+{% block content %}
+
+    <ul class="nav">
+  <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" id>Tree Labels<b class="caret"></b></a>
+    <ul class="dropdown-menu" id="tree_column_selector">
+        <li class="ui-state-default">Name <input type="checkbox" value="name" checked></li>
+        <li class="ui-state-default">Description <input type="checkbox" value="description" checked></li>
+        <li class="ui-state-default">Taxonomy <input type="checkbox" value="taxonomy" checked></li>
+        <li class="ui-state-default">EC <input type="checkbox" value="ec" checked></li>
+        <li class="ui-state-default">GO <input type="checkbox" value="go"></li>
+        <li class="ui-state-default">GO (Experimental) <input type="checkbox" value="go_exp" checked></li>
+        <li class="ui-state-default">SFLD <input type="checkbox" value="sfld"></li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" id>Visible Annotations<b class="caret"></b></a>                <ul id="annotation_selector" class="dropdown-menu">
+        <li class="ui-state-default">GO Molecular Function<input type="checkbox" value="go_molecular_function" checked></li>                    <li class="ui-state-default">GO Biological Process<input type="checkbox" value="go_biological_process" checked></li>                    <li class="ui-state-default">GO Cellular Component<input type="checkbox" value="go_cellular_component" ></li>
+        <li class="ui-state-default">EC Numbers<input type="checkbox" value="ec" checked></li>
+<!-- Need to finish the DB stuff
+        <li class="ui-state-default">BioCyc Reactions<input type="checkbox" value="biocyc_reactions" checked></li>
+        <li class="ui-state-default">BioCyc Pathways<input type="checkbox" value="biocyc_pathways" checked></li>
+-->
+        <li class="ui-state-default">SFLD <input type="checkbox" value="sfld"></li>
+    </ul>
+  </li>
+  <li><a href="javascript:;" id="show-all-trees">Show All Trees</a></li>
+  <li><a href="javascript:;" id="hide-all-trees">Hide All Trees</a></li>
+  <li><a href="javascript:;" id="show-all-annotations">Show All Annotations</a></li>
+  <li><a href="javascript:;" id="hide-all-annotations">Hide All Annotations</a></li>
+</ul> <!-- end of nav -->
+
+    <div id="tree" style="width:90%"></div>
+{% endblock %}

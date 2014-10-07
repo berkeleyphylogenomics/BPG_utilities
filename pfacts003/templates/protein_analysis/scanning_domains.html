@@ -1,0 +1,28 @@
+{% extends 'protein_analysis/base.html' %}
+
+{% block title %}PhyloFacts Sequence Analysis Sandbox{% endblock %}
+
+{% block extrastyle %}
+
+{% endblock %}
+
+{% block extrascripts %}
+<script type="text/javascript">
+// Django to javascript variables
+var progressAPIUpdateInterval = {{ progress_update_interval }};
+var getString = "/api/SAS/{{ job.id }}/";
+</script>
+<script type="text/javascript" src="/static/js/protein_analysis_scanning.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class='main-content'>
+    <div>
+        <h4 style='margin-bottom:5px; margin-top:0px;'>Scanning for domains in query</h4>
+        <div class='progress progress-striped active' style='margin-bottom:5px;'>
+            <div class='bar' style='width:100%;'></div>
+        </div>
+        <p style='font-size:12px;'>Please wait while your sandbox loads . . .</p>
+    </div>
+</div>
+{% endblock %}

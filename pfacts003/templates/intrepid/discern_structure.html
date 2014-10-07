@@ -1,0 +1,78 @@
+<div id='discern-structure-holder'>
+    <div id='discern-structure-container' class='structure-container'></div>
+    <div class='structure-control-panel'>
+        <table class='command-line-structure-table'>
+            <tbody>
+                <tr>
+                    <td><span>Command:</span></td>
+                    <td><input type="text" id="structure-command-line" /></td>
+                    <td><button type="button" class="btn btn-primary" id="execute-structure-command">Run</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <table class='highlight-residues-table'>
+            <tbody>
+                <tr>
+                    <td><span>Highlight residues by</span></td>
+                    <td>
+                        <select id="structure-score-type-selector">
+                            <option value="discern" selected>discern score</option>
+                            <option value="intrepid">intrepid score</option>
+                        </select>
+                    </td>
+                    <td><span>with hot-to-cold coloring using logistic function with</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="hrt-row2">
+            <tbody>
+                <tr>
+                    <td><span>&lambda; = </span></td>
+                    <td><input type="number" step="any" id="lambda-value" value="1.5" /></td>
+                    <td><span>and half-saturation at top</span></td>
+                    <td><input type="number" min="1" max="100" id="logisticx0" value="10" /></td>
+                    <td><span>percent of scores</span></td>
+                    <td><button type="button" class="btn btn-primary" id="highlight-top-k">Highlight</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="hrt-row3">
+            <tbody>
+                <tr>
+                    <td>Hot color</td>
+                    <td><input type="color" id="hot-color" value="#FF0000" /></td>
+                    <td>Cold color</td>
+                    <td><input type="color" id="cold-color" value="#0A0F32" /></td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <table class='display-model-table'>
+            <tbody>
+                <tr>
+                    <td>Display model</td>
+                    <td>
+                        <input type="radio" name="display-model" value="bs">&nbsp;Ball-and-stick&nbsp;&nbsp;</input>
+                        <input type="radio" name="display-model" value="w">&nbsp;Wire&nbsp;&nbsp;</input>
+                        <input type="radio" name="display-model" value="c">&nbsp;Cartoons&nbsp;&nbsp;</input>
+                        <input type="radio" name="display-model" value="sf" checked>&nbsp;Spacefill&nbsp;&nbsp;</input>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <table class='structure-control-buttonset'>
+            <tbody>
+                <tr>
+                    <td>
+                        <button type="button" class="btn btn-default" id="show-known-residues">Highlight known functional sites</button>
+                        <button type="button" class="btn btn-default" id="toggle-solvent-surface">Toggle solvent accessible surface</button>
+                        <button type="button" class="btn btn-default" id="spin-structure">Toggle spin</button>
+                        <button type="button" class="btn btn-default" id="export-structure">Export as PNG</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

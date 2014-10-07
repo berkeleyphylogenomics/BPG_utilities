@@ -1,0 +1,67 @@
+{% extends 'fatcat/base.html' %}
+
+{% block extrastyle %}
+<link rel='stylesheet' href='/static/css/fatcat.css' type='text/css' media='screen' />
+{% endblock %}
+
+{% block extrascripts %}
+<script type='text/javascript'>
+// Globals for javascript stuff.
+var NUM_FATCAT_STAGES = {{ num_fatcat_stages }};
+var ID = {{ job.id }};
+var getString = '/api/fatcat2/{{ job.id }}/';
+</script>
+<script type='text/javascript' src='/static/js/fatcat_progress.js'></script>
+{% endblock %}
+
+{% block content %}
+<div class='main-content'>
+    <div class='fatcat-progress-title'>
+        <div class='left-title'> 
+            <h2 class='fatcat-title'>FAT-CAT Fast Approximate Tree Classification</h2>
+            <div class='progress progress-striped active'>
+                <div class='bar' style="width:0%"></div>
+            </div>
+            <div id='status'></div>
+            <span id='job-run-time-display'><em>Job run time:</em> <span id='job-run-time'></span></span>
+        </div>
+        <div class='right-title'>
+            <img src='/static/img/logos/fatcat_logo_with_tree.jpg' width='175'>
+        </div>
+    </div>
+    <div class='instruction'>
+        <p>If you submitted a job without an email address 
+        (or if you are not logged in to PhyloFacts), it  
+        is recommended to bookmark this page.  
+        Results will become available as the job completes.</p>
+    </div>
+    <div class='job-summary'>
+        <table class='progress-job-summary'>
+            <tr>
+                <td>Header</td>
+                <td>{{ job.fasta_header }}</td>
+            </tr>
+            <tr>
+                <td>Fasta Sequence</td>
+                <td style="font-family:monospace;font-size:11px;">{% for line in sequence %}{{ line }}{% if not forloop.last %}<br />{% endif %}{% endfor %}</td>
+            </tr>
+            <tr>
+                <td>Parameterization</td>
+                <td>{{ job.parameterization }}</td>
+            </tr>
+        </table>
+        <table class='progress-job-summary' id='stage1-families-table'>
+            <tr>
+                <td>Families passing stage 1</td>
+                <td><span id='stage1-families'></span></td>
+            </tr>
+        </table>     
+        <table class='progress-job-summary' id='stage2-families-table'>
+            <tr>
+                <td>Families passing stage 2</td>
+                <td><span id='stage2-families'></span></td>
+            </tr>
+        </table>     
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,179 @@
+{% if descriptions and descriptions.0 %}
+<table class='consensus-uniprot-description-header'>
+    <tbody>
+        <tr>
+            <td>Consensus UniProt Description</td>
+            <td>{% if descriptions.0.1 > high_threshold %}<a href='javascript:;' class='shjs' data-uncover='#descriptions'>{{ descriptions.0.0 }}</a> <span class='confidence'>High Confidence</span>
+                {% else %}
+                {% if descriptions.0.1 > medium_threshold %}<a href='javascript:;' class='shjs' data-uncover='#descriptions'>{{ descriptions.0.0 }}</a> <span class='confidence'>Medium Confidence</span>
+                {% else %}<a href='javascript:;' class='shjs' data-uncover='#descriptions'>Fuzzy Annotation Set</a>{% endif %}
+                {% endif %}
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div id='descriptions'>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for description in descriptions %}
+            <tr>
+                <td>{{ description.0 }}</td>
+                <td>{{ description.1|floatformat:"-2" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% if genes and genes.0 %}
+<table class='consensus-uniprot-gene-header'>
+    <tr>
+        <td>Consensus UniProt Gene Name</td>
+        <td>
+            {% if genes.0.1 > high_threshold %}<a href='javascript:;' class='shjs' data-uncover='#genes'>{{ genes.0.0 }}</a> <span class='confidence'>High Confidence</span>
+            {% else %}
+            {% if genes.0.1 > medium_threshold %}<a href='javascript:;' class='shjs' data-uncover='#genes'>{{ genes.0.0 }}</a> <span class='confidence'>Medium Confidence</span>
+            {% else %}<a href='javascript:;' class='shjs' data-uncover='#genes'>Fuzzy Annotation Set</a>{% endif %}
+            {% endif %}
+        </td>
+    </tr>
+</table>
+<div id='genes'>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Gene Name</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for gene in genes %}
+            <tr>
+                <td>{{ gene.0 }}</td>
+                <td>{{ gene.1|floatformat:"-2" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% if ec and ec.0 %}
+<table class='consensus-uniprot-ec-header'>
+    <tr>
+        <td>Consensus EC Number</td>
+        <td>
+            {% if ec.0.1 > high_threshold %}<a href='javascript:;' class='shjs' data-uncover='#ec'>{{ ec.0.0 }}</a> <span class='confidence'>High Confidence</span>
+            {% else %}
+            {% if ec.0.1 > medium_threshold %}<a href='javascript:;' class='shjs' data-uncover='#ec'>{{ ec.0.0 }}</a> <span class='confidence'>Medium Confidence</span>
+            {% else %}<a href='javascript:;' class='shjs' data-uncover='#ec'>Fuzzy Annotation Set</a>{% endif %}
+            {% endif %}
+        </td>
+    </tr>
+</table>
+<div id='ec'>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>EC Number</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for e in ec %}
+            <tr>
+                <td>{{ e.0 }}</td>
+                <td>{{ e.1|floatformat:"-2" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+<table class='go-annotation-table'>
+{% if job.get_summary_go_annotations.biological_process|length %}
+    <tr>
+        <td>GO Biological Process</td>
+        <td>
+            <ul class='go-summarylist'>
+                {% for annotation in job.get_summary_go_annotations.biological_process %}
+                <li><a href='http://amigo.geneontology.org/cgi-bin/amigo/term_details?term={{ annotation.accession }}' target='_blank'>{{ annotation.description }}</a> (<a href='http://www.geneontology.org/GO.evidence.shtml#{{ annotation.evidence_code|lower }}' target='_blank' class='tip' title='{{ annotation.evidence_name }}'>{{ annotation.evidence_code }}</a>) <i class='icon-zoom-in tip go-annotation-view-hide-selector' data-accession='{{ annotation.accession }}' title='View all orthologs with this GO annotation'></i></li>
+                <div id='{{ annotation.accession|cut:":" }}-table' class='hide'>
+                    <table>
+                        <thead>
+                            <tr>
+                            <th>UniProt ID</th>
+                            <th>Description</th>
+                            <th>Species</th>
+                            <th>Evidence</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>        
+                {% endfor %}
+            </ul>
+        </td>
+    </tr>
+{% endif %}
+
+{% if job.get_summary_go_annotations.cellular_component|length %}
+    <tr>
+        <td>GO Cellular Component</td>
+        <td>
+            <ul class='go-summarylist'>
+                {% for annotation in job.get_summary_go_annotations.cellular_component %}
+                <li><a href='http://amigo.geneontology.org/cgi-bin/amigo/term_details?term={{ annotation.accession }}' target='_blank'>{{ annotation.description }}</a> (<a href='http://www.geneontology.org/GO.evidence.shtml#{{ annotation.evidence_code|lower }}' target='_blank' class='tip' title='{{ annotation.evidence_name }}'>{{ annotation.evidence_code }}</a>) <i class='icon-zoom-in tip go-annotation-view-hide-selector' data-accession='{{ annotation.accession }}' title='View all orthologs with this GO annotation'></i></li> 
+                <div id='{{ annotation.accession|cut:":" }}-table' class='hide'>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>UniProt ID</th>
+                                <th>Description</th>
+                                <th>Species</th>
+                                <th>Evidence</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>        
+                {% endfor %}
+            </ul>
+        </td>
+    </tr>
+{% endif %}
+
+{% if job.get_summary_go_annotations.molecular_function|length %}
+    <tr>
+        <td>GO Molecular Function</td>
+        <td>
+            <ul class='go-summarylist'>
+                {% for annotation in job.get_summary_go_annotations.molecular_function %}
+                <li><a href='http://amigo.geneontology.org/cgi-bin/amigo/term_details?term={{ annotation.accession }}' target='_blank'>{{ annotation.description }}</a> (<a href='http://www.geneontology.org/GO.evidence.shtml#{{ annotation.evidence_code|lower }}' target='_blank' class='tip' title='{{ annotation.evidence_name }}'>{{ annotation.evidence_code }}</a>) <i class='icon-zoom-in tip go-annotation-view-hide-selector' data-accession='{{ annotation.accession }}' title='View all orthologs with this GO annotation'></i></li> 
+                <div id='{{ annotation.accession|cut:":" }}-table' class='hide'>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>UniProt ID</th>
+                                <th>Description</th>
+                                <th>Species</th>
+                                <th>Evidence</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>        
+                {% endfor %}
+            </ul>
+        </td>
+    </tr>
+{% endif %}
+</table>

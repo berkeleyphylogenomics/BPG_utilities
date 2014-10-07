@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>PhyloScope</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <script type="text/javascript" src="/static/apps/phyloscope/js/legacy/json2.js"></script>
+  <script type="text/javascript" src="/static/apps/phyloscope/js/ajax.js"></script>
+  
+<style type="text/css">
+
+.phyloscope_body {margin-left: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; }
+.phyloscope_heading {font-family: Arial, Helvetica, sans-serif; font-size: 16px; }
+.phyloscope_text {font-family: Arial, Helvetica, sans-serif; font-size: 12px; }
+.treediv {width: 100%; height: 200px; border: 0px solid black; position: absolute; }
+.style1 {width: 100%; height: 30px; font-family: Arial, Helvetica, san-serif; font-size: 24px; 
+  background-color: #41677A; color: #FFFFFF; font-weight: bold; vertical-align: middle; 
+  padding-bottom: 10px; }
+</style>
+</head>
+<body class="phyloscope_body">  
+
+<script type="text/javascript">
+//  See note on reloading of cached JavaScript files below.
+//  Force reloading of cached JavaScript files whenever this page is reloaded.  Necessary when debugging JS files.
+    document.write('<script type="text/javascript" src="/static/apps/phyloscope/js/phyloscope.js?' + new Date().getTime() + '"><\/script>');
+    document.write('<script type="text/javascript" src="/static/apps/phyloscope/js/phylo_tree.js?' + new Date().getTime() + '"><\/script>');
+    document.write('<script type="text/javascript" src="/static/apps/phyloscope/js/phylo_decoratetree.js?' + new Date().getTime() + '"><\/script>');
+	
+   function open_download_window() {
+      f = document.forms.download_form;
+      download_window = window.open( "", "download_window", "width=600, height=400, scrollbars=yes, menubar=yes, resizable=yes, status=yes " );
+      download_window.focus();
+      f.submit();
+   }	
+   
+   function open_tree_download_window() {
+      url = "/phylofacts/family/" + document.getElementById('id_view_tree_URL').value;
+      tree_download_window = window.open( url, "tree_download_window", "width=600, height=400, scrollbars=yes, menubar=yes, resizable=yes, status=yes " );
+	  tree_download_window.focus();
+   }
+	
+</script>
+<script type="text/javascript" src="/static/js/bpg_tooltip.js"></script>
+<script type="text/javascript" src="/static/js/browser_detect.js"></script>
+
+<!-- This div is needed for conversion of HTML entities in JSON string in IE -->
+<div id="htmlconverter" style="display:none;"></div>
+  
+<div height="40" class="style1">&nbsp;&nbsp;&nbsp;&nbsp;PhyloScope</div>
+
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"> 
+   <tr><td width="50"></td>
+
+   <td height="30" valign="bottom" class="phyloscope_heading">{% if preferred_name %}{{ preferred_name }} &ndash; {% else %}{% if phog_accession %} PhyloFacts Orthology Group <a href="/phog/{{ phog_accession }}/">{{ phog_accession }}</a> found in {% else %}{% if treenode %} (sub)tree <a href='/phylofacts/tree_node_view/{{ treenode }}/' target='_blank'>{{ treenode }}</a> found in {% endif %}{% endif %}{% endif %}PhyloFacts Family 
+      <a href="/phylofacts/family/{{ family_accession }}">{{ family_accession }}</a>
+      {% ifequal url_tree_method 'nj' %}
+      &ndash; Neighbor-joining Tree
+      {% endifequal %}
+      {% ifequal url_tree_method 'ml' %}
+      &ndash; Maximum-likelihood Tree
+      {% endifequal %}
+   </td>
+   <td style="color: red"></td>
+   <td></td>
+   <td align="right" valign="middle" class="phyloscope_heading">
+     <a href="/phyloscope/help/">Need help?</a>&nbsp;&nbsp;<a href="/phyloscope/help/">
+     <img onmouseover="phylo_Tip('PhyloScope Quick Start Guide');" onmouseout="UnTip();" 
+     src="/static/img/icons/icn_help_blue_cute.png" border=0></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   </td>
+   </tr>
+
+   {% if top_scoring_node_id %}
+   <tr><td width="50"></td>
+   <td height="20" valign="bottom" class="phyloscope_heading">Top scoring node ID: {{ top_scoring_node_id }}</td>
+   </tr>
+   {% endif %}
+
+
+    <tr>
+     <table width="100%" border="0" cellpadding="10" bgcolor="#FFFFFF">
+       <tr>
+     	<td valign="top" style="font-size: 11pt">
+       <input type="checkbox" id="cbTaxon" checked=yes onchange="cbChanged();">Taxon name<br />
+       <input type="checkbox" id="cbCommonName" checked=yes onchange="cbChanged();">Common name<br />
+       <input type="checkbox" id="cbProtein" checked=yes onchange="cbChanged();">Protein name<br />
+       <input type="checkbox" id="cbUniProt" checked=yes onchange="cbChanged();">SwissProt entry
+	     <img style="border: none;" src="/static/img/icons/icon_swiss_flag_12.png" alt="SwissProt icon"><br />
+       <input type="checkbox" id="cbUniProtId" checked=yes onchange="cbChanged();">UniProt ID<br />
+       <input type="checkbox" id="cbEnzymeCommission" checked=yes onchange="cbChanged();">Enzyme Commission number<br />
+     </td>  
+	 <td valign="top" style="font-size: 11pt">
+       <input type="checkbox" id="cbEvidence" checked=yes onchange="cbChanged();">Annotation evidence 
+         <img style="border: none;" src="/static/img/icons/icon_flask_12.png" alt="Annotation evidence icon"><br />
+       &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="cbExperimentalOnly" checked=yes onchange="cbChanged();">
+	     <span id="cbExperimentalOnlyText">Experimental annotation evidence only</span><br />     
+       <input type="checkbox" id="cbLiterature" checked=yes onchange="cbChanged();">Literature reference
+         <img style="border: none;" src="/static/img/icons/icon_literature_12.png" alt="Literature reference icon"><br />
+       <div id="divColorOrtho"><input type="checkbox" id="cbColorOrtho" checked=yes onchange="cbColorOrthoChanged();">Color superorthologous groups<br /></div>	 
+	   </td>
+{% if show_book_download or show_tree_download or show_full_tree_download %}
+       <td valign="top" width="100">
+	{% if download_form %}
+       <form method="link" name="download_form" action="/phylofacts/family/downloads_from_django.php" target="download_window">
+       <table>
+       	 {{ download_form.as_table }}
+       </table>
+       </form>
+    {% endif %}
+{% comment %}
+{% if show_book_download %}
+    <input type="button" onclick="open_download_window()" value="Download Book Information" /><br /><br />
+{% endif %}   
+{% if show_tree_download %}
+    <input type="button" onclick="open_tree_download_window()" value="Download Tree" />
+{% endif %} 
+{% if show_full_tree_download %}
+    <input type="button" onclick="open_tree_download_window()" value="Download Full Tree" />
+{% endif %}
+{% endcomment %}
+		</td>
+{% endif %}
+       </tr>
+	 </table>
+  </tr>
+  <tr><td colspan="2"></td></tr>
+      <tr><td>
+        <div id="treediv" class="treediv">
+        </div>
+        <!-- This div contains a rotating tree GIF and is deleted when the tree is drawn -->
+        <div align="center" style="top: 100;">
+          <p><img src="/static/img/widgets/EMBLTreeOfLifeWhirlingLayers.gif" alt="Loading..."></p>
+        </div>
+     </td>
+     <td>     </td>
+     </tr>
+</table>
+<br /><br /><br /><br />
+
+<script type="text/javascript">
+
+	function unique(a) {
+		var r = new Array();
+		o:for(var i = 0, n = a.length; i < n; i++) {
+			for(var x = i + 1 ; x < n; x++) {
+				if(a[x]==a[i]) continue o;
+			}
+			r[r.length] = a[i];
+		}
+		return r;
+	}
+
+{% if hide_ortho_controls %}	hideOrthoControls = true;{% endif %}
+{% if do_color_ortho %}	doColorOrtho = true;{% endif %}
+
+
+	initControls();
+
+	BrowserDetect.init();
+	if (BrowserDetect.browser == "Explorer") {
+		alert("Note to Internet Explorer users: the tree may not display properly using IE.\n" +
+		"We strongly recommend that you use Safari or Firefox instead.");
+	}
+
+	theTreeDiv = document.getElementById("treediv"); 
+
+	bookAccessionNumber = "{{ book_accession }}";
+	
+	var subtreeLeftIdStr = "{{ subtree_left_id }}";
+	if (subtreeLeftIdStr == "") {
+		subtreeLeftId = 1;
+	} else {
+		subtreeLeftId = parseInt(subtreeLeftIdStr);
+	}
+	
+	var highlightLeftIdsStr = "{{ highlight_left_ids }}"; 	
+	highlightLeftIds = highlightLeftIdsStr.split(" ");
+	for (var i in highlightLeftIds) {
+		highlightLeftIds[i] = parseInt(highlightLeftIds[i]);
+	}
+	highlightLeftIds = unique(highlightLeftIds);
+	if (highlightLeftIds.length < 2) {
+		highlightLeftIds = [];
+	}
+	
+	var colorLeftIdsStr = "{{ color_left_ids }}"; 	
+	if (colorLeftIdsStr != "") {
+		colorLeftIds = colorLeftIdsStr.split(" ");
+		for (var i in colorLeftIds) {
+			colorLeftIds[i] = parseInt(colorLeftIds[i]);
+		}
+	}
+	
+	var superorthologousNodesStr = "{{ superorthologous_nodes }}";
+	if (superorthologousNodesStr != "") {
+		orthoObj = JSON.parse(htmlEntityDecode(superorthologousNodesStr));
+	}
+        
+        var pathNodeLabel = "{{ top_scoring_node_id }}";
+	
+	jsonObj = JSON.parse(htmlEntityDecode("{{ json_tree }}"));
+	
+	drawJsonObj(jsonObj);
+
+        if (pathNodeLabel != "") {
+		pathNode = tree.findNode(pathNodeLabel);
+		if (pathNode) {
+			if (pathNodeLabel = "TSN") {
+				tree.highlightToRoot(pathNode);
+				tree.isFrozen = true;
+			} else {
+				tree.setNode(pathNode, true);
+				tree.highlightToRoot(pathNode);
+				tree.isFrozen = true;
+			}
+		} 
+	}
+
+</script>
+
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=4594249; 
+var sc_invisible=1; 
+var sc_partition=56; 
+var sc_click_stat=1; 
+var sc_security="d8236ffb"; 
+</script>
+
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter.js"></script><noscript><div
+class="statcounter"><a title="joomla 1.5 statistics"
+href="http://www.statcounter.com/joomla/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/4594249/0/d8236ffb/1/"
+alt="joomla 1.5 statistics" ></a></div></noscript>
+<!-- End of StatCounter Code -->
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7134388-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+</body>  
+</html> 

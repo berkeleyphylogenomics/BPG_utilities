@@ -1,0 +1,26 @@
+{% extends "common/legacy_base.html" %}
+{% load msa %}
+
+{% block extrastyle %}
+   <link rel="stylesheet" href="/phylofacts/style.css" type="text/css" />
+{% endblock %}
+
+{% block extrascripts %}
+   <script src="../annotate/annotate.js" type="text/javascript"></script>
+   <script type='text/javascript'>
+   $(document).ready(function() {
+   $('#tabs').tabs();
+   });
+   </script>
+{% endblock %}
+
+
+{% block toplinks %}
+{% include "snippets/menu.html" %}
+{% endblock %}
+
+
+{% block content %}
+accession_id: {{accession_id}}<br />
+component: {{component}}
+{% endblock %}

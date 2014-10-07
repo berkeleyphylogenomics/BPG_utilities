@@ -1,0 +1,314 @@
+{% extends 'fatcat/base.html' %}
+
+{% block title %}FAT-CAT - Fast Approximate Tree Classification{% endblock %}
+
+{% block extrastyle %}
+<link rel='stylesheet' href='/static/css/fatcat.css' type='text/css' media='screen'/>
+{% endblock %}
+
+{% block extrascripts %}
+<script type='text/javascript' src='/static/js/fatcat_index.js'></script>
+{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class='fatcat-header'>
+    <div class='left-logo'>
+        <h2 class="fatcat-title">FAT-CAT: Fast Approximate Tree Classification</h2>
+        
+        <p style="font-size:8pt;text-align:center">A DOE Knowledgebase Webserver</p>
+        
+        <p>The FAT-CAT webserver uses subtree HMM scoring to place user sequences into pre-calculated phylogenetic trees in PhyloFacts, from which orthologs are identified and function is predicted. <!--FAT-CAT is supported by a grant from the Department of Energy Division of Biological and Environmental Research.--> Some results can take hours to complete; we recommend that you provide your email address or bookmark the results page.</p>
+        <p style="text-align:center""><a href="/phylofacts/fatcat/about/">About FAT-CAT</a> | <a href="/phylofacts/fatcat/precalc/">Pre-calculated results</a> | <a href="/phylofacts/fatcat/supplementary/">Supplementary Materials</a></p>
+        
+        <!--<p class='first-line'>FAT-CAT is a server for functional annotation and ortholog identification of protein sequences.</p> 
+        <table>
+            <tr>
+                <td><a href="/phylofacts/fatcat/about/">About the FAT-CAT pipeline</a></td>
+                <td><a href="/static/doc/FATCAT_Tutorial.pdf">FAT-CAT Tutorial</a></td>
+                <td><a href='/static/doc/FATCAT_Quickstart.pdf'>Quickstart guide</a></td>
+                <td><a href='/phylofacts/fatcat/precalc/' target='_blank'>View precalculated results</a></td>
+            </tr>
+        </table>
+        <p class='last-line'>We recommend that you provide your email address or bookmark the results page, as some results may take minutes to hours to complete.</p>-->
+        <p class='last-line'><a href='javascript:;' id='example-input'>Auto-populate this form</a></p>
+    </div>
+    <div class='right-logo'>
+        <a href="/phylofacts/fatcat/help/"><img src='/static/img/logos/fatcat_logo_with_tree.jpg' style='width:175px; border:0px;'></a>
+    </div>
+    </div>
+    <hr style='margin-top:5px;margin-right:25px;'>
+    <table class='fatcat-input-form'>
+        <tr>
+            <td>Sequence header<br /><span class='input-bound-descriptions'>(max 100 characters)</span></td>
+            <td><input type='text' class='single-line-input' id='header-input'></td>
+            <td><span class='inline-message' id='header-input-message'></span></td>
+        </tr>
+        <tr>
+            <td>Protein sequence <span class='require'>*</span><br /><span class='input-bound-descriptions'>(max 2000 amino acids, no header)</span></td>
+            <td><textarea id='fasta-input' rows='5'></textarea></td>
+            <td><span class='inline-message' id='fasta-input-message'></span></td>
+        </tr>
+        <tr>
+            <td>Email <span class='input-bound-descriptions'>(optional)</span></td>
+            <td><input type='text' class='double-line-input' id='email-input'></td>
+            <td><span class='inline-message' id='email-input-message'></span></td>
+        </tr>
+        <tr>
+            <td>Email subject<br /><span class='input-bound-descriptions'>(max 100 characters)</span></td>
+            <td><input type='text' class='single-line-input' id='email-subject-input'></td>
+            <td><span class='inline-message' id='email-subject-input-message'></span></td>
+        </tr>
+        <tr>
+            <td>Comments<br /><span class='input-bound-descriptions'>(max 200 characters)</span></td>
+            <td><input type='text' class='single-line-input' id='job-comments-input'></td>
+            <td><span class='inline-message' id='job-comments-input-message'></span></td>
+        </tr>
+    </table>
+    <div class='alert hide' id='job-create-message'>
+        <button type='button' class='close' data-dismiss='alert'>&times;</button>
+        <span></span>
+    </div>
+    <div class='fatcat-buttonset'>
+        <div class='preset-params-radio'>
+            <span class='params-preset-text full-width'><strong>Preset parameters:</strong></span>
+            <hr class='preset-params-top'>
+            <div class='btn-group params-auto' data-toggle='buttons-radio'>
+                <button class='btn btn-info active' type='button' value='recall' title='May include some paralogs but unlikely to miss many orthologs'>High recall</button>
+                <button class='btn' type='button' value='precision' title='May miss true orthologs but minimize paralog inclusion'>High precision</button>
+                <button class='btn' type='button' value='remote'>Remote homologs</button>
+                <button class='btn' type='button' value='fragments'>Partial sequence</button>
+            </div>
+            <hr class='preset-params-bottom'>
+            <span class='params-preset-explanation'><em>High recall:</em> We require only 1 
+                orthology method to support an enclosing clade of proposed orthologs. 
+                Candidate orthologs can have lower sequence identity and alignment overlap 
+                to the query. This parameterization is designed to retrieve more distant 
+                orthologs (from distantly related species) but may result in the inclusion of 
+                paralogs. 
+            </span>
+        </div>
+        <div class='form-submission-buttonset'>
+            <button type="button" class='btn btn-primary' id='fatcat-submit'>Submit</button>
+            <span class='submitting-indicator'><img src='/static/img/icons/small-loading-icon.gif' /> Creating FAT-CAT Job...</span>
+        </div>
+    </div>
+    <p class='view-hide-advanced-parameters'><em>Advanced: </em><a href='javascript:;' class='jqvhs' data-uncover='.parameters'>Modify parameters manually</a></p>
+    <div class='parameters'>
+        <p class='parameters-description'>The stages of the FAT-CAT pipeline are described in detail <a href=''>here</a>.</p>
+        <div class='parameter-stage'>
+            <h4>Stage 1 Parameters: Family HMM Searches</h4>
+            <p class='stage-description'>These parameters control the precision and recall of Stage 1 family HMM searches.</p>
+            <table class='stage-parameter-table'>
+                <tr>
+                    <td>Family HMM E-Value</td>
+                    <td><input type='text' id='stage1-evalue'></input></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan='3' class='param-left-align'>Fraction of the query that matches an HMM</td>
+                </tr>
+                <tr>
+                    <td>MDA HMMs</td>
+                    <td><input class='percentage' type='number' min=0 max=99 id='stage1-mda-family-query-coverage'></input></td>
+                    <td>%</td>
+                </tr>
+                <tr>
+                    <td colspan='3' class='param-left-align'>Fraction of the HMM that matches the query</td>
+                </tr>
+                <tr>
+                    <td>MDA HMMs</td>
+                    <td><input class='percentage' type='number' min=0 max=99 id='stage1-mda-family-hmm-coverage'></input></td>
+                    <td>%</td>
+                </tr>
+                <tr>
+                    <td>Pfam HMMs</td>
+                    <td><input class='percentage' type='number' min=0 max=99 id='stage1-pfam-family-hmm-coverage'></input></td>
+                    <td>%</td>
+                </tr>
+            </table>
+        </div>
+        <div class='parameter-stage ellis-island'>
+            <h4>Ellis Island Parameters</h4>
+            <p class='stage-description'></p>
+                <label class='checkbox'>
+                    <input type='checkbox'/>Include Ellis Island bypass.
+                </label>
+            </p>
+            <table class='stage-parameter-table'>
+                <tr>
+                    <td>Hit Coverage</td>
+                    <td><input class='percentage' type='number' min=1 max=99 id='ellis-island-hcov'></input></td>
+                    <td>%</td>
+                </tr>
+                <tr>
+                    <td>Query Coverage</td>
+                    <td><input class='percentage' type='number' min=1 max=99 id='ellis-island-qcov'></input></td>
+                    <td>%</td>
+                </tr>
+                <tr>
+                    <td>Maxseqs</td>
+                    <td><input type='number' min=1 id='ellis-island-maxseqs'></input></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>Maxfams</td>
+                    <td><input type='number' min=1 id='ellis-island-maxfams'></input></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>Within-taxon clustering % ID</td>
+                    <td><input class='percentage' type='number' min=1 max=100 id='ellis-island-taxon-pid'></input></td>
+                    <td>%</td>
+                </tr>
+            </table>
+        </div>        
+        <div class='parameter-stage stage2'>
+            <h4>Stage 2 Parameters: Subtree HMM scoring and phylogenetic placement</h4>
+            <p class='stage-description'>These parameters control the precision and recall of Stage 2 subtree HMM searches and the definition of the Enclosing Clade of presumed orthologs.</p> 
+            <table class='stage-parameter-table'>
+                <tr>
+                    <td class='substage' colspan='3'>Stage 2.1: Subtree HMM Searches</td>
+                </tr>
+                <tr>
+                    <td>Subtree HMM E-Value</td>
+                    <td><input type='text' id='stage2-evalue'></input></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class='substage' colspan='3'>Stage 2.2: Subtree HMM alignment evaluation</td>
+                </tr>
+                <tr>
+                    <td class='param-left-align' colspan='3'>Fraction of the query that matches an HMM</td>
+                
+                </tr>
+                <tr>
+                    <td>MDA HMMs</td>
+                    <td><input class='percentage' type='number' min=0 max=99 id='stage2-mda-family-query-coverage'></input></td>
+                    <td>%</td>
+                </tr>
+                <tr>
+                    <td class='param-left-align' colspan='3'>Fraction of the HMM that matches a query</td>
+                </tr>
+                <tr>
+                    <td>MDA HMMs</td>
+                    <td><input class='percentage' type='number' min=0 max=99 id='stage2-mda-family-hmm-coverage'></input></td>
+                    <td>%</td>
+                </tr>
+                <tr>
+                    <td>Pfam HMMs</td>
+                    <td><input class='percentage' type='number' min=0 max=99 id='stage2-pfam-family-hmm-coverage'></input></td>
+                    <td>%</td>
+                </tr>
+                <tr>
+                    <td>Minimum % ID between query<br />and subtree HMM consensus</td>
+                    <td><input class='percentage' type='number' min=0 max=99 id='stage2-query-hmm-pid'></input></td>
+                    <td>%</td>
+                </tr>
+            </table>
+            <p class='substage-outside'>Stage 2.3: Enclosing Clade Criteria</p>
+            <p class='stage-description'>Expand the TSN to the largest Enclosing Clade supported by orthology methods selected below.</p>
+            <p class='indentation tiny'><em>For highest precision</em>, check all orthology methods, and require all to support and Enclosing Clade.</p>
+            <p class='indentation tiny'><em>For highest recall</em>, check all orthology methods, and require 1 to support an Enclosing Clade.</p>
+            <div class='enclosing-clade-group'>
+                <p class='bold-text no-bottom-margin'>Require any <select><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option></select> of the following orthology method(s) to support an Enclosing Clade:</p>
+                <div class='checkboxes'>
+                    <label class='checkbox'>
+                        <input type='checkbox' value='phog' checked />PHOG-T(0)
+                    </label>
+                    <div class='checkbox-line'>
+                        <label class='checkbox'>
+                            <input type='checkbox' value='kerf' checked />Kerf
+                        </label>
+                        <p><strong>, threshold:</strong></p><input id='stage2-enclosing-clade-kerf-threshold' class='percentage' type='number' value='70'><p style='font-weight:normal;'>% identity</p>
+                    </div>
+                    <label class='checkbox'>
+                        <input type='checkbox' value='oma' checked />Subtree Bracketing of OMA 
+                    </label>
+                    <label class='checkbox'>
+                        <input type='checkbox' value='orthomcl' checked />Subtree Bracketing of OrthoMCL
+                    </label>
+                </div>
+            </div>
+            <table class='stage-parameter-table'>
+                <tr>
+                    <td class='substage' colspan='3'>Stage 2.4: Gathering Enclosing Clade Members</td>
+                </tr>
+                <tr>
+                    <td style='width:100px;'>Analyze top</td>
+                    <td><input type='number' min=1 max=1000 id='stage2-maxseqs'></input></td>
+                    <td><strong>sequences for orthology (ordered by similarity to the query)</strong></td>
+                </tr>
+            </table>
+        </div>
+        <div class='parameter-stage'>
+            <h4>Stage 3 Parameters: Ortholog selection and tree construction</h4>
+            <p class='stage-description'></p>
+            <table class='stage-parameter-table'>
+                <tr>
+                    <td class='substage' colspan='3'>Stage 3.1: Query-Candidate Ortholog Alignment Analysis</td>
+                </tr>
+                <tr>
+                    <td>Minimum % ID between <br />query and candidate ortholog</td>
+                    <td><input class='percentage' type='number' min=0 max=99 id='stage3-query-ortholog-pid'></input></td>
+                    <td>%</td>
+                </tr>
+                <tr>
+                    <td>Query Coverage</td>
+                    <td><input class='percentage' type='number' min=0 max=99 id='stage3-query-coverage'></input></td>
+                    <td>%</td>
+                </tr>
+                <tr>
+                    <td>Candidate ortholog Coverage</td>
+                    <td><input class='percentage' type='number' min=0 max=99 id='stage3-ortholog-coverage'></input></td>
+                    <td>%</td>
+                </tr>
+            </table>
+            <table class='stage-parameter-table'>
+                <tr>
+                    <td class='substage' colspan='3'>Stage 3.2: Candidate Ortholog Clustering</td>
+                </tr>
+                <tr>
+                    <td>Cluster subtrees from one taxon with greater than</td>
+                    <td><input class='percentage' type='number' min=80 max=99 value='97' id='stage3-ortholog-cluster-similarity'></input></td>
+                    <td><strong> % identity</strong></td> 
+                </tr>
+            </table>
+            <table class='stage-parameter-table'>
+                <tr>
+                    <td class='substage' colspan='3'>Stage 3.3: Displaying Tree</td>
+                </tr>
+                <tr>
+                    <td>Limit tree display to</td>
+                    <td><input type='number' min=1 max=500 value='200' id='stage3-koa-parameter'></input></td>
+                    <td><strong> sequences around the query</strong></td>
+                </tr>
+            </table>
+        </div>
+        <div class='parameter-stage'>
+            <h4>Stage 4 Parameters: Derive predicted function</h4>
+            <p class='stage-description'></p>
+            <table class='stage-parameter-table'>
+                <tr>
+                    <td class='substage' colspan='3'>Stage 4.1: Consensus UniProt Description</td>
+                </tr>
+                <tr>
+                    <td>Exponential decay &lambda;</td>
+                    <td><input type='text' id='stage4-lambda'></input></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>Threshold for high confidence</td>
+                    <td><input class='percentage' type='number' min=1 max=99 id='stage4-threshold-for-high-confidence'></input></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>Threshold for medium confidence</td>
+                    <td><input class='percentage' type='number' min=1 max=99 id='stage4-threshold-for-medium-confidence'></input></td>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>            
+        </div>
+    </div>
+</div>
+{% endblock %}

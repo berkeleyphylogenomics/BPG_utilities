@@ -1,0 +1,22 @@
+<table class='table table-bodered table-striped'>
+    <thead>
+        <tr>
+            <td>Job Type</td>
+            <td>Created On</td>
+            <td>FAT-CAT ID</td>
+            <td>Submitting User</td>
+            <td>Submitting IP</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for job in ohana_jobs %}
+            <tr>
+                <td>{{ job.job_type }}</td>
+                <td>{{ job.job_create_time|date:"g:i a, D d M Y" }}</td>
+                <td>{{ job.fatcat_job.get.id }}</td>
+                <td>{% if job.submitting_user.id == 8 %}Anonymous{% else %}{{ job.submitting_user.username }}{% endif %}</td>
+                <td>{{ job.submitting_ip_address }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

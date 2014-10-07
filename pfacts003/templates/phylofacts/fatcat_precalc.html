@@ -1,0 +1,75 @@
+{% extends 'fatcat/base.html' %}
+
+{% block title %}FAT-CAT - precalculated results{% endblock %}
+
+{% block extrastyle %}
+<link rel='stylesheet' href='/static/css/fatcat.css' type='text/css' media='screen'/>
+<style type="text/css">
+#precalc {font-size:12px;}
+#precalc td {padding-right:10px;}
+/*#precalc td tr:nth-child(1) {width:100px;}
+#precalc td tr:nth-child(2) {width:100px;}
+#precalc td tr:nth-child(3) {width:100px;}
+#precalc td tr:nth-child(4) {width:100px;}
+#precalc td tr:nth-child(5) {width:100px;}
+*/
+</style>
+{% endblock %}
+
+{% block extrascripts %}
+<script type='text/javascript' src='/static/js/fatcat_index.js'></script>
+{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class='fatcat-header'>
+    <div class='left-logo'>
+        <h2 class="fatcat-title">FAT-CAT Precalculated Results</h2>
+        <p>
+        <table id="precalc" class='table'>
+            <thead>
+                <tr>
+                    <th>Protein ID</th>
+                    <th>Protein Description</th>
+                    <th>Species</th>
+                    <th colspan='2'>Program Version</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TPH2_HUMAN</td> 
+                    <td>Tryptophan 5-hydroxylase 2</td>
+                    <td>Homo sapiens (Human)</td>
+                    <td><a href='/phylofacts/fatcat/2591/'>FAT-CAT</a></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>SODC_SCHMA</td>
+                    <td>Superoxide dismutase</td>
+                    <td>Schistosoma mansoni (Blood fluke)</td>
+                    <td>&nbsp;</td>
+                    <td><a href='/fatcat/158/'>FAST-CAT</a></td>
+                </tr>
+                <tr>
+                    <td>PUP_MYCTU</td>
+                    <td>Prokaryotic ubiquitin-like protein</td>
+                    <td>Mycobacterium tuberculosis</td>
+                    <td><a href='/phylofacts/fatcat/2622/'>FAT-CAT</a></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>gi|344266516</td>
+                    <td>APAF1 related</td>
+                    <td>Loxodonta africana (African Elephant)</td>
+                    <td><a href='/phylofacts/fatcat/2616/'>FAT-CAT</a></td>
+                    <td><a href='/fatcat/172/'>FAST-CAT</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class='right-logo'>
+        <a href="/phylofacts/fatcat/help/"><img src='/static/img/logos/fatcat_logo_with_tree.jpg' style='width:175px; border:0px;'></a>
+    </div>
+    </div>
+</div>
+{% endblock %}

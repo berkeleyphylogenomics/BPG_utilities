@@ -1,0 +1,87 @@
+{% extends 'common/base.html' %}
+
+{% block title %}PhyloFacts E. coli genome{% endblock %}
+
+{% block content %}
+
+<br />
+<br />
+<br />
+<div style="width: 80%">
+<h3>PhyloFacts: E. coli Genome</h3>
+<p>The PhyloFacts Encyclopedia is composed of "books" to represent gene families, clustered in two distinct ways: requiring agreement along the entire multi-domain architecture, and based on sharing a single Pfam domain. Each book contains a multiple sequence alignment, phylogenetic tree, inferred orthologs (using the <a href="http://makana.berkeley.edu/phog/">PHOG</a> algorithm (<a href="http://nar.oxfordjournals.org/cgi/content/full/gkp373?ijkey=KU8e1DWUbzb70Yz&keytype=ref">article</a>)), hidden Markov model, and associated experimental and annotation data.</p>
+<p>Details on the library construction pipeline are provided in the following article. <br />
+  <span class="author">
+  Nandini Krishnamurthy, Duncan Brown, Dan Kirshner and <span
+  class="bold-name">Kimmen Sj&ouml;lander</span>,
+  </span>
+
+  <span class="pub_title">
+  "PhyloFacts: An online structural phylogenomic encyclopedia for protein
+  functional and structural classification,"
+  </span>
+  
+  <a href="http://genomebiology.com/2006/7/9/R83"><span class="journal">Genome Biology</span> 2006,
+  7:R83</a>
+
+  <a href="/static/doc/pub/2006_GB_PhyloFacts.pdf">PDF</a>.
+</p>
+<br />
+<p>
+<h3>Statistics on E.coli PhyloFacts families:</h3>
+Number of genes: 4,069 <br />
+Number of books for multi-domain architectures: 3,684 <br />
+Number of books for Pfam domains: 4,619<br />
+</p>
+<br />
+<p>
+<h3>Downloads:</h3>
+We provide a number of downloads from this page for PhyloFacts families containing E.coli proteins; details are provided in the README file. Bzipped (bz2) files are provided; Windows users can extract these files using the free utility <a href="http://www.7-zip.org/">7-zip</a>.
+</p>
+<br />
+<!-- README (..KB text file) -->
+<a href="http://makana-static.berkeley.edu/phylofacts3/code/python_scripts.zip">Scripts</a> to extract data (HMMs, phylogenetic trees, etc.) for specific families.
+<br />
+<br />
+<b>For families agreeing on the multi-domain architecture:</b><br />
+Hidden Markov models (HMMs, in HMMER3 format) (79MB, <a
+href="http://makana-static.berkeley.edu/phylofacts3/hmms/Ecoli_GHGBestBooks.hmms.bz2">bz2</a>)
+<br />
+Multiple sequence alignments (in UCSC A2M format) (149MB, <a
+href="http://makana-static.berkeley.edu/phylofacts3/alignments/Ecoli_GHGBestBooks.alignments.bz2">bz2</a>)
+<br />
+Phylogenetic Trees (in Newick format) : Maximum Likelihood (20MB, <a
+href="http://makana-static.berkeley.edu/phylofacts3/trees/Ecoli_GHGBestBooks.trees.ML.bz2">bz2</a>), 
+Neighbor joining (19MB, <a
+href="http://makana-static.berkeley.edu/phylofacts3/trees/Ecoli_GHGBestBooks.trees.NJ.bz2">bz2</a>)
+<br />
+Family summary data (in machine-readable format) (8.7MB, <a
+href="http://makana-static.berkeley.edu/phylofacts3/summaries/Ecoli_GHGBestBooks.summaries.bz2">bz2</a>)
+<br />
+<br />
+
+
+<b>For Pfam domain families:</b>
+<br />
+Hidden Markov models (HMMs, in HMMER3 format) for domain books (57MB, <a
+href="http://makana-static.berkeley.edu/phylofacts3/hmms/Ecoli_pfamBestBooks.hmms.bz2">bz2</a>)
+<br />
+Multiple sequence alignments (in UCSC A2M format) for domain books (262MB, <a
+href="http://makana-static.berkeley.edu/phylofacts3/alignments/Ecoli_pfamBestBooks.alignments.bz2">bz2</a>)
+<br />
+Phylogenetic Trees (in Newick format): Maximum Likelihood (52MB, <a
+href="http://makana-static.berkeley.edu/phylofacts3/trees/Ecoli_pfamBestBooks.trees.ML.bz2">bz2</a>), Neighbor Joining (50MB, <a
+href="http://makana-static.berkeley.edu/phylofacts3/trees/Ecoli_pfamBestBooks.trees.NJ.bz2">bz2</a>)
+<br />
+Family summary data (in machine-readable format) (17MB, <a
+href="http://makana-static.berkeley.edu/phylofacts3/summaries/Ecoli_pfamBestBooks.summaries.bz2">bz2</a>)
+<!--
+<br />
+PHOG summary data (..MB bzipped file)</a>
+-->
+<br />
+<br />
+<p>To download files pertaining to an individual PhyloFacts 3.0 family, please visit the corresponding family webpage from <a href="/phylofacts/family/">here</a>.
+</p>
+</div>
+{% endblock %}

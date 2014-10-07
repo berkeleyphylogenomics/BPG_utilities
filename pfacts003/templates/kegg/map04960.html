@@ -1,0 +1,57 @@
+{% extends "kegg/map_base.html" %}
+
+{% block node_overlay %}
+  .node_1_1_1_146_instance_0
+    { position: absolute;
+      left: 506px; top: 269px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+  .node_2_7_1_153_instance_0
+    { position: absolute;
+      left: 393px; top: 605px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+{% endblock %}
+{% block mapdata %}
+<area shape=circle	coords=107,529,4	href="/dbget-bin/www_bget?C01330"	title="C01330 (Sodium)" />
+<area shape=circle	coords=649,361,4	href="/dbget-bin/www_bget?C01780"	title="C01780 (Aldosterone)" />
+<area shape=circle	coords=514,561,4	href="/dbget-bin/www_bget?C00238"	title="C00238 (Potassium)" />
+<area shape=circle	coords=653,570,4	href="/dbget-bin/www_bget?C01330"	title="C01330 (Sodium)" />
+<area shape=circle	coords=644,291,4	href="/dbget-bin/www_bget?C00735"	title="C00735 (Cortisol)" />
+<area shape=circle	coords=468,292,4	href="/dbget-bin/www_bget?C00762"	title="C00762 (Cortisone)" />
+<area shape=circle	coords=384,576,4	href="/dbget-bin/www_bget?C05981"	title="C05981 (Phosphatidylinositol-3,4,5-trisphosphate)" />
+<area shape=circle	coords=123,186,4	href="/dbget-bin/www_bget?C00698"	title="C00698 (Cl-)" />
+<area shape=circle	coords=224,391,4	href="/dbget-bin/www_bget?C00238"	title="C00238 (Potassium)" />
+<area shape=circle	coords=508,425,4	href="/dbget-bin/www_bget?C00575"	title="C00575 (3',5'-Cyclic AMP)" />
+<area shape=rect	coords=135,521,181,538	href="/dbget-bin/www_bget?K04824+K04825+K04827"	title="K04824 (SCNN1A), K04825 (SCNN1B), K04827 (SCNN1G)" />
+<area shape=rect	coords=559,559,605,576	href="/dbget-bin/www_bget?K01539+K01540+K01538"	title="K01539 (ATP1A), K01540 (ATP1B), K01538 (FXYD2)" />
+<area shape=rect	coords=271,489,317,506	href="/dbget-bin/www_bget?K13302"	title="K13302 (SGK1)" />
+<area shape=rect	coords=493,348,539,365	href="/dbget-bin/www_bget?K08555"	title="K08555 (NR3C2)" />
+<area shape=rect	coords=442,526,488,543	href="/dbget-bin/www_bget?K07827"	title="K07827 (KRAS)" />
+<area shape=rect	coords=218,572,264,589	href="/dbget-bin/www_bget?K13305"	title="K13305 (NEDD4L)" />
+<area shape=rect	coords=559,516,605,533	href="/dbget-bin/www_bget?K13359"	title="K13359 (FXYD4)" />
+<area shape=rect	coords=506,269,552,286	href="/dbget-bin/www_bget?K00071"	title="K00071 (E1.1.1.146)" />
+<area shape=rect	coords=559,643,605,660	href="/dbget-bin/www_bget?K04527"	title="K04527 (INSR)" />
+<area shape=rect	coords=463,641,509,658	href="/dbget-bin/www_bget?K07187"	title="K07187 (IRS)" />
+<area shape=rect	coords=393,605,439,622	href="/dbget-bin/www_bget?K02649+K00922"	title="K02649 (PIK3R), K00922 (E2.7.1.153)" />
+<area shape=rect	coords=314,537,360,554	href="/dbget-bin/www_bget?K06276"	title="K06276 (PDPK1)" />
+<area shape=rect	coords=641,627,687,644	href="/dbget-bin/www_bget?K04526"	title="K04526 (INS)" />
+<area shape=rect	coords=642,657,688,674	href="/dbget-bin/www_bget?K05459"	title="K05459 (IGF1)" />
+<area shape=rect	coords=134,382,180,399	href="/dbget-bin/www_bget?K04995"	title="K04995 (KCNJ1)" />
+<area shape=rect	coords=283,572,329,589	href="/dbget-bin/www_bget?K06644"	title="K06644 (SFN)" />
+<area shape=rect	coords=511,449,557,466	href="/dbget-bin/www_bget?K04371"	title="K04371 (ERK1_2)" />
+<area shape=rect	coords=481,395,527,412	href="/dbget-bin/www_bget?K02677"	title="K02677 (CPKC)" />
+<area shape=rect	coords=135,406,181,423	href="/dbget-bin/www_bget?K13358"	title="K13358 (SLC9A3R2)" />
+<area shape=rect	coords=40,45,434,71	href="/dbget-bin/www_bget?map04960"	title="map04960: Aldosterone-regulated sodium reabsorption" />
+<area shape=rect	coords=276,646,392,681	href="/kegg-bin/show_pathway?map04120"	title="map04120: Ubiquitin mediated proteolysis" />
+<area shape=rect	coords=320,267,436,302	href="/kegg-bin/show_pathway?map00140"	title="map00140: Steroid hormone biosynthesis" />
+<area shape=rect	coords=194,104,310,130	href="/kegg-bin/show_pathway?map04530"	title="map04530: Tight junction" />
+{% endblock %}
+{% block color_nodes %}
+  {% if nodes_to_color.1_1_1_146 %}
+    <div class="node_1_1_1_146_instance_0"></div>
+  {% endif %}
+  {% if nodes_to_color.2_7_1_153 %}
+    <div class="node_2_7_1_153_instance_0"></div>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,662 @@
+PQQE_PSEMY Coenzyme PQQ synthesis protein E 
+PQQE_PSEP1 Coenzyme PQQ synthesis protein E 
+PQQE_KLEP7 Coenzyme PQQ synthesis protein E 
+PQQE_METEP Coenzyme PQQ synthesis protein E 
+PQQE_XANCB Coenzyme PQQ synthesis protein E 
+PQQE_METS4 Coenzyme PQQ synthesis protein E 
+PQQE_ACIBY Coenzyme PQQ synthesis protein E 
+PQQE_ACIBS Coenzyme PQQ synthesis protein E 
+PQQE_METRJ Coenzyme PQQ synthesis protein E 
+PQQE_METPB Coenzyme PQQ synthesis protein E 
+PQQE_ACIBC Coenzyme PQQ synthesis protein E 
+PQQE_XANOP Coenzyme PQQ synthesis protein E 
+PQQE_ERWT9 Coenzyme PQQ synthesis protein E 
+PQQE_KLEP3 Coenzyme PQQ synthesis protein E 
+PQQE_ACIB3 Coenzyme PQQ synthesis protein E 
+PQQE_ACIB5 Coenzyme PQQ synthesis protein E 
+PQQE_METC4 Coenzyme PQQ synthesis protein E 
+PQQE_PSEA8 Coenzyme PQQ synthesis protein E 
+PQQE_METSB Coenzyme PQQ synthesis protein E 
+PQQE_METNO Coenzyme PQQ synthesis protein E 
+PQQE_AZOVD Coenzyme PQQ synthesis protein E 
+PQQE_RAHAQ Coenzyme PQQ synthesis protein E 
+PQQE_ACICA Coenzyme PQQ synthesis protein E 
+PQQE_KLEPN Coenzyme PQQ synthesis protein E 
+PQQE_ENTIT Coenzyme PQQ synthesis protein E 
+PQQE_STRRO Coenzyme PQQ synthesis protein E 
+PQQE_METEA Coenzyme PQQ synthesis protein E 
+PQQE_ESCVU Coenzyme PQQ synthesis protein E 
+PQQE_PSEAB Coenzyme PQQ synthesis protein E 
+PQQE_GRABC Coenzyme PQQ synthesis protein E 
+PQQE_XANOM Coenzyme PQQ synthesis protein E 
+PQQE_XANC5 Coenzyme PQQ synthesis protein E 
+PQQE_PSE14 Coenzyme PQQ synthesis protein E 
+PQQE_PSEF5 Coenzyme PQQ synthesis protein E 
+PQQE_XANC8 Coenzyme PQQ synthesis protein E 
+PQQE_PSEU2 Coenzyme PQQ synthesis protein E 
+PQQE_XANOR Coenzyme PQQ synthesis protein E 
+PQQE_SILPO Coenzyme PQQ synthesis protein E 
+PQQE_METCA Coenzyme PQQ synthesis protein E 
+PQQE_ACIAD Coenzyme PQQ synthesis protein E 
+PQQE_RHOPA Coenzyme PQQ synthesis protein E 
+PQQE_PSESM Coenzyme PQQ synthesis protein E 
+PQQE_PSEPK Coenzyme PQQ synthesis protein E 
+PQQE_BRAJA Coenzyme PQQ synthesis protein E 
+PQQE_XANCP Coenzyme PQQ synthesis protein E 
+PQQE_XANAC Coenzyme PQQ synthesis protein E 
+PQQE_RHIME Coenzyme PQQ synthesis protein E 
+PQQE_PSEAE Coenzyme PQQ synthesis protein E 
+PQQE_GLUOX Coenzyme PQQ synthesis protein E 
+A0B2H6_BURCH Coenzyme PQQ biosynthesis protein E 
+A0B894_METTP Radical SAM domain protein 
+A0LKC8_SYNFM Radical SAM domain protein 
+A0LKP8_SYNFM Radical SAM domain protein 
+A0LL08_SYNFM Radical SAM domain protein 
+A0LMS8_SYNFM Radical SAM domain protein 
+A0LMT0_SYNFM Radical SAM domain protein 
+A0NZK7_9RHOB Nitrite reductase heme biosynthesis J protein 
+A0PM49_MYCUA Coenzyme PQQ synthesis protein E, PqqE 
+A0Q5Y7_FRATN Radical SAM family protein 
+A0QL25_MYCA1 Radical SAM domain protein 
+A0QSB8_MYCS2 Radical SAM domain protein 
+A0QYN3_MYCS2 Coenzyme PQQ biosynthesis protein E 
+A0RCN5_BACAH Coenzyme PQQ synthesis protein 
+A0Y878_9GAMM Pyrroloquinoline quinone biosynthesis protein PqqE 
+A0Z534_9GAMM Pyrroloquinoline quinone biosynthesis protein PqqE 
+A1AT69_PELPD Radical SAM domain protein 
+A1B4K5_PARDP Coenzyme PQQ biosynthesis protein E 
+A1B4Y7_PARDP Radical SAM domain protein 
+A1HQU0_9FIRM Radical SAM domain protein 
+A1HQU1_9FIRM Radical SAM domain protein 
+A1K4Q2_AZOSB Pyrroloquinoline quinone synthesis protein E 
+A1KGH3_MYCBP Probable coenzyme pqq synthesis protein E pqqE 
+A1RQK3_PYRIL Radical SAM domain protein 
+A1SPZ3_NOCSJ Radical SAM domain protein 
+A1T4N0_MYCVP Radical SAM domain protein 
+A1U5D5_MARAV Radical SAM domain protein 
+A1UBM4_MYCSK Radical SAM domain protein 
+A1VFC6_DESVV Radical SAM domain protein 
+A1VFC8_DESVV Radical SAM domain protein 
+A1VK70_POLNA Coenzyme PQQ biosynthesis protein E 
+A1W761_ACISJ Radical SAM domain protein 
+A1WQ36_VEREI Coenzyme PQQ biosynthesis protein E 
+A2BIS2_HYPBU Fe-S oxidoreductase-arylsulfatase regulator AslB 
+A2BIS4_HYPBU Fe-S oxidoreductase-metallo cofactor biosynthesis protein 
+A2SJ03_METPP Coenzyme PQQ synthesis protein E 
+A2VG02_MYCTU Coenzyme pqq synthesis protein E pqqE 
+A2W3A8_9BURK Radical SAM 
+A2WIB7_9BURK Coenzyme PQQ biosynthesis protein E 
+A3CTV9_METMJ Radical SAM domain protein 
+A3CTW2_METMJ Radical SAM domain protein 
+A3JCI5_9ALTE Pyrroloquinoline quinone biosynthesis protein PqqE 
+A3K1J0_9RHOB Pyrroloquinoline quinone biosynthesis protein PqqE 
+A3KTI4_PSEAE Pyrroloquinoline quinone biosynthesis protein E 
+A3KZS5_PSEAE Heme d1 biosynthesis protein NirJ 
+A3L786_PSEAE Pyrroloquinoline quinone biosynthesis protein E 
+A3LHW4_PSEAE Heme d1 biosynthesis protein NirJ 
+A3MWV6_PYRCJ Radical SAM domain protein 
+A3MWW6_PYRCJ Radical SAM domain protein 
+A3PMI2_RHOS1 Coenzyme PQQ biosynthesis protein E 
+A3PVA9_MYCSJ Radical SAM domain protein 
+A3VLH5_9RHOB Pyrroloquinoline quinone biosynthesis protein PqqE 
+A3W1G3_9RHOB Pyrroloquinoline quinone biosynthesis protein PqqE 
+A4BR29_9GAMM Pyrroloquinoline quinone biosynthesis protein PqqE 
+A4FCB4_SACEN Coenzyme PQQ synthesis protein E 
+A4FI19_SACEN Coenzyme PQQ synthesis protein E 
+A4IL23_GEOTN Coenzyme PQQ synthesis protein PqqE 
+A4J1V8_DESRM Radical SAM domain protein 
+A4J6H3_DESRM Radical SAM domain protein 
+A4J6H5_DESRM Radical SAM domain protein 
+A4JT46_BURVG Coenzyme PQQ biosynthesis protein E 
+A4KF15_MYCTU Coenzyme pqq synthesis protein E pqqE 
+A4T1S6_MYCGI Radical SAM domain protein 
+A4U0H7_9PROT Radical SAM 
+A4VL85_PSEU5 Coenzyme PQQ synthesis protein E 
+A4VL93_PSEU5 Coenzyme PQQ synthesis protein E 
+A4VQB3_PSEU5 Heme d1 biosynthesis protein NirJ 
+A4WN23_PYRAR Radical SAM domain protein 
+A4WN34_PYRAR Radical SAM domain protein 
+A4WPI2_RHOS5 Coenzyme PQQ biosynthesis protein E 
+A4XLT9_CALS8 Radical SAM domain protein 
+A4YE34_METS5 Radical SAM domain protein 
+A4YE35_METS5 Radical SAM domain protein 
+A4YZY7_BRASO Pyrroloquinoline quinone biosynthesis protein E (Coenzyme PQQ synthesis protein E) 
+A5D3L7_PELTS Predicted Fe-S oxidoreductases 
+A5D3L9_PELTS Predicted Fe-S oxidoreductases 
+A5D4R6_PELTS Predicted Fe-S oxidoreductases 
+A5EPX8_BRASB Pyrroloquinoline quinone biosynthesis protein E 
+A5FUM8_ACICJ Coenzyme PQQ biosynthesis protein E 
+A5G7E6_GEOUR Radical SAM domain protein 
+A5GDW6_GEOUR Radical SAM domain protein 
+A5GEV3_GEOUR Radical SAM domain protein 
+A5IIV8_THEP1 Radical SAM domain protein 
+A5N548_CLOK5 Predicted Fe-S oxidoreductase 
+A5N549_CLOK5 Predicted Fe-S oxidoreductase 
+A5U079_MYCTA Coenzyme pqq synthesis protein E 
+A5WK61_MYCTF Coenzyme PQQ synthesis protein E pqqE 
+A6E1W2_9RHOB Pyrroloquinoline quinone biosynthesis protein PqqE 
+A6EYQ6_9ALTE Pyrroloquinoline quinone biosynthesis protein PqqE 
+A6FRA5_9RHOB Pyrroloquinoline quinone biosynthesis protein PqqE 
+A6FYQ9_9DELT Heme biosynthesis protein 
+A6GSH6_9BURK Pyrroloquinoline quinone biosynthesis protein PqqE 
+A6LUZ7_CLOB8 Radical SAM domain protein 
+A6LUZ8_CLOB8 Radical SAM domain protein 
+A6Q5Y8_NITSB Heme d1 biosynthesis protein NirJ 
+A6Q6Z2_SULNB Heme d1 biosynthesis protein NirJ 
+A6TJC6_ALKMQ Radical SAM domain protein 
+A6TJC7_ALKMQ Radical SAM domain protein 
+A6UGE5_SINMW Coenzyme PQQ biosynthesis protein E 
+A6UYX2_PSEA7 Heme d1 biosynthesis protein NirJ 
+A6V6I0_PSEA7 Coenzyme PQQ biosynthesis protein E 
+A7BLS4_9GAMM Heme d1 biosynthesis protein 
+A7C2F3_9GAMM Heme d1 biosynthesis protein 
+A7I6W2_METB6 Radical SAM domain protein 
+A7I6W5_METB6 Radical SAM domain protein 
+A7IGA1_XANP2 Coenzyme PQQ biosynthesis protein E 
+A7JHB1_FRANO Putative uncharacterized protein 
+A7JLG0_FRANO Putative uncharacterized protein 
+A7MN60_ENTS8 Putative uncharacterized protein 
+A7UFD2_HELMO Heme d1 biosynthesis protein 
+A7UFD4_HELMO Heme d1 biosynthesis protein 
+A7UGV2_9FIRM NirJ1 
+A7UGV4_9FIRM NirJ2 
+A8AA60_IGNH4 Radical SAM domain protein 
+A8LEE2_FRASN Radical SAM domain protein 
+A8LGV8_FRASN Radical SAM domain protein 
+A8LLZ7_DINSH Putative nitrite reductase heme biosynthesis J protein 
+A8LNP4_DINSH Coenzyme PQQ biosynthesis protein E 
+A8M6L3_SALAI Radical SAM domain protein 
+A8M8V4_CALMQ Radical SAM domain protein 
+A8MCE4_CALMQ Radical SAM domain protein 
+A8PLU2_9COXI Coenzyme PQQ biosynthesis protein E 
+A8UXC6_9AQUI Radical SAM 
+A8ZY22_DESOH Radical SAM domain protein 
+A8ZY24_DESOH Radical SAM domain protein 
+A9ASV1_BURM1 Coenzyme PQQ biosynthesis protein E 
+A9HEB6_GLUDA Putative Coenzyme PQQ synthesis protein E 
+A9HHA3_9RHOB Nitrite reductase heme biosynthesis J protein, putative 
+A9HTW1_9RHOB Pyrroloquinoline quinone biosynthesis protein PqqE 
+A9I7H2_BORPD Heme biosynthesis protein 
+A9QPG0_METI4 Coenzyme PQQ synthesis protein E 
+B0AN10_BACAN Putative coenzyme PQQ synthesis protein 
+B0KJ66_PSEPG Coenzyme PQQ biosynthesis protein E 
+B0Q113_BACAN Putative coenzyme PQQ synthesis protein 
+B0QFT8_BACAN Putative coenzyme PQQ synthesis protein 
+B0R521_HALS3 Homolog to coenzyme PQQ synthesis protein E 
+B0R523_HALS3 Homolog to coenzyme PQQ synthesis protein E 
+B0TFU5_HELMI Elongator protein 3/miab/nifb, putative 
+B0TFU7_HELMI Radical sam 
+B0TZX1_FRAP2 Radical SAM family protein 
+B1F0P3_BACAN Putative coenzyme PQQ synthesis protein 
+B1FEJ3_9BURK Coenzyme PQQ biosynthesis protein E 
+B1FSH8_9BURK Coenzyme PQQ biosynthesis protein E 
+B1GGB3_BACAN Putative coenzyme PQQ synthesis protein 
+B1I4L4_DESAP Radical SAM domain protein 
+B1I4L6_DESAP Radical SAM domain protein 
+B1JE00_PSEPW Coenzyme PQQ biosynthesis protein E 
+B1K6Y7_BURCC Coenzyme PQQ biosynthesis protein E 
+B1KEF2_SHEWM Coenzyme PQQ biosynthesis protein E 
+B1L3V1_KORCO Radical SAM domain protein 
+B1L5P2_KORCO Radical SAM domain protein 
+B1LCK5_THESQ Radical SAM domain protein 
+B1MGG4_MYCA9 Probable coenzyme PQQ synthesis protein E PqqE 
+B1SY63_9BURK Coenzyme PQQ biosynthesis protein E 
+B1UM40_BACAN Putative coenzyme PQQ synthesis protein 
+B1Y7S5_LEPCP Coenzyme PQQ biosynthesis protein E 
+B1Y7X4_LEPCP Radical SAM domain protein 
+B1YBL4_THENV Radical SAM domain protein 
+B1YDP1_THENV Radical SAM domain protein 
+B1Z3M5_BURA4 Coenzyme PQQ biosynthesis protein E 
+B2A1G9_NATTJ Radical SAM domain protein 
+B2A1H1_NATTJ Radical SAM domain protein 
+B2AIN8_CUPTR Coenzyme Pyrroloquinoline quinone (PQQ) synthesis protein E; Fe-S oxidoreductase 
+B2HSM0_MYCMM Coenzyme PQQ synthesis protein E, PqqE 
+B2IDU6_BEII9 Coenzyme PQQ biosynthesis protein E 
+B2JX65_BURP8 Coenzyme PQQ biosynthesis protein E 
+B2U9I8_RALPJ Coenzyme PQQ biosynthesis protein E 
+B2UEV6_RALPJ Coenzyme PQQ biosynthesis protein E 
+B2UQ91_AKKM8 Radical SAM domain protein 
+B3DC60_BURM1 Pyrroloquinoline quinone biosynthesis protein E 
+B3DVD8_METI4 Coenzyme PQQ synthesis protein E, radical SAM superfamily enzyme 
+B3E9V3_GEOLS Radical SAM domain protein 
+B3J4N0_BACAN Putative coenzyme PQQ synthesis protein 
+B3QBT2_RHOPT Coenzyme PQQ biosynthesis protein E 
+B3QJR2_RHOPT Radical SAM domain protein 
+B3R8D1_CUPTR Quinoprotein ethanol dehydrogenase; PQQ dehydrogenase family 
+B3RCK8_CUPTR Nitrite reductase heme d1 biosynthesis protein 
+B3YRL4_BACCE Putative coenzyme PQQ synthesis protein 
+B3ZDM0_BACCE Putative coenzyme PQQ synthesis protein 
+B3ZPG1_BACCE Putative coenzyme PQQ synthesis protein 
+B4ATJ2_FRANO Radical SAM domain protein 
+B4BIL1_9BACI Radical SAM domain protein 
+B4CZQ9_9BACT Coenzyme PQQ biosynthesis protein E 
+B4EHL1_BURCJ Coenzyme PQQ synthesis protein E 
+B5E7R0_GEOBB Radical SAM domain protein 
+B5WSR0_9BURK Coenzyme PQQ biosynthesis protein E 
+B5YK83_THEYD Radical SAM domain protein 
+B5ZCT0_GLUDA Coenzyme PQQ biosynthesis protein E 
+B6B5C6_9RHOB Coenzyme PQQ biosynthesis protein E 
+B6BHE0_9PROT Putative uncharacterized protein 
+B6BU81_9PROT Coenzyme PQQ biosynthesis protein E 
+B6C4L1_9GAMM Coenzyme PQQ biosynthesis protein E 
+B6R2R0_9RHOB Elongator protein 3/MiaB/NifB 
+B6WXJ2_9DELT Putative uncharacterized protein 
+B6WXJ5_9DELT Putative uncharacterized protein 
+B7GJD0_ANOFW Radical SAM superfamily enzyme 
+B7JJI7_BACC0 Putative coenzyme PQQ synthesis protein 
+B7R4Z4_9EURY Metallo cofactor biosynthesis protein 
+B7RC05_9THEM AstB/chuR-related protein 
+B7RII0_9RHOB Coenzyme PQQ biosynthesis protein E 
+B7V498_PSEA8 Heme d1 biosynthesis protein NirJ 
+B8DS83_DESVM Radical SAM domain protein 
+B8DS85_DESVM Radical SAM domain protein 
+B8FCC4_DESAA Radical SAM domain protein 
+B8FCC6_DESAA Radical SAM domain protein 
+B8G2L8_DESHD Radical SAM domain protein 
+B8G2M0_DESHD Radical SAM domain protein 
+B8GF88_METPE Radical SAM domain protein 
+B8GF91_METPE Radical SAM domain protein 
+B8J365_DESDA Radical SAM domain protein 
+B8J367_DESDA Radical SAM domain protein 
+B8KVB3_9GAMM Coenzyme PQQ biosynthesis protein E 
+B8R921_9BACT Putative heme D1 biosynthesis protein NirJ 
+B8R976_9BACT Putative heme D1 biosynthesis protein NirJ 
+B9DYQ1_CLOK1 Putative uncharacterized protein 
+B9DYQ2_CLOK1 Putative uncharacterized protein 
+B9JJ32_AGRRK Coenzyme PQQ biosynthesis protein E 
+B9KAE4_THENN AstB/chuR-related protein 
+B9KMC1_RHOSK Coenzyme PQQ biosynthesis protein E 
+B9L4X6_THERP Radical SAM domain protein 
+B9LN70_HALLT Radical SAM domain protein 
+B9LR05_HALLT Radical SAM domain protein 
+B9M511_GEOSF Radical SAM domain protein 
+B9M7T3_GEOSF Radical SAM domain protein 
+B9MJ30_ACIET Radical SAM domain protein 
+B9YZH4_9NEIS Coenzyme PQQ biosynthesis protein E 
+B9Z094_9NEIS Radical SAM domain protein 
+B9Z7Q3_9NEIS Coenzyme PQQ biosynthesis protein E 
+C0GG52_9FIRM Radical SAM domain protein 
+C0GG54_9FIRM Radical SAM domain protein 
+C0LU64_9PROT PqqE protein 
+C0MFK0_STRS7 Radical SAM superfamily protein 
+C0N6I4_9GAMM Coenzyme PQQ biosynthesis protein E 
+C0QJ74_DESAH PpqE1 
+C0QJ76_DESAH PpqE2 
+C0QTT6_PERMH Heme d1 biosynthesis protein NirJ 
+C0VHU8_9GAMM Coenzyme PQQ synthesis protein E (Coenzyme PQQ synthesis protein III) 
+C0VUH9_9CORY Radical SAM domain protein 
+C0ZVX2_RHOE4 Putative uncharacterized protein 
+C1AL26_MYCBT Putative coenzyme pqq synthesis protein E 
+C1AZV6_RHOOB Putative uncharacterized protein 
+C1EQF2_BACC3 Putative coenzyme PQQ synthesis protein 
+C1F2N4_ACIC5 Radical SAM domain protein 
+C1VDY6_9EURY Predicted Fe-S oxidoreductase 
+C1VEV7_9EURY Predicted Fe-S oxidoreductase 
+C2CNR2_CORST Radical SAM domain protein 
+C2GK11_9CORY Radical SAM domain protein 
+C2NG63_BACCE Coenzyme PQQ synthesis protein 
+C2NRW3_BACCE Coenzyme PQQ synthesis protein 
+C2TF36_BACCE Coenzyme PQQ synthesis protein 
+C2TVZ5_BACCE Coenzyme PQQ synthesis protein 
+C2UTW5_BACCE Coenzyme PQQ synthesis protein 
+C2V3W5_BACCE Coenzyme PQQ synthesis protein 
+C2VAB2_BACCE Coenzyme PQQ synthesis protein 
+C2VSA1_BACCE Coenzyme PQQ synthesis protein 
+C2WE24_BACCE Coenzyme PQQ synthesis protein 
+C3ASP9_BACMY Coenzyme PQQ synthesis protein 
+C3BAG6_BACMY Coenzyme PQQ synthesis protein 
+C3BS24_9BACI Coenzyme PQQ synthesis protein 
+C3F074_BACTU Coenzyme PQQ synthesis protein 
+C3F5L3_BACTU Coenzyme PQQ synthesis protein 
+C3FC88_BACTU Coenzyme PQQ synthesis protein 
+C3G1I3_BACTU Coenzyme PQQ synthesis protein 
+C3GHG0_BACTU Coenzyme PQQ synthesis protein 
+C3HAB1_BACTU Coenzyme PQQ synthesis protein 
+C3HHC7_BACTU Coenzyme PQQ synthesis protein 
+C3IA72_BACTU Coenzyme PQQ synthesis protein 
+C3IWJ5_BACTU Coenzyme PQQ synthesis protein 
+C3J1S2_9BACI Radical SAM domain protein 
+C3JJJ4_RHOER Radical SAM domain protein 
+C3K351_PSEFS Coenzyme PQQ synthesis protein E 
+C3L6M6_BACAC Putative coenzyme PQQ synthesis protein 
+C3MLQ5_SULIL Radical SAM domain protein 
+C3MXQ3_SULIM Radical SAM domain protein 
+C3N4S5_SULIA Radical SAM domain protein 
+C3NDB2_SULIY Radical SAM domain protein 
+C3NIF2_SULIN Radical SAM domain protein 
+C3P774_BACAA Putative coenzyme PQQ synthesis protein 
+C3VIT8_RAHAQ PqqE 
+C4K9Y5_THASP Radical SAM domain protein 
+C4KAK9_THASP Coenzyme PQQ biosynthesis protein E 
+C4KGC2_SULIK Radical SAM domain protein 
+C4L2B8_EXISA Radical SAM domain protein 
+C4V540_9FIRM Radical SAM 
+C4V541_9FIRM Radical SAM domain protein 
+C4X8Q7_KLEPN Pyrroloquinoline quinone synthesis protein E 
+C4XHG4_DESMR Putative uncharacterized protein 
+C4XHH1_DESMR Putative uncharacterized protein 
+C5AL11_BURGB Pyrroloquinoline quinone biosynthesis protein PqqE 
+C5CPT3_VARPS Coenzyme PQQ biosynthesis protein E 
+C5RK22_CLOCL Radical SAM domain protein 
+C5T6S8_ACIDE Radical SAM domain protein 
+C5TYV6_DESVU Radical SAM domain protein 
+C5TYV8_DESVU Radical SAM domain protein 
+C6BKQ6_RALP1 Coenzyme PQQ biosynthesis protein E 
+C6C1Q7_DESAD Radical SAM domain protein 
+C6C1Q9_DESAD Radical SAM domain protein 
+C6DUK7_MYCTK Coenzyme pqq synthesis protein E pqqE 
+C6E7R8_GEOSM Radical SAM domain protein 
+C6MKT2_9DELT Radical SAM domain protein 
+C6MTT9_9DELT Radical SAM domain protein 
+C6MVZ5_9DELT Radical SAM domain protein 
+C6PR33_9CLOT Radical SAM domain protein 
+C6PR34_9CLOT Radical SAM domain protein 
+C6PSF5_9CLOT Radical SAM domain protein 
+C6QGQ8_9RHIZ Coenzyme PQQ biosynthesis protein E 
+C6QGW3_9RHIZ Coenzyme PQQ biosynthesis protein E 
+C6QLQ5_9BACI Radical SAM domain protein 
+C6QUD8_9BACI Radical SAM domain protein 
+C6SPI0_STRMN Putative coenzyme PQQ synthesis protein 
+C6WVF7_METML Coenzyme PQQ biosynthesis protein E 
+C6XDZ5_METSD Coenzyme PQQ biosynthesis protein E 
+C6YVG0_9GAMM Radical SAM family protein 
+C7C9L8_METED Pyrroloquinoline quinone (PQQ) biosynthesis protein E 
+C7DRH9_PSEFL Coenzyme PQQ biosynthesis protein PqqE 
+C7JE60_ACEP3 Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein E PqqE 
+C7JQC0_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein E PqqE 
+C7JZI5_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein E PqqE 
+C7K2A3_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein E PqqE 
+C7KBH2_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein E PqqE 
+C7KKT8_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein E PqqE 
+C7KV49_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein E PqqE 
+C7L4X7_ACEPA Coenzyme Pyrrolo-quinoline quinone (PQQ) synthesis protein E PqqE 
+C7LR64_DESBD Radical SAM domain protein 
+C7LR66_DESBD Radical SAM domain protein 
+C7MKX2_CRYCD Predicted Fe-S oxidoreductase 
+C7N5L2_SLAHD Predicted Fe-S oxidoreductase 
+C7NNJ2_HALUD Radical SAM domain protein 
+C7NSM8_HALUD Radical SAM domain protein 
+C7NVW8_HALMD Radical SAM domain protein 
+C7P3X1_HALMD Radical SAM domain protein 
+C7RK59_ACCPU Radical SAM domain protein 
+C8NPP6_COREF Coenzyme PQQ synthesis protein 
+C8Q578_9ENTR Coenzyme PQQ biosynthesis protein E 
+C8RWJ1_9RHOB Radical SAM domain protein 
+C8TAA0_KLEPR Coenzyme PQQ synthesis protein E 
+C8VZJ4_DESAS Radical SAM domain protein 
+C8W5F3_DESAS Radical SAM domain protein 
+C8W5F5_DESAS Radical SAM domain protein 
+C8WIZ0_EGGLE Radical SAM domain protein 
+C8WJ01_EGGLE Radical SAM domain protein 
+C8X4L4_DESRD Radical SAM domain protein 
+C8X4L6_DESRD Radical SAM domain protein 
+C8X9C1_NAKMY Radical SAM domain protein 
+C9KL46_9FIRM Nitrite reductase heme biosynthesis J protein 
+C9KL47_9FIRM Radical SAM domain protein 
+C9LSG6_9FIRM Nitrite reductase heme biosynthesis J protein 
+C9LSG7_9FIRM Radical SAM domain protein 
+C9R7T7_AMMDK Radical SAM domain protein 
+C9R9I2_AMMDK Radical SAM domain protein 
+C9RA25_AMMDK Radical SAM domain protein 
+C9RPS5_FIBSS Radical SAM domain protein 
+C9RPT9_FIBSS Radical SAM domain protein 
+C9RXR5_GEOSY Radical SAM domain protein 
+C9XWH5_CROTZ Coenzyme PQQ synthesis protein E 
+D0BZT3_9GAMM Coenzyme PQQ synthesis protein E 
+D0C782_ACIBA Coenzyme PQQ biosynthesis protein E 
+D0DC73_9RHOB Coenzyme PQQ biosynthesis protein E 
+D0FP11_ERWPY Coenzyme PQQ synthesis protein E (Pyrroloquinoline quinone biosynthesis protein E) 
+D0I8M3_VIBHO Coenzyme PQQ synthesis protein E 
+D0IJX3_9VIBR Coenzyme PQQ synthesis protein E 
+D0KP53_SULS9 Radical SAM domain protein 
+D0KSU3_SULS9 Radical SAM domain protein 
+D0L327_GORB4 Radical SAM domain protein 
+D0LK51_HALO1 Radical SAM domain protein 
+D0LL20_HALO1 Radical SAM domain protein 
+D0RXY8_ACICA Coenzyme PQQ synthesis protein E 
+D0WES8_9ACTN Nitrite reductase heme biosynthesis J protein 
+D1A2X9_THECD Radical SAM domain protein 
+D1C8X2_SPHTD Radical SAM domain protein 
+D1C9L0_SPHTD Radical SAM domain protein 
+D1JAJ0_9ARCH Putative uncharacterized protein 
+D1JC16_9ARCH Putative uncharacterized protein 
+D1JC17_9ARCH Putative uncharacterized protein 
+D1JH35_9ARCH Putative uncharacterized protein 
+D1JHW5_9ARCH Putative uncharacterized protein 
+D1RRG3_SEROD Coenzyme PQQ synthesis protein E 
+D1UAA0_9DELT Radical SAM domain protein 
+D1UAA2_9DELT Radical SAM domain protein 
+D1UD45_9BURK Coenzyme PQQ biosynthesis protein E 
+D1VNX5_9ACTO Radical SAM domain protein 
+D1YWY5_METPS Putative uncharacterized protein 
+D1Z188_METPS Putative uncharacterized protein 
+D2C5H4_THENR Radical SAM domain protein 
+D2L8L2_9DELT Radical SAM domain protein 
+D2LAJ1_9DELT Radical SAM domain protein 
+D2LAQ7_RHOVA Coenzyme PQQ biosynthesis protein E 
+D2LUG5_BACS4 Radical SAM domain protein 
+D2LWW6_BACS4 Radical SAM domain protein 
+D2MBN8_RHOPA Coenzyme PQQ biosynthesis protein E 
+D2PJ79_SULID Radical SAM domain protein 
+D2RGH1_ARCPA Radical SAM domain protein 
+D2RHL2_ARCPA Radical SAM domain protein 
+D2RS30_HALTV Radical SAM domain protein 
+D2RS32_HALTV Radical SAM domain protein 
+D2S4D7_GEOOG Coenzyme PQQ biosynthesis protein E 
+D2S6X5_GEOOG Radical SAM domain protein 
+D2T3L9_ERWP6 Coenzyme PQQ synthesis protein E 
+D2WF04_9GAMM NirJ 
+D3C2P7_9BACT Radical SAM domain protein 
+D3D1Y5_9ACTO Radical SAM domain protein 
+D3DIL5_HYDTT Coenzyme PQQ synthesis protein E 
+D3M5Y7_9ACTO Radical SAM domain protein 
+D3N062_9BURK Pyrroloquinoline quinone biosynthesis protein PqqE 
+D3P1K2_AZOS1 Pyrroloquinoline quinone biosynthesis protein E 
+D3PE94_DEFDS Radical SAM domain protein 
+D3Q200_STANL Coenzyme PQQ biosynthesis protein E 
+D3REI5_KLEVT Coenzyme PQQ biosynthesis protein E 
+D3RYH4_FERPA Radical SAM domain protein 
+D3S0M4_FERPA Radical SAM domain protein 
+D3S2H7_FERPA Radical SAM domain protein 
+D4BFQ8_9ENTR Putative radical SAM 
+D4E6C8_SEROD Coenzyme PQQ synthesis protein E 
+D4GEB7_PANAM PqqE 
+D4GUU1_HALVD Coenzyme PQQ synthesis protein E homolog 
+D4GW66_HALVD Coenzyme PQQ synthesis protein E homolog 
+D4H7Q1_DENA2 Radical SAM domain protein 
+D4I1A0_ERWAC Coenzyme PQQ synthesis protein E 
+D4IFL4_ERWAE Putative heme/metallo cofactor biosynthesis related protein (Coenzyme pqq synthesis protein e (Pyrroloquinoline quinon biosynthesis protein e)) 
+D4KV85_9FIRM Predicted Fe-S oxidoreductases 
+D4P6Z8_PANAN PqqE 
+D4S685_9FIRM Radical SAM domain protein 
+D4S686_9FIRM Nitrite reductase heme biosynthesis J protein 
+D4SXU1_9XANT Pyrroloquinoline quinone biosynthesis protein PqqE 
+D4T9K9_9XANT Pyrroloquinoline quinone biosynthesis protein PqqE 
+D4XM52_ACIHA Coenzyme PQQ synthesis protein E (Pyrroloquinoline quinone biosynthesis protein E) 
+D4Y1E8_9CHLR Radical SAM domain protein 
+D4Y1E9_9CHLR Radical SAM domain protein 
+D4Y7P7_BACTR Radical SAM domain protein 
+D4YC85_BACTR Radical SAM domain protein 
+D5C1I5_NITHN Coenzyme PQQ biosynthesis protein E 
+D5E714_METMS Radical SAM domain protein 
+D5EA82_METMS Radical SAM domain protein 
+D5EVY1_PRER2 Putative Fe-S oxidoreductase 
+D5GU68_THETH Putative uncharacterized protein nirJ 
+D5MIV4_9BACT Putative heme D1 biosynthesis protein (NirJ) involved in nitrite reductase biosynthesis 
+D5MMU3_9BACT Putative pqq coenzyme synthesis protein (PqqE) 
+D5NM96_9BURK Coenzyme PQQ biosynthesis protein E 
+D5PC98_9MYCO Coenzyme PQQ synthesis protein E (Pyrroloquinoline quinone biosynthesis protein E) 
+D5PRJ6_COREQ MoaA/nifB/pqqE family protein 
+D5QAQ8_ACEHA Pyrroloquinoline quinone biosynthesis protein PqqE 
+D5UKT7_CELFN Radical SAM domain protein 
+D5V708_ARCNC Coenzyme PQQ biosynthesis protein E 
+D5WEF4_BURSC Coenzyme PQQ biosynthesis protein E 
+D5WTJ0_BACT2 Radical SAM domain protein 
+D5WTJ1_BACT2 Radical SAM domain protein 
+D5XED0_THEPJ Radical SAM domain protein 
+D5XED2_THEPJ Radical SAM domain protein 
+D5XQX6_MYCTU Coenzyme pqq synthesis protein E pqqE 
+D5Y123_MYCTU Coenzyme pqq synthesis protein E 
+D5YBG7_MYCTU Coenzyme pqq synthesis protein E 
+D5YNY8_MYCTU Coenzyme PQQ synthesis protein E pqqE 
+D5Z0S6_MYCTU Coenzyme pqq synthesis protein E pqqE 
+D5ZD88_MYCTU Coenzyme pqq synthesis protein E pqqE 
+D6CRJ7_THIS3 Coenzyme PQQ synthesis protein E (Pyrroloquinoline quinone biosynthesis protein E) (Coenzyme PQQ synthesis protein III) 
+D6E1L1_9FIRM Predicted Fe-S oxidoreductases 
+D6E9K4_9ACTN Predicted Fe-S oxidoreductases 
+D6F1W1_MYCTU Coenzyme pqq synthesis protein E pqqE 
+D6FML0_MYCTU Coenzyme pqq synthesis protein E pqqE 
+D6GCX8_9ENTR Coenzyme PQQ biosynthesis protein E 
+D6JPG0_ACIG3 Putative uncharacterized protein 
+D6M6X9_9CLOT Radical SAM domain protein 
+D6M8D4_9CLOT Radical SAM domain protein 
+D6SQW5_9DELT Radical SAM domain protein 
+D6SQW7_9DELT Radical SAM domain protein 
+D6SS08_9DELT Radical SAM domain protein 
+D6TLL4_9CHLR Radical SAM domain protein 
+D6UQD2_9BACT Coenzyme PQQ biosynthesis protein E 
+D6VEP8_9BURK Radical SAM domain protein 
+D6XTB4_9BACI Radical SAM domain protein 
+D6XTD7_9BACI Radical SAM domain protein 
+D6Z4Z6_9DELT Radical SAM domain protein 
+D7A703_THINO Coenzyme PQQ biosynthesis protein E 
+D7ADR2_GEOSL Radical SAM domain protein 
+D7AGV0_GEOSL Radical SAM domain heme biosynthesis protein 
+D7BSZ8_9ACTO Pyrroloquinoline quinone biosynthesis protein PqqE 
+D7CNA1_9FIRM Radical SAM domain protein 
+D7CNA3_9FIRM Radical SAM domain protein 
+D7D1V2_9BACI Radical SAM domain protein 
+D7DHP4_9PROT Coenzyme PQQ biosynthesis protein E 
+D7E6D6_9EURY Radical SAM domain protein 
+D7E6L0_9EURY Radical SAM domain protein 
+D7ENH1_MYCTU Coenzyme PQQ synthesis protein E pqqE 
+D7I5Z7_PSESS Coenzyme PQQ synthesis protein E 
+O27813_METTH Coenzyme PQQ synthesis protein 
+O30258_ARCFU Coenzyme PQQ synthesis protein (PqqE) 
+P95039_MYCTU MoaA/nifB/pqqE family protein 
+P95416_PSEAE Heme d1 biosynthesis protein NirJ 
+P95550_PSEST NirJ protein 
+Q01Q30_SOLUE Radical SAM domain protein 
+Q02TQ5_PSEAB Heme d1 biosynthesis protein NirJ 
+Q07TD5_RHOP5 Coenzyme PQQ biosynthesis protein E 
+Q0AZ39_SYNWW Radical SAM domain protein 
+Q0AZ41_SYNWW Metallo cofactor biosynthesis protein 
+Q0B2B1_BURCM Coenzyme PQQ biosynthesis protein E 
+Q0FSC5_9RHOB Pyrroloquinoline quinone biosynthesis protein PqqE 
+Q0G4F8_9RHIZ Pyrroloquinoline quinone biosynthesis protein PqqE 
+Q0GFB3_SERMA PqqE 
+Q0JYV9_RALEH Heme d1 biosynthesis protein (NirJ) 
+Q0K2D4_RALEH Pyrroloquinoline quinone (Coenzyme PQQ) biosynthesis protein E 
+Q0RJU5_FRAAA Coenzyme PQQ synthesis protein E (Pyrroloquinoline quinone biosynthesis protein E) 
+Q0S3N7_RHOSR Possible coenzyme synthesis protein 
+Q0YQB0_9CHLB Radical SAM 
+Q12WM1_METBU Radical SAM family protein 
+Q130E9_RHOPS Radical SAM 
+Q130F0_RHOPS Radical SAM 
+Q139H1_RHOPS Coenzyme PQQ biosynthesis protein E 
+Q13QW8_BURXL Pyrroloquinoline quinone synthesis E 
+Q169Z3_ROSDO Nitrite reductase heme biosynthesis J protein, putative 
+Q16B42_ROSDO Coenzyme PQQ biosynthesis protein E 
+Q1ARB7_RUBXD Radical SAM 
+Q1BDB9_MYCSS Radical SAM 
+Q1BQG1_BURCA Coenzyme PQQ biosynthesis protein E 
+Q1D6S0_MYXXD Radical SAM domain protein 
+Q1H0N9_METFK Coenzyme PQQ biosynthesis protein E 
+Q1IG49_PSEE4 Coenzyme PQQ synthesis protein E (Coenzyme PQQ synthesis protein III) 
+Q1ITH8_ACIBL Fe-S protein, radical SAM family 
+Q1K4G4_DESAC Radical SAM 
+Q1LII4_RALME Heme d1 biosynthesis protein NirJ 
+Q1MRW6_LAWIP Predicted Fe-S oxidoreductases 
+Q1NMT1_9DELT Radical SAM 
+Q1NS46_9DELT Radical SAM 
+Q1NVN1_9DELT Radical SAM 
+Q1Q045_9BACT Similar to moaA/nirJ/pqqE cofactor biosynthesis protein 
+Q1Q259_9BACT Similar to moaA/nirJ/ppqE family of cofactor synthesis proteins 
+Q1Q5P7_9BACT Similar to iron sulfur [Fe-S] heme biosynthesis protein nirJ 
+Q1QZA3_CHRSD Coenzyme PQQ biosynthesis protein E 
+Q1WVU4_PELCD Fe-S oxidoreductase, putative component of heme biosynthesis 
+Q1YKD6_MOBAS Coenzyme PQQ (Pyrroloquinoline quinone) biosynthesis protein E 
+Q1YPJ8_9GAMM Pyrroloquinoline quinone biosynthesis protein PqqE 
+Q21AY3_RHOPB Coenzyme PQQ biosynthesis protein E 
+Q24VD0_DESHY Putative uncharacterized protein 
+Q24VD2_DESHY Putative uncharacterized protein 
+Q2BNP9_9GAMM Pyrroloquinoline quinone biosynthesis protein PqqE 
+Q2IUJ5_RHOP2 Coenzyme PQQ biosynthesis protein E 
+Q2KJN7_PSEST NirJ 
+Q2LQU5_SYNAS Radical SAM superfamily protein 
+Q2LQU7_SYNAS Radical SAM superfamily protein 
+Q2MF49_STRLV Putative coenzyme PQQ synthesis protein 
+Q2RJ28_MOOTA Radical SAM 
+Q2RJ30_MOOTA Radical SAM 
+Q2SDZ7_HAHCH Predicted Fe-S oxidoreductase 
+Q30P20_SULDN Radical SAM 
+Q30Y73_DESDG Elongator protein 3/MiaB/NifB 
+Q30Y75_DESDG Elongator protein 3/MiaB/NifB 
+Q32X71_PSEFL Putative Fe-S oxidoreductase 
+Q39Y65_GEOMG Radical SAM 
+Q39ZQ9_GEOMG Radical SAM 
+Q3A161_PELCD Fe-S oxidoreductase, putative coenzyme synthesis protein 
+Q3ACT0_CARHZ Radical SAM domain protein 
+Q3EMW5_BACTI Radical SAM superfamily protein 
+Q3ISM2_NATPD Molybdopterin-based tungsten cofactor biosynthesis protein 1 
+Q3ISM4_NATPD Molybdopterin-based tungsten cofactor biosynthesis protein 2 
+Q3IZR7_RHOS4 Probable Coenzyme PQQ synthesis protein E 
+Q3J7X0_NITOC Coenzyme PQQ biosynthesis protein E 
+Q3K5Q6_PSEPF Coenzyme PQQ synthesis protein E 
+Q3SML9_THIDA Elongator protein 3/MiaB/NifB 
+Q3SUT6_NITWN Coenzyme PQQ biosynthesis protein E 
+Q46BK8_METBF Metallo cofactor biosynthesis protein 
+Q46CH7_METBF Heme biosynthesis protein 
+Q46CU5_METBF Putative uncharacterized protein 
+Q46R69_RALEJ Radical SAM 
+Q470N6_RALEJ Coenzyme PQQ biosynthesis protein E 
+Q47AZ0_DECAR Radical SAM 
+Q47FD2_DECAR Coenzyme PQQ biosynthesis protein E 
+Q47WE5_COLP3 Putative heme biosynthesis protein 
+Q488A9_COLP3 Coenzyme PQQ synthesis protein E 
+Q5L1Y0_GEOKA Hypothetical conserved protein 
+Q5LL02_SILPO Nitrite reductase heme biosynthesis J protein 
+Q5P7X1_AZOSE Heme D1 biosynthesis protein NIRJ 
+Q5UX41_HALMA Coenzyme PQQ synthesis protein 
+Q5V2G0_HALMA Heme biosynthesis protein 
+Q5YU50_NOCFA Putative uncharacterized protein 
+Q5YXL1_NOCFA Putative uncharacterized protein 
+Q63CT5_BACCZ Coenzyme PQQ synthesis protein 
+Q647U3_9ARCH Heme d1 biosynthesis protein 
+Q648Z0_9ARCH Heme d1 biosynthesis protein 
+Q65IZ7_BACLD Coenzyme PQQ synthesis protein, putative 
+Q67NY9_SYMTH Heme biosynthesis protein 
+Q6ANR4_DESPS Related to coenzyme PQQ synthesis protein 
+Q6HK81_BACHK Coenzyme PQQ synthesis protein 
+Q6I087_BACAN Coenzyme PQQ synthesis protein, putative 
+Q6N2Q0_RHOPA Possible coenzyme PQQ synthesis protein E 
+Q6W1W2_RHISN Coenzyme PQQ synthesis protein E 
+Q72DS2_DESVH Radical SAM domain protein 
+Q72DS4_DESVH Radical SAM domain protein 
+Q73SC1_MYCPA PqqE 
+Q746R4_GEOSL Radical SAM domain protein 
+Q748U6_GEOSL Radical SAM domain protein 
+Q76KE0_BURCE NirJ protein 
+Q7BKY7_CLOBE Putative uncharacterized protein nirJ2 
+Q7BKY8_CLOBE Putative uncharacterized protein nirJ1 
+Q7U1G2_MYCBO PROBABLE COENZYME PQQ SYNTHESIS PROTEIN E PQQE (COENZYME PQQ SYNTHESIS PROTEIN III) 
+Q81S05_BACAN Putative coenzyme PQQ synthesis protein 
+Q8DT69_STRMU Putative coenzyme PQQ synthesis protein 
+Q8FP50_COREF Putative coenzyme PQQ synthesis protein 
+Q8KKF4_BACLI MoaA / nifB / pqqE family 
+Q8PW63_METMA Heme biosynthesis protein 
+Q8PW70_METMA Heme biosynthesis protein 
+Q8Q029_METMA Metallo cofactor biosynthesis protein 
+Q8TLK1_METAC Coenzyme PQQ synthesis protein E 
+Q8TT64_METAC Heme d1 biosynthesis protein NirJ 
+Q8ZYW8_PYRAE Metallo cofactor biosynthesis protein 
+Q976R5_SULTO 377aa long hypothetical coenzyme PQQ synthesis protein 
+Q97FE4_CLOAB MoaA/NirJ family Fe-S oxidoreductase 
+Q97FE5_CLOAB MoaA/NirJ family Fe-S oxidoreductase 
+Q97XA7_SULSO Coenzyme PQQ synthesis protein E (PqqE-4) 
+Q97XS7_SULSO Coenzyme PQQ synthesis protein E (PqqE-3) 
+Q9HQF5_HALSA Coenzyme PQQ synthesis protein 
+Q9UWV2_SULSO Coenzyme PQQ synthesis protein 
+Q9WZT2_THEMA AstB/chuR-related protein 
+Q9YBE5_AERPE PqqE homolog 
+Q9ZB98_RHOER Putative uncharacterized protein 

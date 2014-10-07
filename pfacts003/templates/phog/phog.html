@@ -1,0 +1,243 @@
+{% extends "phog/phog_base.html" %}
+{% load datagrid %}
+{% load djblets_deco %}
+
+{% block title %}PhyloFacts Orthology Group {{ phog_row.description }}{% endblock %}
+
+{% block content %}
+{{ block.super }}
+  <div class="inset gray">
+    <strong style="font-size: 18px">PHOG 1.1 (December 2010)</strong><br /><br />
+      The PHOG (PhyloFacts Orthology Group) resource is designed to predict super-orthologs using evolutionary
+      analysis of protein family phylogenies in the PhyloFacts resource. 
+      (<a href="/phog/orthologs/faq/">More...</a>) <br /><br /><br />
+  </div>
+
+  <table align="center" border="0" cellpadding="0" cellspacing="0">
+  <form action="/phog/" 
+      METHOD = "GET" name = "phog">
+        <tr><td height="6" colspan="4"></td></tr>
+        <tr>
+          <td>
+            <label for="id_phog_accession">Find orthologs</label>&nbsp;&nbsp;&nbsp;
+	  </td>
+	  <td>
+            {{ form.phog_accession }}
+          </td>
+	  <td width="10"></td>
+          <td>
+            <INPUT TYPE=submit Value="Go"
+            onclick="document.getElementById('loading').className =
+            'loading-visible';">
+          </td>
+        </tr>
+        <tr><td height="6" colspan="4"></td></tr>
+  <tr>
+      <td></td>
+	  <td valign="top" class="smalltext">
+	    Protein sequence IDs/accessions only (<a
+		onmouseover="showInputTip();" onmouseout="UnTip();"
+        href="/phog/orthologs/faq/#input_types">More...</a>)
+      </td>
+      <td></td>
+      <td>
+        <input type=button value="Enter test data"  
+        onclick="form.phog_accession.value='PHOG008099514'">
+		&nbsp;
+	    <form method=GET action="/phog/PHOG006596057/">
+	    	<input type=submit value="View sample results" 
+			onclick="form.phog_accession.value='PHOG006596057'">
+    	</form>
+      </td>
+  </tr>
+        <tr>
+        	<td height="6" colspan="4" align="center" valign="top">{{ form.phog_accession.errors }}
+			</td>
+		</tr>
+    <tr><td colspan="4">
+      <form method=GET action="/phog/">
+      <input type=submit value="Clear all">
+      </form>
+    </td></tr>		
+  </table>
+
+  {% if fasta_error %}
+    <p>{{ fasta_error }}</p>
+  {% endif %}
+  {% if form.cleaned_data.phog_accession %}
+    {% if db_error %}
+      <p>{{ db_error }}</p>
+    {% else %}
+      <br /><br />
+        <table class="attributes" align="center">
+	  <tr>
+	    <td class="heading" align="center" colspan="2">
+	      {{ form.cleaned_data.phog_accession }} &ndash; {{ phog.description }}
+	    </td>
+	  </tr>
+    {% if phog.go_short_summary_biological_process %}
+      <tr>
+        <td align="right">
+          GO Biological Process:
+        </td>
+        <td>
+          {% if phog.go_long_summary_biological_process %}
+            <form name="long_biological_process_form">
+            <div id="long_biological_process" class="go_summary-visible">
+              {{ phog.go_long_summary_biological_process|safe }}
+              <input type="button" value="(hide)" class="fake_btn"
+              onclick="switchVisible('long_biological_process',
+                                      'short_biological_process')">
+            </div>
+            <div id="short_biological_process" class="go_summary-invisible">
+              {{ phog.go_short_summary_biological_process|safe }}
+              <input type="button" value="(more...)" class="fake_btn"
+              onclick="switchVisible('short_biological_process',
+                                      'long_biological_process')">
+            </div>
+            </form>
+            <script language="JavaScript">
+              switchVisible('long_biological_process',
+                            'short_biological_process')
+            </script>
+          {% else %}
+              {{ phog.go_short_summary_biological_process|safe }}
+          {% endif %}
+        </td>
+      </tr>
+    {% endif %}
+    {% if phog.go_short_summary_molecular_function %}
+      <tr>
+        <td align="right">
+          GO Molecular Function:
+        </td>
+        <td>
+          {% if phog.go_long_summary_molecular_function %}
+            <form name="long_molecular_function_form">
+            <div id="long_molecular_function" class="go_summary-visible">
+              {{ phog.go_long_summary_molecular_function|safe }}
+              <input type="button" value="(hide)" class="fake_btn"
+              onclick="switchVisible('long_molecular_function',
+                                      'short_molecular_function')">
+            </div>
+            <div id="short_molecular_function" class="go_summary-invisible">
+              {{ phog.go_short_summary_molecular_function|safe }}
+              <input type="button" value="(more...)" class="fake_btn"
+              onclick="switchVisible('short_molecular_function',
+                                      'long_molecular_function')">
+            </div>
+            </form>
+            <script language="JavaScript">
+              switchVisible('long_molecular_function',
+                            'short_molecular_function')
+            </script>
+          {% else %}
+              {{ phog.go_short_summary_molecular_function|safe }}
+          {% endif %}
+        </td>
+      </tr>
+    {% endif %}
+    {% if phog.go_short_summary_cellular_component %}
+      <tr>
+        <td align="right">
+          GO Cellular Component:
+        </td>
+        <td>
+          {% if phog.go_long_summary_cellular_component %}
+            <form name="long_cellular_component_form">
+            <div id="long_cellular_component" class="go_summary-visible">
+              {{ phog.go_long_summary_cellular_component|safe }}
+              <input type="button" value="(hide)" class="fake_btn"
+              onclick="switchVisible('long_cellular_component',
+                                      'short_cellular_component')">
+            </div>
+            <div id="short_cellular_component" class="go_summary-invisible">
+              {{ phog.go_short_summary_cellular_component|safe }}
+              <input type="button" value="(more...)" class="fake_btn"
+              onclick="switchVisible('short_cellular_component',
+                                      'long_cellular_component')">
+            </div>
+            </form>
+            <script language="JavaScript">
+              switchVisible('long_cellular_component',
+                            'short_cellular_component')
+            </script>
+          {% else %}
+              {{ phog.go_short_summary_cellular_component|safe }}
+          {% endif %}
+        </td>
+      </tr>
+    {% endif %}
+	  <tr>
+	    <td align="right">
+	      PHOG tree:
+	    </td>
+	    <td>
+              <a href="{{ phog.tree_url }}">View tree</a>
+	    </td>
+      {% if phog.pfam_links %}  
+	  <tr>
+	    <td align="right">
+	      Pfam domains:
+	    </td>
+	    <td>
+              {{ phog.pfam_links }}
+	    </td>
+	  </tr>
+      {% endif %}
+          <tr>
+	    <td align="right">
+	      Taxonomic distribution:
+	    </td>
+	    <td>
+	      {{ phog.taxon_link }}
+	    </td>
+	  </tr>
+          <tr>
+	    <td align="right">
+	      PhyloFacts family:
+	    </td>
+	    <td>
+              <a href="{{ phog.family_url }}">{{ phog.family }}</a>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td align="right">
+              Alignment:
+	    </td>
+	    <td>
+	      {{ phog.alignment_type }}
+	    </td>
+	  </tr>
+	  <tr>
+	    <td align="right">
+              Number of sequences:
+	    </td>
+	    <td>
+	      {{ phog.num_nonredundant_sequences }}
+	    </td>
+	  </tr>
+          <tr>
+	    <td align="right">
+	      Alignment length:
+	    </td>
+	    <td>
+	      {{ phog.alignment_length }}
+	    </td>
+	  </tr>
+	</table>
+	<br />
+      {% box %}
+        {{datagrid.render_listview}}
+      {% endbox %}
+
+      <form action="/phog/csv/{{ form.cleaned_data.phog_accession }}"
+          METHOD = get name = 'phog_as_csv'>
+        <INPUT TYPE=hidden NAME=phog_accession
+          VALUE="{{ form.cleaned_data.phog_accession }}">
+        <p><INPUT TYPE=submit Value="Download As CSV"></p>
+      </form>
+
+    {% endif %}
+  {% endif %}
+{% endblock %}

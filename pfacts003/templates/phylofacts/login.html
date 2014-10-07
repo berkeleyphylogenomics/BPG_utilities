@@ -1,0 +1,64 @@
+{% extends 'common/base_new.html' %}
+
+{% block extrascripts %}
+<script type="text/javascript">
+$j(document).ready(function() {
+    $j('.btn-primary').click(function() {
+        $j('.btn-primary').attr('disabled','disabled');
+        $j.post('/api/login/', {'username': $j('#username-input').val(), 'password': $j('#password-input').val()}, function(data) {
+            if (data.error) {
+                $j('.control-group').addClass('error');
+                $j('#error').html('Username/Password incorrect.  Forgot your password?  <a href="/phylofacts/password_reset/">Click here</a> to reset it.');
+            }
+            else {window.location = '/phylofacts/my_phylofacts/';}
+        });
+        $j('.btn-primary').removeAttr('disabled');
+    });
+    
+});
+</script>
+{% endblock %}
+
+{% block extrastyle %}
+<style>
+.alert{
+    display:none;
+}
+.login-pane {
+    background-color:#F1F1F1;
+    border:1px solid #E5E5E5;
+    float:left;
+    font-family:Verdana;
+    margin-left:15px;
+    margin-top:5px;
+    padding-left:10px;
+    padding-right:10px;
+}
+</style>
+{% endblock %}
+
+{% block title%}PhyloFacts Login{% endblock %}
+
+{% block content %}
+<div class="login-pane">
+    <h4>Sign in to PhyloFacts</h4>
+    <div class="control-group">
+        <label class="control-label inline" for="username-input"><strong>Username:</Strong></label>
+        <div class="controls">
+            <input type="text" id="username-input">
+            <span class="help-inline"></span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label inline" for="password-input"><strong>Password:</strong></label>
+        <div class="controls">
+            <input type="password" id="password-input">
+            <span id="error" class="help-inline"></span>
+        </div>
+    </div>
+    <p style="margin-left:160px;">
+        <input type="button" class="btn-primary" value="Sign in">
+    </p>
+    <p>Don't have a user account?  <a href="/phylofacts/user_create/">Click here</a> to create one.</p>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "phog/tutorial/tutorial_bottompagenav.html" %}
+
+{% block content %}
+<td>
+<p>
+<strong>
+Table of BLAST matches for a query sequence in FASTA format. <font color="red" size=+1><b>Note: these are not predicted orthologs.</b></font>
+</strong>
+</p>
+<hr>
+<p>
+For queries based on FASTA sequence input, a table of BLAST matches is displayed, ordered by BLAST score.
+</p>
+<p>
+Note that these are not predicted orthologs, but rather a list of matches that can be used to initiate a PHOG search.  Simply click on the "orthologs" link for a match of your choice to initiate a search for PHOGS containing that match.
+<p>
+For each match, the following information is listed in the table.
+</p>
+<p>
+<ul>
+<li>The gene ID/accession and a link to the associated web page.</li>
+<li>A link to initiate a PHOG query based on the gene ID/accession (with results as described earlier).</li>
+<li>The scientific and common species names.</li>
+<li>A description of the protein.</li>
+<li>The percent identity to the query sequence.</li>
+<li>The BLAST E-value.</li>
+<li>The BLAST bit score.</li>
+</ul>
+</p>
+</td>
+</tr>
+</table>
+<br />
+<hr>
+
+{% endblock %}
+
+</body>
+</html>

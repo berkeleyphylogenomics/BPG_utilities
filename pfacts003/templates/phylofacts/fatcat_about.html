@@ -1,0 +1,670 @@
+{% extends "common/base_new.html" %}
+
+{% block title %}About FAT-CAT{% endblock %}
+
+{% block extrastyle %}
+<style type="text/css">
+body{font-family:Verdana, Helvetica, Arial}
+
+#pipeline-graphic {
+    text-align:center;
+}
+
+h2 {
+    margin-left:50px;
+    margin-right:50px;
+    font-family:Verdana;
+    color:#41677A;
+    font-size:28px;
+}
+#pipeline-description {
+    margin-left:50px;
+    margin-right:50px;
+    font-family:Verdana;
+}
+.hidden-desc {
+    display:none;
+}
+.stages {
+    display:none;
+}
+.stages h3 {
+    font-size:18px;
+    color:#41677A;
+    line-height:34px;
+}
+.para {
+    margin-left: 50px;
+    margin-bottom: 10px;
+    max-width: 800px;
+}
+</style>
+{% endblock %}
+
+{% block extrascripts %}
+<!--<script type="text/javascript">
+var fatcatPipeline = {
+    options: {
+        'stageOnePathLength':17,
+        'blockHeight':50,
+        'stageTextAttributes': {
+            'text-anchor':'start',
+            'font-family':'Verdana',
+            'font-size':12,
+            'stroke':'#41677A',
+            'stroke-opacity':0.7,
+            'fill':'#41677A',
+            'fill-opacity':0.7
+        },
+        'descriptionTextAttributes': {
+            'text-anchor':'start',
+            'font-family':'Verdana',
+            'font-size':12,
+            'stroke':'#41677A',
+            'stroke-opacity':0.7,
+            'fill':'#41677A',
+            'fill-opacity':0.7
+        },
+        'inputTextAttributes': {
+            'text-anchor':'start',
+            'font-family':'monospace',
+            'font-size':11,
+        },
+        'pathAttributes': {
+            'arrow-end':'classic',
+            'stroke-width':2
+        },
+        'shadowAttributes': {
+            'fill':'black',
+            'opacity':0.1,
+            'stroke-opacity':0.1,
+            'stroke':'black'
+        },
+        'stageRectAttributes': {
+            'fill':'#DEE7EC',
+            'stroke':'#DEE7EC',
+        },
+        'stageSelectedAttributes': {
+            'fill':'blue',
+            'fill-opacity':1,
+            'stroke-opacity':1,
+            'stroke':'blue'
+        },
+        'stageTextSelectedAttributes': {
+            'text-anchor':'start',
+            'font-family':'Verdana',
+            'font-size':12,
+            'stroke':'white',//'#9F4948',
+            'stroke-opacity':1,//0.7
+            'fill':'white',
+            'fill-opacity':1
+        },
+        'descriptionTextSelectedAttributes': {
+            'text-anchor':'start',
+            'font-family':'Verdana',
+            'font-size':12,
+            'stroke':'white',//'#9F4948',
+            'stroke-opacity':1,
+            'fill':'white',
+            'fill-opacity':1//0.7
+        },
+        'shadowOffset':3,
+        'elementSpacing':2,
+        'stage1Width':153,
+        'stage2Width':206,
+        'stage3Width':129,
+        'stage4Width':170,
+        'descriptionSpacing':10,
+        'line1Indent':10,
+        'line2Indent':15,
+        'topPadding':13,
+        'underlineAttributes': {
+            'fill':'red',
+            'stroke':'red',
+        },
+        'underlineRadius':0,
+        'underlineSpacing':7,
+        'underlineThickness':3,
+        'stageRadius':5
+    },
+    paper: null,
+    inputText: null,
+    firstPath: null,
+    stage1Rect: null,
+    stage1Shadow:null,
+    stage1Text: null,
+    stage1Desc: null,
+    stage1Click: null,
+    stage2Rect: null,
+    stage2Shadow:null,
+    stage2Text: null,
+    stage2Desc: null,
+    stage2Click: null,
+    secondPath: null,
+    stage3Rect: null,
+    stage3Shadow:null,
+    stage3Text: null,
+    stage3Desc: null,
+    stage3Click: null,
+    thirdPath: null,
+    stage4Rect: null,
+    stage4Shadow:null,
+    stage4Text: null,
+    stage4Desc: null,
+    stage4Click: null,
+    fourthPath: null,
+    fifthPath: null,
+    outputText: null,
+    stage1Underline:null,
+    stage2Underline:null,
+    stage3Underline:null,
+    stage4Underline:null
+}
+
+$j(document).ready(function() {
+    // draw the pipeline
+    fatcatPipeline.paper = Raphael("pipeline-graphic",1000,fatcatPipeline.options.blockHeight+fatcatPipeline.options.underlineSpacing+fatcatPipeline.options.underlineThickness);
+    fatcatPipeline.inputText = fatcatPipeline.paper.text(1,Math.floor(fatcatPipeline.options.blockHeight/2),
+        ">Query\nMDAKARNCLLKDIKT\nEVMVLAVDHIRRLQL\nDLHKKIITQFQRYHQ").attr(fatcatPipeline.options.inputTextAttributes);
+    fatcatPipeline.firstPath = fatcatPipeline.paper.path("M" + (fatcatPipeline.inputText.getBBox().x2 + 
+        fatcatPipeline.options.elementSpacing).toString() + "," + Math.floor(fatcatPipeline.options.blockHeight/2).toString() 
+        + "H" + (fatcatPipeline.inputText.getBBox().x2 + fatcatPipeline.options.elementSpacing + 
+        fatcatPipeline.options.stageOnePathLength).toString()).attr(fatcatPipeline.options.pathAttributes);
+    fatcatPipeline.stage1Rect = fatcatPipeline.paper.rect(fatcatPipeline.firstPath.getBBox().x2 + 
+        fatcatPipeline.options.elementSpacing,0,fatcatPipeline.options.stage1Width,
+        fatcatPipeline.options.blockHeight,fatcatPipeline.options.stageRadius).attr(fatcatPipeline.options.stageRectAttributes);
+    fatcatPipeline.stage1Text = fatcatPipeline.paper.text(fatcatPipeline.stage1Rect.getBBox().x + fatcatPipeline.options.line1Indent, 
+        fatcatPipeline.stage1Rect.getBBox().y + fatcatPipeline.options.topPadding, "Stage 1:").attr(fatcatPipeline.options.stageTextAttributes).toFront();
+    fatcatPipeline.stage1Desc = fatcatPipeline.paper.text(fatcatPipeline.stage1Rect.getBBox().x + fatcatPipeline.options.line2Indent,
+        fatcatPipeline.stage1Text.getBBox().y2 + fatcatPipeline.options.descriptionSpacing, 
+        "Family HMM scoring").attr(fatcatPipeline.options.descriptionTextAttributes).toFront();
+    fatcatPipeline.stage1Click = fatcatPipeline.paper.rect(fatcatPipeline.firstPath.getBBox().x2+fatcatPipeline.options.elementSpacing,
+        0,fatcatPipeline.options.stage1Width,fatcatPipeline.options.blockHeight,fatcatPipeline.options.stageRadius).attr({'opacity':0, 'fill':'black','fill-opacity':0, 
+        'cursor':'pointer'}).toFront();
+    fatcatPipeline.secondPath = fatcatPipeline.paper.path("M" + (fatcatPipeline.stage1Rect.getBBox().x2 + 
+        fatcatPipeline.options.elementSpacing).toString() + "," + Math.floor(fatcatPipeline.options.blockHeight/2).toString() + 
+        "H" + (fatcatPipeline.stage1Rect.getBBox().x2 + fatcatPipeline.options.elementSpacing + 
+        fatcatPipeline.options.stageOnePathLength).toString()).attr(fatcatPipeline.options.pathAttributes);
+    fatcatPipeline.stage2Rect = fatcatPipeline.paper.rect(fatcatPipeline.secondPath.getBBox().x2 + 
+        fatcatPipeline.options.elementSpacing,0,fatcatPipeline.options.stage2Width,
+        fatcatPipeline.options.blockHeight,fatcatPipeline.options.stageRadius).attr(fatcatPipeline.options.stageRectAttributes);
+    fatcatPipeline.stage2Text = fatcatPipeline.paper.text(fatcatPipeline.stage2Rect.getBBox().x + fatcatPipeline.options.line1Indent, 
+        fatcatPipeline.stage2Rect.getBBox().y + fatcatPipeline.options.topPadding, "Stage 2:").attr(fatcatPipeline.options.stageTextAttributes).toFront();
+    fatcatPipeline.stage2Desc = fatcatPipeline.paper.text(fatcatPipeline.stage2Rect.getBBox().x + fatcatPipeline.options.line2Indent,
+        fatcatPipeline.stage2Text.getBBox().y2 + fatcatPipeline.options.descriptionSpacing, 
+        "Subtree HMM scoring").attr(fatcatPipeline.options.descriptionTextAttributes).toFront();
+    fatcatPipeline.stage2Click = fatcatPipeline.paper.rect(fatcatPipeline.secondPath.getBBox().x2+
+        fatcatPipeline.options.elementSpacing,0,fatcatPipeline.options.stage2Width,
+        fatcatPipeline.options.blockHeight,fatcatPipeline.options.stageRadius).attr({'opacity':0, 'fill':'black','fill-opacity':0, 
+        'cursor':'pointer'}).toFront();
+    fatcatPipeline.thirdPath = fatcatPipeline.paper.path("M" + (fatcatPipeline.stage2Rect.getBBox().x2 + 
+        fatcatPipeline.options.elementSpacing).toString() + "," + Math.floor(fatcatPipeline.options.blockHeight/2).toString() + 
+        "H" + (fatcatPipeline.stage2Rect.getBBox().x2 + fatcatPipeline.options.elementSpacing + 
+        fatcatPipeline.options.stageOnePathLength).toString()).attr(fatcatPipeline.options.pathAttributes);
+    fatcatPipeline.stage3Rect = fatcatPipeline.paper.rect(fatcatPipeline.thirdPath.getBBox().x2 + 
+        fatcatPipeline.options.elementSpacing,0,fatcatPipeline.options.stage3Width,
+        fatcatPipeline.options.blockHeight,fatcatPipeline.options.stageRadius).attr(fatcatPipeline.options.stageRectAttributes);
+    fatcatPipeline.stage3Text = fatcatPipeline.paper.text(fatcatPipeline.stage3Rect.getBBox().x + fatcatPipeline.options.line1Indent, 
+        fatcatPipeline.stage3Rect.getBBox().y + fatcatPipeline.options.topPadding, "Stage 3:").attr(fatcatPipeline.options.stageTextAttributes).toFront();
+    fatcatPipeline.stage3Desc = fatcatPipeline.paper.text(fatcatPipeline.stage3Rect.getBBox().x + fatcatPipeline.options.line2Indent,
+        fatcatPipeline.stage3Text.getBBox().y2 + fatcatPipeline.options.descriptionSpacing, 
+        "Ortholog selection").attr(fatcatPipeline.options.descriptionTextAttributes).toFront();
+    fatcatPipeline.stage3Click = fatcatPipeline.paper.rect(fatcatPipeline.thirdPath.getBBox().x2+
+        fatcatPipeline.options.elementSpacing,0,fatcatPipeline.options.stage3Width,
+        fatcatPipeline.options.blockHeight,fatcatPipeline.options.stageRadius).attr({'opacity':0, 'fill':'black','fill-opacity':0, 
+        'cursor':'pointer'}).toFront();
+    fatcatPipeline.fourthPath = fatcatPipeline.paper.path("M" + (fatcatPipeline.stage3Rect.getBBox().x2 + 
+        fatcatPipeline.options.elementSpacing).toString() + "," + Math.floor(fatcatPipeline.options.blockHeight/2).toString() + 
+        "H" + (fatcatPipeline.stage3Rect.getBBox().x2 + fatcatPipeline.options.elementSpacing + 
+        fatcatPipeline.options.stageOnePathLength).toString()).attr(fatcatPipeline.options.pathAttributes);
+    fatcatPipeline.stage4Rect = fatcatPipeline.paper.rect(fatcatPipeline.fourthPath.getBBox().x2 + 
+        fatcatPipeline.options.elementSpacing,0,fatcatPipeline.options.stage4Width,
+        fatcatPipeline.options.blockHeight,fatcatPipeline.options.stageRadius).attr(fatcatPipeline.options.stageRectAttributes);
+    fatcatPipeline.stage4Text = fatcatPipeline.paper.text(fatcatPipeline.stage4Rect.getBBox().x + fatcatPipeline.options.line1Indent, 
+        fatcatPipeline.stage4Rect.getBBox().y + fatcatPipeline.options.topPadding, "Stage 4:").attr(fatcatPipeline.options.stageTextAttributes).toFront();
+    fatcatPipeline.stage4Desc = fatcatPipeline.paper.text(fatcatPipeline.stage4Rect.getBBox().x + fatcatPipeline.options.line2Indent,
+        fatcatPipeline.stage4Text.getBBox().y2 + fatcatPipeline.options.descriptionSpacing, 
+        "Derive predicted function").attr(fatcatPipeline.options.descriptionTextAttributes).toFront();
+    fatcatPipeline.stage4Click = fatcatPipeline.paper.rect(fatcatPipeline.fourthPath.getBBox().x2+
+        fatcatPipeline.options.elementSpacing,0,fatcatPipeline.options.stage4Width,
+        fatcatPipeline.options.blockHeight, fatcatPipeline.options.stageRadius).attr({'opacity':0, 
+        'fill':'black','fill-opacity':0, 'cursor':'pointer'}).toFront();
+    fatcatPipeline.fifthPath = fatcatPipeline.paper.path("M" + (fatcatPipeline.stage4Rect.getBBox().x2 + 
+        fatcatPipeline.options.elementSpacing).toString() + "," + Math.floor(fatcatPipeline.options.blockHeight/2).toString() + 
+        "H" + (fatcatPipeline.stage4Rect.getBBox().x2 + fatcatPipeline.options.elementSpacing + 
+        fatcatPipeline.options.stageOnePathLength).toString()).attr(fatcatPipeline.options.pathAttributes);
+    fatcatPipeline.outputText = fatcatPipeline.paper.text(fatcatPipeline.fifthPath.getBBox().x2 + fatcatPipeline.options.elementSpacing, 
+        Math.floor(fatcatPipeline.options.blockHeight/2), "Predicted orthologs\nPredicted functions").attr(fatcatPipeline.options.inputTextAttributes);
+    // add the underline elements
+    fatcatPipeline.stage1Underline = fatcatPipeline.paper.rect(fatcatPipeline.stage1Rect.getBBox().x, 
+        fatcatPipeline.stage1Rect.getBBox().y2 + fatcatPipeline.options.underlineSpacing, 
+        fatcatPipeline.stage1Rect.getBBox().width, fatcatPipeline.options.underlineThickness, 
+        fatcatPipeline.options.underlineRadius).attr(fatcatPipeline.options.underlineAttributes).hide(); 
+    fatcatPipeline.stage2Underline = fatcatPipeline.paper.rect(fatcatPipeline.stage2Rect.getBBox().x, 
+        fatcatPipeline.stage2Rect.getBBox().y2 + fatcatPipeline.options.underlineSpacing, 
+        fatcatPipeline.stage2Rect.getBBox().width, fatcatPipeline.options.underlineThickness, 
+        fatcatPipeline.options.underlineRadius).attr(fatcatPipeline.options.underlineAttributes).hide(); 
+    fatcatPipeline.stage3Underline = fatcatPipeline.paper.rect(fatcatPipeline.stage3Rect.getBBox().x, 
+        fatcatPipeline.stage3Rect.getBBox().y2 + fatcatPipeline.options.underlineSpacing, 
+        fatcatPipeline.stage3Rect.getBBox().width, fatcatPipeline.options.underlineThickness, 
+        fatcatPipeline.options.underlineRadius).attr(fatcatPipeline.options.underlineAttributes).hide(); 
+    fatcatPipeline.stage4Underline = fatcatPipeline.paper.rect(fatcatPipeline.stage4Rect.getBBox().x, 
+        fatcatPipeline.stage4Rect.getBBox().y2 + fatcatPipeline.options.underlineSpacing, 
+        fatcatPipeline.stage4Rect.getBBox().width, fatcatPipeline.options.underlineThickness, 
+        fatcatPipeline.options.underlineRadius).attr(fatcatPipeline.options.underlineAttributes).hide(); 
+
+    // add shadow elements
+    fatcatPipeline.stage1Shadow = fatcatPipeline.paper.rect(fatcatPipeline.stage1Rect.getBBox().x +
+        fatcatPipeline.options.shadowOffset, fatcatPipeline.stage1Rect.getBBox().y + 
+        fatcatPipeline.options.shadowOffset, fatcatPipeline.stage1Rect.getBBox().width, 
+        fatcatPipeline.stage1Rect.getBBox().height, fatcatPipeline.options.stageRadius).attr(fatcatPipeline.options.shadowAttributes).toBack();
+    fatcatPipeline.stage2Shadow = fatcatPipeline.paper.rect(fatcatPipeline.stage2Rect.getBBox().x +
+        fatcatPipeline.options.shadowOffset, fatcatPipeline.stage2Rect.getBBox().y + 
+        fatcatPipeline.options.shadowOffset, fatcatPipeline.stage2Rect.getBBox().width, 
+        fatcatPipeline.stage2Rect.getBBox().height, fatcatPipeline.options.stageRadius).attr(fatcatPipeline.options.shadowAttributes).toBack();
+    fatcatPipeline.stage3Shadow = fatcatPipeline.paper.rect(fatcatPipeline.stage3Rect.getBBox().x +
+        fatcatPipeline.options.shadowOffset, fatcatPipeline.stage3Rect.getBBox().y + 
+        fatcatPipeline.options.shadowOffset, fatcatPipeline.stage3Rect.getBBox().width, 
+        fatcatPipeline.stage3Rect.getBBox().height, fatcatPipeline.options.stageRadius).attr(fatcatPipeline.options.shadowAttributes).toBack();
+    fatcatPipeline.stage4Shadow = fatcatPipeline.paper.rect(fatcatPipeline.stage4Rect.getBBox().x +
+        fatcatPipeline.options.shadowOffset, fatcatPipeline.stage4Rect.getBBox().y + 
+        fatcatPipeline.options.shadowOffset, fatcatPipeline.stage4Rect.getBBox().width, 
+        fatcatPipeline.stage4Rect.getBBox().height, fatcatPipeline.options.stageRadius).attr(fatcatPipeline.options.shadowAttributes).toBack();
+
+    // add click handlers for graphic.
+    fatcatPipeline.stage1Click.click(function() {
+        $j(' .stages ').hide();
+        $j( '#stage1' ).show();
+        fatcatPipeline.stage1Rect.attr(fatcatPipeline.options.stageSelectedAttributes);
+        fatcatPipeline.stage1Text.attr(fatcatPipeline.options.stageTextSelectedAttributes);
+        fatcatPipeline.stage1Desc.attr(fatcatPipeline.options.descriptionTextSelectedAttributes);
+        fatcatPipeline.stage1Underline.show();
+        fatcatPipeline.stage2Rect.attr(fatcatPipeline.options.stageRectAttributes);
+        fatcatPipeline.stage2Text.attr(fatcatPipeline.options.stageTextAttributes);
+        fatcatPipeline.stage2Desc.attr(fatcatPipeline.options.descriptionTextAttributes);
+        fatcatPipeline.stage2Underline.hide();
+        fatcatPipeline.stage3Rect.attr(fatcatPipeline.options.stageRectAttributes);
+        fatcatPipeline.stage3Text.attr(fatcatPipeline.options.stageTextAttributes);
+        fatcatPipeline.stage3Desc.attr(fatcatPipeline.options.descriptionTextAttributes);
+        fatcatPipeline.stage3Underline.hide();
+        fatcatPipeline.stage4Rect.attr(fatcatPipeline.options.stageRectAttributes);
+        fatcatPipeline.stage4Text.attr(fatcatPipeline.options.stageTextAttributes);
+        fatcatPipeline.stage4Desc.attr(fatcatPipeline.options.descriptionTextAttributes);
+        fatcatPipeline.stage4Underline.hide();
+    });
+    fatcatPipeline.stage2Click.click(function() {
+        $j(' .stages ').hide();
+        $j( '#stage2' ).show();
+        fatcatPipeline.stage2Rect.attr(fatcatPipeline.options.stageSelectedAttributes);
+        fatcatPipeline.stage2Text.attr(fatcatPipeline.options.stageTextSelectedAttributes);
+        fatcatPipeline.stage2Desc.attr(fatcatPipeline.options.descriptionTextSelectedAttributes);
+        fatcatPipeline.stage2Underline.show();
+        fatcatPipeline.stage1Rect.attr(fatcatPipeline.options.stageRectAttributes);
+        fatcatPipeline.stage1Text.attr(fatcatPipeline.options.stageTextAttributes);
+        fatcatPipeline.stage1Desc.attr(fatcatPipeline.options.descriptionTextAttributes);
+        fatcatPipeline.stage1Underline.hide();
+        fatcatPipeline.stage3Rect.attr(fatcatPipeline.options.stageRectAttributes);
+        fatcatPipeline.stage3Text.attr(fatcatPipeline.options.stageTextAttributes);
+        fatcatPipeline.stage3Desc.attr(fatcatPipeline.options.descriptionTextAttributes);
+        fatcatPipeline.stage3Underline.hide();
+        fatcatPipeline.stage4Rect.attr(fatcatPipeline.options.stageRectAttributes);
+        fatcatPipeline.stage4Text.attr(fatcatPipeline.options.stageTextAttributes);
+        fatcatPipeline.stage4Desc.attr(fatcatPipeline.options.descriptionTextAttributes);
+        fatcatPipeline.stage4Underline.hide();
+    });
+    fatcatPipeline.stage3Click.click(function() {
+        $j(' .stages ').hide();
+        $j( '#stage3' ).show();
+        fatcatPipeline.stage3Rect.attr(fatcatPipeline.options.stageSelectedAttributes);
+        fatcatPipeline.stage3Text.attr(fatcatPipeline.options.stageTextSelectedAttributes);
+        fatcatPipeline.stage3Desc.attr(fatcatPipeline.options.descriptionTextSelectedAttributes);
+        fatcatPipeline.stage3Underline.show();
+        fatcatPipeline.stage1Rect.attr(fatcatPipeline.options.stageRectAttributes);
+        fatcatPipeline.stage1Text.attr(fatcatPipeline.options.stageTextAttributes);
+        fatcatPipeline.stage1Desc.attr(fatcatPipeline.options.descriptionTextAttributes);
+        fatcatPipeline.stage1Underline.hide();
+        fatcatPipeline.stage2Rect.attr(fatcatPipeline.options.stageRectAttributes);
+        fatcatPipeline.stage2Text.attr(fatcatPipeline.options.stageTextAttributes);
+        fatcatPipeline.stage2Desc.attr(fatcatPipeline.options.descriptionTextAttributes);
+        fatcatPipeline.stage2Underline.hide();
+        fatcatPipeline.stage4Rect.attr(fatcatPipeline.options.stageRectAttributes);
+        fatcatPipeline.stage4Text.attr(fatcatPipeline.options.stageTextAttributes);
+        fatcatPipeline.stage4Desc.attr(fatcatPipeline.options.descriptionTextAttributes);
+        fatcatPipeline.stage4Underline.hide();
+    });
+    fatcatPipeline.stage4Click.click(function() {
+        $j(' .stages ').hide();
+        $j( '#stage4' ).show();
+        fatcatPipeline.stage4Rect.attr(fatcatPipeline.options.stageSelectedAttributes);
+        fatcatPipeline.stage4Text.attr(fatcatPipeline.options.stageTextSelectedAttributes);
+        fatcatPipeline.stage4Desc.attr(fatcatPipeline.options.descriptionTextSelectedAttributes);
+        fatcatPipeline.stage4Underline.show();
+        fatcatPipeline.stage1Rect.attr(fatcatPipeline.options.stageRectAttributes);
+        fatcatPipeline.stage1Text.attr(fatcatPipeline.options.stageTextAttributes);
+        fatcatPipeline.stage1Desc.attr(fatcatPipeline.options.descriptionTextAttributes);
+        fatcatPipeline.stage1Underline.hide();
+        fatcatPipeline.stage2Rect.attr(fatcatPipeline.options.stageRectAttributes);
+        fatcatPipeline.stage2Text.attr(fatcatPipeline.options.stageTextAttributes);
+        fatcatPipeline.stage2Desc.attr(fatcatPipeline.options.descriptionTextAttributes);
+        fatcatPipeline.stage2Underline.hide();
+        fatcatPipeline.stage3Rect.attr(fatcatPipeline.options.stageRectAttributes);
+        fatcatPipeline.stage3Text.attr(fatcatPipeline.options.stageTextAttributes);
+        fatcatPipeline.stage3Desc.attr(fatcatPipeline.options.descriptionTextAttributes);
+        fatcatPipeline.stage3Underline.hide();
+    });
+
+    // add hover handlers for graphic
+    fatcatPipeline.stage1Click.mouseover(function() {
+        fatcatPipeline.stage1Rect.attr({'stroke':'#41677A'});
+    });
+    fatcatPipeline.stage1Click.mouseout(function() {
+        fatcatPipeline.stage1Rect.attr({'stroke':'#DEE7EC'});
+    });
+    fatcatPipeline.stage2Click.mouseover(function() {
+        fatcatPipeline.stage2Rect.attr({'stroke':'#41677A'});
+    });
+    fatcatPipeline.stage2Click.mouseout(function() {
+        fatcatPipeline.stage2Rect.attr({'stroke':'#DEE7EC'});
+    });
+    fatcatPipeline.stage3Click.mouseover(function() {
+        fatcatPipeline.stage3Rect.attr({'stroke':'#41677A'});
+    });
+    fatcatPipeline.stage3Click.mouseout(function() {
+        fatcatPipeline.stage3Rect.attr({'stroke':'#DEE7EC'});
+    });
+    fatcatPipeline.stage4Click.mouseover(function() {
+        fatcatPipeline.stage4Rect.attr({'stroke':'#41677A'});
+    });
+    fatcatPipeline.stage4Click.mouseout(function() {
+        fatcatPipeline.stage4Rect.attr({'stroke':'#DEE7EC'});
+    });
+
+
+    $j(".selector").click(function() {
+        $j( $j(this).data().jqs ).show();
+    });
+
+});
+</script>-->
+{% endblock %}
+
+{% block content %}
+<h2>About FAT-CAT</h2>
+<!--<p style="margin-left:50px;margin-bottom:3px">Submit a sequence for analysis to our <a href="/phylofacts/fatcat/">FAT-CAT server</a></p>
+<p style="margin-left:170px;margin-bottom:3px">OR</p>
+<p style="margin-left:170px;margin-bottom:3px">OR</p>
+<p style="margin-left:50px;margin-bottom:20px;"><a href='/phylofacts/fatcat/precalc/'>View precalculated results</a></p>-->
+<p class="para"><a href="/static/doc/FATCAT_Tutorial.pdf">FAT-CAT Tutorial</a> | <a href="/static/doc/FATCAT_Quickstart.pdf">Quickstart Guide</a><a href=""></a></p>
+
+<p class="para"><img src="/static/img/graphs/fatcat-combined-pipeline.png" /></p>
+<p class="para">The FAT-CAT pipeline starts with the submission of a protein sequence
+and parameter selection and proceeds through family and subtree HMM scoring to ortholog identification and
+functional annotation. The FAST-CAT variant differs from the default FAT-CAT pipeline in stage 3 (indicated
+by red arrows). In stage 1, the query is scored against family HMMs in the PhyloFacts database for proteins
+sharing the same multi-domain architecture (MDA, shown at top) and HMMs constructed for Pfam domains
+(shown at bottom). Families meeting stage 1 criteria (E-value and alignment statistics) are passed to stage 2.
+In this toy example, PhyloFacts trees for two Pfam domains and a tree for the multi-domain architecture meet
+stage 1 criteria and are passed to stage 2.</p>
+<p class="para">In stage 2, we obtain an approximate phylogenetic placement of the query in each tree by scoring all
+the HMMs in the tree. The subtree node corresponding to the top-scoring HMM is examined to determine its
+suitability as a source of orthologs to the query: stage 2 parameters include the query-subtree HMM score and
+alignment and whether the subtree appears to be restricted to orthologs. For each top-scoring node that meets
+these criteria we identify a (typically larger) enclosing clade supported by one or more orthology methods.
+Enclosing clades are passed to Stage 3 for ortholog identification.</p>
+<p class="para">In stage 3, FAT-CAT and FAST-CAT diverge. FAT-CAT (blue arrows) evaluates the pairwise alignment
+between the query and each sequence and identifies all supporting evidence supporting the orthology. FAST-
+CAT (red arrows) avoids much of this computational complexity by using a fast k-tuple comparison to select
+the most similar sequences from the enclosing clade, constructing an MSA including the query using MAFFT,
+estimating a phylogenetic tree using FastTree, and extracting a subtree of the phylogenetically closest
+sequences (i.e., based on tree distance to the query). Alignment analysis can then be restricted to this smaller
+subset based on the multiple sequence alignment. Sequences meeting these criteria are then passed to stage
+4.</p>
+<p class="para">In stage 4, we derive a weighted consensus functional annotation for the query based on orthologs
+selected in stage 3. Annotations from close orthologs are given higher weight than those from more
+distant orthologs, and manually curated annotations are given higher weight than those that are derived
+computationally.</p>
+
+
+<!--<div id="pipeline-graphic"></div>
+<div id="pipeline-description">
+    <div id="fatcat-overview">
+    </div>
+    <div id="stage1" class="stages">
+        <h3>Stage 1: Family HMM Searches</h3>
+        <div id="stage1-overview">
+            <p><strong>Overview:</strong> Score the query sequence against all the family HMMs in PhyloFacts; 
+                identify those with significant scores (<a href="javascript:;" class="selector" data-jqs="#stage1-filter1">Filter 1</a>).  For families with significant 
+                HMM scores, examine the alignment between the query and the family HMM consensus 
+                sequence. Set aside any matches suggestive of clear disagreement in multi-domain 
+                architecture between the query and sequences in that family (<a href="javascript:;" class="selector" data-jqs="#stage1-filter2">Filter 2</a>).    Matches 
+                to families that pass these two filters are analyzed further in Stage 2. 
+                Families that fail either criteria are displayed in Distant Clades on the results page.
+            </p>
+        </div>
+        <div id="stage1-filter1" class="hidden-desc">
+            <p><strong>Filter 1. HMM score significance.</strong>  Score the input sequence against family HMMs 
+                (located at the root of PhyloFacts trees). Identify matches with a significant HMM score.</p>
+            <p>Tunable parameter: Family HMM E-value (default 1e-04).</p>
+        </div>
+        <div id="stage1-filter2" class="hidden-desc">
+            <p><strong>Filter 2.  Alignment Overlap.</strong>  PhyloFacts families are divided into those sharing a 
+                    common multi-domain architecture (MDA) and those having a Pfam domain in common. 
+                    For MDA family matches, we require bi-directional alignment overlap between the query 
+                    and the HMM. Our current default is 70% overlap of both the query and the HMM, i.e., 
+                    70% of the residues in the query must align to the HMM and the query must match 70% of 
+                    the match states in the HMM. This heuristic does not guarantee that the query and 
+                    sequences in the MDA family will share the same MDA, but filters out many spurious 
+                    matches. For PhyloFacts families representing Pfam domains, we require that the query 
+                    matches 70% of the HMM match states, but do not require a minimum fractional coverage 
+                    of the query. </p>
+            <p>Tunable parameters:  Alignment overlap (default 70% for Pfam matches; 70% bi-directional overlap for MDA matches).</p>
+        </div>
+    </div>
+    <div id="stage2" class="stages">
+        <h3>Stage 2: Phylogenetic placement using subtree HMM scoring</h3>
+        <div id="stage2-overview">
+            <p><strong>Overview:</strong> For each tree selected in stage 1, construct subtree HMMs (if not 
+                    already constructed, <a href="javascript:;" class="selector" data-jqs="#stage2-1">Step 2.1</a>), score the query against all subtree HMMs and identify 
+                    the top-scoring subtree node (TSN) (<a href="javascript:;" class="selector" data-jqs="#stage2-2">Step 2.2</a>). If the query-subtree alignment passes user-specified 
+                    percent identity and coverage criteria (<a href="javascript:;" class="selector" data-jqs="#stage2-3">Step 2.3</a>) the subtree is then examined to 
+                    determine whether it is located in an orthologous clade (<a href="javascript:;" class="selector" data-jqs="#stage2-4">Step 2.4</a>).  Those that 
+                    pass these criteria are used to identify putative orthologs to the query in Stage 3.
+            </p>
+        </div>
+        <div id="stage2-1" class="hidden-desc">
+            <p><strong>2.1 Subtree HMM construction for all nodes in the family tree.</strong> 
+                We use a lazy protocol for HMM construction: 
+                we check to see whether subtree HMMs have been previously constructed for the tree.  
+                If not, we build them.</p>
+        </div>
+        <div id="stage2-2" class="hidden-desc">
+            <p><strong>2.2 Subtree HMM scoring.</strong>  Score the query against all subtree HMMs; identify 
+                the top-scoring subtree. The top-scoring subtree may be located at the root of the tree 
+                (in which case it is the same as the family HMM), at a nested subtree some distance from 
+                the root, or at a leaf in the tree (i.e., it represents a single sequence). Since different 
+                strong scores can result in an E-value of zero, we sort based on the bit score, not the E-value.  
+                Note that selecting the top-scoring HMM guarantees a significance at least equal to the family 
+                HMM  (which passed the significance cutoff) so it is not necessary to check the E-value at 
+                this stage.  </p>  
+            <!--<p>Why the top HMM score is sufficient for orthology prediction: If the top-scoring 
+            subtree node is within a clade composed of mutually orthologous proteins, then the phylogenetic 
+            placement within the orthologous clade supports the potential orthology relationships between the 
+            query and subtree members. By contrast, if the top-scoring node is <em>outside</em> all orthologous clades 
+            then the query may represent a distinct functional type from those included in the tree.  The 
+            reasoning is this: if the query belonged to one of the orthologous groups that descend from that 
+            node in the tree, it should have received a stronger score at an HMM within that orthologous subtree; 
+            since it didn’t, we must assume that the query may represent a functional subtype not included in 
+            that family. The query may well be homologous to the family members (if the HMM score is significant, 
+            it probably is); it may simply not be orthologous to any sequences in the tree.</p>
+        </div>
+        <div id="stage2-3" class="hidden-desc">
+            <p><strong>2.3 Subtree HMM alignment evaluation (between the query and the TSN HMM).</strong>  We evaluate the alignment of the query and the 
+                top-scoring subtree HMM. In the first stage we did not examine the alignment to the root HMM, 
+                only the overlap; in this second stage we examine both. The reason for re-examining the 
+                alignment between the query and the HMM at this stage is that the alignments change: family 
+                HMM parameters are much more generalized and noisy than subtree HMM parameters which focus 
+                increasingly on the amino acid preferences defining that subgroup, so alignments of query 
+                sequences commonly become more accurate as a sequence approaches the subtree to which it “belongs”.</p>
+            <p>Tunable parameter: Minimum %ID between the query and HMM (default 50%). Minimum fractional overlap between the query and HMM (default 70%)</p>
+        </div>
+        <div id="stage2-4" class="hidden-desc">
+            <p><strong>2.4 Confirm that the top-scoring subtree node is located in an orthologous clade, and find 
+            the largest enclosing orthologous clade for the top-scoring node.</strong></p>
+            <p>We examine the top-scoring subtree.  In Step 2.4.1 we reject subtrees that contain highly divergent pairs of sequences (using the kerf analysis described below).  
+            In Step 2.4.2 we attempt to expand beyond the TSN to include additional orthologs.  Thus, for subtrees that pass the kerf criterion, we use additional information (such as orthology relationships from 3rd-party databases) to find a larger subtree that includes the top-scoring node (TSN).</p>
+            <p><strong>2.4.1 Confirm that the TSN is restricted to presumed orthologs</strong>
+            <p><strong>Kerf:</strong> The word “kerf” means the cut of a tree made by a saw. Our Kerf algorithm uses a 
+            simple heuristic to cut a gene tree into subtrees:  we find the set of (maximal) subtrees such that 
+            the pairwise sequence identity of all sequences in the subtree is at or above a specified cutoff. 
+            High percent identity cutoffs will produce a larger number of subtrees composed of highly similar 
+            sequences, while low percent identity cutoffs will produce fewer subtrees of more variable sequences. 
+            Thus, one can adjust the Kerf percent identity cutoff to optimize either precision or recall. 
+            By default, we use a cutoff of 70% identity, based on the observation that sequences having 70% 
+            identity or higher typically share all four fields of their EC (Enzyme Commission) numbers.     
+            (Our own analyses of PhyloFacts families shows that a 70% cutoff typically, but not always, 
+            separates orthologs and paralogs. However, in some cases, a much lower percent identity cutoff is 
+            needed to include all orthologs, and in other cases, a higher cutoff is required to exclude all 
+            paralogs. As a basic rule of thumb, it works reasonably well, so we use 70% identity as a default 
+            for Kerf.)</p>
+            <p>Tunable parameter: Kerf %ID cutoff (default 70%).</p>
+            <p><strong>2.4.2 Expand the TSN to the largest Enclosing Clade of presumed orthologs</strong></p>
+            <p>We use several mechanisms to label subtrees of PhyloFacts trees as probable orthologous clades: 
+            Kerf, PHOG, and a subtree-bracketing approach to integrate 3rd-party orthology database predictions 
+            onto PhyloFacts trees.  For the top-scoring subtree node, we identify the largest enclosing clade 
+            defined by any of the orthologous subtree identification protocols. The sequences from that enclosing 
+            clade are selected as candidate orthologs to the query from that tree. </p>
+            <p><strong>PHOG:</strong> PHOG stands for PhyloFacts Orthology Group. The PHOG algorithm, described in [5] 
+            uses a phylogenomic approach to identify orthologs on PhyloFacts trees. Standard phylogenomic methods 
+            of orthology identification use gene tree-species tree reconciliation to differentiate paralogs from 
+            orthologs. PHOG does not use tree reconciliation, partly due to ambiguities in many species phylogenies 
+            and partly to frequent disagreements between gene trees and species trees. Instead, PHOG uses a 
+            taxon-counting approach and comparisons of tree distances between species to locate approximate 
+            duplication events on PhyloFacts trees. The PHOG algorithm has a parameter T (for tree distance 
+            threshold); large thresholds produce greater recall but low precision, and a threshold of zero 
+            is designed to identify “super-orthologs” (the most restrictive definition of orthology proposed 
+            by Zmasek and Eddy [6]). In FAT-CAT, we use a tree distance of zero in the PHOG algorithm to 
+            optimize precision.</p>
+            <p><strong>Subtree bracketing of 3rd-party data.</strong> We retrieve orthology relationships from OMA 
+            and OrthoMCL, and overlay these on PhyloFacts trees.  Since OMA and OrthoMCL (and most 
+            orthology databases) restrict orthology predictions to sequences from whole genomes, PhyloFacts 
+            trees (which include sequences from both whole and partly sequenced genomes) are very sparsely 
+            labeled by 3rd party databases. To make use of 3rd-party data and simultaneously handle these 
+            missing data we use a subtree-bracketing approach.  For instance, we define as putative OMA-SB 
+            (subtree-bracketed) orthology groups those subtrees whose OMA-labeled sequences are restricted to 
+            a single OMA group, and for which the subtree root corresponds to the most recent common ancestor 
+            of the two most distant OMA-labeled sequences in that subtree.  (We compute the distance between 
+            sequences by summing over the tree edge lengths between the two sequences.)  Programmatically, we 
+            achieve this by finding the maximal subtrees whose right and left child each contain at least one 
+            OMA labeled sequence and the OMA labels agree.</p>
+        </div>
+    </div>
+    <div id="stage3" class="stages">
+        <h3>Stage 3: Ortholog selection</h3>
+        <div id="stage3-overview">
+            <p><strong>Overview:</strong> The clustering of Candidate Orthologs in the previous stage is deliberately 
+            designed to maximize recall but at a possible cost of precision. The aim of this stage is to        
+            optimize precision, by separating probable orthologs and probable paralogs. We do this through two 
+            separate protocols. First, the alignment of the candidate ortholog to the query is analyzed to 
+            reject sequences that may not have the same multi-domain architecture (based on failing the 
+            bi-directional overlap criteria) and those whose pairwise identity falls below the user-defined cutoff 
+                (<a href="javascript:;" class="selector" data-jqs="#stage3-1">Step 3.1</a>).  Second, we flag cases 
+            where multiple members from the same taxon are included in the Candidate Ortholog set. Some of these 
+            multiple members stem from the inclusion of paralogs as well as orthologs in the set; others result 
+            from UniProt’s inclusion of multiple isoforms or gene models for the same genes. We attempt to cluster 
+            these protein sequences based on pairwise identity to the query, and select one sequence as the representative 
+            of each cluster. Sequence clusters with the highest percent identity from that taxon are listed 
+            under Orthologs and those with lower percent identity are listed under “Paralogs/Other matches”. 
+            (<a href="javascript:;" class="selector" data-jqs="#stage3-2">Step 3.2</a>)</p>
+        </div>
+        <div id="stage3-1" class="hidden-desc">
+            <p><strong>3.1 Alignment analysis:</strong> We align the query and each candidate ortholog using MAFFT, 
+            and check the percent identity (#identical characters divided by the number of positions where 
+            both sequences align), fractional overlap of the query (Q-cov = # positions where both sequences align/
+            query length) and fractional overlap of the candidate ortholog “hit” (H-cov = #positions where 
+            both sequences align/length of candidate ortholog).  Sequences that fail any of these criteria 
+            are set aside as probable paralogs (or sequences having different multi-domain architectures). 
+            Alignment percent identity and coverage criteria are designed to optimize precision rather than 
+            recall. Many true orthologs may fail one or more criteria for different reasons. Gene model errors 
+            are quite frequent, particularly among eukaryotes but also among bacteria and archaea; problems with 
+            gene models can cause an ortholog to fail the bi-directional overlap criteria. Orthologs in distant 
+            species may have low %ID to the query (and may also have accumulated insertions or deletions since 
+            their common ancestor so that they also fail the bi-directional overlap criteria).</p>
+            <p>Tunable parameters:</p>
+            <ul>
+                <li style="list-style:none">1.  Minimum %ID between the query and candidate ortholog (default 50%).</li>
+                <li style="list-style:none;">2.  Minimum bi-directional fractional overlap between the 
+                query and ortholog (default 75% for both Q-cov and O-cov). We use a higher coverage cutoff 
+                in this stage than in the first stage when we compare the query against family HMM consensus 
+                sequences. </li>
+            </ul>
+        </div>
+        <div id="stage3-2" class="hidden-desc">
+            <p><strong>3.2 Sequence clustering:</strong> We flag cases where multiple members from the same taxon 
+            are included in the Candidate Ortholog set. Some of these cases stem from the inclusion of 
+            paralogs as well as orthologs in the largest Enclosing Clade.  However, the majority result 
+            from UniProt’s inclusion of multiple isoforms or gene models for the same genes. For instance, 
+            the UniProtKB sequence database contains >131K proteins for Homo sapiens, but the number of genes 
+            in the human genome is ~22K, so that there is a ratio of ~6 protein sequences in UniProt for 
+            every human gene.</p>
+            <p>Manual examination of phylogenetic trees clearly separates actual paralogs (related by 
+            duplication events) from sequences that represent the same underlying gene (e.g., represent 
+            different isoform or gene models or are sequence fragments). The latter typically cluster together 
+            into single-taxon subtrees, while the former are separated on the tree. In some rare cases, 
+            single-taxon subtrees correspond to actual inparalogs (paralogous genes in the same genome), or 
+            ultraparalogs (using the term proposed by Zmasek and Eddy [6]): genes duplicated very recently within 
+            a genome such that inparalogs are closer to each other than they are to any homologs in other 
+            species. Knowledge of genomic locus is necessary to disambiguate between these types.  Because 
+            genomic locus is not available for all proteins, OrthoMCL and PHOG include single-taxon clusters 
+            into orthologous groups (PHOG uses single-taxon subtrees and OrthoMCL uses single-taxon subgraphs).</p>
+            <p>In the current FAT-CAT pipeline, we cluster candidate orthologs from the same taxon based on 
+            their sequence identity to the query. We sort sequences from the same taxon based on their %ID and 
+            identify the sequence with the highest %ID. We then continue down the sorted list and identify all 
+            sequences within a specified %ID range from that highest %ID observed. All the sequences in that 
+            group are listed as orthologs to the query. We select one sequence as the representative of each 
+            cluster; if any sequences in the cluster are from SwissProt, we pick one as the representative, 
+            else we pick the sequence with the highest %ID as the representative of the cluster. Sequence 
+            clusters with lower percent identities are listed under “Paralogs/Other matches”. Some of these 
+            sequences may in fact represent predicted proteins for the same underlying (orthologous) gene, 
+            but for which gene model errors reduced the percent identity or fractional overlap.</p>
+            <p>Tunable parameter: %ID range  (default 5%).</p>
+        </div>
+    </div>
+    <div id="stage4" class="stages">
+        <h3>Stage 4: Derive predicted functions for query based on orthologs</h3>
+        <div id="stage4-overview">
+            <p><strong>Overview:</strong> We attempt to annotate the query with a UniProt description 
+            (<a href="javascript:;" class="selector" data-jqs="#stage4-1">4.1</a>), Gene Ontology biological 
+            process, molecular function and cellular location (<a href="javascript:;" class="selector" data-jqs="#stage4-2">4.2</a>), 
+            Enzyme Commission number (<a href="javascript:;" class="selector" data-jqs="#stage4-2">4.2</a>), 
+            and other functional annotations based on the corresponding annotations for orthologs, evolutionary 
+            distance between the query and orthologs and the underlying support for the annotations.</p>
+            <p>Although our parameter settings from previous stages are intended to restrict predicted 
+            orthologs to actual orthologs, we cannot rule out the possibility of paralogs being included, or 
+            for the annotations associated with sequences from diverging due to speciation. To compensate for 
+            these issues, we use a sequence weighting protocol to down-weight annotations associated with more 
+            distant sequences. We also weight annotations from the manually curated SwissProt sequences higher 
+            than those in the automatically annotated TrEMBL sequences, and weight GO annotations according to 
+            the corresponding evidence codes (e.g., giving annotations with experimental support, such as IDA, 
+            IPI and IMP higher weight than evidence codes based on sequence similarity such as IEA and ISS). 
+            </p>
+        </div>
+        <div id="stage4-1" class="hidden-desc">
+            <p><strong>4.1 Deriving the Consensus UniProt Description.</strong> We use a simple sequence weighting 
+                heuristic that weights UniProt descriptions for sequences relative to their sequence identity 
+                to the query (see below) and weighting SwissProt sequences higher than those in TrEMBL. 
+                <span>Annotations are normalized, since they are mutually exclusive. 
+                If the top-ranked annotation receives a score of 0.75 or better, we call that annotation 
+                “High confidence”; scores between 0.5 and 0.75 receive a “Medium confidence” label; scores 
+                below that level result in a “Fuzzy Annotation Set” including all UniProt descriptions.</span></p>
+        </div>
+        <div id="stage4-2" class="hidden-desc">
+            <p><strong>4.2 Deriving GO annotations and EC numbers.</strong>  In FAT-CAT release 1, GO annotations and EC 
+                numbers are listed simply by the number of times a particular annotation is observed in the set 
+                of orthologs. No attempt is made to derive weights based on sequence identity to the query or 
+                the evidence supporting that annotation. (This will change in the next release.)</p>
+        </div>
+    </div>
+</div>-->
+
+
+{% endblock %}

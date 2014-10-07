@@ -1,0 +1,52 @@
+{% extends "kegg/map_base.html" %}
+
+{% block node_overlay %}
+  .node_3_4_21_53_instance_0
+    { position: absolute;
+      left: 231px; top: 479px;
+      width: 46px; height: 17px; z-index:1; opacity:0.5; background: #0000FF;
+    }
+{% endblock %}
+{% block mapdata %}
+<area shape=circle	coords=656,440,4	href="/dbget-bin/www_bget?C16463"	title="C16463 (3',5'-Cyclic diGMP)" />
+<area shape=rect	coords=594,368,640,385	href="/dbget-bin/www_bget?K13590"	title="K13590 (dgcB)" />
+<area shape=rect	coords=637,534,683,551	href="/dbget-bin/www_bget?K13589"	title="K13589 (cpdR)" />
+<area shape=rect	coords=623,551,669,568	href="/dbget-bin/www_bget?K03544"	title="K03544 (clpX)" />
+<area shape=rect	coords=633,485,679,502	href="/dbget-bin/www_bget?K13591"	title="K13591 (popA)" />
+<area shape=rect	coords=633,502,679,519	href="/dbget-bin/www_bget?K13592"	title="K13592 (rcdA)" />
+<area shape=rect	coords=635,301,681,318	href="/dbget-bin/www_bget?K11357"	title="K11357 (divJ)" />
+<area shape=rect	coords=629,171,675,188	href="/dbget-bin/www_bget?K07716"	title="K07716 (pleC)" />
+<area shape=rect	coords=678,368,724,385	href="/dbget-bin/www_bget?K02488"	title="K02488 (pleD)" />
+<area shape=rect	coords=489,315,535,332	href="/dbget-bin/www_bget?K13587"	title="K13587 (cckA)" />
+<area shape=rect	coords=507,376,553,393	href="/dbget-bin/www_bget?K13588"	title="K13588 (chpT)" />
+<area shape=rect	coords=556,413,602,430	href="/dbget-bin/www_bget?K13245"	title="K13245 (pdeA)" />
+<area shape=rect	coords=603,124,649,141	href="/dbget-bin/www_bget?K13582"	title="K13582 (podJ)" />
+<area shape=rect	coords=630,86,676,103	href="/dbget-bin/www_bget?K06985"	title="K06985 (K06985)" />
+<area shape=rect	coords=691,160,737,177	href="/dbget-bin/www_bget?K11749"	title="K11749 (rseP)" />
+<area shape=rect	coords=428,430,474,447	href="/dbget-bin/www_bget?K13585"	title="K13585 (hfaA)" />
+<area shape=rect	coords=428,452,474,469	href="/dbget-bin/www_bget?K13586"	title="K13586 (hfaB)" />
+<area shape=rect	coords=351,418,397,435	href="/dbget-bin/www_bget?K03589"	title="K03589 (ftsQ)" />
+<area shape=rect	coords=300,418,346,435	href="/dbget-bin/www_bget?K03531"	title="K03531 (ftsZ)" />
+<area shape=rect	coords=351,458,397,475	href="/dbget-bin/www_bget?K03588"	title="K03588 (ftsW)" />
+<area shape=rect	coords=351,478,397,495	href="/dbget-bin/www_bget?K02563"	title="K02563 (murG)" />
+<area shape=rect	coords=198,421,244,438	href="/dbget-bin/www_bget?K13581"	title="K13581 (ccrM)" />
+<area shape=rect	coords=40,310,86,327	href="/dbget-bin/www_bget?K02313"	title="K02313 (dnaA)" />
+<area shape=rect	coords=159,310,205,327	href="/dbget-bin/www_bget?K13583"	title="K13583 (gcrA)" />
+<area shape=rect	coords=119,421,165,438	href="/dbget-bin/www_bget?K02314"	title="K02314 (dnaB)" />
+<area shape=rect	coords=231,479,277,496	href="/dbget-bin/www_bget?K01338"	title="K01338 (E3.4.21.53)" />
+<area shape=rect	coords=563,308,609,325	href="/dbget-bin/www_bget?K11443"	title="K11443 (divK)" />
+<area shape=rect	coords=680,199,726,216	href="/dbget-bin/www_bget?K13593"	title="K13593 (tipF)" />
+<area shape=rect	coords=351,438,397,455	href="/dbget-bin/www_bget?K03590"	title="K03590 (ftsA)" />
+<area shape=rect	coords=623,568,669,585	href="/dbget-bin/www_bget?K01358"	title="K01358 (clpP)" />
+<area shape=rect	coords=532,113,578,130	href="/dbget-bin/www_bget?K02651"	title="K02651 (flp)" />
+<area shape=rect	coords=394,310,440,327	href="/dbget-bin/www_bget?K13584"	title="K13584 (ctrA)" />
+<area shape=rect	coords=40,45,247,71	href="/dbget-bin/www_bget?map04112"	title="map04112: Cell cycle - Caulobacter" />
+<area shape=rect	coords=755,202,875,228	href="/kegg-bin/show_pathway?map02040"	title="map02040: Flagellar assembly" />
+<area shape=rect	coords=755,230,875,256	href="/kegg-bin/show_pathway?map02030"	title="map02030: Bacterial chemotaxis" />
+<area shape=rect	coords=718,297,856,323	href="/kegg-bin/show_pathway?map02020"	title="map02020: Two-component system" />
+{% endblock %}
+{% block color_nodes %}
+  {% if nodes_to_color.3_4_21_53 %}
+    <div class="node_3_4_21_53_instance_0"></div>
+  {% endif %}
+{% endblock %}

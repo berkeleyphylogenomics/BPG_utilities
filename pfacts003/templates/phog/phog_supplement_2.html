@@ -1,0 +1,2860 @@
+{% extends "phog/phog_base.html" %}
+
+{% block title %}Assessment of Orthology Prediction Methods{% endblock %}
+
+{% block content %}
+
+<h1 align="center"><b>Berkeley PHOG: PhyloFacts Orthology Group Prediction Web Server Supplement 2: Detailed Description of Experiments</b></h1>
+<p class="text_section_body" align="center"><strong>
+<b>Ruchira Datta</b><b>, Bushra
+Samad</b><b>, Christoph Neyer</b><b> and
+Kimmen Sj&ouml;lander</b><b></b>
+</strong></p>
+
+<p class="text_section_body">
+Ortholog detection is essential in functional annotation of genomes, with applications to phylogenetic tree construction, prediction of protein-protein interaction and other bioinformatics tasks. The PHOG web server employs a novel algorithm to identify orthologs based on phylogenetic analysis. To assess the accuracy of PHOG, we used a set of human sequences and their predicted orthologs in three model organisms -- <i>Mus musculus</i> (mouse), <i>Danio rerio</i> (zebrafish) and <i>Drosophila melanogaster</i> (fruit fly) -- from the TreeFam-A resource as a gold standard benchmark.  TreeFam-A uses a sophisticated ortholog-identification protocol (including tree reconciliation and manual curation) providing for a high-accuracy dataset. Mouse, zebrafish and fruit fly were selected since they had been targeted for analysis by both OrthoMCL-DB and InParanoid and represented a range of evolutionary distances.
+</p>
+
+<p class="text_section_body">
+<span class="text_section_heading">Dataset selection</span>: We chose a set of 100 human sequences from TreeFam-A meeting the following requirements:
+</p>
+
+
+<p class="text_section_body">
+Each sequence had to have orthologs in the TreeFam-A curated seed families from at least two of the three target species: mouse, zebrafish and <i>Drosophila melanogaster</i>.
+</p>
+
+<p class="text_section_body">
+No pair of sequences in the set could have a BLAST E-value &lt; 1 (using a database size of 100,000) or share a common PFAM domain. This ensured that the dataset was filtered to remove potential homologs, so that method performance on this dataset should generalize.
+</p>
+
+<p class="text_section_body">
+We chose 100 human sequences as follows.  We considered all human sequences for which TreeFam-A contained orthologs in at least two of the three target species: mouse, zebrafish, and fruitfly.  This yielded a set of 353 human sequences.  We then ran BLAST for each sequence in this set against the entire set, setting the database length to 100,000, and removed all sequences for which any other sequence in the set had a BLAST e-value &lt;=1.  This yielded a reduced set of 106 sequences.  To further ensure that no pair of sequences were homologous, we searched for common PFAM domains by scoring each sequence against the PFAM-A library using hmmpfam (HMMs were downloaded from PFAM on January 13<sup>th</sup>, 2009).  We found that four of the sequences had <i>no</i> significant PFAM hits (based on an e-value &lt;= 0.001 and length &gt;= 30); these four sequences were eliminated.  Two pairs of sequences shared PFAM domains; we eliminated one member of each pair.  This yielded a set of 100 sequences, containing a total of 138 PFAM domains.  See Table S2-1.
+</p>
+
+<p class="text_section_body">
+<span class="text_section_heading">Ensuring coverage:</span> To ensure that each sequence in the test set was included in PhyloFacts, we identified the region of each sequence corresponding to each PFAM domain and clustered homologs and constructed a phylogenetic tree using the PhyloBuilder software (using global-local mode for domain-based homology and 5 subfamily HMM iterations).  Users can submit their own sequences to this pipeline at the PhyloBuilder webserver at <a href="/phylobuilder"><u>http://phylogenomics.berkeley.edu/phylobuilder</u></a>.
+</p>
+
+<p class="text_section_body">
+<span class="text_section_heading">Assessing method performance:</span> For each human sequence and for each method, we identified predicted orthologs in mouse, zebrafish and <i>Drosophila melanogaster</i>, and compared these predicted orthologs against the orthologs identified by TreeFam-A. 
+</p>
+
+<p class="text_section_body">
+We used TreeFam Release 6.0, InParanoid Version 6.1, OrthoMCL Version 2, and PHOG as of March 1st, 2009. For each of these methods, we used the precomputed predictions that were available on the respective websites.  Ensembl Release 52 was used to cross-reference the identifiers used by some of the methods, along with the cross-reference provided by TreeFam.  PHOG predictions were made on the basis of a total of 455 trees containing the human sequences based on trees in the PhyloFacts resource as of March 1st, 2009. 
+</p>
+
+<p class="text_section_body">
+<span class="text_section_heading">Cross-referencing database identifiers:</span> In order<b> </b>to compare the ortholog predictions made by the various methods, we had to bring all the identifiers to the same form.  The form we used was the Ensembl gene identifier.  We used the gene_stable_id, transcript, transcript_stable_id, translation, and translation_stable_id tables provided by Ensembl to convert Ensembl transcript or protein identifiers to gene identifiers.  We also used the stable_id_event table provided by Ensembl to convert outdated Ensembl identifiers to their present forms.  We used the ens_xref table provided by TreeFam to convert UniProt accessions to Ensembl identifiers.
+</p>
+
+
+
+<p class="text_section_body">
+<span class="text_section_heading">Statistical measures of performance</span>: For each method, we computed the <i>recall</i> (or sensitivity) as the fraction of TreeFam-A orthology pairs found. 
+</p>
+
+<p class="text_section_body">
+For reference, recall and precision are defined as follows:
+</p>
+
+<p class="text_section_body">
+Recall = TP/(TP+FN)
+</p>
+
+<p class="text_section_body">
+Precision = TP /(TP+FP)
+</p>
+
+<p class="text_section_body">
+where a <i>True Positive</i> (TP) is an orthology pair included in TreeFam-A that is also predicted by a method, a <i>False Negative</i> (FN) is an orthology pair included in TreeFam-A that is not predicted by a method (i.e., it is missed by the method), and a <i>False Positive</i> (FP) is an orthology pair predicted by a method that is not included in TreeFam-A. 
+</p>
+
+<p class="text_section_body">
+The precision measure reported in the main body of the paper, reported as P1 in Supplement 3, is most stringent. This measure labels all predicted orthologs (by InParanoid, OrthoMCL or PHOG) not found by TreeFam-A as False Positives. In other words, if TreeFam did not identify an ortholog, and OrthoMCL did, OrthoMCL was wrong, and the computed precision will decrease. 
+</p>
+
+<p class="text_section_body">
+We also computed a less stringent measure of precision, reported as P2 in Supplement 3, based on a different definition of False Positive. This measure only calls a predicted orthology pair an error in the case where TreeFam-A selected a <i>different</i> sequence from the same species. In other words, if for a particular human sequence TreeFam-A selects <i>no</i> ortholog from mouse, but OrthoMCL does, OrthoMCL might possibly be correct.  That orthology pair does not contribute to the OrthoMCL recall, but does not hurt its precision. On the other hand, if TreeFam-A selects an ortholog from mouse (M1) but OrthoMCL selects a different ortholog from mouse (M2), the (H,M2) pair is called a false positive.  
+</p>
+
+<p class="text_section_body">
+<span class="text_section_heading">Results:</span> We present the results in the Figures S2-1 through S2-4 below. The point labeled PHOG-T(M) on each curve describes the performance at threshold value 0.09375, where the precision and recall for the human-mouse ortholog predictions are approximately equal.  The point labeled PHOG-T(Z) on each curve describes the performance at threshold value 0.296875, where the precision and recall for the human-zebrafish ortholog predictions are approximately equal.  The point labeled PHOG-T(D) on each curve describes the performance at threshold value 0.9375, where the precision and recall for the human-fruitfly ortholog predictions are approximately equal. Detailed results are provided in Supplement 3.
+</p></div>
+
+
+
+
+
+
+<p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<img width="948" height="648" alt="0x01 graphic" src="/static/apps/phog/img/PHOGv1S2-1.png"><br>
+</p></div>
+
+
+
+<p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<b>Figure S2-1. Precision-Recall results for all methods against the dataset as a whole.</b>
+</p></div>
+
+
+
+<p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<a name="species_specific_thresholds"></a>
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Performance was evaluated on 100 human proteins selected from the TreeFam-A manually curated orthology database, with orthologs to each human protein from mouse, zebrafish and fruit fly. Methods evaluated include several PHOG variants, OrthoMCL-DB, InParanoid and SCI-PHY. PHOG-S represents super-orthology predictions, PHOG-O represents standard orthology predictions and PHOG-T represents the tree-distance thresholded variants. PHOG-T variants PHOG-T(M), -T(Z) and -T(F) correspond to tree-distance thresholds selected for optimal performance on this dataset for mouse, zebrafish and fruit fly respectively. Tree distance thresholds were 0.09375 (mouse), 0.296875 (zebrafish) and 0.9375 (fruit fly).  SCI-PHY uses hierarchical clustering and encoding cost measures to define functional subtypes and is included for comparison. Recall measures the fraction of TreeFam-A orthologs detected by a method. Precision measures the fraction of a method's predicted orthologs that are included in TreeFam-A. A True Positive (TP) is an orthology pair included in TreeFam-A that is also predicted by a method, a False Positive (FP) is an orthology pair predicted by a method that is not included in TreeFam-A, and a False Negative (FN) is a TreeFam-A ortholog that is missed by a method.   
+</p></div>
+
+
+
+<p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+
+</p></div>
+
+
+
+<p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<img width="948" height="648" alt="0x01 graphic" src="/static/apps/phog/img/PHOGv1S2-2.png"><br>
+</p></div>
+
+
+
+<p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<b>Figure S2-2.  Results of ortholog prediction, restricted to human-mouse orthologs. </b>See Figure S2-1 for details on precision and recall measures.
+</p></div>
+
+
+
+<p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<b></b>
+</p></div>
+
+
+
+<p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<img width="948" height="648" alt="0x01 graphic" src="/static/apps/phog/img/PHOGv1S2-3.png"><br>
+</p></div>
+
+
+
+<p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<b>Figure S2-3.  Results of ortholog prediction, restricted to human-zebrafish orthologs. </b>See Figure S2-1 for details on precision and recall measures. OrthoMCL-DB's performance on zebrafish is uncharacteristically low, relative to its performance on other species.   
+</p></div>
+
+
+
+<p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<b></b>
+</p></div>
+
+
+
+<p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<img width="948" height="648" alt="0x01 graphic" src="/static/apps/phog/img/PHOGv1S2-4.png"><br>
+</p></div>
+
+
+
+<p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<b>Figure S2-4.  Results of ortholog prediction, restricted to human-fruit fly orthologs. </b>See Figure S2-1 for details on precision and recall measures.
+</p></div>
+
+
+
+<p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<b></b>
+</p></div>
+
+
+
+<p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<b>Table S2-1. Benchmark dataset of 100 human proteins taken from the TreeFam-A resource. </b>The Ensembl identifier and equivalent UniProt accessions are shown, along with the description of each protein (obtained from the UniProt resource).    <b></b>
+</p></div>
+
+
+
+<p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<b></b>
+</p></div>
+
+
+<table width="100.00%" border="1" cols="3" rows="101">
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<b>Ensembl ID</b><b></b>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<b>UniProt Accession</b><b></b>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<b>Description</b><b></b>
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000065621">ENSG00000065621</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9H4Y5">Q9H4Y5</a>;<a href="http://www.uniprot.org/uniprot/Q5GM70">Q5GM70</a>;<a href="http://www.uniprot.org/uniprot/Q49TW5">Q49TW5</a>;<a href="http://www.uniprot.org/uniprot/Q86WP3">Q86WP3</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Glutathione S-transferase omega-2
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000168002">ENSG00000168002</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/P52433">P52433</a>;<a href="http://www.uniprot.org/uniprot/Q2M1Z4">Q2M1Z4</a>;<a href="http://www.uniprot.org/uniprot/P62487">P62487</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+DNA-directed RNA polymerase II subunit RPB7
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000163093">ENSG00000163093</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q8N3I7">Q8N3I7</a>;<a href="http://www.uniprot.org/uniprot/Q6PKN0">Q6PKN0</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Bardet-Biedl syndrome 5 protein
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000137547">ENSG00000137547</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q96Q54">Q96Q54</a>;<a href="http://www.uniprot.org/uniprot/Q9H0Y1">Q9H0Y1</a>;<a href="http://www.uniprot.org/uniprot/Q9P015">Q9P015</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+39S ribosomal protein L15
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000104980">ENSG00000104980</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/O43615">O43615</a>;<a href="http://www.uniprot.org/uniprot/Q8N193">Q8N193</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Mitochondrial import inner membrane translocase subunit TIM44
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000105865">ENSG00000105865</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/O95620">O95620</a>;<a href="http://www.uniprot.org/uniprot/Q2NKK1">Q2NKK1</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+tRNA-dihydrouridine synthase 4-like
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000141101">ENSG00000141101</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q7L6B7">Q7L6B7</a>;<a href="http://www.uniprot.org/uniprot/Q7Z4B5">Q7Z4B5</a>;<a href="http://www.uniprot.org/uniprot/Q9NWB0">Q9NWB0</a>;<a href="http://www.uniprot.org/uniprot/Q9ULX3">Q9ULX3</a>;<a href="http://www.uniprot.org/uniprot/Q7M4M4">Q7M4M4</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+RNA-binding protein NOB1
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000198042">ENSG00000198042</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q96SY6">Q96SY6</a>;<a href="http://www.uniprot.org/uniprot/Q9BXY0">Q9BXY0</a>;<a href="http://www.uniprot.org/uniprot/Q5U5T1">Q5U5T1</a>;<a href="http://www.uniprot.org/uniprot/Q86UC4">Q86UC4</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Protein MAK16 homolog
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000143486">ENSG00000143486</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/P41214">P41214</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Ligatin
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000154415">ENSG00000154415</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q7KYM8">Q7KYM8</a>;<a href="http://www.uniprot.org/uniprot/O43476">O43476</a>;<a href="http://www.uniprot.org/uniprot/Q16821">Q16821</a>;<a href="http://www.uniprot.org/uniprot/A0AVQ2">A0AVQ2</a>;<a href="http://www.uniprot.org/uniprot/Q86UI6">Q86UI6</a>;<a href="http://www.uniprot.org/uniprot/Q75LN8">Q75LN8</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Protein phosphatase 1 regulatory subunit 3A
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000102309">ENSG00000102309</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9Y237">Q9Y237</a>;<a href="http://www.uniprot.org/uniprot/Q5HYW6">Q5HYW6</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Peptidyl-prolyl cis-trans isomerase NIMA-interacting 4
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000172613">ENSG00000172613</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q99638">Q99638</a>;<a href="http://www.uniprot.org/uniprot/Q96C41">Q96C41</a>;<a href="http://www.uniprot.org/uniprot/Q6FI29">Q6FI29</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Cell cycle checkpoint control protein RAD9A
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000176876">ENSG00000176876</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9NR77">Q9NR77</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Peroxisomal membrane protein 2
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000196636">ENSG00000196636</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9NRP4">Q9NRP4</a>;<a href="http://www.uniprot.org/uniprot/Q75MD6">Q75MD6</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Protein ACN9 homolog
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000100216">ENSG00000100216</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9NS69">Q9NS69</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Mitochondrial import receptor subunit TOM22 homolog
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000196683">ENSG00000196683</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/O95939">O95939</a>;<a href="http://www.uniprot.org/uniprot/Q9P0U1">Q9P0U1</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Mitochondrial import receptor subunit TOM7 homolog
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000109519">ENSG00000109519</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q549M6">Q549M6</a>;<a href="http://www.uniprot.org/uniprot/Q9HAV7">Q9HAV7</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+GrpE protein homolog 1
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000147679">ENSG00000147679</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9BRU9">Q9BRU9</a>;<a href="http://www.uniprot.org/uniprot/Q96NJ8">Q96NJ8</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+rRNA-processing protein UTP23 homolog
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000111639">ENSG00000111639</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9BQ36">Q9BQ36</a>;<a href="http://www.uniprot.org/uniprot/Q96Q57">Q96Q57</a>;<a href="http://www.uniprot.org/uniprot/Q4U2R6">Q4U2R6</a>;<a href="http://www.uniprot.org/uniprot/Q9P0N7">Q9P0N7</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+39S ribosomal protein L51
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000112096">ENSG00000112096</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q16792">Q16792</a>;<a href="http://www.uniprot.org/uniprot/Q9P2Z3">Q9P2Z3</a>;<a href="http://www.uniprot.org/uniprot/Q96EE6">Q96EE6</a>;<a href="http://www.uniprot.org/uniprot/P78434">P78434</a>;<a href="http://www.uniprot.org/uniprot/Q5TCM1">Q5TCM1</a>;<a href="http://www.uniprot.org/uniprot/P04179">P04179</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Superoxide dismutase
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000105197">ENSG00000105197</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q96FJ5">Q96FJ5</a>;<a href="http://www.uniprot.org/uniprot/Q6QA00">Q6QA00</a>;<a href="http://www.uniprot.org/uniprot/Q96GY2">Q96GY2</a>;<a href="http://www.uniprot.org/uniprot/Q9H370">Q9H370</a>;<a href="http://www.uniprot.org/uniprot/Q3ZCQ8">Q3ZCQ8</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Mitochondrial import inner membrane translocase subunit TIM50
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000167641">ENSG00000167641</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q7Z4X7">Q7Z4X7</a>;<a href="http://www.uniprot.org/uniprot/Q96S54">Q96S54</a>;<a href="http://www.uniprot.org/uniprot/Q96A00">Q96A00</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Protein phosphatase 1 regulatory subunit 14A
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000139318">ENSG00000139318</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q16828">Q16828</a>;<a href="http://www.uniprot.org/uniprot/Q53Y75">Q53Y75</a>;<a href="http://www.uniprot.org/uniprot/O75109">O75109</a>;<a href="http://www.uniprot.org/uniprot/Q9BSH6">Q9BSH6</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Dual specificity protein phosphatase 6
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000186184">ENSG00000186184</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q5TBX2">Q5TBX2</a>;<a href="http://www.uniprot.org/uniprot/Q9Y2S0">Q9Y2S0</a>;<a href="http://www.uniprot.org/uniprot/Q96BR3">Q96BR3</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+DNA-directed RNA polymerases I and III subunit RPAC2
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000152137">ENSG00000152137</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9UKS3">Q9UKS3</a>;<a href="http://www.uniprot.org/uniprot/Q6FIH3">Q6FIH3</a>;<a href="http://www.uniprot.org/uniprot/Q9UJY1">Q9UJY1</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Heat shock protein beta-8
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000145912">ENSG00000145912</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9NX24">Q9NX24</a>;<a href="http://www.uniprot.org/uniprot/Q9P095">Q9P095</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+H/ACA ribonucleoprotein complex subunit 2
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000198074">ENSG00000198074</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/O60218">O60218</a>;<a href="http://www.uniprot.org/uniprot/O75890">O75890</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Aldo-keto reductase family 1 member B10
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000104320">ENSG00000104320</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q63HR6">Q63HR6</a>;<a href="http://www.uniprot.org/uniprot/O60934">O60934</a>;<a href="http://www.uniprot.org/uniprot/Q53FM6">Q53FM6</a>;<a href="http://www.uniprot.org/uniprot/Q7LDM2">Q7LDM2</a>;<a href="http://www.uniprot.org/uniprot/Q32NF7">Q32NF7</a>;<a href="http://www.uniprot.org/uniprot/O60672">O60672</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Nibrin
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000113569">ENSG00000113569</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9UFL5">Q9UFL5</a>;<a href="http://www.uniprot.org/uniprot/Q9UBE9">Q9UBE9</a>;<a href="http://www.uniprot.org/uniprot/O75694">O75694</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Nuclear pore complex protein Nup155
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000093000">ENSG00000093000</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/O75644">O75644</a>;<a href="http://www.uniprot.org/uniprot/Q9UKX7">Q9UKX7</a>;<a href="http://www.uniprot.org/uniprot/Q9NPR6">Q9NPR6</a>;<a href="http://www.uniprot.org/uniprot/Q9NPM9">Q9NPM9</a>;<a href="http://www.uniprot.org/uniprot/Q9P1K5">Q9P1K5</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Nucleoporin 50 kDa
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000079246">ENSG00000079246</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q0Z7V0">Q0Z7V0</a>;<a href="http://www.uniprot.org/uniprot/Q4VBQ5">Q4VBQ5</a>;<a href="http://www.uniprot.org/uniprot/P13010">P13010</a>;<a href="http://www.uniprot.org/uniprot/Q53HH7">Q53HH7</a>;<a href="http://www.uniprot.org/uniprot/Q9UCQ1">Q9UCQ1</a>;<a href="http://www.uniprot.org/uniprot/Q9UCQ0">Q9UCQ0</a>;
+<br>
+<a href="http://www.uniprot.org/uniprot/Q7M4N0">Q7M4N0</a>;<a href="http://www.uniprot.org/uniprot/A8K3X5">A8K3X5</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+ATP-dependent DNA helicase 2 subunit 2
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000134014">ENSG00000134014</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9BVF7">Q9BVF7</a>;<a href="http://www.uniprot.org/uniprot/Q6AWB0">Q6AWB0</a>;<a href="http://www.uniprot.org/uniprot/Q9H9T3">Q9H9T3</a>;<a href="http://www.uniprot.org/uniprot/Q53G84">Q53G84</a>;<a href="http://www.uniprot.org/uniprot/Q9NVZ1">Q9NVZ1</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Elongator complex protein 3
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000167799">ENSG00000167799</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q6ZW59">Q6ZW59</a>;<a href="http://www.uniprot.org/uniprot/Q8WV74">Q8WV74</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Nucleoside diphosphate-linked moiety X motif 8
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000148175">ENSG00000148175</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/P27105">P27105</a>;<a href="http://www.uniprot.org/uniprot/Q96FK4">Q96FK4</a>;<a href="http://www.uniprot.org/uniprot/Q15609">Q15609</a>;<a href="http://www.uniprot.org/uniprot/Q14087">Q14087</a>;<a href="http://www.uniprot.org/uniprot/Q5VX96">Q5VX96</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Erythrocyte band 7 integral membrane protein
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000125656">ENSG00000125656</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q16740">Q16740</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Putative ATP-dependent Clp protease proteolytic subunit
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000088832">ENSG00000088832</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q6LEU3">Q6LEU3</a>;<a href="http://www.uniprot.org/uniprot/P62942">P62942</a>;<a href="http://www.uniprot.org/uniprot/Q9H103">Q9H103</a>;<a href="http://www.uniprot.org/uniprot/Q6FGD9">Q6FGD9</a>;<a href="http://www.uniprot.org/uniprot/P20071">P20071</a>;<a href="http://www.uniprot.org/uniprot/Q9H566">Q9H566</a>;
+<br>
+<a href="http://www.uniprot.org/uniprot/Q4VC47">Q4VC47</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Peptidyl-prolyl cis-trans isomerase FKBP1A
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000091651">ENSG00000091651</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9Y5N6">Q9Y5N6</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Origin recognition complex subunit 6
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000125037">ENSG00000125037</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9P0I2">Q9P0I2</a>;<a href="http://www.uniprot.org/uniprot/Q53GH8">Q53GH8</a>;<a href="http://www.uniprot.org/uniprot/Q6ZMC2">Q6ZMC2</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Transmembrane protein 111
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000153037">ENSG00000153037</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/P09132">P09132</a>;<a href="http://www.uniprot.org/uniprot/Q96FG6">Q96FG6</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Signal recognition particle 19 kDa protein
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000159186">ENSG00000159186</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/P48047">P48047</a>;<a href="http://www.uniprot.org/uniprot/Q5U042">Q5U042</a>;<a href="http://www.uniprot.org/uniprot/Q6IBI2">Q6IBI2</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+ATP synthase subunit O
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000089048">ENSG00000089048</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9H9Q5">Q9H9Q5</a>;<a href="http://www.uniprot.org/uniprot/Q9P1S6">Q9P1S6</a>;<a href="http://www.uniprot.org/uniprot/Q9NX93">Q9NX93</a>;<a href="http://www.uniprot.org/uniprot/Q9H501">Q9H501</a>;<a href="http://www.uniprot.org/uniprot/Q9HA35">Q9HA35</a>;<a href="http://www.uniprot.org/uniprot/Q86X92">Q86X92</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+ESF1 homolog
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000135046">ENSG00000135046</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/P04083">P04083</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Annexin A1
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000161217">ENSG00000161217</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/P49585">P49585</a>;<a href="http://www.uniprot.org/uniprot/Q86Y88">Q86Y88</a>;<a href="http://www.uniprot.org/uniprot/A9LYK9">A9LYK9</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Choline-phosphate cytidylyltransferase A
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000197265">ENSG00000197265</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9H2B9">Q9H2B9</a>;<a href="http://www.uniprot.org/uniprot/P29084">P29084</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Transcription initiation factor IIE subunit beta
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000176619">ENSG00000176619</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q14734">Q14734</a>;<a href="http://www.uniprot.org/uniprot/O75292">O75292</a>;<a href="http://www.uniprot.org/uniprot/Q96DF6">Q96DF6</a>;<a href="http://www.uniprot.org/uniprot/Q03252">Q03252</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Lamin-B2
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000116747">ENSG00000116747</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q92787">Q92787</a>;<a href="http://www.uniprot.org/uniprot/P10155">P10155</a>;<a href="http://www.uniprot.org/uniprot/Q9H1W6">Q9H1W6</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+60 kDa SS-A/Ro ribonucleoprotein
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000114388">ENSG00000114388</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9Y249">Q9Y249</a>;<a href="http://www.uniprot.org/uniprot/Q8WTW4">Q8WTW4</a>;<a href="http://www.uniprot.org/uniprot/Q9Y497">Q9Y497</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Tumor suppressor candidate 4
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000121073">ENSG00000121073</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/P78383">P78383</a>;<a href="http://www.uniprot.org/uniprot/Q96EW7">Q96EW7</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Solute carrier family 35 member B1
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000112367">ENSG00000112367</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q53H49">Q53H49</a>;<a href="http://www.uniprot.org/uniprot/Q5TCS6">Q5TCS6</a>;<a href="http://www.uniprot.org/uniprot/Q92562">Q92562</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+SAC domain-containing protein 3
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000144231">ENSG00000144231</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q52LT4">Q52LT4</a>;<a href="http://www.uniprot.org/uniprot/O15514">O15514</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+DNA-directed RNA polymerase II subunit RPB4
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000164258">ENSG00000164258</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9BS69">Q9BS69</a>;<a href="http://www.uniprot.org/uniprot/O43181">O43181</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+NADH dehydrogenase
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000149480">ENSG00000149480</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9UQB5">Q9UQB5</a>;<a href="http://www.uniprot.org/uniprot/O94776">O94776</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Metastasis-associated protein MTA2
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000111684">ENSG00000111684</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9BW40">Q9BW40</a>;<a href="http://www.uniprot.org/uniprot/Q6P1A2">Q6P1A2</a>;<a href="http://www.uniprot.org/uniprot/Q92980">Q92980</a>;<a href="http://www.uniprot.org/uniprot/Q7KZS1">Q7KZS1</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Lysophosphatidylcholine acyltransferase
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000178921">ENSG00000178921</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/O15067">O15067</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Phosphoribosylformylglycinamidine synthase
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000116903">ENSG00000116903</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q5TE82">Q5TE82</a>;<a href="http://www.uniprot.org/uniprot/Q8IYI6">Q8IYI6</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Exocyst complex component 8
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000099995">ENSG00000099995</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q15459">Q15459</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Splicing factor 3 subunit 1
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000139180">ENSG00000139180</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q2NKX0">Q2NKX0</a>;<a href="http://www.uniprot.org/uniprot/Q14076">Q14076</a>;<a href="http://www.uniprot.org/uniprot/Q16795">Q16795</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+NADH dehydrogenase
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000189091">ENSG00000189091</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q15393">Q15393</a>;<a href="http://www.uniprot.org/uniprot/Q9UFX7">Q9UFX7</a>;<a href="http://www.uniprot.org/uniprot/Q9UJ29">Q9UJ29</a>;<a href="http://www.uniprot.org/uniprot/Q6NTI8">Q6NTI8</a>;<a href="http://www.uniprot.org/uniprot/Q9BPY2">Q9BPY2</a>;<a href="http://www.uniprot.org/uniprot/Q96GC0">Q96GC0</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Splicing factor 3B subunit 3
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000160325">ENSG00000160325</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q8NBM6">Q8NBM6</a>;<a href="http://www.uniprot.org/uniprot/Q9UGQ2">Q9UGQ2</a>;<a href="http://www.uniprot.org/uniprot/Q5SXD4">Q5SXD4</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Transmembrane protein C9orf7
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000143815">ENSG00000143815</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q59FE6">Q59FE6</a>;<a href="http://www.uniprot.org/uniprot/Q53GU7">Q53GU7</a>;<a href="http://www.uniprot.org/uniprot/Q14740">Q14740</a>;<a href="http://www.uniprot.org/uniprot/Q14739">Q14739</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Lamin-B receptor
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000089163">ENSG00000089163</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q32M33">Q32M33</a>;<a href="http://www.uniprot.org/uniprot/Q9Y6E7">Q9Y6E7</a>;<a href="http://www.uniprot.org/uniprot/O43346">O43346</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+NAD-dependent deacetylase sirtuin-4
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000116120">ENSG00000116120</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9NSD9">Q9NSD9</a>;<a href="http://www.uniprot.org/uniprot/O95708">O95708</a>;<a href="http://www.uniprot.org/uniprot/Q9NZZ6">Q9NZZ6</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Phenylalanyl-tRNA synthetase beta chain
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000128602">ENSG00000128602</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q99835">Q99835</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Smoothened homolog
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000158042">ENSG00000158042</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9C066">Q9C066</a>;<a href="http://www.uniprot.org/uniprot/Q6IAH8">Q6IAH8</a>;<a href="http://www.uniprot.org/uniprot/Q9NRX2">Q9NRX2</a>;<a href="http://www.uniprot.org/uniprot/Q96Q53">Q96Q53</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+39S ribosomal protein L17
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000136197">ENSG00000136197</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9BPX7">Q9BPX7</a>;<a href="http://www.uniprot.org/uniprot/Q9H779">Q9H779</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+UPF0415 protein C7orf25
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000132541">ENSG00000132541</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/P52758">P52758</a>;<a href="http://www.uniprot.org/uniprot/Q6FHU9">Q6FHU9</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Ribonuclease UK114
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000150768">ENSG00000150768</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q16783">Q16783</a>;<a href="http://www.uniprot.org/uniprot/Q53EP3">Q53EP3</a>;<a href="http://www.uniprot.org/uniprot/P10515">P10515</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Dihydrolipoyllysine-residue acetyltransferase component of pyruvate dehydrogenase complex
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000116729">ENSG00000116729</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q7Z2Z9">Q7Z2Z9</a>;<a href="http://www.uniprot.org/uniprot/Q5T9L3">Q5T9L3</a>;<a href="http://www.uniprot.org/uniprot/Q8NC43">Q8NC43</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Integral membrane protein GPR177
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000162384">ENSG00000162384</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9NWV4">Q9NWV4</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+UPF0587 protein C1orf123
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000168496">ENSG00000168496</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/P39748">P39748</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Flap endonuclease 1
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000164219">ENSG00000164219</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q5MJP9">Q5MJP9</a>;<a href="http://www.uniprot.org/uniprot/P53609">P53609</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Geranylgeranyl transferase type-1 subunit beta
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000138604">ENSG00000138604</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q6GUQ2">Q6GUQ2</a>;<a href="http://www.uniprot.org/uniprot/O94923">O94923</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+D-glucuronyl C5-epimerase
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000129187">ENSG00000129187</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9BVD8">Q9BVD8</a>;<a href="http://www.uniprot.org/uniprot/P32321">P32321</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Deoxycytidylate deaminase
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000113460">ENSG00000113460</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q96DH1">Q96DH1</a>;<a href="http://www.uniprot.org/uniprot/Q3ZTT4">Q3ZTT4</a>;<a href="http://www.uniprot.org/uniprot/Q8TDN6">Q8TDN6</a>;<a href="http://www.uniprot.org/uniprot/Q8N453">Q8N453</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Brix domain-containing protein 2
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000067533">ENSG00000067533</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9Y3B9">Q9Y3B9</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+RRP15-like protein
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000180875">ENSG00000180875</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q86UD9">Q86UD9</a>;<a href="http://www.uniprot.org/uniprot/Q9H772">Q9H772</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Gremlin-2
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000125207">ENSG00000125207</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q8NA60">Q8NA60</a>;<a href="http://www.uniprot.org/uniprot/O95404">O95404</a>;<a href="http://www.uniprot.org/uniprot/Q96JD5">Q96JD5</a>;<a href="http://www.uniprot.org/uniprot/Q8TBY5">Q8TBY5</a>;<a href="http://www.uniprot.org/uniprot/Q96J94">Q96J94</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Piwi-like protein 1
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000146670">ENSG00000146670</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q96FF9">Q96FF9</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Sororin
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000164109">ENSG00000164109</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q13257">Q13257</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Mitotic spindle assembly checkpoint protein MAD2A
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000070785">ENSG00000070785</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q5QP90">Q5QP90</a>;<a href="http://www.uniprot.org/uniprot/Q5QP89">Q5QP89</a>;<a href="http://www.uniprot.org/uniprot/Q9H850">Q9H850</a>;<a href="http://www.uniprot.org/uniprot/Q8NDB5">Q8NDB5</a>;<a href="http://www.uniprot.org/uniprot/Q8WV57">Q8WV57</a>;<a href="http://www.uniprot.org/uniprot/Q9NR50">Q9NR50</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Translation initiation factor eIF-2B subunit gamma
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000169021">ENSG00000169021</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/P47985">P47985</a>;<a href="http://www.uniprot.org/uniprot/Q9UPH2">Q9UPH2</a>;<a href="http://www.uniprot.org/uniprot/Q6NVX5">Q6NVX5</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Cytochrome b-c1 complex subunit Rieske
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000105141">ENSG00000105141</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/O95823">O95823</a>;<a href="http://www.uniprot.org/uniprot/Q3SYC9">Q3SYC9</a>;<a href="http://www.uniprot.org/uniprot/P31944">P31944</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Caspase-14
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000196510">ENSG00000196510</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9BU24">Q9BU24</a>;<a href="http://www.uniprot.org/uniprot/Q96GF4">Q96GF4</a>;<a href="http://www.uniprot.org/uniprot/Q9NT16">Q9NT16</a>;<a href="http://www.uniprot.org/uniprot/Q96AC4">Q96AC4</a>;<a href="http://www.uniprot.org/uniprot/Q9UJX3">Q9UJX3</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Anaphase-promoting complex subunit 7
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000124383">ENSG00000124383</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/O00566">O00566</a>;<a href="http://www.uniprot.org/uniprot/A0AVJ8">A0AVJ8</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+U3 small nucleolar ribonucleoprotein protein MPP10
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000100307">ENSG00000100307</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/O95931">O95931</a>;<a href="http://www.uniprot.org/uniprot/Q86T17">Q86T17</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Chromobox protein homolog 7
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000063660">ENSG00000063660</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/P35052">P35052</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Glypican-1
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000167797">ENSG00000167797</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/O75956">O75956</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Cyclin-dependent kinase 2-associated protein 2
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000099341">ENSG00000099341</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/P48556">P48556</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+26S proteasome non-ATPase regulatory subunit 8
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000113575">ENSG00000113575</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/P05323">P05323</a>;<a href="http://www.uniprot.org/uniprot/P67775">P67775</a>;<a href="http://www.uniprot.org/uniprot/P13197">P13197</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Serine/threonine-protein phosphatase 2A catalytic subunit alpha isoform
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000134153">ENSG00000134153</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q96ED5">Q96ED5</a>;<a href="http://www.uniprot.org/uniprot/Q9NPA0">Q9NPA0</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+UPF0480 protein C15orf24
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000103035">ENSG00000103035</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q96E97">Q96E97</a>;<a href="http://www.uniprot.org/uniprot/P51665">P51665</a>;<a href="http://www.uniprot.org/uniprot/Q6PKI2">Q6PKI2</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+26S proteasome non-ATPase regulatory subunit 7
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000151247">ENSG00000151247</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q96E95">Q96E95</a>;<a href="http://www.uniprot.org/uniprot/P06730">P06730</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Eukaryotic translation initiation factor 4E
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000103245">ENSG00000103245</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9H6Q4">Q9H6Q4</a>;<a href="http://www.uniprot.org/uniprot/Q96S10">Q96S10</a>;<a href="http://www.uniprot.org/uniprot/Q9H6J8">Q9H6J8</a>;<a href="http://www.uniprot.org/uniprot/Q53GC6">Q53GC6</a>;<a href="http://www.uniprot.org/uniprot/A1L385">A1L385</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Nuclear prelamin A recognition factor-like protein
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000138495">ENSG00000138495</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q14061">Q14061</a>;<a href="http://www.uniprot.org/uniprot/Q3MHD6">Q3MHD6</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Cytochrome c oxidase copper chaperone
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000165271">ENSG00000165271</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9H6R4">Q9H6R4</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Nucleolar protein 6
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000183093">ENSG00000183093</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9HCA2">Q9HCA2</a>;<a href="http://www.uniprot.org/uniprot/Q9UQJ3">Q9UQJ3</a>;<a href="http://www.uniprot.org/uniprot/Q969U0">Q969U0</a>;<a href="http://www.uniprot.org/uniprot/P52815">P52815</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+39S ribosomal protein L12
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000047315">ENSG00000047315</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/P30876">P30876</a>;<a href="http://www.uniprot.org/uniprot/Q8IZ61">Q8IZ61</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+DNA-directed RNA polymerase II subunit RPB2
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000104472">ENSG00000104472</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q9NRG0">Q9NRG0</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+Chromatin accessibility complex protein 1
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000153879">ENSG00000153879</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/Q5U052">Q5U052</a>;<a href="http://www.uniprot.org/uniprot/P53567">P53567</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+CCAAT/enhancer-binding protein gamma
+</p></div></td>
+
+</tr>
+
+
+
+<tr><td bgcolor="White" width="17.41%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000012061">ENSG00000012061</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="37.30%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+<a href="http://www.uniprot.org/uniprot/P07992">P07992</a>
+</p></div></td>
+
+
+
+<td bgcolor="White" width="45.29%" rowspan="1" colspan="1"><p><div name="Normal" align="left" style="  padding: 0.00mm 0.00mm 0.00mm 0.00mm; "> 
+
+<p style="text-indent: 0.00mm; text-align: left; line-height: 4.166667mm; color: Black; background-color: White; ">
+DNA excision repair protein ERCC-1
+</p></div></td>
+
+</tr>
+
+</table>
+{% endblock %}
+
+
+<!--Section Ends-->
+
+
+
+<!--
+<hr>
+<address>
+<a href="http://wvware.sourceforge.net/"><img
+src="wvSmall.gif" height=31 width=47
+align=left border=0 alt="wvWare"></a>
+<a href="http://validator.w3.org/check/referer"><img
+src="vh40.gif" height=31 width=88
+align=right border=0 alt="Valid HTML 4.0!"></a>
+Document created with <a href="http://wvware.sourceforge.net/">wvWare/wvWare version 1.2.4</a><br>
+</address>
+-->
+</body>
+</html>

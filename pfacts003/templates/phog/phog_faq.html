@@ -1,0 +1,456 @@
+{% extends "phog/phog_base.html" %}
+
+{% block title %}PhyloFacts Orthology Group FAQ{% endblock %}
+
+{% block content %}
+
+<h1 align="center">Frequently Asked Questions</h1>
+
+<div style="margin-left: 50px; margin-right: 50px; margin-top: 30px;">
+
+<p class="text_section_heading">How do I cite PHOG?</p>
+
+<p class="text_section_body">
+If you use PHOG, please cite:
+</p>
+
+<ul class="list">
+
+<li>
+Ruchira S. Datta, Christopher Meacham, Bushra Samad, Christoph Neyer, Kimmen
+Sj&ouml;lander,<br>
+<a
+href="http://nar.oxfordjournals.org/cgi/content/full/gkp373?ijkey=KU8e1DWUbzb70Yz&keytype=ref"><i>Berkeley
+PHOG: PhyloFacts orthology group prediction web server</i></a>, <a
+href="http://nar.oxfordjournals.org/">Nucleic Acids Research</a> 2009; doi:
+10.1093/nar/gkp373
+</li>
+
+</ul>
+
+<p class="text_section_heading">What is a PHOG?</p>
+
+<p class="text_section_body">
+We use the term PHOG to describe a group of orthologs defined using phylogenomic analysis. We make use of 
+the phylogenetic trees in the PhyloFacts resource 
+(<a href="http://genomebiology.com/2006/7/9/R83">Krishnamurthy <i>et al.</i>, <i>Genome Biol.</i> 2006</a>) to 
+identify subtrees of orthologous sequences.  We provide different types of
+orthology prediction, targeting different <a
+href="#evolutionary_distance">evolutionary
+distances</a> and precisions.  <a href="#super_orthology">Super-orthology</a> is the most restrictive
+definition and requires that al nodes on the tree linking super-orthologs must
+correspond to speciation events (<a
+href="http://www.biomedcentral.com/1471-2105/3/14/">Zmasek and Eddy BMC
+<i>Bioinformatics,</i> 2002</a>).  We also provide a <a
+href="#evolutionary_distance">tree-distance thresholded
+version</a> of PHOG orthology detection (termed PHOG-T), to allow subtrees of
+super-orthologs to expand to include nodes representing possible duplication
+events.  Three distinct thresholds have been provided in the PHOG webserver,
+corresponding to close (e.g., human-mouse), moderate (e.g., human-zebrafish)
+and distant (e.g., human-fruit fly) taxonomic relationships.  Note that these
+thresholded variants will not restrict an orthology group to that distance; we
+include all orthologs defined within a subtree that meets either
+super-orthology or the tree-distance specified.</p>
+
+<p class="text_section_body">
+Details of the algorithm are available <a
+href="/static/apps/phog/docs/PHOGv1S1.pdf">here</a>.
+</p>
+
+
+<a name="unrecognized_id"></a>
+<p class="text_section_heading">
+What does it mean when I'm told that my accession or ID is not recognized?
+</p>
+
+<p class="text_section_body">
+<em>Unrecognized identifier/accession</em> can result for a number of reasons. First, you may have 
+input an ID or accession for a nucleotide sequence, whereas we only handle protein sequences. 
+Second, the ID or accession may be for a database that we do not currently handle. Finally, we 
+do not recognize IDs or accessions that have been retired by their database of origin, e.g., retired 
+GenBank IDs.<br /><br />
+</p>
+
+<p class="text_section_body">
+If this happens, you may want to try putting your
+protein sequence in <a href="#fasta">FASTA format</a> in the FASTA input box.
+In this case the PHOG server will run BLAST to find sequences in our database
+that are highly similar to your sequence.  Once the PHOG server comes back with
+the table of BLAST results, find your sequence of interest in the table and
+click on the Orthologs link to view the orthologs of that sequence.
+</p>
+
+<p class="text_section_body">
+Please see the FAQ section <a href="#input_types">"What kinds of inputs are accepted?"</a> 
+(below) for a list of accepted inputs and examples. 
+</p>
+
+<a name="input_types"></a>
+<p class="text_section_heading">
+What kinds of inputs are accepted?</a>
+</p>
+
+<p class="text_section_body">
+<em>Allowed inputs</em> -- for <b>protein sequences only!</b> -- include:<br>
+<ul>
+<li>UniProt accession (e.g., P28222)</li>
+<li>UniProt ID (e.g., 5HT1B_HUMAN)</li>
+<li>PHOG accession (e.g., PHOG006510081)</li>
+<li>Protein sequence in <a href="#fasta">FASTA format</a></li>
+</ul>
+</p>
+<p class="text_section_body">
+<em>Disallowed inputs:</em>
+<ul> 
+<li>GenBank accessions (e.g., CAC82475, YP_001801978)</li>
+<li>GenBank ID (e.g., 112821)</li>
+    <ul>
+        <li>GenBank identifiers are often preceded by &ldquo;GI:&rdquo; in the GenBank record</li>
+        <li>GenBank identifiers and accessions can be differentiated by noting that 
+          GenBank accessions are alphanumeric whereas GenBank IDs are strictly numeric</li>
+    </ul>
+<li>Identifiers from other databases (e.g., PDB structure identifier 1SPS)</li>
+<li>Identifiers or accessions corresponding to nucleotide sequences</li>
+<li>Gene names that do not uniquely refer to a single gene (e.g., NifH)</li>
+    <ul>
+        <li>For instance, NifH refers to the enzyme dinitrogenase reductase 
+          that is found in &gt;20K sequences in the NR database and &gt;10K 
+          sequences in the UniProt database</li> 
+        <li>To specify a unique sequence in a specific species among these 
+          thousands of candidates, you would need the actual accession or ID</li>
+        <li>To specify NifH in Nostoc sp. PCC 6720, you could provide the following 
+          inputs:</li>
+            <ul> 
+                <li>NIFH_NOSS6 (the UniProt ID)</li>
+                <li>Q51296 (the UniProt accession for the same sequence)</li>
+            </ul>
+    </ul>
+</ul>
+</p>
+
+
+<a name="fasta"></a>
+<p class="text_section_heading">
+What is meant by &ldquo;FASTA format&rdquo;?
+</p>
+
+<p class="text_section_body">
+FASTA is a standard format for representing sequences.  The first line is normally a header that
+describes the sequence.  If present, the header must begin with a greater-than character: &ldquo;&gt;&rdquo;. 
+The sequence then follows on as many lines as necessary. For example, the human oxytocin receptor 
+protein sequence from the <a href="http://www.uniprot.org/">UniProt</a> database in FASTA format is:<br />
+<div class="code large_inset">
+>sp|P30559|OXYR_HUMAN Oxytocin receptor OS=Homo sapiens GN=OXTR PE=2 SV=2<br />
+MEGALAANWSAEAANASAAPPGAEGNRTAGPPRRNEALARVEVAVLCLILLLALSGNACV<br />
+LLALRTTRQKHSRLFFFMKHLSIADLVVAVFQVLPQLLWDITFRFYGPDLLCRLVKYLQV<br />
+VGMFASTYLLLLMSLDRCLAICQPLRSLRRRTDRLAVLATWLGCLVASAPQVHIFSLREV<br />
+ADGVFDCWAVFIQPWGPKAYITWITLAVYIVPVIVLAACYGLISFKIWQNLRLKTAAAAA<br />
+AEAPEGAAAGDGGRVALARVSSVKLISKAKIRTVKMTFIIVLAFIVCWTPFFFVQMWSVW<br />
+DANAPKEASAFIIVMLLASLNSCCNPWIYMLFTGHLFHELVQRFLCCSASYLKGRRLGET<br />
+SASKKSNSSSFVLSHRSSSQRSCSQPSTA
+</div>
+</p>
+
+
+
+<p class="text_section_heading">
+Why do you have so many restrictions on inputs?
+</p>
+
+<p class="text_section_body">
+Allowing additional input types means greater complexity in our database and a slower 
+response time for the server. We are working on expanding the allowed inputs, but 
+it will take time.
+</p>
+
+<a name="evolutionary_distance"></a>
+<p class="text_section_heading">
+How were the threshold values for evolutionary distance determined in the thresholded PHOG search?
+</p>
+
+<p class="text_section_body">
+The threshold values 
+available through our pull-down menu have been
+selected for <a href="/phog/orthologs/assessment/#species_specific_thresholds">their
+performance in detecting orthologs</a> at particular
+evolutionary distances.
+<ul>
+<li><strong>Close:</strong> Taxonomic distances such as human-mouse (&sim;90 MYA). This distance was
+referred to as PHOG-T(M) in our experiments on the TreeFam-A dataset
+and corresponds to a tree-distance length of 0.09375.</li>
+<li><strong>Moderate:</strong> Taxonomic distances such as human-zebrafish (&sim;450 MYA). This distance
+was referred to as PHOG-T(Z) in our experiments on the TreeFam-A
+dataset and corresponds to a tree-distance length of  0.296875.</li>
+<li><strong>Distant:</strong> Taxonomic distances such as human-fruit fly (&sim;990 MYA). This distance
+was referred to as PHOG-T(F) in our experiments on the TreeFam-A
+dataset and corresponds to a tree-distance length of 0.9375.</li>
+</ul>
+</p>
+
+
+<a name="not_in_phog"></a>
+<p class="text_section_heading">
+What does it mean if I submit an accession, ID or protein sequence and I'm told that my sequence is not in any 
+PhyloFacts Orthology Group?
+</p>
+
+<p class="text_section_body">
+This means one of two things. Either your sequence is not in the PhyloFacts resource, or it is not in an 
+orthology group that meets the PHOG requirements.  We are continually expanding PhyloFacts, so it may be available 
+in the future.
+</p>
+
+
+<p class="text_section_heading">
+What differentiates PHOG orthology prediction from other methods?
+</p>
+
+<p class="text_section_body">
+Since orthology is a phylogenetic term,  phylogenetic analysis is the most
+rigorous approach for identifying orthologs. However, the computational
+complexity of phylogenetic analysis drives most orthology prediction methods to
+rely on BLAST (e.g., InParanoid, OrthoMCL, COGs and KEGG); many of these
+methods are also restricted to analysis of fully sequenced genomes (e.g.,
+InParanoid).
+</p>
+
+<p class="text_section_body">
+The most similar ortholog prediction method to PHOG is TreeFam, which also uses
+phylogenetic tree analysis to predict orthologs. There are four main
+differences between PHOG and TreeFam: (1) TreeFam is restricted to animals
+(non-animal genes are included as outgroup sequences only), while PHOG's
+taxonomic range is unrestricted. This enables PHOG to include more distantly
+related orthologs for some gene families. (2) TreeFAM uses
+species-tree/gene-tree reconciliation; by contrast, PHOG does not perform tree
+reconciliation. This enables PHOG to be used in cases where a species phylogeny
+is unknown or poorly resolved, but may also result in lower accuracy in some
+cases. (3) TreeFam has a manually curated section (TreeFam-A) while PHOG has no
+manually curated section. (4) Finally, PHOG allows users to select a target
+precision or evolutionary distance to suit their particular preferences.  For
+instance, PHOG-s provides super-orthology prediction and is highly specific,
+but with lower recall than other methods (e.g., InParanoid and OrthoMCL).  As
+super-orthology is a more restrictive relationship than orthology, PHOG-S may
+not include some of the orthologs selected by TreeFam, but those orthologs
+included by PHOG-S are less likely to have diverged functionally.  By contrast, 
+the thresholded versions of PHOG provide for much higher recall without a
+significant decrease in precision.
+</p>
+
+<p class="text_section_body">
+For further information please see the FAQ section on the 
+<a href="#compare">comparison of PHOG with other methods.</a>
+</p>
+
+<a name="super_orthology"></a>
+<p class="text_section_heading">What is the difference between an ortholog and a super-ortholog?
+</p>
+
+<p class="text_section_body">
+Orthology is defined as two genes whose most recent common ancestor represents a speciation event. 
+The term <i>super-orthology</i> is a more restrictive definition, and comes from <a
+href="http://www.biomedcentral.com/1471-2105/3/14/">Zmasek and Eddy <i>BMC
+Bioinformatics</i>, 2002</a>: for two genes to be super-orthologs, the path in the phylogenetic 
+tree joining the two must pass only through nodes representing speciation. If two genes are 
+super-orthologs, they are more likely to share a common function than if they are orthologs but 
+not super-orthologs, since gene duplication events are disallowed on the evolutionary path between 
+the two genes.
+</p>
+
+<p class="text_section_heading">
+Why do I see multiple sequences from the same species in a super-orthology
+group?
+</p>
+
+<p class="text_section_body">
+We allow sets of sequences from a single species that are grouped together in a
+subtree to be included in a super-orthology group. Some of these subtrees may
+represent true inparalogs (sequences duplicated within an extant species),
+i.e., co-orthologs to other sequences in a PHOG.  Other subtrees may
+represent different alleles  or splice variants of the same gene. A large
+fraction represent duplicate
+entries for the same protein (potentially submitted by different sequencing
+centers or groups). For instance, as of 12/16/2008, the UniProt resource (which we use
+as a primary source of sequences in PhyloFacts protein families) contains over
+85000 unique identifiers of human proteins, whereas the accepted number of
+unique human genes is under 25000. Other species can also have a mismatch
+between the number of actual genes and the number of proteins in the UniProt
+resource.  To compensate for this, we label subtrees that contain sequences
+from one species only as putative inparalogs or representatives of the same
+gene, and allow these to be included in a PhyloFacts Orthology Group (PHOG).
+</p>
+
+
+<p class="text_section_heading">
+Why is it that a sequence can belong to so many orthology groups, with
+different species showing up in each? 
+</p>
+
+<p class="text_section_body">
+There are a few reasons for this.  First, PhyloFacts orthology groups can be
+based on different domains in a protein as well as for entire domain
+architectures. Alignments that are restricted to subregions of a protein are
+called "local", and alignments that extend along the entire lengths
+(disallowing any significant insertions or deletions) are called "global".
+Sequences that are included in a global alignment will also be included in a
+restricted local alignment, but the reverse is not always true. The second main
+reason is that we have constructed protein family phylogenies starting with
+many different sequences. Although we try to minimize redundancy, the extended
+nature of many protein families means that some sequences are found in
+different trees. To compensate for this, we include for each putative ortholog
+a link to the most informative PhyloFacts orthology group (PHOG) containing it
+and the query (and potentially many other sequences). If many PHOGs exist that
+include both the query and the putative ortholog, we prioritize those derived
+from global alignments, and then select the one that has the largest number of
+sequences.
+</p>
+
+<a name="compare"></a>
+<p class="text_section_heading">
+How does PHOG compare at ortholog identification relative to other methods?
+</p>
+
+<p class="text_section_body">
+There is no standard benchmark dataset for evaluating orthology prediction
+(presumably because the evolutionary history can only be predicted but is not
+known). Assessment of orthology predictions based on consistency of functional
+annotation (e.g., agreement with GO functions) is problematic because of
+circular reasoning (most functional annotations, including GO, are based on
+homology-based annotation).
+</p>
+
+<p class="text_section_body">
+To assess the expected accuracy of PHOG, we used a set of 100 human sequences
+and their predicted orthologs in mouse, zebrafish and fruitfly from the
+TreeFam-A manually curated dataset as a gold standard to assess the validity of
+orthology predictions by InParanoid, OrthoMCL, and different PHOG variants.
+Results show that PHOG-T(moderate) has the best performance overall,
+finding 74% of TreeFam-A orthologs at 86% precision. By contrast, OrthoMCL
+finds 76% of the TreeFam-A orthologs at a precision of 66%, and InParanoid
+finds 87% of TreeFam-A orthologs but at only 24% precision.
+</p>
+
+<div class="text_table">
+<table class="text_table" width="70%" border="0" align="center" cellpadding="0" cellspacing="5">
+	<tr><td>
+
+        <table border="2" cellpadding="4" cellspacing="0" cols="8" rows="4">
+        
+        <tr>
+        
+        <td>Method</td>
+        <td align="center">True Positives</td>
+        <td align="center">False Positives</td>
+        <td align="center">False Negatives</td>
+        <td align="center">Recall</td>
+        <td align="center">Precision</td>
+        </td>
+        
+        </tr>
+        
+        <tr>
+        <td>InParanoid</td>
+        <td align="center">273</td>
+        <td align="center">870</td>
+        <td align="center">40</td>
+        <td align="center">0.87</td>
+        <td align="center">0.24</td>
+        
+        </tr>
+        
+        <tr>
+        <td>OrthoMCL</td>
+        <td align="center">237</td>
+        <td align="center">122</td>
+        <td align="center">76</td>
+        <td align="center">0.76</td>
+        <td align="center">0.66</td>
+        
+        </tr>
+        <tr>
+        <td>SCI-PHY</td>
+        <td align="center">246</td>
+        <td align="center">100</td>
+        <td align="center">67</td>
+        <td align="center">0.79</td>
+        <td align="center">0.71</td>
+        
+        </tr>
+        
+        <tr>
+        <td>PHOG-S</td>
+        <td align="center">185</td>
+        <td align="center">11</td>
+        <td align="center">128</td>
+        <td align="center">0.59</td>
+        <td align="center">0.94</td>
+        
+        </tr>
+        <tr>
+        <td>PHOG-T(Close)</td>
+        <td align="center">202</td>
+        <td align="center">20</td>
+        <td align="center">111</td>
+        <td align="center">0.65</td>
+        <td align="center">0.91</td>
+        
+        </tr>
+        <tr>
+        <td>PHOG-T(Moderate)</td>
+        <td align="center">232</td>
+        <td align="center">38</td>
+        <td align="center">81</td>
+        <td align="center">0.74</td>
+        <td align="center">0.86</td>
+        
+        </tr>
+        <tr>
+        <td>PHOG-T(Distant)</td>
+        <td align="center">274</td>
+        <td align="center">175</td>
+        <td align="center">39</td>
+        <td align="center">0.88</td>
+        <td align="center">0.61</td>
+        
+        </tr>
+        
+        </table>
+        
+	</td></tr>
+    <tr><td>
+        <span class="text_legend">
+        Results comparing different variants of the PHOG algorithm, SCI-PHY, OrthoMCL and InParanoid against a dataset of 100 human 
+        proteins and orthologs identified in the TreeFam-A resource.
+        </span>
+    </td></tr>
+</table>
+</div>
+        
+<p class="text_section_body">
+For reference, recall and precision are defined as follows:
+</p>
+
+<p class="text_section_body">
+Recall = TP/(TP+FN)
+</p>
+
+<p class="text_section_body">
+Precision = TP /(TP+FP)
+</p>
+
+<p class="text_section_body">
+where a <i>True Positive</i> (TP) is an orthology pair included in TreeFam-A that is also predicted by a method, a <i>False Negative</i> (FN) is an orthology pair included in TreeFam-A that is not predicted by a method (i.e., it is missed by the method), and a <i>False Positive</i> (FP) is an orthology pair predicted by a method that is not included in TreeFam-A. 
+</p>
+
+
+<p class="text_section_body">
+Full details are available <a
+href="/phog/orthologs/assessment/">here</a>.
+</p>
+
+
+</div>
+
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,540 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script type="text/javascript" src="/static/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/static/js/raphael-min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap.js"></script>
+<script type="text/javascript" src="/static/js/underscore-min.js"></script>
+<script type="text/javascript" src="/static/js/jqXMLUtils.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/css/new_phylofacts.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var phylogramApp = {
+    phylogram: function (data) {
+        var heightPerLeaf = 35;
+        var paper;
+        var tree=null;
+        var div=data.div;
+        var paperWidth=0;
+        //this.paperWidth=$("#"+data.div).width();
+        var paperHeight=0;
+        var that=this;
+        var labelWidth = 200;
+
+        this.init = function(url) {
+            // get the phyloxml
+            var get_url = url ? url : '/phylofacts/tree_node/231816545/tree';
+            $.get(get_url, function(d) {
+                var json = $.xmlToJSON(d);
+                // parse and put the tree in its place
+                tree = parseJSONtree(json.phylogeny[0].clade[0]);
+                tree.initializeTree().draw({});
+            });
+        }
+
+        this.getTree = function() {
+            return tree;
+        }
+
+        this.getThatPaper = function() {
+            return paper;
+        }
+
+        function Label(constructorData) {
+            this.x = 0;
+            this.y = 0;
+            this.uniprotIDObject = null;
+            this.uniprotIDObjectDefaultAttributes = {};
+            this.uniprotDescriptionObject = null;
+            this.uniprotDescriptionObjectDefaultAttributes = {};
+            this.taxonObject = null;
+            this.taxonObjectDefaultAttributes = {};
+            this.GOIcon = null;
+            this.GOIconDefaultAttributes = {};
+            this.swissProtIcon = null;
+            this.swissProtIconDefaultAttributes = {};
+            this.structureIcon = null;
+            this.structureIconDefaultAttributes = {};
+            this.labelAttributes = null;
+            this.collapsedDescriptionObject = null;
+            this.collapsedDescriptionObjectDefaultAttributes = {};
+            this.isCollapsedLabel = false;
+
+            if (constructorData) {
+                if (constructorData.coords) {
+                    this.x = constructorData.coords.x;
+                    this.y = constructorData.coords.y;
+                }
+                else {this.x = Math.floor(paperWidth/2); this.y = 20;}
+                if (constructorData.collapsedString) {
+                    this.isCollapsedLabel = true;
+                    var collapsedDescriptionAttr = constructorData.collapsedAttr ? constructorData.collapsedAttr : {};
+                    this.collapsedDescriptionObject = paper.text(this.x, this.y, constructorData.collapsedString).attr(collapsedDescriptionAttr);
+                    this.collapsedDescriptionObjectDefaultAttributes = collapsedDescriptionAttr;
+                    if (constructorData.taxonString) {
+                        var taxAttr = constructorData.taxonAttributes ? constructorData.taxonAttributes : {};
+                        this.taxonObject = paper.text(this.collapsedDescriptionObject.getBBox().x2+1, this.y, constructorData.taxonString).attr(taxAttr);
+                        this.taxonObjectDefaultAttributes = taxAttr;
+                    }
+                }
+                else {
+                    if (constructorData.taxonString) {
+                        var taxAttr = constructorData.taxonAttr ? constructorData.taxonAttr : {};
+                        this.taxonObject = paper.text(this.x, (this.y-tree.leafLineHeight), constructorData.taxonString).attr(taxAttr);
+                        this.taxonObjectDefaultAttributes = taxAttr;
+                    }
+                    if (constructorData.uniprotIDString) {
+                        var uniprotIDAttr = constructorData.uniprotIDAttr ? constructorData.uniprotIDAttr : {};
+                        this.uniprotIDObject = paper.text(this.taxonObject.getBBox().x2+3, (this.y-tree.leafLineHeight), constructorData.uniprotIDString).attr(uniprotIDAttr);
+                        this.uniprotIDObjectDefaultAttributes = uniprotIDAttr;
+                    }
+                    if (constructorData.uniprotDescriptionString) {
+                        var uniprotDescriptionAttr = constructorData.uniprotDescriptionAttr ? constructorData.uniprotDescriptionAttr : {};
+                        this.uniprotDescriptionObject = paper.text(this.x,(this.y + tree.leafLineHeight), constructorData.uniprotDescriptionString).attr(uniprotDescriptionAttr);
+                        this.uniprotDescriptionObjectDefaultAttributes = uniprotDescriptionAttr;
+                    }
+                }
+            }
+    
+            this.getLength = function() {
+                if (this.isCollapsedLabel) {
+                    var l = this.taxonObject ? this.taxonObject.getBBox().x2 - this.collapsedDescriptionObject.getBBox().x + 1:
+                        this.collapsedDescriptionObject.getBBox().width;    
+                    return l;
+                }
+                else {
+                    var l1 = this.uniprotIDObject ? this.uniprotIDObject.getBBox().x2 - this.taxonObject.getBBox().x + 3:
+                        this.taxonObject.getBBox().width;
+                    var l2 = this.uniprotDescriptionObject.getBBox().width;
+                    if (l1 > l2) {return l1;}
+                    else {return l2;}
+                }
+            }
+
+            this.moveAndShowLabel = function(x,y) {
+                if (this.isCollapsedLabel) {
+                    this.collapsedDescriptionObject.attr({'x': x, 'y': y}).show();
+                    if (this.taxonObject) {
+                        this.taxonObject.attr({'x': this.collapsedDescriptionObject.getBBox().x2 + 3,
+                            'y': y}).show();
+                    }
+                }
+                else {
+                    this.taxonObject.attr({'x': x, 'y': y - tree.leafLineHeight}).show();
+                    this.uniprotIDObject.attr({'x': this.taxonObject.getBBox().x2 + 3, 
+                            'y': y - tree.leafLineHeight}).show();
+                    this.uniprotDescriptionObject.attr({'x': x, 'y': y + tree.leafLineHeight}).show();
+                }
+            }
+
+            this.remove = function() {
+                if (this.collapsedDescriptionObject) {this.collapsedDescriptionObject.remove(); this.collapsedDescriptionObject = null;}
+                if (this.uniprotIDObject) {this.uniprotIDObject.remove(); this.uniprotIDObject = null;}
+                if (this.uniprotDescriptionObject) {this.uniprotDescriptionObject.remove(); this.uniprotDescriptionObject = null;}
+                if (this.taxonObject) {this.taxonObject.remove(); this.taxonObject = null;}
+                return this;
+            }
+
+        }
+        
+        function Path(constructorData) {
+            this.pathObjectDefaultOptions = {'glow':false};
+            this.glowObject = null;
+            this.glowObjectDefaultAttributes = {};
+            this.isGlowed = false;
+
+            this.pathObjectDefaultAttributes = constructorData.defaultAttr ? constructorData.defaultAttr : {};
+            this.pathObject = constructorData.pathString ? paper.path(constructorData.pathString).attr(this.pathObjectDefaultAttributes) : null;
+            if (constructorData.defaultOptions) {
+                this.pathObjectDefaultOptions = constructorData.defaultOptions;
+                if (constructorData.defaultOptions.glow) {
+                    this.glowObjectDefaultAttributes = constructorData.defaultGlowAttr ? constructorData.defaultGlowAttr : {}; 
+                    this.glow(this.glowObjectDefaultAttributes);
+                }
+            }
+
+            this.render = function(attributes) {
+                var thesePathAttr = attributes.pathAttr ? attributes.pathAttr : this.pathObjectDefaultAttributes;
+                var theseGlowAttr = attributes.glowAttr ? attributes.glowAttr : this.glowObjectDefaultAttributes;
+                this.pathObject.attr(thesePathAttr);
+                if (attributes.glow) {
+                    this.glow(theseGlowAttr);
+                }
+                else {this.unglow();}
+                return this;
+            }
+
+            this.setDefaultAttributes = function(pathAttr, glowAttr) {
+                if (glowAttr) {this.pathObjectDefaultOptions.glow = true; this.glowObjectDefaultAttributes = glowAttr;}
+                else {this.pathObjectDefaultOptions.glow = false; this.glowObjectDefaultAttributes = {};}
+                if (pathAttr) {this.pathObjectDefaultAttributes = pathAttr;}
+                else {this.pathObjectDefaultAttributes = {};}
+                return this; 
+            }
+
+            this.glow = function(attributes) {
+                if (this.glowObject) {this.unglow();}
+                var theseGlowAttr = attributes ? attributes : this.glowObjectDefaultAttributes;
+                this.glowObject = this.pathObject.glow(theseGlowAttr);
+                this.isGlowed = true;
+                return this;
+            }
+
+            this.unglow = function() {
+                if (this.glowObject) {this.glowObject.remove(); this.glowObject = null;}
+                this.isGlowed = false;
+                return this;
+            }
+        }
+
+        function Node(constructorData) {
+            // defines the node object
+            this.x = 0;
+            this.y = 0;
+            this.id = constructorData["nodeID"];
+            this.name = constructorData["name"];
+            this.percentID = 0.0;
+            this.branchLengthToParent = constructorData["branchLength"];
+            this.isCollapsed = false;
+            this.parentNode = null;
+            this.children = [];
+            this.branchLengthToRoot = 0;
+            this.containedLeaves = 0;
+            this.displayedLeaves = 0;
+            this.pathToParent = null;
+            this.labelObject = null;
+            this.nodeObject = null;
+            this.glowObject = null;
+            this.nodeObjectDefaultAttributes = constructorData.defaultAttr ? 
+                constructorData.defaultAttr : {'cursor': 'pointer', 'fill-opacity':0, 'stroke-opacity':0,'r':4};
+            this.nodeObjectDefaultOptions = constructorData.defaultOptions ? constructorData.defaultOptions : {'glow': false};
+            this.glowObjectDefaultAttributes = constructorData.defaultGlowAttr ? constructorData.defaultGlowAttr : {};
+            this.isHidden = true;
+            this.isSelected = false;
+            this.isGlowed = false;
+            var that=this;
+            
+            if ((constructorData["sequences"]) && (constructorData["sequences"][0].name) && 
+                    (constructorData["sequences"][0].name[0].Text))
+                {this.description = constructorData["sequences"][0].name[0].Text;}
+            else {this.description = null;}
+            if (constructorData["taxonomy"]) {
+                if ((constructorData["taxonomy"][0].common_name) && (constructorData["taxonomy"][0].common_name[0].Text))
+                    {this.taxon_common_name = constructorData["taxonomy"][0].common_name[0].Text;}
+                else {this.taxon_common_name = null;}
+                if ((constructorData["taxonomy"][0].scientific_name) && (constructorData["taxonomy"][0].scientific_name[0].Text))
+                    {this.taxon_scientific_name = constructorData["taxonomy"][0].scientific_name[0].Text;}
+                else {this.taxon_scientific_name = null;}
+                if ((constructorData["taxonomy"][0].id) && (constructorData["taxonomy"][0].id[0].Text))
+                    {this.taxon_id = parseInt(constructorData["taxonomy"][0].id[0].Text);}
+                else {this.taxon_id = null;}
+            }
+            else {this.taxon_common_name = null; this.taxon_scientific_name = null; this.taxon_id = null;}            
+
+            this.scaledX = function() {
+                return Math.floor(this.x*tree.horizontalScalingFactor+tree.leftPadding);
+            }
+
+            this.scaledY = function() {
+                return Math.floor(this.y*heightPerLeaf+tree.topPadding);
+            }
+
+            this.changeRendering = function(renderingAttributes) {
+                /*
+                    This function changes the rendering of the node.  Essentially, it modifies the attributes of the node.
+                The input variable renderingAttributes is an object that has 3 optional fields.  If the field nodeAttr exists,
+                this node object is set to have the attributes keyed by that field.  If a field glowAttr exists in the object, the
+                glow attributes are set to this value.  If a field glow exists and is truthy, the node is glowed, else it is unglowed.
+                Finally, if no attributes are passed to the function, it changes everything to its default attributes.
+                */
+                if (this.nodeObject) {
+                    if (renderingAttributes) {
+                        if (renderingAttributes.nodeAttr) {this.nodeObject.attr(renderingAttributes.nodeAttr);}
+                        var theseGlowAttr = renderingAttributes.glowAttr ? renderingAttributes.glowAttr : this.glowObjectDefaultAttributes;
+                        if (renderingAttributes.glow) {this.glow(theseGlowAttr);}
+                        else {this.unglow();}
+                    }
+                    else {
+                        this.nodeObject.attr(this.nodeObjectDefaultAttributes);
+                        if (this.nodeObjectDefaultOptions.glow) {this.glow(this.glowObjectDefaultAttributes);}
+                        else {this.unglow();}
+                    }
+                }
+                return this;
+            }
+
+            this.setDefaultAttributes = function(nodeAttr, glowAttr) {
+                if (nodeAttr) {
+                    this.nodeObjectDefaultAttributes = nodeAttr;
+                    if (glowAttr) {
+                        this.nodeObjectDefaultOptions.glow = true;
+                        this.glowObjectDefaultAttributes = glowAttr;
+                    }
+                    else {
+                        this.nodeObjectDefaultOptions.glow = false;
+                        this.glowObjectDefaultAttributes = {};
+                    }
+                }
+                else {this.nodeObjectDefaultAttributes = {};}
+                return this;    
+            }
+
+            this.glow = function(attributes) {
+                if (this.glowObject) {this.unglow();}
+                if (attributes) {this.glowObject = this.nodeObject.glow(attributes);}
+                else {this.glowObject = this.nodeObject.glow(this.glowObjectDefaultAttributes);}
+                this.isGlowed = true;
+                return this;
+            }
+
+            this.unglow = function() {
+                if (this.glowObject) {this.glowObject.remove(); this.glowObject = null;}
+                this.isGlowed = false;
+                return this;
+            }
+
+            this.draw = function(attributes) {
+                if (this.nodeObject) {this.nodeObject.remove();}
+                if (attributes) {
+                    this.nodeObject = paper.circle(this.scaledX(), this.scaledY(), 1).attr(attributes);
+                }
+                else {
+                    this.nodeObject = paper.circle(this.scaledX(), this.scaledY(), 1).attr(this.nodeObjectDefaultAttributes);
+                }
+                if (this.isLeaf()) {
+                    
+                }
+                return this;
+            }
+            
+            this.setParent = function(parent) {this.parentNode = parent;}
+            this.getParent = function() {return this.parentNode;}
+            this.getChildren = function() {return this.children;}
+            this.appendChild = function(child) {this.children.push(child);}
+            this.isLeaf = function() {return (this.children.length === 0);}
+            this.isRoot = function() {return !(this.parentNode);}
+            this.hasSibling = function() {return (!(this.isRoot()) && (this.parentNode.children.length > 1));}
+            this.makeThisLabel = function(coords) {
+                if (!(this.isCollapsed)) {
+                    if (this.taxon_scientific_name) {
+                        var taxString = this.taxon_common_name ? 
+                            this.taxon_scientific_name + " (" + this.taxon_common_name + ")" : 
+                            this.taxon_scientific_name;
+                    }
+                    else {
+                        var taxString = "Unknown";
+                    }
+                    var descString = this.description ? this.description : "No Description Available";
+                    var constructor = {'taxonAttr': {'text-anchor':'start'},'uniprotIDAttr': {'text-anchor':'start'}, 
+                        'uniprotDescriptionAttr': {'text-anchor':'start'}, 'taxonString': taxString,
+                        'uniprotIDString': this.name, 'uniprotDescriptionString': descString};
+                }
+                else { // it's a collapsed node.
+                    var constructor = {'collapsedString': node.containedLeaves.toString() + ' sequences from ',
+                        'collapsedAttr': {'text-anchor':'start'}};
+                }
+                if (coords) {constructor['coords'] = coords;}
+                return constructor;
+            }
+        }
+
+        function Tree(root) {
+            // defines the tree object
+            this.root = root;
+            this.maximumBranchLength = 0;
+            this.maximumDisplayedBranchLength = 0;
+            var that = this;
+            this.horizontalScalingFactor=0;
+            this.leftPadding=5;
+            this.topPadding=10;
+            this.scrollBarWidth=15;
+            this.leaves = [];
+            this.internals = [];
+            this.leafLineHeight = 5;
+            this.longestBranchNode = null;
+            this.longestBranchNodeLabelLength = 0;
+
+            this.populateNodePositions = function() {
+                function traverseTree(node) {
+                    if (!(node.isCollapsed || node.isLeaf())) {
+                        var dLeaves = 0;
+                        for(var i=0;i<node.children.length;i++) {
+                            dLeaves+=traverseTree(node.children[i]);
+                        }
+                        node.displayedLeaves = dLeaves;
+                        node.x = node.branchLengthToRoot;
+                        if (node.children.length>1) {
+                            node.y = (node.children[0].y + (node.children[node.children.length-1].y - node.children[0].y)/2);
+                        }
+                        else {node.y = node.children[0].y;}
+                        return dLeaves;
+                    }
+                    else
+                    {
+                        if (node.branchLengthToRoot > mdbl) {mdbl=node.branchLengthToRoot;}
+                        node.x = node.branchLengthToRoot;
+                        node.y = nLeaves;
+                        nLeaves+=1;
+                        var label = new Label(node.makeThisLabel({'x':paperWidth/2, 'y':30}));
+                        var labLen = label.getLength();
+                        var thisScalingFactor = (paperWidth - labLen - tree.leftPadding)/node.x;
+                        label.remove();
+                        delete label;
+                        if (thisScalingFactor < minScalingFactor) {tree.longestBranchNode = node; minScalingFactor = thisScalingFactor; tree.longestBranchNodeLabelLength=labLen;}
+                        return 1;
+                    }
+                }
+                var nLeaves = 0;
+                var mdbl = 0;
+                var minScalingFactor = 99999999;  // This is bad.
+                traverseTree(this.root);
+                this.maximumDisplayedBranchLength = mdbl;
+                this.horizontalScalingFactor = minScalingFactor;
+            }
+
+            this.draw = function(options) {
+                function recursivelyDraw(node) {
+                    if (!(node.isCollapsed || node.isLeaf())) {
+                        _.each(node.children, function(child) {
+                            var pathString = "M" + node.scaledX().toString() 
+                                    + "," + node.scaledY().toString() +
+                                    "V" + child.scaledY().toString() + 
+                                    "H" + child.scaledX().toString();
+                            child.pathToParent = new Path({'pathString': pathString, defaultAttr: {'stroke-width':2}});
+                            child.draw();
+                            recursivelyDraw(child);
+                        });
+                    }
+                    else {
+                        // Put the label in the right spot and draw the node.
+                        node.draw();
+                        node.labelObject = new Label(node.makeThisLabel({'x': node.nodeObject.getBBox().x2, 'y': node.scaledY()}));
+                    }
+                }
+                if (options) {
+                    var refresh = options.refresh ? options.refresh : false;
+                }
+                // 15 to eliminate horizontal scrollbar
+                paperWidth = $("#"+div).width()-this.scrollBarWidth;
+                if (!(refresh)) {this.populateNodePositions();}
+                else {this.horizontalScalingFactor = (paperWidth - this.longestBranchNodeLabelLength - this.leftPadding)/this.longestBranchNode.branchLengthToRoot;}
+                paperHeight = this.root.displayedLeaves*heightPerLeaf+this.topPadding;
+                paper.clear();
+                paper.setSize(paperWidth, paperHeight);
+                recursivelyDraw(this.root);
+                this.root.draw(); 
+            }
+
+            this.initializeTree = function() {
+                // set paper to Raphael object, we will get the actualy canvas size later and set it.
+                paper = Raphael(div,1,1);
+                return this;
+            }
+        }
+        
+        function parseJSONtree(root) {
+            // parses a json representation of the phyloxml
+            function parseCladeData(clade) {
+                var branchLength = Math.max(clade["branch_length"] || 1e-10, 1e-10);
+                var name = clade.name ? clade.name[0].Text : "";
+                var cladeData = {
+                    "branchLength" : branchLength,
+                    "name" : name,
+                    "nodeID" : parseInt(clade.node_id[0].Text)
+                };
+                if (clade.sequence) {
+                    cladeData["sequences"] = clade.sequence;
+                }
+                if (clade.taxonomy) {
+                    cladeData["taxonomy"] = clade.taxonomy;
+                }
+                if (clade.property) {
+                    cladeData["property"] = clade.property;
+                }
+                return cladeData;
+            }
+
+            function parseClade(clade, parentNode) {
+                var node = new Node(parseCladeData(clade));
+                var cLeaves = 0;
+                node.parentNode = parentNode;
+                node.branchLengthToRoot = node.branchLengthToParent + node.parentNode.branchLengthToRoot;
+                if (node.branchLengthToRoot > maxBranchLength) {maxBranchLength = node.branchLengthToRoot;}
+                _.each(clade.clade, function(child) { 
+                    var retObj = parseClade(child, node);
+                    node.appendChild(retObj.node);
+                    cLeaves += retObj.leaves;
+                });
+                if (node.children.length == 0) {
+                    tree.leaves.push(node);
+                    return {'node': node, 'leaves': 1};
+                }
+                else {
+                    tree.internals.push(node);
+                    node.containedLeaves = cLeaves;
+                    return {'node': node, 'leaves': cLeaves};
+                }
+            }
+
+            var numLeaves = 0;
+            var maxBranchLength = 0;
+            var rootNode = new Node(parseCladeData(root));
+            var tree = new Tree(rootNode);
+
+            _.each(root.clade, function(child) {
+                var retObj = parseClade(child, rootNode);
+                rootNode.appendChild(retObj.node);
+                numLeaves+=retObj.leaves;
+            });
+            if (rootNode.children.length == 0) {tree.leaves.push(rootNode);}
+            else {tree.internals.push(rootNode);}
+            tree.root.containedLeaves = numLeaves;
+            tree.maximumBranchLength = maxBranchLength;
+            return tree;
+        }
+    }
+};
+
+var t = new phylogramApp.phylogram({ div: 'phylogram' }); 
+
+$(document).ready(function() {
+    $(" .tree-loading-container ").toggle();
+    $(" .tree-search-pane ").toggle();
+    $(" .search-tree-link ").click(function() {
+        $(" .tree-information-pane ").hide();
+        $(" .tree-search-pane ").show();
+    });
+    $(" #end-search-button ").click(function() {
+        $(" .tree-search-pane ").hide();
+        $(" .tree-information-pane ").show();
+    });
+    t.init();
+    $(window).resize(function () {
+        t.getTree().draw({refresh:"true"});
+    });
+});
+
+</script>
+
+</head>
+<body class="tree-body">
+  <div id="tree-toolbar" class="treeview-control-well">
+    <div id="tree-logo" class="tree-logo-container">
+      <img class="tree-logo" src="/static/img/icons/tree-icon-thumb.png" />
+    </div>
+    {% include 'phylofacts/new_phylogram_menu.html' %}
+    <div class="main-information-pane">
+        <div id="tree-information" class="tree-information-pane">
+            <h5 class="tree-header">bpg0240116: Apoptotic protease activating factor 1;</h5>
+            <p class="tree-info">19 sequences from Eukaryotes with a minimum pairwise % ID of 94.2</p>
+        </div>
+        <div id="tree-search-pane" class="tree-search-pane">
+            <button id="end-search-button" class="close">x</button>
+        </div>
+    </div>
+    <div id="selection-information" class="selection-information-pane"></div>
+  </div>
+  <div id="phylogram" class="treeview-pane"></div>
+</body>
+</html>

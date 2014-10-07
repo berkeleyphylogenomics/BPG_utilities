@@ -1,0 +1,52 @@
+{% extends 'common/base_new.html' %}
+
+{% block title %}Web submission admin{% endblock %}
+
+{% block extrastyle %}
+
+{% endblock %}
+
+{% block extrascripts %}
+<script type='text/javascript'>
+function refreshTables() {
+    $j.get('/phylofacts/queue_table/', function(data) {
+        $j(' #running-jobs-table ').html(data);
+    });
+    $j.get('/phylofacts/queue/jobs/all/', function(data) {
+        $j(' #all-jobs-table ').html(data);
+    });
+}
+
+$j(document).ready(function() {
+    $j( "#left-tabs" ).tabs();
+    $j( "#left-tabs" ).tabs().addClass('ui-tabs-vertical ui-helper-clearfix');
+    $j( "#left-tabs li" ).removeClass('ui-corner-top').addClass('ui-corner-left');
+    refreshTables();
+    var pollingInterval = window.setInterval(function() {refreshTables()}, 15000);
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<div class='phylofacts-well'>
+    <div class='phylofacts-well-header'>
+        <h2>Administration</h2>
+        <div class='cleaner'></div>
+    </div>
+        
+    <div id='left-tabs'>
+        <ul class='left-tabs-cls'>
+            <li><a href='#all-jobs'>All Jobs</a></li>
+            <li><a href='#running-jobs'>Running Jobs</a></li>
+        </ul>
+        <div id='all-jobs' class='phylofacts-treenode-content'>
+            <h3>Queue Jobs submitted via makana.berkeley.edu</h3>
+            <div id='all-jobs-table'></div>
+        </div>
+        <div id='running-jobs' class='phylofacts-treenode-content'>
+            <h3>Queue Jobs currently running</h3>
+            <div id='running-jobs-table'></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

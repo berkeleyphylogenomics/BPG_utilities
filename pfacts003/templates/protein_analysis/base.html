@@ -1,0 +1,228 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>{% block title %}Berkeley Phylogenomics Group{% endblock %} </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <link rel='stylesheet' href='/static/css/jquery-ui-1.8.20.custom.css' type='text/css' media='screen'/>
+    <link rel="stylesheet" href="/static/css/new_phylofacts.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="/static/css/jquery.qtip2.min.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="/static/css/protein-analysis.css" type="text/css" media="screen">
+    {% block extrastyle %}{% endblock %}
+    <script type="text/javascript" src="/static/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-ui-1.8.20.custom.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.js"></script> 
+    <script type="text/javascript" src="/static/js/jquery.qtip2.min.js"></script> 
+    <script type="text/javascript">
+        jQuery.noConflict();
+        var $j = jQuery;
+    </script>
+    <script>
+      $j( document ).ready(function() {
+        // Document ready functions
+      });
+    </script>
+    <script>
+        function postSearch(input, div) {
+            $j.post( "/api/phylofacts/search/", 
+                {'input' : input,
+                 'div_id' : div},
+                function(data) 
+                { 
+                    if (data.status == "redirect") {window.location = data["url"];}
+                    else if (data.status == "error") {
+                        if (data.displaytodiv == "#phylofacts-search-error") {$j(".nav-cell").hide();}
+                        var x = data.displaytodiv + ' p';
+                        $j(x).html(data.message);
+                        $j(data.displaytodiv).show();
+                    }
+                });
+            } 
+
+        $j(function() {
+            $j( "#phylofacts-search" ).keypress(function(event) {
+                if ( event.which == 13 )
+                {
+                    event.preventDefault();
+                    if ($j(" #phylofacts-search ").val().length > 0) {postSearch($j( " #phylofacts-search " ).val(), '#phylofacts-search-error');}
+                }
+            });
+            $j( "#site_navbar .form-search button" ).click(function(event) {
+                event.preventDefault();
+                if ($j(" #phylofacts-search ").val().length > 0) {postSearch($j( " #phylofacts-search " ).val(), '#phylofacts-search-error');}
+            });
+            $j( "#phylofacts-search-error .close" ).click(function(event) {
+                //event.preventDefault();
+                $j(" #phylofacts-search-error ").hide();
+                $j(" #site_navbar .nav-cell ").show();
+            });
+            $j(" #login-modal .modal-footer .btn-primary ").click(function(event) {
+                $j.post("/api/login/", {'username': $j("#login-username").val(), 'password': $j("#login-password").val()}, function(data) {
+                    if (data.success) {location.reload(true);}
+                    else if (data.error) {
+                        $j(" #login-modal .modal-body .alert ").removeClass("hide").addClass("alert-error");
+                        $j(" .login-message p ").html("Username or password is incorrect.<br />Forgot your password?  <a href='/phylofacts/password_reset/'>Click here</a> to reset it.");
+                    }
+                });
+            });
+            $j(" #user-logout ").click(function(event) {
+
+                $j.post('/api/logout/', {'j':'c'}, function() {location.reload();});
+            });
+        });
+    </script>
+    {% block extrascripts %}{% endblock %} 
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-34580382-1']);
+      _gaq.push(['_setDomainName', 'berkeley.edu']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+  </head>
+  <body>
+    <!-- This is the modal to log in to PhyloFacts -->
+    <div id="login-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="login-modal-label" aria-hidden="true">
+        <div class="modal-header">
+
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <h4 id="login-modal-label">Sign in to PhyloFacts</h4>
+        </div>
+        <div class="modal-body">
+            <p>
+                <label><strong>Username</strong></label>
+                <input id="login-username" type="text">
+                <label><strong>Password</strong></label>
+                <input id="login-password" type="password">
+                <div class="alert hide">
+                    <button type="button" class="close" data-dismiss="alert">x</button>
+                    <div class="login-message">
+                        <p>Some message.</p>
+                    </div>
+                </div>
+                <p id="#modal-text">Don't have an account?  <a href="/phylofacts/user_create/">Click here</a> to create one.</p>
+                <p id="#password-text">Forgot your password? <a href="/phylofacts/password_reset/">Click here</a> to reset it.</p>
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            <button class="btn btn-primary">Sign in</button>
+        </div>
+    </div>
+    <div class="container">
+      <div id="site_navbar" class="navbar">
+        <div class="navbar-inner">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+       <!-- <div class="container">-->
+                            <div id="site_logo_container" class="site-logo">
+                              <img src="/static/img/logos/new_bpg_logo2.png" alt="bpg logo"></img>
+                            </div> <!-- end of site_logo_container -->
+                        </td>
+                        <td>
+                            <div class="navbar-menu-cell">
+                                <ul class="nav">
+                                  <li class="dropdown">
+                                    <a href="#homepage" class="dropdown-toggle" 
+                                      data-toggle="dropdown" id>Home<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                      <li><a href="/phylofacts/">PhyloFacts</a></li>
+                                      <li><a href="/phylofacts/fatcat/">FAT-CAT</a></li>
+                                      <li><a href="/satchmo-js/">SATCHMO-JS</a></li>
+                                      <li><a href="/research/">Research</a></li>
+                                      <li><a href="/affiliations/">Affiliations</a></li>
+                                      <li><a href="/positions/">Positions</a></li>
+                                      <li><a href="/courses/">Courses</a></li>
+                                      <li><a href="/members/">People</a></li>
+                                      <li><a href="/funding/">Acknowledgements</a></li>
+                                    </ul>
+                                  </li>
+                                  <li class="dropdown">
+                                    <a href="#homepage" class="dropdown-toggle" 
+                                      data-toggle="dropdown" id>PhyloFacts<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                      <li><a href="/phylofacts/">Home</a></li>
+                                      <li><a href="/phylofacts/fatcat/">FAT-CAT</a></li>
+                                      <li><a href="/phylofacts/coverage/">Genome coverage</a></li>
+                                      <li><a href="/phylofacts/downloads/">Downloads</a></li>
+                                      <li><a href="/phylofacts/statistics/">Statistics</a></li>
+                                    </ul>
+                                  </li>
+                                  <li><a href="/publications/">Publications</a></li>
+                                  <li><a href="/contact_us/">Contact us</a></li>
+                                    {% if not user.is_authenticated %}
+                                      <li><a href="#login-modal" data-toggle="modal">Sign in</a></li>
+                                    {% else %}
+                                      <li class="dropdown">
+                                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" id>My PhyloFacts<b class="caret"></b></a>
+                                          <ul class="dropdown-menu">
+                                              <li><a href="/phylofacts/my_phylofacts/">{{ user.username }}</a></li>
+                                              <li><a href="/phylofacts/my_phylofacts/#user-jobs">Saved jobs</a></li>
+                                              <li><a id="user-logout" href="javascript:;">Sign out</a></li>
+
+                                          </ul>
+                                      </li>
+                                  {% endif %}
+                                </ul> <!-- end of nav -->
+                        </div>
+                    </td>
+                    <td>
+                    <div class="nav-cell">
+                        <form class="form-search" action>
+                            <div class="input-append">
+                                <input type="text" class="search-query" id="phylofacts-search"
+                                    placeholder="Search PhyloFacts" />
+                                <button type="submit" class="btn"><i class="icon-search"></i></button> 
+                                      <!-- <button type="submit" class="btn">Search</button> -->
+                            </div>
+                        </form>
+                    </div>
+                    <div id="phylofacts-search-error" class="alert alert-error">
+                        <button type="button" class="close">x</button>
+                        <p></p>
+                    </div>
+                    </td>
+                </tr>
+            </table>
+        </div> <!-- end of class navbar-inner -->
+      </div> <!-- end of site_navbar -->
+
+      {% block content %}<p>Oops.  We forgot to put content on this page</p>{% endblock %}
+
+    </div><!-- end of main page container -->
+    {% comment %}
+    <!-- Site Meter -->
+    <script type="text/javascript" src="http://s21.sitemeter.com/js/counter.js?site=s52phylogenomics">
+    </script>
+    <noscript>
+    <a href="http://s21.sitemeter.com/stats.asp?site=s52phylogenomics" target="_top">
+    <img src="http://s21.sitemeter.com/meter.asp?site=s52phylogenomics" alt="Site Meter" border="0"/></a>
+    </noscript>
+    <!-- Copyright (c)2009 Site Meter -->
+    {% endcomment %}
+    <!-- Start of StatCounter Code for Default Guide -->
+    <script type="text/javascript">
+        var sc_project=8261423; 
+        var sc_invisible=1; 
+        var sc_security="a6255677"; 
+    </script>
+    <script type="text/javascript"
+        src="http://www.statcounter.com/counter/counter.js"></script>
+    <noscript><div class="statcounter"><a title="drupal
+        statistics module" href="http://statcounter.com/drupal/"
+        target="_blank"><img class="statcounter"
+        src="http://c.statcounter.com/8261423/0/a6255677/1/"
+        alt="drupal statistics module"></a></div></noscript>
+    <!-- End of StatCounter Code for Default Guide -->
+    </body>
+</html>
