@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Overview of the INTREPID algorithm</title>
+<link rel="stylesheet" href="/css/base.css" type="text/css" />
+</head>
+<body>
+<center>
+<h1>Overview of the INTREPID algorithm</h1>
+</center>
+<p>
+<hr>
+For more details, see <a href="http://dx.doi.org/10.1093/bioinformatics/btn474">Sankararaman and Sj&ouml;lander, Bioinformatics 2008</a>.
+<hr>
+
+<h2>An Example of the INTREPID algorithm</h2>
+<p>
+The key idea in INTREPID is the use of phylogenetic information by examining the conservation patterns at each node of a phylogenetic tree on a path from the root to the leaf corresponding to the sequence of interest. For instance, catalytic residues tend to be conserved across distant homologs and thus will appear conserved at (or near) the root of a gene tree. In contrast, specificity determinants will not be conserved across all members of a family, but are likely to be conserved within one or more subtypes. Thus, prediction of these two distinct types of positions requires a different approach for each task. Any suitable conservation score can be used within the tree traversal of INTREPID depending on the type of functional residue to be predicted. INTREPID uses the Jensen-Shannon divergence as the scoring function for functional residue identification. INTREPID computes an importance score for each position which is then used to rank the positions.
+
+<div class="image">
+<center>
+<img src="intrepid-example.jpg" height=200 alt="Example of INTREPID">
+</center>
+</div>
+The above figure shows an example containing six protein sequences of length four each. The target protein p is marked with an arrow. The nodes visited by the tree traversal are S1, S2, S3, S4 and S5. INTREPID ranks the positions in the order 2, 1, 4 and 3. Position 4 would be ranked above position 1 because position 1 is conserved within subtree S3 while position 4 is conserved only in subtree S5 that contains a single sequence. 
+
+<p>
+<h2> INTREPID is more accurate as evolutionary divergence increases</h2>
+<div class="image">
+<center>
+<img src="intrepid-divergence.jpg" height=400 alt="INTREPID performance with increasing divergence">
+</center>
+</div>
+ROC curve for INTREPID on alignments with varying degrees of evolutionary divergence, indicated by the minimum percent identity to the seed. The original alignment with no sequences removed is labeled Unrestricted. INTREPID performs significantly better with increasing evolutionary divergence. For instance, INTREPID achieves 42% sensitivity at 90% specificity and 25% identity trimming but reaches 85% sensitivity when no sequences are removed.
+
+<p>
+<h2> INTREPID is more accurate on the task of catalytic residue prediction</h2>
+<div class="image">
+<center>
+<img src="intrepid-comparison-csa.jpg" height=400 alt="INTREPID comparison on CSA">
+</center>
+</div>
+ROC curves comparing INTREPID, Global-JS, BCMET and ConSurf on the task of catalytic residue prediction. Global-JS refers to a scoring function that analyzes conservation patterns across the entire family using the Jensen-Shannon divergence (it has been <a href="http://bioinformatics.oxfordjournals.org/cgi/content/abstract/btm270v2">shown</a> to be very accurate for functional residue identification). <a href="http://mammoth.bcm.tmc.edu/server.html">BCMET</a> refers to the Evolutionary Trace server at the Baylor College of Medicine. <a href="http://consurf.tau.ac.il/"> ConSurf</a> refers to the webserver that provides the calculations from the Rate4Site algorithm. The ROC curve shows INTREPID to have the highest sensitivity over the range of high specificity (greater than 80%) followed by Global-JS. BCMET performs better as the specificity decreases.
+
+<p>
+<h2> INTREPID predictions for Staphylococcus aureus (PDB Id:2dhn)</h2>
+<div class="image">
+<center>
+<img src="1dhn-analysis1.png" height=300 alt="INTREPID comparison on CSA">
+</center>
+</div>
+INTREPID predictions for dihydroneopterin aldolase from Staphylococcus aureus (PDB Id:2dhn, BPG accession:bpg020587). INTREPID correctly predicts the catalytic residues E22, K100, Q27, K74, and Y54. Of these, only E22 and K100 are listed in the CSA. The non-CSA functional residues 
+refer to INTREPID predictions that are not listed in the CSA but have experimental evidence of being catalytic (Q27, K75, and Y54)
+
+</body>
+</html>
+

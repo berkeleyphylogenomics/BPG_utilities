@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/com/sparshui/server
+END
+InputDeviceConnection.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/com/sparshui/server/InputDeviceConnection.java
+END
+GestureServer.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/com/sparshui/server/GestureServer.java
+END
+GestureFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/com/sparshui/server/GestureFactory.java
+END
+ServerToClientProtocol.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/com/sparshui/server/ServerToClientProtocol.java
+END
+Group.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/com/sparshui/server/Group.java
+END
+TouchPoint.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/com/sparshui/server/TouchPoint.java
+END
+ClientConnection.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/com/sparshui/server/ClientConnection.java
+END

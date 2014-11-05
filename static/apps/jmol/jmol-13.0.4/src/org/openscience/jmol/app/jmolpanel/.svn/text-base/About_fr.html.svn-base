@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>A propos de Jmol</title>
+  </head>
+  <body bgcolor="#ffffff">
+  <center><img src="http://jmol.svn.sourceforge.net/viewvc/jmol/trunk/Jmol/src/org/openscience/jmol/app/images/Jmol_splash.jpg" alt="Jmol"></center>
+
+  <p>Jmol est un afficheur mol&eacute;culaire opensource.</p>
+  <p>Copyright &copy; 1999-2012 by the Jmol Development Team.</p>
+
+  About.html#weblinks
+
+  <p><b>Librairies externes utilis&eacute;es</b></p>
+
+  About.html#libraries
+
+</body>
+</html>

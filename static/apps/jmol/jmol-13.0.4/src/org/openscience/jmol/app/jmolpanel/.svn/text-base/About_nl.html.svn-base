@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>Over Jmol</title>
+  </head>
+  <body bgcolor="#ffffff">
+  <center><img src="http://jmol.svn.sourceforge.net/viewvc/jmol/trunk/Jmol/src/org/openscience/jmol/app/images/Jmol_splash.jpg" alt="Jmol"></center>
+
+  <p>Jmol is een opensource visualisatieprogramma voor moleculen.</p>
+  <p>Copyright &copy; 1999-2012 ligt bij de Jmol-ontwikkelaars.</p>
+
+  About.html#weblinks
+
+  <p><b>Gebruikte externe bibliotheken</b></p>
+
+  About.html#libraries
+
+  </body>
+</html>

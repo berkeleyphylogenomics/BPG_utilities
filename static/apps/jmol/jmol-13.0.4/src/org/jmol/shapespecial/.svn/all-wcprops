@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shapespecial
+END
+Dipoles.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shapespecial/Dipoles.java
+END
+DotsRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shapespecial/DotsRenderer.java
+END
+Ellipsoids.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shapespecial/Ellipsoids.java
+END
+Dots.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shapespecial/Dots.java
+END
+GeoSurfaceRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shapespecial/GeoSurfaceRenderer.java
+END
+DrawMesh.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shapespecial/DrawMesh.java
+END
+Dipole.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shapespecial/Dipole.java
+END
+VectorsRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shapespecial/VectorsRenderer.java
+END
+PolyhedraRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shapespecial/PolyhedraRenderer.java
+END
+GeoSurface.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shapespecial/GeoSurface.java
+END
+DrawRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shapespecial/DrawRenderer.java
+END
+Vectors.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shapespecial/Vectors.java
+END
+DipolesRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shapespecial/DipolesRenderer.java
+END
+Polyhedra.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shapespecial/Polyhedra.java
+END
+Draw.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shapespecial/Draw.java
+END
+EllipsoidsRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shapespecial/EllipsoidsRenderer.java
+END

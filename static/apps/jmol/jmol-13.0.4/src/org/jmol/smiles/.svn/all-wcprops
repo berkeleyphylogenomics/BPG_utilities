@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/smiles
+END
+SmilesBond.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/smiles/SmilesBond.java
+END
+SmilesMatcher.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/smiles/SmilesMatcher.java
+END
+InvalidSmilesException.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/smiles/InvalidSmilesException.java
+END
+SmilesSearch.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/smiles/SmilesSearch.java
+END
+SmilesGenerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/smiles/SmilesGenerator.java
+END
+SmilesParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/smiles/SmilesParser.java
+END
+SmilesAromatic.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/smiles/SmilesAromatic.java
+END
+SmilesAtom.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/smiles/SmilesAtom.java
+END
+SmilesMeasure.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/smiles/SmilesMeasure.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/smiles/package.html
+END

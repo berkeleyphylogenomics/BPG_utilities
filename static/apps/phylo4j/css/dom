@@ -1,0 +1,15 @@
+#                                                                            --- full sequence --- -------------- this domain -------------   hmm coord   ali coord   env coord
+# target name        accession   tlen query name           accession   qlen   E-value  score  bias   #  of  c-Evalue  i-Evalue  score  bias  from    to  from    to  from    to  acc description of target
+#------------------- ---------- ----- -------------------- ---------- ----- --------- ------ ----- --- --- --------- --------- ------ ----- ----- ----- ----- ----- ----- ----- ---- ---------------------
+WD40                 PF00400.27    39 sp|O14727|APAF_HUMAN -           1248   1.4e-82  268.8  46.7   1  10   1.3e-09   6.3e-06   25.8   0.0     8    38   612   642   608   643 0.92 WD domain, G-beta repeat
+WD40                 PF00400.27    39 sp|O14727|APAF_HUMAN -           1248   1.4e-82  268.8  46.7   2  10     2e-13   9.9e-10   37.9   0.0     2    39   648   685   647   685 0.94 WD domain, G-beta repeat
+WD40                 PF00400.27    39 sp|O14727|APAF_HUMAN -           1248   1.4e-82  268.8  46.7   3  10   1.1e-10   5.4e-07   29.2   0.5     1    39   689   729   689   729 0.97 WD domain, G-beta repeat
+WD40                 PF00400.27    39 sp|O14727|APAF_HUMAN -           1248   1.4e-82  268.8  46.7   4  10   2.5e-16   1.2e-12   47.1   0.1     2    39   734   771   733   771 0.96 WD domain, G-beta repeat
+WD40                 PF00400.27    39 sp|O14727|APAF_HUMAN -           1248   1.4e-82  268.8  46.7   5  10   5.1e-11   2.5e-07   30.3   0.4     4    39   875   910   872   910 0.93 WD domain, G-beta repeat
+WD40                 PF00400.27    39 sp|O14727|APAF_HUMAN -           1248   1.4e-82  268.8  46.7   6  10   1.4e-06     0.007   16.2   0.0    10    39  1002  1031   997  1031 0.96 WD domain, G-beta repeat
+WD40                 PF00400.27    39 sp|O14727|APAF_HUMAN -           1248   1.4e-82  268.8  46.7   7  10     6e-07    0.0029   17.4   0.0     6    39  1039  1071  1035  1071 0.95 WD domain, G-beta repeat
+WD40                 PF00400.27    39 sp|O14727|APAF_HUMAN -           1248   1.4e-82  268.8  46.7   8  10     2e-09   9.8e-06   25.2   0.6     5    39  1079  1113  1075  1113 0.92 WD domain, G-beta repeat
+WD40                 PF00400.27    39 sp|O14727|APAF_HUMAN -           1248   1.4e-82  268.8  46.7   9  10   3.4e-11   1.7e-07   30.8   0.0     3    39  1119  1155  1117  1155 0.97 WD domain, G-beta repeat
+WD40                 PF00400.27    39 sp|O14727|APAF_HUMAN -           1248   1.4e-82  268.8  46.7  10  10   4.6e-07    0.0023   17.7   0.1     9    30  1175  1196  1174  1203 0.90 WD domain, G-beta repeat
+NB-ARC               PF00931.17   287 sp|O14727|APAF_HUMAN -           1248   5.8e-75  251.7   0.8   1   1   1.9e-78   9.6e-75  251.0   0.5     1   283   129   410   129   414 0.95 NB-ARC domain
+CARD                 PF00619.16    85 sp|O14727|APAF_HUMAN -           1248   1.1e-18   66.8   0.2   1   1   6.3e-22   3.1e-18   65.3   0.1     1    84     6    89     6    90 0.97 Caspase recruitment domain

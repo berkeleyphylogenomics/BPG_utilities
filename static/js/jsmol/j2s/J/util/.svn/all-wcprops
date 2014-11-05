@@ -1,0 +1,239 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util
+END
+TempArray.js
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/TempArray.js
+END
+MeshSurface.js
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/MeshSurface.js
+END
+JmolNode.js
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/JmolNode.js
+END
+ContactPair.js
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/ContactPair.js
+END
+Tensor.js
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/Tensor.js
+END
+Normix.js
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/Normix.js
+END
+Elements.js
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/Elements.js
+END
+ColorEncoder.js
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/ColorEncoder.js
+END
+Txt.js
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/Txt.js
+END
+Rgb16.js
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/Rgb16.js
+END
+Geodesic.js
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/Geodesic.js
+END
+DefaultLogger.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/DefaultLogger.js
+END
+JmolEdge.js
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/JmolEdge.js
+END
+Hermite.js
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/Hermite.js
+END
+TriangleData.js
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/TriangleData.js
+END
+LoggerInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/LoggerInterface.js
+END
+CommandHistory.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/CommandHistory.js
+END
+Measure.js
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/Measure.js
+END
+BSUtil.js
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/BSUtil.js
+END
+Rectangle.js
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/Rectangle.js
+END
+BoxInfo.js
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/BoxInfo.js
+END
+Shader.js
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/Shader.js
+END
+Modulation.js
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/Modulation.js
+END
+Logger.js
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/Logger.js
+END
+GData.js
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/GData.js
+END
+PatternMatcher.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/PatternMatcher.js
+END
+C.js
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/C.js
+END
+GenericApplet.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/GenericApplet.js
+END
+Quaternion.js
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/Quaternion.js
+END
+ModulationSet.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/ModulationSet.js
+END
+JmolMolecule.js
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/JmolMolecule.js
+END
+Eigen.js
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/Eigen.js
+END
+SimpleUnitCell.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/SimpleUnitCell.js
+END
+Point3fi.js
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/Point3fi.js
+END
+Int2IntHash.js
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/Int2IntHash.js
+END
+Parser.js
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/Parser.js
+END
+Vibration.js
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/Vibration.js
+END
+EigenSort.js
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/EigenSort.js
+END
+Escape.js
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/util/Escape.js
+END

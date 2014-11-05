@@ -1,0 +1,259 @@
+function setParametersForPrecision() {
+    // This function auto sets the parameters for high precision
+    $j('.params-preset-explanation').html('Best option when the query contains a promiscuous domain or has close paralogs.');
+    $j('#stage1-evalue').val('1e-4');
+    $j('#stage1-mda-family-query-coverage').val('70');
+    $j('#stage1-mda-family-hmm-coverage').val('70');
+    $j('#stage1-pfam-family-hmm-coverage').val('70');
+    $j('#stage2-evalue').val('1e-6');
+    $j('#stage2-mda-family-query-coverage').val('70');
+    $j('#stage2-mda-family-hmm-coverage').val('70');
+    $j('#stage2-pfam-family-hmm-coverage').val('70');
+    $j('#stage2-query-hmm-pid').val('60');
+    $j('#stage2-enclosing-clade-kerf-threshold').val('60');
+    $j('.enclosing-clade-group select option').remove();
+    $j('.enclosing-clade-group input[type=checkbox]').attr('checked', 'checked');
+    $j('.enclosing-clade-group input[type=checkbox]')[3].checked = false;
+    $j('.enclosing-clade-group select').append('<option value="1">1</option><option value="2">2</option><option value="3">3</option>');
+    $j('.enclosing-clade-group select>option:eq(0)').attr('selected', true);
+    $j('#stage2-maxseqs').val('200');
+    $j('#stage3-query-coverage').val('70');
+    $j('#stage3-ortholog-coverage').val('70');
+    $j('#stage3-query-ortholog-pid').val('73');
+    $j('#stage3-ortholog-cluster-similarity').val('97');
+    $j('#stage3-koa-parameter').val('100');
+    $j('#stage4-lambda').val('0.8');
+    $j('#stage4-threshold-for-high-confidence').val('70');
+    $j('#stage4-threshold-for-medium-confidence').val('40');
+    return {}
+}
+
+function setParametersForRecall() {
+    // This function auto sets the parameters for recall
+    $j('.params-preset-explanation').html('<em>High recall:</em>  Candidate orthologs can have lower sequence and alignment overlap to the query.  This parameterization is designed to retrieve more distant orthologs (from distantly related species) but may result in the inclusion of paralogs.');
+    $j('#stage1-evalue').val('1e-3');
+    $j('#stage1-mda-family-query-coverage').val('60');
+    $j('#stage1-mda-family-hmm-coverage').val('60');
+    $j('#stage1-pfam-family-hmm-coverage').val('60');
+    $j('#stage2-evalue').val('1e-5');
+    $j('#stage2-mda-family-query-coverage').val('60');
+    $j('#stage2-mda-family-hmm-coverage').val('60');
+    $j('#stage2-pfam-family-hmm-coverage').val('60');
+    $j('#stage2-query-hmm-pid').val('50');
+    $j('#stage2-enclosing-clade-kerf-threshold').val('50');
+    $j('#stage2-maxseqs').val('200');
+    $j('.enclosing-clade-group select option').remove();
+    $j('.enclosing-clade-group input[type=checkbox]').attr('checked', 'checked');
+    $j('.enclosing-clade-group input[type=checkbox]')[3].checked = false;
+    $j('.enclosing-clade-group select').append('<option value="1">1</option><option value="2">2</option><option value="3">3</option>');
+    $j('.enclosing-clade-group select>option:eq(0)').attr('selected', true);
+    $j('#stage3-query-coverage').val('70');
+    $j('#stage3-ortholog-coverage').val('70');
+    $j('#stage3-query-ortholog-pid').val('50');
+    $j('#stage3-ortholog-cluster-similarity').val('97');
+    $j('#stage3-koa-parameter').val('100');
+    $j('#stage4-lambda').val('.8');
+    $j('#stage4-threshold-for-high-confidence').val('70');
+    $j('#stage4-threshold-for-medium-confidence').val('40');
+    return {}
+}
+
+function setParametersForRemoteHomologs() {
+    // This function auto sets the parameters for remote homologs
+    $j('.params-preset-explanation').html('<em>Remote homologs</em> Use these parameters when you want to find matches that may have only local similarity to the query.  This may result in the inclusion of paralogs and sequences that have different domain architectures.');
+    $j('#stage1-evalue').val('1e-1');
+    $j('#stage1-mda-family-query-coverage').val('50');
+    $j('#stage1-mda-family-hmm-coverage').val('50');
+    $j('#stage1-pfam-family-hmm-coverage').val('50');
+    $j('#stage2-evalue').val('1e-3');
+    $j('#stage2-mda-family-query-coverage').val('50');
+    $j('#stage2-mda-family-hmm-coverage').val('50');
+    $j('#stage2-pfam-family-hmm-coverage').val('50');
+    $j('#stage2-query-hmm-pid').val('20');
+    $j('#stage2-enclosing-clade-kerf-threshold').val('20');
+    $j('#stage2-maxseqs').val('200');
+    $j('.enclosing-clade-group select option').remove();
+    $j('.enclosing-clade-group input[type=checkbox]').attr('checked', 'checked');
+    $j('.enclosing-clade-group input[type=checkbox]')[3].checked = false;
+    $j('.enclosing-clade-group select').append('<option value="1">1</option><option value="2">2</option><option value="3">3</option>');
+    $j('.enclosing-clade-group select>option:eq(0)').attr('selected', true);
+    $j('#stage3-query-coverage').val('30');
+    $j('#stage3-ortholog-coverage').val('30');
+    $j('#stage3-query-ortholog-pid').val('17');
+    $j('#stage3-ortholog-cluster-similarity').val('97');
+    $j('#stage3-koa-parameter').val('100');
+    $j('#stage4-lambda').val('.8');
+    $j('#stage4-threshold-for-high-confidence').val('70');
+    $j('#stage4-threshold-for-medium-confidence').val('40');
+    return {}
+}
+
+function setParametersForFragments() {
+    // Auto sets the parameters for fragments
+    $j('.params-preset-explanation').html('<em>Partial sequence:</em> Parameters are set to require high coverage of the query.  The required coverage of the HMM is reduced so as not to exclude high scoring fragment sequences'); 
+    $j('#stage1-evalue').val('1e-2');
+    $j('#stage1-mda-family-query-coverage').val('0');
+    $j('#stage1-mda-family-hmm-coverage').val('0');
+    $j('#stage1-pfam-family-hmm-coverage').val('0');
+    $j('#stage2-evalue').val('1');
+    $j('#stage2-mda-family-hmm-coverage').val('0');
+    $j('#stage2-pfam-family-hmm-coverage').val('0');
+    $j('#stage2-mda-family-query-coverage').val('0');
+    $j('#stage2-query-hmm-pid').val('30');
+    $j('#stage2-enclosing-clade-kerf-threshold').val('40');
+    $j('#stage2-maxseqs').val('200');
+    $j('.enclosing-clade-group select option').remove();
+    $j('.enclosing-clade-group input[type=checkbox]').attr('checked', 'checked');
+    $j('.enclosing-clade-group input[type=checkbox]')[3].checked = false;
+    $j('.enclosing-clade-group select').append('<option value="1">1</option><option value="2">2</option><option value="3">3</option>');
+    $j('.enclosing-clade-group select>option:eq(0)').attr('selected', true);
+    $j('#stage3-query-coverage').val('70');
+    $j('#stage3-ortholog-coverage').val('0');
+    $j('#stage3-query-ortholog-pid').val('50');
+    $j('#stage3-ortholog-cluster-similarity').val('97');
+    $j('#stage3-koa-parameter').val('100');
+    $j('#stage4-lambda').val('0.8');
+    $j('#stage4-threshold-for-high-confidence').val('70');
+    $j('#stage4-threshold-for-medium-confidence').val('40');
+    return {}
+}
+
+$j(document).ready(function() {
+    setParametersForRecall();
+    // Click handler for view hide parameters
+    $j('.jqvhs').click(function() {
+        $j($j(this).data().uncover).toggle();
+        if ($j(this).html() == 'Hide parameters') {$j(this).html('Modify parameters manually');}
+        else {$j(this).html('Hide parameters');}
+    });
+
+    // add click handler for example button
+    $j(' #example-input ').click(function() {
+        $j(' #header-input ').val('tr|Q804C7|Q804C7_XENLA Dystroglycan OS=Xenopus laevis PE=2 SV=1');
+        $j(' #fasta-input ').val('MDIRCAGLSLPMLRTIMVLLMASCAWSAWPSDPTEVAQDWDNQLEASMHSLFPEIKETVA\nPMTGIPDSSALVGRPFKIHIPTEFLASSGETIKISEVGKETLPSWLHWEGNFLQGLPLDG\nDKGVYDISVASLHLAPNGSYVPHTTDVFSVEVHPEDHNEPQSVRVAGQETAEAIPFLCGT\nDEPVTLLTVILDADLTKMTPKQRVDLLNRMRDFSEVELFHMKLVPVVNNRLFDMSAFMAGnPGNAKKVVENGALLSWKLGCGMDQNTVPNISSVEVPAKEGTMSAQLGYPVVGWHIANKKP\nQMPKRIRRQIYATPTPVTAIGPPTTAIHEPPERIVPTPTSPAIAPPTDTTAPPVREPIPL\nPGKPTVTIRTRGAIIHTPTLGPIHPTRIIETTSIVRPTMTRPIYVEPTAAVTPPSTTTKR\nPRVTTMKPATPPTTDSSTTTTKKPTRKPRTRPPKPLATTKAPATKFETTSSSRTRTSTSG\nVPNTDPELKNHIDKVVAWVGTYFEVKIPPDTFYDREDGTTDNLQLTLVPRIKASAGEKMW\nVMLNSTSQVMYGMPDYIHIGDHEYYLKAADKAGRTAVDALEIQVRNLFQKQPSPVKFHAK\nFHGDHNAVINDINKKILLVKKLAFAFGDRNSSSITLHNITKGSVVVDWTNNTFPTEPCPV\nEQVESVGKKIYDERGSPRQHFVNSVEPEYKLLNISLSFTGSCKHKNFRYIPMRPEEPIPT\nAVAPTVAADRNPEKSSEDDVYLHTVIPAVVVAAILLIAGIIAMIFYRKKRKGKLTIEDQA\nTFIKKGVPIIFADELDDSKPPPSSRMPLILKEEKAPLPPPEYPNQNVPETIPLNQDSLGE\nYTPLRDEDPNAPPYQPPPPFTTPMEGKGSRPKNMTPYRSPPPYVPP');
+        $j(' #job-comments-input ').val('Example query for Q804C7_XENLA');   
+        $j(' #email-subject-input ').val('FAT-CAT results for Q804C7_XENLA');
+        $j(' #default-parameters ').click();
+    }); 
+    // click handler for job submission
+    $j(' #fatcat-submit ').click(function () {
+        // turn on loading text
+        $j(' .submitting-indicator ').show();
+        // turn off all previous alerts
+        $j(' .fatcat-input-form tr td:nth-child(3) span ').html('');
+        $j(' .fatcat-input-form td ').removeClass('fatcat-error-color');
+        $j(' .fatcat-input-form input ').removeClass('form-error').removeClass('fatcat-error-color');
+        $j(' .fatcat-input-form textarea ').removeClass('form-error').removeClass('fatcat-error-color');
+        $j(' .main-content .alert ').removeClass('alert-success').removeClass('alert-error').hide();
+        // get the state of the enclosing clade checkboxes
+        var ec = '';
+        $j('.enclosing-clade-group input[type=checkbox]:checked').each( 
+            function(index) {
+                ec+=$j(this).val() + ' ';
+            }
+        );
+        // post the data to the api to create the fatcat job        
+        $j.post('/api/fatcat2/', {
+            'fasta': $j(' #fasta-input ').val(),
+            'email': $j(' #email-input ').val(),
+            'email-subject': $j(' #email-subject-input ').val(),
+            'job-comments': $j(' #job-comments-input ').val(),
+            'header': $j(' #header-input ').val(),
+            'stage-one-eval': $j(' #stage1-evalue ').val(),
+            'stage-one-mda-qcov': $j(' #stage1-mda-family-query-coverage ').val(),
+            'stage-one-mda-hcov': $j(' #stage1-mda-family-hmm-coverage ').val(),
+            'stage-one-pfam-hcov': $j(' #stage1-pfam-family-hmm-coverage ').val(),
+            'stage-two-eval': $j(' #stage2-evalue ').val(),
+            'stage-two-mda-qcov': $j(' #stage2-mda-family-query-coverage ').val(),
+            'stage-two-mda-hcov': $j(' #stage2-mda-family-hmm-coverage ').val(),
+            'stage-two-pfam-hcov': $j(' #stage2-pfam-family-hmm-coverage ').val(),
+            'query-hmm-pid': $j(' #stage2-query-hmm-pid ').val(),
+            'ec-checkboxes': ec,
+            'ec-orthology-number': $j('.enclosing-clade-group select').val(),
+            'ec-kerf-threshold': $j('#stage2-enclosing-clade-kerf-threshold').val(),
+            'stage-two-maxseqs': $j('#stage2-maxseqs').val(),
+            'cluster-similarity': $j('#stage3-ortholog-cluster-similarity').val(),
+            'ortholog-coverage': $j(' #stage3-ortholog-coverage ').val(),
+            'query-coverage': $j(' #stage3-query-coverage ').val(),
+            'minimum-pid-for-orthology': $j(' #stage3-query-ortholog-pid ').val(),
+            'stage3-koa': $j(' #stage3-koa-parameter ').val(),
+            'consensus-uniprot-description-lambda': $j(' #stage4-lambda').val(),
+            'consensus-uniprot-description-amplitude': '1',
+            'consensus-uniprot-threshold-high': $j(' #stage4-threshold-for-high-confidence ').val(),
+            'consensus-uniprot-threshold-medium': $j(' #stage4-threshold-for-medium-confidence ').val()
+        }, function(data) {
+            // api create callback function
+            if (data.id) {
+                window.location = '/fatcat/' + data.id + '/';
+            }
+            else {
+                if (data.status == 'error') {
+                    if (data.type == 'parameter') {
+                        // show the error
+                        $j(' #job-create-message span').html('<strong>Error</strong> - ' + data.message);
+                        $j(' #job-create-message ').addClass('alert-error').removeClass('alert-success').show();
+                        $j(' .parameters ').show();
+                    }
+                    if (data.type == 'email') {
+                        $j(' #email-input-message ').parent().parent().children().addClass('fatcat-error-color');
+                        $j(' #email-input ').addClass('form-error').addClass('fatcat-error-color');
+                        $j(' #email-input-message ').html(data.message);
+                    }
+                    if (data.type == 'fasta') {
+                        $j(' #fasta-input ').parent().parent().children().addClass('fatcat-error-color');
+                        $j(' #fasta-input ').addClass('form-error').addClass('fatcat-error-color');
+                        $j(' #fasta-input-message ').html(data.message);
+                    }                    
+                    if (data.type == 'job-comments') {
+                        $j(' #job-comments-input ').parent().parent().children().addClass('fatcat-error-color');
+                        $j(' #job-comments-input ').addClass('form-error').addClass('fatcat-error-color');
+                        $j(' #job-comments-input-message ').html(data.message);
+                    }
+                    if (data.type == 'email-subject') {
+                        $j(' #email-subject-input ').parent().parent().children().addClass('fatcat-error-color');
+                        $j(' #email-subject-input ').addClass('form-error').addClass('fatcat-error-color');
+                        $j(' #email-subject-input-message ').html(data.message);
+                    }
+                    if (data.type == 'header') {
+                        $j(' #header-input ').parent().parent().children().addClass('fatcat-error-color');
+                        $j(' #header-input ').addClass('form-error').addClass('fatcat-error-color');
+                        $j(' #header-input-message ').html(data.message);
+                        
+                    }
+                    if (data.type == 'throttle') {
+                        $j(' #job-create-message span').html('<strong>Error</strong> - ' + data.message);
+                        $j(' #job-create-message ').addClass('alert-error').removeClass('alert-success').show();
+                    }
+                }
+                else {
+                    // unspecified error
+                    $j(' #job-create-message span').html('<strong>Error</strong> - ' + data.message);
+                    $j(' #job-create-message ').addClass('alert-error').removeClass('alert-success').show();
+                }
+            }
+        });
+        $j(' .submitting-indicator ').hide();
+    });
+    // click handler for automatic parameter generation
+    $j(' .params-auto button ').click(function() {
+        $j(this).siblings().removeClass('btn-info').removeClass('active');
+        $j(this).addClass('btn-info').addClass('active');
+        if ($j(this).val() == 'precision') {setParametersForPrecision();}
+        else if ($j(this).val() == 'recall') {setParametersForRecall();}
+        else if ($j(this).val() == 'fragments') {setParametersForFragments();}
+        else if ($j(this).val() == 'remote') {setParametersForRemoteHomologs();}
+        else {setParametersForRecall();}
+    });
+    // click handler for checkboxes
+    $j('.checkboxes input[type=checkbox]').click(function(e) {
+        var checked = $j('.enclosing-clade-group input[type=checkbox]:checked').length;
+        if (checked == 0) {e.preventDefault(); return {};}
+        var curVal = ($j('.enclosing-clade-group select').val() > checked) ? checked : parseInt($j('.enclosing-clade-group select').val());
+        $j('.enclosing-clade-group select option').remove();
+        for(var i=0;i<checked;i++) {
+            $j('.enclosing-clade-group select').append('<option value="' + (i + 1) + '">' + (i + 1) + '</option>');
+            if (i == curVal - 1) {$j('.enclosing-clade-group select>option:eq(' + i + ')').attr('selected', true);
+            }
+        }
+    });
+});

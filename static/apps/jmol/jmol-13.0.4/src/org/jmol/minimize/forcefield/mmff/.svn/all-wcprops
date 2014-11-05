@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/minimize/forcefield/mmff
+END
+mmffoop.par.txt
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/minimize/forcefield/mmff/mmffoop.par.txt
+END
+mmffpbci.par.txt
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/minimize/forcefield/mmff/mmffpbci.par.txt
+END
+mmffbndk.par.txt
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/minimize/forcefield/mmff/mmffbndk.par.txt
+END
+mmffdfsb.par.txt
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/minimize/forcefield/mmff/mmffdfsb.par.txt
+END
+mmffvdw.par.txt
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/minimize/forcefield/mmff/mmffvdw.par.txt
+END
+mmffchg.par.txt
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/minimize/forcefield/mmff/mmffchg.par.txt
+END
+MMFF94-smarts.txt
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/minimize/forcefield/mmff/MMFF94-smarts.txt
+END
+mmffbond.par.txt
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/minimize/forcefield/mmff/mmffbond.par.txt
+END
+mmfftor.par.txt
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/minimize/forcefield/mmff/mmfftor.par.txt
+END
+mmffang.par.txt
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/minimize/forcefield/mmff/mmffang.par.txt
+END
+mmffstbn.par.txt
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/minimize/forcefield/mmff/mmffstbn.par.txt
+END

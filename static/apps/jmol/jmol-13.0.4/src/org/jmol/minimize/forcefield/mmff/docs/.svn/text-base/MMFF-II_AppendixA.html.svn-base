@@ -1,0 +1,300 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>MMFF-II-SUPPLEMENTARY_MATERIAL</title></head><body><b><h3>Appendix A. Nonbonded
+Parameters for OPTIMOL/MMFF94 Context Molecules </h3></b><p>
+Supplementary Material for: "The Merck Molecular Force Field. II. MMFF94 van
+der Waals and Electrostatic Parameters for Intermolecular Interactions," T. A.
+Halgren, <i>J. Comput. Chem.</i>, <b>17</b>, 520-552 (1996).</p><p>
+</p><p>
+     As noted elsewhere <a href="#fn1">[1]</a>, OPTIMOL allows a ligand to
+be modeled in a rigid enzyme "active site" in which the enzyme, or "context
+molecule" (CM), interacts with the ligand "subject molecule" (SM) only through
+nonbonded interactions.  At present, a CM may contain one or several separate
+strands of peptide residues plus water(s) and any of several "protein-metal"
+cations.  N- and C-termini in this representation are not "capped".  All
+hydrogens must be supplied for heteroatoms but omitted from carbons.  The
+listings below specify the MMFF atom types and partial atomic charges used for
+context-molecule atoms in computing nonbonded interactions.  To the extent
+possible, these partial charges equal, or at least closely approximate, the
+values that would be generated from eq 7 by using the MMFF94 bond charge
+increments.  Since a CM contains no hydrogens on carbon atoms, however, the
+partial charges for aromatic carbon atoms have been modified by adding the
+charge that would be assigned to hydrogen (e.g., +0.15) to that of the parent
+aromatic carbon.  The van der Waals parameters are those for the associated
+MMFF94 atom type.  </p><p>
+</p><p>
+     Listed in Table A1 are the residue types recognized by OPTIMOL/MMFF; both
+the chemical description and the three- or four-letter residue names used by
+OPTIMOL are shown.  For the peptide residues, the parameters for C, O, N, HN
+and CA are the same as those used for ALA except, as explicitly noted, for PRO.
+MMFF also recognizes neutral (ORN) and protonated (ORNP) forms for ornithine;
+the parameters are as shown for LYS and LYSP except that the neutral CB-CG-CD
+chain in LYS and LYSP is reduced in length by one carbon.  For water, the
+residue name may be WAT, HOH, or H2O, as shown; the names of the oxygen and
+hydrogen atoms must begin with "O" and "H", respectively, but otherwise are
+arbitrary.  Finally, for the recognized protein metals, the residue names must
+be as shown below but the atom names are arbitrary.  </p><p>
+Table A1. MMFF94 Atom Types and Partial Atomic Charges for Protein Residues
+Recognized for OPTIMOL/MMFF Context Molecules.</p><p>
+</p><p>
+</p><p></p><pre>Alanine (ALA) 	
+------------------------	
+C	 3	 0.569	
+O	 7	-0.570	
+N	10	-0.730	
+HN	28	 0.370	
+CA	 1	 0.361	
+CB	 1	 0.000	<p>
+Arginine (ARG) 
+------------------------	
+CB	 1	 0.000	
+CG	 1	 0.000	
+CD	 1	 0.369	
+NE	40	-0.819	
+HE	28	 0.400	
+CZ	 3	 0.550	
+NH1	40	-0.850	
+HH11	28 	 0.400	
+HH12	28	 0.400	
+NH2	 9	-0.850	
+HH21	27	 0.400	</p><p>
+Arginine(+) (ARGP) 	
+------------------------	
+CB	 1	 0.000	
+CG	 1	 0.000	
+CD	 1	 0.328	
+NE	56	-0.844	
+HE	36 	 0.450	
+CZ	57	 1.200	
+NH1	56	-0.967	
+HH11	36	 0.450	
+HH12	36	 0.450	
+NH2	56	-0.967	
+HH21	36	 0.450	
+HH22	36	 0.450	</p><p>
+Asparigine (ASN) 	
+------------------------	
+CB	 1	 0.061	
+CG	 3	 0.569	
+OD1	 7	-0.570	
+ND2	10	-0.800	
+HD1	28	 0.370	
+HD2	28	 0.370	</p><p>
+Aspartic acid (ASP) 	
+------------------------	
+CB	 1	 0.061	
+CG	 3	 0.659	
+OD1	 7	-0.570	
+OD2	 6	-0.650	
+HO	24	 0.500 </p><p>
+Aspartate (ASPN) 	
+------------------------	
+CB	 1	-0.106	
+CG	41	 0.906	
+OD1	32	-0.900	
+OD2	32	-0.900	</p><p>
+Cysteine (CYS)
+------------------------	
+CB	 1	 0.230	
+SG	15	-0.230</p><p>
+Cysteine (CYSH) 	
+------------------------	
+CB	 1	 0.230	
+SG	15	-0.410	
+HS	71	 0.180	</p><p>
+Glutamine (GLN) 	
+------------------------	
+CB	 1	 0.000	
+CG	 1	 0.061	
+CD	 3	 0.569	
+OE1	 7	-0.570	
+NE2	10	-0.800	
+HE1	28	 0.370	
+HE2	28	 0.370	</p><p>
+Glutamic Acid (GLU) 	
+------------------------	
+CB	1	 0.000	
+CG	1	 0.061	
+CD	3	 0.659	
+OE1	7	-0.570	
+OE2	6	-0.650	
+HO	24	 0.500	</p><p>
+Glutamate (GLUN) 	
+------------------------	
+CB	 1	 0.000	
+CG	 1	-0.106	
+CD	41	 0.906	
+OE1	32	-0.900	
+OE2	32	-0.900	</p><p>
+Glycine (GLY) 	
+------------------------	
+CA	1	0.361	</p><p>
+Histidine(D) (HISD) 	
+------------------------	
+CB	 1	 0.180	
+CG	63	-0.332	
+ND1	39 	 0.034	
+HD1	23	 0.270	
+CD2	64	 0.227	
+CE1	63	 0.186	
+NE2	66	-0.565	</p><p>
+Histidine(E) (HISE) 	
+------------------------	
+CB	 1	 0.181	
+CG	64	 0.046	
+ND1	66	-0.565	
+CD2	63	-0.152  
+CE1	63	 0.186	
+NE2	39	 0.034	
+HE2	23	 0.270	</p><p>
+Histidine(+) (HISP) 	
+------------------------	
+CB	 1	 0.168	
+CG	78	 0.182	
+ND1	81	-0.700	
+HD1	36	 0.450	
+CD2	78	 0.350	
+CE1	80	 0.800	
+NE2	81	-0.700	
+HE2	36	 0.450	</p><p>
+Isoleucine (ILE) 	
+------------------------	
+CB	 1	 0.000	
+CG1	 1	 0.000	
+CG2	 1	 0.000	
+CD1	 1	 0.000	</p><p>
+Lysine (LYS) 	
+------------------------	
+CB	 1	 0.000	
+CG 	 1	 0.000	
+CD	 1	 0.000	
+CE	 1	 0.270	
+NZ	 8	-0.990	
+HZ1	23	 0.360	
+HZ2	23	 0.360	</p><p>
+Lysine(+) (LYSP) 	
+------------------------	
+CB	 1	 0.000	
+CG	 1	 0.000	
+CD	 1	 0.000	
+CE	 1	 0.503	
+NZ	34	-0.853	
+HZ1	36	 0.450	
+HZ2	36	 0.450	
+HZ3	36	 0.450	</p><p>
+Methionine (MET) 	
+------------------------	
+CB	 1	 0.000	
+CG	 1	 0.230	
+SD	15	-0.460	
+CE	 1	 0.230	</p><p>
+Phenylalanine (PHE) 	
+------------------------	
+CB	 1 	 0.143	
+CG	37	-0.143	
+CD1	37	 0.000	
+CD2	37	 0.000	
+CE1	37	 0.000	
+CE2	37	 0.000	
+CZ	37	 0.000	</p><p>
+Proline (PRO) 	
+------------------------	
+C	 3	 0.569	
+O	 7	-0.570	
+N	10	-0.660	
+CA	 1	 0.361	
+CB	 1	 0.000	
+CG	 1	 0.000		 	
+CD	 1	 0.300	</p><p>
+Serine (SER) 	
+------------------------	
+CB	 1	 0.280	
+OG	 6	-0.680	
+HO	21	 0.400	</p><p>
+Threonine (THR)
+------------------------	
+CB	 1	 0.280	
+OG1	 6	-0.680	
+HO	21	 0.400	
+CG2	 1	 0.000	</p><p>
+Tryptophan (TRP) 	
+------------------------	
+CB	 1	 0.181	
+CG	64	-0.181	
+CD1	63	-0.152	
+CD2	64	 0.000	
+NE1	39	 0.034	
+HE1	23	 0.270	
+CE2	63	-0.152	
+CE3	37	 0.000	
+CZ2	37	 0.000	
+CZ3	37	 0.000	
+CH2	37	 0.000	</p><p>
+Tyrosine (TYR) 
+------------------------	
+CB	 1	 0.143	
+CG	37	-0.143	
+CD1	37	 0.000	
+CD2	37	 0.000	
+CE1	37	 0.000	
+CE2	37	 0.000	
+CZ	37	 0.083	
+OH	 6	-0.533	
+HO	29	 0.450	</p><p>
+Valine (VAL) 	 
+------------------------	 
+CB	 1	 0.000	
+CG1	 1	 0.000	
+CG2	 1	 0.000	</p><p>
+Water (WAT, HOH or H2O)
+--------------------------------
+O*	70	-0.860	
+H*	31	 0.430	
+H*	31	 0.430	</p><p>
+Fe[2+] (FE2)	
+------------------------	
+	87	 2.000	</p><p>
+Fe[3+] (FE3)	
+------------------------	
+	88	 3.000	</p><p>
+F[-] (FM) 	
+------------------------	
+	89	-1.000	</p><p>
+Cl[-] (CLM)	
+------------------------	
+	90	-1.000	</p><p>
+Br[-] (BRM)	
+------------------------	
+	91	-1.000	</p><p>
+Li[+] (LIP)	
+------------------------	
+	92	 1.000	</p><p>
+Na[+] (NAP)	
+------------------------	
+	93	 1.000	</p><p>
+K[+] (KP)	
+------------------------	
+	94	 1.000	</p><p>
+Zn[2+] (ZN or ZIN)	
+------------------------	
+	95	 2.000	</p><p>
+Ca[2+] (CAL or CA)	
+------------------------	
+	96	 2.000 </p><p>
+Cu[1+] (CU1)		
+------------------------	
+	97	 1.000	</p><p>
+Cu[2+] (CU2 or CU)	
+------------------------	
+	98	 2.000	</p><p>
+Mg[2+] (MG2)	
+------------------------	
+	99	 2.000	</p><p></p></pre>
+<hr>
+<a name="fn1">[1]</a> M. K. Holloway, J. M. Wai, T. A. Halgren, P. M. D.
+Fitzgerald, J. P. Vacca, B. D. Dorsey, R. B. Levin, W. J. Thompson, L. J. Chen,
+S. J. deSolms, N. Gaffin, A. K. Ghosh, E. A. Giuliani, S. L. Graham, J. P.
+Guare, R. W. Hungate, T. A. Lyle, W. M. Sanders, T. J. Tucker, M. Wiggins, C.
+M. Wiscount, O. W. Woltersdorf, S. D. Young, P. L. Darke, and J. A. Zugay,
+<i>J. Med. Chem.</i>, <b>38</b>, 305-317 (1995).
+
+</body></html>

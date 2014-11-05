@@ -1,0 +1,483 @@
+/* CSS For intrepid  */
+
+/* css for tooltips */
+.ui-tooltip-bootstrap {
+    background-color:white;
+    font-family:Verdana;
+    padding:10px;
+    border:1px solid black;
+    width:300px;
+}
+.qtip-content {
+    text-align:center;
+}
+
+
+/* general css */
+.italicized {font-style:italic;}
+.small-font {font-size:10px;}
+
+/*
+******************************************************************
+* index.html
+******************************************************************
+*/
+
+.main-content {
+    font-family:Verdana;
+    font-size:12px;
+    margin-left:25px;
+    margin-right:25px;
+    margin-bottom:25px;
+}
+.intrepid-header {clear:both;}
+.intrepid-header h2 {
+    font-size:20px;
+    line-height:20px;
+    margin-top:0px;
+    margin-bottom:5px;
+}
+.intrepid-header p {
+    font-size:11px;
+}
+/* For the step 1 step 2 header text */
+.analysis-step h3 {
+    font-size:14px;
+    line-height:14px;
+    margin-top:0px;
+}
+/* To indent the analysis step content */
+.analysis-step-one {
+    margin-left:50px;
+    margin-bottom:2px !important;
+}
+/* Input form table stuff */
+.analysis-step-one table tr td:nth-child(1) {
+    vertical-align:middle;
+    text-align:left;
+}
+.analysis-step-one table tr td:nth-child(2) {
+    padding-left:15px;
+    vertical-align:middle;
+    text-align:middle;
+}
+.analysis-step-one table tr td:nth-child(3) {
+    padding-left:15px;
+    vertical-align:middle;
+}
+.analysis-step-one table tr td:nth-child(4) {
+    padding-left:15px;
+    vertical-align:middle;
+}
+.analysis-step-one table tr td:nth-child(5) {
+    padding-left:15px;
+    vertical-align:middle;
+    font-size:11px;
+    font-color:green;
+}
+/* To indent the analysis step content */
+.analysis-step-content {
+    margin-left:10px;
+}
+/* for the big or */
+.big-or {
+    padding-top:25px;
+    font-weight:bold;
+}
+/* Input form table stuff */
+.analysis-step-content table tr td:nth-child(1) {
+    vertical-align:top;
+    text-align:right;
+}
+.analysis-step-content table tr td:nth-child(2) {
+    padding-left:15px;
+}
+.analysis-step-content table tr td:nth-child(3) {
+    padding-left:15px;
+}
+.centered-row td {
+    vertical-align:middle !important;
+}
+/* For FASTA input box */
+.fasta-input {
+    font-family:monospace;
+    font-size:12px;
+    width:440px;
+}
+/* For PDB input box */
+.pdb-input {
+    font-size:12px !important;
+    padding-top:1px !important;
+    padding-bottom:2px !important;
+    padding-right:4px !important;
+    padding-left:4px !important;
+    margin-bottom:0px !important;
+    width:60px !important;
+}
+/* For email input */
+.email-input {
+    font-size:12px !important;
+    padding-top:1px !important;
+    padding-bottom:2px !important;
+    padding-right:4px !important;
+    padding-left:4px !important;
+    margin-bottom:0px !important;
+}
+.email-label {
+    margin-left:0px;
+}
+/* For the button row */
+.button-row {
+    margin-left:250px;
+    float:left;
+    clear:both;
+}
+/* For the horizontal rule before the analyze button */
+hr {
+    margin-top:5px;
+    margin-bottom:10px;
+    clear:both;
+}
+/* Error stuff */
+.intrepid-error-color {
+    color:red;
+}
+#parameter-form {
+    float:left;
+    display:none;
+    clear:both;
+    margin-bottom:10px;
+}
+#parameter-form table tr td {
+    padding-top:3px;
+    padding-bottom:3px;
+}
+#parameter-form table tr td:nth-child(1) {
+    text-align:right;
+    vertical-align:middle;
+}
+#parameter-form table tr td:nth-child(2) {
+    padding-left:15px;
+    vertical-align:middle;
+}
+#parameter-form table tr td:nth-child(2) p {
+    margin-bottom:0px;
+}
+#parameter-form input[type="number"] {
+    width:50px;
+    margin-bottom:0px;
+    text-align:right;
+    height:15px;
+    line-height:15px;
+}
+#parameter-form input[type="radio"] {
+    padding-left:5px;
+    margin-top:0px;
+}
+#save-program-outputs {
+    margin-top:0px !important;
+}
+/*
+******************************************************************
+* progress.html
+******************************************************************
+*/
+.console {
+    float:left;
+    clear:both;
+}
+.console-text {
+    font-family:monospace;
+    text:11px;
+    width:600px;
+    float:left;   
+}
+#verbose-consoles {
+    display:none;
+    float:left;
+    clear:both;
+}
+.shjs {
+    float:left;
+    clear:both;
+    margin-bottom:10px;
+}
+/*
+******************************************************************
+* results.html
+******************************************************************
+*/
+/* For the header line*/
+.header-table tr td:nth-child(1) {
+    width:100%;
+}
+.header-table h2 {
+    margin-bottom:0px !important;
+}
+.header-table tr td:nth-child(2) {
+
+}
+.header-table tr td:nth-child(2) img {
+    float:right;
+}
+    
+/* For protein summary tab */
+#full-length table {
+    width:100%;
+}
+#full-length table tr td:nth-child(1) div {
+    text-align:right;
+    font-weight:bold;
+    font-size:11px;
+}
+#full-length table tr td:nth-child(2) div {
+    padding-left:15px;
+    padding-top:5px;
+}
+#full-length table tr td:nth-child(3) {
+
+}
+
+/* For the information pane. */
+.intrepid-information-pane {
+    float:left;
+    background:white !important;
+    margin-top:15px;
+    width:100% !important;
+}
+.intrepid-information-pane ul {
+    width:100% !important;
+    padding:0px !important;
+}
+.intrepid-information-pane li {
+    clear:none !important;
+    width:auto !important;
+}
+.intrepid-information-pane-content {
+    border:1px solid #DEE7EC !important;
+    margin-left:0em !important;
+    width:100% !important;
+    padding-left:5px !important;
+    padding-right:0px !important;
+    float:left;
+}
+/* For the score table and pane. */
+.intrepid-score-pane tr td:nth-child(1) {
+    width:330px;
+}
+.intrepid-score-pane tr td:nth-child(2) {
+    width:100%;
+    vertical-align:top;
+}
+.intrepid-score-pane {
+    width:100%;
+    font-size:11px;
+}
+.intrepid-score-table {
+    width:100%;
+}
+.intrepid-score-table tr td {
+    padding-bottom:2px;
+    padding-top:2px;
+    text-align:center;
+}
+.intrepid-score-table tr th {
+    padding-bottom:2px;
+    padding-top:2px;
+    text-align:center;
+}
+.intrepid-score-table tr td {
+    font-weight:normal;
+}
+.intrepid-score-pane .row {
+    margin-left:10px !important;
+}
+/* For the score graph */
+.intrepid-score-chart {
+    /*width:auto;
+    height:400px;*/
+    float:left;
+}
+/* for the uls on th download page. */
+.download-list a {
+    color:blue !important;
+    text-decoration:underline;
+}
+/* For the structures table */
+.command-line-structure-table {
+    clear:left;
+    float:left;
+    margin:5px;
+}
+.command-line-structure-table td {
+    padding-top:5px;
+    padding-bottom:5px;
+}
+.command-line-structure-table tr td:nth-child(1) {
+    padding-right:5px;
+    font-size:11px;
+    width:75px;    
+}
+.command-line-structure-table tr td:nth-child(2) {
+    width:420px;
+}
+.command-line-structure-table tr td:nth-child(2) input {
+    width:400px;
+    font-size:11px;
+    line-height:15pt;
+    height:15px;
+    margin-bottom:0px;
+}
+.command-line-structure-table tr td:nth-child(3) button {
+    padding-top:0px;
+    padding-bottom:0px;  
+}
+.highlight-residues-table {
+    clear:left;
+    float:left;
+    margin:5px;
+}
+.highlight-residues-table td {
+    padding-top:5px;
+    padding-bottom:5px;
+}
+.highlight-residues-table tr td:nth-child(1) {
+    padding-right:5px;
+    font-size:11px;
+    width:121px !important;    
+}
+.highlight-residues-table tr td:nth-child(2) {
+    width:125px !important;
+}
+.highlight-residues-table tr td:nth-child(2) select {
+    width:120px;
+    font-size:11px;
+    height:25px;
+    line-height:14pt;
+    margin-bottom:0px;
+}
+.highlight-residues-table tr td:nth-child(3) {    
+    font-size:11px;
+    padding-left:5px;
+    padding-right:5px;
+    width:295px !important;
+}
+.hrt-row2 {
+    clear:both;
+    float:left;
+    font-size:11px;
+    margin-top:0px;
+    margin-left:5px;
+    margin-right:5px;
+    margin-bottom:5px;
+}
+.hrt-row2 tr td:nth-child(1) {
+    width:30px !important;
+    padding-left:30px;
+}
+.hrt-row2 tr td:nth-child(2) {
+    width:60px !important
+}
+.hrt-row2 tr td:nth-child(2) input {
+    width:40px;
+    font-size:11px;
+    height:15px;
+    line-height:15pt;
+    margin-bottom:0px;
+    text-align:right;
+}
+.hrt-row2 tr td:nth-child(3) {
+    width:150px !important;
+}
+.hrt-row2 tr td:nth-child(4) {
+    width:53px !important;
+}
+.hrt-row2 tr td:nth-child(4) input {
+    width:35px;
+    font-size:11px;
+    height:15px;
+    line-height:15pt;
+    margin-bottom:0px;
+    text-align:right;
+}
+.hrt-row2 tr td:nth-child(5) {
+    width:120px !important;
+}
+.hrt-row2 tr td:nth-child(6) button {
+    padding-top:0px;
+    padding-bottom:0px; 
+}
+.hrt-row3 {
+    clear:both;
+    float:left;
+    font-size:11px;
+    margin-top:0px;
+    margin-left:5px;
+    margin-right:5px;
+    margin-bottom:5px;
+}
+.hrt-row3 tr td:nth-child(1) {
+    padding-left:30px;
+}
+.hrt-row3 input {
+    width:50px;
+    margin-bottom:0px !important;
+    margin-left:5px;
+    margin-right:10px;
+}
+
+#discern-structure-container {
+    border:1px solid #afd3d1;
+    padding:10px;
+    float:left;
+}
+#discern-structure-selector {
+    width:100%;
+    visibility:hidden;
+    float:left;
+    height:1px;
+    margin-bottom:0px;
+    padding:0px;
+}
+.display-model-table {
+    float:left;
+    clear:both;
+    font-size:11px;
+    margin:5px;
+}
+.display-model-table input {
+    margin-top:0px !important;
+}
+.display-model-table tr td:nth-child(1) {
+}
+.display-model-table tr td:nth-child(2) {
+    padding-left:10px;
+}
+.structure-control-panel {
+    float:left;
+    clear:both;
+    border:1px solid #afd3d1;
+    margin-top:10px;
+    margin-bottom:5px;
+}
+.structure-control-panel hr {
+    margin-top:0px;
+    margin-bottom:0px;
+}
+.structure-control-buttonset button {
+    padding-top:0px;
+    padding-bottom:0px;
+}
+.structure-control-buttonset {
+    margin:5px;
+    float:left;
+    clear:both;
+}
+.console-output {
+    font-family:monospace;
+    text:11px;
+    width:600px;
+    float:left;
+    margin:5px;
+}   
+

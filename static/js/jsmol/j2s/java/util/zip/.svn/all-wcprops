@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/util/zip
+END
+Inflater.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/util/zip/Inflater.js
+END
+GZIPInputStream.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/util/zip/GZIPInputStream.js
+END
+ZipConstants64.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/util/zip/ZipConstants64.js
+END
+CRC32.js
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/util/zip/CRC32.js
+END
+ZipException.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/util/zip/ZipException.js
+END
+ZStreamRef.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/util/zip/ZStreamRef.js
+END
+CheckedInputStream.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/util/zip/CheckedInputStream.js
+END
+DeflaterOutputStream.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/util/zip/DeflaterOutputStream.js
+END
+ZipEntry.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/util/zip/ZipEntry.js
+END
+Deflater.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/util/zip/Deflater.js
+END
+ZipInputStream.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/util/zip/ZipInputStream.js
+END
+ZipOutputStream.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/util/zip/ZipOutputStream.js
+END
+ZipConstants.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/util/zip/ZipConstants.js
+END
+InflaterInputStream.js
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/util/zip/InflaterInputStream.js
+END
+Checksum.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/util/zip/Checksum.js
+END

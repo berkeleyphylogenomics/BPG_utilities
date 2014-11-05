@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/minimize
+END
+MinAtom.js
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/minimize/MinAtom.js
+END
+MinBond.js
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/minimize/MinBond.js
+END
+MinPosition.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/minimize/MinPosition.js
+END
+MinAngle.js
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/minimize/MinAngle.js
+END
+MinObject.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/minimize/MinObject.js
+END
+Util.js
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/minimize/Util.js
+END
+MinimizationThread.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/minimize/MinimizationThread.js
+END
+MinTorsion.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/minimize/MinTorsion.js
+END
+Minimizer.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/minimize/Minimizer.js
+END

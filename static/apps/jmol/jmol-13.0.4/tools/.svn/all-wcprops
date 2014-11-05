@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/tools
+END
+jmol-sonatype.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/tools/jmol-sonatype.xml
+END
+jsch.jar
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/tools/jsch.jar
+END
+maven-ant-tasks-2.1.3.jar
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/tools/maven-ant-tasks-2.1.3.jar
+END
+pom.xml.template
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/tools/pom.xml.template
+END
+FindbugsExclude.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/tools/FindbugsExclude.xml
+END
+ant-contrib.jar
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/tools/ant-contrib.jar
+END
+build-i18n.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/tools/build-i18n.xml
+END
+launchpad-tools.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/tools/launchpad-tools.xml
+END
+jmol-release.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/tools/jmol-release.xml
+END

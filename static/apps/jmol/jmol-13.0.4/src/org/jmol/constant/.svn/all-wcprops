@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/constant
+END
+EnumCallback.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/constant/EnumCallback.java
+END
+EnumHBondType.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/constant/EnumHBondType.java
+END
+EnumPalette.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/constant/EnumPalette.java
+END
+StaticConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/constant/StaticConstants.java
+END
+EnumStructure.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/constant/EnumStructure.java
+END
+EnumVdw.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/constant/EnumVdw.java
+END
+EnumQuantumShell.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/constant/EnumQuantumShell.java
+END
+EnumAnimationMode.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/constant/EnumAnimationMode.java
+END
+EnumAxesMode.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/constant/EnumAxesMode.java
+END
+EnumStereoMode.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/constant/EnumStereoMode.java
+END

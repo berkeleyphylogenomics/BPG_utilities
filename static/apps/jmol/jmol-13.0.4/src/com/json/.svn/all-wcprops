@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/com/json
+END
+XML.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/com/json/XML.java
+END
+JSONString.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/com/json/JSONString.java
+END
+JSONObject.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/com/json/JSONObject.java
+END
+JSONTokener.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/com/json/JSONTokener.java
+END
+JSONML.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/com/json/JSONML.java
+END
+CDL.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/com/json/CDL.java
+END
+CookieList.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/com/json/CookieList.java
+END
+JSONWriter.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/com/json/JSONWriter.java
+END
+HTTPTokener.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/com/json/HTTPTokener.java
+END
+JSONArray.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/com/json/JSONArray.java
+END
+Cookie.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/com/json/Cookie.java
+END
+HTTP.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/com/json/HTTP.java
+END
+JSONStringer.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/com/json/JSONStringer.java
+END
+XMLTokener.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/com/json/XMLTokener.java
+END
+JSONException.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/com/json/JSONException.java
+END

@@ -1,0 +1,167 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api
+END
+AnnotationData.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/AnnotationData.js
+END
+PlatformDialog.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/PlatformDialog.js
+END
+PanelListener.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/PanelListener.js
+END
+JSVZipInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/JSVZipInterface.js
+END
+JSVZipReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/JSVZipReader.js
+END
+JSVPopupMenu.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/JSVPopupMenu.js
+END
+JSVAbstractMenu.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/JSVAbstractMenu.js
+END
+JSVViewPanel.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/JSVViewPanel.js
+END
+VisibleInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/VisibleInterface.js
+END
+JSVPanel.js
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/JSVPanel.js
+END
+JSVTree.js
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/JSVTree.js
+END
+JSVGraphics.js
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/JSVGraphics.js
+END
+SourceReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/SourceReader.js
+END
+JSVAppInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/JSVAppInterface.js
+END
+ScriptInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/ScriptInterface.js
+END
+JSVMainPanel.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/JSVMainPanel.js
+END
+JSVTreeNode.js
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/JSVTreeNode.js
+END
+JSVPdfWriter.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/JSVPdfWriter.js
+END
+JSVAppletInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/JSVAppletInterface.js
+END
+JSVExporter.js
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/JSVExporter.js
+END
+JSVFileDropper.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/JSVFileDropper.js
+END
+JSVPrintDialog.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/JSVPrintDialog.js
+END
+JSVTreePath.js
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/JSVTreePath.js
+END
+AppletFrame.js
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/AppletFrame.js
+END
+XYScaleConverter.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/XYScaleConverter.js
+END
+JSVFileHelper.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/JSVFileHelper.js
+END
+ExportInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/api/ExportInterface.js
+END

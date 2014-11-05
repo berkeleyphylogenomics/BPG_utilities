@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/awt/event
+END
+KeyEvent.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/awt/event/KeyEvent.js
+END
+MouseEvent.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/awt/event/MouseEvent.js
+END
+MouseWheelEvent.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/awt/event/MouseWheelEvent.js
+END
+InputEvent.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/awt/event/InputEvent.js
+END

@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/xml
+END
+XmlCmlReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/xml/XmlCmlReader.java
+END
+XmlXsdReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/xml/XmlXsdReader.java
+END
+XmlOdysseyReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/xml/XmlOdysseyReader.java
+END
+XmlReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/xml/XmlReader.java
+END
+XmlArgusReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/xml/XmlArgusReader.java
+END
+XmlChem3dReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/xml/XmlChem3dReader.java
+END
+XmlQEReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/xml/XmlQEReader.java
+END
+XmlMolproReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/xml/XmlMolproReader.java
+END
+XmlVaspReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/xml/XmlVaspReader.java
+END

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/pymol
+END
+JmolObject.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/pymol/JmolObject.js
+END
+PickleReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/pymol/PickleReader.js
+END
+PyMOLGroup.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/pymol/PyMOLGroup.js
+END
+PyMOLScene.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/pymol/PyMOLScene.js
+END
+PyMOL.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/pymol/PyMOL.js
+END
+PyMOLReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/pymol/PyMOLReader.js
+END

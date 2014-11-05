@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/smarter
+END
+Atom.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/smarter/Atom.java
+END
+SmarterJmolAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/smarter/SmarterJmolAdapter.java
+END
+Structure.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/smarter/Structure.java
+END
+Resolver.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/smarter/Resolver.java
+END
+Bond.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/smarter/Bond.java
+END
+AtomSetObject.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/smarter/AtomSetObject.java
+END
+AtomSetCollection.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/smarter/AtomSetCollection.java
+END
+AtomSetCollectionReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/smarter/AtomSetCollectionReader.java
+END

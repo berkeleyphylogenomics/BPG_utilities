@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/bspt
+END
+Node.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/bspt/Node.java
+END
+Leaf.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/bspt/Leaf.java
+END
+Bspt.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/bspt/Bspt.java
+END
+CubeIterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/bspt/CubeIterator.java
+END
+Element.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/bspt/Element.java
+END
+Bspf.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/bspt/Bspf.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/bspt/package.html
+END

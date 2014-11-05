@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/openscience/jmol/app/jsonkiosk
+END
+BannerFrame.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/openscience/jmol/app/jsonkiosk/BannerFrame.java
+END
+JsonNioService.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/openscience/jmol/app/jsonkiosk/JsonNioService.java
+END
+JsonNioServer.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/openscience/jmol/app/jsonkiosk/JsonNioServer.java
+END
+KioskFrame.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/openscience/jmol/app/jsonkiosk/KioskFrame.java
+END
+JsonNioClient.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/openscience/jmol/app/jsonkiosk/JsonNioClient.java
+END

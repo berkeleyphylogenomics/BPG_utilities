@@ -1,0 +1,37 @@
+### Assigns custom colors to Jmol chains
+###
+### Thanks to  Rolf Huehne and Robert Hanson for this script
+###
+function color_by_chain(objtype, color_list) {
+
+ if (color_list) {
+   if (color_list.type == "string") {
+     color_list = color_list.split(",").trim();
+   }
+ } else {
+   color_list = ["104BA9","AA00A2","C9F600","FFA200","284A7E","7F207B","9FB82E","BF8B30","052D6E","6E0069","83A000","A66A00","447BD4","D435CD","D8FA3F","FFBA40","6A93D4","D460CF","E1FA71","FFCC73"];
+ }
+
+ var cmd2 = ""
+
+ if (!objtype) {
+   var type_list  = [ "backbone","cartoon","dots","halo","label","meshribbon","polyhedra","rocket","star","strand","strut","trace"];
+   cmd2 = "color " + type_list.join(" none; color ") + " none;";
+   objtype = "atoms"
+
+ }
+
+ var chain_list  = script("show chain").trim().lines;
+ var chain_count = chain_list.length;
+
+ var color_count = color_list.length;
+ var sel = {selected};
+ var cmds = ""
+
+
+ for (var chain_number=1; chain_number<=chain_count; chain_number++) {
+   // remember, Jmol arrays start with 1, but % can return 0
+   cmds += "select sel and :" + chain_list[chain_number] + ";color " + objtype + " [x" + color_list[(chain_number-1) % color_count + 1] + "];" + cmd2;
+ }
+ script INLINE @{cmds + "select sel"}
+ }

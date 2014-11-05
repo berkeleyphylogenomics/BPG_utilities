@@ -1,0 +1,245 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers
+END
+UhbdReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/UhbdReader.js
+END
+PolygonFileReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/PolygonFileReader.js
+END
+AtomPropertyMapper.js
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/AtomPropertyMapper.js
+END
+IsoMepReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/IsoMepReader.js
+END
+VolumeDataReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/VolumeDataReader.js
+END
+IsoMlpReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/IsoMlpReader.js
+END
+JvxlXmlReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/JvxlXmlReader.js
+END
+XplorReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/XplorReader.js
+END
+VolumeFileReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/VolumeFileReader.js
+END
+NffReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/NffReader.js
+END
+JaguarReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/JaguarReader.js
+END
+EfvetReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/EfvetReader.js
+END
+IsoShapeReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/IsoShapeReader.js
+END
+IsoFxyzReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/IsoFxyzReader.js
+END
+PmeshReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/PmeshReader.js
+END
+SurfaceGenerator.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/SurfaceGenerator.js
+END
+MsmsReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/MsmsReader.js
+END
+CastepDensityReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/CastepDensityReader.js
+END
+Dns6BinaryReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/Dns6BinaryReader.js
+END
+KinemageReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/KinemageReader.js
+END
+IsoFxyReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/IsoFxyReader.js
+END
+JvxlReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/JvxlReader.js
+END
+ApbsReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/ApbsReader.js
+END
+MrcBinaryReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/MrcBinaryReader.js
+END
+IsoMOReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/IsoMOReader.js
+END
+SurfaceFileReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/SurfaceFileReader.js
+END
+SurfaceReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/SurfaceReader.js
+END
+AtomDataReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/AtomDataReader.js
+END
+XmlReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/XmlReader.js
+END
+XsfReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/XsfReader.js
+END
+PltFormattedReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/PltFormattedReader.js
+END
+IsoSolventReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/IsoSolventReader.js
+END
+ObjReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/ObjReader.js
+END
+DelPhiBinaryReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/DelPhiBinaryReader.js
+END
+IsoPlaneReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/IsoPlaneReader.js
+END
+IsoIntersectReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/IsoIntersectReader.js
+END
+PyMOLMeshReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/PyMOLMeshReader.js
+END
+MapFileReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/MapFileReader.js
+END
+CubeReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/CubeReader.js
+END
+Parameters.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/jvxl/readers/Parameters.js
+END

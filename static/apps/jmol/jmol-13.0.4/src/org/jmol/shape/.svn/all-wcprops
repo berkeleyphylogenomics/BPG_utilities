@@ -1,0 +1,233 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape
+END
+FontLineShape.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/FontLineShape.java
+END
+Axes.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/Axes.java
+END
+Sticks.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/Sticks.java
+END
+Frank.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/Frank.java
+END
+Labels.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/Labels.java
+END
+Bbcage.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/Bbcage.java
+END
+TextShape.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/TextShape.java
+END
+MeasuresRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/MeasuresRenderer.java
+END
+Object2dShape.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/Object2dShape.java
+END
+Echo.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/Echo.java
+END
+UccageRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/UccageRenderer.java
+END
+MeshRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/MeshRenderer.java
+END
+Hover.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/Hover.java
+END
+StarsRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/StarsRenderer.java
+END
+Text.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/Text.java
+END
+CageRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/CageRenderer.java
+END
+FontLineShapeRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/FontLineShapeRenderer.java
+END
+AxesRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/AxesRenderer.java
+END
+SticksRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/SticksRenderer.java
+END
+FrankRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/FrankRenderer.java
+END
+LabelsRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/LabelsRenderer.java
+END
+BbcageRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/BbcageRenderer.java
+END
+Object2d.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/Object2d.java
+END
+Balls.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/Balls.java
+END
+Shape.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/Shape.java
+END
+EchoRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/EchoRenderer.java
+END
+Halos.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/Halos.java
+END
+MeshCollection.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/MeshCollection.java
+END
+HoverRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/HoverRenderer.java
+END
+AtomShape.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/AtomShape.java
+END
+Measures.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/Measures.java
+END
+BallsRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/BallsRenderer.java
+END
+ShapeRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/ShapeRenderer.java
+END
+FontShape.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/FontShape.java
+END
+Uccage.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/Uccage.java
+END
+Stars.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/Stars.java
+END
+Mesh.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/Mesh.java
+END
+HalosRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/shape/HalosRenderer.java
+END

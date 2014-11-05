@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/minimize/forcefield/mmff/validate
+END
+mmff-validation.dat
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/minimize/forcefield/mmff/validate/mmff-validation.dat
+END
+MMFF94_dative.mol2
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/minimize/forcefield/mmff/validate/MMFF94_dative.mol2
+END
+jmol-validation.txt
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/minimize/forcefield/mmff/validate/jmol-validation.txt
+END
+MMFF94_hypervalent.mol2
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/minimize/forcefield/mmff/validate/MMFF94_hypervalent.mol2
+END
+mmff-validation-energy.dat
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/minimize/forcefield/mmff/validate/mmff-validation-energy.dat
+END
+checkmm.spt
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/minimize/forcefield/mmff/validate/checkmm.spt
+END
+MMFF94SYMB.PAR
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/minimize/forcefield/mmff/validate/MMFF94SYMB.PAR
+END

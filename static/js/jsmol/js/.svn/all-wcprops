@@ -1,0 +1,269 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js
+END
+coresmiles.js
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/coresmiles.js
+END
+JSmolJavaExt.js
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/JSmolJavaExt.js
+END
+JSmolControls.js
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/JSmolControls.js
+END
+core2.js
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/core2.js
+END
+JSmolThree.js
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/JSmolThree.js
+END
+corescript.js
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/corescript.js
+END
+JSmolApi.js
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/JSmolApi.js
+END
+JSmolGLmol.js
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/JSmolGLmol.js
+END
+j2sjmol.js
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/j2sjmol.js
+END
+JSmol.full.lite.js
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/JSmol.full.lite.js
+END
+JSmolTest.js
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/JSmolTest.js
+END
+JSmol.js
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/JSmol.js
+END
+JSmolTM.js
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/JSmolTM.js
+END
+corestate.js
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/corestate.js
+END
+JSmol.nojq.js
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/JSmol.nojq.js
+END
+corejsvdialog.js
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/corejsvdialog.js
+END
+corebinary.js
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/corebinary.js
+END
+JSmolCore.js
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/JSmolCore.js
+END
+coretext.js
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/coretext.js
+END
+corejsvmenu.js
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/corejsvmenu.js
+END
+coresurface.js
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/coresurface.js
+END
+JSmoljQueryExt.js
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/JSmoljQueryExt.js
+END
+JSmolConsole.js
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/JSmolConsole.js
+END
+JSmolJSV.js
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/JSmolJSV.js
+END
+JSmolMenu.js
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/JSmolMenu.js
+END
+corepymol.js
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/corepymol.js
+END
+corejsv.js
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/corejsv.js
+END
+coreconsole.js
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/coreconsole.js
+END
+corezip.js
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/corezip.js
+END
+corejsvexport.js
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/corejsvexport.js
+END
+coremenu.js
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/coremenu.js
+END
+JSmolJME.js
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/JSmolJME.js
+END
+coresym.js
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/coresym.js
+END
+corebio.js
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/corebio.js
+END
+Jmol2.js
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/Jmol2.js
+END
+JSmol.full.js
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/JSmol.full.js
+END
+JSmolDebugOff.js
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/JSmolDebugOff.js
+END
+JSmol.full.lite.nojq.js
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/JSmol.full.lite.nojq.js
+END
+core.js
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/core.js
+END
+coreprop.js
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/coreprop.js
+END
+JSmolApplet.js
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/JSmolApplet.js
+END
+coremin.js
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/coremin.js
+END
+corejmoljsv.js
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/corejmoljsv.js
+END
+corescript2.js
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/js/corescript2.js
+END

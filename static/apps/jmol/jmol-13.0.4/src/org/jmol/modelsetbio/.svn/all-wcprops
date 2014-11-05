@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/modelsetbio
+END
+AminoMonomer.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/modelsetbio/AminoMonomer.java
+END
+ProteinStructure.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/modelsetbio/ProteinStructure.java
+END
+Resolver.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/modelsetbio/Resolver.java
+END
+CarbohydrateMonomer.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/modelsetbio/CarbohydrateMonomer.java
+END
+PhosphorusMonomer.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/modelsetbio/PhosphorusMonomer.java
+END
+Sheet.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/modelsetbio/Sheet.java
+END
+Helix.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/modelsetbio/Helix.java
+END
+AminoPolymer.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/modelsetbio/AminoPolymer.java
+END
+Monomer.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/modelsetbio/Monomer.java
+END
+NucleicMonomer.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/modelsetbio/NucleicMonomer.java
+END
+CarbohydratePolymer.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/modelsetbio/CarbohydratePolymer.java
+END
+BioPolymer.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/modelsetbio/BioPolymer.java
+END
+PhosphorusPolymer.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/modelsetbio/PhosphorusPolymer.java
+END
+AlphaMonomer.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/modelsetbio/AlphaMonomer.java
+END
+Turn.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/modelsetbio/Turn.java
+END
+NucleicPolymer.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/modelsetbio/NucleicPolymer.java
+END
+BioModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/modelsetbio/BioModel.java
+END
+AlphaPolymer.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/modelsetbio/AlphaPolymer.java
+END

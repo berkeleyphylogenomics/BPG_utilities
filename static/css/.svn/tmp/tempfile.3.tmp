@@ -1,0 +1,652 @@
+
+/* ------------  Basic style definitions ------------  */ 
+
+body {
+  min-width:600px;
+  font-size: .7em;
+  margin:0px;
+  padding:0px;
+  font-family: sans-serif;
+} 
+
+.errorlist, .messages {
+  color: rgb(180, 30, 20);
+  margin:0px;
+  padding:0px;
+  font-size:18px;
+}
+
+h2 {
+  color: #074987;
+  font-weight:bold;
+  font-size:1.8em;
+}
+
+img {
+  border:0px;
+}
+
+li {
+  list-style: none;
+}
+
+ol li {
+  list-style: decimal;
+}
+
+a {
+  text-decoration:none;
+}
+
+/* 
+  For some reason, the rows and cols attributes in the markup for the textarea don't seem to 
+  set the dimensions of the textarea; hence this (ugly) hack.
+*/
+textarea {
+    height:120px !important;
+    width:600px !important;
+}
+.container {
+  font-size: 1.2em;
+}
+
+/* -------------  header styles   ------------  */
+
+#header {
+  padding-left: 200px;      /* LC width */
+  padding-right: 200px;     /* RC width */
+  min-width:600px; /* increase this number,if needed (depends on the number of tabs in the navigation) */
+}  
+
+#header .column {
+  position: relative;
+  float: left;
+  padding-top: 1em;
+  text-align:left;
+}
+
+
+/* ------navbar styles------ */
+#navbar {
+  width:100%;
+  font-size: 0.8em;
+}
+
+#navbar ul {
+  margin: 40px 0 0 0;
+  padding: 0;
+  text-align: center;
+}
+
+#navbar li { 
+  display: inline;
+  letter-spacing: 2px;
+}
+
+#navbar span,
+#navbar a {
+  font-weight: bold;
+}
+
+#navbar a { 
+  text-decoration: none;
+  color: #105a94;
+}
+
+#navbar a.here { 
+  color: #666;
+}
+
+/*  style declarations for left and right columns of header */
+#header-left {
+  width: 200px;             /* LC width */
+  right: 200px;             /* LC width */
+  margin-left: -100%;
+}
+
+
+#header-right {
+  width: 200px;             /* RC width */
+  margin-right: -100%;
+}
+
+/*** IE6 Fix ***/
+* html #header-left {
+  left: 200px;              /* RC width */
+}
+
+
+/* ------  style declarations for #intro ------  */
+
+#intro {
+  padding: 0;
+}
+
+#intro p {
+    font-size: 1.2em;
+    padding: 0;
+}
+
+#intro span#hidden-description {
+  display:none;
+}
+
+/* ------  style declarations for #index ------  */ 
+#index em {
+  font-style: normal;
+  font-weight: bold;  
+}
+
+#index ul {
+  padding: 0 2em 0 0; /* prevents the controlPanel menu from hitting against the rightColumn too closely */
+  margin: 0;
+}
+
+
+#index li {
+  padding: 0.4em 0; /* Vertically spaces the <li>'s */
+}
+
+#index li a{
+  text-decoration: none;
+  color: #074987;
+  font-weight: bold;
+}
+
+#index li a.light{
+  color: #666;
+}
+
+#index table {
+  padding: 0 2em 0 0;
+  margin: 0;
+}
+
+#index tr {
+  margin:0px;
+  padding: 0.6em 0; /* Vertically spaces the <tr>'s */
+}
+
+#coverage_stats td {
+  width: 50%;
+}
+
+/* ------- style declarations for #controlPanel ------ */  
+
+#controlPanel li {
+  text-align: right;
+  line-height:14px;
+}
+
+#news {
+  color: #074987;
+  font-weight:bold;
+  font-size:.9em;
+}
+#submitButton {
+  float: left;
+}
+
+/* ------  style declarations for #rightPanel ------ */
+
+#rightPanel p {
+  margin: 0;
+  padding: 0.4em 0;
+}
+
+#rightPanel li {
+  line-height: 14px;
+}
+
+.phylofacts-menu {
+  margin-left:40px;
+  line-height:16px;
+}
+#rightPanel h3 {
+  text-transform: uppercase;
+  font-size: 1em;
+  margin: 0;
+  padding: 0.7em 0;
+  font-weight: bold;
+  color: #666;
+}
+
+#rightPanel .close-panel-div {
+  margin-top: 20px;
+}
+
+#download-panel li {
+  padding-left:1em;
+}
+
+#rightPanel li.first-link {
+  color:#074987; 
+  font-size: 1em;
+  font-weight: bold;
+  padding-left:0em;
+}
+
+#controlPanel li.first-link {
+  color:#074987; 
+  font-size: 2em;
+  font-weight: bold;
+  padding-left:0em;
+}
+
+#download-panel li.first-link {
+  color:#074987; 
+  font-weight: bold;
+  padding-left:0em;
+}
+
+.panel {
+  display:none;
+}
+
+div.form-errors {
+    color:rgb(180, 30, 20);
+    display:none;
+    font-size:1.1em;
+}
+
+/* -- Anything above this line was the original css file taken from pfam -- */
+/* -- What follows below is the embedded css from the family and sequence pages -- consolidated here -- */
+
+#seqtabs {
+    font-size: 87%;
+}
+#seqtabs h2 {
+    font-size: 1.5em;
+    margin: 1em 0 0 0;
+    padding: 0.25em;
+}
+ 
+.spinner {
+    position: absolute;
+    left: 50%;
+    margin-left: -62px;
+}
+ 
+iframe {
+    width: 100%;
+    border: 0;
+}
+ 
+#frame {
+    width: 1000px;
+}
+ 
+.go_list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+th[colspan] {
+    text-align: left;
+    border: none;
+    padding: 0.25em;
+}
+th[colspan] a {
+    margin:0;
+    padding: 0;
+    position: relative;
+    left: -0.25em;
+    text-decoration: underline;
+}
+th[colspan] a:hover {
+}
+th:not([colspan]) {
+    white-space: nowrap;
+    text-align: left;
+    vertical-align: text-top;
+    padding: 0 0.25em;
+    font-weight: normal;
+    width: 10em;
+}
+ 
+#seqtabs table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+}
+#seqtabs table td {
+    border-left: 1px solid #888;
+}
+#seqtabs table td, #seqtabs table th:not(.go_list) {
+    padding: 0.5em;
+}
+#seqtabs table th:not([colspan]), #seqtabs table td {
+    border-top: 1px solid #888;
+}
+#seqtabs table td a {
+    color: #0000ff;
+    text-decoration: none;
+}
+#seqtabs table td a:hover {
+    text-decoration: underline;
+}
+li.go_item {
+    margin: 3px;
+    padding: 0.25em;
+}
+.lineage span {
+    color: #777;
+}
+#uniprot_phogs tr td {
+    padding: 0;
+}
+#phog_orthologs, #phog_phogs {
+    position: relative;
+}
+
+.hidden-go-data-BiologicalProcess, .hidden-go-data-MolecularFunction, .hidden-go-data-CellularComponent {
+  display:none;
+}
+
+.show-less-go-data, .show-more-go-data {
+  color: rgb(120, 90, 60);
+  font-style: italic;
+}
+
+.show-less-go-data{
+  display:none;
+}
+
+.family-data-item {
+  width:18%;
+  color: #222;
+}
+
+
+td td {
+  background-color:none;
+  line-height:14px;
+  margin:0px;
+}
+
+
+.coverage {
+  line-height:13px;
+  width: auto;
+}
+
+.coverage tr {
+  line-height:10px;
+}
+
+.coverage td {
+  text-align:center;
+}
+
+
+.coverage th {
+  font-size: 15px;
+  font-weight:bold;
+  padding-bottom:10px;
+  text-align:center;
+}
+
+.coverage th:first-child {
+  text-align:left;
+}
+
+td.organism {
+  font-size: 15px;
+  font-weight:bold;
+  line-height:24px;
+  text-align:left;
+}
+
+td.species {
+  padding-left:40px;
+  width: 200px;
+  text-align:left;
+}
+
+td.sub-category {
+  padding-left:20px;
+  font-weight:bold;
+  text-align:left;
+}
+
+tr.blue {
+  background-color:rgb(250, 250, 255);
+}
+
+
+#seqinfo td {
+  margin:0px;
+  padding:0px;
+  padding-top:5px;
+}
+
+#seqinfo td ul{
+  margin:0px;
+  padding:0px;
+}
+
+#seqinfo #lineage {
+  display:none;
+}
+
+#seqinfo #hide-lineage {
+  display:none;
+}
+
+div.missing-webserver-message {
+  font-size: 1.25em;
+}
+
+#structure ul {
+    width: 8em;
+    margin-right: -10em;
+    float: left;
+}
+#structure .viewer {
+    float: left;
+    margin-left: 10em;
+    clear: none;
+}
+
+
+/** Stuff for the Datatable - this will probably be swapped out with theme-roller stuff */
+/* Pagination nested */
+.paginate_disabled_previous, .paginate_enabled_previous, .paginate_disabled_next, .paginate_enabled_next {
+    height: 19px;
+    width: 19px;
+    margin-left: 3px;
+    float: left;
+}
+
+.paginate_disabled_previous {
+    background-image: url('../images/back_disabled.jpg');
+}
+
+.paginate_enabled_previous {
+    background-image: url('../images/back_enabled.jpg');
+}
+
+.paginate_disabled_next {
+    background-image: url('../images/forward_disabled.jpg');
+}
+
+.paginate_enabled_next {
+    background-image: url('../images/forward_enabled.jpg');
+}
+.dataTables_wrapper { position: relative; min-height: 302px; _height: 302px; clear: both; overflow: hidden; }
+.dataTables_processing { position: absolute; top: 65px; left: 50%; width: 250px; margin-left: -125px; border: 1px solid #965703; text-align: center; color: #965703; background-color: white; font-size: 11px; padding: 2px 0; }
+.dataTables_length { width: 40%; float: left; margin-left:5px; }
+.dataTables_filter { width: 50%; float: right; text-align: right; margin-right:5px;}
+.dataTables_info { width: 50%; float: left; padding-top: 10px; }
+.paginate_disabled_previous, .paginate_enabled_previous, .paginate_disabled_next, .paginate_enabled_next { height: 19px; width: 19px; margin-left: 5px; float: left; }
+.DataTables_sort_wrapper {
+    position: relative;
+    padding-right: 20px;
+    padding-right: 20px;
+}
+.paging_two_button .ui-button {
+    float: left;
+    cursor: pointer;
+    * cursor: hand;
+}
+
+.paging_full_numbers .ui-button {
+    padding: 2px 6px;
+    margin: 0;
+    cursor: pointer;
+    * cursor: hand;
+}
+
+.dataTables_paginate {
+    float: right;
+    text-align: right;
+}
+
+.dataTables_paginate .ui-button {
+    margin-right: -0.1em !important;
+}
+
+.paging_full_numbers {
+    width: 400px !important;
+}
+
+.dataTables_wrapper .ui-toolbar {
+    padding: 5px;
+}
+
+.dataTables_paginate {
+    width: auto;
+}
+
+.dataTables_info {
+    padding-top: 3px;
+}
+
+table.display thead th {
+    padding: 3px 0px 3px 10px;
+    cursor: pointer;
+    * cursor: hand;
+}
+
+div.dataTables_wrapper .ui-widget-header {
+    font-weight: normal;
+}
+
+.dataTables_wrapper td {
+    font-size: 12px;
+}
+
+.dataTables_wrapper th {
+    font-size: 12px;
+}
+
+
+.DataTables_sort_wrapper span {
+    position: absolute;
+    top: 50%;
+    margin-top: -8px;
+    right: 0;
+}
+
+pre.fasta {
+  font-size: 80%;
+  font-family: monospace;
+}
+
+
+.ui-tabs-vertical { width: auto; overflow: hidden; } 
+.ui-tabs-vertical .ui-tabs-nav { padding: 0 0.1em 0.1em 0; float: left; width: 12em; margin-right: -20em; margin-bottom: -10000em; padding-bottom:10000em }
+.ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 0 .2em 0; }
+.ui-tabs-vertical .ui-tabs-nav li a { display:block; width: 100% }
+.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-selected { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
+.ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: left; margin-left: 13em;}
+
+.ui-tabs div.row { clear:both; padding-bottom: 0.5em; min-height: 2em }
+.ui-tabs div.rightcol { clear:none; float: left; width: 36em}
+.ui-tabs label { float: left; display: block; padding-right: 0.2em; width: 15em; }
+
+#phogdiv div, #seqdiv div {
+    clear: none;
+}
+
+#gene_ontology div {
+    padding-bottom: 2em;
+}
+
+#pathways div {
+    padding-bottom: 2em;
+}
+
+.filter-set {
+    padding: 1em;
+    background-color: #94BADF;
+    border: 1px solid #387FC3;
+}
+
+.new-filter-clause, .new-filter-set {
+    padding: 0.4em;
+}
+.new-filter-clause label {
+    width: 250px;
+    display: inline-block;
+}
+.new-filter-clause input, .new-filter-clause select {
+    width: 100px;
+    margin-left: 20px;
+}
+.new-filter-clause input[type="radio"] {
+    width: 20px;
+    margin-left: 22px;
+}
+
+#refresh, #add_orthologs {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.collect {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding: 1em;
+    background-color: #94BADF;
+    border: 1px solid #387FC3;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+.even {
+    background: #E7E7E7;
+}
+
+.ColVis_Button {
+    min-width: 110px;
+    margin: 0px;
+    padding: 4px;
+}
+.ColVis_collection .ColVis_Button {
+    text-align: left;
+}
+.ColVis_collection .ColVis_Button .ColVis_radio {
+    margin-right: 4px;
+}
+
+
+/*    Fat-Cat    */
+#fatcat #fasta p {
+    margin: 0;
+    font-family: monospace;
+}
+
+#fatcat #fasta_header {
+    font-weight: bold;
+}
+
+#fatcat #results {
+    margin-top: 30px;
+}

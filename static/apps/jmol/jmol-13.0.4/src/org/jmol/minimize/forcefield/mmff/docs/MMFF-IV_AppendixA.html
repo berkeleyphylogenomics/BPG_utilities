@@ -1,0 +1,340 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>MMFF-IV_SUPPLEMENTASRY_MATERIAL</title></head><body>
+<b><h3>Appendix A.  Detailed
+Discussion of the Derivation of MMFF94 Torsion Parameters</h3>
+</b><p>
+Supplementary Material for: "Merck Molecular Force Field. IV.
+Conformational Energies and Geometries for MMFF94," T. A. Halgren and R. B.
+Nachbar, <i>J. Comput. Chem.</i>, <b>17</b>, 587-615 (1996).</p><p>
+</p><p>
+    <b> A.1. Basic Approach. </b> Because torsion parameters affect both
+molecular geometries and conformational energies, their derivation presents a
+more difficult problem than is encountered for force-field parameters that
+principally affect and determine a single molecular property.  Ideally, the fit
+to the molecular geometries should be explicitly included in the least-squares
+procedure used to derive the torsion parameters.  Unfortunately, however, only
+relative conformational energies are addressed by the computational tool we had
+available--TORFIT.  In particular, energy derivatives, quantities that in
+principle could be used to simultaneously fit to the positions of energy
+minima, are not employed.  However, we did incorporate some account of
+molecular geometries by including relative energies based on the comparisons
+for torsionally incremented structures discussed in the "COMPUTATIONAL DATA 
+FOR CONFORMATIONAL ENERGIES" subsection of the section on "Computational 
+Models and Data Used in Parameterizing MMFF94".  Thus, if the
+derived torsion parameters accurately reproduce the relative <i>ab initio</i>
+energies for, say, +/- 30 deg rotations about the minimum
+for a given torsion bond, they should also closely reproduce the <i>ab
+initio</i> torsion angle when the structure is energy minimized with the
+derived MMFF force field.  </p><p>
+</p><p>
+     To reproduce both energies and geometries, we used an iterative approach.
+First, we fit the relative "MP4SDQ/TZP" conformational energies at geometries
+very close to the reference MP2/6-31G*-optimized geometries.  Then, as the
+torsion parameters became better defined, we fit the <i>ab initio</i>
+conformational energies at force-field-optimized geometries that increasingly
+resembled the final MMFF-optimized geometries.  We implemented this procedure
+by applying gradually diminishing quadratic torsion angle restraints during
+successive MMFF optimizations of the structures involved in the "MP4SDQ/TZP"
+comparisons.  Specifically, we used a penalty-function force constant of 100
+kcal/mol/rad**2 for the initial least-squares fit and used
+force constants of 30, 10, 3, 1, and again 1 kcal/mol/rad**2
+in subsequent fits.  The largest of these force constants yields an energy
+penalty per torsion interaction of 0.015 kcal/mol per squared degree of
+deviation from the reference <i>ab initio</i> torsion angle.  For torsional
+degrees of freedom that had been constrained (fixed) in the MP2/6-31G*
+optimizations of non-equilibrium structures, we applied much stronger
+restraints of 1 kcal/mol/deg**2 (note the change in units)
+to emulate the <i>ab initio</i> constraints.  These strong specific restraints
+held torsion angles to within a few hundredths of a degree of the reference
+values.  The weaker general restraints held the angles to within 1 
+deg for a force constant of 100 kcal/mol/rad**2
+ and within 10 deg for a force constant
+of 1 kcal/mol/rad**2 in the worst cases examined; most
+torsion angles showed much smaller deviations.  In both the MP2/TZP and the 
+successive MMFF energy evaluations, the more numerous comparisons
+based on the torsionally incremented structures used the geometries described
+in the "COMPUTATIONAL DATA FOR CONFORMATIONAL ENERGIES" 
+subsection in the section on "Computational Models and Data Used in 
+Parameterizing MMFF94" of this paper.</p><p>
+<b></b></p><p><b>
+     A.2. Initial Values for Torsion Parameters.</b> To construct an 
+unbiased initial set of torsion parameters, we set to zero all except certain
+two-fold parameters.  The nonzero two-fold values were chosen (i) by analogy
+with values used in spectroscopic or in other empirical force fields (the V2
+parameter of 12 kcal/mol and associated barrier of 48 kcal/mol for a C-C=C-C
+interaction falls into this category), or (ii) by requiring that "reasonable"
+values for out-of-plane bending force constants be obtained in the fitting to
+HF/6-31G* second derivatives described in Paper III <a href="#fn1">[1]</a> (the
+V2 parameters for some aromatic systems fall into this category).  For C=C
+double bonds, for interactions in aromatic rings, and in a few other cases, the
+initial two-fold parameters were held fixed in the least-squares fit.  These
+parameters could not be least-squares optimized because we did not construct
+conformational comparisons that explored sufficiently large variations in the
+associated torsion angles; in any event, the level of <i>ab initio</i> theory
+we used would not have been adequate to accurately characterize the barriers.
+In other cases, the initial values simply provided useful first approximations
+for parameters that we expected to take on relatively large final values.  All
+two-fold parameters for rotation about C-N bonds in amides, for example, were
+given initial values of 6 kcal/mol in the latter stages of this work.  </p><p>
+<b></b></p><p><b>
+     A.3. Least-Squares Penalty-Function Restraints. </b>In deriving 
+MMFF94, all the conformational-energy data were used simultaneously in each of
+the least-squares fits.  These fits minimized the sum of squares shown in eq
+2:</p><p>
+</p><p>
+SOS = Sum {<i>wi</i>*(CEi[MMFF] - CEi[ref])**2} + p*Sum {(Vn(IJKL) - V[o]n(IJKL))
+**2}    (2)</p><p>
+</p><p>
+The first summation runs over the set of 249 "MP4SDQ/TZP" and 1192 MP2/TZP
+conformational energy differences, where "ref" denotes either a "MP4SDQ/TZP" or
+a MP2/TZP energy difference.  The quantity <i>wi</i> is a weight factor,
+normally chosen as 1.0 for the "MP4SDQ/TZP" comparisons and 0.2 for the more
+numerous MP2/TZP comparisons; nonstandard values assigned in certain specific
+cases are discussed in the subsection on "NONSTANDARD VALUES FOR CONFORMATIONAL
+ENERGY WEIGHTS" of the section entitled "Summary of the Derivation of MMFF94
+Torsion Parameters".  The second summation extends over the set
+of 1-, 2-, and/or 3-fold <i>I-J-K-L</i> torsion parameters included in the
+refinement.  This term adds a penalty-function restraint that serves to keep
+each Vn(IJKL) torsion parameter <a href="#fn2">[2]</a> close to its input value,
+denoted V[o]n(IJKL), where <i>p</i> is the penalty-function
+weight.  These penalty-function restraints were needed to make the
+least-squares fit well determined.  In their absence, correlations between
+parameters typically led to large changes in individual parameters that reduced
+the sum of squares only slightly.  Correlations of this type reflect the fact
+that changes in torsional energies for rotation about particular torsion bonds
+are mainly determined not by individual torsion parameters but rather by
+specific linear combinations.  When, for example, the relevant linear
+combination involves the difference between two such parameters, each can
+increase or decrease by an additive constant, ultimately taking on clearly
+unphysical values, without significantly affecting the calculated
+conformational energy differences.  One might have hoped that the large set of
+conformational energy data employed in this work would have removed all such
+parameter correlations, but it did not.  We employed values for <i>p</i>
+ranging between 0.10 (loose) and 2.0 (pretty tight) in early stages of this
+work, but settled on a value of <i>p</i> = 0.5 for routine work.  This value
+appeared sufficient to damp excessive variations while giving the initial
+torsion parameters enough freedom to evolve to stable final values over a
+series of least-squares fits.  </p><p>
+</p><p>
+     <b>A.4. TORFIT. </b>In addition to a value for <i>p</i> (and, in some
+applications, the values for certain other control parameters), TORFIT needs
+three kinds of information: (1) a list of input torsion parameters V[o]n(IJKL), initially chosen as described above but
+subsequently taken as the final values from the preceeding iteration; (2) a
+list identifying the conformational pairs and specifying the weights <i>wi</i>
+and the reference and MMFF conformational energies; and (3) the set of
+molecular structure files used in computing the MMFF conformational energies.
+After reading the input torsion parameters and noting which are to be optimized
+and which are to be held constant, TORFIT sequentially processes the list of
+structure files.  For the <i>ith</i> entry, it reads the molecular structures
+for the associated pair of conformers, checks that the structures are indeed
+conformers, and uses the input torsion parameters to compute the contribution
+from the torsion parameters being optimized to the input MMFF conformational
+energy difference.  By adding this quantity, T[o]i, to the
+difference between the listed reference and input MMFF conformational energy
+differences, TORFIT determines the torsional contribution 
+<a href="#fn3">[3]</a>
+</p><p>
+</p><p>
+Ti = T[o]i + CEi[ref] - CEi[MMFF]									(3)</p><p>
+</p><p>
+that MMFF would have to produce to make the adjusted value for CEi[MMFF]
+ (i.e., CEi[MMFF]- T[o]i + Ti) equal CEi[ref].  TORFIT then
+treats the Ti as the observables and constructs the least-squares normal
+equations <a href="#fn4">[4]</a>.  Equivalently, TORFIT could have taken the
+observations to be CEi[ref] - CEi[MMFF],
+and could have determined the <i>changes</i> to the input torsion parameters
+needed to minimize the differences between these quantities.  However, the
+stated formulation also makes it possible for TORFIT to impose Lagrangian
+constraints that enable specified torsion parameters to be given equal values,
+to be assigned equal magnitudes but opposite signs, or to be constrained to
+zero or other designated values.  These additional TORFIT capabilities were
+employed in earlier work on MM2X as a means for controlling indeterminancies
+involving specific linear combinations of parameters.  For MMFF94, however, it
+proved equally efficacious and far more convenient simply to impose
+penalty-function restraints.  As might be hoped, these restraints tend to hold
+parameters to zero, where possible, or to equal magnitides where simple
+parameter correlations are involved.  </p><p>
+</p><p>
+     <b>A.5. Least-Squares Refinements. </b>Using the initial, mostly zero, set
+of torsion parameters, we optimized the conformers involved in the "MP4SDQ/TZP"
+comparisons, starting from the MP2/6-31G*-optimized geometries and employing a
+torsion-restraint force constant of 100 kcal/mol/rad**2.  We
+then evaluated the relative conformational energies CEi[MMFF], 
+constructed the necessary TORFIT input files, and
+carried out a first linear-least-squares refinement using a penalty-function
+restraint weight of<i> p</i> = 0.5 in eq 2.  Using the derived torsion
+parameters as the new input parameters V[o]n(IJKL), we
+reoptimized the MP2/6-31G* geometries with a restraint force constant of 30
+kcal/mol/rad**2, re-evaluated the energies of the
+torsionally incremented structures, and repeated the least squares fit, again
+using <i>p</i> = 0.5.  We then repeated this procedure with restraint force
+constants of 10, then 3, and then 1 kcal/mol/rad**2].
+Finally, to eliminate small "nuisance-value" parameters, we set to zero all
+torsion parameters smaller in magnitude than a specified threshold and marked
+the so-zeroed parameters for exclusion from the set of torsion parameters to be
+optimized; in the final stages of this work, we took this threshold to be 0.05
+kcal/mol.  We then carried out a final fit using a restraint force constant of
+1 kcal/mol/rad**2 in the structure optimizations and a
+penalty-function weight of <i>p</i> = 1.0 in the least-squares refinement to
+ensure that the computed MMFF conformational energies would not be compromised.
+</p><p>
+</p><p>
+     The procedure just outlined gave rise to what we call the "MMFF93"
+parameter set, the immediate forerunner of the MMFF94 set reported in this work
+(a preliminary "MMFF91" parameter set has also been used in modeling
+applications in these laboratories).  While preparing this series of papers, we
+became aware of a few areas in which improvements needed to be made.  One, for
+example, concerned the conformational energies of the medium-sized cycloalkyl
+rings discussed in the subsection on "EXPERIMENTAL CONFORMATIONAL ENERGIES" in
+the section on "Performance of MMFF94 in Relation to Other Force  Fields". 
+Another is related to MMFF93's tendency
+to overestimate the degree of pyramidalization at nitrogen shown in the
+reference MP2/6-31G* structures for amides.  To remedy such deficiencies, we
+rederived subsets of the torsion parameters using a computational procedure
+analogous to that just described.  These rederivations employed all affected
+conformational energies.  To reduce the tendency of amides to pyramidalize, we
+also changed the out-of-plane force constants for secondary and tertiary amides
+(MMFF atom types of 3, 1, 28 and of 3, 1, 1 connected to amide nitrogen, itself
+of type 10) from -0.030 and -0.034 to -0.02 md-Angs/deg**2; the original values had been derived in fits to HF/6-31G*
+second derivatives <a href="#fn1">[1]</a>.  As reported in Paper III <a href="#fn1">[1]</a>, these modifications result in rms values for Wilson
+out-of-plane angles in amides that reflect the much same overall degree of
+puckering as is found in the reference MP2/6-31G* structures.</p><p>
+</p><p>
+     Of 906 resultant 1-, 2- or 3-fold torsion parameters for 302 <i>IJKL</i>
+atom-type and torsion-type combinations, the combined protocol yielded zero
+values for 248 torsion parameters (27%), of which about 60 had maintained zero
+values to three significant digits throughout; the remainder, which were set to
+zero for the final least-squares fit, had acquired magnitudes between 0.001 and
+0.05 kcal/mol.  In addition, 39 two-fold parameters were fixed at initially
+assigned values.  Thus, 619 nonzero torsion parameters were fit to ~1440
+conformational-energy differences.  While the ratio of 2.3 observations per
+torsional degree of freedom is not high, the use of penalty-function weights in
+the least squares procedure nevertheless appears to have produced a
+parsimonious set of well-defined parameters.</p><p>
+<b></b></p><p><b>
+     A.6. Nonstandard Values for Conformational-Energy Weights. </b> We used
+the "ANALYZE DIFFERENCES" facility of OPTIMOL <a href="#fn5">[5]</a> at various
+stages in the fitting process to compare the reference MP2/6-31G* geometries to
+MMFF-optimized geometries obtained using then-current estimates for the torsion
+(and other) MMFF94 parameters.  We then used a special purpose program,
+ANAL_GEOM, to extract and summarize pertinent comparisons from the resultant
+OPTIMOL output file; the rms deviations cited in the "TORSION ANGLES" subsection 
+of the section on "Performance of MMFF94 in Relation to Other Force Fields", 
+for example, were
+obtained in this way.  In most cases, the analysis showed that the reference
+<i>ab initio</i> torsion angles were reproduced reasonably well.  When the rms
+deviation for a given conformer was relatively large, however, we examined the
+individual reference and MMFF-optimized torsion angles to determine the source
+of the discrepancy.  Some of these discrepancies occured for amides in cases in
+which the degree of paramidalization at nitrogen found in the MP2/6-31G*
+geometry was either understated or overstated by MMFF.  For six
+planar--pyramidal comparisons for amides in which the "MP4SDQ/TZP" barrier to
+planarity at nitrogen was smaller than 0.3 kcal/mole, we therefore increased
+the importance of accurately fitting the barrier by increasing the associated
+weight factor <i>wi</i> in eq 2 from 1.0 to 100 (this change is equivalent to
+multiplying the <i>ab initio</i> and MMFF conformational energies by a factor
+of 10).  Except for formamide, where the MP2/6-31G* optimization produced a
+puckered structure having Wilson out-of-plane angles of ~12 deg while 
+MMFF94 gives a planar structure, each of the small
+barriers to planarity ultimately was reproduced reasonably well.  </p><p>
+</p><p>
+     In cases in which a torsion angle was represented in the current set of
+torsionally incremented structures but was poorly reproduced, we noted that the
+least-squares fit usually had failed to accurately reproduce the <i>ab
+initio</i> changes in conformational energy for positive and negative rotations
+relative to the MP2/6-31G*-derived base conformation.  In some such cases, we
+achieved better conformational energies and better resultant optimized
+geometries by increasing the associated weight <i>wi</i> from 0.20 to a value
+between 2 and 10.  In other cases, however, increasing the weight changed the
+derived torsion parameters substantially but did not materially improve either
+the conformational energies or the optimized geometries.  In such cases, we
+reset the weight to its nominal value.</p><p>
+</p><p>
+      Thirdly, in some cases we found that a poorly described torsion angle was
+of a type not represented in the torsionally incremented structures.  In
+response, we modified the set of torsionally incremented comparisons during the
+course of this work by including about twenty additional MP2/TZP comparisons.
+We also added about twenty "MP4SDQ/TZP" relative energies.  Several of the
+latter were comparisons of planar vs. puckered amides, but six provided
+important new <i>phi</i>-<i>psi</i> conformational data on the glycyl and
+alanyl dipeptides.  Six others added conformational information for eight- and
+nine-membered cycloalkane rings used in the rederivation of torsion parameters
+cited in the previous subsection.</p><p>
+</p><p>
+     A fourth category consisted of cases in which the torsion fitting had not
+sufficiently closely reproduced "important" relative "MP4SDQ/TZP"
+conformational energies.  In such instances, we increased <i>wi</i> from 1 to,
+say, 10.  As it happened, in nearly all such cases we found little improvement
+in the conformational energies but significant, and probably nonphysical,
+changes in certain torsion parameters.  We were, however, able to correct or to
+amerliorate some of the deficiencies in fitting conformational energies by
+modifying MMFF's functional form.  Such modifications, two of which are
+discussed further in the section entitled "Two Aspects of MMFF's Functional Form 
+and Parameterization," included the scaling of 1,4-electrostatic
+interactions by a factor of 0.75, the introduction of separate torsion
+parameters for five-membered rings containing at least one saturated carbon,
+and the reformulation of the combination rules for nonbonded interactions for
+polar hydrogens to allow such atoms to display a larger effective vdW radius in
+interactions with non-hydrogen-bond acceptors <a href="#fn6">[6]</a>.
+Ultimately, we reset almost all such weights back to 1 and accepted the
+implication that any remaining errors in reproducing the <i>ab initio</i>
+conformational energies stemmed from intrinsic limitations in MMFF94's
+functional form.  We suspect that such limitations arise mainly from MMFF94's
+neglect of polarizability and from its use of simple atom-centered charges <a href="#fn6"> [6]</a>.</p><p>
+</p><p>
+     Finally, a fifth category consisted of cases in which a part of the
+computational data could not be fit satisfactorily without severely
+compromising the fit to other data.  As further discussed in the section 
+entitled "Limitations in and Possible Improvements to MMFF94's Functional Form,"
+outright failures of this type occurred in two cases: for ethylenediamine and
+for <i>N</i>-methylformaldehydeimine.  Because the incompatibility could not be
+resolved, we set respectively seventeen and four weight factors for torsionally
+incremented comparisons to vanishing small values to remove these comparisons
+from the torsion-parameter fitting; one poorly reproduced conformational-energy
+comparison for <i>N</i>-methylformaldehydeimine remained in the fitting but did
+not affect other parameters</p><p>
+</p><p>
+     The changes to weight factors, the generation of additional computational
+data, and the modifications to MMFF's functional form made during the course of
+this work show more clearly than at perhaps any other point in MMFF94's
+derivation that the development of a complex force field needs to be an
+adaptive process.  We might note in this connection that the earlier derivation
+of MMFF91 parameters based on MP3/6-31+G** conformational energies evaluated at
+HF/6-31G* geometries used about 80 fewer comparisons of conformational energies
+for optimized structures and about 300 fewer comparisons of torsionally
+incremented structures.  Some of these additions were made to accomodate
+additional structural types, but many represented adaptive additions of types
+discussed in this subsection.</p><p>
+ <b></b></p><p><b>
+    A.7. Mutually Consistent Determination of MMFF94 Parameters.</b>  </p><p>
+To close this discussion, we note that we combined the foregoing procedure for
+deriving torsion parameters with those described in Paper III <a href="#fn1">[1]</a> for deriving quadratic force constants and reference bond
+lengths and angles to enable us to obtain mutually consistent values for
+parameters of these types.  Specifically, we interleaved these three types of
+parameter determinations, and carried out three to four grand iterative cycles
+over the whole set.  We also reevaluated, or where necessary rederived,
+nonbonded parameters involved in polar intermolecular interactions <a href="#fn6">[6]</a> prior to the final derivation of the MMFF94 torsion
+parameters.  This iterative approach allowed parameters of each type to be
+optimized in the context of increasingly well refined values for parameters of
+other types.</p><p>
+</p><p>
+</p><p>
+</p><hr>
+<a name="fn1">[1]</a> Paper III: T. A. Halgren, <i>J. Comput. Chem.</i>,
+<b>17</b>, 553-586 (1996).<p>
+<a name="fn2">[2]</a> As discussed in the "MMFF94 Torsional Parameters" 
+section of this paper (Paper IV), each
+torsion parameter actually carried a fifth numerical index corresponding to the
+"torsion type".  For simplicity, this dependence is suppressed in the present
+context.</p><p>
+<a name="fn3">[3]</a> Eq 3 may be more readily understood in the form CEi<a name="fn3">[MMFF]</a> + Delta_Ti = CEi[ref] , where
+Delta_Ti = Ti - T[o]i represents the change needed in the
+MMFF torsional energy contribution.</p><p>
+<a name="fn4">[4]</a> W. E. Wentworth, <i>J. Chem. Ed.</i>, <b>42</b>, 96-103
+(1965).</p><p>
+<a name="fn5">[5]</a> Paper I: T. A. Halgren, <i>J. Comput. Chem.</i>, 
+<b>17</b>, 490-519 (1996).</p><p>
+<a name="fn6">[6] </a>Paper II: T. A. Halgren, <i>J. Comput. Chem.</i>, 
+<b>17</b>, 520-552 (1996).
+
+</p></body></html>

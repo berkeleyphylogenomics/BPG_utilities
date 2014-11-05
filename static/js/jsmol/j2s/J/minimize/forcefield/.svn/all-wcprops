@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/minimize/forcefield
+END
+CalculationsMMFF.js
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/minimize/forcefield/CalculationsMMFF.js
+END
+ForceFieldMMFF.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/minimize/forcefield/ForceFieldMMFF.js
+END
+FFParam.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/minimize/forcefield/FFParam.js
+END
+Calculation.js
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/minimize/forcefield/Calculation.js
+END
+Calculations.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/minimize/forcefield/Calculations.js
+END
+AtomType.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/minimize/forcefield/AtomType.js
+END
+CalculationsUFF.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/minimize/forcefield/CalculationsUFF.js
+END
+ForceField.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/minimize/forcefield/ForceField.js
+END
+ForceFieldUFF.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/minimize/forcefield/ForceFieldUFF.js
+END

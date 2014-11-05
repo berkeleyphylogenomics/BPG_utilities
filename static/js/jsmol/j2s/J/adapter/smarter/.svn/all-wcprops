@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/smarter
+END
+AtomSetCollection.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/smarter/AtomSetCollection.js
+END
+AtomIterator.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/smarter/AtomIterator.js
+END
+StructureIterator.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/smarter/StructureIterator.js
+END
+AtomSetCollectionReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/smarter/AtomSetCollectionReader.js
+END
+BondIterator.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/smarter/BondIterator.js
+END
+MMCifInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/smarter/MMCifInterface.js
+END
+Atom.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/smarter/Atom.js
+END
+MSInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/smarter/MSInterface.js
+END
+SmarterJmolAdapter.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/smarter/SmarterJmolAdapter.js
+END
+Structure.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/smarter/Structure.js
+END
+Resolver.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/smarter/Resolver.js
+END
+Bond.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/smarter/Bond.js
+END
+MSCifInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/smarter/MSCifInterface.js
+END
+AtomSetObject.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/smarter/AtomSetObject.js
+END

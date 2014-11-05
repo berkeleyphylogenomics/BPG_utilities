@@ -1,0 +1,221 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers
+END
+MapFileReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/MapFileReader.java
+END
+CubeReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/CubeReader.java
+END
+Parameters.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/Parameters.java
+END
+PolygonFileReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/PolygonFileReader.java
+END
+AtomPropertyMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/AtomPropertyMapper.java
+END
+IsoMepReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/IsoMepReader.java
+END
+VolumeDataReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/VolumeDataReader.java
+END
+IsoMlpReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/IsoMlpReader.java
+END
+JvxlXmlReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/JvxlXmlReader.java
+END
+XplorReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/XplorReader.java
+END
+VolumeFileReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/VolumeFileReader.java
+END
+NffFileReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/NffFileReader.java
+END
+JaguarReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/JaguarReader.java
+END
+EfvetReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/EfvetReader.java
+END
+IsoFxyzReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/IsoFxyzReader.java
+END
+IsoShapeReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/IsoShapeReader.java
+END
+SurfaceGenerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/SurfaceGenerator.java
+END
+PmeshReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/PmeshReader.java
+END
+MsmsReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/MsmsReader.java
+END
+CastepDensityReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/CastepDensityReader.java
+END
+Dns6BinaryReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/Dns6BinaryReader.java
+END
+KinemageReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/KinemageReader.java
+END
+IsoFxyReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/IsoFxyReader.java
+END
+JvxlReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/JvxlReader.java
+END
+ApbsReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/ApbsReader.java
+END
+MrcBinaryReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/MrcBinaryReader.java
+END
+IsoMOReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/IsoMOReader.java
+END
+SurfaceFileReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/SurfaceFileReader.java
+END
+SurfaceReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/SurfaceReader.java
+END
+AtomDataReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/AtomDataReader.java
+END
+XsfReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/XsfReader.java
+END
+PltFormattedReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/PltFormattedReader.java
+END
+IsoSolventReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/IsoSolventReader.java
+END
+ObjReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/ObjReader.java
+END
+IsoPlaneReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/IsoPlaneReader.java
+END
+IsoIntersectReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/readers/IsoIntersectReader.java
+END

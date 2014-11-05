@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/cifpdb
+END
+CifReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/cifpdb/CifReader.java
+END
+PdbReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/cifpdb/PdbReader.java
+END

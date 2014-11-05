@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/data
+END
+JvxlCoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/data/JvxlCoder.java
+END
+VolumeData.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/data/VolumeData.java
+END
+MeshData.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/data/MeshData.java
+END
+JvxlData.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/jvxl/data/JvxlData.java
+END

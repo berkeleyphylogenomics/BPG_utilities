@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/quantum
+END
+MepCalculation.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/quantum/MepCalculation.java
+END
+SlaterData.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/quantum/SlaterData.java
+END
+MlpCalculation.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/quantum/MlpCalculation.java
+END
+NciCalculation.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/quantum/NciCalculation.java
+END
+QuantumCalculation.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/quantum/QuantumCalculation.java
+END
+MOCalculation.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/quantum/MOCalculation.java
+END
+atomicLipophilicity.txt
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/quantum/atomicLipophilicity.txt
+END

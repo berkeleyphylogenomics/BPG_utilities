@@ -1,0 +1,221 @@
+<html><head><title>MMFF-III_SUPPLEMENTARY_MATERIAL</title></head><body>
+<b><h3>Appendix A. MMFF94 Parameters
+for Bond and Angle Deformations.</h3></b><p>
+Supplementary Material for: "Merck Molecular Force Field. III. Molecular
+Geometries and Vibrational Frequencies for MMFF94," T. A. Halgren, <i>J. Comput.
+Chem.</i>, <b>17</b>, 553-586 (1996).<p>
+<p>
+     This appendix discusses the format of the parameter tables (Tables III -
+VI) and describes in detail how requests for parameters are matched to entries
+in the tables.<p>
+<p>
+     <b>A.1. Bond Stretching Parameters.</b>  The first column in Table III,
+labeled BTIJ, lists the bond type index discussed in the "QUARTIC BOND 
+STRETCHING" subsection of the section on "Form of MMFF94 ...".  The second
+and third columns list the atom types, and the fourth and fifth give the force
+constant in mdynes/Angs and the reference bond length in Angs.  The last,
+labeled "Origin/Comment", distinguishes "C94" core MMFF94 parameters, derived
+from <i>ab initio</i> data as described in this paper, from parameters derived
+in the extended parameterization described in Paper V [1]
+(usually labeled "E94").  As can be seen, the bond-type index BTIJ
+normally takes the value "0" but occasionally takes the value "1".  The latter
+value denotes a formally single bond between <i>sp</i>- or <i>sp2</i>-hybridized 
+atoms of types that can participate in
+multiple (double or triple) bonding.  Thus, the parameter whose three numerical
+indices are "0 2 2" describes a double bond between olefinic carbons (reference
+bond length, 1.333 Angs), whereas the next-listed parameter with numerical
+indices "1 2 2" describes the delocalized single bond between two such carbons
+in, for example, butadiene (reference bond length, 1.430 Angs).  This last
+parameter, as it happens, is labeled "#C94", where the "#" sign indicates that
+a "compromise" value has been chosen for the reference bond length (cf. the
+discussion of 1,3-butadiene in the "EXPERIMENTAL MOLECULAR GEOMETRIES"
+subsection of the section on "Performance of MMFF94").  Other labels used in the full
+parameter file include "X94" for parameters whose reference bond lengths were
+derived from additional MP2/6-31G* data in MMFF's extended parameterization <a
+href="#fn1">[1]</a>, "#X94" for parameters of similar computational origin but
+for which a compromise reference bond length was chosen, and "#E94" for bonds
+to hydrogen for which a poorly determined crystallographic bond length was
+replaced by an empirical rule value; see Paper V<a href="#fn1"> [1]</a> for
+further details.<p>
+<p>
+     No wildcarded parameters are defined for bond stretching interactions.
+Rather, when a needed bond parameter is not found in the parameter file, MMFF94
+employs an empirical rule<a href="#fn1"> [1]</a> to assign a reference bond
+length using a modified form of the Schomaker-Stevenson equation <a
+href="#fn2">[2]</a>, and assigns the force constant<a href="#fn1"> [1]</a> from
+an inverse sixth-power relationship<a href="#fn3"> [3]</a> .  The bond
+parameters labeled "E94", for example, take their reference bond lengths from
+fits to cystallographically determined structures and use the empirical
+sixth-power rule to assign the force constant <a href="#fn1">[1]</a>.  <p>
+<p>
+     The canonical ordering reflected in the table is defined through an
+integer index, CXB, that is computed as<p>
+<p>
+	CXB = MC*(<i>I</i>*MA + <i>J</i>) + <i>M</i>,<p>
+<p>
+where <i>M</i> denotes the bond-type index BT[IJ], MC is an integer equal to at
+least the maximum permitted bond-type index + 1, MA is an integer at least
+equal to the maximum numerical atom-type index + 1, and atom type <i>I</i> is
+less than or equal to <i>J</i>.  Thus, <i>I</i> changes least rapidly and
+<i>M</i> changes most rapidly, with the result that parameters that reference
+the same atom types but different bond types appear consecutively in the
+listing.  As for other terms in the MMFF94 energy expression, this ordering
+allows a rapid binary search algorithm to be used to locate the parameters but
+has no intrinsic effect on the matching of parameters to force-field
+interaction terms.  <p>
+<p>
+      <b>A.2. Angle Bending Parameters.</b> The seven columns in Table IV
+define the angle-type index AT[IJK], the atom types <i>I</i>, <i>J</i> and
+<i>K</i> for the peripheral, central, and peripheral atoms in the angle, the
+force constant in md-Angs/rad**2, the reference bond
+angle in degrees, and the origin of the parameter, where "C94" and "E94" have
+meanings analogous to those discussed above.  The full parameter file employs
+other labels as well <a href="#fn4">[4]</a>.  The MMFF94 angle-bending
+parameters also include parameters that have zero values for atom types
+<i>I</i> and <i>K</i> and a zero value for the listed force constant; the first
+parameter listed in Table IV, for example, is of this type.  These "default
+parameter" entries are used for interactions <i>I-J-K </i>of angle-type
+<i>M</i> = AT[IJK] when the parameter file contains neither the fully-qualified
+<i>M:I-J-K </i>parameter nor any related parameter obtained by successively
+equivalencing atom types <i>I</i>, <i>J</i>, and <i>K</i> to simpler atom types
+in the manner described in Paper I <a href="#fn5">[5]</a>. In such a case, the
+angle-type <i>M</i> and the central atom-type <i>J</i> are used to assign the
+reference angle, and an empirical rule based on previously published work 
+is then employed to calculate the force constant; if no
+match on <i>M</i> and <i>J</i> is found, information relating to hydridization
+and ring size is used to assign the reference value <a href="#fn1">[1]</a>.  The
+"E94" parameters combine reference angles obtained by fitting to experimental
+geometries with empirical-rule force constants.  The default reference angles
+represent averages of explicitly parameterized reference angles for the same
+angle type <i>M</i> and central atom type <i>J</i>.  See Paper V for further
+information <a href="#fn1">[1]</a>.<p>
+<p>
+     The listed parameters employ angle-type indices ranging between 0 and 8.
+Their meanings are as defined below:<p>
+<i><p>
+<pre>
+ </i>AT[IJK]<i> </i>   Structural significance
+-----------------------------------------------------
+  0		   The angle <i>i-j-k</i> is a "normal" bond angle
+  1 		   Either bond <i>i-j</i> or bond <i>j-k</i> has a bond type of 1
+  2		   Bonds<i> i-j</i> and <i>j-k</i> each have bond types of 1; the sum is 2.
+  3		   The angle occurs in a three-membered ring
+  4		   The angle occurs in a four-membered ring
+  5		   Is in a three-membered ring and the sum of the bond types is 1
+  6		   Is in a three-membered ring and the sum of the bond types is 2
+  7		   Is in a four-membered ring and the sum of the bond types is 1
+  8		   Is in a four-membered ring and the sum of the bond types is 2
+</pre><p>
+     The canonical ordering of the angle parameters is such that the atom-type
+index <i>J</i> changes least rapidly and the angle-type index <i>M</i> changes
+most rapidly; atom type <i>I</i> is always less than or equal to <i>K</i> and
+changes less rapidly.  As a result, all angle interactions having a common
+central atom type appear consecutively in the listing.  The canonical-order
+index that produces this ordering, CXA, is computed as:<p>
+<p>
+     CXA = MC*(<i>J</i>*MA**2 + <i>I</i>*MA + <i>K</i>) +
+<i>M</i>,<p>
+<p>
+where MA is again at least the maximum atom type + 1, and MC is at least one
+greater than the maximum angle-type index.  <p>
+<p>
+     <b>A.3. Stretch-Bend Parameters.</b>  The format of Table V for
+stretch-bend parameters is similar to that employed for angle bending.  For a
+given <i>i-j-k</i> interaction, two force constants, each given in units of
+md/rad, arise for each listing in the parameter file.  The first,
+k<i>ba</i>[IJK], couples <i>i-j-k</i> bending with the stretching of the
+<i>i-j</i> bond, whereas the second, k<i>ba</i>[KJI], couples <i>i-j-k</i>
+bending to <i>k-j</i> stretching.  The requisite reference bond lengths and
+reference bond angle (cf. eq 5) are taken from the respective bond and angle
+parameter sets, with the stretch-bend type index SBT[IJK] listed in the first
+column serving with the atom types to establish the proper connection.  The
+stretch-bend types are defined as shown below:<p>
+<p><pre>
+         SBT[IJK]      AT[IJK]	      BT[IJ]	       BT[JK]
+    -------------------------------------------------------------
+	  0		  0		 0		0
+	  1	 	  1		 1		0
+	  2		  2		 0		1
+	  3		  2		 1		1
+	  4		  4		 0		0
+	  5		  3		 0		0
+	  6		  5		 1		0
+	  7		  5		 0		1
+	  8		  6		 1		1
+	  9		  7		 1		0
+	 10		  7		 0		1
+	 11		  8		 1		1
+<p></pre>
+Note that two stretch-bend types occur for each angle type for which the
+associated bond-type indices sum to 1.  <p>
+<p>
+     Canonical order is established through an index, CXBA, that is computed
+from the stretch-bend type and the atom types in the same manner as was
+described above for the index CXA used for angle-bending parameters.  The
+ordering of the tabulated parameters therefore follows the same prescription.<p>
+<p>
+     The matching of stretch-bend interactions to parameter file entries uses
+the stretch-bend type <i>M</i> = SBT[IJK] and the atom types <i>I</i>, <i>J</i>,
+and <i>K</i>.  No equivalencies are employed, but default force constants are
+assigned whenever the fully qualified <i>M:I-J-K</i> parameter is not found
+(cf. Paper V<a href="#fn1"> [1]</a>).  All the parameters listed in Table V are
+labeled "C94", and thus represent core MMFF94 values derived by fitting to
+HF/6-31G* energy derivatives.  The full parameter file includes some parameters
+labeled "X94"; these parameters were derived from HF/6-31G* data in a
+comparable manner to, but not as part of, the main "C94" parameterization
+described in this paper.<p>
+<p>
+     <b>A.4. Out-of-Plane Bending Parameters.</b>  Of the four atom types that
+characterize the parameters listed in Table VI, the second, labeled <i>J</i>,
+corresponds to the central atom <i>j</i> to which the atoms <i>i</i>, <i>k</i>,
+and <i>l</i> of types <i>I, K </i> and <i>L</i> are attached.  The force
+constant, k<i>oop</i>[IJK;L], is given in units of md-A/rad**2.  In the individual interactions that appear in eq 6,
+<i>l</i> represents the out-of-plane atom in the Wilson angle definition.  This
+distinction does not affect the way in which the parameters are utilized,
+however, because MMFF94 employs the same force constant for all three
+out-of-plane angles.  The canonical index, CXO, used to order the parameters is
+computed as:<p>
+<p>
+	CXO = <i>J</i>*MA**3 + <i>I</i>*MA**2 +
+<i>K</i>*MA + <i>L</i>, <p>
+<p>
+where MA is as defined previously, <i>L</i> is greater than or equal to
+<i>K</i>, and <i>K</i> is greater than or equal to <i>I</i>.  This ordering
+groups together all out-of-plane entries that share a common central atom type
+<i>J</i>.   <p>
+<p>
+     Unlike the interactions discussed in the previous subsections, the four
+atom types suffice to characterize an out-of-plane parameter; no "bond type" or
+"angle type" information is utilized at present.  The parameter search begins
+with an attempt to locate the fully qualified parameter.  If this search is
+unsuccessful, a staged search using more generic parameter types is performed
+(cf. the "Implementation of MMFF ..." section in Paper I <a href="#fn5">[5]</a>).  The entries for which atom
+types <i>I</i>, <i>K</i> and <i>L</i> are all zero serve as default values.
+The default force constants represent, roughly, the average of the force
+constants for the central atom type <i>J</i> derived in the fit to the
+HF/6-31G* data.  All but two of nondefault entries in Table VI are labeled
+"C94" and were derived from the HF/6-31G*  <i>ab initio</i> data as described
+in the section entitled "Derivation of Quadratic Force Constants."  
+The two entries labeled "#C94" are modified values chosen to
+improve the representation of out-of-plane bending in amides (cf. the subsection 
+on "GEOMETRIES FOR AMIDES AND UNSATURATED AMINES" in the "Performance of MMFF94" 
+section).
+Some default force constants are labeled "E94" in the full parameter table;
+their values were assigned by analogy to computationally derived values found
+for similar atom types <a href="#fn1">[1]</a>.  <p>
+<p>
+<hr>
+<a name="fn1">[1]</a> Paper V: T. A. Halgren,<i> J. Comput. Chem.</i>, 
+<b>17</b>, 616-641 (1996).<p>
+<a name="fn2">[2]</a> R. Blom, A. Haarland, <i>J. Molec. Struct.</i>,
+<b>128</b>, 21-27 (1985).<p>
+<a name="fn3">[3]</a> The relationship used is based on the sixth-power
+dependence employed by: R. S. Roy, <i>J. Phys. B  </i>(<i>Proc. Phys. Soc.),
+Ser 2</i>, 445 (1968). <p>
+<a name="fn4">[4]</a> See the "Extension of the Parameterization for Angle 
+Bending" section of Paper V (ref. 1) for definitions for
+additional labels used for angle-bending parameters in the full parameter
+file.<p>
+<a name="fn5">[5]</a> Paper I: T. A. Halgren,<i> J. Comput. Chem.</i>,
+<b>17</b>, 490-519 (1996).<p>
+</body></html>

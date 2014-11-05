@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/multitouch/jni
+END
+JmolMultiTouchJNI.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/multitouch/jni/JmolMultiTouchJNI.cpp
+END
+JmolJniClientAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/multitouch/jni/JmolJniClientAdapter.java
+END
+JmolMultiTouchJNI.h
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/multitouch/jni/JmolMultiTouchJNI.h
+END

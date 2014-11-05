@@ -1,0 +1,152 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>MMFF_I_SUPPLEMENTARY_MATERIAL</title>
+</head><body><b><h3>Appendix A. Definition and
+Role of the MMFF94 Parameter Files </h3></b><p>
+Suplementary Material for: "Merck Molecular Force Field. I. Basis, Form,
+Scope, Parameterization and Performance of MMFF94," T. A. Halgren, <i>J. Comp.
+Chem</i>., <b>17</b>, 490-519 (1996).</p><p>
+</p><p>
+     MMFF94 uses fifteen "regular" parameter" files and an optional sixteenth
+file that supplies additional or replacement parameters for various terms in
+the energy expression (eq 1).  Complete versions of the first fifteen parameter
+files (core plus extended paramaterization) and a particular example of the
+sixteenth file are available via in ASCII format <a href="#fn1">[1]</a>.  This
+appendix will identify the role each parameter file plays and reference the
+paper in which the information contained therein is illustrated and discussed.
+The supplementary-parameters file MMFF93SUP.PAR provides the modified
+out-of-plane and torsion parameters needed to reconstitute the earlier "MMFF93"
+version <a href="#fn2">[2]</a> of the force field. </p><p>
+</p><p>
+     <b>1. MMFFSYMB.PAR.</b> This file specifies the four-character symbolic
+atom types used in MMFF94, defines the numeric atom type to which each
+corresponds, and gives a qualitative description of the chemical environment
+that each represents.  Note that the symbolic to numeric correspondence in
+general is many to one, and that the numeric atom types are the ones used in
+matching parameters to force-field interactions.  The contents of this file
+appear in Table III of this paper.</p><p>
+</p><p>
+     <b>2. MMFFDEF.PAR.</b> This file supplies the atom type equivalences used
+in the matching of parameters to force-field interactions described in the 
+section on "Implementation of MMFF ...".  
+The contents of this file are listed in Table IV of this paper.</p><p>
+</p><p>
+     <b>3. MMFFAROM.PAR.</b> For non-hydrogen atoms, the assignment of symbolic
+MMFF atom types takes place in two stages.  In the first, a provisional atom
+type is assigned based on local connectivity.  In the second, aromatic systems
+are perceived, and properly qualified aromatic atom types are assigned based on
+ring size and, for five-membered rings, on the position within the ring.
+Information in this file is used to make the proper correspondence between
+provisional and final (aromatic) atom types.  As this file is not described in
+any of the papers in this series, we give an excerpt below:</p><p>
+</p><p></p><pre>*
+*	     Copyright (c) Merck and Co., Inc., 1994, 1995
+*			All Rights Reserved
+*
+* MMFF AROMATIC SYMBOLIC TYPES VS ORIGINALLY ASSIGNED TYPES
+* 
+* OLD	AROM	AT    RING	       IM	N5
+*TYPE	TYPE	NUM   SIZE     L5      CAT    ANION
+C*	CB	6	6	0	0	0    
+N*	NPYD	7	6	0	0	0     
+NCN+	NPD+	7	6	0	0	0     
+N+=C	NPD+	7	6	0	0	0     
+N=+N	NPD+	7	6	0	0	0     
+N2OX	NPOX	7	6	0	0	0     
+*
+C*	C5A	6	5	2	0	0
+C*	C5B	6	5	3	0	0
+C*	C5	6	5	4	0	0
+N*	NPYL	7	5	1	0	0
+N*	N5A	7	5	2	0	0
+N*	N5B	7	5	3	0	0
+N*	N5	7	5	4	0	0
+CNN+	CIM+	6	5	2	1	0
+CNN+	CIM+	6	5	3	1	0
+CNN+	CIM+	6	5	4	1	0
+<p></p></pre>
+As in all the MMFF parameter files, lines beginning with a "*" are comment
+lines.  The column labeled "L5" refers, in the case of 5-ring systems, to the
+position of the atom in question relative to the unique pi-lone-pair containing
+heteroatom (which itself occupies position "1"); a "4" is an artificial entry
+that is assigned when no such unique heteroatom exists, as for example occurs
+in imidazolium cations and in tetrazole anions.  An entry of "1" in the "IM
+CAT" or "N5 ANION" column must also be matched for such ionic species to
+convert the "OLD" (preliminary) to "AROM" (aromatic) symbolic atom type.  Note:
+in matching the "OLD" symbolic atom types, an "exact" match is first attempted.
+If this match fails, a wild-carded match, using for example "C*" is then
+employed.<p>
+</p><p>
+     <b>4. MMFFHDEF.PAR.</b> Symbolic atom types for hydrogen atoms are derived
+from the atom types of the parent non-hydrogen to which each is attached (a
+special hard-coded provision is made for recognizing molecular hydrogen).  This
+file provides the information needed to make the proper correspondence.  It
+lists the MMFF symbolic atom type for the parent atom and the symbolic atom
+type to be assigned to the attached hydrogen.  </p><p>
+</p><p>
+     <b>5. MMFFPROP.PAR.</b>  This file specifies the chemical and geometric
+properties associated with each of the numeric MMFF atom types.  This
+information is described in the "MMFF94 Atom Types and Associated Properties" 
+section of Paper V<a href="#fn3">[3]</a>.  The
+contents of the file are displayed in Table I of that paper.</p><p>
+</p><p>
+     <b>6. MMFFBOND.PAR.</b> This file supplies parameters for bond-stretching
+interactions.  An abridged version is given in Table III of Paper III <a href="#fn4">[4]</a>.</p><p>
+</p><p>
+     <b>7. MMFFBNDK.PAR.</b> This file supplies parameters used in the
+empirical rule for bond-stretching force constants discussed in the "Extension 
+of Parameterization for Bond Stretching" section of
+Paper V <a href="#fn3">[3]</a>.  These empirical-rule parameters are listed in
+Table V of that paper.</p><p>
+</p><p>
+     <b>8. MMFFANG.PAR.</b> This file supplies parameters for angle-bending
+interactions.  An abridged version is given in Table IV of Paper III <a href="#fn4">[4]</a>.</p><p>
+</p><p>
+     <b>9. MMFFSTBN.PAR.</b> This file supplies parameters for stretch-bend
+interactions.  An abridged version is given in Table V of Paper III <a href="#fn4">[4]</a>.</p><p>
+</p><p>
+     <b>10. MMFFDFSB.PAR.</b> This file supplies default parameters for
+stretch-bend interactions that are used when specific parameters are not found
+in the MMFFSTBN.PAR file.  See the "Extension of Parameterization for
+Stretch-Bend Interactions" section and Table VII of Paper V <a href="#fn3">[3]</a>.</p><p>
+</p><p>
+     <b>11. MMFFOOP.PAR.</b> This file supplies parameters for out-of-plane
+bending interactions.  An abridged version is given in Table VI of Paper III <a href="#fn4">[4]</a>.</p><p>
+</p><p>
+     <b>12. MMFFTOR.PAR.</b> This file supplies parameters for torsion
+interactions.  An abridged version is given in Table V of Paper IV <a href="#fn2">[2]</a>.</p><p>
+</p><p>
+     <b>13. MMFFVDW.PAR.</b> This file supplies parameters for van der Waals
+interactions.  An abridged version is given in Table III of Paper II <a href="#fn5">[5]</a>.</p><p>
+</p><p>
+     <b>14. MMFFCHG.PAR.</b> This file supplies bond-charge-increment
+parameters used to construct the partial atomic charges employed in calculating
+electrostatic interactions.  An abridged version is given Table IV of Paper
+II <a href="#fn5">[5]</a>.</p><p>
+</p><p>
+     <b>15. MMFFPBCI.PAR.</b> This file supplies
+"partial-bond-charge-increment" parameters used in the empirical rule for
+bond-charge-increment parameters described in the "Extension of Parameterization
+for Electrostatic Interactions" section of Paper V <a href="#fn3">[3]</a>.  It also specifies the "formal charge sharing" parameters
+discussed in the same section of that paper.  The file contents are listed in Table
+III of the same paper.  </p><p>
+<b></b></p><p><b>
+     16. MMFF93SUP.PAR. </b>This file provides the values used for two
+out-of-plane and seventy-one torsion parameters in the earlier "MMFF93" version
+of the MMFF force field.</p><p>
+</p><p>
+</p><hr>
+<a name="fn1">[1]</a> The MMFF94 parameters are available in computer readable
+form on the Internet via the <i>J. Comput. Chem.</i> Home Page at
+<a href="http://journals.wiley.com/jcc/index.html">
+http://journals.wiley.com/jcc/index.html</a> or directly via anonymous ftp at
+<a href="ftp://ftp.wiley.com/public/journals/jcc/suppmat/17/490/MMFF-I_AppendixB.ascii">ftp://ftp.wiley.com/public/journals/jcc/suppmat/17/490/MMFF-I_AppendixB.ascii</a><p>
+<a name="fn2">[2]</a> Paper IV: T. A. Halgren and R. B. Nachbar, <i>J. Comput.
+Chem.</i>, <b>17</b>, 587-615 (1996).</p><p>
+<a name="fn3">[3]</a> Paper V: T. A. Halgren, <i>J. Comput. Chem.</i>, <b>17</b>, 616-641
+(1996).</p><p>
+<a name="fn4">[4]</a> Paper III: T. A. Halgren, <i>J. Comput. Chem.</i>, <b>17</b>, 553-586
+(1996).</p><p>
+<a name="fn5">[5]</a> Paper II: T. A. Halgren, <i>J. Comput. Chem.</i>,<b>17</b>, 
+520-552 (1996).
+
+</p></body></html>

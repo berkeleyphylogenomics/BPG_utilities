@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/javajs/api
+END
+ZInputStream.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/javajs/api/ZInputStream.js
+END
+PlatformViewer.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/javajs/api/PlatformViewer.js
+END
+JSONEncodable.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/javajs/api/JSONEncodable.js
+END
+GenericMouseInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/javajs/api/GenericMouseInterface.js
+END
+GenericColor.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/javajs/api/GenericColor.js
+END
+EventManager.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/javajs/api/EventManager.js
+END
+HTMLElement.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/javajs/api/HTMLElement.js
+END
+GenericPlatform.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/javajs/api/GenericPlatform.js
+END
+GenericMenuInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/javajs/api/GenericMenuInterface.js
+END
+SwingController.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/javajs/api/SwingController.js
+END
+JSInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/javajs/api/JSInterface.js
+END
+GenericFileInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/javajs/api/GenericFileInterface.js
+END
+HTMLWindowEvent.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/javajs/api/HTMLWindowEvent.js
+END
+BytePoster.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/javajs/api/BytePoster.js
+END
+FontManager.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/javajs/api/FontManager.js
+END

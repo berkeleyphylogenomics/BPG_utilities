@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/exception
+END
+JDXSourceException.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/exception/JDXSourceException.js
+END
+SourceTypeUnsupportedException.js
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/exception/SourceTypeUnsupportedException.js
+END
+LDRNotFoundException.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/exception/LDRNotFoundException.js
+END
+JSpecViewException.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/exception/JSpecViewException.js
+END
+SVGException.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/exception/SVGException.js
+END
+TabularDataSetException.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/exception/TabularDataSetException.js
+END
+ScalesIncompatibleException.js
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/exception/ScalesIncompatibleException.js
+END

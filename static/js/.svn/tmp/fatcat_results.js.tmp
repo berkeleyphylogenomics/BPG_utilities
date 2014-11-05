@@ -1,0 +1,322 @@
+function qtipStyle(obj) {
+    return _.defaults(obj, {
+        position: {
+            my: 'top left',
+            target: 'mouse',
+            viewport: $j(window), // Keep it on-screen at all times if possible
+            adjust: { x: 10,  y: 10 }
+        },
+        hide: { fixed: true },
+        style: { classes: 'ui-tooltip-shadow', widget: true, width: '400px', 
+                tip: {corner: 'topLeft', color:false}, border: {
+            width: 1,
+            radius: 1,
+            color: 'black'
+        }},
+    });
+}
+
+var pfam_map_args = {
+    masterLength: masterSequenceLength,
+    domainCallback: function(domain, dom_rect) {
+        var content = domain.shortName + 
+            " (" + domain.pfam_accession + ")<br>Alignment: " 
+            + domain.alignment_from.toString() + " - " + 
+            domain.alignment_to.toString() + "<br>E-value: " + 
+            domain.evalue.toExponential() + "<br>" + domain.description;
+        $j(dom_rect.node).qtip(qtipStyle({content: content}));
+    }
+    //domainHeight: 140
+};
+pfam_map_args.domains = pfam_domains;
+
+// debounce window resize
+var debouncedResize = _.debounce(function(e) {
+    if (!($j('#family-matches').is(':hidden'))) {
+        var w = $j('#family-matches .hitmap-table').width() - 147 - 10;  // for padding and stuff
+        // resize the family-matches widgets
+        $j('#family-matches .hitmap-table div').width(w);
+        $j('#family-matches-pfam').pfammap("refresh");
+        $j('#family-matches-query').queryline("refresh");
+        $j('#family-matches-pfacts').alignmentmap("refresh");
+        $j('#family-matches .hitmap-table tr td:first-child').width(147);
+    }
+    else if (!($j('#enclosing-clades').is(':hidden'))) {
+        var w = $j('#enclosing-clades .hitmap-table').width() - 147 - 10;  // for padding and stuff
+        // resize the family-matches widgets
+        $j('#enclosing-clades .hitmap-table div').width(w);
+        $j('#enclosing-clades-pfam').pfammap("refresh");
+        $j('#enclosing-clades-query').queryline("refresh");
+        $j('#enclosing-clades-pfacts').alignmentmap("refresh");
+        $j('#enclosing-clades .hitmap-table tr td:first-child').width(147);
+    }
+    else if (!($j('#distant-clades').is(':hidden'))) {
+        var w = $j('#distant-clades .hitmap-table').width() - 147 - 10;  // for padding and stuff
+        // resize the family-matches widgets
+        $j('#distant-clades .hitmap-table div').width(w);
+        $j('#distant-clades-pfam').pfammap("refresh");
+        $j('#distant-clades-query').queryline("refresh");
+        $j('#distant-clades-pfacts').alignmentmap("refresh");
+        $j('#distant-clades .hitmap-table tr td:first-child').width(147);
+    }
+    else if (!($j('#results-summary').is(':hidden'))) {
+        //var w = $j('#results-summary .hitmap-table').width() - 147 - 10;
+        //$j('#results-summary .hitmap-table div').width(w);
+        $j('#results-summary-pfam').pfammap('refresh');
+        //$j('#results-summary .hitmap-table tr td:first-child').width(147);
+    }
+}, 500);
+
+// this is dumb
+
+function update_widgets() {
+    if (!($j('#family-matches').is(':hidden'))) {
+        var w = $j('#family-matches .hitmap-table').width() - 147 - 10;  // for padding and stuff
+        // resize the family-matches widgets
+        $j('#family-matches .hitmap-table div').width(w);
+        $j('#family-matches-pfam').pfammap("refresh");
+        $j('#family-matches-query').queryline("refresh");
+        $j('#family-matches-pfacts').alignmentmap("refresh");
+        $j('#family-matches .hitmap-table tr td:first-child').width(147);
+    }
+    else if (!($j('#enclosing-clades').is(':hidden'))) {
+        var w = $j('#enclosing-clades .hitmap-table').width() - 147 - 10;  // for padding and stuff
+        // resize the family-matches widgets
+        $j('#enclosing-clades .hitmap-table div').width(w);
+        $j('#enclosing-clades-pfam').pfammap("refresh");
+        $j('#enclosing-clades-query').queryline("refresh");
+        $j('#enclosing-clades-pfacts').alignmentmap("refresh");
+        $j('#enclosing-clades .hitmap-table tr td:first-child').width(147);
+    }
+    else if (!($j('#distant-clades').is(':hidden'))) {
+        var w = $j('#distant-clades .hitmap-table').width() - 147 - 10;  // for padding and stuff
+        // resize the family-matches widgets
+        $j('#distant-clades .hitmap-table div').width(w);
+        $j('#distant-clades-pfam').pfammap("refresh");
+        $j('#distant-clades-query').queryline("refresh");
+        $j('#distant-clades-pfacts').alignmentmap("refresh");
+        $j('#distant-clades .hitmap-table tr td:first-child').width(147);
+    }
+    else if (!($j('#results-summary').is(':hidden'))) {
+        //var w = $j('#results-summary .hitmap-table').width() - 147 - 10;
+        //$j('#results-summary .hitmap-table div').width(w);
+        $j('#results-summary-pfam').pfammap('refresh');
+        //$j('#results-summary .hitmap-table tr td:first-child').width(147);
+    }
+}
+
+$j(document).ready(function() {
+    $j( "#left-tabs" ).tabs({
+        //'disabled': disabledArray,
+        'create': update_widgets,
+        'show':  update_widgets
+    }).addClass('ui-tabs-vertical ui-helper-clearfix');
+    $j( "#left-tabs li").removeClass('ui-corner-top').addClass('ui-corner-left');
+    // Initialize widgets for the summary tab
+    $j('#results-summary-pfam').pfammap(pfam_map_args);
+    // Initialize widgets for family matches tab
+    $j('#family-matches-pfam').pfammap(pfam_map_args);
+    $j('#family-matches-query').queryline({masterLength:masterSequenceLength});
+    // Initialize pfam map for distant clades tab
+    $j('#distant-clades-pfam').pfammap(pfam_map_args);
+    $j('#distant-clades-query').queryline({masterLength:masterSequenceLength});
+
+    // Initialize pfam map for enclosing clades tab
+    $j('#enclosing-clades-pfam').pfammap(pfam_map_args);
+    $j('#enclosing-clades-query').queryline({masterLength:masterSequenceLength});
+    
+
+    // Initialize datatable for family matches
+    var familyMatchesTable = $j(' .family-matches-table ').dataTable( {
+        "sDom": "t<'row'<'span3'i><'span5'p><'span2'r>>",
+        "bServerSide": true,
+        "aaSorting": [[ 4, 'asc' ]],
+        "bDeferRender": true, // maybe better for ajax?
+        "sAjaxSource": '/api/fatcat2/' + jobID + '/family_matches/',
+        'bProcessing': true,
+        "bFilter": false,  
+        "sPaginationType": "bootstrap",
+        "bAutoWidth": false,
+        "oLanguage": {
+            "sLengthMenu": "_MENU_ records per page"
+        },
+        "aoColumns": [
+                {'sWidth': '100px', 'bSearchable': false},
+                {'sWidth': '50px', 'bSearchable': false},
+                {'bSearchable': false},
+                {'bSearchable': false},
+                {'sWidth': '60px', 'bSearchable': false},
+                {'sWidth': '75px', 'bSearchable': false},
+                {'sWidth': '60px', 'bSearchable': false},
+                {'sWidth': '60px', 'bSearchable': false}
+            ],
+        'fnServerData': function (sSource, aoData, fnCallback) {
+            $j.ajax( {
+                'dataType': 'json',
+                'type': 'GET',
+                'url': sSource,
+                'data': aoData,
+                'success': function(result) {
+                    // show processing on the heat map
+                    $j('#family-matches-pfacts').alignmentmap("destroy");
+                    $j('#family-matches .pfacts-loading').show();
+                    $j('#family-matches-pfacts').alignmentmap({
+                        'masterLength': masterSequenceLength,
+                        'matches': result['heatmapData']
+                    });
+                    $j('#family-matches .pfacts-loading').hide();
+                    $j('#family-matches-pfacts').show();
+                    $j('#family-matches-table tbody .tip ').qtip("destroy");
+                    fnCallback(result);
+                }
+            });
+        },
+        'fnDrawCallback': function( oSettings ) {
+            $j(' .family-matches-table tbody .tip ').qtip(qtipStyle({}));
+        }
+    });
+    
+    // Initialize datatable for enclosing clades
+    var enclosingCladesTable = $j(' .enclosing-clades-table ').dataTable( {
+        "sDom": "t<'row'<'span3'i><'span5'p><'span2'r>>",
+        "bServerSide": true,
+        "aaSorting": [[ 5, 'desc' ]],
+        "bDeferRender": true, // maybe better for ajax?
+        "sAjaxSource": '/api/fatcat2/' + jobID + '/enclosing_clades/',
+        'bProcessing': true,
+        "bFilter": false,  
+        "sPaginationType": "bootstrap",
+        "bAutoWidth": false,
+        "oLanguage": {
+            "sLengthMenu": "_MENU_ records per page"
+        },
+        "aoColumns": [
+                {'sWidth': '80px', 'bSearchable': false},
+                {'sWidth': '40px', 'bSearchable': false},
+                {'bSearchable': false},
+                {'bSearchable': false},
+                {'sWidth': '60px', 'bSearchable': false},
+                {'sWidth': '50px', 'bSearchable': false},
+                {'sWidth': '45px', 'bSearchable': false},
+                {'sWidth': '45px', 'bSearchable': false},
+                {'sWidth': '55px', 'bSearchable': false},
+                {'bSearchable': false, 'bSortable':false, 'sWidth': '65px'}
+            ],
+        'fnServerData': function (sSource, aoData, fnCallback) {
+            $j.ajax( {
+                'dataType': 'json',
+                'type': 'GET',
+                'url': sSource,
+                'data': aoData,
+                'success': function(result) {
+                    // show processing on the heat map
+                    $j('#enclosing-clades-pfacts').alignmentmap("destroy");
+                    $j('#enclosing-clades .pfacts-loading').show();
+                    $j('#enclosing-clades-pfacts').alignmentmap({
+                        'masterLength': masterSequenceLength,
+                        'matches': result['heatmapData']
+                    });
+                    $j('#enclosing-clades .pfacts-loading').hide();
+                    $j('#enclosing-clades-pfacts').show();
+                    $j('#enclosing-clades-table tbody .tip ').qtip("destroy");
+                    fnCallback(result);
+                }
+            });
+        },
+        'fnDrawCallback': function( oSettings ) {
+            $j(' .enclosing-clades-table tbody .tip ').qtip(qtipStyle({}));
+        }
+    });
+
+    // Initialize datatable for distant clades
+    var distantCladesTable = $j(' .distant-clades-table ').dataTable( {
+        "sDom": "t<'row'<'span3'i><'span5'p><'span2'r>>",
+        "bServerSide": true,
+        "aaSorting": [[ 6, 'desc' ]],
+        "bDeferRender": true, // maybe better for ajax?
+        "sAjaxSource": '/api/fatcat2/' + jobID + '/distant_clades/',
+        'bProcessing': true,
+        "bFilter": false,  
+        "sPaginationType": "bootstrap",
+        "bAutoWidth": false,
+        "oLanguage": {
+            "sLengthMenu": "_MENU_ records per page"
+        },
+        "aoColumns": [
+                {'sWidth': '20px', 'bSearchable': false},
+                {'sWidth': '80px', 'bSearchable': false},
+                {'sWidth': '40px', 'bSearchable': false},
+                {'bSearchable': false},
+                {'bSearchable': false},
+                {'sWidth': '60px', 'bSearchable': false},
+                {'sWidth': '50px', 'bSearchable': false},
+                {'sWidth': '45px', 'bSearchable': false},
+                {'sWidth': '45px', 'bSearchable': false},
+                {'sWidth': '55px', 'bSearchable': false},
+                {'bSearchable': false, 'bSortable':false, 'sWidth': '65px'}
+            ],
+        'fnServerData': function (sSource, aoData, fnCallback) {
+            $j.ajax( {
+                'dataType': 'json',
+                'type': 'GET',
+                'url': sSource,
+                'data': aoData,
+                'success': function(result) {
+                    // show processing on the heat map
+                    $j('#distant-clades-pfacts').alignmentmap("destroy");
+                    $j('#distant-clades .pfacts-loading').show();
+                    $j('#distant-clades-pfacts').alignmentmap({
+                        'masterLength': masterSequenceLength,
+                        'matches': result['heatmapData']
+                    });
+                    $j('#distant-clades .pfacts-loading').hide();
+                    $j('#distant-clades-pfacts').show();
+                    $j('#distant-clades-table tbody .tip ').qtip("destroy");
+                    fnCallback(result);
+                }
+            });
+        },
+        'fnDrawCallback': function( oSettings ) {
+            $j(' .distant-clades-table tbody .tip ').qtip(qtipStyle({}));
+        }
+    });
+    
+    // Initialize datatable for candidate orthologs
+    var candidateOrthologsTable = $j(' .candidate-orthologs-table ').dataTable( {
+        "sDom": "t<'row'<'span3'i><'span5'p><'span2'r>>",
+        "bServerSide": true,
+        "aaSorting": [[ 6, 'desc' ]],
+        "bDeferRender": true, // maybe better for ajax?
+        "sAjaxSource": '/api/fatcat2/' + jobID + '/candidate_orthologs/',
+        'bProcessing': true,
+        "bFilter": false,  
+        "sPaginationType": "bootstrap",
+        "bAutoWidth": false,
+        "oLanguage": {
+            "sLengthMenu": "_MENU_ records per page"
+        },
+        "aoColumns": [
+                {'sWidth': '25px', 'bSearchable': false},
+                {'sWidth': '25px', 'bSearchable': false},
+                {'sWidth': '55px', 'bSearchable': false},
+                {'bSearchable': false},
+                {'bSearchable': false},
+                {'sWidth': '65px', 'bSearchable': false},
+                {'sWidth': '40px', 'bSearchable': false},
+                {'sWidth': '45px', 'bSearchable': false},
+                {'sWidth': '45px', 'bSearchable': false}
+            ]
+    });
+    
+    // bind click handlers for links that click other links
+    $j(' .jqls ').click(function() {
+        $j( $j(this).data().linkto ).click();
+    });
+
+    // debounce window resize
+    window.addEventListener('resize', debouncedResize, false);
+
+    // apply tooptips
+    $j(".tip").qtip(qtipStyle({})); 
+    
+});

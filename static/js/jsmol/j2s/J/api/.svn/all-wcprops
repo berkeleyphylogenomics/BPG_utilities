@@ -1,0 +1,341 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api
+END
+JmolDomReaderInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolDomReaderInterface.js
+END
+JmolAppConsoleInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolAppConsoleInterface.js
+END
+JmolZipUtility.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolZipUtility.js
+END
+SymmetryInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/SymmetryInterface.js
+END
+JmolStatusListener.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolStatusListener.js
+END
+MOCalculationInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/MOCalculationInterface.js
+END
+Triangulator.js
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/Triangulator.js
+END
+JmolBioResolver.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolBioResolver.js
+END
+JmolScriptEditorInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolScriptEditorInterface.js
+END
+JmolRepaintManager.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolRepaintManager.js
+END
+JmolJSpecView.js
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolJSpecView.js
+END
+JmolScriptManager.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolScriptManager.js
+END
+MepCalculationInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/MepCalculationInterface.js
+END
+SmilesMatcherInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/SmilesMatcherInterface.js
+END
+VolumeDataInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/VolumeDataInterface.js
+END
+JSVInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JSVInterface.js
+END
+JmolCallbackListener.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolCallbackListener.js
+END
+JmolTouchSimulatorInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolTouchSimulatorInterface.js
+END
+JmolSceneGenerator.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolSceneGenerator.js
+END
+JmolAppletInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolAppletInterface.js
+END
+DSSPInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/DSSPInterface.js
+END
+JmolPdfCreatorInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolPdfCreatorInterface.js
+END
+JmolScriptFunction.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolScriptFunction.js
+END
+JmolNavigatorInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolNavigatorInterface.js
+END
+JmolDocument.js
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolDocument.js
+END
+JmolPropertyManager.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolPropertyManager.js
+END
+JmolPatternMatcher.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolPatternMatcher.js
+END
+JmolImageEncoder.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolImageEncoder.js
+END
+PymolAtomReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/PymolAtomReader.js
+END
+JmolMeasurementClient.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolMeasurementClient.js
+END
+JmolGestureServerInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolGestureServerInterface.js
+END
+JmolModulationSet.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolModulationSet.js
+END
+JmolRendererInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolRendererInterface.js
+END
+JmolScriptEvaluator.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolScriptEvaluator.js
+END
+QuantumPlaneCalculationInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/QuantumPlaneCalculationInterface.js
+END
+JmolSelectionListener.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolSelectionListener.js
+END
+JmolParallelProcessor.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolParallelProcessor.js
+END
+JmolAdapterBondIterator.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolAdapterBondIterator.js
+END
+JmolSyncInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolSyncInterface.js
+END
+JmolAbstractButton.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolAbstractButton.js
+END
+JmolViewer.js
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolViewer.js
+END
+MinimizerInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/MinimizerInterface.js
+END
+JmolDataManager.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolDataManager.js
+END
+JmolFilesReaderInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolFilesReaderInterface.js
+END
+JmolLineReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolLineReader.js
+END
+JmolAppAPI.js
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolAppAPI.js
+END
+JmolEnvCalc.js
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolEnvCalc.js
+END
+JmolAdapterAtomIterator.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolAdapterAtomIterator.js
+END
+JmolAdapterStructureIterator.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolAdapterStructureIterator.js
+END
+JmolNMRInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolNMRInterface.js
+END
+Interface.js
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/Interface.js
+END
+JmolMovieCreatorInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolMovieCreatorInterface.js
+END
+JmolDialogInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolDialogInterface.js
+END
+AtomIndexIterator.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/AtomIndexIterator.js
+END
+JmolAdapter.js
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolAdapter.js
+END
+JmolGraphicsInterface.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/api/JmolGraphicsInterface.js
+END

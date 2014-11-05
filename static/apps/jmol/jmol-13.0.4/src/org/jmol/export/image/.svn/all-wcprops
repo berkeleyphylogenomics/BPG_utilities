@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/export/image
+END
+AviCreator.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/export/image/AviCreator.java
+END
+ImageCreator.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/export/image/ImageCreator.java
+END
+ImageEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/export/image/ImageEncoder.java
+END
+PngEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/export/image/PngEncoder.java
+END
+GifEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/export/image/GifEncoder.java
+END
+ImageSelection.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/export/image/ImageSelection.java
+END
+PpmEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/export/image/PpmEncoder.java
+END

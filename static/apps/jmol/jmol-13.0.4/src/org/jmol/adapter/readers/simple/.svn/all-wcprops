@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/simple
+END
+FoldingXyzReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/simple/FoldingXyzReader.java
+END
+CubeReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/simple/CubeReader.java
+END
+ZMatrixReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/simple/ZMatrixReader.java
+END
+MopacReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/simple/MopacReader.java
+END
+AmpacReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/simple/AmpacReader.java
+END
+MopacArchiveReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/simple/MopacArchiveReader.java
+END
+AlchemyReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/simple/AlchemyReader.java
+END
+GhemicalMMReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/simple/GhemicalMMReader.java
+END
+HyperChemReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/simple/HyperChemReader.java
+END
+JmeReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/simple/JmeReader.java
+END

@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/more
+END
+ForceFieldReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/more/ForceFieldReader.js
+END
+MdTopReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/more/MdTopReader.js
+END
+BinaryReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/more/BinaryReader.js
+END
+JcampdxReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/more/JcampdxReader.js
+END
+MdCrdReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/more/MdCrdReader.js
+END
+Mol2Reader.js
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/more/Mol2Reader.js
+END
+GromacsReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/more/GromacsReader.js
+END
+TlsDataOnlyReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/more/TlsDataOnlyReader.js
+END
+BinaryDcdReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/more/BinaryDcdReader.js
+END

@@ -1,0 +1,378 @@
+/* CSS for FAT-CAT */
+
+/* css for tooltips */
+
+.ui-tooltip-bootstrap {
+    background-color:white;
+    font-family:Verdana;
+    padding:10px;
+    border:1px solid black;
+    width:300px;
+}
+.qtip-content {
+    text-align:center;
+}
+/* index.html */
+.main-content {
+    font-family:Verdana;
+    margin-left:25px;
+    margin-right:25px;
+    margin-bottom:25px;
+    float:left;
+}
+.main-content .alert {
+    float:left;
+    margin-top:5px;
+    margin-bottom:5px;
+    clear:both;
+    width:575px;
+}
+#fatcat-submit {width:200px;}
+.fatcat-title {font-size:28px;margin-top:0px;}
+.require {color:red;}
+.main-content hr {
+    float:left;
+    width:100%;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+.parameters {
+    display:none;
+    background:#dee7ec;
+    border-radius:6px;
+    -webkit-border-radius:6px;
+    -moz-border-radius:6px;
+    -webkit-box-shadow: 4px 4px 4px rgba(0,0,0,0.4);
+    -moz-box-shadow:4px 4px 4px rgba(0,0,0,0.4);
+    box-shadow:4px 4px 4px rgba(0,0,0,0.4);
+    padding-left:15px;
+    padding-right:15px;
+    padding-top:10px;
+    padding-bottom:10px;
+    margin-top:10px;
+    margin-bottom:15px;
+    margin-right:5px;
+    clear:both;
+}
+.submitting-indicator {display:none;margin-left:8px;}
+.left-logo {
+    width:750px;
+    float:left;
+}
+.left-logo table tr td:nth-child(2) {
+    padding-left:15px;
+}
+.left-logo table tr td:nth-child(3) {
+    padding-left:15px;
+}
+.left-logo table tr td:nth-child(4) {
+    padding-left:15px;
+}
+.left-logo table {margin-bottom:5px;}
+.last-line {margin-bottom:5px;}
+.first-line {margin-bottom:5px;}
+.right-logo {
+    float:left;
+    margin-top:14px;
+    margin-left:20px;
+}
+.main-content input {
+    font-size:13px;
+    height:14px;
+    width:440px;
+}
+#fasta-input {
+    font-family:monospace;
+    font-size:12px;
+    width:440px;
+}
+.form-submission-buttonset {
+    float:left;
+    margin-top:28px;
+    margin-left:22px;
+}
+.input-bound-descriptions {
+    font-size:11px;
+    font-style:italic;
+}
+.fatcat-input-form tr td:nth-child(1) {
+    vertical-align:top;
+    text-align:right;
+    width:142px;
+}
+.fatcat-input-form tr td:nth-child(2) {
+    vertical-align:top;
+    padding-left:20px;
+}
+.fatcat-input-form tr td:nth-child(3) {
+    vertical-align:top;
+    padding-left:15px;
+}
+.single-line-input {
+    padding-bottom:20px;
+}
+.double-line-input {
+    padding-bottom:10px;
+}
+.preset-params-radio {
+    float:left;
+    margin-top:2px;
+    width:367px;
+    margin-right:22px;
+}
+.preset-params-radio button {
+    padding:2px 4px;
+    font-size:12px !important;
+}
+.preset-params-top {margin-top:2px !important;margin-bottom:6px !important;}
+.preset-params-bottom {margin-top:6px !important; margin-bottom:2px !important;}
+.preset-params-radio hr:nth-child(3) {margin-top:6px;margin-bottom:2px;}
+.inline-message {}
+.params-auto {float:left;}
+.params-preset-explanation {font-size:12px;float:left;}
+.params-preset-text {font-size:12px;float:left;}
+.left-logo p:last-child {margin-bottom:0px;}
+.main-content hr:first-child {margin-top:0px;}
+.view-hide-advanced-parameters {float:left;margin-top:10px;clear:both;}
+.fatcat-buttonset {float:left;clear:both;}
+.parameter-stage {
+    background:white;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:1px;
+    margin-bottom:7px;
+    margin-top:7px;
+    border-radius:6px;
+    -webkit-border-radius:6px;
+    -moz-border-radius:6px;
+    -box-shadow:4px 4px 4px rgba(0,0,0,0.4);
+    -webkit-box-shadow:4px 4px 4px rgba(0,0,0,0.4);
+    -moz-box-shadow:4px 4px 4px rgba(0,0,0,0.4);
+}
+.parameter-stage h4, .parameter-stage h5 {
+    color:#41677A;
+}
+.parameter-stage h4 {font-size:15px;line-height:15px;margin-top:5px;margin-bottom:5px;}
+.parameters input {
+    width:100px;
+    margin-top:2px;
+    padding-top:0px;
+    padding-bottom:1px;
+    text-align:right;
+    height:18px;
+    margin-bottom:0px;
+}
+.fatcat-header {clear:both;float:left;}
+.fatcat-input-form {float:left;}
+.stage-parameter-table tr td:first-child {
+    text-align:right;
+    font-weight:bold;
+    font-size:12px;
+    vertical-align:center;
+    padding-top:4px;
+    padding-bottom:4px;
+}
+.stage-parameter-table tr td:nth-child(2) {
+    padding-left:20px;
+    vertical-align:center;
+}
+.stage-parameter-table tr td:nth-child(3) {
+    padding-left:10px;
+    vertical-align:center;
+}
+.param-left-align {text-align:left !important;}
+.stage-parameter-table input {margin-top:0px;}
+.stage-parameter-table {margin-bottom:5px;}
+.substage {
+    text-align:left !important;
+    font-size:13px;
+    color:#41677A;
+}
+.stage-description {font-size:12px; margin-bottom:5px;}
+.stage2 table tr td:first-child {width:210px;}
+.stage2 table tr td:nth-child(2) {width:115px;}
+.substage-outside {
+    font-size:13px;
+    color:#41677A;
+    font-weight:bold;
+}
+.indentation {margin-left:20px;margin-bottom:3px;}
+.tiny {font-size:11px;}
+.enclosing-clade-group {margin-left:20px;}
+.enclosing-clade-group select {
+    padding:0px;
+    width:40px;
+    font-size:12px;
+    margin-top:1px;
+    height:20px;
+    line-height:20px;
+    margin-bottom:3px;
+}
+.bold-text {font-weight:bold;}
+.checkboxes {
+    margin-left:20px;
+    margin-top:4px;
+}
+.checkbox {clear:both;font-weight:bold;margin-bottom:2px;font-size:12px;}
+.checkbox-line {float:left;}
+.checkbox-line .checkbox {
+    float:left;
+    margin-right:15px;
+    margin-top:1px;
+    margin-right:0px;
+}
+.checkbox-line p {
+    float:left;
+    margin-top:2px;
+    margin-bottom:0px;
+}
+.enclosing-clade-group input {
+    width:35px;
+}
+.checkboxes input[type="checkbox"] {
+    height:14px;
+    margin-top:3px;
+}
+.ellis-island input[type="checkbox"] {
+    height:14px;
+    margin-top:3px;
+}
+#stage2-enclosing-clade-kerf-threshold {
+    float:left;
+    margin-left:5px;
+    margin-right:5px;
+    margin-top:0px;
+}
+#example-input {font-size:12px;margin-bottom:0px;}
+.no-bottom-margin {margin-bottom:0px;}
+.fatcat-error-color {color:#b94a48 !important;}
+.form-error {border-color:#953b39 !important;-webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392 !important;-moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392 !important;box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392 !important;}
+
+/* progress.html */
+.instruction {
+    width:950px;
+}
+.progress {
+    margin-bottom:5px;
+    height:35px;
+ }
+.left-title {
+    float:left;
+    min-width:745px;
+    margin-right:30px;
+}
+.right-title {
+    float:left;
+}
+.fatcat-progress-title {
+    float:left;
+    width:100%;
+    margin-bottom:10px;
+}
+#status {
+    font-weight:bold;
+}
+.fasta-sequence {
+    float:left;
+    margin-top:5px;
+}
+.fasta-line {
+    margin-bottom:5px;
+    font-family:monospace;
+    font-size:12px;
+    line-height:12px;
+}
+#stage1-families-table {display:none;}
+#stage2-families-table {display:none;}
+.progress-job-summary tr td:first-child {font-weight:bold;font-size:12px;vertical-align:top;text-align:right; padding-right:15px;width:165px;}
+.progress-job-summary tr td:nth-child(2) {text-align:left;vertical-align:center;}
+#job-run-time-display {font-size:12px;}
+/* results.html */
+.job-summary-table tr td:first-child {font-weight:bold;font-size:12px;vertical-align:top;text-align:right;padding-right:15px;}
+.job-summary-table tr td:nth-child(2) {text-align:left;}
+.job-summary-table tr td:nth-child(3) {text-align:left;}
+.summary-main-header {font-size:14px;color:#41677a;font-weight:bold;margin-bottom:0px;}
+.summary-sub-header {text-align:left !important;font-weight:bold;padding-bottom:5px;padding-top:5px;}
+.parameter-summary-table tr td:first-child {text-align:right;width:250px;}
+.parameter-summary-table tr td:nth-child(2) {text-align:right;padding-left:10px;width:57px;}
+.colored-header {color:#41677a;}
+.hitmap-table {width:100%;}
+.hitmap-table tr td:nth-child(1) div{width:145px !important;font-size:11px;font-weight:bold;text-align:right;}
+.hitmap-table tr td:nth-child(2) {text-align:left;padding-left:10px;padding-top:4px;}
+.family-matches-table {width:100%;font-size:11px;}
+.family-matches-table thead th {border-bottom:1px solid black;}
+.enclosing-clades-table {width:100%;font-size:11px;}
+.tree-image {}
+.annotation-image {}
+.ec-support-links {margin-top:0px !important;margin-bottom:0px !important;}
+.dc-support-links {margin-top:0px !important;margin-bottom:0px !important;}
+.distant-clades-table {width:100%;font-size:11px;}
+.candidate-orthologs-table {width:100%;font-size:11px;}
+.candidate-orthologs-table th {border-bottom:1px solid black;}
+.other-sequence-matches-table {width:100%;font-size:11px;}
+.other-sequence-matches-table th {border-bottom:1px solid black;}
+.results-summary-table {margin-top:10px;}
+.results-summary-table tr td:first-child div {font-size:11px;font-weight:bold;text-align:right;width:235px;}
+.results-summary-table tr td:nth-child(2) {padding-left:15px;}
+.highlighted-row {background-color:#BDDBFD;}
+.confidence {color:red;}
+#descriptions {padding-left:60px;padding-right:60px;display:none;clear:both;}
+#descriptions table td {padding-bottom:2px;padding-top:2px;}
+#descriptions table tr td:first-child {width:250px;}
+#descriptions table tr td:nth-child(2) {width:35px;padding-left:10px;}
+#descriptions table tr th:nth-child(2) {width:35px;padding-left:10px;}
+#descriptions table th {padding-bottom:2px;padding-top:2px;}
+#descriptions table {font-size:11px;}
+#descriptions table thead th {border-bottom:1px solid black;border-top:1px solid black;}
+#descriptions .dataTables_paginate {float:left;margin-left:40px;margin-bottom:10px;}
+#genes {padding-left:60px;padding-right:60px;display:none;clear:both;}
+#genes table td {padding-bottom:2px;padding-top:2px;}
+#genes table tr td:first-child {width:250px;}
+#genes table tr td:nth-child(2) {width:35px;padding-left:10px;}
+#genes table tr th:nth-child(2) {width:35px;padding-left:10px;}
+#genes table th {padding-bottom:2px;padding-top:2px;}
+#genes table {font-size:11px;}
+#genes table thead th {border-bottom:1px solid black;border-top:1px solid black;}
+#genes .dataTables_paginate {float:left;margin-left:40px;margin-bottom:10px;}
+#ec {padding-left:60px;padding-right:60px;display:none;clear:both;}
+#ec table td {padding-bottom:2px;padding-top:2px;}
+#ec table tr td:first-child {width:250px;}
+#ec table tr td:nth-child(2) {width:35px;padding-left:10px;}
+#ec table tr th:nth-child(2) {width:35px;padding-left:10px;}
+#ec table th {padding-bottom:2px;padding-top:2px;}
+#ec table {font-size:11px;}
+#ec table thead th {border-bottom:1px solid black;border-top:1px solid black;}
+#ec .dataTables_paginate {float:left;margin-left:40px;margin-bottom:10px;}
+.consensus-uniprot-description-header {font-size:11px;clear:both;}
+.consensus-uniprot-description-header tr td:first-child {text-align:right; width:235px;font-weight:bold;}
+.consensus-uniprot-description-header tr td:nth-child(2) {padding-left:15px;}
+.consensus-uniprot-gene-header {font-size:11px;clear:both;}
+.consensus-uniprot-gene-header tr td:first-child {text-align:right; width:235px;font-weight:bold;}
+.consensus-uniprot-gene-header tr td:nth-child(2) {padding-left:15px;}
+.consensus-uniprot-ec-header {font-size:11px;clear:both;}
+.consensus-uniprot-ec-header tr td:first-child {text-align:right; width:235px;font-weight:bold;}
+.consensus-uniprot-ec-header tr td:nth-child(2) {padding-left:15px;}
+.go-annotation-table {font-size:11px;clear:both;}
+.go-annotation-table tr td:first-child {text-align:right; width:235px; font-weight:bold; vertical-align:top;}
+.go-annotation-table tr td:nth-child(2) {padding-left:15px;}
+.go-summarylist {list-style:none;margin-left:0px;margin-bottom:5px;}
+.go-summarylist table {width:100%;}
+.go-summarylist table tr th {text-align:left; font-weight:bold; border-bottom:1px solid black;padding-left:5px}
+.go-summarylist table tr th:first-child {border-right:1px solid gray; width:95px;}
+.go-summarylist table tr th:nth-child(2) {border-right:1px solid gray;}
+.go-summarylist table tr th:nth-child(3) {border-right:1px solid gray;}
+.go-summarylist table tr td:first-child {text-align:left; font-weight:normal; vertical-align:baseline;border-right:1px solid gray;padding-right:3px; width:95px;}
+.go-summarylist table tr td:nth-child(2) {padding-left:5px; vertical-align:baseline; border-right:1px solid gray; padding-right:3px;}
+.go-summarylist table tr td:nth-child(3) {padding-left:5px; vertical-align:baseline; border-right:1px solid gray; padding-right: 3px;}
+.go-summarylist table tr td:nth-child(4) {padding-left:5px; vertical-align:baseline; padding-right:3px;}
+.ui-summarylist-show-more {font-style:italic;}
+.ui-summarylist-show-fewer {font-style:italic;}
+.go-summarylist.row.span3 {vertical-align:middle;}
+.go-summarylist.row.span5 {vertical-align:middle;}
+.go-summarylist.row.span2 {vertical-align:middle;}
+.go-annotation-view-hide-selector {cursor:pointer;}
+.cluster-taxon-table td {border:none;padding:0px;vertical-align:middle;}
+.cluster-link {padding-left:5px;color:red !important;text-decoration:none !important;}
+.ortholog-cluster-row {padding-left:50px !important; padding-right:50px !important; padding-top:7px !important; padding-bottom:7px !important; background-color:#DEE7EC;}
+.ortholog-cluster-row h4 {color:#41677A; margin-top:5px;padding-left:10px;}
+.cluster-detail {background-color:white !important;border:1px solid black;padding-left:3px;padding-right:3px;display:none;}

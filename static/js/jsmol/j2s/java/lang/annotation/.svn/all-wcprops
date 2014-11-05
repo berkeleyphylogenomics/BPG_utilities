@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/lang/annotation
+END
+Target.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/lang/annotation/Target.js
+END
+Documented.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/lang/annotation/Documented.js
+END
+Retention.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/lang/annotation/Retention.js
+END
+RetentionPolicy.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/lang/annotation/RetentionPolicy.js
+END
+IncompleteAnnotationException.js
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/lang/annotation/IncompleteAnnotationException.js
+END
+Annotation.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/lang/annotation/Annotation.js
+END
+ElementType.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/lang/annotation/ElementType.js
+END
+Inherited.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/lang/annotation/Inherited.js
+END
+AnnotationFormatError.js
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/lang/annotation/AnnotationFormatError.js
+END
+AnnotationTypeMismatchException.js
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/lang/annotation/AnnotationTypeMismatchException.js
+END

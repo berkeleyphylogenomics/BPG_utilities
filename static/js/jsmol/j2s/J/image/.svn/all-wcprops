@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/image
+END
+PngEncoder.js
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/image/PngEncoder.js
+END
+GifEncoder.js
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/image/GifEncoder.js
+END
+CRCEncoder.js
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/image/CRCEncoder.js
+END
+PdfEncoder.js
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/image/PdfEncoder.js
+END
+Jpg64Encoder.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/image/Jpg64Encoder.js
+END
+package.js
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/image/package.js
+END
+PpmEncoder.js
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/image/PpmEncoder.js
+END
+AviCreator.js
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/image/AviCreator.js
+END
+JpgEncoder.js
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/image/JpgEncoder.js
+END
+ImageEncoder.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/image/ImageEncoder.js
+END

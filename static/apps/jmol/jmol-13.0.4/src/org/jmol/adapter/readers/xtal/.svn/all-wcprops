@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/xtal
+END
+MagResReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/xtal/MagResReader.java
+END
+CastepReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/xtal/CastepReader.java
+END
+Wien2kReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/xtal/Wien2kReader.java
+END
+CrystalReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/xtal/CrystalReader.java
+END
+EspressoReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/xtal/EspressoReader.java
+END
+ShelxReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/xtal/ShelxReader.java
+END
+GulpReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/xtal/GulpReader.java
+END
+VaspOutcarReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/xtal/VaspOutcarReader.java
+END
+SiestaReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/xtal/SiestaReader.java
+END
+AimsReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/xtal/AimsReader.java
+END
+DmolReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/xtal/DmolReader.java
+END

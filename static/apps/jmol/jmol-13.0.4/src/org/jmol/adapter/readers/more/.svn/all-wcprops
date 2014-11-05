@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/more
+END
+TlsDataOnlyReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/more/TlsDataOnlyReader.java
+END
+BinaryDcdReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/more/BinaryDcdReader.java
+END
+P2nReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/more/P2nReader.java
+END
+ForceFieldReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/more/ForceFieldReader.java
+END
+PqrReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/more/PqrReader.java
+END
+MdTopReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/more/MdTopReader.java
+END
+BinaryReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/more/BinaryReader.java
+END
+JcampdxReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/more/JcampdxReader.java
+END
+MdCrdReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/more/MdCrdReader.java
+END
+Mol2Reader.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/more/Mol2Reader.java
+END
+GromacsReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/bpg_static/!svn/ver/366/ohana/TRUNK/apps/jmol/jmol-13.0.4/src/org/jmol/adapter/readers/more/GromacsReader.java
+END

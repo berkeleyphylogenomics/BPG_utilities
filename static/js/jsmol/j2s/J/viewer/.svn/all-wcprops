@@ -1,0 +1,143 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/viewer
+END
+DataManager.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/viewer/DataManager.js
+END
+TransformManager.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/viewer/TransformManager.js
+END
+TransformManager10.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/viewer/TransformManager10.js
+END
+ActionManager.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/viewer/ActionManager.js
+END
+TransformManager11.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/viewer/TransformManager11.js
+END
+ColorManager.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/viewer/ColorManager.js
+END
+FileManager.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/viewer/FileManager.js
+END
+AnimationManager.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/viewer/AnimationManager.js
+END
+StateManager.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/viewer/StateManager.js
+END
+StatusManager.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/viewer/StatusManager.js
+END
+PropertyManager.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/viewer/PropertyManager.js
+END
+SelectionManager.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/viewer/SelectionManager.js
+END
+GlobalSettings.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/viewer/GlobalSettings.js
+END
+JmolStateCreator.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/viewer/JmolStateCreator.js
+END
+OutputManagerJS.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/viewer/OutputManagerJS.js
+END
+MouseState.js
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/viewer/MouseState.js
+END
+OutputManager.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/viewer/OutputManager.js
+END
+ModelManager.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/viewer/ModelManager.js
+END
+ShapeManager.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/viewer/ShapeManager.js
+END
+JC.js
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/viewer/JC.js
+END
+JSpecView.js
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/viewer/JSpecView.js
+END
+StateCreator.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/viewer/StateCreator.js
+END
+Viewer.js
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/viewer/Viewer.js
+END

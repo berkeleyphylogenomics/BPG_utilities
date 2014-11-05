@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xml
+END
+XmlArgusReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xml/XmlArgusReader.js
+END
+XmlChem3dReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xml/XmlChem3dReader.js
+END
+XmlQEReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xml/XmlQEReader.js
+END
+XmlMolproReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xml/XmlMolproReader.js
+END
+XmlVaspReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xml/XmlVaspReader.js
+END
+XmlHandler.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xml/XmlHandler.js
+END
+XmlCmlReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xml/XmlCmlReader.js
+END
+JmolXmlHandler.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xml/JmolXmlHandler.js
+END
+XmlMagResReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xml/XmlMagResReader.js
+END
+XmlXsdReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xml/XmlXsdReader.js
+END
+XmlOdysseyReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xml/XmlOdysseyReader.js
+END
+XmlReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xml/XmlReader.js
+END

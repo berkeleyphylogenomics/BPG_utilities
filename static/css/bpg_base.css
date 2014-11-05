@@ -1,0 +1,485 @@
+@charset "UTF-8";
+/* CSS Document */
+
+#toc {
+    list-style: upper-roman;
+}
+
+#toc ol {
+    list-style: upper-alpha;
+}
+
+.sup_img {
+    height: 75%;
+    width: 75%;
+    margin: 3em 0;
+}
+
+.datatable tbody td, .datatable tbody th {
+    border: 1px solid #000;
+    text-align: center;
+}
+.datatable tbody th {
+    background-color: #ace;
+}
+.datatable tbody td {
+    background-color: #ddd;
+}
+.datatable thead {
+    text-align: center;
+}
+.datatable {
+    border-collapse: collapse;
+    font-size: 80%;
+}
+.datatable tbody th {
+    padding: 0 1em;
+}
+.datatable caption {
+    text-align: left;
+    caption-side: bottom;
+}
+
+body {
+    background-color: #ffffff;
+    margin: 10px;
+    padding: 0;
+    font-size: 90%;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+a img {
+    border: 0;
+}
+
+/* Header */
+#header {
+    height: 120px;
+    margin: 0 300px 20px 300px;
+}
+#site_logo {
+    float: left;
+    margin-left: -300px;
+    width: 300px;
+}
+#kmenu {
+    font-family: arial;
+    font-weight: bold;
+    color: #888888;
+    text-align: center;
+    padding-top: 2em;
+}
+#kmenu ul {
+    list-style: none;
+}
+#kmenu ul li {
+    display: inline;
+}
+#kmenu ul li a {
+    color: #888888;
+    text-decoration: none;
+    margin: 1em;
+}
+#kmenu ul li a:hover {
+    color: #00f;
+    text-decoration: underline;
+}
+#app_logo {
+    float: right;
+    margin-right: -300px;
+    width: 300px;
+}
+.ktitle {
+    text-align: center;
+}
+
+/* following 2 entries are temporary, hopefully */
+#app_logo span {
+    font-size: 3em;
+}
+#app_logo a {
+    color: #000;
+}
+
+/* Top Menu */
+#top_menu {
+    clear: both;
+}
+#top_menu ul.sub_menu, #top_menu ul.main_menu {
+    float: left;
+    clear: both;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#top_menu ul.main_menu li, #top_menu ul.sub_menu li {
+    float: left;
+    margin-right: 1px;
+}
+#top_menu ul.main_menu {
+    margin-left: 10px;
+}
+#top_menu .sub_menu {
+    clear: both;
+    min-height: 8px;
+    background-color: #8ac;
+    width: 100%;
+}
+#top_menu ul.main_menu li a, #top_menu ul.sub_menu li a {
+    float: left;
+    padding: 1px 5px;
+    font: bold 8pt Arial, sans-serif;
+    text-decoration: none;
+    color: #fff;
+}
+#top_menu ul.main_menu li a {
+    background-color: #468;
+    border-top: 1px solid #68a;
+    border-right: 1px solid #246;
+    border-bottom: 1px solid #246;
+    border-left: 1px solid #68a;
+}
+#top_menu ul.sub_menu li a {
+    border-top: 1px solid #8ac;
+    border-right: 1px solid #68a;
+    border-bottom: 1px solid #8ac;
+    border-left: 1px solid #ace;
+}
+#top_menu ul.main_menu li a:hover, #top_menu ul.main_menu li a.viewing {
+    background-color: #8ac;
+    border: 1px solid #8ac;
+}
+#top_menu ul.sub_menu li a:hover, #top_menu ul.sub_menu li a.viewing {
+    color: #468;
+}
+
+#content {
+    clear: both;
+    padding: 16px 0;
+}
+
+/* Footer Menu */
+#footer_menu {
+    clear: both;
+}
+#footer_menu ul.main_menu, #footer_menu ul.sub_menu {
+    width: 100%;
+    float: left;
+    list-style: none;
+    clear: both;
+    margin: 0;
+    padding: 0;
+}
+#footer_menu ul.main_menu {
+    background-color: #468;
+}
+#footer_menu ul.sub_menu {
+    background-color: #8ac;
+}
+#footer_menu ul.main_menu li, #footer_menu ul.sub_menu li {
+    float: left;
+}
+#footer_menu ul.main_menu li a, #footer_menu ul.sub_menu li a {
+    font: bold 7pt Arial, sans-serif;
+    color: #fff;
+    padding: 0 8px;
+    float: left;
+    text-decoration: none;
+}
+#footer_menu ul.main_menu li a.viewing, #footer_menu ul.main_menu li a:hover {
+    color: #8ac;
+}
+#footer_menu ul.sub_menu li a.viewing, #footer_menu ul.sub_menu li a:hover {
+    color: #468;
+}
+
+/* Help Menu */
+ul.help_menu {
+    float: right;
+    list-style: none;
+    background-color: #68A;
+    clear: both;
+    margin: 0;
+    padding: 0;
+}
+ul.help_menu li {
+    float: right;
+}
+ul.help_menu li a {
+    float: right;
+    text-decoration: none;
+    color: #ace;
+    padding: 0 3px;
+    font: bold 7pt Arial, sans-serif;
+}
+ul.help_menu li a:hover {
+    color: #fff;
+}
+
+/* progress bar*/
+.ui-progressbar-value {
+    background-image: url('/static/img/widgets/pbar-ani.gif');
+}
+.stop_progressbar {
+    background-image: url('/static/img/widgets/pbar-stat.gif');
+}
+#execbar {
+    height: 20px;
+}
+
+/* form */
+#advanced_options {
+    background-color: #ccc;
+}
+
+/* display_outfile */
+.display_outfile {
+    margin-top: 8px;
+}
+.display_outfile div {
+    background-color: #111;
+    color: #eee;
+    overflow: scroll;
+    border: 2px solid #68a;
+    padding: 0;
+    margin: 0;
+    font-family: monospace;
+    max-height: 300px;
+}
+.display_outfile div pre {
+    padding: 0;
+    margin: 10px;
+}
+.display_outfile a.collapse {
+    color: #fff;
+    background-color: #68a;
+    text-decoration: none;
+    padding: 0 4px;
+}
+.display_outfile a.expand {
+    color: #468;
+}
+
+/* accordion */
+#execcordion h3 {
+    font-weight: bold;
+}
+
+/* job_info table */
+#execcordion table {
+    border-collapse: collapse;
+}
+#execcordion th, #execcordion td {
+    border: 1px solid black;
+    padding: 2px;
+}
+#execcordion th {
+    background-color: #468;
+    color: #fff;
+}
+#execcordion tr.error td, #exec_header h1.error {
+    background-color: #f00;
+    color: #fff;
+}
+#execcordion tr.info.even td {
+    background-color: #8ac;
+}
+#execcordion tr.info.odd td {
+    background-color: #ace;
+}
+#execcordion tr.step_start td, #execcordion tr.step_stop td {
+    background-color: #aaa;
+}
+
+#remaining_steps h3 {
+    display:block;
+    font-size: 1em;
+    padding:0.5em 0.5em 0.5em 2.2em;
+    background-color: #ccc;
+    color: #aaa;
+    margin: 1px 0 0 0;
+}
+
+#exec_header {
+    background-color: #468;
+    color: #ccc;
+}
+#exec_header h1, #exec_header p.disclaimer {
+    text-align: center;
+    margin: 0;
+}
+#exec_header p.disclaimer a {
+    color: #fff;
+}
+#execbar {
+    position: relative;
+    border: 10px solid #468;
+}
+#execbar span {
+    position: absolute;
+    padding-left: 0.1em;
+    font-weight: bold;
+    color: #246;
+}
+
+.acronym {
+}
+
+#submission_form, #results_box {
+    background-color: #ccc;
+}
+
+#submission_form th {
+    text-align: right;
+}
+
+#timer {
+    font-family: monospace;
+    color: #ace;
+}
+
+/* phyloscope*/
+.phyloscope_heading {font-family: Arial, Helvetica, sans-serif; font-size: 16px; }
+.phyloscope_text {font-family: Arial, Helvetica, sans-serif; font-size: 12px;}
+#treediv {position: relative;}
+
+/* belvu colors */
+.align_high {background-color: #0fffff;}
+.align_moderate {background-color: #56b2de;}
+.align_low {background-color: #c8c8c8;}
+
+/* results page*/
+#results_box {
+    padding: 10px;
+}
+.alignment, #treediv {
+    background-color: #fff;
+    border: 1px solid black;
+}
+.alignment {
+    font-size: 0.8em;
+    font-family: monospace;
+    border-collapse: collapse;
+}
+.alignment .name {
+    text-align: left;
+    padding: 0 1em;
+    border-right: 1px solid black;
+}
+.alignment .start {
+    text-align: right;
+    padding: 0 0.5em;
+    border-right: 1px solid black;
+}
+.alignment .stop {
+    text-align: left;
+    padding: 0 0.5em;
+    border-left: 1px solid black;
+}
+.alignment .stop {
+    text-align: right;
+    padding: 0 0.5em;
+    border-right: 1px solid black;
+}
+.alignment .spacer {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.alignment td {
+    padding: 0;
+    text-align: center;
+}
+
+.errorlist, .error {
+    color: #f00;
+}
+.errorlist {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+/* ref */
+.refs {
+    font-size: 0.75em;
+}
+.refs a:link, .refs a {
+    color: #000;
+    text-decoration: none;
+    background-color: #e8f4ff;
+}
+.refs a:hover {
+    background-color: #ace;
+}
+
+/* pipelist */
+.pipelist li {
+    margin: 0.5em;
+    list-style: lower-roman;
+}
+
+/* dbquery */
+#dbqresults > h1 {
+    font-size: 1.1em;
+    background-color: #a2bedc;
+    padding: 0.2em;
+    border-bottom: 1px solid #728eac;
+    margin-bottom: 2px;
+}
+
+#dbqresults > table {
+    width: 100%;
+}
+
+#dbqresults th, #dbqresults td {
+    text-align: left;
+    background-color: #d3d3d3;
+}
+
+#dbqresults th {
+    border-top: 1px solid #919191;
+    border-bottom: 1px solid #919191;
+}
+
+#dbqresults table a {
+    color: #00f;
+    text-decoration: none;
+}
+#dbqresults table a:hover {
+    text-decoration: underline;
+}
+#dbqresults table a:hover {
+    text-decoration: underline;
+}
+
+ul.paginator {
+    list-style-type: none;
+    display: inline;
+}
+
+ul.paginator li {
+    display: inline-block;
+    text-align: center;
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0 0.2em;
+    font-weight: bold;
+}
+ul.paginator a {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    font-size: 1.1em;
+    color: #000;
+    font-weight: normal;
+}
+ul.paginator a:hover {
+    background-color: #8fb3d7;
+    border: 1px solid #000;
+}
+
+.subtitle {
+    font-size: 0.8em;
+    font-weight: normal;
+}

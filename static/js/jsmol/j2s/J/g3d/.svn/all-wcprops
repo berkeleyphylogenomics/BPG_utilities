@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/g3d
+END
+G3DRenderer.js
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/g3d/G3DRenderer.js
+END
+Pixelator.js
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/g3d/Pixelator.js
+END
+ImageRenderer.js
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/g3d/ImageRenderer.js
+END
+TextString.js
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/g3d/TextString.js
+END
+TextRenderer.js
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/g3d/TextRenderer.js
+END
+Platform3D.js
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/g3d/Platform3D.js
+END
+SphereRenderer.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/g3d/SphereRenderer.js
+END
+LineRenderer.js
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/g3d/LineRenderer.js
+END
+PixelatorShaded.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/g3d/PixelatorShaded.js
+END
+TextSorter.js
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/g3d/TextSorter.js
+END
+HermiteRenderer.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/g3d/HermiteRenderer.js
+END
+Graphics3D.js
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/g3d/Graphics3D.js
+END
+CircleRenderer.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/g3d/CircleRenderer.js
+END
+TriangleRenderer.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/g3d/TriangleRenderer.js
+END
+CylinderRenderer.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/g3d/CylinderRenderer.js
+END

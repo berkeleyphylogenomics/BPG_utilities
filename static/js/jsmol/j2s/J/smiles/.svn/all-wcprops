@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/smiles
+END
+SmilesParser.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/smiles/SmilesParser.js
+END
+VTemp.js
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/smiles/VTemp.js
+END
+SmilesAromatic.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/smiles/SmilesAromatic.js
+END
+SmilesAtom.js
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/smiles/SmilesAtom.js
+END
+SmilesMeasure.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/smiles/SmilesMeasure.js
+END
+SmilesBond.js
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/smiles/SmilesBond.js
+END
+SmilesMatcher.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/smiles/SmilesMatcher.js
+END
+InvalidSmilesException.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/smiles/InvalidSmilesException.js
+END
+SmilesSearch.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/smiles/SmilesSearch.js
+END
+SmilesGenerator.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/smiles/SmilesGenerator.js
+END

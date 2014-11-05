@@ -1,0 +1,281 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io
+END
+BufferedReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/BufferedReader.js
+END
+NotSerializableException.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/NotSerializableException.js
+END
+Serializable.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/Serializable.js
+END
+CharArrayWriter.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/CharArrayWriter.js
+END
+Externalizable.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/Externalizable.js
+END
+Writer.js
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/Writer.js
+END
+BufferedInputStream.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/BufferedInputStream.js
+END
+BufferedWriter.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/BufferedWriter.js
+END
+UTFDataFormatException.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/UTFDataFormatException.js
+END
+ObjectStreamField.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/ObjectStreamField.js
+END
+IOException.js
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/IOException.js
+END
+EOFException.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/EOFException.js
+END
+Closeable.js
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/Closeable.js
+END
+InvalidClassException.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/InvalidClassException.js
+END
+PushbackInputStream.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/PushbackInputStream.js
+END
+InputStreamReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/InputStreamReader.js
+END
+ByteArrayInputStream.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/ByteArrayInputStream.js
+END
+SyncFailedException.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/SyncFailedException.js
+END
+ObjectStreamException.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/ObjectStreamException.js
+END
+SequenceInputStream.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/SequenceInputStream.js
+END
+Flushable.js
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/Flushable.js
+END
+DataInputStream.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/DataInputStream.js
+END
+WriteAbortedException.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/WriteAbortedException.js
+END
+NotActiveException.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/NotActiveException.js
+END
+InputStream.js
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/InputStream.js
+END
+FileNotFoundException.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/FileNotFoundException.js
+END
+FileInputStream.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/FileInputStream.js
+END
+InterruptedIOException.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/InterruptedIOException.js
+END
+FileOutputStream.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/FileOutputStream.js
+END
+OutputStream.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/OutputStream.js
+END
+UnsupportedEncodingException.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/UnsupportedEncodingException.js
+END
+BufferedOutputStream.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/BufferedOutputStream.js
+END
+FilterInputStream.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/FilterInputStream.js
+END
+FilterOutputStream.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/FilterOutputStream.js
+END
+DataInput.js
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/DataInput.js
+END
+StringReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/StringReader.js
+END
+DataOutput.js
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/DataOutput.js
+END
+InvalidObjectException.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/InvalidObjectException.js
+END
+StringBufferInputStream.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/StringBufferInputStream.js
+END
+OptionalDataException.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/OptionalDataException.js
+END
+ByteArrayOutputStream.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/ByteArrayOutputStream.js
+END
+CharArrayReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/CharArrayReader.js
+END
+CharConversionException.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/CharConversionException.js
+END
+Reader.js
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/Reader.js
+END
+StreamCorruptedException.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/StreamCorruptedException.js
+END
+StringWriter.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/java/io/StringWriter.js
+END

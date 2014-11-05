@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/io
+END
+JmolBinary.js
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/io/JmolBinary.js
+END
+DataReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/io/DataReader.js
+END
+CifDataReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/io/CifDataReader.js
+END
+XmlUtil.js
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/io/XmlUtil.js
+END
+FileReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/io/FileReader.js
+END
+LimitedLineReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/io/LimitedLineReader.js
+END

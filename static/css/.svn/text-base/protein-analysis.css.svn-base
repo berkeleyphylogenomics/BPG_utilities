@@ -1,0 +1,127 @@
+/* CSS For the sequence analysis sandbox */
+
+/* css for tooltips */
+
+
+/* general css */
+.italicized {font-style:italic;}
+.small-font {font-size:10px;}
+
+/*
+******************************************************************
+* index.html
+******************************************************************
+*/
+
+.main-content {
+    font-family:Verdana;
+    font-size:12px;
+    margin-left:25px;
+    margin-right:25px;
+    margin-bottom:25px;
+}
+.protein-analysis-header {clear:both;}
+.protein-analysis-header h2 {
+    font-size:20px;
+    line-height:20px;
+    margin-top:0px;
+    margin-bottom:5px;
+}
+.protein-analysis-header p {
+    font-size:11px;
+}
+/* For the step 1 step 2 header text */
+.analysis-step h3 {
+    font-size:14px;
+    line-height:14px;
+    margin-top:0px;
+}
+/* For the view step 2 parameters link */
+[data-toggle="#step2-parameters"] {
+    margin-bottom:5px;
+/* To indent the analysis step content */
+}
+.analysis-step-content {
+    margin-left:10px;
+}
+/* Input form table stuff */
+.analysis-step-content table tr td:nth-child(1) {
+    vertical-align:top;
+    text-align:right;
+}
+.analysis-step-content table tr td:nth-child(2) {
+    padding-left:15px;
+}
+.analysis-step-content table tr td:nth-child(3) {
+    padding-left:15px;
+}
+/* For FASTA input box */
+.fasta-input {
+    font-family:monospace;
+    font-size:12px;
+    width:440px;
+}
+/* For the checkboxes */
+.checkbox {
+    font-size:12px !important;
+    padding-top:0px !important;
+}
+/* For the submit button */
+#submit {
+    margin-left:50px;
+}
+/* For the horizontal rule before the analyze button */
+hr {
+    margin-top:5px;
+    margin-bottom:10px;
+}
+/* For parameters part of the steps */
+.index-parameters {
+    
+}    
+/* For the table of parameters */
+.index-parameters table {
+    margin-top:10px;
+}
+.index-parameters table tr td:nth-child(1) {
+    vertical-align:center;
+    text-align:right;
+    font-weight:bold;
+}
+/* For the inputs on the index parameters */
+.index-parameters input {
+    text-align:right;
+    height:20px;
+    width:100px;
+    font-size:12px;
+    padding-top:0px;
+    padding-bottom:0px;
+}
+
+/*
+******************************************************************
+* scanning_domains.html
+******************************************************************
+*/
+
+/*
+******************************************************************
+* results.html
+******************************************************************
+*/
+/* For protein summary tab */
+#protein-summary table {
+    width:100%;
+}
+#protein-summary table tr td:nth-child(1) div {
+    text-align:right;
+    font-weight:bold;
+    font-size:11px;
+}
+#protein-summary table tr td:nth-child(2) div {
+    padding-left:15px;
+    padding-top:5px;
+}
+#protein-summary table tr td:nth-child(3) {
+
+}

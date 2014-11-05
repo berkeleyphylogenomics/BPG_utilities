@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/renderspecial
+END
+DrawRenderer.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/renderspecial/DrawRenderer.js
+END
+DipolesRenderer.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/renderspecial/DipolesRenderer.js
+END
+GeoSurfaceRenderer.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/renderspecial/GeoSurfaceRenderer.js
+END
+VectorsRenderer.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/renderspecial/VectorsRenderer.js
+END
+EllipsoidsRenderer.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/renderspecial/EllipsoidsRenderer.js
+END
+PolyhedraRenderer.js
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/renderspecial/PolyhedraRenderer.js
+END
+DotsRenderer.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/renderspecial/DotsRenderer.js
+END

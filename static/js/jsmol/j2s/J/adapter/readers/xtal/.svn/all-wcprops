@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xtal
+END
+VaspPoscarReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xtal/VaspPoscarReader.js
+END
+CrystalReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xtal/CrystalReader.js
+END
+ShelxReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xtal/ShelxReader.js
+END
+VaspOutcarReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xtal/VaspOutcarReader.js
+END
+SiestaReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xtal/SiestaReader.js
+END
+AimsReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xtal/AimsReader.js
+END
+DmolReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xtal/DmolReader.js
+END
+XcrysdenReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xtal/XcrysdenReader.js
+END
+Wien2kReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xtal/Wien2kReader.js
+END
+EspressoReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xtal/EspressoReader.js
+END
+AbinitReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xtal/AbinitReader.js
+END
+GulpReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xtal/GulpReader.js
+END
+JanaReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xtal/JanaReader.js
+END
+MagresReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xtal/MagresReader.js
+END
+CastepReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/J/adapter/readers/xtal/CastepReader.js
+END

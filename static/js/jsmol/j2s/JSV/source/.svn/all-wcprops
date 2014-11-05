@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/source
+END
+JDXDataObject.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/source/JDXDataObject.js
+END
+JDXSource.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/source/JDXSource.js
+END
+JSVXmlReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/source/JSVXmlReader.js
+END
+JDXDecompressor.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/source/JDXDecompressor.js
+END
+JDXSourceStreamTokenizer.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/source/JDXSourceStreamTokenizer.js
+END
+CMLReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/source/CMLReader.js
+END
+JDXHeader.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/source/JDXHeader.js
+END
+FileReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/source/FileReader.js
+END
+AnIMLReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/source/AnIMLReader.js
+END
+JSVZipFileSequentialReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/source/JSVZipFileSequentialReader.js
+END
+JSVZipUtil.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/source/JSVZipUtil.js
+END
+XMLReader.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/source/XMLReader.js
+END

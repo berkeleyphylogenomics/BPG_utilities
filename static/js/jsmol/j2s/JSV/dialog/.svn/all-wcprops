@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/dialog
+END
+MeasurementsDialog.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/dialog/MeasurementsDialog.js
+END
+DialogManager.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/dialog/DialogManager.js
+END
+PeakListDialog.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/dialog/PeakListDialog.js
+END
+ViewsDialog.js
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/dialog/ViewsDialog.js
+END
+OverlayLegendDialog.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/dialog/OverlayLegendDialog.js
+END
+JSVDialog.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/dialog/JSVDialog.js
+END
+DialogParams.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/dialog/DialogParams.js
+END
+IntegrationDialog.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/bpg_static/!svn/ver/454/ohana/TRUNK/js/jsmol/j2s/JSV/dialog/IntegrationDialog.js
+END
